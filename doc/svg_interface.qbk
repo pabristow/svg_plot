@@ -1,0 +1,140 @@
+[section:svg_interface `svg` Public Interface]
+[table class `svg` Standard C++ Methods
+  [[Signature] [Description] [Notes & Examples]]
+
+  [[`svg()`] [Constructor] [Default image size (pixels) is (400, 400).]]
+]
+
+[table `svg` shapes
+  [[Signature] [Description] [Notes & Examples]]
+
+  [[`g_element& add_g_element()`] [Adds a g_element at the root of the document tree. Acts as a `push_back()`] [Returns the `g_element` that is pushed back. This allows you to do something like the following: `image.add_g_element().line(/**/).line(/**/).rect(/**/);  `
+  which adds two lines and a rectangle to the g_element that was just created.]]
+
+  [[`circle_element& circle(double x, double y, unsigned int radius = 5)`] [Adds a point at (x,y) in the root level of the document.][If the user is calling the circle method, odds are they would prefer a real circle instead of a degenerate circle (a point). 5 is as good a default as any other, and the user is unlikely want a point if they are making this call.]]
+
+  [[`ellipse_element& ellipse(double rx, double ry, double cx, double cy)`] [Adds an ellipse at the root level of the doucment.][The radii of the ellipse are required.]]
+
+  [[`g_element& get_g_element(int)`] [Gets the g_element at the index specified.] [Gives a runtime error if you specify an index that does not contain a `g_element`. An iterator interface to access these elements might be useful.]]
+
+  [[`get_g_element`] [Class derived from svg_element.] [Graph element: line, circle, rect... Node element of document tree.]]
+
+  [[`line_element& line(double x1, double y1, double x2, double y2)`] [Adds a line from (x1,y1) to (x2,y2) in the root level of the document.][]]
+
+  [[`path_element& path()`]
+  [Pushes a `path_element` to the back of the tree and returns a reference to it.
+  This allows chaining, for example:
+``
+path_element& my_path = image.path();
+
+my_path.M(3, 3).l(150, 150).m(5, 6).l(7, 8).l(9, 10); // and so on.
+``
+]]
+
+  [[`polygon_element& polygon(double x, double y, bool f)`] [Begins a polygon at point (x, y). Fill is determined by `f`] []]
+
+  [[`polygon_element& polygon(std::vector<poly_path_point>& v, bool f)`] [Generates a polygon from the vector input using Cartesian coordinates.][ Fill is determined by `f`.] ]
+
+  [[`polyline_element& polyline(double x, double y)`][Starts a polyline at coordinate (x, y) (Add more path points using .P(x, y)][]]
+
+  [[`polyline_element& polyline(double x1, double y1, double x2, double y2)`] [Adds a polyline to the root of the SVG document from (x1, y1) to (x2, y2)][]]
+
+  [[`polyline_element& polyline(std::vector<poly_path_point>& v, bool f=true)`] [Adds a polyline to the root of the SVG document with][`f` denotes the option to provide a fill for the polyline.]]
+
+  [[`rect_element& rect(double x1, double y1,
+               double width, double height)`] [Adds a rectangle at point (x1, y1) that has  `width` wide and `height` high.][]]
+
+  [[`polygon_element& rhombus(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, bool f = true`][Generates a rhombus at the four coordinates provided] [Fill is determined by `f`.]]
+
+  [[`text_element& text(double x, double y, std::string text)`] [Adds string `text` at (x,y) in the root level of the document][]]
+
+  [[`polygon_element& triangle(double x1, double y1, double x2, double y2, double x3, double y3, bool f = true`] [Generates a triangle at the three Cartesian coordinates specified] [Fill is determined by `f`]]
+
+] [/SVG C++ default methods table]
+
+[table Special methods
+  [[Signature] [Description] [Notes & Examples]]
+
+  [[`clip_path_element& clip_path(const rect_element& rect, const std::string& id)`][Allows a rectangle to be defined as a clipping element. The clip elements are referenced by name, so you must provide the ID][]]
+
+  [[`void load_stylesheet(const std::string& input)`][Allows you to define the filename of a stylesheet. The stylesheet is validated as being a strict subset of the CSS syntax.][]]
+
+] [/Special methods for SVG class]
+
+[table `svg` Copyright
+  [[Signature] [Description] [Notes & Examples]]
+
+  [[`const std::string& attribution()`] [Returns the Attribution segment of the license] [The default is `""`]]
+
+  [[`const std::string& author()`] [Returns the author of the document.] [The default is the copyright_holder.]]
+
+  [[`void author(const std::string)`] [Sets the author of the document] [The copyright_holder is the default author]]
+
+  [[`const std::string& commercialuse()`] [Returns the Commercial Use segment of the license] [The default is `""`]]
+
+  [[`const std::string& copyright_date()`] [Returns the copyright date for the SVG XML document] [Returns the date string, not the associated XML.]]
+
+  [[`void copyright_date(const std::string)`] [Set copyright date for the SVG XML document, as comment and XML.][<!-- SVG Plot Copyright Paul A. Bristow 2007 -->
+<meta name="date" content="2007" />]]
+
+  [[`const std::string& copyright_holder`] [Returns the copyright holder for the SVG XML document] [Returns the input value for copyright holder. Does not return any XML]]
+
+  [[`void copyright_holder(const std::string)`] [Set copyright holder for the SVG XML document, as comment and XML.][<!-- SVG Plot Copyright Paul A. Bristow 2007 -->
+<meta name="copyright" content="Paul A. Bristow" />]]
+
+  [[`const std::string& description()`] [Returns the description of the document.] [Returns the description string, not the associated XML]]
+
+  [[`void description(const std::string)`] [Sets description for the SVG XML document, as comment and XML.][<!-- My Document description --> <desc>My Document description</desc>]]
+
+  [[`const std::string& distribution()`] [Returns the Distribution segment of the license] [The default is `""`]]
+
+  [[`void image_filename(const std::string)] [Writes the image filename for the document as a title element in the SVG document] [If the wrong filename is provided, the right one will be set upon a call to write(). You should not have to set this, as it will be overridden upon write.]]
+
+  [[`bool is_license()`][Returns whether or not a license will be output with a written document.][Permits reproduction & distribution but requires atribution.]]
+
+  [[`void license(bool)`] [Sets whether or not the license information should be added to the written document] [`false`]]
+
+  [[`void license(const std::string, const std::string, const std::string, const std::string)`][Set license terms (if any): reproduction, distribution, attribution, commercialuse]["permits" (default), "requires", or "prohibits".]]
+
+  [[`const std::string& reproduction()`] [Returns the Reproduction segment of the license] [The default is `""`]]
+
+] [/Copyright table]
+
+[table `svg` document settings and writing
+  [[Signature] [Description] [Notes & Examples]]
+
+  [[`int coord_precision()`] [Returns the current precision of doubles in the document] [The default is 3]]
+
+  [[`void coord_precision(int)`] [Sets the precision output for coordinates (decimal digits)][default 3, but for mobiles, 2 might suffice.]]
+
+  [[`const std::string document_title()`] [Returns the title of the SVG XML document] []]
+
+  [[`int document_size()`] [Returns the number of elements in the root of the document] [] ]
+
+  [[`void document_title(const std::string)`] [Sets title for the SVG XML document (not the plot)][<title>My Document title</title>]]
+
+  [[`void image_size(unsigned int, unsigned int)`] [Sets the size of the image produced,
+  (pixels).][]]
+
+  [[`unsigned int x_size()`] [Returns the width of the image (pixels).] []]
+
+  [[`void x_size(unsigned int)`] [Sets the width of the image (pixels).] []]
+
+  [[`unsigned int y_size()`] [Returns the height of the image (pixels).] []]
+
+  [[`void y_size(unsigned int)`] [Sets the height of the image (pixels).] []]
+
+  [[`void write(const std::string&)`] [Writes the document to the file represented by the argument. (If not file type sufix is provided, the default file suffix `".svg"` is appended.][Opens the file stream itself and tries to call `write(std::ostream&)`. Throws `std::runtime_exception` if it can not open the file.]]
+
+  [[`void write(std::ostream&)`] [Writes the document to the stream represented by the argument.][]]
+] [/table `svg` document settings and writing]
+
+[endsect] [/section:svg_interface]
+
+
+[/ svg_interface.qbk
+  Copyright 2008, 2009 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

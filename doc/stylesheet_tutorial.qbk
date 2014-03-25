@@ -1,0 +1,107 @@
+[section:stylesheets Stylesheets (not implemented at present)]
+
+[section:tutorial_stylesheet Stylesheet Tutorial]
+
+The is no longer implemented so removed from the docs, pro tem.
+
+To include a stylesheet into a program with any plot, simply use the `load_stylesheet(const std::string& filename)` method to load an external stylesheet. To load the file ./style.css, for instance, we would call:
+
+  my_plot.load_stylesheet("./style.css");
+
+There are a few instances when a `std::runtime_error` exception may be thrown.
+
+* If the filename is incorrect.
+* If the file does not pass the parsing phase.
+
+[h4 Using the stylesheet]
+Here is the output file for the simple 1D example, as used before:
+
+[$images/1d_simple.png]
+
+Here it is with a simple stylesheet applied (from $PROJECT_ROOT/libs/svg_plot/example/style.css):
+
+[caution When the user will have the option to convert the graph to another image format, the stylesheets will be ignored. These would provide the user with an even more complex function object that they would need to implement. If you provide a stylesheet, make sure you know what will not be converted. (Currently, that is everything in the stylesheets.)]
+[$images/1d_simple_style.png]
+
+[endsect] [/section:tutorial_stylesheet Stylesheet Tutorial]
+
+[section:behavior_stylesheets Stylesheets - Not Implemented at present]
+
+Stylesheets are not longer implemented because of various problems.
+
+So, for the time being, the information below is not applicable.
+
+Stylesheets currently have only a single way of being used with the program:
+they are parsed by the `svg` class, and if the stylesheet parses correctly,
+they are loaded directly into the SVG file.
+I recognize that it may also be desired to link to an external stylesheet,
+but this presents a few problems.
+
+* Both of the files now need to be transported with the produced document.
+* Any user-provided function object that is used to convert between image formats
+now suddenly needs to be able to load the image format from an external source.
+
+When the image converter portion of the project is completed,
+the image format function object will not be forced to deal with CSS.
+This is primarily a practical matter, and keeps simple an already difficult task.
+This will not preclude a method that extracts appropriate data from the CSS file
+and calls the appropriate functions.
+For example, if the user provides the following:
+
+[pre
+  #Background
+  {
+    fill : #FFF;
+    stroke : #041010 ;
+  }
+]
+
+why shouldn't
+
+  my_plot.background_color(black);
+  my_plot.background_border_color(svg_color(4, 16, 16));
+
+be called?
+
+[caution Please note that the language that is accepted by the parser is actually stricter than the real CSS standard allows for.
+Following GSoC, the parser will be reimplemented to reflect the parser suggested by the CSS standard.
+All identifiers (class, ID, or otherwise), must be the *one and only* identifier on the line.]
+
+The following is not accepted:
+
+[pre
+  rect, circle
+  {
+    fill : #00FF00;
+    stroke : #000000;
+  }
+]
+
+But the following is:
+
+[pre
+  rect
+  {
+    fill : #00FF00;
+    stroke : #00FF00;
+  }
+
+  circle
+  {
+    fill : #00FF00;
+    stroke : #00FF00;
+  }
+]
+
+None of the power of CSS is compromised (I believe), but it becomes more verbose.
+] [/caution]
+
+[endsect] [/section:behavior_stylesheets]
+[endsect] [/section:stylesheets Stylesheet (not implemented at present)]
+
+[/ stylesheet_tutorial.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

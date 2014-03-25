@@ -1,0 +1,243 @@
+# jamfile.v2 for SVG_plot Quickbook Documentation and index using Doxygen
+
+# Copyright Paul A. Bristow 2013, 2014
+
+# Distributed under the Boost Software License, Version 1.0.
+# (See accompanying file LICENSE_1_0.txt
+# or copy at http://www.boost.org/LICENSE_1_0.txt)
+
+# Reminder: whitespace MUST terminate variable name!
+# so spaces or newlines BEFORE ; and : and AFTER too.
+# (because : and ; are keywords!)
+
+# SVG plot documentation as html and pdf from Quickbook, using Doxygen.
+# AND auto-indexing.
+
+# project boost/doc ;
+
+using quickbook ;
+using doxygen ;
+
+import os ; # Needed to get environment variables.
+path-constant nav_images :  html/images/ ; # png and svg images for home, next, note, tip...
+path-constant images_location : html ; # location of SVG and PNG images referenced by Quickbook.
+
+path-constant parent : .. ;  # Beman Dawes - so that inspect.exe will start in boost-root/libs/timer
+                             # when run from another directory, such as boost-root/status
+
+echo "nav_images" $(nav_images) ;
+echo "images_location" $(images_location) ;
+
+if --enable-index in  [ modules.peek : ARGV ]
+{
+   ECHO "Building the SVG_Plot docs with automatic index generation enabled." ;
+   using auto-index ;
+   project : requirements
+        <auto-index>on # Turns on index (or off).
+
+        <auto-index-verbose>on
+
+        # Choose indexing method (separately for html and pdf):
+        <format>html:<auto-index-internal>on  # on (or off) to use internally generated indexes.
+        # <format>html:<xsl:param>generate.index=0 # Don't let the XSL stylesheets generate indexes.
+
+        <format>pdf:<auto-index-internal>off # on (or off) to use internally generated indexes.
+        # <auto-index-type>index  # Use <index>...</index> as the XML wrapper.
+
+        <format>pdf:<xsl:param>index.on.type=1 # For the native stylesheets to generate the different indexes.
+        # PDF native index support is probably better for PDFs as then you actually get page numbers.
+
+        <auto-index-script>svg_plot.idx # Specifies the name of the script to load.
+        # <auto-index-prefix>../../../ # OK for Boost /boost and /libs normal directory layout
+        # using scan-path in index.idx, for example:
+
+        # Assume all header files are in boost/quick_auto_dox_index and sub-folders.
+        #!scan-path boost/SVG_plot ".*\.hpp" true
+
+        # Assume all Quickbook files are in /docs (none in sub-folders).
+        #!scan-path "libs/SVG_plot" ".*\.qbk"
+
+        <auto-index-prefix>../../..
+        <quickbook-define>enable_index ;
+}
+else
+{
+   ECHO "Building the SVG_plot docs with automatic index generation disabled. To get an AutoIndex, try building with --enable-index." ;
+}
+
+
+xml svg_plot
+  :
+    svg_plot.qbk
+  :
+;
+
+doxygen autodoc
+  :
+    [ glob ../../../boost/svg_plot/*.*pp ]
+   # [ glob ../../../boost/quan/*.hpp ]
+    [ glob ../../../boost/svg_plot/detail/*.hpp ]
+   #     [ glob ../../../boost/svg_plot/detail/axis_plot_frame.hpp ]
+
+  :
+    #<doxygen:param>INPUT="filename1 directoryname2" # Separate with spaces.
+    # But also see paths specified above.
+    <doxygen:param>RECURSIVE=YES # Search subdirectories as well.
+    # <doxygen:param>STRIP_FROM_PATH=I:/ # Strip this from full path name.
+    <doxygen:param>TAB_SIZE=2
+    # <doxygen:param>EXTRACT_ALL=YES
+    # If the EXTRACT_ALL tag is set to YES doxygen will assume all entities in
+    # documentation are documented, even if no documentation was available.
+    # Private class members and static file members will be hidden unless
+    # the EXTRACT_PRIVATE and EXTRACT_STATIC tags are set to YES
+    <doxygen:param>HIDE_UNDOC_MEMBERS=NO
+    <doxygen:param>INLINE_INHERITED_MEMB=YES # Show all inherited members of a class in the documentation of that class as if those members were ordinary class members.
+    <doxygen:param>SORT_MEMBER_DOCS=YES
+    <doxygen:param>EXTRACT_STATIC=YES # If the EXTRACT_STATIC tag is set to YES all static members of a file
+       # will be included in the documentation.
+    <doxygen:param>EXTRACT_PRIVATE=NO
+    # If the EXTRACT_PRIVATE tag is set to YES all private members of a class will be included in the documentation
+    # If the EXTRACT_STATIC tag is set to YES all static members of a file
+    # will be included in the documentation.
+    # <doxygen:param>EXTRACT_LOCAL_STATIC=YES # ? Not supported.
+    <doxygen:param>EXTRACT_LOCAL_METHODS=NO # Only useful for Objective C?
+    <doxygen:param>EXTRACT_LOCAL_CLASSES=NO # If the EXTRACT_LOCAL_CLASSES tag is set to YES classes (and structs)
+    # defined locally in source files will be included in the documentation.
+    # If set to NO only classes defined in header files are included.
+    <doxygen:param>ENABLE_PREPROCESSING=YES # Doxygen will expand all macro names in the source code.
+    <doxygen:param>MACRO_EXPANSION=YES # If the MACRO_EXPANSION tag is set to YES all macro
+    # Doxygen will expand all names in the source code.
+    <doxygen:param>EXPAND_ONLY_PREDEF=NO # If the EXPAND_ONLY_PREDEF and MACRO_EXPANSION tags are both set to YES
+    # then the macro expansion is limited to the macros specified with the
+    # PREDEFINED and EXPAND_AS_DEFINED tags.
+    <doxygen:param>SEARCH_INCLUDES=YES # If the SEARCH_INCLUDES tag is set to YES (the default) the includes files in the INCLUDE_PATH.
+    <doxygen:param>INLINE_INFO=YES # If the INLINE_INFO tag is set to YES (the default) then a tag [inline] is inserted in the documentation for inline members.
+    <doxygen:param>SORT_BRIEF_DOCS=YES # If the SORT_BRIEF_DOCS tag is set to YES then doxygen will sort the brief descriptions of file, namespace and class members alphabetically by member name.
+    <doxygen:param>SORT_MEMBER_DOCS=YES # If the SORT_MEMBER_DOCS tag is set to YES (the default) then doxygen will sort the (detailed) documentation of file and class members alphabetically by member name.
+    <doxygen:param>SHOW_INCLUDE_FILES=YES # List of the files that are included by a file in the documentation of that file.
+    <doxygen:param>REPEAT_BRIEF=YES # Prepend the brief description of a member or function before the detailed description
+    <doxygen:param>BRIEF_MEMBER_DESC=YES # Include brief member descriptions after the members that are listed in the file and class
+    <doxygen:param>MULTILINE_CPP_IS_BRIEF=YES # Treat a multi-line C++ special comment block (i.e. a block of //! or /// comments) as a brief description.
+    # May be best to always use \brief and \details to avoid ambiguity?
+    #<doxygen:param>INCLUDE_PATH=$(BOOST_ROOT) # The INCLUDE_PATH tag can be used to specify one or more directories that
+    # contain include files that are not input files but should be processed by the preprocessor.
+    <doxygen:param>WARNINGS=YES # If WARN_IF_UNDOCUMENTED is set to YES, then doxygen will generate warnings for undocumented members.
+    # If EXTRACT_ALL is set to YES then this flag will automatically be disabled.
+    <doxygen:param>WARN_IF_UNDOCUMENTED=YES # If WARN_IF_UNDOCUMENTED is set to YES,
+    # then doxygen will generate warnings for undocumented members.
+    <doxygen:param>WARN_IF_DOC_ERROR=YES # If WARN_IF_DOC_ERROR is set to YES, Doxygen will generate warnings for
+    # potential errors in the documentation.
+    <doxygen:param>WARN_LOGFILE=../../../libs/svg_plot/doc/doxywarnings.log # Specific log file - ideally this should be empty!
+    <doxygen:param>EXCLUDE="../../../boost/svg_plot/svg_fwd.hpp ../../../boost/svg_plot/stylesheet.hpp"
+    # Exclude to avoid warnings about file(s) undocumented.
+    # Note: no commas required but need quotes if more than one file.
+
+    <xsl:param>"boost.doxygen.reftitle=Boost.SVG plot C++ Reference"
+;
+    #<doxygen:param>"PREDEFINED=\"BOOST_DEDUCED_TYPENAME=typename\" "
+# See Doxygen configuration for detailed explanation of these options
+
+# import boostbook : boostbook ;
+
+boostbook standalone
+  :
+    svg_plot
+  :
+
+  # Path for links to Boost from /html:
+  <xsl:param>boost.root=../../../..
+
+  # Path for libraries index:
+  <xsl:param>boost.libraries=../../../../libs/libraries.htm
+  # Use the main Boost stylesheet:
+  #<xsl:param>html.stylesheet=../../../doc/html/boostbook.css
+  # Or a local preference Boost stylesheet with different syntax colors:
+  <xsl:param>html.stylesheet=boostbook.css
+
+  <xsl:param>nav.layout=horizontal # to get a horizontal navigation bar (you probably DO want this).
+  <xsl:param>boost.image=Boost # Options are: none (no logo), Boost (for boost.png), or your own logo.
+  <xsl:param>boost.image.src=./images/proposed_for_boost.png #
+  <xsl:param>boost.image.w=200 # Width of logo in pixels. (JM has W = 162, h = 46)
+  <xsl:param>boost.image.h=90 # Height of logo in pixels.
+
+  # Some general style settings:
+  <xsl:param>table.footnote.number.format=1
+  <xsl:param>footnote.number.format=1
+
+  # HTML options first:
+  # Use graphics not text for navigation:
+  <xsl:param>navig.graphics=1
+  # How far down we chunk nested sections, basically all of them:
+  <xsl:param>chunk.section.depth=10
+  # Don't put the first section on the same page as the TOC:
+  <xsl:param>chunk.first.sections=1
+  # How far down sections get TOC's
+  <xsl:param>toc.section.depth=10
+  # Max depth in each TOC:
+  <xsl:param>toc.max.depth=4
+  # How far down we go with TOC's
+  <xsl:param>generate.section.toc.level=10
+  #<xsl:param>root.filename="svg_plot"
+
+  # <xsl:param>project.root=http://beta.boost.org/development
+  # <xsl:param>annotation.support=1
+  # <xsl:param>quickbook.source.style.show="'true'"
+
+  # PDF Options:
+  # TOC Generation
+  <xsl:param>fop1.extensions=0
+  <format>pdf:<xsl:param>xep.extensions=1
+  #<format>pdf:<xsl:param>fop.extensions=0
+
+  # No indent on body text:
+  #<format>pdf:<xsl:param>body.start.indent=0pt
+  # Margin size:
+  <format>pdf:<xsl:param>page.margin.inner=0.5in
+  # Margin size:
+  <format>pdf:<xsl:param>page.margin.outer=0.5in
+  # Paper type = A4
+  <format>pdf:<xsl:param>paper.type=A4
+  # Yes, we want graphics for admonishments:
+  <xsl:param>admon.graphics=1
+  # Set this one for PDF generation *only*:
+  # default PNG graphics are awful in PDF format,
+  # better to use SVGs instead:
+  <format>pdf:<xsl:param>admon.graphics.extension=".svg"
+  <format>pdf:<xsl:param>use.role.for.mediaobject=1
+  <format>pdf:<xsl:param>preferred.mediaobject.role=print
+  <format>pdf:<xsl:param>admon.graphics.path=$(nav_images)/
+  <format>pdf:<xsl:param>img.src.path=$(images_location)/
+  <format>pdf:<xsl:param>draft.mode="no"
+  #  Code section font verdana looks good. But OK for Linux?
+  <format>pdf:<xsl:param>monospace.font.family="verdana"
+  # Use local preference for syntax coloring.
+  <format>pdf:<xsl:param>html.stylesheet=boostbook.css
+
+  <dependency>autodoc
+  <dependency>html
+  <dependency>images
+  <dependency>svg-images
+ ;
+
+# install html : ../../../doc/html/boostbook.css ; # Boost standard style sheet.
+
+install html : boostbook.css : <location>html ;  # Copy custom Boostbook style sheet from /doc folder to /doc/html.
+explicit html ;
+
+#install images : [ glob $(BOOST_ROOT)/doc/src/images/*.png ] : <location>html/images ; # Boost standard navigation PNG images.
+install images : [ glob images/*.png ] : <location>html/images ; # All PNG images, including navigation and SVG version.
+explicit images ;
+
+install svg-images : [ glob images/*.svg ] : <location>html/images ; # All SVG images, including navigation and SVG examples.
+explicit svg-images ;
+
+install pdf-install : standalone : <install-type>PDF <location>. <name>SVG_plot.pdf ;
+
+#  Run inspect tool.
+ run /boost/tools/inspect//inspect/<variant>release
+  : $(parent) -text -brief # command line
+  : # input files
+  : <dependency>/boost/filesystem//boost_filesystem
+    <test-info>always_show_run_output # requirements
+  : inspect # test name
+ ;

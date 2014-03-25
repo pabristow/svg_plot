@@ -1,0 +1,83 @@
+[section:tutorial_demo_1d_simple Simple 1D Example]
+
+[import ..\example\demo_1d_simple.cpp] [/has Quickbook in C++]
+[demo_1d_simple_1]
+[demo_1d_simple_2]
+
+[$images/1d_simple.png]
+
+[h4 A Note on Chaining Syntax]
+The syntax
+
+  my_plot.title("Hello").legend_on(true).x_range(-1, 11);
+
+may appear unfamiliar.  However, it works on the same 'chaining' way as the assignment operator in
+
+  a = b = c = d = 3;
+
+And the addition operator and output operator, in
+
+  std::cout << a + b + c + d << std::endl;  // prints 12
+
+Within all of the plot classes, 'chaining' works the same way,
+by returning a reference to the calling object thus `return *this;`
+
+Equivalent traditional code for the example above is as follows:
+
+  my_plot.title("Race Times");
+  my_plot.legend_on(true);
+  my_plot.x_range(-1, 11);
+
+Chaining allows you to avoid repeatedly typing `myplot`
+and to easily group related settings like plot window, axes, ... together.
+Chaining avoids relying on the order of arguments in ordinary function calls.
+Order would clearly become impracticable with dozens of arguments required
+to set all the myriad plot options.
+
+In the long run, I think you will find that chaining helps organize your code
+to read more clearly :-)
+
+[h4 Simple 1D Example - Breakdown]
+Let's examine what this does in detail.
+
+  svg_1d_plot my_plot;
+
+This constructor initializes a new 1D plot, called 'my_plot', and also sets all the very many defaults, size, axes, colors, widths.
+
+  my_plot.title("Race Times")
+         .legend_on(true)
+         .x_range(-1, 11);
+
+All of the setter methods (or set member functions) are fairly self-explanatory, but
+
+* `title("Race Times")` means that a title will say "Race Times", and will appear at the top of the graph.
+
+* `legend_on(true)` means that a legend box is wanted, and will include the data series labels "Dan" and "Elaine".
+
+* `x_range(-1, 11)` means that the axis displayed will be between -1 and 11,
+as you can see in the above image.
+
+  my_plot.plot(my_data, "My data");
+
+This draws `my_data` onto `my_plot`. As many containers of data series as you want can be drawn
+on `my_plot`.
+The name of this data series is "My data", and this text will show up
+in the legend (if my_plot.legend_on() == true).
+A data series is the one required parameter for this plot function call, but a title is always helpful.
+There are also optional parameters (See reference __svg_1d_plot_series).
+
+``
+my_plot.write("simple.svg");
+``
+This writes our plot to the file "simple.svg". SVG files can be viewed with most browsers,
+or embedded into documents, or converted to bitmap images like .png.
+
+[endsect] [/section:tutorial_demo_1d_simple 1D Simple Program]
+
+[/ 1d_simple_tutorial.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow 2008, 2009.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]
+

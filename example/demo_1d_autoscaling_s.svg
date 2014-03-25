@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="200" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<!-- File demo_1d_autoscaling_s.svg --> 
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="200"/></g>
+<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="11" y="56" width="478" height="83.2"/></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="11" y1="56" x2="11" y2="139"/><line x1="11" y1="109" x2="489" y2="109"/><line x1="11" y1="139" x2="489" y2="139"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M17,139 L17,141 M23,139 L23,141 M28.9,139 L28.9,141 M34.9,139 L34.9,141 M46.9,139 L46.9,141 M52.8,139 L52.8,141 M58.8,139 L58.8,141 M64.8,139 L64.8,141 M76.7,139 L76.7,141 M82.7,139 L82.7,141 M88.7,139 L88.7,141 M94.7,139 L94.7,141 M107,139 L107,141 M113,139 L113,141 M119,139 L119,141 M125,139 L125,141 M136,139 L136,141 M142,139 L142,141 M148,139 L148,141 M154,139 L154,141 M166,139 L166,141 M172,139 L172,141 M178,139 L178,141 M184,139 L184,141 M196,139 L196,141 M202,139 L202,141 M208,139 L208,141 M214,139 L214,141 M226,139 L226,141 M232,139 L232,141 M238,139 L238,141 M244,139 L244,141 M256,139 L256,141 M262,139 L262,141 M268,139 L268,141 M274,139 L274,141 M286,139 L286,141 M292,139 L292,141 M298,139 L298,141 M304,139 L304,141 M316,139 L316,141 M322,139 L322,141 M328,139 L328,141 M334,139 L334,141 M346,139 L346,141 M352,139 L352,141 M358,139 L358,141 M364,139 L364,141 M375,139 L375,141 M381,139 L381,141 M387,139 L387,141 M393,139 L393,141 M405,139 L405,141 M411,139 L411,141 M417,139 L417,141 M423,139 L423,141 M435,139 L435,141 M441,139 L441,141 M447,139 L447,141 M453,139 L453,141 M465,139 L465,141 M471,139 L471,141 M477,139 L477,141 M483,139 L483,141 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M11,139 L11,144 M40.9,139 L40.9,144 M70.8,139 L70.8,144 M101,139 L101,144 M131,139 L131,144 M160,139 L160,144 M190,139 L190,144 M220,139 L220,144 M250,139 L250,144 M280,139 L280,144 M310,139 L310,144 M340,139 L340,144 M370,139 L370,144 M399,139 L399,144 M429,139 L429,144 M459,139 L459,144 M489,139 L489,144 M11,139 L11,144 " fill="none"/></g>
+<g id="plotLabels">
+<text x="11" y="159" text-anchor="middle" font-size="12" font-family="Verdana">0</text>
+<text x="40.9" y="159" text-anchor="middle" font-size="12" font-family="Verdana">0.5</text>
+<text x="70.8" y="159" text-anchor="middle" font-size="12" font-family="Verdana">1</text>
+<text x="101" y="159" text-anchor="middle" font-size="12" font-family="Verdana">1.5</text>
+<text x="131" y="159" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="160" y="159" text-anchor="middle" font-size="12" font-family="Verdana">2.5</text>
+<text x="190" y="159" text-anchor="middle" font-size="12" font-family="Verdana">3</text>
+<text x="220" y="159" text-anchor="middle" font-size="12" font-family="Verdana">3.5</text>
+<text x="250" y="159" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="280" y="159" text-anchor="middle" font-size="12" font-family="Verdana">4.5</text>
+<text x="310" y="159" text-anchor="middle" font-size="12" font-family="Verdana">5</text>
+<text x="340" y="159" text-anchor="middle" font-size="12" font-family="Verdana">5.5</text>
+<text x="370" y="159" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
+<text x="399" y="159" text-anchor="middle" font-size="12" font-family="Verdana">6.5</text>
+<text x="429" y="159" text-anchor="middle" font-size="12" font-family="Verdana">7</text>
+<text x="459" y="159" text-anchor="middle" font-size="12" font-family="Verdana">7.5</text>
+<text x="489" y="159" text-anchor="middle" font-size="12" font-family="Verdana">8</text>
+<text x="11" y="159" text-anchor="middle" font-size="12" font-family="Verdana">0</text></g>
+<g id="xLabel">
+<text x="250" y="185" text-anchor="middle" font-size="14" font-family="Verdana"></text></g>
+<g id="plotPoints"><g stroke="rgb(0,0,0)"><line x1="148" y1="103" x2="148" y2="92.6"/><line x1="214" y1="103" x2="214" y2="92.6"/><line x1="280" y1="103" x2="280" y2="92.6"/><line x1="346" y1="103" x2="346" y2="92.6"/><line x1="411" y1="103" x2="411" y2="92.6"/><line x1="477" y1="103" x2="477" y2="92.6"/></g>
+</g>
+<g id="title">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana"></text></g>
+</svg>

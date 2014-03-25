@@ -1,0 +1,28 @@
+[section:svg_boxplot_quartiles Definitions of the Quartiles]
+
+This example demonstrates the dramatic effect of the choice of definition of the quartiles.
+
+[import ../example/demo_Hoaglin.cpp]
+
+[demo_Hoaglin_1]
+[demo_Hoaglin_2]
+
+Typical output is:
+[demo_Hoaglin_output]
+
+Plot showing the appearance for Hoaglin's eight definitions is at:
+
+[$images/demo_Hoaglin.svg]
+
+See [@../../example/demo_Hoaglin.cpp demo_Hoaglin.cpp]
+for full source code and sample output.
+
+[endsect] [/section:svg_boxplot_quartiles Definitions of the Quartiles]
+
+[/ boxplot_quartiles.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]
+

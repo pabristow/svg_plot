@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="700" height ="500" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<clipPath id="plot_window"><rect x="364" y="59" width="31" height="372"/></clipPath>
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(245,245,245)" stroke-width="2"><rect x="0" y="0" width="700" height="500"/></g>
+<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(248,248,255)" stroke-width="2"><rect x="363" y="58" width="33" height="374"/></g>
+<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="yMajorGrid" stroke="rgb(0,255,255)" stroke-width="1"><path d="M365,245 L394,245 M365,183 L394,183 M365,120 L394,120 M365,58 L394,58 M365,245 L394,245 M365,307 L394,307 M365,370 L394,370 M365,432 L394,432 " fill="none"/></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(0,255,255)" stroke-width="1"><path d="M366,58 L366,432 M372,58 L372,432 M378,58 L378,432 M384,58 L384,432 M390,58 L390,432 M396,58 L396,432 M366,58 L366,432 " fill="none"/></g>
+<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="366" y1="58" x2="366" y2="446"/><line x1="363" y1="58" x2="363" y2="432"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="358" y1="245" x2="396" y2="245"/><line x1="358" y1="432" x2="396" y2="432"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M361,233 L363,233 M361,220 L363,220 M361,208 L363,208 M361,195 L363,195 M361,170 L363,170 M361,158 L363,158 M361,145 L363,145 M361,133 L363,133 M361,108 L363,108 M361,95.4 L363,95.4 M361,82.9 L363,82.9 M361,70.5 L363,70.5 M361,245 L363,245 M361,257 L363,257 M361,270 L363,270 M361,282 L363,282 M361,295 L363,295 M361,307 L363,307 M361,320 L363,320 M361,332 L363,332 M361,345 L363,345 M361,357 L363,357 M361,370 L363,370 M361,382 L363,382 M361,395 L363,395 M361,407 L363,407 M361,420 L363,420 M361,432 L363,432 " fill="none"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M367,432 L367,439 M369,432 L369,439 M370,432 L370,439 M373,432 L373,439 M375,432 L375,439 M376,432 L376,439 M379,432 L379,439 M381,432 L381,439 M382,432 L382,439 M385,432 L385,439 M387,432 L387,439 M388,432 L388,439 M391,432 L391,439 M393,432 L393,439 M394,432 L394,439 M364,432 L364,439 M363,432 L363,439 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M358,245 L363,245 M358,183 L363,183 M358,120 L363,120 M358,58 L363,58 M358,245 L363,245 M358,307 L363,307 M358,370 L363,370 M358,432 L363,432 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M366,432 L366,446 M372,432 L372,446 M378,432 L378,446 M384,432 L384,446 M390,432 L390,446 M396,432 L396,446 M366,432 L366,446 " fill="none"/></g>
+<g id="xTicksValues">
+<text x="366" y="462" text-anchor="middle" font-size="12" font-family="Verdana">0</text>
+<text x="372" y="462" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="378" y="462" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="384" y="462" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
+<text x="390" y="462" text-anchor="middle" font-size="12" font-family="Verdana">8</text>
+<text x="396" y="462" text-anchor="middle" font-size="12" font-family="Verdana">10</text>
+<text x="366" y="462" text-anchor="middle" font-size="12" font-family="Verdana">0</text></g>
+<g id="yTicksValues">
+<text x="352" y="247" text-anchor="end" font-size="12" font-family="Verdana">0</text>
+<text x="352" y="185" text-anchor="end" font-size="12" font-family="Verdana">25</text>
+<text x="352" y="123" text-anchor="end" font-size="12" font-family="Verdana">50</text>
+<text x="352" y="60.4" text-anchor="end" font-size="12" font-family="Verdana">75</text>
+<text x="352" y="247" text-anchor="end" font-size="12" font-family="Verdana">0</text>
+<text x="352" y="310" text-anchor="end" font-size="12" font-family="Verdana">-25</text>
+<text x="352" y="372" text-anchor="end" font-size="12" font-family="Verdana">-50</text>
+<text x="352" y="434" text-anchor="end" font-size="12" font-family="Verdana">-75</text></g>
+<g id="yLabel">
+<text x="321" y="245" text-anchor="middle" transform = "rotate(-90 321 245 )" font-size="14" font-family="Verdana">50 * f(x)</text></g>
+<g id="xLabel">
+<text x="379" y="478" text-anchor="middle" font-size="14" font-family="Verdana">x</text></g>
+<g id="plotLines" stroke-width="2"><g clip-path="url(#plot_window)" stroke="rgb(255,0,0)" stroke-width="2"><path d="M366,245 L367,193 L368,120 L369,-56 L370,-2.04e+018 L371,546 L373,370 L374,297 L375,245 L376,193 L377,120 L379,-56 L380,-6.79e+017 L381,546 L382,370 L383,297 L384,245 L386,193 L387,120 L388,-56 L389,3.84e+016 L390,546 L392,370 L393,297 L394,245 L395,193 " fill="none"/></g>
+</g>
+<g id="plotPoints" clip-path="url(#plot_window)"><g stroke="rgb(0,0,0)" fill="rgb(255,255,255)"><polygon points=" 363,240 368,240 366,245"/><polygon points=" 364,188 369,188 367,193"/><polygon points=" 365,115 370,115 368,120"/><polygon points=" 370,365 375,365 373,370"/><polygon points=" 371,292 376,292 374,297"/><polygon points=" 373,240 378,240 375,245"/><polygon points=" 374,188 379,188 376,193"/><polygon points=" 375,115 380,115 377,120"/><polygon points=" 380,365 385,365 382,370"/><polygon points=" 381,292 386,292 383,297"/><polygon points=" 382,240 387,240 384,245"/><polygon points=" 383,188 388,188 386,193"/><polygon points=" 384,115 389,115 387,120"/><polygon points=" 389,365 394,365 392,370"/><polygon points=" 390,292 395,292 393,297"/><polygon points=" 391,240 396,240 394,245"/><polygon points=" 393,188 398,188 395,193"/></g>
+</g>
+<g id="title" fill="rgb(255,0,0)">
+<text x="350" y="40" text-anchor="middle" font-size="20" font-family="Verdana">Plot of 50 * tan(x)</text></g>
+<g id="plotXValues"></g>
+<g id="plotYValues"></g>
+</svg>

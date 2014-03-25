@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="350" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<clipPath id="plot_window"><rect x="46" y="58" width="441" height="237"/></clipPath>
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="350"/></g>
+<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2"><rect x="45" y="57" width="443" height="239"/></g>
+<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"><path d="M47,177 L486,177 M47,177 L486,177 " fill="none"/></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="267" y1="57" x2="267" y2="310"/><line x1="45" y1="57" x2="45" y2="296"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="40" y1="177" x2="488" y2="177"/><line x1="40" y1="296" x2="488" y2="296"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M43,177 L45,177 " fill="none"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M277,296 L277,303 M288,296 L288,303 M298,296 L298,303 M319,296 L319,303 M330,296 L330,303 M340,296 L340,303 M361,296 L361,303 M372,296 L372,303 M383,296 L383,303 M404,296 L404,303 M414,296 L414,303 M425,296 L425,303 M446,296 L446,303 M456,296 L456,303 M467,296 L467,303 M488,296 L488,303 M256,296 L256,303 M245,296 L245,303 M235,296 L235,303 M214,296 L214,303 M203,296 L203,303 M193,296 L193,303 M172,296 L172,303 M161,296 L161,303 M150,296 L150,303 M129,296 L129,303 M119,296 L119,303 M108,296 L108,303 M87.2,296 L87.2,303 M76.6,296 L76.6,303 M66.1,296 L66.1,303 M45,296 L45,303 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M40,177 L45,177 M40,177 L45,177 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M267,296 L267,310 M309,296 L309,310 M351,296 L351,310 M393,296 L393,310 M435,296 L435,310 M477,296 L477,310 M267,296 L267,310 M224,296 L224,310 M182,296 L182,310 M140,296 L140,310 M97.7,296 L97.7,310 M55.5,296 L55.5,310 " fill="none"/></g>
+<g id="plotLabels">
+<text x="267" y="288" text-anchor="middle" font-size="12" font-family="Verdana">0</text>
+<text x="309" y="288" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="351" y="288" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="393" y="288" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
+<text x="435" y="288" text-anchor="middle" font-size="12" font-family="Verdana">8</text>
+<text x="477" y="288" text-anchor="middle" font-size="12" font-family="Verdana">10</text>
+<text x="267" y="288" text-anchor="middle" font-size="12" font-family="Verdana">0</text>
+<text x="224" y="288" text-anchor="middle" font-size="12" font-family="Verdana">-2</text>
+<text x="182" y="288" text-anchor="middle" font-size="12" font-family="Verdana">-4</text>
+<text x="140" y="288" text-anchor="middle" font-size="12" font-family="Verdana">-6</text>
+<text x="97.7" y="288" text-anchor="middle" font-size="12" font-family="Verdana">-8</text>
+<text x="55.5" y="288" text-anchor="middle" font-size="12" font-family="Verdana">-10</text>
+<text x="51" y="179" font-size="12" font-family="Verdana">0</text>
+<text x="51" y="179" font-size="12" font-family="Verdana">0</text></g>
+<g id="yLabel">
+<text x="30.2" y="177" text-anchor="middle" transform = "rotate(-90 30.2 177 )" font-size="14" font-family="Verdana"></text></g>
+<g id="xLabel">
+<text x="267" y="334" text-anchor="middle" font-size="14" font-family="Verdana">X Axis Units</text></g>
+<g id="plotPoints" clip-path="url(#plot_window)"><g stroke="rgb(0,0,0)" fill="rgb(255,255,255)"><rect x="53" y="185" width="5" height="5"/><rect x="63.6" y="185" width="5" height="5"/><rect x="74.1" y="186" width="5" height="5"/><rect x="84.7" y="187" width="5" height="5"/><rect x="95.2" y="188" width="5" height="5"/><rect x="106" y="188" width="5" height="5"/><rect x="116" y="190" width="5" height="5"/><rect x="127" y="191" width="5" height="5"/><rect x="137" y="192" width="5" height="5"/><rect x="148" y="194" width="5" height="5"/><rect x="159" y="196" width="5" height="5"/><rect x="169" y="198" width="5" height="5"/><rect x="180" y="201" width="5" height="5"/><rect x="190" y="205" width="5" height="5"/><rect x="201" y="210" width="5" height="5"/><rect x="211" y="217" width="5" height="5"/><rect x="222" y="228" width="5" height="5"/><rect x="232" y="246" width="5" height="5"/><rect x="243" y="283" width="5" height="5"/><rect x="285" y="65.4" width="5" height="5"/><rect x="296" y="102" width="5" height="5"/><rect x="306" y="120" width="5" height="5"/><rect x="317" y="131" width="5" height="5"/><rect x="327" y="138" width="5" height="5"/><rect x="338" y="143" width="5" height="5"/><rect x="348" y="147" width="5" height="5"/><rect x="359" y="150" width="5" height="5"/><rect x="369" y="152" width="5" height="5"/><rect x="380" y="154" width="5" height="5"/><rect x="391" y="156" width="5" height="5"/><rect x="401" y="157" width="5" height="5"/><rect x="412" y="158" width="5" height="5"/><rect x="422" y="160" width="5" height="5"/><rect x="433" y="160" width="5" height="5"/><rect x="443" y="161" width="5" height="5"/><rect x="454" y="162" width="5" height="5"/><rect x="464" y="163" width="5" height="5"/><rect x="475" y="163" width="5" height="5"/></g>
+</g>
+<g id="limitPoints" stroke="rgb(128,128,128)"><polygon points=" 262,47 272,47 267,57"/></g>
+<g id="title">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Plot of 1 / x</text></g>
+<g id="plotXValues"></g>
+<g id="plotYValues"></g>
+</svg>

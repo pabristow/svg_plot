@@ -1,0 +1,97 @@
+[section:2d_simple_code_example Simple Code Example]
+
+  #include <boost/svg_plot/svg_2d_plot.hpp>
+  using namespace boost::svg;
+
+  #include <map>
+  using std::multimap; // A more complicated STL container.
+
+  int main()
+  {
+    multimap<double, double> map1;
+    multimap<double, double> map2;
+
+    // This is random data used purely for example purposes.
+    map1[1.] = 3.2;
+    map1[1.] = 5.4;
+    map1[7.3] = 9.1;
+
+    map2[3.1] = 6.1;
+    map2[5.4] = 7.;
+
+    svg_1d_plot my_plot;
+
+    my_plot.title("Race Times")
+           .legend_on(true)
+           .x_range(-1, 11)
+           .background_border_color(black);
+
+    my_plot.plot(map1, "Series 1", blue); // Data point marker color is blue.
+    my_plot.plot(map2, "Series 2", orange);
+
+    my_plot.write("simple_2d.svg");
+    return 0;
+  }
+
+[h4 Resulting Simple_2D Example Image]
+
+[$images/2d_simple.svg]
+
+[h4 Simple_2D Example Breakdown]
+
+Let's examine what this does.
+
+  svg_2d_plot my_plot;
+
+This constructor initializes a new 2D plot. This also sets the very many default values.
+
+We could accept all of these and just plot one series of data with
+
+   my_plot.plot(map1, "Series 1"); // Data point marker color is default black.
+
+but we can also add a few optional details:
+
+  my_plot.title("Race Times")
+         .legend_on(true)
+         .x_range(-1, 11)
+         .background_border_color(black);
+
+All of the setter methods are fairly self-explanatory. To walk through it once,
+
+* The title, which will appear at the top of the graph, will say "Race Times".
+* `legend_on(true)` means that the legend box will show up (by default at top right).
+* `x_range(-1, 11)` means that the axis displayed will be between -1 and 11,
+as you can see in the above images.
+* `background_border_color(black)` sets the border around the image to `black`.
+Ordinarily it is left to be the color of the whole image background
+(and so no border of the plot area will be visible).
+
+  my_plot.plot(map1, "Series 1", blue);
+  my_plot.plot(map2, "Series 2", orange);
+
+This draws `map1` and `map2` to `my_plot`. As many containers as you want can
+be drawn to `my_plot`. Eventually the plot will become cluttered and confusing,
+when creating other plot(s) becomes sensible!
+
+The name of the series is `"Race times"`, and that
+text will show in the legend box. These are the two required parameters for
+this function call. There are many optional parameters, as seen in the section
+[@plot_function Getting More Out of the `plot()` Function]
+
+Finally
+
+  my_plot.write("simple_2d.svg");
+
+writes plot `my_plot` to the file "simple_2d.svg".
+
+You can view this file with most internet browsers, and other programs too.
+
+[endsect] [/section:tutorial_code_simple Simple program]
+
+[/ 2d-simple_tutorial.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]
+

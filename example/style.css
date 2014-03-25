@@ -1,0 +1,16 @@
+; boost-no-inspect
+#background
+{
+  fill : #888;
+  stroke : #888;
+}
+
+#title
+{
+  fill : #FFF;
+}
+
+#legendBackground
+{
+  fill : #DDD;
+}

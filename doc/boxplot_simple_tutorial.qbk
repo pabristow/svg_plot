@@ -1,0 +1,98 @@
+[section:svg_boxplot_tutorial_simple Simple Example]
+
+  #include <boost/svg_plot/svg_2d_plot.hpp>
+  using namespace boost::svg;
+  #include <vector>
+  using std::vector;
+
+  // Functions to simulate distributions.
+  double f(double x)
+  {
+      return 50 / x;
+  }
+
+  double g(double x)
+  {
+      return 40 + 25 * sin(x * 50);
+  }
+
+  int main()
+  {
+      std::vector<double> data1, data2;
+
+      // Fill our vectors with values from the functions f(x) and g(x)
+      for(double i = .1; i < 10; i+=.1)
+      {
+          data1.push_back(f(i));
+          data2.push_back(g(i));
+      }
+
+      svg_boxplot my_plot; // Initialize a new box plot.
+
+      my_plot.background_border_color(black); // Color information.
+
+      my_plot.title("Boxplots of Common Functions") // Title and
+     .x_label("Functions") // labels.
+     .y_label("Population Size");
+
+      my_plot.y_range(0, 100)      // Axis information.
+       .y_minor_tick_length(20)
+       .y_major_interval(20);
+
+      // Write two data series.
+      my_plot.plot(data1, "[50 / x]");
+      my_plot.plot(data2, "[40 + 25 * sin(x * 50)]");
+
+      my_plot.write("boxplot_simple.svg"); // Write final file.
+      return 0;
+  }
+
+[h5 Image boxplot_simple.svg]
+
+[$images/boxplot_simple.svg]
+
+[h4 Initializing a new boxplot]
+
+`svg_boxplot my_plot;` initializes a new boxplot. This also sets the very many default values.
+
+[h4 Setting a color]
+This sets the border color of the entire image to black (not just the plot area).
+
+      my_plot.background_border_color(black);
+
+[h4 Setting strings in the plot]
+The following code sets the title that appears at the top of the graph, the
+label that appears at the bottom to name the X-axis, and the label that appears
+to the left to name the Y-axis.
+
+      my_plot.title("Boxplots of Common Functions")
+            .x_label("Functions")
+            .y_label("Population Size");
+
+[h4 Setting axis information]
+Axis label information for the X-axis is very limited, as the coordinate system
+for the X-axis is discrete, based only on the number of box-and-whisker plots
+that appear in the same boxplot.
+
+Axis information for the Y-axis, however, is customizable much in the same way
+that that axis information is customizable for the 1 and 2 dimensional graphs.
+
+  // Axis information.
+  my_plot.y_range(0, 100)
+         .y_minor_tick_length(20)
+         .y_major_interval(20);
+
+[h4 Writing to a file]
+
+This finally writes our plot to the file "boxplot_simple.svg".
+
+  my_plot.write("boxplot_simple.svg");
+
+[endsect] [/section:svg_boxplot_tutorial_simple]
+
+[/ boxplot_simple_tutorial.qbk
+  Copyright 2008 Jake Voytko and 2013 Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

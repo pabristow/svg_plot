@@ -1,0 +1,30 @@
+[section:demo_2d_values 2-D Data Values Examples]
+
+[h4 Showing 2d Data Values Examples]
+
+[import ..\example\demo_2d_values.cpp]
+
+[demo_2d_values_1]
+[demo_2d_values_2]
+[demo_2d_values_output]
+
+And the plot:
+[$images/demo_2d_values.svg]
+
+[h4 Showing 2d Data 'at limit' Values Examples]
+
+[import ..\example\demo_2d_limits.cpp]
+
+[demo_2d_limits_1]
+[demo_2d_limits_2]
+[demo_2d_limits_output]
+
+[endsect] [/section:demo_2d_values 2-D Data Values Examples]
+
+[/ demo_2d_values.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]
+

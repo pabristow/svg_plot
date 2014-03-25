@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="150" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<!-- File demo_1d_tick_values.svg --> 
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="150"/></g>
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="11" y="56" width="478" height="50"/></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="170" y1="56" x2="170" y2="106"/><line x1="11" y1="83.5" x2="489" y2="83.5"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M183,83.5 L183,85.5 M196,83.5 L196,85.5 M209,83.5 L209,85.5 M221,83.5 L221,85.5 M247,83.5 L247,85.5 M260,83.5 L260,85.5 M272,83.5 L272,85.5 M285,83.5 L285,85.5 M311,83.5 L311,85.5 M323,83.5 L323,85.5 M336,83.5 L336,85.5 M349,83.5 L349,85.5 M374,83.5 L374,85.5 M387,83.5 L387,85.5 M400,83.5 L400,85.5 M413,83.5 L413,85.5 M438,83.5 L438,85.5 M451,83.5 L451,85.5 M464,83.5 L464,85.5 M476,83.5 L476,85.5 M158,83.5 L158,85.5 M145,83.5 L145,85.5 M132,83.5 L132,85.5 M119,83.5 L119,85.5 M93.9,83.5 L93.9,85.5 M81.1,83.5 L81.1,85.5 M68.4,83.5 L68.4,85.5 M55.6,83.5 L55.6,85.5 M30.1,83.5 L30.1,85.5 M17.4,83.5 L17.4,85.5 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M170,83.5 L170,88.5 M234,83.5 L234,88.5 M298,83.5 L298,88.5 M362,83.5 L362,88.5 M425,83.5 L425,88.5 M489,83.5 L489,88.5 M170,83.5 L170,88.5 M107,83.5 L107,88.5 M42.9,83.5 L42.9,88.5 " fill="none"/></g>
+<g id="xTicksValues" fill="rgb(255,0,255)">
+<text x="234" y="104" text-anchor="middle" font-size="15" font-family="arial">+2.0</text>
+<text x="298" y="104" text-anchor="middle" font-size="15" font-family="arial">+4.0</text>
+<text x="362" y="104" text-anchor="middle" font-size="15" font-family="arial">+6.0</text>
+<text x="425" y="104" text-anchor="middle" font-size="15" font-family="arial">+8.0</text>
+<text x="489" y="104" text-anchor="middle" font-size="15" font-family="arial">+10.0</text>
+<text x="107" y="104" text-anchor="middle" font-size="15" font-family="arial">-2.0</text>
+<text x="42.9" y="104" text-anchor="middle" font-size="15" font-family="arial">-4.0</text></g>
+<g id="xLabel" fill="rgb(0,128,0)">
+<text x="250" y="137" text-anchor="middle" font-size="18" font-family="Arial">temp (&#x00B0;C)</text></g>
+<g id="plotPoints"><g stroke="rgb(0,0,0)"><circle cx="119" cy="81" r="3"/><circle cx="306" cy="81" r="3"/><circle cx="170" cy="81" r="3"/><circle cx="342" cy="81" r="3"/><circle cx="379" cy="81" r="3"/></g>
+</g>
+<g id="title">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Demo 1D Tick Values</text></g>
+</svg>

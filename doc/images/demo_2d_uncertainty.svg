@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="400" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<clipPath id="plot_window"><rect x="88" y="58" width="399" height="279"/></clipPath>
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="400"/></g>
+<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2"><rect x="87" y="57" width="401" height="281"/></g>
+<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="237" y1="57" x2="237" y2="343"/><line x1="87" y1="57" x2="87" y2="338"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="82" y1="137" x2="488" y2="137"/><line x1="82" y1="338" x2="488" y2="338"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M85,129 L87,129 M85,121 L87,121 M85,113 L87,113 M85,105 L87,105 M85,89.1 L87,89.1 M85,81.1 L87,81.1 M85,73.1 L87,73.1 M85,65 L87,65 M85,137 L87,137 M85,145 L87,145 M85,153 L87,153 M85,161 L87,161 M85,169 L87,169 M85,178 L87,178 M85,186 L87,186 M85,194 L87,194 M85,202 L87,202 M85,210 L87,210 M85,218 L87,218 M85,226 L87,226 M85,234 L87,234 M85,242 L87,242 M85,250 L87,250 M85,258 L87,258 M85,266 L87,266 M85,274 L87,274 M85,282 L87,282 M85,290 L87,290 M85,298 L87,298 M85,306 L87,306 M85,314 L87,314 M85,322 L87,322 M85,330 L87,330 M85,338 L87,338 " fill="none"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M247,338 L247,340 M257,338 L257,340 M267,338 L267,340 M277,338 L277,340 M298,338 L298,340 M308,338 L308,340 M318,338 L318,340 M328,338 L328,340 M348,338 L348,340 M358,338 L358,340 M368,338 L368,340 M378,338 L378,340 M398,338 L398,340 M408,338 L408,340 M418,338 L418,340 M428,338 L428,340 M448,338 L448,340 M458,338 L458,340 M468,338 L468,340 M478,338 L478,340 M227,338 L227,340 M217,338 L217,340 M207,338 L207,340 M197,338 L197,340 M177,338 L177,340 M167,338 L167,340 M157,338 L157,340 M147,338 L147,340 M127,338 L127,340 M117,338 L117,340 M107,338 L107,340 M97,338 L97,340 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M82,137 L87,137 M82,97.2 L87,97.2 M82,57 L87,57 M82,137 L87,137 M82,178 L87,178 M82,218 L87,218 M82,258 L87,258 M82,298 L87,298 M82,338 L87,338 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M237,338 L237,343 M288,338 L288,343 M338,338 L338,343 M388,338 L388,343 M438,338 L438,343 M488,338 L488,343 M237,338 L237,343 M187,338 L187,343 M137,338 L137,343 M87,338 L87,343 " fill="none"/></g>
+<g id="plotLabels">
+<text x="237" y="358" text-anchor="middle" font-size="12" font-family="Verdana">0</text>
+<text x="288" y="358" text-anchor="middle" font-size="12" font-family="Verdana">1</text>
+<text x="338" y="358" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="388" y="358" text-anchor="middle" font-size="12" font-family="Verdana">3</text>
+<text x="438" y="358" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="488" y="358" text-anchor="middle" font-size="12" font-family="Verdana">5</text>
+<text x="237" y="358" text-anchor="middle" font-size="12" font-family="Verdana">0</text>
+<text x="187" y="358" text-anchor="middle" font-size="12" font-family="Verdana">-1</text>
+<text x="137" y="358" text-anchor="middle" font-size="12" font-family="Verdana">-2</text>
+<text x="87" y="358" text-anchor="middle" font-size="12" font-family="Verdana">-3</text>
+<text x="76" y="140" text-anchor="end" font-size="12" font-family="Verdana">0</text>
+<text x="76" y="99.6" text-anchor="end" font-size="12" font-family="Verdana">2.5</text>
+<text x="76" y="59.4" text-anchor="end" font-size="12" font-family="Verdana">5</text>
+<text x="76" y="140" text-anchor="end" font-size="12" font-family="Verdana">0</text>
+<text x="76" y="180" text-anchor="end" font-size="12" font-family="Verdana">-2.5</text>
+<text x="76" y="220" text-anchor="end" font-size="12" font-family="Verdana">-5</text>
+<text x="76" y="260" text-anchor="end" font-size="12" font-family="Verdana">-7.5</text>
+<text x="76" y="300" text-anchor="end" font-size="12" font-family="Verdana">-10</text>
+<text x="76" y="341" text-anchor="end" font-size="12" font-family="Verdana">-12.5</text></g>
+<g id="yLabel">
+<text x="30.2" y="198" text-anchor="middle" transform = "rotate(-90 30.2 198 )" font-size="14" font-family="Verdana"></text></g>
+<g id="xLabel">
+<text x="288" y="384" text-anchor="middle" font-size="14" font-family="Verdana">times (sec)</text></g>
+<g id="plotUnc3" stroke="none" fill="rgb(230,255,255)" stroke-width="1"><ellipse cx="125" cy="278" rx="4.51" ry="43.4"/><ellipse cx="299" cy="81.9" rx="84.2" ry="32.3"/><ellipse cx="443" cy="87.5" rx="60.2" ry="14.5"/></g>
+<g id="plotUnc2" stroke="none" fill="rgb(200,230,255)" stroke-width="1"><ellipse cx="125" cy="278" rx="3.01" ry="28.9"/><ellipse cx="299" cy="81.9" rx="56.1" ry="21.5"/><ellipse cx="443" cy="87.5" rx="40.1" ry="9.64"/></g>
+<g id="plotUnc1" stroke="none" fill="rgb(173,216,230)" stroke-width="1"><ellipse cx="125" cy="278" rx="1.5" ry="14.5"/><ellipse cx="299" cy="81.9" rx="28.1" ry="10.8"/><ellipse cx="443" cy="87.5" rx="20.1" ry="4.82"/></g>
+<g id="plotPoints" clip-path="url(#plot_window)"><g stroke="rgb(0,0,0)" fill="rgb(255,255,255)"><circle cx="125" cy="278" r="1"/><circle cx="299" cy="81.9" r="1"/><circle cx="443" cy="87.5" r="1"/></g>
+</g>
+<g id="title">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana"></text></g>
+<g id="plotXValues"><g>
+<text x="130" y="272" transform = "rotate(-30 130 272 )" font-size="16" font-family="sans">-2.23<tspan fill="rgb(0,255,255)" font-size="16" font-family="sans">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,255,255)" font-size="14" font-family="sans">0.06</tspan><tspan fill="rgb(255,0,255)" font-size="14" font-family="sans">&#x00A0;(7)</tspan></text></g>
+<g>
+<text x="304" y="75.9" transform = "rotate(-30 304 75.9 )" font-size="16" font-family="sans">1.23<tspan fill="rgb(0,255,255)" font-size="16" font-family="sans">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,255,255)" font-size="14" font-family="sans">1.1</tspan><tspan fill="rgb(255,0,255)" font-size="14" font-family="sans">&#x00A0;(7)</tspan></text></g>
+<g>
+<text x="448" y="81.5" transform = "rotate(-30 448 81.5 )" font-size="16" font-family="sans">4.1<tspan fill="rgb(0,255,255)" font-size="16" font-family="sans">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,255,255)" font-size="14" font-family="sans">0.8</tspan><tspan fill="rgb(255,0,255)" font-size="14" font-family="sans">&#x00A0;(7)</tspan></text></g>
+</g>
+<g id="plotYValues"><g>
+<text x="130" y="299" transform = "rotate(-30 130 299 )" font-size="12">&#x00A0;&#x00A0;&#x00A0;-8.76<tspan fill="rgb(255,0,0)" font-size="10" font-family="arial">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(255,0,0)" font-size="10">&#x00A0;0.9</tspan><tspan fill="rgb(0,128,0)" font-size="10">&#x00A0;(9)</tspan><tspan fill="rgb(0,0,0)" font-size="12">&#x00A0;sec</tspan></text></g>
+<g>
+<text x="304" y="102" transform = "rotate(-30 304 102 )" font-size="12">&#x00A0;&#x00A0;&#x00A0;3.45<tspan fill="rgb(255,0,0)" font-size="10" font-family="arial">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(255,0,0)" font-size="10">&#x00A0;0.67</tspan><tspan fill="rgb(0,128,0)" font-size="10">&#x00A0;(9)</tspan><tspan fill="rgb(0,0,0)" font-size="12">&#x00A0;sec</tspan></text></g>
+<g>
+<text x="448" y="108" transform = "rotate(-30 448 108 )" font-size="12">&#x00A0;&#x00A0;&#x00A0;3.1<tspan fill="rgb(255,0,0)" font-size="10" font-family="arial">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(255,0,0)" font-size="10">&#x00A0;0.3</tspan><tspan fill="rgb(0,128,0)" font-size="10">&#x00A0;(18)</tspan><tspan fill="rgb(0,0,0)" font-size="12">&#x00A0;sec</tspan></text></g>
+</g>
+</svg>

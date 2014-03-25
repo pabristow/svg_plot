@@ -1,0 +1,19 @@
+[section:svg_tutorial SVG tutorial]
+
+The SVG interface is only documented in the reference section.
+
+Most users will want to use the plot interfaces.
+
+A few very rudimentary examples of use (mainly historically used to testbed various features used in the plot interfaces) can be seen at
+
+[@../../example/demo_svg.cpp demo_svg.cpp]
+
+[endsect]
+
+[/ svg_tutorial.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]
+

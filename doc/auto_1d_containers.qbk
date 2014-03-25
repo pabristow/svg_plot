@@ -1,0 +1,23 @@
+[section:auto_1d_containers_tutorial 1-D Auto Multiple Containers Examples]
+
+[import ..\example\auto_1d_containers.cpp]
+[auto_1d_containers_1]
+[auto_1d_containers_2]
+
+The output is:
+[auto_1d_containers_output]
+
+You can view the svg file, for example: [@\images\auto_1d_containers.svg auto_1d_containers.svg]
+with most internet browsers, and other programs too.
+
+See [@../../example/auto_1d_containers.cpp auto_1d_containers.cpp]
+for full source code.
+
+[endsect] [/section:auto_1d_containers_tutorial 1-D Auto Multiple Containers Examples]
+
+[/ auto_1d_containers_tutorial.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

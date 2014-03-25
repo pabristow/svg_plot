@@ -1,0 +1,29 @@
+[section:demo_1d_axis_scaling 1-D Axis Scaling]
+
+[h4 Axis scaling with function scale_axis]
+
+[import ..\example\demo_1d_axis_scaling.cpp]
+
+[demo_1d_axis_scaling_1]
+[demo_1d_axis_scaling_2]
+[demo_1d_axis_scaling_3]
+
+[h4 scale_axis Function Examples]
+
+[demo_1d_axis_scaling_4]
+[demo_1d_axis_scaling_5]
+
+The output is:
+[demo_1d_axis_scaling_output]
+
+See [@../../example/demo_1d_axis_scaling.cpp demo_1d_axis_scaling.cpp]
+for full source code.
+
+[endsect] [/section:auto_1d_containers_tutorial 1-D Auto Multiple Containers Examples]
+
+[/ demo_1d_axis_scaling.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

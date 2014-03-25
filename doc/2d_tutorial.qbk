@@ -1,0 +1,388 @@
+[section:tutorial_2d 2D Tutorial]
+
+[/include 2d_simple_tutorial.qbk]
+[section:2d_simple_code_example Simple Code Example]
+
+  #include <boost/svg_plot/svg_2d_plot.hpp>
+  using namespace boost::svg;
+
+  #include <map>
+  using std::multimap; // A more complicated STL sorted container.
+
+  int main()
+  {
+    multimap<double, double> map1; // 1st data series.
+    multimap<double, double> map2; // 2nd data series.
+
+    // Random data used purely for this example.
+    map1[1.] = 3.2; // 1st data series.
+    map1[1.] = 5.4;
+    map1[7.3] = 9.1;
+
+    map2[3.1] = 6.1; // 2nd data series.
+    map2[5.4] = 7.;
+
+    svg_1d_plot my_plot;
+
+    my_plot.title("Race Times")
+           .legend_on(true)
+           .x_range(-1, 11)
+           .background_border_color(black);
+
+    my_plot.plot(map1, "Series 1", blue); // Data point marker color is blue.
+    my_plot.plot(map2, "Series 2", orange); // Data point marker color is orange.
+
+    my_plot.write("simple_2d.svg");
+    return 0;
+  }
+
+[h4 Resulting Simple_2D Example Image]
+
+[$images/2d_simple.svg]
+
+[h4 Simple_2D Example Breakdown]
+
+Let's examine what this does.
+
+  svg_2d_plot my_plot;
+
+This constructor initializes a new 2D plot. This also sets the very many default values.
+
+We could accept all of these and just plot one series of data with
+
+   my_plot.plot(map1, "Series 1"); // Data point marker color is default black.
+
+but we can also add a few optional details:
+
+  my_plot.title("Race Times")
+         .legend_on(true)
+         .x_range(-1, 11)
+         .background_border_color(black);
+
+All of the setter methods are fairly self-explanatory. To walk through it once,
+
+* The title, which will appear at the top of the graph, will say "Race Times".
+* `legend_on(true)` means that the legend box will show up (at top right by default).
+* `x_range(-1, 11)` means that the axis displayed will be between -1 and 11,
+as you can see in the above images.
+* `background_border_color(black)` sets the border around the image to `black`.
+Ordinarily it is left to be the color of the whole image background
+(and so no border of the plot area will be visible).
+
+  my_plot.plot(map1, "Series 1", blue);
+  my_plot.plot(map2, "Series 2", orange);
+
+This draws `map1` and `map2` to `my_plot`.
+
+The name of the serieses are `"Series 1"` and `"Series 2"`, and that text will show in the legend box.
+
+(As many containers as you want can be drawn to `my_plot`.
+Eventually the plot will become cluttered and confusing,
+when creating other plot(s) becomes more sensible!)
+
+Finally
+
+  my_plot.write("simple_2d.svg");
+
+writes plot `my_plot` to the file "simple_2d.svg".
+
+You can view this file with most internet browsers, and other programs too.
+
+[endsect] [/section:tutorial_code_simple Simple program]
+
+[/include 2d_full_tutorial.qbk]
+[section:full_2d_layout Tutorial: Fuller Layout Example]
+
+  #include <boost/svg_plot/svg_2d_plot.hpp>
+  using namespace boost::svg;
+  #include <map>
+  using std::multimap;
+  #include <cmath> // for sqrt
+
+  // Some example functions:
+  double f(double x)
+  {
+    return sqrt(x); // Note: negative values of x will all return NaN.
+  }
+
+  double g(double x)
+  {
+    return -2 + x * x;
+  }
+
+  double h(double x)
+  {
+    return -1 + 2 * x;
+  }
+
+  int main()
+  {
+    multimap<double, double> data1, data2, data3;
+
+    for(double i = 0; i <= 10.; i += 1.)
+    { // Evaluate the functions as demonstration data.
+      data1[i] = f(i);
+      data2[i] = g(i);
+      data3[i] = h(i);
+    }
+
+    svg_2d_plot my_plot; // Construct a new plot.
+
+    // Override a few default settings with our choices:
+
+    // Size of SVG image and X and Y range settings.
+    my_plot.image_size(700, 500)
+           .x_range(-1, 10)
+           .y_range(-5, 100)
+
+    // Text settings.
+    my_plot.title("Plot of Mathematical Functions")
+           .title_font_size(25)
+           .x_label("Time in Months");
+
+    // Commands.
+    my_plot.legend_on(true)
+           .plot_window_on(true)
+           .x_label_on(true)
+           .x_major_labels_on(true);
+
+    // Color settings.
+    my_plot.background_color(svg_color(67, 111, 69))
+           .legend_background_color(svg_color(207, 202,167))
+           .legend_border_color(svg_color(102, 102, 84))
+           .plot_background_color(svg_color(136, 188, 126))
+           .title_color(white);
+
+    // X axis settings.
+    my_plot.x_major_interval(2)
+           .x_major_tick_length(14)
+           .x_major_tick_width(1)
+           .x_minor_tick_length(7)
+           .x_minor_tick_width(1)
+           .x_num_minor_ticks(3)
+
+    // Y axis settings.
+           .y_major_tick(10)
+           .y_num_minor_ticks(2);
+
+    // Legend settings.
+    my_plot.legend_title_font_size(15);
+
+    // Add the 3 data series to the plot, using different markers and line colors.
+    my_plot.plot(data1, "Sqrt(x)").fill_color(red);
+    my_plot.plot(data2, "-2 + x^2").fill_color(orange).size(5);
+    my_plot.plot(data3, "-1 + 2x").fill_color(yellow).bezier_on(true).line_color(blue).shape(square);
+    // Note how the options can be chained.
+
+    my_plot.write("2d_full.svg");
+
+    return 0;
+  }
+
+This produces the following image:
+
+[$images/2d_full.svg]
+
+A little bit of color customization goes a *very* long way!
+
+[endsect] [/section:tutorial_2d_example_code]
+
+[/include 2d_special_tutorial.qbk]
+[section:2d_special Tutorial: 2D Special Features]
+
+[h4 Y-Axis ticks and tick value label position]
+
+[demo_1d_x_external_1]
+producing this plot
+[$images/demo_1d_x_external.svg]
+
+See [@../../example/demo_1d_x_external.cpp demo_1d_x_external.cpp]
+for full source code.
+
+[h4 X-Axis Tick value labels precision, iosflags, font family and size]
+
+[import ../example/demo_1d_tick_values.cpp]
+
+[demo_1d_tick_values_1]
+[demo_1d_tick_values_2]
+
+producing this plot  [$images/demo_1d_tick_values_1.svg]
+
+See [@../../example/demo_1d_tick_values.cpp demo_1d_tick_values.cpp]
+for full source code.
+
+[h4 Y-Axis Grid Lines]
+
+If you would like horizontal Y grid lines that go across the graph,
+you can make the following call to `svg_2d_plot`:
+
+  my_plot.y_major_grid_on(true)
+         .y_minor_grid_on(true);
+
+To style it, you could use the following calls:
+
+  my_plot.y_major_grid_color(lightgray) // Darker color for major grid.
+         .y_minor_grid_color(whitesmoke); // Lighter color for minor grid.
+
+This will produce the following plot image:
+
+[$images/2d_y_grid.svg]
+
+The source of this examples is at [@../../example/2d_y_grid.cpp]
+
+Similarly you can have horizontal and/or vertical lines:
+
+  my_plot.x_major_grid_on(true)
+         .x_minor_grid_on(true);
+
+and color it similarly for faint blues like old fashioned graph paper:
+
+  my_plot.y_major_grid_color(svg_color(200, 220, 255)) // Darker color for major grid.
+         .y_minor_grid_color(svg_color(240, 240, 255); // lighter color for minor grid.
+
+and to make the major grid much wider than the minor grid:
+
+  my_plot.y_major_grid_width(4)
+         .y_minor_grid_width(1)
+
+[heading Fill the area between the plot and the axis]
+
+When there is a call to the plot() method, define `area_fill_color`
+
+  multimap<double, double> my_data;
+  svg_2d_plot my_plot;
+
+  my_plot.plot(my_data, "Data", area_fill_color(red));
+
+This produces the following images:
+
+[$images/2d_area_fill_1.svg]
+[$images/2d_area_fill_2.svg]
+
+from source at [@../../example/2d_area_fill.cpp]
+
+[h4 Curve Interpolation]
+
+If you would like an *interpolated curve* shown over your data
+(rather than the default straight lines joining points),
+simply use the following command:
+
+  my_plot.plot(data, "Series 1", bezier_on(true);
+
+This produces something like the following images:
+
+[$images/2d_bezier.svg]
+
+[warning The `_bezier_curve` feature still displays undesired behavior in extreme circumstances.
+Do not use this feature with curves that have a numeric_limit value (`-NaN`, for example),
+or with data that has high irregularity in X-Axis spacing
+(for example, a clump of points between (0, 1) on the X axis,
+with the next one at 100 on the X axis.)
+In general, curves must be reasonably well-behaved to be smoothable.
+In general, using more data points will make smoothing work better,
+but will increase svg file sizes.]
+[endsect] [/2d_special Tutorial: 2D Special Features]
+
+[/include demo_2d_values.qbk]
+[section:demo_2d_values 2-D Data Values Examples]
+
+[h4 Showing 2d Data Values Examples]
+
+[import ../example/demo_2d_values.cpp]
+
+[demo_2d_values_1]
+[demo_2d_values_2]
+[demo_2d_values_output]
+
+And the plot:
+
+[$images/demo_2d_values.svg]
+
+[h4 Showing 2d Data 'at limit' Values Examples]
+
+Some values are 'at limit' - infinite, NotANumber (NaN) or near the maximum possible for the floating-point type.
+These values are displayed differently (and not used for autoscaling).
+
+[import ../example/demo_2d_limits.cpp]
+
+[demo_2d_limits_1]
+[demo_2d_limits_2]
+
+[demo_2d_limits_output]
+
+And the plot:
+
+[$images/demo_2d_limits.svg]
+
+[endsect] [/section:demo_2d_values 2-D Data Values Examples]
+
+[section:demo_2d_autoscaling 2-D Autoscaling Examples]
+
+[h4 Autoscale 2D Examples]
+
+[import ../example/auto_2d_plot.cpp]
+
+[auto_2d_plot_1]
+[auto_2d_plot_2]
+[auto_2d_plot_output]
+
+The plot is:
+
+[$images/auto_2d_plot.svg]
+
+[endsect] [/section:demo_2d_autoscaling 2-D Autoscaling Examples]
+
+[section:demo_2d_uncertainty Demonstration of using 2D data that includes information about its uncertainty]
+ [/Caution XML doesn't like 8-bit codepage +- symbol so don't use in .?pp or in output or .qbk, Only Unicode is OK.]
+
+[import ../example/demo_2d_uncertainty.cpp]
+
+[demo_2d_uncertainty_1]
+[demo_2d_uncertainty_2]
+[/demo_2d_uncertainty_output]
+
+The resulting plot is
+
+[$images/demo_2d_uncertainty.svg]
+
+See [@../../example/demo_2d_uncertainty.cpp demo_2d_uncertainty.cpp]
+for full source code and sample output.
+
+[endsect] [/section:demo_2d_uncertainty Demonstration of using 2D data that includes information about its uncertainty]
+
+[section:fit_lines Demonstration of adding lines and curves, typically a least squares fit]
+
+[import ../example/demo_2d_lines.cpp]
+[demo_2d_lines_1]
+[demo_2d_lines_2]
+
+The resulting plot is
+
+[$images/demo_2d_lines.svg]
+
+See [@../../example/demo_2d_lines.cpp demo_2d_lines.cpp]
+for full source code and sample output.
+
+[endsect] [/section:fit_lines Demontration of adding lines and curves, typically a least squares fit]
+
+[section:histograms  Histograms of 2D data]
+
+See [@../../example/demo_2d_histogram.cpp demo_2d_histogram.cpp]
+for full source code and sample output.
+
+The resulting histograms are
+
+[$images/demo_2d_histogram_x.svg]
+[$images/demo_2d_histogram_x2.svg]
+
+[endsect] [/section:histograms  Histograms of 2D data]
+
+[endsect] [/section:tutorial_2d 2D Tutorial]
+
+[/ 2d_tutorial.qbk
+  Copyright 2008 Jake Voytko.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]
+

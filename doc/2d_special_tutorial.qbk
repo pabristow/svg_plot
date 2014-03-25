@@ -1,0 +1,82 @@
+[section:2d_special Tutorial: 2D Special Features]
+
+[h4 Y-Axis Grid Lines]
+
+If you would like horizontal Y grid lines that go across the graph,
+you can make the following call to `svg_2d_plot`:
+
+  my_plot.y_major_grid_on(true)
+         .y_minor_grid_on(true);
+
+To style it, you could use the following calls:
+
+  my_plot.y_major_grid_color(lightgray) // Darker color for major grid.
+         .y_minor_grid_color(whitesmoke); // Lighter color for minor grid.
+
+This will produce the following plot image:
+
+[$images/2d_y_grid.svg]
+
+The source of this examples is at [@..\..\example\2d_y_grid.cpp]
+
+Similarly you can have horizontal and/or vertical lines:
+
+  my_plot.x_major_grid_on(true)
+         .x_minor_grid_on(true);
+
+and color it similarly for faint blues like old fashioned graph paper:
+
+  my_plot.y_major_grid_color(svg_color(200, 220, 255)) // Darker color for major grid.
+         .y_minor_grid_color(svg_color(240, 240, 255); // lighter color for minor grid.
+
+and to make the major grid much wider than the minor grid:
+
+  my_plot.y_major_grid_width(4)
+         .y_minor_grid_width(1)
+
+[heading Fill the area between the plot and the axis]
+
+When there is a call to the plot() method, define `area_fill_color`
+
+  multimap<double, double> my_data;
+  svg_2d_plot my_plot;
+
+  my_plot.plot(my_data, "Data", area_fill_color(red));
+
+This produces the following images:
+
+[$images/2d_area_fill_1.svg]
+[$images/2d_area_fill_2.svg]
+
+from source at [@..\..\example\2d_area_fill.cpp]
+
+[h4 Curve Interpolation]
+
+If you would like an *interpolated curve* shown over your data
+(rather than the default straight lines joining points),
+simply use the following command:
+
+  my_plot.plot(data, "Series 1", bezier_on(true);
+
+This produces something like the following images:
+
+[$images/2d_bezier.svg]
+
+[warning The `_bezier_curve` feature still displays undesired behavior in extreme circumstances.
+Do not use this feature with curves that have a numeric_limit value (`-NaN`, for example),
+or with data that has high irregularity in X-Axis spacing
+(for example, a clump of points between (0, 1) on the X axis,
+with the next one at 100 on the X axis.)
+In general, curves must be reasonably well-behaved to be smoothable.
+In general, using more data points will make smoothing work better,
+but will increase svg file sizes.
+]
+
+[endsect] [/2d_special Tutorial: 2D Special Features]
+
+[/ 2d_special_tutorial.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

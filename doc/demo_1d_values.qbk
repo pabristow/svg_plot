@@ -1,0 +1,29 @@
+[section:demo_1d_values 1-D Data Values Examples]
+
+[h4 Showing 1D Data Values Examples]
+
+[import ..\example\demo_1d_values.cpp]
+
+[demo_1d_values_1]
+[demo_1d_values_2]
+[demo_1d_values_output]
+
+[h4 Showing 1D Data 'at limit' Values Examples]
+
+[import ..\example\demo_1d_limits.cpp]
+
+[demo_1d_limits_1]
+[demo_1d_limits_2]
+[demo_1d_limits_output]
+
+[$images/demo_1d_limits.svg  demo_1d_limits.svg]
+
+[endsect] [/section:demo_1d_values 1-D Data Values Examples]
+
+[/ demo_1d_values.qbk
+  Copyright 2008, 2012 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]
+

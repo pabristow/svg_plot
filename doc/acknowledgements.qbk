@@ -1,0 +1,43 @@
+[section:acknowledgements Acknowledgements]
+Jake Voytko would like to thank the following people:
+
+* [*Google]: For offering Summer of Code, and giving me the opportunity to do
+something I never would have done otherwise.
+
+* [*Joaquín Mª López Muñoz]: My GSoC mentor. His proofreading and advice
+helped shape the project into what it is today, and prevented small problems
+from becoming major problems.
+
+* [*Paul A. Bristow]: For showing an active interest, offering literally dozens
+of minor and major features he'd like to see, and for helping with Boost.Build.
+
+* [*Matias Capeletto]: For showing an active interest, and offering feature
+suggestions.
+
+* [*Sarah Braun]: For helping me pick colors for examples.
+
+* [*Boost Community]: For all of the encouragement, suggestions, disagreements,
+and patience.
+
+Paul A. Bristow would like to thank
+
+* Jake Voytko for setting up the plot package during his Google Summer of Code period in 2007.  I hope he will approve of its current state.
+
+* John Maddock for much assistance with problems, and especially with documentation and development of indexing and pdf production.
+
+* Joel de Guzman and Eric Niebler for producing the Quickbook and Doxygen indexing system.
+
+* Daniel James for enhancements to Doxygen with Docbook.
+
+* And of course all the bits of Boost that proved invaluable.
+
+[endsect] [/section:acknowledgements]
+
+[/ acknowledgements.qbk
+  Copyright 2008 Jake Voytko.
+  Copyright 2009 Paul A. Bristow
+
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

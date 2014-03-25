@@ -1,0 +1,209 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>1-D STL Containers Examples</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../tutorial_1d.html" title="1D Tutorials">
+<link rel="prev" href="1d_vector_tutorial.html" title="1-D Vector Example">
+<link rel="next" href="1d_autoscale_containers.html" title="Tutorial: 1D Autoscale with Multiple Containers">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
+<td align="center"><a href="../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="1d_vector_tutorial.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_1d.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="1d_autoscale_containers.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="svg_plot.tutorial_1d.demo_1d_containers_tutorial"></a><a class="link" href="demo_1d_containers_tutorial.html" title="1-D STL Containers Examples">1-D
+      STL Containers Examples</a>
+</h3></div></div></div>
+<p>
+        First a few includes to use Boost.Plot and various STL containers:
+      </p>
+<pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">svg_1d_plot</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+  <span class="comment">// using namespace boost::svg;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">array</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">array</span><span class="special">;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">vector</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">set</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">set</span><span class="special">;</span> <span class="comment">// Automatically sorted - though this is not useful to the plot process.</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">multiset</span><span class="special">;</span> <span class="comment">// At present using std::multiset, allowing duplicates, plot does not indicate duplicates.</span>
+  <span class="comment">// With 2_D data in std::multimap, duplicate values are usefully displayed.</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">list</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">list</span><span class="special">;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">deque</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">deque</span><span class="special">;</span>
+</pre>
+<p>
+        STL vector is used as the container, and fictional values are inserted using
+        push_back. Since this is a 1-D plot the order of data values is not important.
+      </p>
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">float</span><span class="special">&gt;</span> <span class="identifier">values</span><span class="special">;</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">3.1f</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(-</span><span class="number">5.5f</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">8.7f</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">0.5f</span><span class="special">);</span>
+</pre>
+<p>
+        The constructor initializes a new 1D plot, called <code class="computeroutput"><span class="identifier">my_plot</span></code>,
+        and also sets all the many default values.
+      </p>
+<pre class="programlisting"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">;</span>
+<span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_1d_plot</span> <span class="identifier">my_plot</span><span class="special">;</span>
+</pre>
+<p>
+        Setting (member) functions are fairly self-explanatory: Title provides a
+        title at the top for the whole plot, and plot adds a (unnamed) data series
+        (naming isn't very useful if there is only one data series).
+      </p>
+<pre class="programlisting"><span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"vector&amp;lt;float&amp;gt; example"</span><span class="special">);</span>
+</pre>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../../../../../doc/src/images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+          One must insert the XML character entity equivalents of &amp;lt; for &lt;
+          and &amp;gt; for &gt;).
+        </p></td></tr>
+</table></div>
+<pre class="programlisting"><span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">values</span><span class="special">);</span>
+</pre>
+<p>
+        Write the SVG to a file.
+      </p>
+<pre class="programlisting"><span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./demo_1d_vector_float.svg"</span><span class="special">);</span>
+</pre>
+<p>
+        If the container is a static array, then it must be filled by assignment:
+      </p>
+<pre class="programlisting"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">array</span><span class="special">&lt;</span><span class="keyword">long</span> <span class="keyword">double</span><span class="special">,</span> <span class="number">4</span><span class="special">&gt;</span> <span class="identifier">values</span> <span class="special">=</span> <span class="special">{</span><span class="number">3.1L</span><span class="special">,-</span><span class="number">5.5L</span><span class="special">,</span> <span class="number">8.7L</span><span class="special">,</span> <span class="number">0.5L</span><span class="special">};</span>
+
+<span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_1d_plot</span> <span class="identifier">my_plot</span><span class="special">;</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"array&amp;lt;long double&amp;gt; example"</span><span class="special">);</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">values</span><span class="special">);</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./demo_1d_array_long_double.svg"</span><span class="special">);</span>
+</pre>
+<p>
+        If the container type is a set, then it can be filled with insert:
+      </p>
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">set</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">values</span><span class="special">;</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(-</span><span class="number">8.4</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(-</span><span class="number">2.3</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">0.1</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">5.6</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">7.8</span><span class="special">);</span>
+
+<span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_1d_plot</span> <span class="identifier">my_plot</span><span class="special">;</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"set&amp;lt;double&amp;gt; example"</span><span class="special">);</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">values</span><span class="special">);</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./demo_1d_set_double.svg"</span><span class="special">);</span>
+</pre>
+<p>
+        If the container type is a list, then it can be filled with push_back or
+        push_front:
+      </p>
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">list</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">values</span><span class="special">;</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(-</span><span class="number">8.4</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(-</span><span class="number">2.3</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">0.1</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">5.6</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">7.8</span><span class="special">);</span>
+<span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_1d_plot</span> <span class="identifier">my_plot</span><span class="special">;</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"list&amp;lt;double&amp;gt; example"</span><span class="special">);</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">values</span><span class="special">);</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./demo_1d_list_double.svg"</span><span class="special">);</span>
+</pre>
+<p>
+        If the container type is a deque, then it can be filled with push_back or
+        push_front:
+      </p>
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">deque</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">values</span><span class="special">;</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_front</span><span class="special">(-</span><span class="number">8.4</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_front</span><span class="special">(-</span><span class="number">2.3</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_front</span><span class="special">(</span><span class="number">0.1</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_front</span><span class="special">(</span><span class="number">5.6</span><span class="special">);</span>
+<span class="identifier">values</span><span class="special">.</span><span class="identifier">push_front</span><span class="special">(</span><span class="number">7.8</span><span class="special">);</span>
+
+<span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_1d_plot</span> <span class="identifier">my_plot</span><span class="special">;</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"deque&amp;lt;double&amp;gt; example"</span><span class="special">);</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">values</span><span class="special">);</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"X values as doubles"</span><span class="special">);</span>
+
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./demo_1d_deque_double.svg"</span><span class="special">);</span>
+</pre>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../../../../../doc/src/images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+          For filling STL containers you may find the <a href="../../../../../../libs/assign/doc/index.html" target="_top">Boost.Assign</a>
+          library by Thorsten Ottosen useful.
+        </p></td></tr>
+</table></div>
+<p>
+        The IDE output is not very exciting in this case:
+      </p>
+<pre class="programlisting"><span class="identifier">Compiling</span><span class="special">...</span>
+<span class="identifier">demo_1d_containers</span><span class="special">.</span><span class="identifier">cpp</span>
+<span class="identifier">Linking</span><span class="special">...</span>
+<span class="identifier">Embedding</span> <span class="identifier">manifest</span><span class="special">...</span>
+<span class="identifier">Autorun</span> <span class="string">"j:\Cpp\SVG\debug\demo_1d_containers.exe"</span>
+<span class="identifier">Build</span> <span class="identifier">Time</span> <span class="number">0</span><span class="special">:</span><span class="number">03</span>
+</pre>
+<p>
+        The plot is:
+      </p>
+<p>
+        <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/demo_1d_vector_float.svg" width="500" height="200"></object></span>
+      </p>
+<p>
+        And you can view the other svg files (with most internet browsers, and other
+        programs too) for example:
+      </p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">
+            <a href="../..//images/demo_1d_array_long_double.svg" target="_top">demo_1d_array_long_double.svg</a>
+          </li>
+<li class="listitem">
+            <a href="../..//images/demo_1d_set_double.svg" target="_top">demo_1d_set_double.svg</a>
+          </li>
+<li class="listitem">
+            <a href="../..//images/demo_1d_list_double.svg" target="_top">demo_1d_list_double.svg</a>
+          </li>
+<li class="listitem">
+            <a href="../..//images/demo_1d_deque_double.svg" target="_top">demo_1d_deque_double.svg</a>
+          </li>
+</ul></div>
+<p>
+        See <a href="../../../../example/demo_1d_containers.cpp" target="_top">demo_1d_containers.cpp</a>
+        for full source code.
+      </p>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="1d_vector_tutorial.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_1d.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="1d_autoscale_containers.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

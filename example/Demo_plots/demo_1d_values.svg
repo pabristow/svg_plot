@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="350" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<!-- File demo_1d_values.svg --> 
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="350"/></g>
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="11" y="56" width="478" height="250"/></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="170" y1="56" x2="170" y2="306"/><line x1="11" y1="184" x2="489" y2="184"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M183,184 L183,186 M196,184 L196,186 M209,184 L209,186 M221,184 L221,186 M247,184 L247,186 M260,184 L260,186 M272,184 L272,186 M285,184 L285,186 M311,184 L311,186 M323,184 L323,186 M336,184 L336,186 M349,184 L349,186 M374,184 L374,186 M387,184 L387,186 M400,184 L400,186 M413,184 L413,186 M438,184 L438,186 M451,184 L451,186 M464,184 L464,186 M476,184 L476,186 M158,184 L158,186 M145,184 L145,186 M132,184 L132,186 M119,184 L119,186 M93.9,184 L93.9,186 M81.1,184 L81.1,186 M68.4,184 L68.4,186 M55.6,184 L55.6,186 M30.1,184 L30.1,186 M17.4,184 L17.4,186 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M170,184 L170,189 M234,184 L234,189 M298,184 L298,189 M362,184 L362,189 M425,184 L425,189 M489,184 L489,189 M170,184 L170,189 M107,184 L107,189 M42.9,184 L42.9,189 " fill="none"/></g>
+<g id="xTicksValues">
+<text x="234" y="204" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="298" y="204" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="362" y="204" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
+<text x="425" y="204" text-anchor="middle" font-size="12" font-family="Verdana">8</text>
+<text x="489" y="204" text-anchor="middle" font-size="12" font-family="Verdana">10</text>
+<text x="107" y="204" text-anchor="middle" font-size="12" font-family="Verdana">-2</text>
+<text x="42.9" y="204" text-anchor="middle" font-size="12" font-family="Verdana">-4</text></g>
+<g id="xLabel">
+<text x="250" y="330" text-anchor="middle" font-size="14" font-family="Verdana">length (m)</text></g>
+<g id="plotPoints"><g stroke="rgb(0,0,0)"><circle cx="119" cy="181" r="2"/><circle cx="234" cy="181" r="2"/><circle cx="306" cy="181" r="2"/><circle cx="170" cy="181" r="2"/><circle cx="342" cy="181" r="2"/><circle cx="379" cy="181" r="2"/></g>
+</g>
+<g id="title">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Default 1D Values Demo</text></g>
+<g id="plotXValues" fill="rgb(255,0,0)"><g>
+<text x="123" y="178" transform = "rotate(-60 123 178 )" font-size="14" font-family="Times New Roman">[ x = -1.60<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan></text></g>
+<g>
+<text x="238" y="178" transform = "rotate(-60 238 178 )" font-size="14" font-family="Times New Roman">[ x = +2.00<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan></text></g>
+<g>
+<text x="310" y="178" transform = "rotate(-60 310 178 )" font-size="14" font-family="Times New Roman">[ x = +4.26<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan></text></g>
+<g>
+<text x="174" y="178" transform = "rotate(-60 174 178 )" font-size="14" font-family="Times New Roman">[ x = +3.34e-3<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan></text></g>
+<g>
+<text x="346" y="178" transform = "rotate(-60 346 178 )" font-size="14" font-family="Times New Roman">[ x = +5.40<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan></text></g>
+<g>
+<text x="383" y="178" transform = "rotate(-60 383 178 )" font-size="14" font-family="Times New Roman">[ x = +6.56<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan></text></g>
+</g>
+</svg>

@@ -1,0 +1,64 @@
+[section:todo To Do List]
+
+This project is still in development: here is a 'known wishes' list.
+Suggestions to pbristow at hetp.u-net.com.
+
+* Allow *function pointers* to specify functions as input. A typical use case
+is to just see what a function like [^sin(x)] looks like.
+
+* *Radian coordinate system*.
+
+* Implementation of *SVG's DOM*.
+This will make the SVG class useful for other things than solely making graphs!
+The existing SVG features implemented are now documented better, so one could
+consider using it for other purposes.
+
+* *Automatic scaling* of the axis has been implemented. Feedback on how
+'nicely' it works in practice would be welcome. Some of the uglier features
+of Microsoft Excel autoscaling have been avoided, but opinions on aesthetics vary widely.
+
+* Allow *2D plots of 1D containers* - a very common need, for example for Time Series.
+Jake had trouble with having functors that update state interact
+with `make_transform_iterator`, and omitted the feature.
+
+* Make time and/or data labelled axis possible, with datetime a first class citizen type.
+
+* Allow *other image formats*. There are many inherent difficulties with this part.
+The solution that was explored is allowing the user to pass a functor that traverses
+the document tree. Generalizing images to an `image` class is fraught with
+difficulties, as SVG is a tree-based format, which it does not share with
+many other formats.
+
+*(Note that [@http://www.inkscape.org Inkscape] permits conversion to bitmap format,
+.png etc, and other tools can accept and convert bitmaps.
+This is used in the Boost.Math documentation.  A Python file called generate.sh
+in the math toolkit shows how to automate this conversion process for many .svg files in a folder using Inkscape in command line mode.
+  $inkscape -d $dpi -e $(cygpath -a -w $pngfile) $(cygpath -a -w $svgfile)
+)
+
+* *Avoid redrawing the entire plot each time*. This is the easiest way to
+write the program initially, but it would be more efficient if the program could
+keep track of what has been changed and what hasn't, so that it may be more
+efficient if lots of images are being produced. This hasn't been found to be a problem in practice so far.
+
+* Allow the user to provide a function object for generating *custom axis labels*,
+for example, label axes with names of months (Jan, Feb, Mar...)
+instead of integer representations of months (1, 2, 3...).
+
+* [*Logarithmic Axes].  This does not look simple.  Meanwhile you can take the log of the data.
+
+* Allow an [*External stylesheet] to be loaded to style the graph. External
+stylesheets will allow a standard and easy way to style the document
+so that users don't have to come up with their own home-grown solutions.
+This was sketched out, but seemed much more complicated now that very may more
+options to control features have been added.
+(The 'first try' code that Jake produced now longer compiles, so has been commented out).
+
+[endsect] [/section:todo To Do]
+
+[/ todo.qbk
+  Copyright 2007, 2008, 2009, 2011 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

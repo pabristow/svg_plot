@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="400" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<clipPath id="plot_window"><rect x="71.2" y="58" width="279" height="279"/></clipPath>
+<g id="imageBackground" stroke="rgb(0,0,0)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="400"/></g>
+<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2"><rect x="70.2" y="57" width="281" height="281"/></g>
+<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="93.6" y1="57" x2="93.6" y2="343"/><line x1="70.2" y1="57" x2="70.2" y2="338"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="65.2" y1="198" x2="351" y2="198"/><line x1="65.2" y1="338" x2="351" y2="338"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M68.2,192 L70.2,192 M68.2,186 L70.2,186 M68.2,181 L70.2,181 M68.2,175 L70.2,175 M68.2,164 L70.2,164 M68.2,158 L70.2,158 M68.2,153 L70.2,153 M68.2,147 L70.2,147 M68.2,136 L70.2,136 M68.2,130 L70.2,130 M68.2,124 L70.2,124 M68.2,119 L70.2,119 M68.2,108 L70.2,108 M68.2,102 L70.2,102 M68.2,96.4 L70.2,96.4 M68.2,90.7 L70.2,90.7 M68.2,79.5 L70.2,79.5 M68.2,73.9 L70.2,73.9 M68.2,68.2 L70.2,68.2 M68.2,62.6 L70.2,62.6 M68.2,198 L70.2,198 M68.2,203 L70.2,203 M68.2,209 L70.2,209 M68.2,214 L70.2,214 M68.2,220 L70.2,220 M68.2,226 L70.2,226 M68.2,231 L70.2,231 M68.2,237 L70.2,237 M68.2,243 L70.2,243 M68.2,248 L70.2,248 M68.2,254 L70.2,254 M68.2,254 L70.2,254 M68.2,259 L70.2,259 M68.2,265 L70.2,265 M68.2,271 L70.2,271 M68.2,276 L70.2,276 M68.2,282 L70.2,282 M68.2,288 L70.2,288 M68.2,293 L70.2,293 M68.2,299 L70.2,299 M68.2,304 L70.2,304 M68.2,310 L70.2,310 M68.2,316 L70.2,316 M68.2,321 L70.2,321 M68.2,327 L70.2,327 M68.2,333 L70.2,333 M68.2,338 L70.2,338 " fill="none"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M103,338 L103,340 M112,338 L112,340 M122,338 L122,340 M131,338 L131,340 M150,338 L150,340 M159,338 L159,340 M169,338 L169,340 M178,338 L178,340 M197,338 L197,340 M206,338 L206,340 M215,338 L215,340 M225,338 L225,340 M244,338 L244,340 M253,338 L253,340 M262,338 L262,340 M272,338 L272,340 M290,338 L290,340 M300,338 L300,340 M309,338 L309,340 M318,338 L318,340 M337,338 L337,340 M347,338 L347,340 M84.3,338 L84.3,340 M74.9,338 L74.9,340 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M65.2,198 L70.2,198 M65.2,169 L70.2,169 M65.2,141 L70.2,141 M65.2,113 L70.2,113 M65.2,85.1 L70.2,85.1 M65.2,57 L70.2,57 M65.2,198 L70.2,198 M65.2,226 L70.2,226 M65.2,254 L70.2,254 M65.2,282 L70.2,282 M65.2,310 L70.2,310 M65.2,338 L70.2,338 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M93.6,338 L93.6,343 M140,338 L140,343 M187,338 L187,343 M234,338 L234,343 M281,338 L281,343 M328,338 L328,343 M93.6,338 L93.6,343 " fill="none"/></g>
+<g id="plotLabels">
+<text x="93.6" y="358" text-anchor="middle" font-size="12" font-family="Verdana">0</text>
+<text x="140" y="358" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="187" y="358" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="234" y="358" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
+<text x="281" y="358" text-anchor="middle" font-size="12" font-family="Verdana">8</text>
+<text x="328" y="358" text-anchor="middle" font-size="12" font-family="Verdana">10</text>
+<text x="93.6" y="358" text-anchor="middle" font-size="12" font-family="Verdana">0</text>
+<text x="59.2" y="200" text-anchor="end" font-size="12" font-family="Verdana">0</text>
+<text x="59.2" y="172" text-anchor="end" font-size="12" font-family="Verdana">2</text>
+<text x="59.2" y="144" text-anchor="end" font-size="12" font-family="Verdana">4</text>
+<text x="59.2" y="116" text-anchor="end" font-size="12" font-family="Verdana">6</text>
+<text x="59.2" y="87.5" text-anchor="end" font-size="12" font-family="Verdana">8</text>
+<text x="59.2" y="59.4" text-anchor="end" font-size="12" font-family="Verdana">10</text>
+<text x="59.2" y="200" text-anchor="end" font-size="12" font-family="Verdana">0</text>
+<text x="59.2" y="228" text-anchor="end" font-size="12" font-family="Verdana">-2</text>
+<text x="59.2" y="256" text-anchor="end" font-size="12" font-family="Verdana">-4</text>
+<text x="59.2" y="284" text-anchor="end" font-size="12" font-family="Verdana">-6</text>
+<text x="59.2" y="312" text-anchor="end" font-size="12" font-family="Verdana">-8</text>
+<text x="59.2" y="341" text-anchor="end" font-size="12" font-family="Verdana">-10</text></g>
+<g id="yLabel">
+<text x="30.2" y="198" text-anchor="middle" transform = "rotate(-90 30.2 198 )" font-size="14" font-family="Verdana"></text></g>
+<g id="xLabel">
+<text x="211" y="384" text-anchor="middle" font-size="14" font-family="Verdana"></text></g>
+<g id="plotPoints" clip-path="url(#plot_window)"><g stroke="rgb(255,0,0)"><path d="M117,153 L117,198 M140,122 L140,198 M222,122 L222,198 M265,69.7 L265,198 M281,95 L281,198 M311,58.4 L311,198 " stroke-width="5" fill="none"/></g>
+</g>
+<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="365" y="57" width="123" height="42"/><rect x="365" y="57" width="123" height="42"/></g>
+<g id="legendPoints"><g stroke="rgb(0,0,0)" fill="rgb(0,0,255)" stroke-width="2"><line x1="379" y1="85" x2="393" y2="85"/></g>
+</g>
+<g id="legendText">
+<text x="400" y="85" font-size="14" font-family="Verdana">Series 1</text></g>
+<g id="title">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">X Times</text></g>
+<g id="plotXValues"></g>
+<g id="plotYValues"></g>
+</svg>

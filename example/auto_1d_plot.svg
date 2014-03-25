@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="200" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<!-- File auto_1d_plot.svg --> 
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="200"/></g>
+<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="11" y="56" width="478" height="100"/></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="11" y1="109" x2="489" y2="109"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M21.6,109 L21.6,111 M32.2,109 L32.2,111 M42.9,109 L42.9,111 M53.5,109 L53.5,111 M74.7,109 L74.7,111 M85.4,109 L85.4,111 M96,109 L96,111 M107,109 L107,111 M128,109 L128,111 M138,109 L138,111 M149,109 L149,111 M160,109 L160,111 M181,109 L181,111 M192,109 L192,111 M202,109 L202,111 M213,109 L213,111 M234,109 L234,111 M245,109 L245,111 M255,109 L255,111 M266,109 L266,111 M287,109 L287,111 M298,109 L298,111 M308,109 L308,111 M319,109 L319,111 M340,109 L340,111 M351,109 L351,111 M362,109 L362,111 M372,109 L372,111 M393,109 L393,111 M404,109 L404,111 M415,109 L415,111 M425,109 L425,111 M447,109 L447,111 M457,109 L457,111 M468,109 L468,111 M478,109 L478,111 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M11,109 L11,114 M64.1,109 L64.1,114 M117,109 L117,114 M170,109 L170,114 M223,109 L223,114 M277,109 L277,114 M330,109 L330,114 M383,109 L383,114 M436,109 L436,114 M489,109 L489,114 " fill="none"/></g>
+<g id="plotLabels">
+<text x="11" y="128" text-anchor="middle" font-size="12" font-family="Verdana">1</text>
+<text x="64.1" y="128" text-anchor="middle" font-size="12" font-family="Verdana">1.5</text>
+<text x="117" y="128" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="170" y="128" text-anchor="middle" font-size="12" font-family="Verdana">2.5</text>
+<text x="223" y="128" text-anchor="middle" font-size="12" font-family="Verdana">3</text>
+<text x="277" y="128" text-anchor="middle" font-size="12" font-family="Verdana">3.5</text>
+<text x="330" y="128" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="383" y="128" text-anchor="middle" font-size="12" font-family="Verdana">4.5</text>
+<text x="436" y="128" text-anchor="middle" font-size="12" font-family="Verdana">5</text>
+<text x="489" y="128" text-anchor="middle" font-size="12" font-family="Verdana">5.5</text></g>
+<g id="xLabel">
+<text x="250" y="180" text-anchor="middle" font-size="14" font-family="Verdana"></text></g>
+<g id="plotPoints"><g stroke="rgb(0,0,0)"><line x1="21.6" y1="111" x2="21.6" y2="101"/><line x1="351" y1="111" x2="351" y2="101"/><line x1="255" y1="111" x2="255" y2="101"/><line x1="478" y1="111" x2="478" y2="101"/></g>
+<g stroke="rgb(0,0,0)"><line x1="32.2" y1="111" x2="32.2" y2="101"/><line x1="149" y1="111" x2="149" y2="101"/><line x1="266" y1="111" x2="266" y2="101"/><line x1="383" y1="111" x2="383" y2="101"/></g>
+<g stroke="rgb(0,0,0)"><line x1="32.2" y1="111" x2="32.2" y2="101"/><line x1="149" y1="111" x2="149" y2="101"/><line x1="266" y1="111" x2="266" y2="101"/><line x1="383" y1="111" x2="383" y2="101"/></g>
+<g stroke="rgb(0,0,0)"><line x1="21.6" y1="111" x2="21.6" y2="101"/><line x1="351" y1="111" x2="351" y2="101"/><line x1="255" y1="111" x2="255" y2="101"/></g>
+</g>
+<g id="title">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana"></text></g>
+</svg>

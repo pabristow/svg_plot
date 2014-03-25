@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="350" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<!-- File ./svg_test_boxplot.svg --> 
+<clipPath id="plot_window"><rect x="65.2" y="52" width="423" height="229"/></clipPath>
+<g id="imageBackground" stroke="rgb(0,0,0)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="350"/></g>
+<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="70.2" y="57" width="418" height="224"/></g>
+<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="70.2" y1="281" x2="488" y2="281"/></g>
+<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="70.2" y1="281" x2="70.2" y2="57"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M209,281 L209,286 M349,281 L349,286 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M65.2,281 L70.2,281 M65.2,236 L70.2,236 M65.2,192 L70.2,192 M65.2,147 L70.2,147 M65.2,102 L70.2,102 M65.2,57 L70.2,57 M65.2,281 L70.2,281 " fill="none"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M68.2,272 L70.2,272 M68.2,263 L70.2,263 M68.2,254 L70.2,254 M68.2,245 L70.2,245 M68.2,227 L70.2,227 M68.2,218 L70.2,218 M68.2,209 L70.2,209 M68.2,200 L70.2,200 M68.2,183 L70.2,183 M68.2,174 L70.2,174 M68.2,165 L70.2,165 M68.2,156 L70.2,156 M68.2,138 L70.2,138 M68.2,129 L70.2,129 M68.2,120 L70.2,120 M68.2,111 L70.2,111 M68.2,92.9 L70.2,92.9 M68.2,83.9 L70.2,83.9 M68.2,74.9 L70.2,74.9 M68.2,66 L70.2,66 M68.2,281 L70.2,281 " fill="none"/></g>
+<g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="valueLabels" fill="rgb(0,0,0)">
+<text x="209" y="306" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[50 / x]</text>
+<text x="349" y="306" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[40 + 25 * sin(50x)]</text>
+<text x="59.2" y="284" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text>
+<text x="59.2" y="239" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">100</text>
+<text x="59.2" y="194" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">200</text>
+<text x="59.2" y="149" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">300</text>
+<text x="59.2" y="104" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">400</text>
+<text x="59.2" y="59.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">500</text>
+<text x="59.2" y="284" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text></g>
+<g id="yLabel" fill="rgb(0,0,0)">
+<text x="30.2" y="169" text-anchor="middle" transform = "rotate(-90 30.2 169 )" font-size="14" font-family="Lucida Sans Unicode"></text></g>
+<g id="xLabel" fill="rgb(0,0,0)">
+<text x="279" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode"></text></g>
+<g id="boxAxis" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1"><line x1="209" y1="279" x2="209" y2="264"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1"><line x1="349" y1="274" x2="349" y2="252"/></g>
+</g>
+<g id="Median" stroke="rgb(255,0,0)" stroke-width="2"><g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1"><rect x="194" y="272" width="30" height="5.86"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1"><line x1="195" y1="277" x2="224" y2="277"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1"><rect x="334" y="256" width="30" height="15.7"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1"><line x1="334" y1="264" x2="363" y2="264"/></g>
+</g>
+<g id="whisker" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)"><g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="194" y1="279" x2="224" y2="279"/></g>
+<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="194" y1="264" x2="224" y2="264"/></g>
+</g>
+<g clip-path="url(#plot_window)"><g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="334" y1="274" x2="364" y2="274"/></g>
+<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="334" y1="252" x2="364" y2="252"/></g>
+</g>
+</g>
+<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)"><g clip-path="url(#plot_window)" stroke="rgb(165,42,42)"><circle cx="209" cy="256" r="2"/><circle cx="209" cy="259" r="2"/><circle cx="209" cy="261" r="2"/><circle cx="209" cy="263" r="2"/></g>
+</g>
+<g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)"><g clip-path="url(#plot_window)" stroke="rgb(255,0,0)"><polygon points=" 207,52 212,52 209,57"/><polygon points=" 207,164 212,164 209,169"/><polygon points=" 207,201 212,201 209,206"/><polygon points=" 207,220 212,220 209,225"/><polygon points=" 207,231 212,231 209,236"/><polygon points=" 207,239 212,239 209,244"/><polygon points=" 207,244 212,244 209,249"/><polygon points=" 207,248 212,248 209,253"/></g>
+</g>
+<g id="title" fill="rgb(0,0,0)">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode">Boxplots of Common Functions</text></g>
+</svg>

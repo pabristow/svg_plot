@@ -1,0 +1,109 @@
+[section:full_1d_layout Tutorial: 1D More Layout Examples]
+
+  #include <boost/svg_plot/svg_1d_plot.hpp>
+  using namespace boost::svg;
+  #include <cmath>  // for sqrt
+
+  #include <vector>
+  #include <deque>
+  #include <boost/array.hpp>
+
+  // Three different STL-style containers:
+  using std::vector;
+  using std::deque;
+  using boost::array;
+
+  // Three sample functions:
+  double f(double x)
+  {
+    return sqrt(x);
+  }
+
+  double g(double x)
+  {
+    return -2 + x*x;
+  }
+
+  double h(double x)
+  {
+    return -1 + 2*x;
+  }
+
+  int main()
+  {
+    vector<double> data1;
+    deque<double> data2;
+    boost::array<double, 10> data3;
+    // Fill the containers with some data using the functions:
+    int j=0;
+    for(double i=0; i<9.5; i+=1.)
+    {
+      data1.push_back(f(i));
+      data2.push_front(g(i));
+      data3[j++] = h(i);
+    }
+
+    svg_1d_plot my_plot; // Construct my_plot.
+
+    // Set many plot options,
+    // using chaining to group similar aspects together.
+    // Size/scale settings.
+    my_plot.image_size(500, 350)
+           .x_range(-3, 10);
+
+    // Text settings.
+    my_plot.title("Oh My!")
+           .title_font_size(29)
+           .x_label("Time in Months") // X- axis label
+           .x_label_on(true); // Not needed, because although the default is no axis label,
+           // providing a label has this effect.
+           // If we want later to switch *off* labels,
+           // my_plot.x_label_on(false); // is needed.
+
+    // Commands.
+    my_plot.legend_on(true)
+           .plot_window_on(true)
+           .x_major_labels_on(true);
+
+    // Color settings.
+    my_plot.background_color(svg_color(67, 111, 69))
+           .legend_background_color(svg_color(207, 202,167))
+           .legend_border_color(svg_color(102, 102, 84))
+           .plot_background_color(svg_color(136, 188, 126))
+           .title_color(white);
+
+    // Axis settings.
+    my_plot.x_major_interval(2)
+           .x_major_tick_length(14)
+           .x_major_tick_width(1)
+           .x_minor_tick_length(7)
+           .x_minor_tick_width(1)
+           .x_num_minor_ticks(3);
+
+    // Legend settings.
+    my_plot.legend_title_font_size(15);
+
+    // Put the three containers of data onto the plot.
+    my_plot.plot(data1, "Lions",  blue);
+    my_plot.plot(data2, "Tigers", orange);
+    my_plot.plot(data3, "Bears",  red);
+
+    my_plot.write("1d_full_layout.svg");
+
+    return 0;
+  }
+
+This produces the following plot:
+
+[$images/1d_full_layout.svg]
+
+A little bit of color customization goes a very long way!
+
+[endsect] [/section:full_1d_layout Tutorial: 1D More Layout Examples]
+
+[/ 1d_full_tutorial.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

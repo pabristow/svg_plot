@@ -1,0 +1,22 @@
+[section:demo_2d_autoscaling 2-D Autoscaling Examples]
+
+[h4 Autoscale 2D Examples]
+
+[import ..\example\auto_2d_plot.cpp]
+
+[auto_2d_plot_1]
+[auto_2d_plot_2]
+[auto_2d_plot_output]
+
+The plot is
+
+[$images/auto_2d_plot.svg]
+
+[endsect] [/section:demo_2d_autoscaling 2-D Autoscaling Examples]
+
+[/ demo_2d_autoscaling.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

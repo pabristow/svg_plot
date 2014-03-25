@@ -1,0 +1,83 @@
+[section:plot_defaults Plot Defaults]
+
+[section:1d_defaults `svg_1d_plot` Defaults]
+There are certain defaults, tabulated below, that are true at the beginning of the plotting.
+
+[table Default Values
+  [[object] [Default value] [Rationale]]
+  [[All colors not defined in this table] [black] [Coloring, if any, will be highly dependent on user needs.]]
+  [[Axis] [On, internal style] [Most graphs include an axis of some kind. The internal axis style is used because this seems to be the default behavior in many textbooks I have owned.]]
+  [[Coordinate precision] [3 decimal digits] [Sufficient 1 in 1000 precision for typical small plots. (Higher precision will increase svg file size).]]
+  [[Distance between major X ticks] [`3 units`] [Reasonably fits into a plot window.]]
+  [[Font size of the legend title] [12] [Reasonable when paired with the image size.]]
+  [[Font size of the X Label] [12] [Reasonable when paired with the image size.]]
+  [[Font size of the title] [30] [Makes the title stand out.]]
+  [[Grid lines] [`All off`] [Grid lines are a user's personal choice, so default is none.]]
+  [[Image background] [white] [Coloring, if any, will be highly dependent on user needs.]]
+  [[Image size] [`500 by 350`] [Details discernable. The image is easily viewable by those using 800x600 monitors.]]
+  [[Legend] [`Off`] [The goal of the defaults is to provide the cleanest possible plot as a default. Excluding the legend meets this goal.]]
+  [[Legend background] [white] [Coloring, if any, will be highly dependent on user needs.]]
+  [[Major tick length] [20 pixels] [Tasteful default when paired with the window size. This also makes the major ticks easily distinguishable from the minor ticks.]]
+  [[Major tick width] [2 pixels] [Major ticks are more obvious than minor ticks.]]
+  [[Minor tick length] [10 pixels] [Tasteful default when compared with the size of the grid. This makes the minor ticks less obvious than the major ticks.]]
+  [[Minor tick width] [1 pixel] [This makes the minor tick less obvious than the major ticks.]]
+  [[Number of minor X ticks between each major X tick] [2] [This allows the minor ticks to appear on the integer values.]]
+  [[Plot Window] [`Off`] [Initially off because it is the simplest case.]]
+  [[Plot window background] [white] [Coloring, if any, will be highly dependent on user needs.]]
+  [[Title] [On, `"Plot of data"`] [The title is on because this is one of the most basic elements of a graph. The title is set to a default because when `title_on == true`, something should display.]]
+  [[Title size] [`30`] [This is clearly visible in a variety of image sizes.]]
+  [[X Axis Label] [`""`, Off] [No space should be used if no label is required.]]
+  [[X Axis Label Size] [`12`] [This is a reasonable size at the default image size.]]
+  [[X Grid (Major and Minor)] [Off] [Turned off in the interest of providing simple, clean plots.]]
+  [[X Range] [`(-10, 10)`] [Traditional plot viewport (but almost all plots will need to set both X and Y ranges, using with autoscale).]]
+  ]
+
+[endsect ][/section:1d_defaults `svg_1d_plot` Defaults]
+
+[section:2d_defaults `svg_2d_plot` Defaults]
+You may have noticed that there are certain defaults that are true at the 
+beginning of the plotting. Here is a table of the defaults:
+
+[table Default Values
+  [[object] [Default value] [Rationale]]
+  [[All colors not defined in this table] [black] [Coloring, if any, will be highly dependent on user needs.]]
+  [[Axis] [On, internal style] [Most graphs include an axis of some kind. The internal axis style is used because this seems to be the default behavior in many textbooks I have owned.]]
+  [[Distance between major X ticks] [`3 units`] [Reasonably fits into a plot window.]]
+  [[Font size of the legend title] [12] [Reasonable when paired with the image size.]]
+  [[Font size of the X Label] [12] [Reasonable when paired with the image size.]]
+  [[Font size of the title] [30] [Makes the title stand out.]]
+  [[Grid lines] [`All off`] [Grid lines are a user's personal choice, so default is off]]
+  [[Image background] [white] [Coloring, if any, will be highly dependent on user needs.]]
+  [[Image size] [`500 by 350`] [Details discernable. The image is easily viewable by those using 800x600 monitors.]]
+  [[Legend] [`Off`] [The goal of the defaults is to provide the cleanest possible plot as a default. Excluding the legend meets this goal.]]
+  [[Legend background] [white] [Coloring, if any, will be highly dependent on user needs.]]
+  [[Major tick length] [20 pixels] [Tasteful default when paired with the window size. This also makes the major ticks easily distinguishable from the minor ticks.]]
+  [[Major tick width] [2 pixels] [Major ticks are more obvious than minor ticks.]]
+  [[Minor tick length] [10 pixels] [Tasteful default when compared with the size of the grid. This makes the minor ticks less obvious than the major ticks.]]
+  [[Minor tick width] [1 pixel] [This makes the minor tick less obvious than the major ticks.]]
+  [[Number of minor X ticks between each major X tick] [2] [This allows the minor ticks to appear on the integers.]]
+  [[Plot Window] [`Off`] [Initially off because it is the simplest case.]]
+  [[Plot window background] [white] [Coloring, if any, will be highly dependent on user needs.]]
+  [[Title] [On, `"Plot of data"`] [The title is on because this is one of the most basic elements of a graph. The title is set to a default because when `title_on == true`,
+  /something/ should display.]]
+  [[Title size] [`30`] [This is clearly visible in a variety of image sizes.]]
+  [[X Axis Label] [`"X Axis"`, Off] ["X Axis" .]]
+  [[X Axis Label Size] [`12`] [This is a reasonable size at the default image size.]]
+  [[X Grid (Major and Minor)] [Off] [Turned off in the interest of providing simple, clean plots.]]
+  [[X Range] [`(-10, 10)`] [Traditional plot viewport.]]
+  [[Y Axis Label] [`"Y Axis"`, Off] ["Y Axis" is the label because /something/ should display were the user to turn on the X axis label without setting text, and this is the most informative.]]
+  [[Y Axis Label Size] [`12`] [This is a reasonable size at the default image size.]]
+  [[Y Grid (Major and Minor)] [Off] [Turned off in the interest of providing simple, clean plots.]]
+  [[Y Range] [`(-10, 10)`] [Traditional plot viewport.]]
+  ] 
+
+[endsect] [/section:2d_defaults `svg_2d_plot` Defaults]
+
+[endsect] [/section:defaults]
+
+[/ defaults.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

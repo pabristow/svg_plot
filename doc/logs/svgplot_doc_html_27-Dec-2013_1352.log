@@ -1,0 +1,27 @@
+
+modularized layout build
+nav_images I:\boost-trunk\libs\svg_plot\doc\html\images
+images_location I:\boost-trunk\libs\svg_plot\doc\html
+Building the SVG_plot docs with automatic index generation disabled. To get an AutoIndex, try building with --enable-index.
+Performing configuration checks
+
+    - symlinks supported       : no  (cached)
+    - hardlinks supported      : yes (cached)
+I:/boost-trunk/tools/build/v2/build\targets.jam:397: in find-really
+*** argument error
+* rule project.is-registered-id ( id )
+* called with: (  )
+* missing argument id
+I:/boost-trunk/tools/build/v2/build\project.jam:600:see definition of rule 'project.is-registered-id' being called
+I:/boost-trunk/tools/build/v2/build\targets.jam:457: in class@project-target.find
+I:/boost-trunk/tools/build/v2/build\targets.jam:841: in resolve-reference
+I:/boost-trunk/tools/build/v2/build\targets.jam:858: in targets.generate-from-reference
+I:/boost-trunk/tools/build/v2/build\targets.jam:1245: in generate-dependencies
+I:/boost-trunk/tools/build/v2/build\targets.jam:1302: in class@basic-target.generate
+I:/boost-trunk/tools/build/v2/build\targets.jam:757: in generate-really
+I:/boost-trunk/tools/build/v2/build\targets.jam:729: in class@main-target.generate
+I:/boost-trunk/tools/build/v2/build\targets.jam:272: in class@project-target.generate
+I:/boost-trunk/tools/build/v2\build-system.jam:707: in load
+I:\boost-trunk\tools\build\v2/kernel\modules.jam:289: in import
+I:\boost-trunk\tools\build\v2/kernel/bootstrap.jam:139: in boost-build
+I:\boost-trunk\boost-build.jam:17: in module scope

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="200" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<!-- File auto_1d_plot_1.svg --> 
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="200"/></g>
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="11" y="11" width="478" height="173"/></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="11" y1="11" x2="11" y2="184"/><line x1="11" y1="100" x2="489" y2="100"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M24.7,100 L24.7,102 M38.3,100 L38.3,102 M52,100 L52,102 M65.6,100 L65.6,102 M92.9,100 L92.9,102 M107,100 L107,102 M120,100 L120,102 M134,100 L134,102 M161,100 L161,102 M175,100 L175,102 M189,100 L189,102 M202,100 L202,102 M230,100 L230,102 M243,100 L243,102 M257,100 L257,102 M270,100 L270,102 M298,100 L298,102 M311,100 L311,102 M325,100 L325,102 M339,100 L339,102 M366,100 L366,102 M380,100 L380,102 M393,100 L393,102 M407,100 L407,102 M434,100 L434,102 M448,100 L448,102 M462,100 L462,102 M475,100 L475,102 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M11,100 L11,105 M79.3,100 L79.3,105 M148,100 L148,105 M216,100 L216,105 M284,100 L284,105 M352,100 L352,105 M421,100 L421,105 M489,100 L489,105 M11,100 L11,105 " fill="none"/></g>
+<g id="xTicksValues">
+<text x="79.3" y="121" text-anchor="middle" font-size="12" font-family="Verdana">1</text>
+<text x="148" y="121" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="216" y="121" text-anchor="middle" font-size="12" font-family="Verdana">3</text>
+<text x="284" y="121" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="352" y="121" text-anchor="middle" font-size="12" font-family="Verdana">5</text>
+<text x="421" y="121" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
+<text x="489" y="121" text-anchor="middle" font-size="12" font-family="Verdana">7</text></g>
+<g id="xLabel">
+<text x="250" y="208" text-anchor="middle" font-size="14" font-family="Verdana"></text></g>
+<g id="plotPoints"><g stroke="rgb(0,0,0)"><line x1="24.7" y1="103" x2="24.7" y2="92.5"/><line x1="86.1" y1="103" x2="86.1" y2="92.5"/><line x1="298" y1="103" x2="298" y2="92.5"/><line x1="236" y1="103" x2="236" y2="92.5"/><line x1="380" y1="103" x2="380" y2="92.5"/><line x1="455" y1="103" x2="455" y2="92.5"/></g>
+</g>
+<g id="limitPoints" stroke="rgb(0,0,255)" fill="rgb(0,128,0)"><polygon points=" 484,87.5 494,87.5 489,97.5"/></g>
+<g id="title">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana"></text></g>
+</svg>

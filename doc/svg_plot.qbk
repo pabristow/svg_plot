@@ -1,0 +1,175 @@
+[article Plotting Graphs in SVG format.
+    [quickbook 1.7]
+    [id svg_plot]
+    [authors [Voytko, Jake], [Bristow, Paul A.]]
+    [copyright 2007 to 2013 Jake Voytko and Paul A. Bristow]
+    [license
+        Distributed under the Boost Software License, Version 1.0.
+        (See accompanying file LICENSE_1_0.txt or copy at
+        [@http://www.boost.org/LICENSE_1_0.txt])
+    ]
+    [source-mode c++]
+]
+
+[/purpose Plot STL containers of data series onto graphs in SVG format.]
+
+[/ Images]
+[/ $images is reference to a folder where images are held.]
+[def __detail__     [$images/note.png]]
+[def __note__       [$images/note.png]]
+[def __alert__      [$images/alert.png]]
+[def __tip__        [$images/tip.png]]
+[def :-)            [$images/smiley.png]]
+[/ Links   ]
+[/ By Eric's convention prefix *and* suffix _ means a defined value.  But here use JM and SW double underscore prefix convention.]
+[def __boostbook__  [@http://www.boost.org/doc/html/boostbook.html BoostBook]]
+[def __docbook__    [@http://www.docbook.org/ DocBook]]
+[def __Boost_Assign [@boost:/libs/assign/doc/index.html Boost.Assign]]
+[def __inkscape [@http://www.inkscape.org/ Inkscape]]
+[def __boost [@http://www.boost.org Boost]]
+
+[/ Generating docs for compound boost::svg::svg]
+[/ Generating XML output for class boost::svg::svg]
+
+[def __svg [^[classref boost::svg::svg svg<>]]]
+[def __svg_1d_plot [^[classref boost::svg::svg_1d_plot svg_1d_plot<>]]]
+[def __svg_1d_plot_series [^[classref boost::svg::svg_1d_plot_series<>]]]
+[def __svg_2d_plot [^[classref boost::svg::svg_2d_plot svg_2d_plot<>]]]
+[def __svg_2d_plot_series [^[classref boost::svg::svg_2d_plot_series<>]]]
+[def __preface [link svg_plot.preface]]
+[def __howtouse [link svg_plot.howtouse  Document conventions]]
+
+
+[/def __todo [link Plotting_graphs_in_SVG_format.todo TODO]]
+[def __todo [link svg_plot.todo TODO]]
+[def __rationale [link svg_plot.implementation Rationale and Implementation]]
+[def __caution Boost.Plot is not (yet) an official Boost library, but remains a library under construction,
+     the code is functional, but interfaces, library structure, and function and distribution names
+     may still be changed without notice.]
+
+[section:preface Preface]
+
+[heading Preface]
+Humans have a fantastic capacity for visual understanding, and merely looking
+at data organized in one, two, or three dimensions allows us to see relations
+not otherwise visible in a list of numbers. Computers, however, deal with
+information numerically, and C++ and the
+[@http://en.wikipedia.org/wiki/Standard_Template_Library Standard Template Library (STL)]
+do not currently offer an easy way to bridge the gap.
+
+This library aims to help the C++ programmer to easily plot data that is stored in STL containers.
+
+This project is focused on using STL containers in order to display data on a
+one-dimensional, two-dimensional plot and boxplots.
+The plot is written to a
+[@http://en.wikipedia.org/wiki/Scalable_Vector_Graphics Scalable Vector Graphic SVG image].
+(SVG plots can also be converted to other graph types,
+for example, [@http://en.wikipedia.org/wiki/Portable_Network_Graphics Portable Network Graphics PNG]).
+
+[@http://www.w3.org/TR/SVG11/ Scalable Vector Graphics (SVG)] is an
+[@http://www.w3.org/TR/REC-xml/#sec-comments XML specification]
+and file format for describing two-dimensional vector graphics.
+
+SVG files (.svg) can be viewed with most Internet Browsers:
+
+* [@http://www.mozilla.com/firefox/ Mozilla Firefox (version 3 and later)]
+You may wish to associate Firefox with SVG files (or perhaps Inkscape - see below).
+
+* [@http://www.adobe.com/products/illustrator Adobe Illustrator].
+
+* [@https://www.google.com/intl/en_uk/chrome/browser/ Google Chrome browser].
+
+* [@http://www.opera.com Opera] has good [@http://http://www.opera.com/docs/specs/opera95/svg/ SVG support].
+
+* Microsoft Internet Explorer IE9 and later,
+but the quality of rendering before IE11 is poor compared to all other browsers
+and cannot yet be fully recommended.
+Earlier versions of Microsoft Internet Explorer
+can adequately render SVG files provided a suitable
+[@http://www.adobe.com/svg/ Adobe SVG Viewer plug-in for SVG files] is installed.
+(Adobe have stopped offering this for download (as they warned years ago)
+but the download software can still be obtained elsewhere, for example from
+[@http://adobe-svg-viewer.software.informer.com/download/ software.informer].
+Information about limitations of IE with Vista and the Adobe add-in are given on the
+[@http://www.adobe.com/svg/viewer/install/main.html Adobe End of Line FAQ]).
+
+* __inkscape, a fine Open Source SVG editor/viewer
+with excellent rendering, full scaling and other editing features.
+Inkscape is the 'Gold Standard' for viewing and creating and editing SVG files.
+
+Inkscape also allows window resizing, showing the scalability of SVG files without any loss of quality,
+unlike bit image files that eventually reveal pixels as you expand the view.
+See Using Inkscape for details of how to use Inkscape to edit your plot and
+convert to other format like Portable Network Graphics (PNG) file type .png.
+
+(Inkview, a view-only version, has been discontinued in favour of making the SVG file readonly and using Inkscape).
+
+* Many other graphics programs, for example see
+[@http://svg.software.informer.com/software/ Most popular SVG software].
+
+The goals of the project are:
+
+* To let users produce simple plots with minimal intervention by using sane defaults.
+* To allow users to easily customize plots but allow very fine-grained control of appearance.
+* To provide very high quality plots suitable for publication, including printing, but with tiny file sizes.
+* To produce and transfer plots quickly enough to be useful in real-time.
+* To represent uncertainty visually and numerically by showing only significant digits, and optionally adding uncertainty and degrees of freedom estimates.
+* To allow the user to talk to the plot classes using coordinate units
+rather than pixels or other arbitrary units.
+* To create the backbone of a `svg` class that can be extended to fully support
+the SVG standard.
+* Compliance with the
+[@http://www.w3.org/TR/SVG11/ W3C Scalable Vector Graph standard].
+* Validation using [@http://validator.w3.org/#validate_by_upload W3C Markup Validation Service].
+* Copyright and license conditions built into the SVG file.
+
+[endsect] [/section:preface Preface]
+
+[include how_to_use.qbk]
+[include colors.qbk]
+[include fonts.qbk]
+[include 1d_tutorial.qbk] [/ All 1d examples]
+[include 2d_tutorial.qbk] [/ All 2d examples]
+[include boxplot_tutorial.qbk] [/ All boxplot examples]
+[include svg_tutorial.qbk] [/ Examples using SVG directly, not plotting]
+[/include stylesheet_tutorial.qbk] [/ No longer implemented.]
+[include behavior_tutorial.qbk]
+[/include plot_defaults.qbk] [/See Doxygen reference documentation.]
+[/include interface.qbk] [/Replaced by Doxygen reference documentation.]
+[xinclude autodoc.xml] [/ Using Doxygen reference documentation.]
+[include inkscape.qbk]
+[include rationale.qbk]
+[include to_do.qbk]
+[include acknowledgements.qbk]
+
+[/Include the indexes (class, function and everything) ]
+'''
+   <index type="class_name">
+     <title>Class Index</title>
+   </index>
+
+    <index type="function_name">
+     <title>Function Index</title>
+    </index>
+
+   <index/>
+
+'''
+
+[important This is not (yet) an official Boost library. It was a
+[@http://code.google.com/soc/2007/boost/about.html Google Summer of Code project (2007)]
+whose mentor organization was Boost. It remains a library under construction,
+the code is quite functional, but interfaces, library structure, and names
+may still be changed without notice.
+]
+
+[note Comments and suggestions (even bugs!) to Paul.A.Bristow (at) hetp (dot) u-net (dot) com
+or Jake Voytko at jakevoytko (at) gmail (dot) com]
+
+
+[/ svg_plot.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow 2008, 2009, 2010, 2011, 2012.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

@@ -1,0 +1,30 @@
+[section:1d_autoscale_containers Tutorial: 1D Autoscale with Multiple Containers]
+
+This example demonstrates autoscaling with *multiple* STL containers.
+
+[import ../example/auto_1d_containers.cpp]
+
+[auto_1d_containers_1]
+[auto_1d_containers_2]
+
+[warning The containers must be of the same type to use the function range_all.
+If different types of containers, for example some in a set and some in a vector,
+then the min and max for each container must be computed separately
+and the minimum of the minimums and the maximum of the maximums injected into the
+x_autoscale (or y_autoscale) call.]
+
+Typical output is:
+[auto_1d_containers_output]
+
+See [@../../example/auto_1d_containers.cpp auto_1d_containers.cpp]
+for full source code and sample output.
+
+[endsect] [/ section:1d_autoscale_containers Tutorial: 1D Autoscale with Multiple Containers]
+
+[/ 1d_autoscale_containers.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow 2008, 2009.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]
+

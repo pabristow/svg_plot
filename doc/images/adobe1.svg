@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 03December 1999//EN"
+"http://www.w3.org/Graphics/SVG/SVG-19991203.dtd">
+<svg xml:space="preserve" width="300mm" height="400mm" version = "1.1"  viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+<rect style="fill:blue;" width="250" height="100"/>
+<text stroke="green" fill="green" font-weight="normal" font-size = "20" font-style = "italic" y="10">This is italic SVG text.</text>
+<text fill="rgb(0,255,255)" font-weight="100" font-stretch = "wider"  y="20">This is 100 SVG text.</text>
+<text fill="rgb(255,0,255)" font-weight="900" font-size = "20" font-style = "oblique" y="40">This is 900 oblique.</text>
+<text fill="rgb(0,255,255)" text-decoration="line-through"  font-weight="bold" font-size = "20"  y="60">This is bold line-through.</text>
+<text fill="red" text-decoration="underline"  font-weight="bold" font-size = "20"  y="80">red bolder SVG text.</text>
+
+
+</svg>

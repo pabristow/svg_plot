@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="350" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<clipPath id="plot_window"><rect x="60" y="54" width="413" height="245"/></clipPath>
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="350"/></g>
+<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2"><rect x="59" y="53" width="415" height="247"/></g>
+<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"><path d="M61,177 L472,177 M61,177 L472,177 " fill="none"/></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="267" y1="53" x2="267" y2="314"/><line x1="59" y1="53" x2="59" y2="300"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="54" y1="177" x2="474" y2="177"/><line x1="54" y1="300" x2="474" y2="300"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M57,177 L59,177 " fill="none"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M276,300 L276,307 M286,300 L286,307 M296,300 L296,307 M316,300 L316,307 M326,300 L326,307 M336,300 L336,307 M355,300 L355,307 M365,300 L365,307 M375,300 L375,307 M395,300 L395,307 M405,300 L405,307 M415,300 L415,307 M434,300 L434,307 M444,300 L444,307 M454,300 L454,307 M474,300 L474,307 M257,300 L257,307 M247,300 L247,307 M237,300 L237,307 M217,300 L217,307 M207,300 L207,307 M197,300 L197,307 M178,300 L178,307 M168,300 L168,307 M158,300 L158,307 M138,300 L138,307 M128,300 L128,307 M118,300 L118,307 M98.5,300 L98.5,307 M88.6,300 L88.6,307 M78.8,300 L78.8,307 M59,300 L59,307 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M54,177 L59,177 M54,177 L59,177 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M267,300 L267,314 M306,300 L306,314 M346,300 L346,314 M385,300 L385,314 M425,300 L425,314 M464,300 L464,314 M267,300 L267,314 M227,300 L227,314 M187,300 L187,314 M148,300 L148,314 M108,300 L108,314 M68.9,300 L68.9,314 " fill="none"/></g>
+<g id="xTicksValues">
+<text x="267" y="292" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0</text>
+<text x="306" y="292" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2</text>
+<text x="346" y="292" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4</text>
+<text x="385" y="292" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6</text>
+<text x="425" y="292" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8</text>
+<text x="464" y="292" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">10</text>
+<text x="267" y="292" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0</text>
+<text x="227" y="292" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-2</text>
+<text x="187" y="292" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-4</text>
+<text x="148" y="292" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-6</text>
+<text x="108" y="292" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-8</text>
+<text x="68.9" y="292" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-10</text></g>
+<g id="yTicksValues">
+<text x="65" y="179" font-size="12" font-family="Lucida Sans Unicode">0</text>
+<text x="65" y="179" font-size="12" font-family="Lucida Sans Unicode">0</text></g>
+<g id="yLabel">
+<text x="40.2" y="177" text-anchor="middle" transform = "rotate(-90 40.2 177 )" font-size="14" font-family="Lucida Sans Unicode">F(x)</text></g>
+<g id="xLabel">
+<text x="267" y="334" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">X Axis Units</text></g>
+<g id="plotPoints" clip-path="url(#plot_window)"><g stroke="rgb(0,0,0)" fill="rgb(255,255,255)"><rect x="66.4" y="185" width="5" height="5"/><rect x="76.3" y="186" width="5" height="5"/><rect x="86.1" y="186" width="5" height="5"/><rect x="96" y="187" width="5" height="5"/><rect x="106" y="188" width="5" height="5"/><rect x="116" y="189" width="5" height="5"/><rect x="126" y="190" width="5" height="5"/><rect x="136" y="191" width="5" height="5"/><rect x="145" y="193" width="5" height="5"/><rect x="155" y="194" width="5" height="5"/><rect x="165" y="196" width="5" height="5"/><rect x="175" y="199" width="5" height="5"/><rect x="185" y="202" width="5" height="5"/><rect x="195" y="206" width="5" height="5"/><rect x="205" y="211" width="5" height="5"/><rect x="215" y="219" width="5" height="5"/><rect x="224" y="230" width="5" height="5"/><rect x="234" y="249" width="5" height="5"/><rect x="244" y="286" width="5" height="5"/><rect x="284" y="61.7" width="5" height="5"/><rect x="294" y="99.2" width="5" height="5"/><rect x="304" y="118" width="5" height="5"/><rect x="313" y="129" width="5" height="5"/><rect x="323" y="137" width="5" height="5"/><rect x="333" y="142" width="5" height="5"/><rect x="343" y="146" width="5" height="5"/><rect x="353" y="149" width="5" height="5"/><rect x="363" y="152" width="5" height="5"/><rect x="373" y="154" width="5" height="5"/><rect x="383" y="155" width="5" height="5"/><rect x="392" y="157" width="5" height="5"/><rect x="402" y="158" width="5" height="5"/><rect x="412" y="159" width="5" height="5"/><rect x="422" y="160" width="5" height="5"/><rect x="432" y="161" width="5" height="5"/><rect x="442" y="162" width="5" height="5"/><rect x="452" y="162" width="5" height="5"/><rect x="462" y="163" width="5" height="5"/></g>
+</g>
+<g id="limitPoints" stroke="rgb(255,0,0)" fill="rgb(255,192,203)"><polygon points=" 262,43 272,43 267,53"/></g>
+<g id="title">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode">Plot of 1 / x</text></g>
+<g id="plotXValues"></g>
+<g id="plotYValues"></g>
+</svg>

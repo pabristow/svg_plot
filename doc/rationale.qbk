@@ -1,0 +1,422 @@
+[section:implementation Implementation, History & Rationale]
+
+[section:history  History]
+
+# 2007 Initial versions without uncertainty handling by Jake Voytko.
+# 2009 Simple uncertainty handling added by Paul A. Bristow.
+# 2010 Release as a [@http://sourceforge.net/projects/svgplot sourceforge project].
+# 2012 Full uncertainty handling added by Paul A. Bristow.
+# 2013 Update documentation to use C++11 and GIT.
+
+[endsect] [/section:history  History]
+
+[section:compilers Compilers and Examples]
+
+[h4 Compiler and platforms versions]
+
+The code is header-only and does not require any pre-built libraries,
+but to avoid requiring the Boost C99 math library,
+you should define the macro `BOOST_ALL_NO_LIB`.
+For example, in the jamfile this is done with:
+
+  <define>BOOST_ALL_NO_LIB # Avoid using 'libboost_math_c99-vc100-mt-gd-1_53.lib'.
+
+In a preprocessor definitions, write `-DBOOST_ALL_NO_LIB`
+
+You will require a Boost library to be in your include path
+and the SVG plot modules
+
+  <boost/svg_plot/*.hpp>
+
+The uncertainty handling code has been stored at
+
+  <boost/quan/*.hpp>
+
+The code of version 2 is written to comply with the C++11 standard (and use some features).
+
+[note If you want to use older compilers, you should probably instead use the 1st release of this software
+which did not provide a full implementation of uncertainty,
+but this feature requires the C++11 `auto` feature.]
+
+The examples have been built with
+
+# Microsoft Visual Studio 2010 and 2012 (MSVC).
+# GCC 4.7.2 needs option -std=c++11
+# Clang 3.1 needs option -std=c++11
+
+but might work on some earlier releases.
+
+To avoid warnings:
+
+with GCC and Clang these options may be useful
+
+  -Wno-missing-braces, -Wno-reorder, -Wno-unused-variable
+
+and with MSVC
+
+  /wd4800 # Forcing value to bool 'true' or 'false'
+  /wd4996 # Deprecated.
+  /wd4512 # Assignment operator could not be generated.
+  /wd4127 # Expression is constant.
+
+Other compilers like Apple Darwin and Intel have not been used, but are likely to work OK.
+
+[h4 IDE]
+
+The examples have been built using two IDEs:
+
+* Microsoft Visual Studio (using the Microsoft compilers only).
+* Netbeans 7.2 (using Clang and GCC, and Microsoft compiler using `VCC4N C++ Compiler` tool).
+
+[h4 Building the examples]
+
+A Boost b2 (aka bjam) `jamfile.v2` is provided in the `libs/examples` folder
+to build all the examples using the chosen compiler.
+You may like to copy and modify this to build your own programs using b2.
+It contains the necessary options and warnings disablers for the above compilers.
+
+[endsect] [/section:compilers Compilers and Examples]
+
+
+[section:implementation Implementation and other notes]
+
+This section provide more information about this implementation
+and some of the rationale for design decisions.
+
+[h4 Switches for axis labels and autoscaling]
+
+If a axis label string is provided, or autoscaling is requested,
+it is assumed that it should be displayed/acted on.
+So there functions have the effect of switching these options on, as if, for example:
+
+`x_autoscale(true);`
+`y_label_on(true);`
+
+This avoids users providing an axis label string and then wondering why it appears to have no effect.
+
+It also avoids wasting plot space for empty labels.
+
+It is still possible to switch these options off, for example with:
+
+`x_autoscale(false);`
+`y_label_on(false);`
+
+Obviously these must come after the function call that switches the option on.
+
+[h4 Number of  Minor ticks]
+
+`x_num_minor_ticks()` and `x_num_minor_ticks()`
+
+are provided control the number of minor ticks between the major ticks.
+
+There are a total of x_num_minor_ticks + 1 ticks for each major tick,
+for example, a major on 0, minor on 1,2,3,4, major on 5 ...
+
+For integer usually binary, octal and hexadecimal,
+num_minor_ticks = 2[super]n -1 are useful, for example
+ 1 if major ticks are even will give minor ticks on odd values),
+ 3 if major on 0, minor on 1, 2, 3 and major on 4...
+ 7 if major on 0, minor on 1,2,3,4,5,6,7 and major on 8 ...
+ 15 if major on 0, minor on 1,2,3,4,5,6,7, 8,9,A,B,C,D,E,F, major on 0x10...
+
+ For decimal based values, num_minor_ticks 1, 4, 9 are useful, for example:
+ 1 if major are even, major 0, minor 1, major 2 ...
+ 4 if major on 0, minor on 1,2,3,4, major on 5 ...
+ 9 if major on 0, minor on 1,2,3,4,5,6,7,8,9, major on 10
+
+ [/h4 Minor ticks]
+
+[h4 SVG Specification]
+
+[@http://www.w3.org/TR/SVG/ SVG version 1.1]
+was used in the design of this version but
+[@http://www.w3.org/TR/SVG12/ SVG 1.2 draft specification]
+is also available and appears to be final and designed to be backward compatible.
+No changes that affect the code produced
+have been detected from a quick perusal of this document.
+It is probable but untested that the SVG files produced will also comply
+with the [@http://www.w3.org/TR/SVGMobile12/ Tiny SVG for mobiles specification].
+
+[h4 Design]
+
+SVG would be a flat format if it weren't for
+the <g> elements: these make it parse into a tree.
+
+If each element has its own style (fill, stroke etc)
+then the `.svg` file size would be increased.
+(This style is used by other packages that output SVG
+and often leads to larger file sizes).
+
+So the [@http://www.w3.org/TR/SVG/struct.html#GElement group element]
+is used with each type given an id to allow reference back to it.
+
+svg_style_details.hpp contains a list of these groups,
+for example: PLOT_X_AXIS, PLOT_TITLE... indexing an array of string
+document id "yAxis", "title"...
+
+and these can be seen, with style information in the output, for example:
+
+  <g id="yAxis" stroke="rgb(0,0,0)"></g>
+
+  <g id="title">
+  <text x="250" y="20" text-anchor=" middle" font-size="20">Demo 1D plot</text></g>
+
+In the general case, the most that occurs grouped together is the
+style information: axis lines all share the same style information,
+points in a series all share the same color information, and this is
+also a logical grouping. One can can add a series, and then come back later
+and change the <g> element above the points, which is a single change,
+and have the change reflected on every point in the series. It seems
+this is the most logical way to represent the data in memory.
+
+[h4 Economising on SVG File Size]
+
+Some of the factors affecting the file size are:
+
+# Excessive precision of data points.
+
+If plots are to be viewed only at a modest size,
+then the precision of x and y coordinates
+does not need to be higher than about 1 in 1000,
+so a precision of about 3 decimal digits will suffice.
+
+A default of 3 decimal digits has been chosen,
+but the precision can be controlled to permit a higher resolution,
+for example on a map that is printed at 2000 dpi.
+or even only 2 decimal digits for a display on a mobile,
+where file transfer speed may make reducing file size important.
+
+# Excessive data points.
+When plotting functions, it is sensible to avoid using more data points
+than are justified by the resolution.  Again 1 in 1000 is a typical number,
+and by using bezier curve fitting, as few as 100 points should be sufficient
+to produce a visibly perfectly smooth curve for 'well-behaved' functions.
+
+Plotting extremely large datasets from files may cause memory overflow,
+as with any STL container held in memory.
+It may be necessary to perform some averaging or smoothing,
+or just using a 'stride' to select, for example, every 100th value
+to be plotted.
+
+# Redundant style specifications.
+
+The use of the g or group element has been used to try to reduce
+repeated (and thus redundant) style specifications.
+More efficient use of groups may be possible.
+
+# Not using default style and attributes where possible.
+
+Some effort has been made to use defaults, but more may be possible.
+
+[h4 Adding document information to the svg Image files]
+
+Several ways of adding useful information to the svg document are provided.
+If the strings are null (the default) nothing is output.
+
+Member function svg& description(const std::string) allows output like:
+
+  <desc>My Document description</desc>
+
+  svg& document_title(const std::string)
+
+  <title>My Document title</title>
+
+(Note that this is [*not] the same as the title of the plot.)
+
+
+[h4 Adding Copyright and License conditions for the SVG Image files]
+
+In general, setting values for items like copyright_holder will ensure that
+they appear in the SVG document both as XML and as XML comment.
+If none are set, nothing will be output, to minimize file size.
+
+[@http://www.w3.org/TR/2004/WD-SVG12-20041027/nonvisual.html www.w3.org/TR/2004/WD-SVG12-20041027]
+discusses primary documents, of type .svg in section 17.3.
+
+Adding Copyright information to an SVG document:
+SVG encourages the use of a common metadata format for inclusion of copyright information.
+Metadata relevant to the data copyright of the entire document
+should be added to metadata element of the topmost svg element.
+This allows the author to unambiguously state the licensing terms for the entire document.
+The scheme may also be used elsewhere in the document,
+for pieces that have different licensing. For example,
+an SVG font may have specific licensing details expressed in its own metadata element.
+
+Note that inclusion of this metadata does not provide the author with a method
+in which to protect or enforce their copyright,
+it simply bundles the copyright information with the content in a defined manner.
+Providing methods, technical or non-technical, for data protection
+is currently beyond the scope of the SVG specification.
+
+This does not exclude the use of other metadata schemes.
+
+A simple way of adding metadata for copyright is provided by functions to set
+
+    copyright_holder(std::string);
+    copyright_date(std::string);
+
+(as well as description and document_title, and .svg filename if any).
+
+For example, setting these will incorporate an XML comment
+
+   <!-- SVG Plot Copyright Paul A. Bristow 2013 -->
+
+and also as meta data:
+
+   <meta name="copyright" content="Paul A. Bristow" />
+   <meta name="date" content="2014" />
+
+The Creative Commons Metadata Set is also provided as an option in this implementation,
+following [@http://www.ibm.com/developerworks/xml/library/x-think18.html this example.]
+
+The [@http://creativecommons.org/about/licenses Creative Commons License] is one method
+of providing license terms in a machine-readable format.
+
+Typical data added to the file would be XML like this:
+
+  <metadata>
+    <rdf:RDF xmlns:cc="http://web.resource.org/cc/"
+             xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <cc:work rdf:about="filename.svg">
+        <!-- insert filename or title here -->
+        <dc:title>Plot title</dc:title>
+        <dc:creator>Boost.Plot</dc:creator>
+        <dc:author>Paul A. Bristow</dc:author>
+        <dc:format>application/xhtml+xml+svg</dc:format>
+          <cc:license rdf:about="http://creativecommons.org/licenses/by-sa/.0/">
+             <cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+             <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+             <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+             <cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+             <cc:permits rdf:resource="http://web.resource.org/cc/CommercialUse"/>
+          </cc:license>
+      </cc:work>
+    </rdf:RDF>
+  </metadata>
+
+cc:permits can also be cc:requires or cc:prohibits, as required.
+
+A license that permits reproduction, distribution and commercial use,
+but requires both notice & attribution
+is probably most suitable for Boost documents as is therefore chosen as the default.
+
+This license can be included by calling svg  member function `is_license(true)`.
+If this license will be included can be discovered by calling svg  member function `is_license()`.
+
+Similarly functions
+  const std::string license_reproduction();
+  const std::string license_distribution();
+  const std::string license_attribution();
+  const std::string license_commercialuse()
+allow you to find the current license requirements.
+
+[@http://web.resource.org/rss/1.0/modules/cc/ RDF] is the metadata format chosen by
+[@http://creativecommons.org Creative Commons].
+
+and references the resource (cc) at
+[@http://web.resource.org/cc/] using the definition of its XML namespace:
+
+  rdf:RDF xmlns:cc="http://web.resource.org/cc/"
+
+Options are [@http://web.resource.org/rss/1.0/modules/cc/ summarized].
+
+A way of seting the author is also provided, in case the copyright has been assigned to someone else,
+for example a publisher.  svg set and get member functions:
+
+  author(const std::string);
+  const std::string author();
+
+[h4 Using Unicode Symbols (usually Math Sumbols and Greek letters)]
+
+Unicode symbols that work on most browsers in html are listed in some Quickbook files:
+
+../../doc/html4_symbols.gbk
+../../doc/latin1_symbols.qbk
+../../doc/math_symbols.qbk
+
+[@http://www.htmlhelp.com/reference/html40/entities/symbols.html reference/html40/entities/symbols],
+and  [@http://www.alanwood.net/demos/ent4_frame.html demos].
+
+However support for Unicode in SVG is much less fully implemented and displayed results are variable.
+
+The Unicode value in decimal 9830 or hex x2666 must be prefixed with `& `and terminated with `;`
+for example, `&x2666`; for xml
+and then enveloped with "" to convert to a const std::string, for example: "&#x2666;" for diamond.
+
+Thus diamond can be used a point marker.
+
+Similarly for greek in title, legend and axes:
+
+  .legend_title("My Legend &#956;") // generates <em>&#956;</em>  greek mu
+
+
+[h4 Subscript and superscript in title, legend and labels]
+
+It is very common need to show superscript, in units for example, area (m[super 2]),
+and subscript for a[sub 0], a[sub 2]...
+
+Sadly, although these needs are both OK with html,
+showing sub and superscripts in svg doesn't work well as yet
+because browsers don't handle <sub> or <sup>, nor baseline-shift.
+
+The only reasonably widely supported feature is
+Unicode symbols for superscript 1, 2 and 3 (only).
+For example, Latin1_symbols: sup1 &185;  sup2 &178;  sup3 &179; work on Firefox & IE6/7.
+
+But&#2071; &#2075; &#2090; - show just square boxes.
+
+The SVG specification covers <sub, <super>, and the general baseline-shift,
+but these are just not implemented yet.
+
+[@http://unicode.org/reports/tr25/#_Toc28 2.8  Superscripts and Subscripts]
+[@http://www.unicode.org/charts/symbols.html symbols]
+
+At Nov 2007, the following commands don't have very useful coverage.
+<tspan baseline-shift = \"50%\" font-stretch = \"wider\" font-variant = \"small-caps\" > 3 </tspan>
+baseline-shift = \"50%\" & super and subscript down't work on Firefox 2.
+but DO on IE6 (and probably 7)
+font-stretch = \"wider\" No effect Firefox or IE6.
+font-variant = \"small-caps\"  No effect Firefox or IE6.
+<tspan baseline-shift = \"50%\" >3/4 </tspan>
+
+This has been reported as a bug to Mozilla,
+and is regarded a duplicate of other reports on sub and super
+https://bugzilla.mozilla.org/show_bug.cgi?id=401102
+
+but baseline-shift has no effect on Firefox 2. See
+http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&t=7410&view=previous
+
+The use of <tspan to shift characters *is* feasible, as shown
+[@http://www.w3.org/TR/SVG/images/text/tspan02.svg in this example],
+which displays correctly in all browsers,
+
+and it is also possible to use
+
+  <svg:g transform="translate(5.062500, -5.367188)">
+
+to shift the next letter up, but these parameters are font-size related,*
+and the svg most verbose.
+
+None of these method provides a *convenient* method of creating the right string
+for titles, legends, or axis labels, but it may be possible to devise code that does.
+
+[h4 Coding style]
+
+In general [@http://www.boost.org/libs/spirit/doc/style_guide.html Boost coding style guide]
+and [@http://groups.yahoo.com/group/boost/files/coding_guidelines.html Boost coding guidelines]
+has been used.
+
+Some data members end with _ to avoid name clashes, another widely used convention.
+
+[endsect] [/section:implementation Implementation and other notes]
+
+[endsect] [/section:implementation Implementation, History & Rationale]
+
+
+[/ rationale.qbk
+  Copyright 2008 - 2009, 2012, 2013 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

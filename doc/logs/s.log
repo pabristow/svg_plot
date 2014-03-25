@@ -1,0 +1,19 @@
+Invalid option: -e
+
+usage: b2 [ options ] targets...
+
+-a      Build all targets, even if they are current.
+-dx     Set the debug level to x (0-9).
+-fx     Read x instead of Jambase.
+-jx     Run up to x shell commands concurrently.
+-lx     Limit actions to x number of seconds after which they are stopped.
+-mx     Maximum target output saved (kb), default is to save all output.
+-n      Don't actually execute the updating actions.
+-ox     Write the updating actions to file x.
+-px     x=0, pipes action stdout and stderr merged into action output.
+-q      Quit quickly as soon as a target fails.
+-sx=y   Set variable x=y, overriding environment.
+-tx     Rebuild x, even if it is up-to-date.
+-v      Print the version of jam and exit.
+--x     Option is ignored.
+

@@ -1,0 +1,40 @@
+[section:1d_special Tutorial: 1D Special Features]
+
+[import ..\example\demo_1d_x_external.cpp]
+
+[h4 X-Axis Grid Lines]
+
+If you would like vertical grid lines that go on the graph,
+you can make the following call to `svg_1d_plot`:
+
+  my_plot.x_major_grid_on(true)
+         .x_minor_grid_on(true);
+
+To color style it, you might add the following calls:
+
+  my_plot.x_major_grid_color(lightgray) // Darker color for major grid.
+         .x_minor_grid_color(whitesmoke); // Lighter color for minor grid.
+
+This will produce the following image:
+
+[$images/1d_x_grid.svg]
+
+[h4 X-Axis ticks and value label position]
+
+[demo_1d_x_external_1]
+
+producing this plot
+
+[$images/demo_1d_x_external.svg]
+
+See [@../../example/demo_1d_x_external.cpp demo_1d_x_external.cpp]
+for full source code.
+
+[endsect] [/1d_special Tutorial: 1D Special Features]
+
+[/ 1d_special_tutorial.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

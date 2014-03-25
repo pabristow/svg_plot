@@ -1,0 +1,66 @@
+[/ Symbols and accented letters  from Latin-1]
+[/ File math_symbols.qbk]
+[/ http://www.htmlhelp.com/reference/html40/entities/latin1.html ]
+[/ based on table Copyright </copyright.html> 1998-2006 Liam Quinn.]
+[/ Glyphs <http://www.unicode.org/charts/> of the characters ]
+[/ are available at the Unicode Consortium <http://www.unicode.org/>. ]
+[/ Mathematical operators at http://www.unicode.org/charts/PDF/U2200.pdf]
+[/ To use these symbols in Quickbook: enclose template name in square brackets.]
+[/ See also Greek and math symbols in math_symbols.qbk]
+
+[template sqrt[]'''&#x221A;'''] [/  sqrt sign]
+[template cbrt[]'''&#x221B;'''] [/  cube root sign]
+[template fourthroot[]'''&#x221C;'''] [/  fourth root sign]
+[template propto[]'''&#x221D;'''] [/  fourth root sign]
+[template block[]'''&#x220E;'''] [/  vertical black block]
+[template ceilR[]'''&#x2309;'''] [/ ceiling right]
+[template ceilL[] '''&#2308;''']   [/ ceiling left]
+[template floorR[] '''&#x230B;'''] [/ floor right]
+[template floorL[] '''&#x230A;'''] [/ floor left]
+[/template infin[] '''&#8734;'''] [/ infinity sign]  [/also in html4.qbk]
+[template integral[] '''&#8747;'''] [/integral sign]
+[/template aacute[] '''&#225;'''] [/ a acute accent] [/ in latin1_symbols.qbk]
+[/template eacute[] '''&#233;'''] [/ e acute accent] [/ in latin1_symbols.qbk]
+[template quarter[] '''&#x00BC;'''] [/ 1/4 quarter]
+[template nearequal[] '''&#x224A;'''] [/ nearly equal sign]
+
+[template Nary_product[] '''&#x220F;'''] [/ N-ary product sign (greek capital pi)]
+
+[/ Some composite templates]
+[/ To use composite templates write /[super 3/] ]
+[template super[x]'''<superscript>'''[x]'''</superscript>'''] [/ a^3 ]
+[template sub[x]'''<subscript>'''[x]'''</subscript>'''] [/ H2O ]
+[template floor[x]'''&#x230A;'''[x]'''&#x230B;'''] [/ floor x ]
+[template floorlr[x][lfloor][x][rfloor]]
+[template ceil[x] '''&#x2308;'''[x]'''&#x2309;'''] [/ ceil x]
+
+[/template pow2[]'''&#x2073;'''] [/ 2073 is NOT superscript 2 character]
+[template pow2[]'''&#x00B2;'''] [/ superscript 2 character]
+[template pow3[]'''&#x00B3;'''] [/ superscript 3 character]
+[template pow4[]'''&#x2074;'''] [/ superscript 4 character]
+[/template pown[]'''&#x207F;'''] [/ superscript n character - HTML ok BUT not on pdf!]
+[template pown[]'''&#x207F;'''] [/ superscript n character - HTML ok BUT not on pdf!]
+
+[template sub0[]'''&#x2080;'''] [/ subscript 0 character]
+[template sub1[]'''&#x2081;'''] [/ subscript 1 character]
+[template sub2[]'''&#x2082;'''] [/ subscript 2 character]
+[template sub3[]'''&#x2083;'''] [/ subscript 3 character]
+[template sub4[]'''&#x2084;'''] [/ subscript 4 character]
+[template sub5[]'''&#x2085;'''] [/ subscript 5 character]
+[template sub6[]'''&#x2086;'''] [/ subscript 6 character]
+[template sub7[]'''&#x2087;'''] [/ subscript 7 character]
+[template sub8[]'''&#x2088;'''] [/ subscript 8 character]
+[template sub9[]'''&#x2089;'''] [/ subscript 9 character]
+
+[template frac12[]'''&#x00BD;'''] [/ fraction half]
+[template frac14[]'''&#x00BC;'''] [/ fraction quarter]
+[template frac3/4[]'''&#x0B8E;'''] [/ fraction three quarter]
+
+[/
+Copyright 2010 Paul A. Bristow.
+Distributed under the Boost Software License, Version 1.0.
+(See accompanying file LICENSE_1_0.txt or copy at
+http://www.boost.org/LICENSE_1_0.txt).
+]
+
+

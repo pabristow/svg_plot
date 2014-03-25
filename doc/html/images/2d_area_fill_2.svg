@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="700" height ="500" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<clipPath id="plot_window"><rect x="71.2" y="63" width="616" height="365"/></clipPath>
+<clipPath id="plot_window"><rect x="71.2" y="63" width="616" height="365"/></clipPath>
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(245,245,245)" stroke-width="2"><rect x="0" y="0" width="700" height="500"/></g>
+<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(248,248,255)" stroke-width="2"><rect x="70.2" y="62" width="618" height="367"/></g>
+<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="yMajorGrid" stroke="rgb(0,255,255)" stroke-width="1"><path d="M72.2,246 L686,246 M72.2,184 L686,184 M72.2,123 L686,123 M72.2,62 L686,62 M72.2,246 L686,246 M72.2,307 L686,307 M72.2,368 L686,368 M72.2,429 L686,429 " fill="none"/></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(0,255,255)" stroke-width="1"><path d="M126,62 L126,429 M239,62 L239,429 M351,62 L351,429 M463,62 L463,429 M576,62 L576,429 M688,62 L688,429 M126,62 L126,429 " fill="none"/></g>
+<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="126" y1="62" x2="126" y2="443"/><line x1="70.2" y1="62" x2="70.2" y2="429"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="65.2" y1="246" x2="688" y2="246"/><line x1="65.2" y1="429" x2="688" y2="429"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M68.2,235 L70.2,235 M68.2,225 L70.2,225 M68.2,215 L70.2,215 M68.2,205 L70.2,205 M68.2,195 L70.2,195 M68.2,174 L70.2,174 M68.2,164 L70.2,164 M68.2,154 L70.2,154 M68.2,144 L70.2,144 M68.2,133 L70.2,133 M68.2,113 L70.2,113 M68.2,103 L70.2,103 M68.2,92.6 L70.2,92.6 M68.2,82.4 L70.2,82.4 M68.2,72.2 L70.2,72.2 M68.2,246 L70.2,246 M68.2,256 L70.2,256 M68.2,266 L70.2,266 M68.2,276 L70.2,276 M68.2,286 L70.2,286 M68.2,297 L70.2,297 M68.2,307 L70.2,307 M68.2,317 L70.2,317 M68.2,327 L70.2,327 M68.2,337 L70.2,337 M68.2,348 L70.2,348 M68.2,358 L70.2,358 M68.2,368 L70.2,368 M68.2,368 L70.2,368 M68.2,378 L70.2,378 M68.2,388 L70.2,388 M68.2,399 L70.2,399 M68.2,409 L70.2,409 M68.2,419 L70.2,419 M68.2,429 L70.2,429 " fill="none"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M154,429 L154,436 M183,429 L183,436 M211,429 L211,436 M267,429 L267,436 M295,429 L295,436 M323,429 L323,436 M379,429 L379,436 M407,429 L407,436 M435,429 L435,436 M491,429 L491,436 M520,429 L520,436 M548,429 L548,436 M604,429 L604,436 M632,429 L632,436 M660,429 L660,436 M98.3,429 L98.3,436 M70.2,429 L70.2,436 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M65.2,246 L70.2,246 M65.2,184 L70.2,184 M65.2,123 L70.2,123 M65.2,62 L70.2,62 M65.2,246 L70.2,246 M65.2,307 L70.2,307 M65.2,368 L70.2,368 M65.2,429 L70.2,429 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M126,429 L126,443 M239,429 L239,443 M351,429 L351,443 M463,429 L463,443 M576,429 L576,443 M688,429 L688,443 M126,429 L126,443 " fill="none"/></g>
+<g id="plotLabels">
+<text x="126" y="458" text-anchor="middle" font-size="12" font-family="Verdana">0</text>
+<text x="239" y="458" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="351" y="458" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="463" y="458" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
+<text x="576" y="458" text-anchor="middle" font-size="12" font-family="Verdana">8</text>
+<text x="688" y="458" text-anchor="middle" font-size="12" font-family="Verdana">10</text>
+<text x="126" y="458" text-anchor="middle" font-size="12" font-family="Verdana">0</text>
+<text x="59.2" y="248" text-anchor="end" font-size="12" font-family="Verdana">0</text>
+<text x="59.2" y="187" text-anchor="end" font-size="12" font-family="Verdana">25</text>
+<text x="59.2" y="126" text-anchor="end" font-size="12" font-family="Verdana">50</text>
+<text x="59.2" y="64.4" text-anchor="end" font-size="12" font-family="Verdana">75</text>
+<text x="59.2" y="248" text-anchor="end" font-size="12" font-family="Verdana">0</text>
+<text x="59.2" y="309" text-anchor="end" font-size="12" font-family="Verdana">-25</text>
+<text x="59.2" y="370" text-anchor="end" font-size="12" font-family="Verdana">-50</text>
+<text x="59.2" y="432" text-anchor="end" font-size="12" font-family="Verdana">-75</text></g>
+<g id="yLabel">
+<text x="30.2" y="246" text-anchor="middle" transform = "rotate(-90 30.2 246 )" font-size="14" font-family="Verdana">50 * f(x)</text></g>
+<g id="xLabel">
+<text x="379" y="484" text-anchor="middle" font-size="14" font-family="Verdana">x</text></g>
+<g id="plotLines" stroke-width="2"><g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(255,0,0)" stroke-width="2"><path d="M126,246 L126,246 L148,199 L170,159 L193,133 L215,123 L237,133 L259,159 L281,199 L303,246 L325,292 L347,332 L369,359 L391,368 L413,359 L435,332 L457,292 L479,246 L501,199 L523,159 L545,133 L567,123 L590,133 L612,159 L634,199 L656,246 L678,292 L678,246 Z" fill="rgb(255,0,0)"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(0,0,255)" stroke-width="2"><path d="M126,246 L126,123 L148,133 L170,159 L193,199 L215,246 L237,292 L259,332 L281,359 L303,368 L325,359 L347,332 L369,292 L391,246 L413,199 L435,159 L457,133 L479,123 L501,133 L523,159 L545,199 L567,246 L590,292 L612,332 L634,359 L656,368 L678,359 L678,246 Z" fill="rgb(0,0,255)"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="2"><path d="M126,246 L148,195 L170,123 L193,-49.9 L215,-6.82e+010 L237,541 L259,368 L281,296 L303,246 L325,195 L347,123 L369,-49.9 L391,-2.27e+010 L413,541 L435,368 L457,296 L479,246 L501,195 L523,123 L545,-49.9 L567,-1.36e+010 L590,541 L612,368 L634,296 L656,246 L678,195 " fill="none"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(255,0,0)" stroke-width="2"><path d="M126,246 L126,246 L148,199 L170,159 L193,133 L215,123 L237,133 L259,159 L281,199 L303,246 L325,292 L347,332 L369,359 L391,368 L413,359 L435,332 L457,292 L479,246 L501,199 L523,159 L545,133 L567,123 L590,133 L612,159 L634,199 L656,246 L678,292 L678,246 Z" fill="rgb(255,0,0)"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(0,0,255)" stroke-width="2"><path d="M126,246 L126,123 L148,133 L170,159 L193,199 L215,246 L237,292 L259,332 L281,359 L303,368 L325,359 L347,332 L369,292 L391,246 L413,199 L435,159 L457,133 L479,123 L501,133 L523,159 L545,199 L567,246 L590,292 L612,332 L634,359 L656,368 L678,359 L678,246 Z" fill="rgb(0,0,255)"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="2"><path d="M126,246 L148,195 L170,123 L193,-49.9 L215,-6.82e+010 L237,541 L259,368 L281,296 L303,246 L325,195 L347,123 L369,-49.9 L391,-2.27e+010 L413,541 L435,368 L457,296 L479,246 L501,195 L523,123 L545,-49.9 L567,-1.36e+010 L590,541 L612,368 L634,296 L656,246 L678,195 " fill="none"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(0,128,0)" stroke-width="2"><path d="M126,246 L126,246 L148,199 L170,159 L193,133 L215,123 L237,133 L259,159 L281,199 L303,246 L325,292 L347,332 L369,359 L391,368 L413,359 L435,332 L457,292 L479,246 L501,199 L523,159 L545,133 L567,123 L590,133 L612,159 L634,199 L656,246 L678,292 L678,246 Z" fill="rgb(0,128,0)"/></g>
+</g>
+<g id="plotPoints" clip-path="url(#plot_window)"><g stroke="rgb(0,0,0)" fill="rgb(255,255,255)"><circle cx="126" cy="246" r="5"/><circle cx="148" cy="199" r="5"/><circle cx="170" cy="159" r="5"/><circle cx="193" cy="133" r="5"/><circle cx="215" cy="123" r="5"/><circle cx="237" cy="133" r="5"/><circle cx="259" cy="159" r="5"/><circle cx="281" cy="199" r="5"/><circle cx="303" cy="246" r="5"/><circle cx="325" cy="292" r="5"/><circle cx="347" cy="332" r="5"/><circle cx="369" cy="359" r="5"/><circle cx="391" cy="368" r="5"/><circle cx="413" cy="359" r="5"/><circle cx="435" cy="332" r="5"/><circle cx="457" cy="292" r="5"/><circle cx="479" cy="246" r="5"/><circle cx="501" cy="199" r="5"/><circle cx="523" cy="159" r="5"/><circle cx="545" cy="133" r="5"/><circle cx="567" cy="123" r="5"/><circle cx="590" cy="133" r="5"/><circle cx="612" cy="159" r="5"/><circle cx="634" cy="199" r="5"/><circle cx="656" cy="246" r="5"/><circle cx="678" cy="292" r="5"/></g>
+<g stroke="rgb(0,0,0)" fill="rgb(255,255,255)"><rect x="121" y="118" width="10" height="10"/><rect x="143" y="128" width="10" height="10"/><rect x="165" y="154" width="10" height="10"/><rect x="188" y="194" width="10" height="10"/><rect x="210" y="241" width="10" height="10"/><rect x="232" y="287" width="10" height="10"/><rect x="254" y="327" width="10" height="10"/><rect x="276" y="354" width="10" height="10"/><rect x="298" y="363" width="10" height="10"/><rect x="320" y="354" width="10" height="10"/><rect x="342" y="327" width="10" height="10"/><rect x="364" y="287" width="10" height="10"/><rect x="386" y="241" width="10" height="10"/><rect x="408" y="194" width="10" height="10"/><rect x="430" y="154" width="10" height="10"/><rect x="452" y="128" width="10" height="10"/><rect x="474" y="118" width="10" height="10"/><rect x="496" y="128" width="10" height="10"/><rect x="518" y="154" width="10" height="10"/><rect x="540" y="194" width="10" height="10"/><rect x="562" y="241" width="10" height="10"/><rect x="585" y="287" width="10" height="10"/><rect x="607" y="327" width="10" height="10"/><rect x="629" y="354" width="10" height="10"/><rect x="651" y="363" width="10" height="10"/><rect x="673" y="354" width="10" height="10"/></g>
+<g stroke="rgb(0,0,0)" fill="rgb(255,255,255)"><polygon points=" 121,236 131,236 126,246"/><polygon points=" 143,185 153,185 148,195"/><polygon points=" 165,113 175,113 170,123"/><polygon points=" 254,358 264,358 259,368"/><polygon points=" 276,286 286,286 281,296"/><polygon points=" 298,236 308,236 303,246"/><polygon points=" 320,185 330,185 325,195"/><polygon points=" 342,113 352,113 347,123"/><polygon points=" 430,358 440,358 435,368"/><polygon points=" 452,286 462,286 457,296"/><polygon points=" 474,236 484,236 479,246"/><polygon points=" 496,185 506,185 501,195"/><polygon points=" 518,113 528,113 523,123"/><polygon points=" 607,358 617,358 612,368"/><polygon points=" 629,286 639,286 634,296"/><polygon points=" 651,236 661,236 656,246"/><polygon points=" 673,185 683,185 678,195"/></g>
+<g stroke="rgb(0,0,0)" fill="rgb(255,0,0)"><rect x="121" y="241" width="10" height="10"/><rect x="143" y="194" width="10" height="10"/><rect x="165" y="154" width="10" height="10"/><rect x="188" y="128" width="10" height="10"/><rect x="210" y="118" width="10" height="10"/><rect x="232" y="128" width="10" height="10"/><rect x="254" y="154" width="10" height="10"/><rect x="276" y="194" width="10" height="10"/><rect x="298" y="241" width="10" height="10"/><rect x="320" y="287" width="10" height="10"/><rect x="342" y="327" width="10" height="10"/><rect x="364" y="354" width="10" height="10"/><rect x="386" y="363" width="10" height="10"/><rect x="408" y="354" width="10" height="10"/><rect x="430" y="327" width="10" height="10"/><rect x="452" y="287" width="10" height="10"/><rect x="474" y="241" width="10" height="10"/><rect x="496" y="194" width="10" height="10"/><rect x="518" y="154" width="10" height="10"/><rect x="540" y="128" width="10" height="10"/><rect x="562" y="118" width="10" height="10"/><rect x="585" y="128" width="10" height="10"/><rect x="607" y="154" width="10" height="10"/><rect x="629" y="194" width="10" height="10"/><rect x="651" y="241" width="10" height="10"/><rect x="673" y="287" width="10" height="10"/></g>
+</g>
+<g id="title" fill="rgb(255,0,0)">
+<text x="350" y="40" text-anchor="middle" font-size="20" font-family="Verdana">sin overwriting cos and tan</text></g>
+<g id="plotXValues"></g>
+<g id="plotYValues"></g>
+</svg>

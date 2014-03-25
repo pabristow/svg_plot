@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Struct poly_path_point</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">
+<link rel="prev" href="path_point.html" title="Struct path_point">
+<link rel="next" href="polygon_element.html" title="Struct polygon_element">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
+<td align="center"><a href="../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="path_point.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="polygon_element.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.svg.poly_path_point"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Struct poly_path_point</span></h2>
+<p>boost::svg::poly_path_point &#8212; polyline or polygon point coordinates (x, y) </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">boost/svg_plot/detail/svg_tag.hpp</a>&gt;
+
+</span>
+<span class="keyword">struct</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">{</span>
+  <span class="comment">// <a class="link" href="poly_path_point.html#boost.svg.poly_path_pointconstruct-copy-destruct">construct/copy/destruct</a></span>
+  <a class="link" href="poly_path_point.html#id399192-bb"><span class="identifier">poly_path_point</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="poly_path_point.html#id399161-bb"><span class="identifier">poly_path_point</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// <a class="link" href="poly_path_point.html#id399132-bb">public member functions</a></span>
+  <span class="keyword">void</span> <a class="link" href="poly_path_point.html#id399131-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// public data members</span>
+  <span class="keyword">double</span> <span class="identifier">x</span><span class="special">;</span>  <span class="comment">// polygon or polyline path point X SVG coordinate. </span>
+  <span class="keyword">double</span> <span class="identifier">y</span><span class="special">;</span>  <span class="comment">// polygon or polyline path point Y SVG coordinate. </span>
+<span class="special">}</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id1006220"></a><h2>Description</h2>
+<p>9.6 polyline &amp; 9.7 The 'polygon' element. </p>
+<div class="refsect2">
+<a name="id1006274"></a><h3>
+<a name="boost.svg.poly_path_pointconstruct-copy-destruct"></a><code class="computeroutput">poly_path_point</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem">
+<pre class="literallayout"><a name="id399192-bb"></a><span class="identifier">poly_path_point</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<p>Construct a polygon or polyline path point from X and Y SVG coordinate. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a name="id399161-bb"></a><span class="identifier">poly_path_point</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Default constructor. </p>
+</li>
+</ol></div>
+</div>
+<div class="refsect2">
+<a name="id1006334"></a><h3>
+<a name="id399132-bb"></a><code class="computeroutput">poly_path_point</code> public member functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<pre class="literallayout"><span class="keyword">void</span> <a name="id399131-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> o_str<span class="special">)</span><span class="special">;</span></pre>
+<p>Output SVG XML, Example: " 250,180" Leading space is redundant for 1st after "points= ", but others are separators, and arkward to know which is 1st. </p>
+</li></ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="path_point.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="polygon_element.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

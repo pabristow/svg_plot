@@ -1,0 +1,82 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Header &lt;boost/svg_plot/uncertain.hpp&gt;</title>
+<link rel="stylesheet" href="../../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<link rel="home" href="../../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../../boost_svg_plot_c___reference.html" title="Boost.SVG plot C++ Reference">
+<link rel="prev" href="../../../boost/svg/strip_e0s.html" title="Function strip_e0s">
+<link rel="next" href="../../../boost/svg/unc.html" title="Class template unc">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../../.././images/proposed_for_boost.png"></td>
+<td align="center"><a href="../../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../../boost/svg/strip_e0s.html"><img src="../../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../boost_svg_plot_c___reference.html"><img src="../../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="../../../boost/svg/unc.html"><img src="../../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.svg_plot.uncertain_hpp"></a>Header &lt;<a href="../../../../../../../boost/svg_plot/uncertain.hpp" target="_top">boost/svg_plot/uncertain.hpp</a>&gt;</h3></div></div></div>
+<p>Class for storing Uncertainties and simple propagation according to a pure Gaussian model. </p>
+<p>This simplifed version assuming uncorrelated uncertainties (the common case) is based on code by Evan Manning (<a href="mailto:manning@alumni.caltech.edu" target="_top">manning@alumni.caltech.edu</a>) Evan Marshal Manning, C/C++ Users Journal, March 1996 page 29 to 38. original downloaded from <a href="ftp://beowulf.jpl.nasa.gov/pub/manning" target="_top">ftp://beowulf.jpl.nasa.gov/pub/manning</a> This is a simple model of uncertainties, designed to accompany an article published in C/C++ Users Journal March 1996. A fuller collection of even fancier classes also given in UReal.h. And also based on a extended version including uncertainty as standard deviation &amp; its uncertainty as degrees of freedom, and other information about the value added Paul A Bristow from 31 Mar 98. </p>
+<p><span class="bold"><strong>See Also:</strong></span></p>
+<p><a href="http://en.wikipedia.org/wiki/Plus-minus_sign" target="_top">http://en.wikipedia.org/wiki/Plus-minus_sign</a></p>
+<p>
+</p>
+<p>Paul A. Bristow </p>
+<p>
+</p>
+<p>Mar 2009 </p>
+<p>
+</p>
+<pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
+  <span class="keyword">namespace</span> <span class="identifier">svg</span> <span class="special">{</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">bool</span> correlated <span class="special">=</span> <span class="keyword">false</span><span class="special">&gt;</span> <span class="keyword">class</span> <a class="link" href="../../../boost/svg/unc.html" title="Class template unc">unc</a><span class="special">;</span>
+
+    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">double</span> <a class="link" href="../../../boost/svg/plusminus.html" title="Global plusminus">plusminus</a><span class="special">;</span>    <span class="comment">// Nominal factor of 2 (strictly 1.96) corresponds to 95% confidence limit. </span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">bool</span> correlated<span class="special">&gt;</span> 
+      <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="../../../boost/svg/operator_id443677.html" title="Function template operator&lt;&lt;"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="../../../boost/svg/unc.html" title="Class template unc">unc</a><span class="special">&lt;</span> <span class="identifier">correlated</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">bool</span> correlated<span class="special">&gt;</span> 
+      <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> 
+      <a class="link" href="../../../boost/svg/operator_id443785.html" title="Function template operator&lt;&lt;"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> 
+                 <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <a class="link" href="../../../boost/svg/unc.html" title="Class template unc">unc</a><span class="special">&lt;</span> <span class="identifier">correlated</span> <span class="special">&gt;</span><span class="special">,</span> <a class="link" href="../../../boost/svg/unc.html" title="Class template unc">unc</a><span class="special">&lt;</span> <span class="identifier">correlated</span> <span class="special">&gt;</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">float</span> <a class="link" href="../../../boost/svg/unc_of_id446171.html" title="Function template unc_of"><span class="identifier">unc_of</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">bool</span> correlated<span class="special">&gt;</span> <span class="keyword">float</span> <a class="link" href="../../../boost/svg/unc_of_id446166.html" title="Function template unc_of"><span class="identifier">unc_of</span></a><span class="special">(</span><a class="link" href="../../../boost/svg/unc.html" title="Class template unc">unc</a><span class="special">&lt;</span> <span class="identifier">correlated</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="keyword">float</span><span class="special">,</span> <span class="keyword">float</span> <span class="special">&gt;</span> <a class="link" href="../../../boost/svg/uncs_of_id446199.html" title="Function template uncs_of"><span class="identifier">uncs_of</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="keyword">float</span><span class="special">,</span> <span class="keyword">float</span> <span class="special">&gt;</span> <a class="link" href="../../../boost/svg/uncs_of_id446254.html" title="Function template uncs_of"><span class="identifier">uncs_of</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">T</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> 
+      <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="keyword">const</span> <span class="keyword">float</span><span class="special">,</span> <span class="keyword">float</span> <span class="special">&gt;</span> <a class="link" href="../../../boost/svg/uncs_of_id446272.html" title="Function template uncs_of"><span class="identifier">uncs_of</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="keyword">const</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">T</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">double</span> <a class="link" href="../../../boost/svg/value_of_id446305.html" title="Function template value_of"><span class="identifier">value_of</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">double</span> <a class="link" href="../../../boost/svg/value_of_id446364.html" title="Function template value_of"><span class="identifier">value_of</span></a><span class="special">(</span><a class="link" href="../../../boost/svg/unc.html" title="Class template unc">unc</a><span class="special">&lt;</span> <span class="keyword">true</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="special">&gt;</span> <span class="keyword">double</span> <a class="link" href="../../../boost/svg/value_of_id446370.html" title="Function template value_of"><span class="identifier">value_of</span></a><span class="special">(</span><a class="link" href="../../../boost/svg/unc.html" title="Class template unc">unc</a><span class="special">&lt;</span> <span class="keyword">false</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">&gt;</span> <a class="link" href="../../../boost/svg/values_of_id446410.html" title="Function template values_of"><span class="identifier">values_of</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> 
+      <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">&gt;</span> <a class="link" href="../../../boost/svg/values_of_id446391.html" title="Function template values_of"><span class="identifier">values_of</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="keyword">const</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">T</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">bool</span> correlated<span class="special">&gt;</span> 
+      <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">&gt;</span> 
+      <a class="link" href="../../../boost/svg/values_of_id446441.html" title="Function template values_of"><span class="identifier">values_of</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <a class="link" href="../../../boost/svg/unc.html" title="Class template unc">unc</a><span class="special">&lt;</span> <span class="identifier">correlated</span> <span class="special">&gt;</span><span class="special">,</span> <a class="link" href="../../../boost/svg/unc.html" title="Class template unc">unc</a><span class="special">&lt;</span> <span class="identifier">correlated</span> <span class="special">&gt;</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
+  <span class="special">}</span>
+<span class="special">}</span></pre>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../../boost/svg/strip_e0s.html"><img src="../../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../boost_svg_plot_c___reference.html"><img src="../../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="../../../boost/svg/unc.html"><img src="../../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

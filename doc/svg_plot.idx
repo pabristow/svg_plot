@@ -1,0 +1,53 @@
+#index.idx for SVG_plot Quickbook, Doxygen and Auto-index.
+
+#!debug "\<\w*\>" 
+
+# SVG_plot Header files.
+!scan-path "boost/svg_plot" ".*\.hpp" true
+
+# All example source files, assuming no sub-folders.
+# SVG_plot example files.
+!scan-path "libs/svg_plot/example" ".*\.cpp" true
+
+autoscaling <\w*\autoscal\w*\>
+#autoscaling  \<autoscal\w*\>
+axis <\w*<ax\w*\>
+# axis & axes, optionally preceeded by X or Y.
+background \<background\w*\>
+border \<border\w*\>
+boxplot \<boxplot\w*\>
+# Allow alternative spellings colour | color, and plurals etc.
+color  \<\w*(colour|color)\w*\>
+container \<contain\w*\>
+data
+deque \<deque\w*\>
+example \<example\w*\>
+fill
+font  \<font\w*\>
+greek
+grid  \<grid\w*\>
+quartile \<quartile\w*\>
+histogram
+intersect <\w*\intersect\w*\>
+Inkscape
+ioflags
+origin
+outlier
+label  \<label\w*\>
+layout
+legend \<legend\w*\>
+marker  \<marker\w*\>
+maximum \<max\w*\>
+minimum \<min\w*\>
+precision
+range  \<\w*\range\w*\>
+scaling \<\w*\scal\w*\>
+series
+stroke
+SVG 
+tick \<\w*\tick\w*\>
+title
+Unicode \<unicode\w*\>
+uncertainty \<uncert\w*\>
+value \<\w*\value\w*\>
+vector \<\w*\vector\w*\>

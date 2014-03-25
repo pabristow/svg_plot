@@ -1,0 +1,60 @@
+# boost_root/libs/svg_plot/test/jamfile.v2
+
+# SVG Plot Tests using Unit Test Library
+
+# Copyright Paul A. Bristow 2013
+
+# From Copyright 2005: Eric Niebler
+# Distributed under the Boost Software License, Version 1.0.
+# (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+
+#  <define>BOOST_ALL_NO_LIB=1 Not needed?
+
+import testing ;  # Bring in rules for testing
+import feature ;
+
+feature.feature iterator_debugging
+  : on off
+  : composite propagated optional
+  ;
+
+feature.compose <iterator_debugging>off
+  : <define>_HAS_ITERATOR_DEBUGGING=0
+  ;
+
+project SVG_Plot
+    : requirements
+      <include>$(boost-root)
+      <include>../../..
+      <library>/boost/test//boost_test_exec_monitor/<link>static
+
+      <toolset>msvc:<asynch-exceptions>on # Needed for Boost.Test
+      <toolset>msvc:<warnings>all
+      <toolset>msvc:<define>_SCL_SECURE_NO_WARNINGS
+      <toolset>msvc:<define>_SCL_SECURE_NO_DEPRECATE
+      <toolset>msvc:<define>_CRT_SECURE_NO_DEPRECATE
+      <toolset>msvc:<define>_CRT_SECURE_NO_WARNINGS
+
+      # Warning suppression:
+      <toolset>msvc:<cxxflags>/wd4996 # 'putenv': The POSIX name for this item is deprecated.
+      <toolset>msvc:<cxxflags>/wd4512 # assignment operator could not be generated.
+      <toolset>msvc:<cxxflags>/wd4610 #
+      <toolset>msvc:<cxxflags>/wd4510 #
+      <toolset>msvc:<cxxflags>/wd4224 # nonstandard extension used : formal parameter 'arg' was previously defined as a type.
+      <toolset>msvc:<cxxflags>/wd4127 # expression is constant.
+      <toolset>msvc:<cxxflags>/wd4701 # needed for lexical cast - temporary.
+
+      <toolset>msvc:<iterator_debugging>off
+      <toolset>intel-win:<iterator_debugging>off
+	    <toolset>clang:<cxxflags>-std=c++11
+	    <toolset>clang:<cxxflags>-Wno-reorder
+      <toolset>gcc:<cxxflags>-std=c++11
+	    <toolset>gcc:<cxxflags>-Wno-reorder ;
+
+test-suite "SVG Plot"
+    : [ run 1d_tests.cpp ]
+      [ run 1d_color_consistency.cpp ]
+      [ run 2d_color_consistency.cpp ]
+      [ run test_svg.cpp ]
+      
+    ;

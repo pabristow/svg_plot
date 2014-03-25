@@ -1,0 +1,66 @@
+[section:behavior_limits Showing data values at Numerical Limits]
+
+All limits that are dealt with are double precision floating-point limits.
+Data values that are 'at limits' are detected
+when data is added to the plot by the call to the `plot()` method.
+
+Currently, the line interpolation algorithms do not take limits into account,
+so behavior may  be incorrect for such plots as `1 / x`.
+
+Data at the limits are drawn, by default, as a cone with
+`stroke_color` is `lightgray` and `fill_color` is `whitesmoke`.
+
+This is customizable using, for example:
+
+   my_plot.limit_color(red).limit_fill_color(green);
+
+showing an inverted down-pointing cone with a red outline and a green fill.
+
+[h4 NaN]
+Any double precision floating-point numbers that return a nonzero value for the
+function `isnan(double)` is considered to be a ['NaN] or ['NotANumber] value.
+When plotted, the number will appear in the user-defined coordinates as 0 or 0,0.
+
+[h4 Infinity]
+
+Any double precision floating point number that is equal to either of the
+following is considered to be ['infinity]:
+
+  std::numeric_limits<double>::max()
+  std::numeric_limits<double>::infinity()
+
+When plotted, these values will appear at the [*top] of your plot window.
+If the plot window is not turned on,
+these points will appear at the top of the image.
+
+[h4 Negative Infinity]
+
+Any double precision floating point number that is equal to either of the
+following is considered to be ['negative infinity]:
+
+  std::numeric_limits<double>::min()
+  -std::numeric_limits<double>::infinity()
+  std::numeric_limits<double>::denorm_min()
+
+When plotted, these values will appear at the [*bottom] of your plot window.
+If the plot window is not turned on,
+these points will appear at the bottom of the image.
+
+Here are examples of showing values at numeric limits:
+[$images/demo_2d_limits.svg]
+[$images/demo_1d_limits.svg]
+
+See also examples of limits in 1-D and 2-D plots.
+[@../../example/demo_1d_limits.cpp demo_1d_limits.cpp]
+[@../../example/demo_2d_limits.cpp demo_2d_limits.cpp]
+
+[endsect] [/section:numerical_limits]
+
+
+[/ behaviour_tutorial.qbk
+  Copyright 2008, 2012 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]
+

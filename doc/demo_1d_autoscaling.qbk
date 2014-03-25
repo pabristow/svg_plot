@@ -1,0 +1,44 @@
+[section:auto_1d_plot 1-D Auto scaling Examples]
+
+[import ..\example\auto_1d_plot.cpp]
+[auto_1d_plot_1]
+[auto_1d_plot_2]
+[auto_1d_plot_3]
+
+The output is:
+[auto_1d_plot_output]
+
+and the plot:
+
+[$images/auto_1d_plot.svg]
+
+See [@../../example/auto_1d_plot.cpp auto_1d_plot..cpp]
+for full source code.
+
+[endsect] [/section:auto_1d_plot 1-D Auto scaling Examples]
+
+[section:demo_1d_autoscaling 1-D Autoscaling Various Containers Examples]
+[import ../example/demo_1d_autoscaling.cpp]
+
+[demo_1d_autoscaling_1]
+[demo_1d_autoscaling_2]
+[demo_1d_autoscaling_3]
+
+The output is:
+[demo_1d_autoscaling_output]
+
+and the plot:
+
+[$images/demo_1d_autoscaling.svg]
+
+See [@../../example/demo_1d_autoscaling.cpp demo_1d_autoscaling.cpp]
+for full source code.
+
+[endsect] [/section:demo_1d_autoscaling 1-D Autoscaling Various Containers Examples]
+
+[/ demo_1d_autoscaling.qbk
+  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

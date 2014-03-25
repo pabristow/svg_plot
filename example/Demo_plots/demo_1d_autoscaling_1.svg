@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="200" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<!-- File demo_1d_autoscaling_1.svg --> 
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="200"/></g>
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="11" y="56" width="478" height="100"/></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="11" y1="56" x2="11" y2="156"/><line x1="11" y1="109" x2="489" y2="109"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M24.7,109 L24.7,111 M38.3,109 L38.3,111 M52,109 L52,111 M65.6,109 L65.6,111 M92.9,109 L92.9,111 M107,109 L107,111 M120,109 L120,111 M134,109 L134,111 M161,109 L161,111 M175,109 L175,111 M189,109 L189,111 M202,109 L202,111 M230,109 L230,111 M243,109 L243,111 M257,109 L257,111 M270,109 L270,111 M298,109 L298,111 M311,109 L311,111 M325,109 L325,111 M339,109 L339,111 M366,109 L366,111 M380,109 L380,111 M393,109 L393,111 M407,109 L407,111 M434,109 L434,111 M448,109 L448,111 M462,109 L462,111 M475,109 L475,111 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M11,109 L11,114 M79.3,109 L79.3,114 M148,109 L148,114 M216,109 L216,114 M284,109 L284,114 M352,109 L352,114 M421,109 L421,114 M489,109 L489,114 M11,109 L11,114 " fill="none"/></g>
+<g id="xTicksValues">
+<text x="79.3" y="129" text-anchor="middle" font-size="12" font-family="Verdana">1</text>
+<text x="148" y="129" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="216" y="129" text-anchor="middle" font-size="12" font-family="Verdana">3</text>
+<text x="284" y="129" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="352" y="129" text-anchor="middle" font-size="12" font-family="Verdana">5</text>
+<text x="421" y="129" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
+<text x="489" y="129" text-anchor="middle" font-size="12" font-family="Verdana">7</text></g>
+<g id="xLabel">
+<text x="250" y="180" text-anchor="middle" font-size="14" font-family="Verdana">X values</text></g>
+<g id="plotPoints"><g stroke="rgb(0,0,0)"><line x1="24.7" y1="111" x2="24.7" y2="101"/><line x1="86.1" y1="111" x2="86.1" y2="101"/><line x1="298" y1="111" x2="298" y2="101"/><line x1="236" y1="111" x2="236" y2="101"/><line x1="380" y1="111" x2="380" y2="101"/><line x1="455" y1="111" x2="455" y2="101"/></g>
+</g>
+<g id="title">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Demo 1D autoscaling</text></g>
+</svg>

@@ -1,0 +1,252 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class axis_line_style</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../header/boost/svg_plot/svg_style_hpp.html" title="Header &lt;boost/svg_plot/svg_style.hpp&gt;">
+<link rel="prev" href="../../header/boost/svg_plot/svg_style_hpp.html" title="Header &lt;boost/svg_plot/svg_style.hpp&gt;">
+<link rel="next" href="bar_style.html" title="Class bar_style">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
+<td align="center"><a href="../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="bar_style.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.svg.axis_line_style"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class axis_line_style</span></h2>
+<p>boost::svg::axis_line_style &#8212; Style of the X or Y-axes lines. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/svg_style_hpp.html" title="Header &lt;boost/svg_plot/svg_style.hpp&gt;">boost/svg_plot/svg_style.hpp</a>&gt;
+
+</span>
+<span class="keyword">class</span> <a class="link" href="axis_line_style.html" title="Class axis_line_style">axis_line_style</a> <span class="special">{</span>
+<span class="keyword">public</span><span class="special">:</span>
+  <span class="comment">// <a class="link" href="axis_line_style.html#boost.svg.axis_line_styleconstruct-copy-destruct">construct/copy/destruct</a></span>
+  <a class="link" href="axis_line_style.html#id440565-bb"><span class="identifier">axis_line_style</span></a><span class="special">(</span><span class="identifier">dim</span> <span class="special">=</span> <span class="identifier">X</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="special">-</span><span class="number">10</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="special">+</span><span class="number">10</span><span class="special">.</span><span class="special">,</span> 
+                  <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">=</span> <span class="identifier">black</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="number">1</span><span class="special">,</span> <span class="keyword">int</span> <span class="special">=</span> <span class="number">0</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span> 
+                  <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="special">-</span><span class="number">1</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// <a class="link" href="axis_line_style.html#id437017-bb">public member functions</a></span>
+  <span class="keyword">bool</span> <a class="link" href="axis_line_style.html#id437042-bb"><span class="identifier">axis_line_on</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="axis_line_style.html" title="Class axis_line_style">axis_line_style</a> <span class="special">&amp;</span> <a class="link" href="axis_line_style.html#id437031-bb"><span class="identifier">color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="axis_line_style.html#id437079-bb"><span class="identifier">color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="axis_line_style.html#id437066-bb"><span class="identifier">label_on</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="axis_line_style.html" title="Class axis_line_style">axis_line_style</a> <span class="special">&amp;</span> <a class="link" href="axis_line_style.html#id437089-bb"><span class="identifier">label_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="axis_line_style.html#id437103-bb"><span class="identifier">label_units_on</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="axis_line_style.html" title="Class axis_line_style">axis_line_style</a> <span class="special">&amp;</span> <a class="link" href="axis_line_style.html#id437107-bb"><span class="identifier">label_units_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="axis_line_style.html" title="Class axis_line_style">axis_line_style</a> <span class="special">&amp;</span> <a class="link" href="axis_line_style.html#id437132-bb"><span class="identifier">position</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="axis_line_style.html#id440530-bb"><span class="identifier">position</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="axis_line_style.html" title="Class axis_line_style">axis_line_style</a> <span class="special">&amp;</span> <a class="link" href="axis_line_style.html#id440528-bb"><span class="identifier">width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="axis_line_style.html#id440569-bb"><span class="identifier">width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// <a class="link" href="axis_line_style.html#boost.svg.axis_line_stylepublic-data-members">public data members</a></span>
+  <span class="keyword">double</span> <span class="identifier">axis_</span><span class="special">;</span>  <span class="comment">// Depending on value of dim, either X-axis (y = 0) transformed into SVG Y coordinates or Y-axis (x = 0) transformed into SVG X coordinates (-1 if not calculated yet). </span>
+  <span class="keyword">bool</span> <span class="identifier">axis_line_on_</span><span class="special">;</span>  <span class="comment">// Draw an X horizontal or Y vertical axis line. </span>
+  <span class="keyword">int</span> <a class="link" href="axis_line_style.html#boost.svg.axis_line_style.axis_position_"><span class="identifier">axis_position_</span></a><span class="special">;</span>
+  <span class="keyword">double</span> <span class="identifier">axis_width_</span><span class="special">;</span>  <span class="comment">// Axis line width. </span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="identifier">color_</span><span class="special">;</span>  <span class="comment">// Axis line (stroke) color. </span>
+  <span class="identifier">dim</span> <span class="identifier">dim_</span><span class="special">;</span>  <span class="comment">// None, X or Y. </span>
+  <span class="keyword">bool</span> <span class="identifier">label_on_</span><span class="special">;</span>  <span class="comment">// Label axis with text - example: "length". </span>
+  <span class="keyword">bool</span> <span class="identifier">label_units_on_</span><span class="special">;</span>  <span class="comment">// Label axis units, example: "cm". </span>
+  <span class="keyword">double</span> <span class="identifier">max_</span><span class="special">;</span>  <span class="comment">// maximum Y value (Cartesian units). </span>
+  <span class="keyword">double</span> <span class="identifier">min_</span><span class="special">;</span>  <span class="comment">// minimum X value (Cartesian units). </span>
+<span class="special">}</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id1216130"></a><h2>Description</h2>
+<p>(But NOT the ticks and value labels because different styles for X and Y-axes are possible). </p>
+<div class="refsect2">
+<a name="id1216125"></a><h3>
+<a name="boost.svg.axis_line_styleconstruct-copy-destruct"></a><code class="computeroutput">axis_line_style</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<pre class="literallayout"><a name="id440565-bb"></a><span class="identifier">axis_line_style</span><span class="special">(</span><span class="identifier">dim</span> d <span class="special">=</span> <span class="identifier">X</span><span class="special">,</span> <span class="keyword">double</span> min <span class="special">=</span> <span class="special">-</span><span class="number">10</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> max <span class="special">=</span> <span class="special">+</span><span class="number">10</span><span class="special">.</span><span class="special">,</span> 
+                <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> col <span class="special">=</span> <span class="identifier">black</span><span class="special">,</span> <span class="keyword">double</span> width <span class="special">=</span> <span class="number">1</span><span class="special">,</span> 
+                <span class="keyword">int</span> axis_position <span class="special">=</span> <span class="number">0</span><span class="special">,</span> <span class="keyword">bool</span> label_on <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span> 
+                <span class="keyword">bool</span> label_units_on <span class="special">=</span> <span class="keyword">false</span><span class="special">,</span> <span class="keyword">bool</span> axis_lines_on <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span> 
+                <span class="keyword">double</span> axis <span class="special">=</span> <span class="special">-</span><span class="number">1</span><span class="special">)</span><span class="special">;</span></pre>Constructor that provides defaults all axis style items. </li></ol></div>
+</div>
+<div class="refsect2">
+<a name="id1216358"></a><h3>
+<a name="id437017-bb"></a><code class="computeroutput">axis_line_style</code> public member functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id437042-bb"></a><span class="identifier">axis_line_on</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p>If returns true, then either an X or a Y axis line to be drawn. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="axis_line_style.html" title="Class axis_line_style">axis_line_style</a> <span class="special">&amp;</span> <a name="id437031-bb"></a><span class="identifier">color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
+<p>Set color of an axis line.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p><a class="link" href="plot_line_style.html" title="Class plot_line_style">plot_line_style</a>&amp; to make chainable. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id437079-bb"></a><span class="identifier">color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>color of an axis line. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id437066-bb"></a><span class="identifier">label_on</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p>If returns true, then axis to be labelled, for example "X axis". </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="axis_line_style.html" title="Class axis_line_style">axis_line_style</a> <span class="special">&amp;</span> <a name="id437089-bb"></a><span class="identifier">label_on</span><span class="special">(</span><span class="keyword">bool</span> is<span class="special">)</span><span class="special">;</span></pre>
+<p>If set true, then axis to be labelled with the label, for example "X axis" (but default "").</p>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p><a class="link" href="plot_line_style.html" title="Class plot_line_style">plot_line_style</a>&amp; to make chainable. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id437103-bb"></a><span class="identifier">label_units_on</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p>If returns true, then axis to be labelled with unit, for example " (mm)" </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="axis_line_style.html" title="Class axis_line_style">axis_line_style</a> <span class="special">&amp;</span> <a name="id437107-bb"></a><span class="identifier">label_units_on</span><span class="special">(</span><span class="keyword">bool</span> is<span class="special">)</span><span class="special">;</span></pre>
+<p>If set true, then axis to be labelled with the units label, for example " (mm)" (but default "").</p>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p><a class="link" href="plot_line_style.html" title="Class plot_line_style">plot_line_style</a>&amp; to make chainable. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="axis_line_style.html" title="Class axis_line_style">axis_line_style</a> <span class="special">&amp;</span> <a name="id437132-bb"></a><span class="identifier">position</span><span class="special">(</span><span class="keyword">int</span> pos<span class="special">)</span><span class="special">;</span></pre>
+<p>How the axes intersect.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p><a class="link" href="plot_line_style.html" title="Class plot_line_style">plot_line_style</a>&amp; to make chainable. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">double</span> <a name="id440530-bb"></a><span class="identifier">position</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>How the axes intersect.<br>
+enum x_axis_intersect {bottom = -1, x_intersects_y = 0, top = +1}; enum y_axis_intersect {left = -1, y_intersects_x = 0, right = +1}; If axes look like an L, then is bottom left. If a T then y intersects and X is at bottom. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="axis_line_style.html" title="Class axis_line_style">axis_line_style</a> <span class="special">&amp;</span> <a name="id440528-bb"></a><span class="identifier">width</span><span class="special">(</span><span class="keyword">double</span> w<span class="special">)</span><span class="special">;</span></pre>
+<p>Set width of an axis line.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p><a class="link" href="plot_line_style.html" title="Class plot_line_style">plot_line_style</a>&amp; to make chainable. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">double</span> <a name="id440569-bb"></a><span class="identifier">width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>width of an axis line. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+</ol></div>
+</div>
+<div class="refsect2">
+<a name="id1219008"></a><h3>
+<a name="boost.svg.axis_line_stylepublic-data-members"></a><code class="computeroutput">axis_line_style</code> 
+        public
+       public data members</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<pre class="literallayout"><span class="keyword">int</span> <a name="boost.svg.axis_line_style.axis_position_"></a><span class="identifier">axis_position_</span><span class="special">;</span></pre>
+<p>How the axes intersect with values as below:<br>
+enum x_axis_intersect {bottom = -1, x_intersects_y = 0, top = +1}; enum y_axis_intersect {left = -1, y_intersects_x = 0, right = +1}; If axes look like an L, then is bottom left. If a T then y intersects and X is at bottom. </p>
+</li></ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="bar_style.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

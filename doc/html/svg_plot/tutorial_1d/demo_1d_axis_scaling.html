@@ -1,0 +1,309 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>1-D Axis Scaling</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../tutorial_1d.html" title="1D Tutorials">
+<link rel="prev" href="1d_special.html" title="Tutorial: 1D Gridlines &amp; Axes - more examples">
+<link rel="next" href="auto_1d_plot.html" title="1-D Auto scaling Examples">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
+<td align="center"><a href="../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="1d_special.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_1d.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="auto_1d_plot.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="svg_plot.tutorial_1d.demo_1d_axis_scaling"></a><a class="link" href="demo_1d_axis_scaling.html" title="1-D Axis Scaling">1-D Axis Scaling</a>
+</h3></div></div></div>
+<h5>
+<a name="svg_plot.tutorial_1d.demo_1d_axis_scaling.h0"></a>
+        <span class="phrase"><a name="svg_plot.tutorial_1d.demo_1d_axis_scaling.axis_scaling_with_function_scale"></a></span><a class="link" href="demo_1d_axis_scaling.html#svg_plot.tutorial_1d.demo_1d_axis_scaling.axis_scaling_with_function_scale">Axis
+        scaling with function scale_axis</a>
+      </h5>
+<p>
+        This example shows the use of functions scale_axis to find suitable axis
+        limits. Normally one would use autoscaling, but there are conceivable circumstances
+        when one would want to check on the scale_axis algorithm's choice of axis,
+        and perhaps intervene in the process.
+      </p>
+<p>
+        First some includes to use Boost.Plot (and some others only needed for this
+        example).
+      </p>
+<pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">svg_1d_plot</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_1d_plot</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">show_1d_settings</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="comment">// Only needed for showing which settings in use.</span>
+<span class="comment">// void boost::svg::show_1d_plot_settings(svg_1d_plot&amp;);</span>
+ <span class="comment">// (Also provides operator&lt;&lt; for std::pair).</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">algorithm</span><span class="special">/</span><span class="identifier">minmax</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+ <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">minmax</span><span class="special">;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">algorithm</span><span class="special">/</span><span class="identifier">minmax_element</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+ <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">minmax_element</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span> <span class="comment">// for debugging.</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">boolalpha</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">limits</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">numeric_limits</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">vector</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">set</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">multiset</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">utility</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">detail</span><span class="special">/</span><span class="identifier">auto_axes</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">show</span><span class="special">;</span> <span class="comment">// A single STL container.</span>
+  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">show_all</span><span class="special">;</span> <span class="comment">// Multiple STL containers.</span>
+  <span class="comment">// using boost::svg::range; // Find min and max of a STL container.</span>
+  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">range_all</span><span class="special">;//</span> <span class="identifier">Find</span> <span class="identifier">min</span> <span class="keyword">and</span> <span class="identifier">max</span> <span class="identifier">of</span> <span class="identifier">multipler</span> <span class="identifier">STL</span> <span class="identifier">containers</span><span class="special">.</span>
+</pre>
+<p>
+        This example uses a few types of containers to demonstrate axis_scaling.
+        axis_scaling must inspect the container in order to find axis ranges that
+        will be suitable. First we create a container and fill with some fictional
+        data.
+      </p>
+<pre class="programlisting"><span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">my_data</span><span class="special">;</span>
+<span class="comment">// Initialize my_data with some entirely fictional data.</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">0.2</span><span class="special">);</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">1.1</span><span class="special">);</span> <span class="comment">// [1]</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">4.2</span><span class="special">);</span> <span class="comment">// [2]</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">3.3</span><span class="special">);</span> <span class="comment">// [3]</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">5.4</span><span class="special">);</span> <span class="comment">// [4]</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">6.5</span><span class="special">);</span> <span class="comment">// [5]</span>
+<span class="identifier">show</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">);</span> <span class="comment">// Show entire container contents,</span>
+<span class="comment">// 6 values in container: 0.2 1.1 4.2 3.3 5.4 6.5</span>
+</pre>
+<pre class="programlisting"><span class="identifier">multiset</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">my_set</span><span class="special">;</span>
+<span class="comment">// Initialize my_set with some entirely fictional data.</span>
+<span class="identifier">my_set</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">1.2</span><span class="special">);</span>
+<span class="identifier">my_set</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">2.3</span><span class="special">);</span>
+<span class="identifier">my_set</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">3.4</span><span class="special">);</span>
+<span class="identifier">my_set</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">4.5</span><span class="special">);</span>
+<span class="identifier">my_set</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">5.6</span><span class="special">);</span>
+<span class="identifier">my_set</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">6.7</span><span class="special">);</span>
+<span class="identifier">my_set</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">7.8</span><span class="special">);</span>
+<span class="identifier">my_set</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">8.9</span><span class="special">);</span>
+<span class="comment">// Show the set.</span>
+<span class="identifier">multiset</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;::</span><span class="identifier">const_iterator</span> <span class="identifier">si</span><span class="special">;</span>
+<span class="identifier">show</span><span class="special">(</span><span class="identifier">my_set</span><span class="special">);</span> <span class="comment">// for two different types of container.</span>
+<span class="comment">// 8 values in container: 1.2 2.3 3.4 4.5 5.6 6.7 7.8 8.9</span>
+</pre>
+<p>
+        Show can also display just a part of the container contents.
+      </p>
+<pre class="programlisting"><span class="comment">// show(&amp;my_data[0], &amp;my_data[my_data.size()]); // pointers - wrong! &gt; all data ;-)</span>
+<span class="identifier">show</span><span class="special">(&amp;</span><span class="identifier">my_data</span><span class="special">[</span><span class="number">0</span><span class="special">],</span> <span class="special">&amp;</span><span class="identifier">my_data</span><span class="special">[</span><span class="identifier">my_data</span><span class="special">.</span><span class="identifier">size</span><span class="special">()-</span><span class="number">1</span><span class="special">]);</span> <span class="comment">// pointers, all data.</span>
+<span class="identifier">show</span><span class="special">(&amp;</span><span class="identifier">my_data</span><span class="special">[</span><span class="number">1</span><span class="special">],</span> <span class="special">&amp;</span><span class="identifier">my_data</span><span class="special">[</span><span class="number">5</span><span class="special">]);</span> <span class="comment">// pointers, part data.</span>
+<span class="identifier">show</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">my_data</span><span class="special">.</span><span class="identifier">end</span><span class="special">());</span> <span class="comment">// iterators.</span>
+<span class="identifier">show</span><span class="special">(++(</span><span class="identifier">my_data</span><span class="special">.</span><span class="identifier">begin</span><span class="special">()),</span> <span class="special">--(</span><span class="identifier">my_data</span><span class="special">.</span><span class="identifier">end</span><span class="special">()));</span> <span class="comment">// Just the 4 middle values.</span>
+
+<span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;::</span><span class="identifier">const_iterator</span> <span class="identifier">idb</span> <span class="special">=</span> <span class="identifier">my_data</span><span class="special">.</span><span class="identifier">begin</span><span class="special">();</span>
+<span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;::</span><span class="identifier">const_iterator</span> <span class="identifier">ide</span> <span class="special">=</span> <span class="identifier">my_data</span><span class="special">.</span><span class="identifier">end</span><span class="special">();</span>
+<span class="identifier">show</span><span class="special">(</span><span class="identifier">idb</span><span class="special">,</span> <span class="identifier">ide</span><span class="special">);</span> <span class="comment">// All</span>
+<span class="special">++</span><span class="identifier">idb</span><span class="special">;</span> <span class="comment">// Move to 2nd value.</span>
+<span class="special">--</span><span class="identifier">ide</span><span class="special">;</span> <span class="comment">// move back from last value.</span>
+<span class="identifier">show</span><span class="special">(</span><span class="identifier">idb</span><span class="special">,</span> <span class="identifier">ide</span><span class="special">);</span> <span class="comment">// Just the 4 middle values.</span>
+</pre>
+<h5>
+<a name="svg_plot.tutorial_1d.demo_1d_axis_scaling.h1"></a>
+        <span class="phrase"><a name="svg_plot.tutorial_1d.demo_1d_axis_scaling.scale_axis_function_examples"></a></span><a class="link" href="demo_1d_axis_scaling.html#svg_plot.tutorial_1d.demo_1d_axis_scaling.scale_axis_function_examples">scale_axis
+        Function Examples</a>
+      </h5>
+<p>
+        Is is possible to find the minimum and maximum values in a container using
+        the STL functions min &amp; max or more conveniently and efficiently with
+        boost::minmax_element:
+      </p>
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;::</span><span class="identifier">const_iterator</span> <span class="identifier">vector_iterator</span><span class="special">;</span>
+<span class="identifier">pair</span><span class="special">&lt;</span><span class="identifier">vector_iterator</span><span class="special">,</span> <span class="identifier">vector_iterator</span><span class="special">&gt;</span> <span class="identifier">result</span> <span class="special">=</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">minmax_element</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">my_data</span><span class="special">.</span><span class="identifier">end</span><span class="special">());</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"The smallest element is "</span> <span class="special">&lt;&lt;</span> <span class="special">*(</span><span class="identifier">result</span><span class="special">.</span><span class="identifier">first</span><span class="special">)</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span> <span class="comment">// 0.2</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"The largest element is  "</span> <span class="special">&lt;&lt;</span> <span class="special">*(</span><span class="identifier">result</span><span class="special">.</span><span class="identifier">second</span><span class="special">)</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span> <span class="comment">// 6.5</span>
+
+<span class="comment">// axis_scaling using two double min and max values.</span>
+<span class="keyword">double</span> <span class="identifier">min_value</span> <span class="special">=</span> <span class="special">*(</span><span class="identifier">my_data</span><span class="special">.</span><span class="identifier">begin</span><span class="special">());</span>
+<span class="keyword">double</span> <span class="identifier">max_value</span> <span class="special">=</span> <span class="special">*(--</span><span class="identifier">my_data</span><span class="special">.</span><span class="identifier">end</span><span class="special">());</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"axis_scaling 1 min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">min_value</span> <span class="special">&lt;&lt;</span> <span class="string">", max = "</span> <span class="special">&lt;&lt;</span> <span class="identifier">max_value</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+</pre>
+<p>
+        and to apply these values to the axis_scaling algorithm using by plot to
+        choose the axes limits and ticks.
+      </p>
+<pre class="programlisting"><span class="keyword">double</span> <span class="identifier">axis_min_value</span><span class="special">;</span> <span class="comment">// Values to be updated by function `scale_axis`.</span>
+<span class="keyword">double</span> <span class="identifier">axis_max_value</span><span class="special">;</span>
+<span class="keyword">double</span> <span class="identifier">axis_tick_increment</span><span class="special">;</span>
+<span class="keyword">int</span> <span class="identifier">axis_ticks</span><span class="special">;</span>
+
+<span class="identifier">scale_axis</span><span class="special">(</span><span class="identifier">min_value</span><span class="special">,</span> <span class="identifier">max_value</span><span class="special">,</span>
+  <span class="special">&amp;</span><span class="identifier">axis_min_value</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_max_value</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_tick_increment</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_ticks</span><span class="special">,</span>
+  <span class="keyword">false</span><span class="special">,</span> <span class="identifier">tol100eps</span><span class="special">,</span> <span class="number">6</span><span class="special">);</span> <span class="comment">// Display range.</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Axis_scaled 2 min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_min_value</span> <span class="special">&lt;&lt;</span> <span class="string">", max = "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_max_value</span> <span class="special">&lt;&lt;</span> <span class="string">", increment "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_tick_increment</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+</pre>
+<p>
+        It is also possible to use this with containers that use iterators and whose
+        contents are ordered in ascending value, axis_scaling using first and last
+        in container, for example, set, map, multimap, or a sorted vector or array.
+        A number of variations are shown below, mainly by way of testing.
+      </p>
+<pre class="programlisting"><span class="identifier">scale_axis</span><span class="special">(*</span><span class="identifier">my_data</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),*(--</span><span class="identifier">my_data</span><span class="special">.</span><span class="identifier">end</span><span class="special">()),</span>
+  <span class="special">&amp;</span><span class="identifier">axis_min_value</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_max_value</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_tick_increment</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_ticks</span><span class="special">,</span>
+  <span class="keyword">false</span><span class="special">,</span> <span class="identifier">tol100eps</span><span class="special">,</span> <span class="number">6</span><span class="special">);</span> <span class="comment">// Display range.</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Axis_scaled 3 min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_min_value</span> <span class="special">&lt;&lt;</span> <span class="string">", max = "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_max_value</span> <span class="special">&lt;&lt;</span> <span class="string">", increment "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_tick_increment</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+
+<span class="comment">// axis_scaling using two begin &amp; end iterators into STL container,</span>
+<span class="comment">// scale_axis does finding min and max.</span>
+<span class="identifier">scale_axis</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">my_data</span><span class="special">.</span><span class="identifier">end</span><span class="special">(),</span> <span class="comment">// Input range</span>
+  <span class="special">&amp;</span><span class="identifier">axis_min_value</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_max_value</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_tick_increment</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_ticks</span><span class="special">,</span> <span class="comment">// to update.</span>
+  <span class="keyword">true</span><span class="special">,</span> <span class="comment">// check for non-finite</span>
+  <span class="number">3.</span><span class="special">,</span> <span class="comment">// autoscale_plusminus = 3 sd</span>
+  <span class="keyword">false</span><span class="special">,</span> <span class="comment">// Do not include origin</span>
+  <span class="identifier">tol100eps</span><span class="special">,</span> <span class="comment">// tight</span>
+  <span class="number">6</span><span class="special">,</span> <span class="comment">// steps at default.</span>
+  <span class="number">0</span><span class="special">);</span> <span class="comment">// Display range.</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Axis_scaled 4 min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_min_value</span> <span class="special">&lt;&lt;</span> <span class="string">", max = "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_max_value</span> <span class="special">&lt;&lt;</span> <span class="string">", increment "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_tick_increment</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+
+<span class="comment">// axis_scaling using two begin &amp; end iterators into STL container,</span>
+<span class="comment">// scale_axis does finding min and max.</span>
+<span class="identifier">scale_axis</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">[</span><span class="number">1</span><span class="special">],</span> <span class="identifier">my_data</span><span class="special">[</span><span class="number">4</span><span class="special">],</span> <span class="comment">// Only middle part of the container used, ignoring 1st and last values.</span>
+  <span class="special">&amp;</span><span class="identifier">axis_min_value</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_max_value</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_tick_increment</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_ticks</span><span class="special">,</span>
+  <span class="keyword">true</span><span class="special">,</span> <span class="identifier">tol100eps</span><span class="special">,</span> <span class="number">6</span><span class="special">);</span> <span class="comment">// Display range.</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Axis_scaled 5 min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_min_value</span> <span class="special">&lt;&lt;</span> <span class="string">", max = "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_max_value</span> <span class="special">&lt;&lt;</span> <span class="string">", increment "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_tick_increment</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+
+<span class="comment">// axis_scaling using whole STL container,</span>
+<span class="comment">// scale_axis does finding min and max.</span>
+<span class="identifier">scale_axis</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_min_value</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_max_value</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_tick_increment</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_ticks</span><span class="special">,</span>
+  <span class="keyword">true</span><span class="special">,</span> <span class="number">3.</span><span class="special">,</span> <span class="keyword">false</span><span class="special">,</span> <span class="identifier">tol100eps</span><span class="special">,</span> <span class="number">6</span><span class="special">);</span> <span class="comment">// Display range.</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Axis_scaled 6 min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_min_value</span> <span class="special">&lt;&lt;</span> <span class="string">", max = "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_max_value</span> <span class="special">&lt;&lt;</span> <span class="string">", increment "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_tick_increment</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+
+<span class="identifier">svg_1d_plot</span> <span class="identifier">my_1d_plot</span><span class="special">;</span> <span class="comment">// Construct a plot with all the default constructor values.</span>
+
+<span class="comment">// One could intercept and change any values calculated by scale_axis here?</span>
+<span class="comment">// Set the plot to use range and interval from the scale_axis values.</span>
+</pre>
+<p>
+        The axis range thus computed can be inserted directly into the plot using
+        the <code class="computeroutput"><span class="identifier">range</span></code> and <code class="computeroutput"><span class="identifier">x_major_interval</span></code> functions.
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_range</span><span class="special">(</span><span class="identifier">axis_min_value</span><span class="special">,</span> <span class="identifier">axis_max_value</span><span class="special">)</span>
+  <span class="special">.</span><span class="identifier">x_major_interval</span><span class="special">(</span><span class="identifier">axis_tick_increment</span><span class="special">);</span>
+
+<span class="comment">//my_1d_plot.x_autoscale(false);  // Ensure autoscale values are *not* recalculated for the plot.</span>
+</pre>
+<pre class="programlisting"><span class="comment">// Set some axis_scaling parameters:</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_with_zero</span><span class="special">(</span><span class="keyword">false</span><span class="special">);</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_min_ticks</span><span class="special">(</span><span class="number">10</span><span class="special">);</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_steps</span><span class="special">(</span><span class="number">0</span><span class="special">);</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_tight</span><span class="special">(</span><span class="number">0.001</span><span class="special">);</span>
+
+<span class="comment">// Show the flags just set.</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="special">(</span><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_with_zero</span><span class="special">()</span> <span class="special">?</span> <span class="string">"x_with_zero, "</span> <span class="special">:</span> <span class="string">"not x_with_zero, "</span><span class="special">)</span>
+  <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_min_ticks</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="string">" x_min_ticks, "</span>
+  <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_steps</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="string">" x_steps, "</span>
+  <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_tight</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="string">" tightness."</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_autoscale</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">);</span>  <span class="comment">// Use all my_data to autoscale.</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Axis_scaled "</span> <span class="comment">// Show the results of autoscale:</span>
+  <span class="string">"min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_min_value</span><span class="special">()</span>
+  <span class="special">&lt;&lt;</span> <span class="string">", max "</span><span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_max_value</span><span class="special">()</span>
+  <span class="special">&lt;&lt;</span> <span class="string">", interval "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_tick_interval</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span> <span class="comment">// Autoscaled min 0, max 6.5, interval 0.5</span>
+
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_autoscale</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">my_data</span><span class="special">.</span><span class="identifier">end</span><span class="special">());</span>  <span class="comment">// Use all my_data to autoscale.</span>
+
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Axis_scaled "</span> <span class="comment">// Show the results of autoscale:</span>
+  <span class="string">"min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_min_value</span><span class="special">()</span>
+  <span class="special">&lt;&lt;</span> <span class="string">", max "</span><span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_max_value</span><span class="special">()</span>
+  <span class="special">&lt;&lt;</span> <span class="string">", interval "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_tick_interval</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span> <span class="comment">// Autoscaled min 0, max 6.5, interval 0.5</span>
+
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_autoscale</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">[</span><span class="number">1</span><span class="special">],</span> <span class="identifier">my_data</span><span class="special">[</span><span class="number">4</span><span class="special">]);</span>  <span class="comment">// Use only part of my_data to autoscale.</span>
+
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Axis_scaled "</span> <span class="comment">// Show the results of autoscale:</span>
+  <span class="string">"min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_min_value</span><span class="special">()</span>
+  <span class="special">&lt;&lt;</span> <span class="string">", max "</span><span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_max_value</span><span class="special">()</span>
+  <span class="special">&lt;&lt;</span> <span class="string">", interval "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_tick_interval</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span> <span class="comment">// Autoscaled min 1, max 5.5, interval 0.5</span>
+
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_autoscale</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span>  <span class="comment">// Ensure autoscale values are used for the plot.</span>
+
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">,</span> <span class="string">"Auto 1D"</span><span class="special">);</span> <span class="comment">// Add the one data series.</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Axis_scaled "</span> <span class="comment">// Show the results of autoscale:</span>
+  <span class="string">" min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_min_value</span><span class="special">()</span>
+  <span class="special">&lt;&lt;</span> <span class="string">", max "</span><span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_max_value</span><span class="special">()</span>
+  <span class="special">&lt;&lt;</span> <span class="string">", interval "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_tick_interval</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span> <span class="comment">// Autoscaled min 1, max 5.5, interval 0.5</span>
+
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_set</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">my_set</span><span class="special">.</span><span class="identifier">end</span><span class="special">(),</span> <span class="string">"Auto 1D"</span><span class="special">);</span> <span class="comment">// Add another data series from my_set.</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_set</span><span class="special">,</span> <span class="string">"Auto 1D"</span><span class="special">);</span> <span class="comment">// Add another whole data series from my_set.</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(&amp;</span><span class="identifier">my_data</span><span class="special">[</span><span class="number">1</span><span class="special">],</span> <span class="special">&amp;</span><span class="identifier">my_data</span><span class="special">[</span><span class="number">4</span><span class="special">],</span> <span class="string">"Auto 1D"</span><span class="special">);</span> <span class="comment">// Add part (1,2 3 but *not* 4) of the one data series.</span>
+<span class="comment">//my_1d_plot.plot(&amp;my_set[1], &amp;my_set[4], "Auto 1D"); // operator[] is not defined for set container!</span>
+
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"demo_1d_axis_scaling.svg"</span><span class="special">);</span> <span class="comment">// Write the plot to file.</span>
+
+<span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">detail</span><span class="special">::</span><span class="keyword">operator</span><span class="special">&lt;&lt;;</span> <span class="comment">// Needed for output a pair.</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"x_range() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_range</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span> <span class="comment">// x_range() 1, 5.5</span>
+
+<span class="comment">//show_1d_plot_settings(my_1d_plot); // For *all* settings.</span>
+</pre>
+<p>
+        The output is:
+      </p>
+<pre class="programlisting"><span class="identifier">Autorun</span> <span class="string">"j:\Cpp\SVG\Debug\demo_1d_axis_scaling.exe"</span>
+<span class="number">6</span> <span class="identifier">values</span> <span class="identifier">in</span> <span class="identifier">container</span><span class="special">:</span> <span class="number">0.2</span> <span class="number">1.1</span> <span class="number">4.2</span> <span class="number">3.3</span> <span class="number">5.4</span> <span class="number">6.5</span>
+<span class="number">8</span> <span class="identifier">values</span> <span class="identifier">in</span> <span class="identifier">container</span><span class="special">:</span> <span class="number">1.2</span> <span class="number">2.3</span> <span class="number">3.4</span> <span class="number">4.5</span> <span class="number">5.6</span> <span class="number">6.7</span> <span class="number">7.8</span> <span class="number">8.9</span>
+<span class="number">0.2</span> <span class="number">1.1</span> <span class="number">4.2</span> <span class="number">3.3</span> <span class="number">5.4</span> <span class="special">:</span> <span class="number">5</span> <span class="identifier">values</span> <span class="identifier">used</span><span class="special">.</span>
+<span class="number">1.1</span> <span class="number">4.2</span> <span class="number">3.3</span> <span class="number">5.4</span> <span class="special">:</span> <span class="number">4</span> <span class="identifier">values</span> <span class="identifier">used</span><span class="special">.</span>
+<span class="number">0.2</span> <span class="number">1.1</span> <span class="number">4.2</span> <span class="number">3.3</span> <span class="number">5.4</span> <span class="number">6.5</span> <span class="special">:</span> <span class="number">6</span> <span class="identifier">values</span> <span class="identifier">used</span><span class="special">.</span>
+<span class="number">1.1</span> <span class="number">4.2</span> <span class="number">3.3</span> <span class="number">5.4</span> <span class="special">:</span> <span class="number">4</span> <span class="identifier">values</span> <span class="identifier">used</span><span class="special">.</span>
+<span class="number">0.2</span> <span class="number">1.1</span> <span class="number">4.2</span> <span class="number">3.3</span> <span class="number">5.4</span> <span class="number">6.5</span> <span class="special">:</span> <span class="number">6</span> <span class="identifier">values</span> <span class="identifier">used</span><span class="special">.</span>
+<span class="number">1.1</span> <span class="number">4.2</span> <span class="number">3.3</span> <span class="number">5.4</span> <span class="special">:</span> <span class="number">4</span> <span class="identifier">values</span> <span class="identifier">used</span><span class="special">.</span>
+<span class="identifier">The</span> <span class="identifier">smallest</span> <span class="identifier">element</span> <span class="identifier">is</span> <span class="number">0.2</span>
+<span class="identifier">The</span> <span class="identifier">largest</span> <span class="identifier">element</span> <span class="identifier">is</span>  <span class="number">6.5</span>
+<span class="identifier">axis_scaling</span> <span class="number">1</span> <span class="identifier">min</span> <span class="number">0.2</span><span class="special">,</span> <span class="identifier">max</span> <span class="special">=</span> <span class="number">6.5</span>
+<span class="identifier">Axis_scaled</span> <span class="number">2</span> <span class="identifier">min</span> <span class="number">0</span><span class="special">,</span> <span class="identifier">max</span> <span class="special">=</span> <span class="number">7</span><span class="special">,</span> <span class="identifier">increment</span> <span class="number">1</span>
+<span class="identifier">Axis_scaled</span> <span class="number">3</span> <span class="identifier">min</span> <span class="number">0</span><span class="special">,</span> <span class="identifier">max</span> <span class="special">=</span> <span class="number">7</span><span class="special">,</span> <span class="identifier">increment</span> <span class="number">1</span>
+<span class="identifier">Axis_scaled</span> <span class="number">4</span> <span class="identifier">min</span> <span class="number">0</span><span class="special">,</span> <span class="identifier">max</span> <span class="special">=</span> <span class="number">7</span><span class="special">,</span> <span class="identifier">increment</span> <span class="number">1</span>
+<span class="identifier">Axis_scaled</span> <span class="number">5</span> <span class="identifier">min</span> <span class="number">0</span><span class="special">,</span> <span class="identifier">max</span> <span class="special">=</span> <span class="number">6</span><span class="special">,</span> <span class="identifier">increment</span> <span class="number">1</span>
+<span class="identifier">Axis_scaled</span> <span class="number">6</span> <span class="identifier">min</span> <span class="number">0</span><span class="special">,</span> <span class="identifier">max</span> <span class="special">=</span> <span class="number">7</span><span class="special">,</span> <span class="identifier">increment</span> <span class="number">1</span>
+<span class="keyword">not</span> <span class="identifier">x_with_zero</span><span class="special">,</span> <span class="number">10</span> <span class="identifier">x_min_ticks</span><span class="special">,</span> <span class="number">0</span> <span class="identifier">x_steps</span><span class="special">,</span> <span class="number">0.001</span> <span class="identifier">tightness</span><span class="special">.</span>
+<span class="identifier">Axis_scaled</span> <span class="identifier">min</span> <span class="number">0</span><span class="special">,</span> <span class="identifier">max</span> <span class="number">6.5</span><span class="special">,</span> <span class="identifier">interval</span> <span class="number">0.5</span>
+<span class="identifier">Axis_scaled</span> <span class="identifier">min</span> <span class="number">0</span><span class="special">,</span> <span class="identifier">max</span> <span class="number">6.5</span><span class="special">,</span> <span class="identifier">interval</span> <span class="number">0.5</span>
+<span class="identifier">Axis_scaled</span> <span class="identifier">min</span> <span class="number">1</span><span class="special">,</span> <span class="identifier">max</span> <span class="number">5.5</span><span class="special">,</span> <span class="identifier">interval</span> <span class="number">0.5</span>
+<span class="identifier">Axis_scaled</span>  <span class="identifier">min</span> <span class="number">1</span><span class="special">,</span> <span class="identifier">max</span> <span class="number">5.5</span><span class="special">,</span> <span class="identifier">interval</span> <span class="number">0.5</span>
+<span class="identifier">x_range</span><span class="special">()</span> <span class="number">1</span><span class="special">,</span> <span class="number">5.5</span>
+</pre>
+<p>
+        See <a href="../../../../example/demo_1d_axis_scaling.cpp" target="_top">demo_1d_axis_scaling.cpp</a>
+        for full source code.
+      </p>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="1d_special.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_1d.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="auto_1d_plot.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+[section:fonts Fonts]
+
+[import ../example/demo_2d_fonts.cpp]
+
+Examples of fonts are at [@../../../svg_plot/example/demo_2d_fonts.cpp demo_2d_fonts.cpp].
+
+Fine control of font family and size is provided,
+although the exact rendering may be limited by the browser used to view the `.svg` file.
+
+An example is provided to demonstrate various fonts and fonts sizes.
+
+[demo_2d_fonts_1]
+[demo_2d_fonts_2]
+[demo_2d_fonts_output]
+
+Producing this ugly plot, as an example from the files `demo_2d_fonts_1.svg` to `demo_2d_fonts_12.svg`:
+
+[$images/demo_2d_fonts.svg].
+
+[/ This is just on of 12 demo_fonts_1 to _12 copied to $images as demo_2d_fonts.svg]
+
+See [@../../example/demo_2d_fonts.cpp demo_2d_fonts.cpp] for full source code.
+
+[endsect] [/section:fonts Fonts]
+
+[/ fonts.qbk
+  Copyright 2009 Jake Voytko and Paul A. Bristow.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+]

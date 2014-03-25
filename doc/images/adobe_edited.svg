@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="300mm"
+   height="400mm"
+   viewBox="0 0 300 400"
+   id="svg1938"
+   xml:space="preserve"><defs
+   id="defs1953" />
+<rect
+   width="250"
+   height="100"
+   x="0"
+   y="0"
+   style="fill:blue"
+   id="rect1940" />
+<text
+   x="1.0989012"
+   y="17.142859"
+   style="font-size:20px;font-style:italic;font-weight:normal;fill:aqua"
+   id="text1942">This is italic SVG text.</text>
+
+<text
+   x="2.1978023"
+   y="28.79121"
+   style="font-weight:100;font-stretch:wider;fill:aqua"
+   id="text1944">This is 100 SVG text.</text>
+
+<text
+   y="44.395603"
+   id="text1946">This is 900 oblique.</text>
+
+<text
+   y="60"
+   id="text1948">This is bold line-through.</text>
+
+<text
+   x="31.219582"
+   y="68.201385"
+   transform="scale(0.77438,1.291355)"
+   id="text1950">red bolder underline.</text>
+ </svg>

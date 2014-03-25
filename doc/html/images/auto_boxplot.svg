@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="350" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<!-- File auto_boxplot.svg --> 
+<clipPath id="plot_window"><rect x="48.4" y="52" width="440" height="229"/></clipPath>
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="350"/></g>
+<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="53.4" y="57" width="435" height="224"/></g>
+<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="53.4" y1="281" x2="488" y2="281"/></g>
+<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="53.4" y1="281" x2="53.4" y2="57"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M271,281 L271,286 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M48.4,281 L53.4,281 M48.4,256 L53.4,256 M48.4,231 L53.4,231 M48.4,206 L53.4,206 M48.4,182 L53.4,182 M48.4,157 L53.4,157 M48.4,132 L53.4,132 M48.4,107 L53.4,107 M48.4,81.9 L53.4,81.9 M48.4,57 L53.4,57 M48.4,281 L53.4,281 " fill="none"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M51.4,276 L53.4,276 M51.4,271 L53.4,271 M51.4,266 L53.4,266 M51.4,261 L53.4,261 M51.4,251 L53.4,251 M51.4,246 L53.4,246 M51.4,241 L53.4,241 M51.4,236 L53.4,236 M51.4,226 L53.4,226 M51.4,221 L53.4,221 M51.4,216 L53.4,216 M51.4,211 L53.4,211 M51.4,201 L53.4,201 M51.4,197 L53.4,197 M51.4,192 L53.4,192 M51.4,187 L53.4,187 M51.4,177 L53.4,177 M51.4,172 L53.4,172 M51.4,167 L53.4,167 M51.4,162 L53.4,162 M51.4,152 L53.4,152 M51.4,147 L53.4,147 M51.4,142 L53.4,142 M51.4,137 L53.4,137 M51.4,127 L53.4,127 M51.4,122 L53.4,122 M51.4,117 L53.4,117 M51.4,112 L53.4,112 M51.4,102 L53.4,102 M51.4,96.9 L53.4,96.9 M51.4,91.9 L53.4,91.9 M51.4,86.9 L53.4,86.9 M51.4,76.9 L53.4,76.9 M51.4,71.9 L53.4,71.9 M51.4,67 L53.4,67 M51.4,62 L53.4,62 M51.4,281 L53.4,281 " fill="none"/></g>
+<g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="valueLabels" fill="rgb(0,0,0)">
+<text x="271" y="306" text-anchor="middle" font-size="14" font-family="Verdana">Auto boxplot</text>
+<text x="42.4" y="284" text-anchor="end" font-size="12" font-family="Verdana">0</text>
+<text x="42.4" y="259" text-anchor="end" font-size="12" font-family="Verdana">1</text>
+<text x="42.4" y="234" text-anchor="end" font-size="12" font-family="Verdana">2</text>
+<text x="42.4" y="209" text-anchor="end" font-size="12" font-family="Verdana">3</text>
+<text x="42.4" y="184" text-anchor="end" font-size="12" font-family="Verdana">4</text>
+<text x="42.4" y="159" text-anchor="end" font-size="12" font-family="Verdana">5</text>
+<text x="42.4" y="134" text-anchor="end" font-size="12" font-family="Verdana">6</text>
+<text x="42.4" y="109" text-anchor="end" font-size="12" font-family="Verdana">7</text>
+<text x="42.4" y="84.3" text-anchor="end" font-size="12" font-family="Verdana">8</text>
+<text x="42.4" y="59.4" text-anchor="end" font-size="12" font-family="Verdana">9</text>
+<text x="42.4" y="284" text-anchor="end" font-size="12" font-family="Verdana">0</text></g>
+<g id="yLabel" fill="rgb(0,0,0)">
+<text x="30.2" y="169" text-anchor="middle" transform = "rotate(-90 30.2 169 )" font-size="14" font-family="Verdana">Values</text></g>
+<g id="xLabel" fill="rgb(0,0,0)">
+<text x="271" y="327" text-anchor="middle" font-size="14" font-family="Verdana"></text></g>
+<g id="boxAxis" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1"><line x1="271" y1="276" x2="271" y2="69.5"/></g>
+</g>
+<g id="Median" stroke="rgb(255,0,0)" stroke-width="2"><g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1"><rect x="256" y="100" width="30" height="89.3"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1"><line x1="256" y1="116" x2="285" y2="116"/></g>
+</g>
+<g id="whisker" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)"><g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="256" y1="276" x2="286" y2="276"/></g>
+<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="256" y1="69.5" x2="286" y2="69.5"/></g>
+</g>
+</g>
+<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)"></g>
+<g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)"></g>
+<g id="title" fill="rgb(0,0,0)">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Auto boxplot</text></g>
+</svg>

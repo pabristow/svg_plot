@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="700" height ="500" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<clipPath id="plot_window"><rect x="51" y="63" width="461" height="327"/></clipPath>
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(248,248,255)" stroke-width="2"><rect x="0" y="0" width="700" height="500"/></g>
+<g id="plotBackground" stroke="rgb(0,128,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="50" y="62" width="463" height="329"/></g>
+<g id="yMinorGrid" stroke="rgb(240,240,255)" stroke-width="1"><path d="M51,216 L512,216 M51,205 L512,205 M51,183 L512,183 M51,172 L512,172 M51,150 L512,150 M51,139 L512,139 M51,117 L512,117 M51,106 L512,106 M51,83.9 L512,83.9 M51,73 L512,73 M51,238 L512,238 M51,249 L512,249 M51,260 L512,260 M51,270 L512,270 M51,281 L512,281 M51,292 L512,292 M51,292 L512,292 M51,303 L512,303 M51,314 L512,314 M51,325 L512,325 M51,336 L512,336 M51,347 L512,347 M51,358 L512,358 M51,369 L512,369 M51,380 L512,380 M51,391 L512,391 " fill="none"/></g>
+<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="2"><path d="M51,194 L512,194 M51,161 L512,161 M51,128 L512,128 M51,94.9 L512,94.9 M51,62 L512,62 M51,260 L512,260 M51,292 L512,292 M51,325 L512,325 M51,358 L512,358 M51,391 L512,391 " fill="none"/></g>
+<g id="xMinorGrid" stroke="rgb(240,240,255)" stroke-width="0.5"><path d="M297,63 L297,390 M312,63 L312,390 M343,63 L343,390 M358,63 L358,390 M389,63 L389,390 M405,63 L405,390 M436,63 L436,390 M451,63 L451,390 M482,63 L482,390 M497,63 L497,390 M266,63 L266,390 M250,63 L250,390 M220,63 L220,390 M204,63 L204,390 M173,63 L173,390 M158,63 L158,390 M127,63 L127,390 M112,63 L112,390 M80.8,63 L80.8,390 M65.4,63 L65.4,390 " fill="none"/></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"><path d="M281,62 L281,391 M328,62 L328,391 M374,62 L374,391 M420,62 L420,391 M466,62 L466,391 M513,62 L513,391 M281,62 L281,391 M235,62 L235,391 M189,62 L189,391 M143,62 L143,391 M96.3,62 L96.3,391 M50,62 L50,391 " fill="none"/></g>
+<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="281" y1="62" x2="281" y2="401"/><line x1="513" y1="62" x2="513" y2="391"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="50" y1="227" x2="513" y2="227"/><line x1="50" y1="391" x2="513" y2="391"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M276,216 L281,216 M276,205 L281,205 M276,183 L281,183 M276,172 L281,172 M276,150 L281,150 M276,139 L281,139 M276,117 L281,117 M276,106 L281,106 M276,83.9 L281,83.9 M276,73 L281,73 M276,238 L281,238 M276,249 L281,249 M276,260 L281,260 M276,270 L281,270 M276,281 L281,281 M276,292 L281,292 M276,292 L281,292 M276,303 L281,303 M276,314 L281,314 M276,325 L281,325 M276,336 L281,336 M276,347 L281,347 M276,358 L281,358 M276,369 L281,369 M276,380 L281,380 M276,391 L281,391 " fill="none"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M297,391 L297,396 M312,391 L312,396 M343,391 L343,396 M358,391 L358,396 M389,391 L389,396 M405,391 L405,396 M436,391 L436,396 M451,391 L451,396 M482,391 L482,396 M497,391 L497,396 M266,391 L266,396 M250,391 L250,396 M220,391 L220,396 M204,391 L204,396 M173,391 L173,396 M158,391 L158,396 M127,391 L127,396 M112,391 L112,396 M80.8,391 L80.8,396 M65.4,391 L65.4,396 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M271,194 L281,194 M271,161 L281,161 M271,128 L281,128 M271,94.9 L281,94.9 M271,62 L281,62 M271,260 L281,260 M271,292 L281,292 M271,325 L281,325 M271,358 L281,358 M271,391 L281,391 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M281,391 L281,401 M328,391 L328,401 M374,391 L374,401 M420,391 L420,401 M466,391 L466,401 M513,391 L513,401 M281,391 L281,401 M235,391 L235,401 M189,391 L189,401 M143,391 L143,401 M96.3,391 L96.3,401 M50,391 L50,401 " fill="none"/></g>
+<g id="plotLabels">
+<text x="278" y="407" transform = "rotate(90 278 407 )" font-size="12" font-family="Verdana">0.00</text>
+<text x="324" y="407" transform = "rotate(90 324 407 )" font-size="12" font-family="Verdana">2.00</text>
+<text x="370" y="407" transform = "rotate(90 370 407 )" font-size="12" font-family="Verdana">4.00</text>
+<text x="416" y="407" transform = "rotate(90 416 407 )" font-size="12" font-family="Verdana">6.00</text>
+<text x="463" y="407" transform = "rotate(90 463 407 )" font-size="12" font-family="Verdana">8.00</text>
+<text x="509" y="407" transform = "rotate(90 509 407 )" font-size="12" font-family="Verdana">1.00e1</text>
+<text x="278" y="407" transform = "rotate(90 278 407 )" font-size="12" font-family="Verdana">0.00</text>
+<text x="231" y="407" transform = "rotate(90 231 407 )" font-size="12" font-family="Verdana">-2.00</text>
+<text x="185" y="407" transform = "rotate(90 185 407 )" font-size="12" font-family="Verdana">-4.00</text>
+<text x="139" y="407" transform = "rotate(90 139 407 )" font-size="12" font-family="Verdana">-6.00</text>
+<text x="92.7" y="407" transform = "rotate(90 92.7 407 )" font-size="12" font-family="Verdana">-8.00</text>
+<text x="46.4" y="407" transform = "rotate(90 46.4 407 )" font-size="12" font-family="Verdana">-1.00e1</text>
+<text x="265" y="196" text-anchor="end" font-size="12" font-family="Verdana">2.0</text>
+<text x="265" y="163" text-anchor="end" font-size="12" font-family="Verdana">4.0</text>
+<text x="265" y="130" text-anchor="end" font-size="12" font-family="Verdana">6.0</text>
+<text x="265" y="97.3" text-anchor="end" font-size="12" font-family="Verdana">8.0</text>
+<text x="265" y="64.4" text-anchor="end" font-size="12" font-family="Verdana">10.0</text>
+<text x="265" y="262" text-anchor="end" font-size="12" font-family="Verdana">-2.0</text>
+<text x="265" y="295" text-anchor="end" font-size="12" font-family="Verdana">-4.0</text>
+<text x="265" y="328" text-anchor="end" font-size="12" font-family="Verdana">-6.0</text>
+<text x="265" y="361" text-anchor="end" font-size="12" font-family="Verdana">-8.0</text>
+<text x="265" y="394" text-anchor="end" font-size="12" font-family="Verdana">-10.0</text></g>
+<g id="yLabel">
+<text x="40.2" y="227" text-anchor="middle" transform = "rotate(-90 40.2 227 )" font-size="14" font-family="Verdana">Y-axis</text></g>
+<g id="xLabel">
+<text x="281" y="484" text-anchor="middle" font-size="14" font-family="Verdana">X-axis</text></g>
+<g id="plotLines" stroke-width="2"><g clip-path="url(#plot_window)" stroke="rgb(0,0,0)"><path d="M50,-1.39e+003 S68.5,-1.13e+003 73.1,-1.07e+003 S91.6,-847 96.3,-794 S115,-593 119,-547 S138,-373 143,-333 S161,-185 166,-152 S184,-30.2 189,-3.84 S207,91.6 212,111 S230,181 235,194 S254,236 258,243 S277,260 281,260 S300,250 304,243 S323,207 328,194 S346,131 351,111 S369,22.5 374,-3.84 S392,-119 397,-152 S415,-294 420,-333 S439,-501 443,-547 S462,-741 466,-794 S485,-1.01e+003 489,-1.07e+003 S513,-1.42e+003 513,-1.39e+003 " fill="none"/></g>
+</g>
+<g id="plotPoints" clip-path="url(#plot_window)"><g stroke="rgb(0,0,0)" fill="rgb(255,0,0)"><circle cx="281" cy="227" r="5"/><circle cx="304" cy="210" r="5"/><circle cx="328" cy="203" r="5"/><circle cx="351" cy="198" r="5"/><circle cx="374" cy="194" r="5"/><circle cx="397" cy="190" r="5"/><circle cx="420" cy="186" r="5"/><circle cx="443" cy="183" r="5"/><circle cx="466" cy="180" r="5"/><circle cx="489" cy="177" r="5"/></g>
+<g stroke="rgb(0,0,0)" fill="rgb(255,165,0)"><circle cx="212" cy="111" r="2"/><circle cx="235" cy="194" r="2"/><circle cx="258" cy="243" r="2"/><circle cx="281" cy="260" r="2"/><circle cx="304" cy="243" r="2"/><circle cx="328" cy="194" r="2"/><circle cx="351" cy="111" r="2"/></g>
+<g stroke="rgb(0,0,0)" fill="rgb(255,255,0)"><rect x="184" y="370" width="10" height="10"/><rect x="207" y="337" width="10" height="10"/><rect x="230" y="304" width="10" height="10"/><rect x="253" y="271" width="10" height="10"/><rect x="276" y="238" width="10" height="10"/><rect x="299" y="205" width="10" height="10"/><rect x="323" y="172" width="10" height="10"/><rect x="346" y="139" width="10" height="10"/><rect x="369" y="106" width="10" height="10"/><rect x="392" y="73.5" width="10" height="10"/></g>
+</g>
+<g id="limitPoints" stroke="rgb(128,128,128)"><polygon points=" 45,217 55,217 50,227"/><polygon points=" 68.1,217 78.1,217 73.1,227"/><polygon points=" 68.1,217 78.1,217 73.1,227"/><polygon points=" 91.3,217 101,217 96.3,227"/><polygon points=" 91.3,217 101,217 96.3,227"/><polygon points=" 114,217 124,217 119,227"/><polygon points=" 114,217 124,217 119,227"/><polygon points=" 138,217 148,217 143,227"/><polygon points=" 138,217 148,217 143,227"/><polygon points=" 161,217 171,217 166,227"/><polygon points=" 161,217 171,217 166,227"/><polygon points=" 184,217 194,217 189,227"/><polygon points=" 184,217 194,217 189,227"/><polygon points=" 207,217 217,217 212,227"/><polygon points=" 207,217 217,217 212,227"/><polygon points=" 230,217 240,217 235,227"/><polygon points=" 230,217 240,217 235,227"/><polygon points=" 253,217 263,217 258,227"/><polygon points=" 253,217 263,217 258,227"/></g>
+<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,224)" stroke-width="1"><rect x="527" y="62" width="161" height="144"/><rect x="527" y="62" width="161" height="144"/></g>
+<g id="legendPoints"><g stroke="rgb(0,0,0)" fill="rgb(255,0,0)" stroke-width="2"><circle cx="543" cy="126" r="5"/><line x1="567" y1="126" x2="583" y2="126"/></g>
+<g stroke="rgb(0,0,0)" fill="rgb(255,165,0)" stroke-width="2"><circle cx="543" cy="158" r="2"/><line x1="567" y1="158" x2="583" y2="158"/></g>
+<g stroke="rgb(0,0,0)" fill="rgb(255,255,0)" stroke-width="2"><rect x="538" y="185" width="10" height="10"/><line x1="567" y1="190" x2="583" y2="190"/></g>
+</g>
+<g id="legendText">
+<text x="607" y="94" text-anchor="middle" font-size="16" font-family="Verdana">Unicode &#x3A9;&#x3A6;</text>
+<text x="591" y="126" font-size="16" font-family="Verdana">Sqrt(x)</text>
+<text x="591" y="158" font-size="16" font-family="Verdana">-2 + x^2</text>
+<text x="591" y="190" font-size="16" font-family="Verdana">-1 + 2x</text></g>
+<g id="title" fill="rgb(255,0,0)">
+<text x="350" y="40" text-anchor="middle" font-size="20" font-family="Verdana">./test_XYPM_XaxisBottomYAxisXLabBelowYLabLeftXDYH</text></g>
+<g id="plotXValues"></g>
+<g id="plotYValues"></g>
+</svg>
