@@ -1,3 +1,3 @@
 /**/*.log
 /**/*.bat
-
+/doc/logs/*.log
