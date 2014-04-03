@@ -2,4 +2,6 @@
 /**/*.bat
 /**/log/
 /doc/logs/*.log
-/doc/log/
+/doc/logs/
+/example/logs/
+/test/logs/
