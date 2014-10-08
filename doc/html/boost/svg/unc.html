@@ -35,31 +35,31 @@
 <span class="keyword">class</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">:</span> <span class="keyword">public</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">char_traits</span><span class="special">&lt;</span> <span class="keyword">char</span> <span class="special">&gt;</span> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="unc.html#boost.svg.uncconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="unc.html#id443572-bb"><span class="identifier">unc</span></a><span class="special">(</span><span class="keyword">double</span> <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">float</span> <span class="special">=</span> <span class="special">-</span><span class="number">1</span><span class="special">.</span><span class="identifier">f</span><span class="special">,</span> 
+  <a class="link" href="unc.html#id431916-bb"><span class="identifier">unc</span></a><span class="special">(</span><span class="keyword">double</span> <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">float</span> <span class="special">=</span> <span class="special">-</span><span class="number">1</span><span class="special">.</span><span class="identifier">f</span><span class="special">,</span> 
       <span class="keyword">short</span> <span class="keyword">unsigned</span> <span class="special">=</span> <span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">numeric_limits</span><span class="special">&lt;</span> <span class="keyword">unsigned</span> <span class="keyword">short</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">max</span><span class="special">)</span><span class="special">(</span><span class="special">)</span><span class="special">,</span> 
       <span class="keyword">short</span> <span class="keyword">unsigned</span> <span class="special">=</span> <span class="number">0U</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span> <a class="link" href="unc.html#id443563-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span> <a class="link" href="unc.html#id431886-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="unc.html#id443360-bb">public member functions</a></span>
-  <span class="keyword">short</span> <span class="keyword">unsigned</span> <a class="link" href="unc.html#id443344-bb"><span class="identifier">deg_free</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="unc.html#id443359-bb"><span class="identifier">deg_free</span></a><span class="special">(</span><span class="keyword">short</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="unc.html#id443384-bb"><span class="keyword">operator</span><span class="special">&lt;</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="unc.html#id443375-bb"><span class="keyword">operator</span><span class="special">&lt;</span></a><span class="special">(</span><a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="unc.html#id443431-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">short</span> <span class="keyword">unsigned</span> <a class="link" href="unc.html#id443436-bb"><span class="identifier">types</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="unc.html#id443480-bb"><span class="identifier">types</span></a><span class="special">(</span><span class="keyword">short</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">float</span> <a class="link" href="unc.html#id443455-bb"><span class="identifier">uncertainty</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="unc.html#id443510-bb"><span class="identifier">uncertainty</span></a><span class="special">(</span><span class="keyword">float</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="unc.html#id443498-bb"><span class="identifier">value</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="unc.html#id443549-bb"><span class="identifier">value</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="unc.html#id431657-bb">public member functions</a></span>
+  <span class="keyword">short</span> <span class="keyword">unsigned</span> <a class="link" href="unc.html#id431645-bb"><span class="identifier">deg_free</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="unc.html#id431670-bb"><span class="identifier">deg_free</span></a><span class="special">(</span><span class="keyword">short</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="unc.html#id431680-bb"><span class="keyword">operator</span><span class="special">&lt;</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="unc.html#id431734-bb"><span class="keyword">operator</span><span class="special">&lt;</span></a><span class="special">(</span><a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="unc.html#id431704-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">short</span> <span class="keyword">unsigned</span> <a class="link" href="unc.html#id431760-bb"><span class="identifier">types</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="unc.html#id431759-bb"><span class="identifier">types</span></a><span class="special">(</span><span class="keyword">short</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">float</span> <a class="link" href="unc.html#id431799-bb"><span class="identifier">uncertainty</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="unc.html#id431783-bb"><span class="identifier">uncertainty</span></a><span class="special">(</span><span class="keyword">float</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="unc.html#id431837-bb"><span class="identifier">value</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="unc.html#id431843-bb"><span class="identifier">value</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="unc.html#id443610-bb">friend functions</a></span>
-  <span class="keyword">friend</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="unc.html#id443627-bb"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a><span class="special">&lt;</span> <span class="identifier">correlated</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="unc.html#id431923-bb">friend functions</a></span>
+  <span class="keyword">friend</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="unc.html#id431940-bb"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a><span class="special">&lt;</span> <span class="identifier">correlated</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
   <span class="keyword">friend</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> 
-  <a class="link" href="unc.html#id443645-bb"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <a class="link" href="unc.html" title="Class template unc">unc</a><span class="special">,</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="unc.html#id432005-bb"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <a class="link" href="unc.html" title="Class template unc">unc</a><span class="special">,</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1242244"></a><h2>Description</h2>
+<a name="id1258600"></a><h2>Description</h2>
 <p>This version assumes uncorrelated uncertainties (by far the most common case). </p>
 <p><span class="bold"><strong>See Also:</strong></span></p>
 <p><a href="http://www.measurementuncertainty.org/" target="_top">http://www.measurementuncertainty.org/</a> <br>
@@ -69,30 +69,30 @@ Eurochem, Quantifying uncertainty in analytical measurements. </p>
 <p>
 </p>
 <div class="refsect2">
-<a name="id1242282"></a><h3>
+<a name="id1258606"></a><h3>
 <a name="boost.svg.uncconstruct-copy-destruct"></a><code class="computeroutput">unc</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a name="id443572-bb"></a><span class="identifier">unc</span><span class="special">(</span><span class="keyword">double</span> v <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">float</span> u <span class="special">=</span> <span class="special">-</span><span class="number">1</span><span class="special">.</span><span class="identifier">f</span><span class="special">,</span> 
+<pre class="literallayout"><a name="id431916-bb"></a><span class="identifier">unc</span><span class="special">(</span><span class="keyword">double</span> v <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">float</span> u <span class="special">=</span> <span class="special">-</span><span class="number">1</span><span class="special">.</span><span class="identifier">f</span><span class="special">,</span> 
     <span class="keyword">short</span> <span class="keyword">unsigned</span> df <span class="special">=</span> <span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">numeric_limits</span><span class="special">&lt;</span> <span class="keyword">unsigned</span> <span class="keyword">short</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">max</span><span class="special">)</span><span class="special">(</span><span class="special">)</span><span class="special">,</span> 
     <span class="keyword">short</span> <span class="keyword">unsigned</span> ty <span class="special">=</span> <span class="number">0U</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Constructor allowing an unc to be constructed from just value providing defaults for all other parameters. Note the defaults so that unspecified variables have 'undefined' status. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span> <a name="id443563-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span> <a name="id431886-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
 <p>Assignment simply copies all values, including those with 'undefined' status.</p>
 <p>to make chainable. </p>
 </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1242480"></a><h3>
-<a name="id443360-bb"></a><code class="computeroutput">unc</code> public member functions</h3>
+<a name="id1256609"></a><h3>
+<a name="id431657-bb"></a><code class="computeroutput">unc</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">short</span> <span class="keyword">unsigned</span> <a name="id443344-bb"></a><span class="identifier">deg_free</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">short</span> <span class="keyword">unsigned</span> <a name="id431645-bb"></a><span class="identifier">deg_free</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -107,22 +107,22 @@ Eurochem, Quantifying uncertainty in analytical measurements. </p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id443359-bb"></a><span class="identifier">deg_free</span><span class="special">(</span><span class="keyword">short</span> unsigned<span class="special">)</span><span class="special">;</span></pre>Set degrees of freedom, usually = number of observations -1;. <p>Set degrees of freedom, usually = number of observations -1; </p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id431670-bb"></a><span class="identifier">deg_free</span><span class="special">(</span><span class="keyword">short</span> unsigned<span class="special">)</span><span class="special">;</span></pre>Set degrees of freedom, usually = number of observations -1;. <p>Set degrees of freedom, usually = number of observations -1; </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id443384-bb"></a><span class="keyword">operator</span><span class="special">&lt;</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span> rhs<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id431680-bb"></a><span class="keyword">operator</span><span class="special">&lt;</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span> rhs<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>Less operator only compares the value, ignoring any uncertainty information. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id443375-bb"></a><span class="keyword">operator</span><span class="special">&lt;</span><span class="special">(</span><a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span> rhs<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id431734-bb"></a><span class="keyword">operator</span><span class="special">&lt;</span><span class="special">(</span><a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span> rhs<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>Less operator only compares the value, ignoring any uncertainty information. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id443431-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span> rhs<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id431704-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&amp;</span> rhs<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>Equality operator only compares the value, ignoring any uncertainty information. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">short</span> <span class="keyword">unsigned</span> <a name="id443436-bb"></a><span class="identifier">types</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">short</span> <span class="keyword">unsigned</span> <a name="id431760-bb"></a><span class="identifier">types</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <p>
@@ -145,10 +145,10 @@ Eurochem, Quantifying uncertainty in analytical measurements. </p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id443480-bb"></a><span class="identifier">types</span><span class="special">(</span><span class="keyword">short</span> unsigned<span class="special">)</span><span class="special">;</span></pre>Set other information about the value. <p>Set other information about the uncertain value. </p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id431759-bb"></a><span class="identifier">types</span><span class="special">(</span><span class="keyword">short</span> unsigned<span class="special">)</span><span class="special">;</span></pre>Set other information about the value. <p>Set other information about the uncertain value. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">float</span> <a name="id443455-bb"></a><span class="identifier">uncertainty</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">float</span> <a name="id431799-bb"></a><span class="identifier">uncertainty</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <p>
@@ -171,10 +171,10 @@ Eurochem, Quantifying uncertainty in analytical measurements. </p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id443510-bb"></a><span class="identifier">uncertainty</span><span class="special">(</span><span class="keyword">float</span><span class="special">)</span><span class="special">;</span></pre>Set estimate of uncertainty, typically standard deviation. <p>Set estimate of uncertainty, typically standard deviation. </p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id431783-bb"></a><span class="identifier">uncertainty</span><span class="special">(</span><span class="keyword">float</span><span class="special">)</span><span class="special">;</span></pre>Set estimate of uncertainty, typically standard deviation. <p>Set estimate of uncertainty, typically standard deviation. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id443498-bb"></a><span class="identifier">value</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id431837-bb"></a><span class="identifier">value</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <p>
@@ -197,7 +197,7 @@ Eurochem, Quantifying uncertainty in analytical measurements. </p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id443549-bb"></a><span class="identifier">value</span><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span></pre>Set most likely value, typically the mean. <p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id431843-bb"></a><span class="identifier">value</span><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span></pre>Set most likely value, typically the mean. <p>
 </p>
 <p>Set most likely value, typically the mean. </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -214,12 +214,12 @@ Eurochem, Quantifying uncertainty in analytical measurements. </p>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1243048"></a><h3>
-<a name="id443610-bb"></a><code class="computeroutput">unc</code> friend functions</h3>
+<a name="id1261252"></a><h3>
+<a name="id431923-bb"></a><code class="computeroutput">unc</code> friend functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
 <pre class="literallayout"><span class="keyword">friend</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> 
-<a name="id443627-bb"></a><span class="keyword">operator</span><span class="special">&lt;&lt;</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">,</span> <span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a><span class="special">&lt;</span> <span class="identifier">correlated</span> <span class="special">&gt;</span> <span class="special">&amp;</span> u<span class="special">)</span><span class="special">;</span></pre>Output an value with (if defined) uncertainty and degrees of freedom (and type). For example: "1.23 +/- 0.01 (13)".<br>
+<a name="id431940-bb"></a><span class="keyword">operator</span><span class="special">&lt;&lt;</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">,</span> <span class="keyword">const</span> <a class="link" href="unc.html" title="Class template unc">unc</a><span class="special">&lt;</span> <span class="identifier">correlated</span> <span class="special">&gt;</span> <span class="special">&amp;</span> u<span class="special">)</span><span class="special">;</span></pre>Output an value with (if defined) uncertainty and degrees of freedom (and type). For example: "1.23 +/- 0.01 (13)".<br>
 . <p>Note that the uncertainty is input and stored as one standard deviation, but output multiplied for a user configurable 'confidence factor' plusminus, default is two standard deviation for about 95% confidence (but could also be one for 67% or 3 for 99% confidence). </p>
 <p>Output a single value with (if defined) uncertainty and degrees of freedom (and type). For example: "1.23 +/- 0.01 (13)".<br>
 /details Note that the uncertainty is input and stored as one standard deviation, but output multiplied for a user configurable 'confidence factor' plusminus, default two for about 95% confidence (but could also be one for 67% or 3 for 99% confidence).</p>
@@ -229,7 +229,7 @@ os &lt;&lt; " +or-" &lt;&lt; u.uncertainty_; Plain ANSI 7 bit code chars.</p>
 </li>
 <li class="listitem">
 <pre class="literallayout"><span class="keyword">friend</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> 
-<a name="id443645-bb"></a><span class="keyword">operator</span><span class="special">&lt;&lt;</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <a class="link" href="unc.html" title="Class template unc">unc</a><span class="special">,</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&gt;</span> <span class="special">&amp;</span> u<span class="special">)</span><span class="special">;</span></pre>
+<a name="id432005-bb"></a><span class="keyword">operator</span><span class="special">&lt;&lt;</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <a class="link" href="unc.html" title="Class template unc">unc</a><span class="special">,</span> <a class="link" href="unc.html" title="Class template unc">unc</a> <span class="special">&gt;</span> <span class="special">&amp;</span> u<span class="special">)</span><span class="special">;</span></pre>
 <p>Output a pair of (X and Y) values with (if defined) uncertainty and degrees of freedom.</p>
 <p>For example: "1.23 +/- 0.01 (13), 3.45 +/- 0.06 (78)". </p>
 </li>

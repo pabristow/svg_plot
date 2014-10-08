@@ -1,6 +1,6 @@
 #index.idx for SVG_plot Quickbook, Doxygen and Auto-index.
 
-#!debug "\<\w*\>" 
+#!debug "\<\w*\>"
 
 # SVG_plot Header files.
 !scan-path "boost/svg_plot" ".*\.hpp" true
@@ -28,7 +28,7 @@ greek
 grid  \<grid\w*\>
 quartile \<quartile\w*\>
 histogram
-intersect <\w*\intersect\w*\>
+intersect \<\w*\intersect\w*\>
 Inkscape
 ioflags
 origin
@@ -44,7 +44,7 @@ range  \<\w*\range\w*\>
 scaling \<\w*\scal\w*\>
 series
 stroke
-SVG 
+SVG
 tick \<\w*\tick\w*\>
 title
 Unicode \<unicode\w*\>

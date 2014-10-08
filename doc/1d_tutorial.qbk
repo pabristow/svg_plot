@@ -345,6 +345,11 @@ The resulting plot is
 See [@../../example/demo_1d_uncertainty.cpp demo_1d_uncertainty.cpp]
 for full source code and sample output.
 
+If the plot does not meet you expectations, your could list all the hundreds of options with function show_1d_settings.
+
+And if all else fails, defining the macro BOOST_SVG_DIAGNOSIS will trigger output of more information
+about which points are being ignored as being outside the plot window, a common cause of missing lines.
+
 [endsect] [/section:demo_1d_uncertainty Demonstration of using 1D data that includes information about its uncertainty]
 
 [endsect] [/section:tutorial_1d 1D Tutorials]

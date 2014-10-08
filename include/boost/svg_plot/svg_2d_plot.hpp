@@ -12,7 +12,7 @@
  */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2007, 2008, 2009, 2012, 2013
+// Copyright Paul A. Bristow 2007, 2008, 2009, 2012, 2013, 2014
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -42,7 +42,6 @@
 #include <boost/svg_plot/detail/numeric_limits_handling.hpp>
 #include <boost/svg_plot/detail/functors.hpp>
 #include <boost/svg_plot/detail/auto_axes.hpp>
-using boost::svg::detail::limit_NaN;
 
 #include <map> // for map & multimap
 #include <string>
@@ -1273,7 +1272,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             }
             else
             {
-              std::cout << " Rotation of Y label rotation" << y_ticks_.label_rotation_ << "not yet implemented" << std::endl;
+              std::cout << " Rotation of Y label" << y_ticks_.label_rotation_ << "not yet implemented!" << std::endl;
             }
           }
           else if (y_ticks_.major_value_labels_side_ > 0)
@@ -1663,7 +1662,9 @@ my_plot.background_color(ghostwhite) // Whole image.
         }
         else
         {// Do nothing?  warn?
-          // std::cout << "y minor tick OUTside " << x_left << ' ' << y << ' ' << x_right << std::endl;
+#ifdef BOOST_SVG_DIAGNOSTICS
+   std::cout << "y minor tick OUTside " << x_left << ' ' << y << ' ' << x_right << std::endl;
+#endif
         }
       } // void draw_y_minor_tick
 
@@ -1682,6 +1683,9 @@ my_plot.background_color(ghostwhite) // Whole image.
         bool is_fill = !series.line_style_.area_fill_.is_blank();
         path.style().fill_on(is_fill); // Ensure includes a fill="none" if no fill.
 
+        size_t ignored = 0;  // Data points that lie outside the plot window.
+        size_t lined = 0;  // OK data points that lie inside the plot window.
+
         double prev_x; // Previous X and Y of a data point.
         double prev_y;
         if(series.series_.size() > 1)
@@ -1692,12 +1696,20 @@ my_plot.background_color(ghostwhite) // Whole image.
           // we first have to move from the X-axis (y = 0) to the first point,
           // and again to the X-axis (y = 0) at the end after the last point.
 
-          // std::multimap<double, double> was prev_x = (*j).first;
+          // Using std::multimap<double, double> was prev_x = (*j).first;
+        find_first_good_point:
           Meas prev_ux = (*j).first;
-          //unc<false> prev_ux = (*j).first;
+          //unc<false> prev_ux = (*j).first; for unc rather than Meas
           prev_x = prev_ux.value(); // 1st point X-value.
           prev_y = 0.; // y = 0, so on horizontal X-axis.
           transform_point(prev_x, prev_y);
+          if ((prev_x < plot_left_) || (prev_x > plot_right_) || (prev_y < plot_top_) || (prev_y > plot_bottom_))
+          { // Data point is OUTside plot window, so can't draw a line from this point.
+            // so try the next point to see if that is 'good' - inside the window.
+            ++j;
+            goto find_first_good_point;
+          }
+
           if(is_fill == true)
           { // Move to 1st point.
             //path.style().fill_color(series.line_style_.area_fill_); // Duplicates so no longer needed?
@@ -1705,8 +1717,14 @@ my_plot.background_color(ghostwhite) // Whole image.
           }
           // std::multimap<double, double> was transform_y(prev_y = (*j).second);
           unc<false> prev_uy = (*j).second;
+          // Should be Meas prev_uy = (*j).second;?????
           prev_y = prev_uy.value();
           transform_y(prev_y);
+          if ((prev_y < plot_top_) || (prev_y > plot_bottom_))
+          { //y is NOT in the plot window, so no good for start of line.
+            j++;
+            goto find_first_good_point;
+          }
           if(is_fill == true)
           { // Area fill wanted.
             //path.style().fill_color(series.line_style_.area_fill_); // Duplicates so no longer needed?
@@ -1727,10 +1745,29 @@ my_plot.background_color(ghostwhite) // Whole image.
             unc<false> temp_uy = (*j).second;
             temp_y = temp_uy.value();
             transform_point(temp_x, temp_y);
-            path.L(temp_x, temp_y); // Line to next point.
-            prev_x = temp_x;
-            prev_y = temp_y;
+            // 
+            if ((temp_x > plot_left_) && (temp_x < plot_right_) && (temp_y > plot_top_) && (temp_y < plot_bottom_))
+            { // Data point is inside plot window, so draw a line to the point.
+              path.L(temp_x, temp_y); // Line to next point.
+              prev_x = temp_x;
+              prev_y = temp_y;
+              lined++;
+            }
+            else
+            { // Ignore any data point values outside the plot window.
+              // Not sure that this will do if area fill chosen.
+              ignored++;
+#ifdef BOOST_SVG_DIAGNOSTICS
+              //std::cout << "Ignoring x = " << temp_x << ", y = " << temp_y << std::endl;
+#endif
+            }
+
           } // for j'th point
+#ifdef BOOST_SVG_DIAGNOSTICS
+            std::cout << "Draw_lines plotted " << lined << " lines, and ignored " << ignored
+            << ", size of series = " << series.series_.size() << std::endl;
+#endif
+           // BOOST_ASSERT(lined + ignored == series.series_.size());
 
           if(is_fill == true)
           { // Area fill wanted.
@@ -1744,11 +1781,15 @@ my_plot.background_color(ghostwhite) // Whole image.
 
       void draw_bezier_lines(const svg_2d_plot_series& series)
       { //! Add Bezier curve line between data points.
+        //! At present it is assumed that all data points lie within the plot window.
+        //!  If this is not true, then strange and unpredictable curves will be produced!
+
         g_element& g_ptr = image_.g(detail::PLOT_DATA_LINES).add_g_element();
         g_ptr.clip_id(plot_window_clip_);
         g_ptr.style().stroke_color(series.line_style_.stroke_color_);
         path_element& path = g_ptr.path();
 
+        // Do not store or use uncertainty info for Bezier.
         std::pair<double, double> n; // current point.
         std::pair<double, double> n_minus_1; // penultimate.
         std::pair<double, double> n_minus_2; // 'pen-penultimate'.
@@ -1758,7 +1799,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         bool is_fill = !series.line_style_.area_fill_.is_blank();
         if(is_fill == false)
         {
-          path.style().fill_on(false); // default path constructor is false
+          path.style().fill_on(false); // Default path constructor is false.
         }
         else
         { // !is_blank so DO want area fill.
@@ -1774,10 +1815,11 @@ my_plot.background_color(ghostwhite) // Whole image.
           n_minus_1 = std::make_pair(un_minus_1.first.value(), un_minus_1.second.value()); // X and Y values.
           //n_minus_1 = *(iter++);  // begin()
           transform_pair(n_minus_1);
-
+          // Should check that point is inside plot window. TODO?
           std::pair<Meas, unc<false> > un = *(iter++); // middle
           n = std::make_pair(un.first.value(), un.second.value()); // X and Y values.
           transform_pair(n);
+          // Should check that point is inside plot window. TODO?
           path.M(n_minus_1.first, n_minus_1.second); // move m_minus_1, the 1st data point.
 
           double control = 0.1;
@@ -1797,6 +1839,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             std::pair<Meas, unc<false> > un = *iter; // middle
             n = std::make_pair(un.first.value(), un.second.value()); // X and Y values.
             transform_pair(n);
+            // Should check that point is inside plot window. TODO?
 
             back_vtr.first = ((n_minus_1.first - n.first) + // (x diff - x previous diff) * control
               (n_minus_2.first - n_minus_1.first)) * control;
@@ -1855,6 +1898,9 @@ my_plot.background_color(ghostwhite) // Whole image.
             .fill_color(serieses_[i].point_style_.fill_color_)
             .stroke_color(serieses_[i].point_style_.stroke_color_);
 
+          size_t ignored = 0;
+          size_t plotted = 0;
+
           for(std::multimap<Meas, unc<false> >::const_iterator j = serieses_[i].series_.begin();
           //for(std::multimap<unc<false>, unc<false> >::const_iterator j = serieses_[i].series_.begin();
             j != serieses_[i].series_.end(); ++j)
@@ -1869,8 +1915,9 @@ my_plot.background_color(ghostwhite) // Whole image.
             //double vy = y; // Note the true Y value.
             transform_point(x, y); // Note x and y are now SVG coordinates.
             if((x > plot_left_) && (x < plot_right_) && (y > plot_top_) && (y < plot_bottom_))
-            { // Is inside plot window, so draw a point.
-              draw_plot_point(x, y, g_ptr, serieses_[i].point_style_, ux, uy); // Add the unc to allow access to uncertainty.
+            { // Data point is inside plot window, so draw a point.
+              plotted++;
+              draw_plot_point(x, y, g_ptr, serieses_[i].point_style_, ux, uy); // Add the unc ux and uy to allow access to uncertainty.
               // TODO might refactor so that only pass ux, and uy.
               g_element& g_ptr_vx = image_.g(detail::PLOT_X_POINT_VALUES).add_g_element();
               if (x_values_on_)
@@ -1888,14 +1935,37 @@ my_plot.background_color(ghostwhite) // Whole image.
               { // Show the two values of the X & Y data as a pair.
                 draw_plot_point_values(x, y, g_ptr_vx, g_ptr_vy, x_values_style_, y_values_style_, ux, uy);
               }
-            } // if in side window
+            } // if inside plot window
+            else
+            { // Ignore any data point values outside the plot window.
+              ignored++;
+#ifdef BOOST_SVG_DIAGNOSTICS
+              std::cout << "Ignoring x = " << x << ", y = " << y << std::endl;
+#endif
+            }
           } // for j
-        } // for normal points
+#ifdef BOOST_SVG_DIAGNOSTICS
+          std::cout << plotted << " plotted " << ", and " << ignored << " ignored, " 
+            << "size of series = " << serieses_[i].series_.size() << std::endl;
+          BOOST_ASSERT(plotted + ignored == serieses_[i].series_.size());
+#endif
+        } // for normal points.
 
-        // Draw all the abnormal 'at_limit' points.
+        //! Draw the abnormal 'at_limit' points (if any).
+
+        using boost::svg::detail::limit_NaN;
+
         for(unsigned int i = 0; i < serieses_.size(); ++i)
         {
           g_element& g_ptr = image_.g(detail::PLOT_LIMIT_POINTS);
+          size_t limit_point_in_window_count = 0;
+          size_t limit_point_edge_window_count = 0;
+          size_t inf_count = 0;
+          size_t x_inf_count = 0;
+          size_t y_inf_count = 0;
+          size_t nan_count = 0;
+          size_t x_nan_count = 0;
+          size_t y_nan_count = 0;
 
           for(std::multimap<double,double>::const_iterator j = serieses_[i].series_limits_.begin();
             j!=serieses_[i].series_limits_.end(); ++j)
@@ -1904,6 +1974,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             y = j->second;
             if (limit_NaN(x))
             { // x is NaN (rather than too big or too small).
+              x_nan_count++;
               x = 0.;
               transform_x(x);
               // If include zero, OK, else plot on left or right as appropriate.
@@ -1919,6 +1990,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             }
             else
             { // x Not NaN (so is inf or max)
+              x_inf_count++;
               transform_x(x);
               if (x < plot_left_)
               {
@@ -1932,6 +2004,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             }
             if (limit_NaN(y))
             { // y is NaN (rather than too big or too small).
+              y_nan_count++;
               y = 0.;
               transform_y(y);
               // If include zero, OK, else plot on left or right as appropriate.
@@ -1947,6 +2020,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             }
             else
             { // y Not NaN (so is inf or max).
+              y_inf_count++;
               transform_y(y);
               if (y < plot_top_)
               {
@@ -1963,15 +2037,27 @@ my_plot.background_color(ghostwhite) // Whole image.
             serieses_[i].limit_point_style_.fill_color_ = image_.g(detail::PLOT_LIMIT_POINTS).style().fill_color();
             // This is a kludge.  limit_point_style_ should probably be common to all data series.
 
-            draw_plot_point(x, y, g_ptr, serieses_[i].limit_point_style_, unc<false>(), unc<false>());  // No uncertainty info for values at limit infinity & NaN.
-
-            if((x > plot_left_)  && (x < plot_right_) && (y > plot_top_) && (y < plot_bottom_))
+            if((x > plot_left_) && (x < plot_right_) && (y > plot_top_) && (y < plot_bottom_))
             { // Is inside plot window, so draw a point.
               // draw_plot_point(x, y, g_ptr, plot_point_style(blank, blank, s, cone)); default.
               draw_plot_point(x, y, g_ptr, serieses_[i].limit_point_style_, unc<false>(), unc<false>());
+              limit_point_in_window_count++;
             }
-          }
-        } // limits point
+            else
+            { // Outside, or on edge of window.
+              draw_plot_point(x, y, g_ptr, serieses_[i].limit_point_style_, unc<false>(), unc<false>());  // No uncertainty info for values at limit infinity & NaN.
+              limit_point_edge_window_count++;
+            }
+          } // for limit point
+#ifdef BOOST_SVG_DIAGNOSTICS
+          std::cout << limit_point_in_window_count << " limit points in window, " << limit_point_edge_window_count  << " limits points on edge of window." << std::endl;
+          std::cout << "x " << x_nan_count << " NaNs, " << x_inf_count << " infinities, Y " << y_nan_count << " NaNs, " << y_inf_count << " infinities." << std::endl;
+#endif
+
+
+        } // for series
+
+
       } //  void draw_plot_points()
 
       void draw_bars()

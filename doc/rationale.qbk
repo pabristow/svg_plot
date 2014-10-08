@@ -7,6 +7,7 @@
 # 2010 Release as a [@http://sourceforge.net/projects/svgplot sourceforge project].
 # 2012 Full uncertainty handling added by Paul A. Bristow.
 # 2013 Update documentation to use C++11 and GIT.
+# 2014 Improved handling of values outside the plot window.
 
 [endsect] [/section:history  History]
 

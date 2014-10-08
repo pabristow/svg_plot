@@ -2275,7 +2275,8 @@ Data points can include their value, and optionally uncertainty and number of de
 </para><namespace name="boost">
 <namespace name="svg">
 <class name="svg_2d_plot"><purpose>Provides <classname alt="boost::svg::svg_2d_plot">svg_2d_plot</classname> data and member functions to create plots.<sbr/>
- Very many functions allow very fine control of the appearance and layout of plots, data markers and lines. </purpose><description><para><para><emphasis role="bold">See Also:</emphasis><para><classname alt="boost::svg::svg_2d_plot_series">svg_2d_plot_series</classname> that allows data values to be added. </para><para>svg_1d_plot.hpp for 1-D version.</para></para>
+ Very many functions allow very fine control of the appearance and layout of plots, data markers and lines. </purpose><description><para><para><emphasis role="bold">See Also:</emphasis><para><classname alt="boost::svg::svg_2d_plot_series">svg_2d_plot_series</classname> that allows data values to be added. </para></para>
+<para><emphasis role="bold">See Also:</emphasis><para>svg_1d_plot.hpp for 1-D version.</para></para>
 <classname alt="boost::svg::svg_2d_plot">svg_2d_plot</classname> allows us to store plot state locally in svg_plot.<sbr/>
  (We don't store it in svg because transforming the points after they are written to the document would be difficult. We store the Cartesian coordinates locally and transform them before we write them).<sbr/>
  (<classname alt="boost::svg::svg_2d_plot">svg_2d_plot</classname> inherits from axis_plot_frame.hpp containing functions common to 1 and 2-D). </para></description><method-group name="public member functions">
@@ -3195,7 +3196,8 @@ my_plot.background_color(ghostwhite) // Whole image.
 <header name="boost/svg_plot/svg_boxplot.hpp">
 <para>Create box plots in Scalable Vector Graphic (SVG) format. </para><para>Provides <computeroutput>svg_boxplot</computeroutput> data and functions to create plots, <computeroutput>and</computeroutput> svg_boxplot_series to allow data values to be added to the boxplot.<sbr/>
  Very many functions allow fine control of the appearance and layout of plots and data markers. (Items common to 1D, 2D and boxplot use <computeroutput>axis_plot_frame</computeroutput>).</para><para>A convenient way of graphically depicting groups of numerical data through their five-number summaries.<sbr/>
-Show 1st quartile, median and 3rd quartile as a box. <ulink url="http://en.wikipedia.org/wiki/Boxplot">http://en.wikipedia.org/wiki/Boxplot</ulink></para><para><para><emphasis role="bold">See Also:</emphasis><para>Some Implementations of the Boxplot: Michael Frigge, David C. Hoaglin and Boris Iglewicz The American Statistician, Vol. 43, No. 1 (Feb., 1989), pp. 50-54</para><para>The Bagplot: A Bivariate Boxplot Peter J. Rousseeuw, Ida Ruts and John W. Tukey The American Statistician, Vol. 53, No. 4 (Nov., 1999), pp. 382-387</para></para>
+Show 1st quartile, median and 3rd quartile as a box. <ulink url="http://en.wikipedia.org/wiki/Boxplot">http://en.wikipedia.org/wiki/Boxplot</ulink></para><para><para><emphasis role="bold">See Also:</emphasis><para>Some Implementations of the Boxplot: Michael Frigge, David C. Hoaglin and Boris Iglewicz The American Statistician, Vol. 43, No. 1 (Feb., 1989), pp. 50-54</para></para>
+<para><emphasis role="bold">See Also:</emphasis><para>The Bagplot: A Bivariate Boxplot Peter J. Rousseeuw, Ida Ruts and John W. Tukey The American Statistician, Vol. 53, No. 4 (Nov., 1999), pp. 382-387</para></para>
 <para>Jacob Voytko &amp; Paul A. Bristow </para>
 </para><namespace name="boost">
 <namespace name="svg">
@@ -3575,7 +3577,8 @@ But controlled by the intersection with Y-axis, so this only changes the default
 </para></description><returns><para>true if to append an ID or name to data point X values near data points markers. </para></returns></method>
 <method name="x_label"><type>std::string</type><description><para>
 </para></description><returns><para>the text to label the X-axis. </para></returns></method>
-<method name="x_label"><type><classname>svg_boxplot</classname> &amp;</type><parameter name="str"><paramtype>const std::string &amp;</paramtype></parameter><description><para>Set label for X axis (can also append optional units). <para><emphasis role="bold">See Also:</emphasis><para>x_label_units_on and </para><para>x_label_units</para></para>
+<method name="x_label"><type><classname>svg_boxplot</classname> &amp;</type><parameter name="str"><paramtype>const std::string &amp;</paramtype></parameter><description><para>Set label for X axis (can also append optional units). <para><emphasis role="bold">See Also:</emphasis><para>x_label_units_on and </para></para>
+<para><emphasis role="bold">See Also:</emphasis><para>x_label_units</para></para>
 
 </para></description><returns><para>Reference to <classname alt="boost::svg::svg_boxplot">svg_boxplot</classname> to make chainable. </para></returns></method>
 <method name="x_label_color"><type><classname>svg_boxplot</classname> &amp;</type><parameter name="col"><paramtype>const <classname>svg_color</classname> &amp;</paramtype></parameter><description><para>Set the font color for the X axis label.</para><para>
@@ -3710,7 +3713,8 @@ default = 0 (none). <note><para>: Must <emphasis role="bold">preceed</emphasis> 
 <method name="x_suffix"><type>const std::string</type><description><para>
 </para></description><returns><para>the suffix (only used if separator != "") </para></returns></method>
 <method name="x_tick_color"><type><classname>svg_boxplot</classname> &amp;</type><parameter name="col"><paramtype>const <classname>svg_color</classname> &amp;</paramtype></parameter><description><para>
-</para></description><returns><para>Y major ticks color.</para><para>Reference to <classname alt="boost::svg::svg_boxplot">svg_boxplot</classname> to make chainable. </para></returns></method>
+
+</para></description><returns><para>Y major ticks color.</para></returns><returns><para>Reference to <classname alt="boost::svg::svg_boxplot">svg_boxplot</classname> to make chainable. </para></returns></method>
 <method name="x_tick_color"><type><classname>svg_color</classname></type><description><para>
 </para></description><returns><para>Color of ticks on the X axis. </para></returns></method>
 <method name="x_tick_length"><type><classname>svg_boxplot</classname> &amp;</type><parameter name="length"><paramtype>unsigned int</paramtype></parameter><description><para>Set the length of major ticks on the X axis.</para><para>
@@ -3912,7 +3916,8 @@ Extreme outlier usually set at k = 3.</para></description></method>
 <method name="max_whisker_color"><type><classname>svg_color</classname></type><description><para>
 </para></description><returns><para>color of maximum whisker. </para></returns></method>
 <method name="max_whisker_width"><type><classname>svg_boxplot_series</classname> &amp;</type><parameter name="l"><paramtype>double</paramtype></parameter><description><para>
-</para></description><returns><para>line width of maximum whisker.</para><para>Reference to <computeroutput><classname alt="boost::svg::svg_boxplot_series">svg_boxplot_series</classname></computeroutput> to make chainable. </para></returns></method>
+
+</para></description><returns><para>line width of maximum whisker.</para></returns><returns><para>Reference to <computeroutput><classname alt="boost::svg::svg_boxplot_series">svg_boxplot_series</classname></computeroutput> to make chainable. </para></returns></method>
 <method name="max_whisker_width"><type>double</type><description><para>
 </para></description><returns><para>line width of maximum whisker. </para></returns></method>
 <method name="median_color"><type><classname>svg_boxplot_series</classname> &amp;</type><parameter name="color"><paramtype>const <classname>svg_color</classname> &amp;</paramtype></parameter><description><para>Set color of median line in box.</para><para>
@@ -4522,7 +4527,8 @@ See also browser conformance tests:<sbr/>
 <function name="string_svg_length"><type>double</type><parameter name="s"><paramtype>const std::string &amp;</paramtype></parameter><parameter name="style"><paramtype>const <classname>text_style</classname> &amp;</paramtype></parameter><description><para><ulink url="http://www.w3.org/TR/SVG/text.html#FontSizeProperty">http://www.w3.org/TR/SVG/text.html#FontSizeProperty</ulink> Font size is the height of the text's font, so width = wh * font_size.</para><para>Even after reading <ulink url="http://www.w3.org/TR/SVG/fonts.html,">http://www.w3.org/TR/SVG/fonts.html,</ulink><sbr/>
 unclear how to determine the exact width of digits, so an arbitrary average width height ratio wh = 0.7 is used as a good approximation. </para></description></function>
 <function name="strip_e0s"><type>const std::string</type><parameter name="s"><paramtype>std::string</paramtype></parameter><description><para>
-</para></description><returns><para>length of trimmed string (perhaps unchanged).</para><para>length of trimmed string (perhaps unchanged). </para></returns></function>
+
+</para></description><returns><para>length of trimmed string (perhaps unchanged).</para></returns><returns><para>length of trimmed string (perhaps unchanged). </para></returns></function>
 
 
 
@@ -4641,7 +4647,8 @@ os &lt;&lt; " +or-" &lt;&lt; u.uncertainty_; Plain ANSI 7 bit code chars.</para>
           <template-type-parameter name="T"><purpose><para>Built-in floating-point type, float, double or long double, or uncertain type unc. </para></purpose></template-type-parameter>
         </template><parameter name=""><paramtype>T</paramtype></parameter><description><para>Allow uncertainty (standard deviation) part of variables of class unc to be assigned to, and compared with float. 
 </para></description><description><para>
-</para></description><returns><para>zero always (because no uncertainty information is available for built-in double, float, or long double).</para><para>zero always (because no uncertainty information is available for built-in double, float, or long double). </para></returns></function>
+
+</para></description><returns><para>zero always (because no uncertainty information is available for built-in double, float, or long double).</para></returns><returns><para>zero always (because no uncertainty information is available for built-in double, float, or long double). </para></returns></function>
 <function name="unc_of"><type>float</type><template>
           <template-nontype-parameter name="correlated"><type>bool</type></template-nontype-parameter>
         </template><parameter name="v"><paramtype><classname>unc</classname>&lt; correlated &gt;</paramtype></parameter><description><para>
@@ -4663,7 +4670,8 @@ os &lt;&lt; " +or-" &lt;&lt; u.uncertainty_; Plain ANSI 7 bit code chars.</para>
           <template-type-parameter name="T"><purpose><para>Built-in floating-point type, float, double or long double, or uncertain type unc.</para></purpose><purpose><para>value type convertible to double. </para></purpose></template-type-parameter>
         </template><parameter name="v"><paramtype>T</paramtype></parameter><purpose>&lt; </purpose><description><para>Allow value part of variables of class unc to be assigned to, and compared with double. 
 </para></description><description><para>
-</para></description><returns><para>value as a double.</para><para>value as a double. </para></returns></function>
+
+</para></description><returns><para>value as a double.</para></returns><returns><para>value as a double. </para></returns></function>
 <function name="value_of"><type>double</type><template>
         </template><parameter name="v"><paramtype><classname>unc</classname>&lt; true &gt;</paramtype></parameter><description><para>
 </para></description><returns><para>unc.value() as a double. </para></returns></function>

@@ -39,7 +39,6 @@
 [def __preface [link svg_plot.preface]]
 [def __howtouse [link svg_plot.howtouse  Document conventions]]
 
-
 [/def __todo [link Plotting_graphs_in_SVG_format.todo TODO]]
 [def __todo [link svg_plot.todo TODO]]
 [def __rationale [link svg_plot.implementation Rationale and Implementation]]

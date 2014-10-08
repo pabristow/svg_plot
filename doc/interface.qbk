@@ -256,7 +256,8 @@ For example, after a call of
 
   my_plot.y_num_minor_ticks() == 9
 
-The function show_2d_settings displayed *all* the settings from accessors below.
+The function show_2d_settings displayed [*all] the settings from accessors below.
+(See also show_1d_settings for 1D plots).
 
 [table 2D_plot Accessor functions
   [[`axis_line_style& x_axis()`] [returns reference to X axis_line_style.] ]
