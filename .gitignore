@@ -1,7 +1,7 @@
 /**/*.log
 /**/*.bat
-/**/log/
-/doc/logs/*.log
-/doc/logs/
-/example/logs/
-/test/logs/
+/**/*.db
+
+doc/html/
+
+

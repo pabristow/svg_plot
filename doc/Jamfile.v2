@@ -233,11 +233,13 @@ explicit svg-images ;
 
 install pdf-install : standalone : <install-type>PDF <location>. <name>SVG_plot.pdf ;
 
+# Seems to rebuild every time, so run inspect.exe by hand.
+
 #  Run inspect tool.
- run /boost/tools/inspect//inspect/<variant>release
-  : $(parent) -text -brief # command line
-  : # input files
-  : <dependency>/boost/filesystem//boost_filesystem
-    <test-info>always_show_run_output # requirements
-  : inspect # test name
- ;
+# run /boost/tools/inspect//inspect/<variant>release
+#  : $(parent) -text -brief # command line
+#  : # input files
+#  : <dependency>/boost/filesystem//boost_filesystem
+#    <test-info>always_show_run_output # requirements
+#  : inspect # test name
+# ;

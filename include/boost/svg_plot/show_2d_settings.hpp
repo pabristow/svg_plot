@@ -26,8 +26,6 @@
 
 #include <boost/quan/xiostream.hpp>
 
-//#include <boost/quan/xiostream.ipp>
-
 namespace boost
 {
 namespace svg

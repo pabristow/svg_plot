@@ -1,0 +1,48 @@
+How to view a SVG file from command line
+========================================
+
+J:\Cpp\SVG\arcsine_dist_graphs>arcsine_pdf.svg opens using the default (Inkscape for me)
+
+It is possible to fully specify the directory and filename
+
+J:\Cpp\SVG\arcsine_dist_graphs>iexplore arcsine_cdf.svg
+
+or
+
+J:\Cpp\SVG\arcsine_dist_graphs>iexplore J:\Cpp\SVG\arcsine_dist_graphs\arcsine_pdf.svg
+
+J:\Cpp\SVG\arcsine_dist_graphs>iexplore file://J:\Cpp\SVG\arcsine_dist_graphs\arcsine_pdf.svg
+
+Or to use the psuedo variable CD for current directory.
+
+J:\Cpp\SVG\arcsine_dist_graphs>iexplore file://%cd%/arcsine_cdf.svg
+
+Wild card does not work iexplore file://%cd%/*.svg
+
+chrome and firefox so not seem to be in the PATH.
+
+But can use start command to find the programs
+
+J:\Cpp\SVG\arcsine_dist_graphs>start iexplore file://%cd%/arcsine_cdf.svg
+
+J:\Cpp\SVG\arcsine_dist_graphs>start firefox file://%cd%/arcsine_cdf.svg
+
+but Chrome and opera *download the file* instead of displaying :-(
+
+J:\Cpp\SVG\arcsine_dist_graphs>start chrome file://%cd%/arcsine_cdf.svg
+
+J:\Cpp\SVG\arcsine_dist_graphs>start opera file://%cd%/arcsine_cdf.svg
+
+
+Tried some googling but not clear how to stop this.
+
+
+How to open in multiple tabs
+============================
+
+http://stackoverflow.com/questions/188850/how-to-launch-multiple-internet-explorer-windows-tabs-from-batch-file
+
+Using VB is an option (other methods appear to be kludge involving pauses to allow process to complete :-(
+
+
+

@@ -1067,6 +1067,11 @@ my_plot.background_color(ghostwhite) // Whole image.
           image_.g(detail::PLOT_WINDOW_BACKGROUND).push_back(
             new rect_element(plot_left_, plot_top_, (plot_right_ - plot_left_), plot_bottom_ - plot_top_));
         }
+#ifdef BOOST_SVG_DIAGNOSTICS
+        std::cout << "plot window left " << plot_left_ << ", right " << plot_right_ << ", bottom " << plot_bottom_ << ", top " << plot_top_ << std::endl;
+#endif
+
+
 
       } // calculate_plot_window
 
@@ -1116,10 +1121,14 @@ my_plot.background_color(ghostwhite) // Whole image.
           }
           else if (y_axis_position_ == right)
           {// Draw on the right of plot window.
-            image_.g(detail::PLOT_Y_AXIS).line(plot_right_, plot_top_, plot_right_, plot_bottom_);
+            image_.g(detail::PLOT_Y_AXIS).line(plot_left_, plot_top_, plot_right_, plot_bottom_);
           }
           else
           { // ??? Warn that things have gone wrong?
+#ifdef BOOST_SVG_DIAGNOSTICS
+            std::cout << "y axis error, position " << y_axis_position_ << ", window from  " << plot_left_ << " to " << plot_left_ << ", is OUTside window bottom " << plot_bottom_ << " to top " << plot_top_ << std::endl;
+#endif
+
           }
         }
 
@@ -1563,11 +1572,11 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         if (x <= 0)
         { // Sanity checks on svg coordinates.
-          throw std::runtime_error("Y-tick X value wrong!");
+          throw std::runtime_error("Y-tick X value negative!");
         }
         if (y <= 0)
         {
-          throw std::runtime_error("Y-tick Y value wrong!");
+          throw std::runtime_error("Y-tick Y value negative!");
         }
 
         if(y_ticks_.ticks_on_window_or_on_axis_ != 0)
@@ -1622,7 +1631,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           if((y >= plot_top_) && (y <= plot_bottom_) && (x_left >= plot_left_) && (x_right <= plot_right_) )
           { // Make sure that we are drawing inside the allowed plot window.
             // Note comparisons are 'upside-down' - y is increasing downwards!
-            grid_path.M(x_left, y).L(x_right, y); // Draw grid line.
+            grid_path.M(x_left, y).L(x_right, y); // Draw horizontal grid line.
           }
           else
           {
@@ -1658,12 +1667,12 @@ my_plot.background_color(ghostwhite) // Whole image.
         // but can never be inside if left tick!
         if((y <= plot_bottom_) && (y >= plot_top_))
         { // Make sure that we are drawing inside of the allowed plot window.
-          tick_path.M(x_left, y).L(x_right, y); // Draw the tick.
+          tick_path.M(x_left, y).L(x_right, y); // Draw the horizontal tick.
         }
         else
-        {// Do nothing?  warn?
+        {// Tick is outside the window. Do nothing?  Warn?
 #ifdef BOOST_SVG_DIAGNOSTICS
-   std::cout << "y minor tick OUTside " << x_left << ' ' << y << ' ' << x_right << std::endl;
+          std::cout << "y minor tick at " << y << ", from  " << x_left << " to " << x_right << ", is OUTside window bottom " << plot_bottom_ << " to top " << plot_top_ << std::endl;
 #endif
         }
       } // void draw_y_minor_tick
@@ -1746,8 +1755,9 @@ my_plot.background_color(ghostwhite) // Whole image.
             temp_y = temp_uy.value();
             transform_point(temp_x, temp_y);
             // 
-            if ((temp_x > plot_left_) && (temp_x < plot_right_) && (temp_y > plot_top_) && (temp_y < plot_bottom_))
-            { // Data point is inside plot window, so draw a line to the point.
+           // if ((temp_x > plot_left_) && (temp_x < plot_right_) && (temp_y > plot_top_) && (temp_y < plot_bottom_))
+            if ((temp_x >= plot_left_) && (temp_x <= plot_right_) && (temp_y >= plot_top_) && (temp_y <= plot_bottom_))
+            { // Data point is inside or on plot window, so draw a line to the point.
               path.L(temp_x, temp_y); // Line to next point.
               prev_x = temp_x;
               prev_y = temp_y;
@@ -1758,7 +1768,7 @@ my_plot.background_color(ghostwhite) // Whole image.
               // Not sure that this will do if area fill chosen.
               ignored++;
 #ifdef BOOST_SVG_DIAGNOSTICS
-              //std::cout << "Ignoring x = " << temp_x << ", y = " << temp_y << std::endl;
+              std::cout << "Ignoring x = " << temp_x << ", y = " << temp_y << std::endl;
 #endif
             }
 

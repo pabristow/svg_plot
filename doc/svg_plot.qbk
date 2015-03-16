@@ -36,6 +36,7 @@
 [def __svg_1d_plot_series [^[classref boost::svg::svg_1d_plot_series<>]]]
 [def __svg_2d_plot [^[classref boost::svg::svg_2d_plot svg_2d_plot<>]]]
 [def __svg_2d_plot_series [^[classref boost::svg::svg_2d_plot_series<>]]]
+
 [def __preface [link svg_plot.preface]]
 [def __howtouse [link svg_plot.howtouse  Document conventions]]
 

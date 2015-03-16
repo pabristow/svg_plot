@@ -1585,7 +1585,9 @@ public:
     }
     else
     {// Do nothing?  warn?
-      // std::cout << "y minor tick OUTside " << x_left << ' ' << y << ' ' << x_right << std::endl;
+#ifdef BOOST_SVG_DIAGNOSTICS
+      std::cout << "y minor tick at " << y << ", from  " << x_left << " to " << x_right << ", is OUTside window bottom " << plot_bottom_ << " to top " << plot_top_ << std::endl;
+#endif
     }
   } // void draw_y_minor_tick
 
