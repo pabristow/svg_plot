@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Type svg_color_constant</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../header/boost/svg_plot/svg_color_hpp.html" title="Header &lt;boost/svg_plot/svg_color.hpp&gt;">
+<link rel="prev" href="svg_color.html" title="Class svg_color">
+<link rel="next" href="color_array.html" title="Global color_array">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
+<td align="center"><a href="../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="svg_color.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_color_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="color_array.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.svg.svg_color_constant"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Type svg_color_constant</span></h2>
+<p>boost::svg::svg_color_constant &#8212; Colors that have SVG standard special names. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/svg_color_hpp.html" title="Header &lt;boost/svg_plot/svg_color.hpp&gt;">boost/svg_plot/svg_color.hpp</a>&gt;
+
+</span>
+
+<span class="keyword">enum</span> <span class="identifier">svg_color_constant</span> <span class="special">{</span> aliceblue, antiquewhite, aqua, aquamarine, azure, 
+                          beige, bisque, black, blanchedalmond, blue, 
+                          blueviolet, brown, burlywood, cadetblue, chartreuse, 
+                          chocolate, coral, cornflowerblue, cornsilk, crimson, 
+                          cyan, darkblue, darkcyan, darkgoldenrod, darkgray, 
+                          darkgreen, darkgrey, darkkhaki, darkmagenta, 
+                          darkolivegreen, darkorange, darkorchid, darkred, 
+                          darksalmon, darkseagreen, darkslateblue, 
+                          darkslategray, darkslategrey, darkturquoise, 
+                          darkviolet, deeppink, deepskyblue, dimgray, dimgrey, 
+                          dodgerblue, firebrick, floralwhite, forestgreen, 
+                          fuchsia, gainsboro, ghostwhite, gold, goldenrod, 
+                          gray, grey, green, greenyellow, honeydew, hotpink, 
+                          indianred, indigo, ivory, khaki, lavender, 
+                          lavenderblush, lawngreen, lemonchiffon, lightblue, 
+                          lightcoral, lightcyan, lightgoldenrodyellow, 
+                          lightgray, lightgreen, lightgrey, lightpink, 
+                          lightsalmon, lightseagreen, lightskyblue, 
+                          lightslategray, lightslategrey, lightsteelblue, 
+                          lightyellow, lime, limegreen, linen, magenta, 
+                          maroon, mediumaquamarine, mediumblue, mediumorchid, 
+                          mediumpurple, mediumseagreen, mediumslateblue, 
+                          mediumspringgreen, mediumturquoise, mediumvioletred, 
+                          midnightblue, mintcream, mistyrose, moccasin, 
+                          navajowhite, navy, oldlace, olive, olivedrab, 
+                          orange, orangered, orchid, palegoldenrod, palegreen, 
+                          paleturquoise, palevioletred, papayawhip, peachpuff, 
+                          peru, pink, plum, powderblue, purple, red, 
+                          rosybrown, royalblue, saddlebrown, salmon, 
+                          sandybrown, seagreen, seashell, sienna, silver, 
+                          skyblue, slateblue, slategray, slategrey, snow, 
+                          springgreen, steelblue, tanned, teal, thistle, 
+                          tomato, turquoise, violet, wheat, white, whitesmoke, 
+                          yellow, yellowgreen, blank <span class="special">}</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id1241327"></a><h2>Description</h2>
+<p>SVG standard names for some colors. See <a href="http://www.w3.org/TR/SVG/types.html#ColorKeywords" target="_top">http://www.w3.org/TR/SVG/types.html#ColorKeywords</a>.</p>
+<p>The reason that the underscore separator convention does not match the normal Boost format is that these names that are specified by the SVG standard. <a href="http://www.w3.org/TR/SVG/types.html#ColorKeywords" target="_top">http://www.w3.org/TR/SVG/types.html#ColorKeywords</a> color "tan" is also renamed to "tanned" to avoid clash with global function name tan in math.h. </p>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="svg_color.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_color_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="color_array.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

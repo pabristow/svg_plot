@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="600" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<!-- File demo_svg_text.svg --> 
+<g id="image is group element 0" stroke="rgb(0,0,255)" fill="rgb(240,255,255)" stroke-width="3"><rect x="0" y="0" width="500" height="600"/></g>
+<g id="A text layer" fill="rgb(255,0,255)" stroke-width="3">
+<text x="10" y="100" font-size="12">left text</text>
+<text x="250" y="100" text-anchor="middle" font-size="12">center text</text>
+<text x="490" y="100" text-anchor="end" font-size="12">right text</text>
+<text x="250" y="150" text-anchor="middle" font-size="12">horizontal</text>
+<text x="250" y="150" text-anchor="middle" transform = "rotate(180 250 150 )" font-size="12">upsidedown</text>
+<text x="250" y="150" text-anchor="middle" transform = "rotate(-90 250 150 )" font-size="12">upward</text>
+<text x="250" y="150" text-anchor="middle" transform = "rotate(90 250 150 )" font-size="12">downward</text>
+<text x="250" y="250" text-anchor="middle" transform = "rotate(-135 250 250 )" font-size="12">backup</text>
+<text x="250" y="250" text-anchor="middle" transform = "rotate(45 250 250 )" font-size="12">downhill</text>
+<text x="250" y="250" text-anchor="middle" transform = "rotate(-45 250 250 )" font-size="12">uphill</text>
+<text x="250" y="250" text-anchor="middle" transform = "rotate(135 250 250 )" font-size="12">backdown</text>
+<text x="50" y="50" font-size="40">big 40</text>
+<text x="200" y="50" font-size="20" font-family="sans" font-style="italic" font-weight="bold" font-decoration="underline">Arial 20 italic</text>
+<text x="330" y="50" font-size="14">14</text>
+<text x="350" y="50" font-size="14" font-weight="bold">bold</text>
+<text x="400" y="50" font-size="10" font-family="Times New Roman">small Times</text>
+<text x="460" y="50" font-size="10" font-family="Times New Roman" font-decoration="underline">underline</text></g>
+<g stroke="rgb(0,128,0)" fill="rgb(0,128,0)">
+<text x="10" y="150" font-size="12">fuzzy text</text></g>
+<g stroke="rgb(255,0,255)" fill="rgb(255,255,0)"><line x1="0" y1="300" x2="10" y2="300"/><rect x="20" y="300" width="10" height="10"/><circle cx="70" cy="300" r="10"/><ellipse cx="100" cy="300" rx="10" ry="30"/><polygon points=" 200,300 250,300 200,350"/><polygon points=" 350,300 400,350 400,370 450,400 400,400" fill = "none"/><polygon points=" 0,0"/></g>
+</svg>

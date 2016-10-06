@@ -1,0 +1,163 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Simple Example</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../svg_boxplot_tutorial.html" title="Tutorial: Boxplot">
+<link rel="prev" href="../svg_boxplot_tutorial.html" title="Tutorial: Boxplot">
+<link rel="next" href="svg_boxplot_quartiles.html" title="Definitions of the Quartiles">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
+<td align="center"><a href="../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../svg_boxplot_tutorial.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../svg_boxplot_tutorial.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="svg_boxplot_quartiles.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple"></a><a class="link" href="svg_boxplot_tutorial_simple.html" title="Simple Example">Simple
+      Example</a>
+</h3></div></div></div>
+<pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">svg_2d_plot</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">vector</span><span class="special">&gt;</span>
+<span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">;</span>
+
+<span class="comment">// Functions to simulate distributions.</span>
+<span class="keyword">double</span> <span class="identifier">f</span><span class="special">(</span><span class="keyword">double</span> <span class="identifier">x</span><span class="special">)</span>
+<span class="special">{</span>
+    <span class="keyword">return</span> <span class="number">50</span> <span class="special">/</span> <span class="identifier">x</span><span class="special">;</span>
+<span class="special">}</span>
+
+<span class="keyword">double</span> <span class="identifier">g</span><span class="special">(</span><span class="keyword">double</span> <span class="identifier">x</span><span class="special">)</span>
+<span class="special">{</span>
+    <span class="keyword">return</span> <span class="number">40</span> <span class="special">+</span> <span class="number">25</span> <span class="special">*</span> <span class="identifier">sin</span><span class="special">(</span><span class="identifier">x</span> <span class="special">*</span> <span class="number">50</span><span class="special">);</span>
+<span class="special">}</span>
+
+<span class="keyword">int</span> <span class="identifier">main</span><span class="special">()</span>
+<span class="special">{</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">data1</span><span class="special">,</span> <span class="identifier">data2</span><span class="special">;</span>
+
+    <span class="comment">// Fill our vectors with values from the functions f(x) and g(x)</span>
+    <span class="keyword">for</span><span class="special">(</span><span class="keyword">double</span> <span class="identifier">i</span> <span class="special">=</span> <span class="special">.</span><span class="number">1</span><span class="special">;</span> <span class="identifier">i</span> <span class="special">&lt;</span> <span class="number">10</span><span class="special">;</span> <span class="identifier">i</span><span class="special">+=.</span><span class="number">1</span><span class="special">)</span>
+    <span class="special">{</span>
+        <span class="identifier">data1</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">f</span><span class="special">(</span><span class="identifier">i</span><span class="special">));</span>
+        <span class="identifier">data2</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">g</span><span class="special">(</span><span class="identifier">i</span><span class="special">));</span>
+    <span class="special">}</span>
+
+    <span class="identifier">svg_boxplot</span> <span class="identifier">my_plot</span><span class="special">;</span> <span class="comment">// Initialize a new box plot.</span>
+
+    <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">background_border_color</span><span class="special">(</span><span class="identifier">black</span><span class="special">);</span> <span class="comment">// Color information.</span>
+
+    <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Boxplots of Common Functions"</span><span class="special">)</span> <span class="comment">// Title and</span>
+   <span class="special">.</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"Functions"</span><span class="special">)</span> <span class="comment">// labels.</span>
+   <span class="special">.</span><span class="identifier">y_label</span><span class="special">(</span><span class="string">"Population Size"</span><span class="special">);</span>
+
+    <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">y_range</span><span class="special">(</span><span class="number">0</span><span class="special">,</span> <span class="number">100</span><span class="special">)</span>      <span class="comment">// Axis information.</span>
+     <span class="special">.</span><span class="identifier">y_minor_tick_length</span><span class="special">(</span><span class="number">20</span><span class="special">)</span>
+     <span class="special">.</span><span class="identifier">y_major_interval</span><span class="special">(</span><span class="number">20</span><span class="special">);</span>
+
+    <span class="comment">// Write two data series.</span>
+    <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">data1</span><span class="special">,</span> <span class="string">"[50 / x]"</span><span class="special">);</span>
+    <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">data2</span><span class="special">,</span> <span class="string">"[40 + 25 * sin(x * 50)]"</span><span class="special">);</span>
+
+    <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"boxplot_simple.svg"</span><span class="special">);</span> <span class="comment">// Write final file.</span>
+    <span class="keyword">return</span> <span class="number">0</span><span class="special">;</span>
+<span class="special">}</span>
+</pre>
+<h6>
+<a name="svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.h0"></a>
+        <span class="phrase"><a name="svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.image_boxplot_simple_svg"></a></span><a class="link" href="svg_boxplot_tutorial_simple.html#svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.image_boxplot_simple_svg">Image
+        boxplot_simple.svg</a>
+      </h6>
+<p>
+        <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/boxplot_simple.svg" width="500" height="350"></object></span>
+      </p>
+<h5>
+<a name="svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.h1"></a>
+        <span class="phrase"><a name="svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.initializing_a_new_boxplot"></a></span><a class="link" href="svg_boxplot_tutorial_simple.html#svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.initializing_a_new_boxplot">Initializing
+        a new boxplot</a>
+      </h5>
+<p>
+        <code class="computeroutput"><span class="identifier">svg_boxplot</span> <span class="identifier">my_plot</span><span class="special">;</span></code> initializes a new boxplot. This also sets
+        the very many default values.
+      </p>
+<h5>
+<a name="svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.h2"></a>
+        <span class="phrase"><a name="svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.setting_a_color"></a></span><a class="link" href="svg_boxplot_tutorial_simple.html#svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.setting_a_color">Setting
+        a color</a>
+      </h5>
+<p>
+        This sets the border color of the entire image to black (not just the plot
+        area).
+      </p>
+<pre class="programlisting"><span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">background_border_color</span><span class="special">(</span><span class="identifier">black</span><span class="special">);</span>
+</pre>
+<h5>
+<a name="svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.h3"></a>
+        <span class="phrase"><a name="svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.setting_strings_in_the_plot"></a></span><a class="link" href="svg_boxplot_tutorial_simple.html#svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.setting_strings_in_the_plot">Setting
+        strings in the plot</a>
+      </h5>
+<p>
+        The following code sets the title that appears at the top of the graph, the
+        label that appears at the bottom to name the X-axis, and the label that appears
+        to the left to name the Y-axis.
+      </p>
+<pre class="programlisting"><span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Boxplots of Common Functions"</span><span class="special">)</span>
+      <span class="special">.</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"Functions"</span><span class="special">)</span>
+      <span class="special">.</span><span class="identifier">y_label</span><span class="special">(</span><span class="string">"Population Size"</span><span class="special">);</span>
+</pre>
+<h5>
+<a name="svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.h4"></a>
+        <span class="phrase"><a name="svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.setting_axis_information"></a></span><a class="link" href="svg_boxplot_tutorial_simple.html#svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.setting_axis_information">Setting
+        axis information</a>
+      </h5>
+<p>
+        Axis label information for the X-axis is very limited, as the coordinate
+        system for the X-axis is discrete, based only on the number of box-and-whisker
+        plots that appear in the same boxplot.
+      </p>
+<p>
+        Axis information for the Y-axis, however, is customizable much in the same
+        way that that axis information is customizable for the 1 and 2 dimensional
+        graphs.
+      </p>
+<pre class="programlisting"><span class="comment">// Axis information.</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">y_range</span><span class="special">(</span><span class="number">0</span><span class="special">,</span> <span class="number">100</span><span class="special">)</span>
+       <span class="special">.</span><span class="identifier">y_minor_tick_length</span><span class="special">(</span><span class="number">20</span><span class="special">)</span>
+       <span class="special">.</span><span class="identifier">y_major_interval</span><span class="special">(</span><span class="number">20</span><span class="special">);</span>
+</pre>
+<h5>
+<a name="svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.h5"></a>
+        <span class="phrase"><a name="svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.writing_to_a_file"></a></span><a class="link" href="svg_boxplot_tutorial_simple.html#svg_plot.svg_boxplot_tutorial.svg_boxplot_tutorial_simple.writing_to_a_file">Writing
+        to a file</a>
+      </h5>
+<p>
+        This finally writes our plot to the file "boxplot_simple.svg".
+      </p>
+<pre class="programlisting"><span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"boxplot_simple.svg"</span><span class="special">);</span>
+</pre>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../svg_boxplot_tutorial.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../svg_boxplot_tutorial.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="svg_boxplot_quartiles.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

@@ -1,6 +1,10 @@
-/**/*.log
+# Gitignore for SVG_plot
+# ignore all log file in any directory
+*.log
 /**/*.bat
 /**/*.db
-doc/html/
+doc/doxywarnings.log
+doc/autodoc.xml
+
 
 

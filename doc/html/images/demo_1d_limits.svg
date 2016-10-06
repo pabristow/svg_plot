@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="200" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<!-- File demo_1d_limits.svg --> 
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="200"/></g>
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="11" y="56" width="478" height="100"/></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="250" y1="56" x2="250" y2="156"/><line x1="11" y1="109" x2="489" y2="109"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M269,109 L269,111 M288,109 L288,111 M307,109 L307,111 M326,109 L326,111 M365,109 L365,111 M384,109 L384,111 M403,109 L403,111 M422,109 L422,111 M460,109 L460,111 M479,109 L479,111 M231,109 L231,111 M212,109 L212,111 M193,109 L193,111 M174,109 L174,111 M135,109 L135,111 M116,109 L116,111 M97,109 L97,111 M77.9,109 L77.9,111 M39.7,109 L39.7,111 M20.6,109 L20.6,111 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M250,109 L250,114 M346,109 L346,114 M441,109 L441,114 M250,109 L250,114 M154,109 L154,114 M58.8,109 L58.8,114 " fill="none"/></g>
+<g id="xTicksValues">
+<text x="346" y="129" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="441" y="129" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="154" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-2</text>
+<text x="58.8" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-4</text></g>
+<g id="xLabel">
+<text x="250" y="180" text-anchor="middle" font-size="14" font-family="Verdana">length (m)</text></g>
+<g id="plotPoints"><g stroke="rgb(0,0,0)"><circle cx="174" cy="106" r="2"/><circle cx="346" cy="106" r="2"/><circle cx="453" cy="106" r="2"/><circle cx="58.8" cy="106" r="2"/></g>
+</g>
+<g id="limitPoints" stroke="rgb(0,0,255)" fill="rgb(255,192,203)"><polygon points=" 484,96 494,96 489,106"/><polygon points=" 6,96 16,96 11,106"/><polygon points=" 245,96 255,96 250,106"/></g>
+<g id="title">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Default 1D NaN and infinities Demo</text></g>
+<g id="plotXValues"><g>
+<text x="174" y="96" text-anchor="middle" font-size="10" font-family="Verdana">-1.6</text></g>
+<g>
+<text x="346" y="96" text-anchor="middle" font-size="10" font-family="Verdana">2</text></g>
+<g>
+<text x="453" y="96" text-anchor="middle" font-size="10" font-family="Verdana">4.26</text></g>
+<g>
+<text x="58.8" y="96" text-anchor="middle" font-size="10" font-family="Verdana">-4</text></g>
+</g>
+</svg>

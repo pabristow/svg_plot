@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="200" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<!-- File ./demo_1d_uncertainty.svg --> 
+<g id="imageBackground" stroke="rgb(0,0,255)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="200"/></g>
+<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="11" y="56" width="478" height="100"/></g>
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="11" y1="109" x2="489" y2="109"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M26.9,109 L26.9,111 M42.9,109 L42.9,111 M58.8,109 L58.8,111 M74.7,109 L74.7,111 M107,109 L107,111 M123,109 L123,111 M138,109 L138,111 M154,109 L154,111 M186,109 L186,111 M202,109 L202,111 M218,109 L218,111 M234,109 L234,111 M266,109 L266,111 M282,109 L282,111 M298,109 L298,111 M314,109 L314,111 M346,109 L346,111 M362,109 L362,111 M377,109 L377,111 M393,109 L393,111 M425,109 L425,111 M441,109 L441,111 M457,109 L457,111 M473,109 L473,111 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M11,109 L11,114 M90.7,109 L90.7,114 M170,109 L170,114 M250,109 L250,114 M330,109 L330,114 M409,109 L409,114 M489,109 L489,114 " fill="none"/></g>
+<g id="xTicksValues">
+<text x="11" y="129" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="90.7" y="129" text-anchor="middle" font-size="12" font-family="Verdana">3</text>
+<text x="170" y="129" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="250" y="129" text-anchor="middle" font-size="12" font-family="Verdana">5</text>
+<text x="330" y="129" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
+<text x="409" y="129" text-anchor="middle" font-size="12" font-family="Verdana">7</text>
+<text x="489" y="129" text-anchor="middle" font-size="12" font-family="Verdana">8</text></g>
+<g id="xLabel">
+<text x="250" y="180" text-anchor="middle" font-size="14" font-family="Verdana">times (sec)</text></g>
+<g id="plotUnc3" stroke="rgb(250,250,210)" fill="rgb(250,250,210)" stroke-width="1"><ellipse cx="58.8" cy="106" rx="23.9" ry="3"/><ellipse cx="282" cy="106" rx="47.8" ry="3"/></g>
+<g id="plotUnc2" stroke="rgb(255,218,185)" fill="rgb(255,218,185)" stroke-width="1"><ellipse cx="58.8" cy="106" rx="15.9" ry="2"/><ellipse cx="282" cy="106" rx="31.9" ry="2"/></g>
+<g id="plotUnc1" stroke="rgb(255,0,255)" fill="rgb(255,192,203)" stroke-width="1"><ellipse cx="58.8" cy="106" rx="7.97" ry="1"/><ellipse cx="282" cy="106" rx="15.9" ry="1"/></g>
+<g id="plotPoints"><g stroke="rgb(255,0,0)" fill="rgb(0,128,0)"><circle cx="98.6" cy="106" r="5"/><circle cx="186" cy="106" r="5"/></g>
+<g stroke="rgb(0,0,255)"><line x1="19" y1="111" x2="19" y2="101"/><line x1="258" y1="111" x2="258" y2="101"/><line x1="473" y1="111" x2="473" y2="101"/><line x1="123" y1="111" x2="123" y2="101"/><line x1="401" y1="111" x2="401" y2="101"/></g>
+<g stroke="rgb(255,0,255)" fill="rgb(255,255,224)"><circle cx="58.8" cy="106" r="1"/><circle cx="282" cy="106" r="1"/></g>
+</g>
+<g id="title">
+<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Times</text></g>
+<g id="plotXValues"><g>
+<text x="102" y="100" transform = "rotate(-30 102 100 )" font-size="10" font-family="Verdana">3.1<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.04</tspan><tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(8)</tspan></text></g>
+<g>
+<text x="189" y="100" transform = "rotate(-30 189 100 )" font-size="10" font-family="Verdana">4.2<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.02</tspan><tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(14)</tspan></text></g>
+<g>
+<text x="22" y="103" transform = "rotate(-30 22 103 )" font-size="10" font-family="Verdana">2.1<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.002</tspan><tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(30)</tspan></text></g>
+<g>
+<text x="261" y="103" transform = "rotate(-30 261 103 )" font-size="10" font-family="Verdana">5.1<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.05</tspan><tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(20)</tspan></text></g>
+<g>
+<text x="476" y="103" transform = "rotate(-30 476 103 )" font-size="10" font-family="Verdana">7.8<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.005</tspan></text></g>
+<g>
+<text x="126" y="103" transform = "rotate(-30 126 103 )" font-size="10" font-family="Verdana">3.4<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.06</tspan></text></g>
+<g>
+<text x="404" y="103" transform = "rotate(-30 404 103 )" font-size="10" font-family="Verdana">6.9</text></g>
+<g>
+<text x="61.8" y="103" transform = "rotate(-30 61.8 103 )" font-size="10" font-family="Verdana">2.6<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.2</tspan><tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(5)</tspan></text></g>
+<g>
+<text x="285" y="103" transform = "rotate(-30 285 103 )" font-size="10" font-family="Verdana">5.4<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.4</tspan><tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(11)</tspan></text></g>
+</g>
+</svg>

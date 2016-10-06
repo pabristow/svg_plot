@@ -1,0 +1,231 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Class polyline_element</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">
+<link rel="prev" href="polygon_element.html" title="Struct polygon_element">
+<link rel="next" href="q_path.html" title="Struct q_path">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
+<td align="center"><a href="../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="polygon_element.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="q_path.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.svg.polyline_element"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class polyline_element</span></h2>
+<p>boost::svg::polyline_element &#8212; The 'polyline' element: defines a set of connected straight line segments. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">boost/svg_plot/detail/svg_tag.hpp</a>&gt;
+
+</span>
+<span class="keyword">class</span> <a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">:</span> <span class="keyword">public</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_element</span> <span class="special">{</span>
+<span class="keyword">public</span><span class="special">:</span>
+  <span class="comment">// <a class="link" href="polyline_element.html#boost.svg.polyline_elementconstruct-copy-destruct">construct/copy/destruct</a></span>
+  <a class="link" href="polyline_element.html#id386576-bb"><span class="identifier">polyline_element</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polyline_element.html#id386585-bb"><span class="identifier">polyline_element</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polyline_element.html#id386592-bb"><span class="identifier">polyline_element</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polyline_element.html#id386603-bb"><span class="identifier">polyline_element</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polyline_element.html#id386610-bb"><span class="identifier">polyline_element</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// <a class="link" href="polyline_element.html#id385187-bb">public member functions</a></span>
+  <span class="keyword">void</span> <a class="link" href="polyline_element.html#id385212-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="polyline_element.html#id385198-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="polyline_element.html#id385247-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="polyline_element.html#id385237-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="polyline_element.html#id385258-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="polyline_element.html#id385260-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="polyline_element.html#id385294-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="polyline_element.html#id385297-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a class="link" href="polyline_element.html#id385298-bb"><span class="identifier">P</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="polyline_element.html#id385352-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="polyline_element.html#id385343-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="polyline_element.html#id386562-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// <a class="link" href="polyline_element.html#id386673-bb">protected member functions</a></span>
+  <span class="keyword">void</span> <a class="link" href="polyline_element.html#id386640-bb"><span class="identifier">write_attributes</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// public data members</span>
+  <span class="identifier">ptr_vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="identifier">poly_points</span><span class="special">;</span>  <span class="comment">// All the (x, y) coordinate pairs,. </span>
+<span class="special">}</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id1042283"></a><h2>Description</h2>
+<p><a href="http://www.w3.org/TR/SVG/shapes.html#PolylineElement" target="_top">http://www.w3.org/TR/SVG/shapes.html#PolylineElement</a> 9.6 The polyline element: defines a set of connected straight line segments. Typically, polyline elements define open shapes. A polyline is defined by including a 'path' element which contains a points="(path data)" attribute, where the points attribute contains the x, y coordinate pairs. perform an absolute moveto operation to the first coordinate pair in the list of points for each subsequent coordinate pair, perform an absolute lineto operation to that coordinate pair. The advantage of polyline is in reducing file size, avoiding M and repeated L before x &amp; y coordinate pairs. </p>
+<div class="refsect2">
+<a name="id1042258"></a><h3>
+<a name="boost.svg.polyline_elementconstruct-copy-destruct"></a><code class="computeroutput">polyline_element</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem">
+<pre class="literallayout"><a name="id386576-bb"></a><span class="identifier">polyline_element</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<p>copy constructor. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a name="id386585-bb"></a><span class="identifier">polyline_element</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Construct an 'empty' line. Can new line path points add using <code class="computeroutput"><a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a></code> member function P. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a name="id386592-bb"></a><span class="identifier">polyline_element</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">)</span><span class="special">;</span></pre>
+<p>One (x, y) path point, absolute only. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a name="id386603-bb"></a><span class="identifier">polyline_element</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">)</span><span class="special">;</span></pre>
+<p>Two (x, y) path points, absolute only. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a name="id386610-bb"></a><span class="identifier">polyline_element</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span> points<span class="special">)</span><span class="special">;</span></pre>
+<p>Constructor from vector of path points. </p>
+</li>
+</ol></div>
+</div>
+<div class="refsect2">
+<a name="id1040258"></a><h3>
+<a name="id385187-bb"></a><code class="computeroutput">polyline_element</code> public member functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">void</span> <a name="id385212-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> class_id<span class="special">)</span><span class="special">;</span></pre>
+<p>Class class id, non-unique identifier for an element.</p>
+<p><a href="http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute" target="_top">http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute</a> 6.12 Attributes common to all elements: id and xml:base Example: class="info"</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id385198-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Class id, non-unique identifier for an element. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">void</span> <a name="id385247-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
+<p>Set name of a clip path, for example: g_ptr.clip_id(plot_window_clip_); </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id385237-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>name of a clip path, for example: g_ptr.clip_id(plot_window_clip_); </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">void</span> <a name="id385258-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
+<p>Provide a unique name for an element. Example: id="plotBackground"</p>
+<p>See <a href="http://www.w3.org/TR/SVG/struct.html#IDAttribute" target="_top">http://www.w3.org/TR/SVG/struct.html#IDAttribute</a> 5.10.1 Attributes common to all elements: id and xml:base The id and xml:base attributes are available on all SVG elements: Attribute definitions: id = "name" Standard XML attribute for assigning a unique name to an element. Refer to the "Extensible Markup Language (XML) 1.0" Recommendation [XML10]. xml:base = "&lt;uri&gt;" Specifies a base URI other than the base URI of the document or external entity. Refer to the "XML Base" specification [XML-BASE]. A group of elements, as well as individual objects, can be given a name using the id attribute. Named groups are needed for several purposes such as animation and re-usable objects.</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id385260-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>the unique name for an element, for example id() ="plotBackground". </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id385294-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
+<p>Compare svg_elements for inequality, useful for Boost.Test. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id385297-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
+<p>Compare svg_elements, useful for Boost.Test. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a name="id385298-bb"></a><span class="identifier">P</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<p>Absolute (x, y) only, so Capital letter P.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p><a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a>&amp; to make chainable. </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id385352-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>reference to <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> to provide indirect access to colors &amp; width via style().stroke_color(), fill_color(), width() </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id385343-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>reference to const <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> to provide indirect access to colors &amp; width via style().stroke_color(), fill_color(), width() (const version). </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id386562-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands. <p> Output polyline info (useful for Boost.Test).
+ Example: &lt;polyline points=" 100,100 200,100 300,200 400,400"/&gt;</p>
+</li>
+</ol></div>
+</div>
+<div class="refsect2">
+<a name="id1043368"></a><h3>
+<a name="id386673-bb"></a><code class="computeroutput">polyline_element</code> protected member functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<pre class="literallayout"><span class="keyword">void</span> <a name="id386640-bb"></a><span class="identifier">write_attributes</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> s_out<span class="special">)</span><span class="special">;</span></pre>
+<p>Output group_element id and clip-path.</p>
+<p>Classes inherited from <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code> add other references, 5.3.1, like color, fill, stroke, gradients...</p>
+</li></ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="polygon_element.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="q_path.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>1-D Data Values Examples</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../tutorial_1d.html" title="1D Tutorials">
+<link rel="prev" href="demo_1d_autoscaling.html" title="1-D Autoscaling Various Containers Examples">
+<link rel="next" href="demo_1d_heat_flow_data.html" title="Real-life Heat flow data">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
+<td align="center"><a href="../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="demo_1d_autoscaling.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_1d.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="demo_1d_heat_flow_data.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="svg_plot.tutorial_1d.demo_1d_values"></a><a class="link" href="demo_1d_values.html" title="1-D Data Values Examples">1-D Data Values
+      Examples</a>
+</h3></div></div></div>
+<h5>
+<a name="svg_plot.tutorial_1d.demo_1d_values.h0"></a>
+        <span class="phrase"><a name="svg_plot.tutorial_1d.demo_1d_values.showing_1d_data_values_examples"></a></span><a class="link" href="demo_1d_values.html#svg_plot.tutorial_1d.demo_1d_values.showing_1d_data_values_examples">Showing
+        1D Data Values Examples</a>
+      </h5>
+<p>
+        Showing the 1D values of items from the data set. Some of the many possible
+        formatting options are demonstrated.
+      </p>
+<pre class="programlisting"><span class="identifier">As</span> <span class="identifier">ever</span><span class="special">,</span> <span class="identifier">we</span> <span class="identifier">need</span> <span class="identifier">a</span> <span class="identifier">few</span> <span class="identifier">includes</span> <span class="identifier">to</span> <span class="identifier">use</span> <span class="identifier">Boost</span><span class="special">.</span><span class="identifier">Plot</span>
+</pre>
+<pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">svg_1d_plot</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_1d_plot</span><span class="special">;</span>
+
+  <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">show_1d_settings</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="comment">// using boost::svg::show_1d_plot_settings - Only needed for showing which settings in use.</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">hex</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">vector</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">;</span>
+</pre>
+<p>
+        Some fictional data is pushed into an STL container, here <code class="computeroutput"><span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span></code>:
+      </p>
+<pre class="programlisting"><span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">my_data</span><span class="special">;</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(-</span><span class="number">1.6</span><span class="special">);</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">2.0</span><span class="special">);</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">4.2563</span><span class="special">);</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">0.00333974</span><span class="special">);</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">5.4</span><span class="special">);</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">6.556</span><span class="special">);</span>
+
+<span class="keyword">try</span>
+<span class="special">{</span> <span class="comment">// try'n'catch blocks are needed to ensure error messages from any exceptions are shown.</span>
+  <span class="identifier">svg_1d_plot</span> <span class="identifier">my_1d_plot</span><span class="special">;</span> <span class="comment">// Construct a plot with all the default constructor values.</span>
+
+  <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Default 1D Values Demo"</span><span class="special">)</span> <span class="comment">// Add a string title of the plot.</span>
+    <span class="special">.</span><span class="identifier">x_range</span><span class="special">(-</span><span class="number">5</span><span class="special">,</span> <span class="number">10</span><span class="special">)</span> <span class="comment">// Add a range for the X-axis.</span>
+    <span class="special">.</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"length (m)"</span><span class="special">);</span> <span class="comment">// Add a label for the X-axis.</span>
+</pre>
+<p>
+        Add the one data series, <code class="computeroutput"><span class="identifier">my_data</span></code>
+        and a description, and how the data points are to marked, here a circle with
+        a diameter of 5 pixels.
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">,</span> <span class="string">"1D Values"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">circlet</span><span class="special">).</span><span class="identifier">size</span><span class="special">(</span><span class="number">5</span><span class="special">);</span>
+</pre>
+<p>
+        To put a value label against each data point, switch on the option:
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// Add a label for the X-axis.</span>
+</pre>
+<p>
+        If the default size and color are not to your taste, set more options, like:
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">size</span><span class="special">(</span><span class="number">500</span><span class="special">,</span> <span class="number">350</span><span class="special">)</span> <span class="comment">// Change from default size</span>
+  <span class="special">.</span><span class="identifier">x_values_font_size</span><span class="special">(</span><span class="number">14</span><span class="special">)</span> <span class="comment">// Change font size for the X-axis value labels.</span>
+  <span class="special">.</span><span class="identifier">x_values_font_family</span><span class="special">(</span><span class="string">"Times New Roman"</span><span class="special">)</span> <span class="comment">// Change font for the X-axis value labels.</span>
+  <span class="special">.</span><span class="identifier">x_values_color</span><span class="special">(</span><span class="identifier">red</span><span class="special">);</span> <span class="comment">// Change color from default black to red.</span>
+</pre>
+<p>
+        The format of the values may also not be ideal, so we can use the normal
+        <code class="computeroutput"><span class="identifier">iostream</span> <span class="identifier">precision</span></code>
+        and <code class="computeroutput"><span class="identifier">ioflags</span></code> to change, here
+        to reduce the number of digits used from default precision 6 down to a more
+        readable 2, reducing the risk of collisions between adjacent values. (Obviously
+        the most suitable precision depends on the range of the data points. If values
+        are very close to each other, a higher precision wil be needed to differentiate
+        them).
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_precision</span><span class="special">(</span><span class="number">2</span><span class="special">);</span> <span class="comment">// precision label for the X-axis value label.</span>
+</pre>
+<p>
+        We can also prescribe the use of scientific format and force a positive sign:
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_ioflags</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ios</span><span class="special">::</span><span class="identifier">scientific</span> <span class="special">|</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ios</span><span class="special">::</span><span class="identifier">showpos</span><span class="special">);</span>
+</pre>
+<p>
+        By default, any unnecessary spacing-wasting zeros in the exponent field are
+        removed. (If, perversely, the full 1.123456e+012 format is required, the
+        stripping can be switched off with: <code class="computeroutput"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_labels_strip_e0s</span><span class="special">(</span><span class="keyword">false</span><span class="special">);</span></code>
+        )
+      </p>
+<p>
+        In general, sticking to the defaults usually produces the neatest presentation
+        of the values.
+      </p>
+<p>
+        The default value label is horizontal, centered above the data point marker,
+        but, depending on the type and density of data points, and the length of
+        the values (controlled in turn by the <code class="computeroutput"><span class="identifier">precision</span></code>
+        and <code class="computeroutput"><span class="identifier">ioflags</span></code> in use), it is
+        often clearer to use a different orientation. This can be controlled in steps
+        of 45 degrees, using an 'enum rotate_style`.
+      </p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">
+            <code class="computeroutput"><span class="identifier">uphill</span></code> - writing up at
+            45 degree slope is often a good choice,
+          </li>
+<li class="listitem">
+            <code class="computeroutput"><span class="identifier">upward</span></code> - writing vertically
+            up and
+          </li>
+<li class="listitem">
+            <code class="computeroutput"><span class="identifier">backup</span></code> are also useful.
+          </li>
+</ul></div>
+<p>
+        (For 1-D plots other directions are less attractive, placing the values below
+        the horizontal Y-axis line, but for 2-D plots all writing orientations can
+        be useful).
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_rotation</span><span class="special">(</span><span class="identifier">steepup</span><span class="special">);</span> <span class="comment">// Orientation for the X-axis value labels.</span>
+
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_decor</span><span class="special">(</span><span class="string">"[ x = "</span><span class="special">,</span> <span class="string">""</span><span class="special">,</span> <span class="string">"&amp;#x00A0;sec]"</span><span class="special">);</span> <span class="comment">// Note the need for a Unicode space A0.</span>
+</pre>
+<p>
+        To use all these settings, finally write the plot to file.
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"demo_1d_values.svg"</span><span class="special">);</span>
+</pre>
+<p>
+        If chosen settings do not have the effect that you expect, it may be helpful
+        to display some of them! (All the myriad settings can be displayed with
+        <code class="computeroutput"><span class="identifier">show_1d_plot_settings</span><span class="special">(</span><span class="identifier">my_1d_plot</span><span class="special">)</span></code>.)
+      </p>
+<pre class="programlisting"><span class="comment">//show_1d_plot_settings(my_1d_plot);</span>
+<span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">detail</span><span class="special">::</span><span class="keyword">operator</span><span class="special">&lt;&lt;;</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_1d_plot.image_size() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">size</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_1d_plot.image x_size() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_size</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_1d_plot.image y_size() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">y_size</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_1d_plot.x_values_font_size() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_font_size</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_1d_plot.x_values_font_family() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_font_family</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_1d_plot.x_values_color() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_color</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_1d_plot.x_values_precision() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_precision</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_1d_plot.x_values_ioflags() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">hex</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_ioflags</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+</pre>
+<pre class="programlisting"><span class="identifier">Output</span><span class="special">:</span>
+
+<span class="identifier">demo_1d_values</span><span class="special">.</span><span class="identifier">cpp</span>
+<span class="identifier">Linking</span><span class="special">...</span>
+<span class="identifier">Embedding</span> <span class="identifier">manifest</span><span class="special">...</span>
+<span class="identifier">Autorun</span> <span class="string">"j:\Cpp\SVG\debug\demo_1d_values.exe"</span>
+ <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_font_size</span><span class="special">()</span> <span class="number">14</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_font_family</span><span class="special">()</span> <span class="identifier">Times</span> <span class="identifier">New</span> <span class="identifier">Roman</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_color</span><span class="special">()</span> <span class="identifier">RGB</span><span class="special">(</span><span class="number">255</span><span class="special">,</span><span class="number">0</span><span class="special">,</span><span class="number">0</span><span class="special">)</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_precision</span><span class="special">()</span> <span class="number">2</span>
+ <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_ioflags</span><span class="special">()</span> <span class="number">1020</span>
+<span class="identifier">Build</span> <span class="identifier">Time</span> <span class="number">0</span><span class="special">:</span><span class="number">03</span>
+</pre>
+<h5>
+<a name="svg_plot.tutorial_1d.demo_1d_values.h1"></a>
+        <span class="phrase"><a name="svg_plot.tutorial_1d.demo_1d_values.showing_1d_data_at_limit_values_"></a></span><a class="link" href="demo_1d_values.html#svg_plot.tutorial_1d.demo_1d_values.showing_1d_data_at_limit_values_">Showing
+        1D Data 'at limit' Values Examples</a>
+      </h5>
+<p>
+        This example demonstrates showing values that are too small or too large,
+        or NotaNumber.
+      </p>
+<p>
+        As ever, we need a few includes to use Boost.Plot
+      </p>
+<pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">svg_1d_plot</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_1d_plot</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">hex</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">vector</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">limits</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">numeric_limits</span><span class="special">;</span>
+</pre>
+<p>
+        Some fictional data is pushed into an STL container, here <code class="computeroutput"><span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span></code>, including a NaN and + and - infinity:
+      </p>
+<pre class="programlisting"><span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">my_data</span><span class="special">;</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(-</span><span class="number">1.6</span><span class="special">);</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">2.0</span><span class="special">);</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">4.2563</span><span class="special">);</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(-</span><span class="number">4.0</span><span class="special">);</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">numeric_limits</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;::</span><span class="identifier">infinity</span><span class="special">());</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(-</span><span class="identifier">numeric_limits</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;::</span><span class="identifier">infinity</span><span class="special">());</span>
+<span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">numeric_limits</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;::</span><span class="identifier">quiet_NaN</span><span class="special">());</span>
+
+<span class="keyword">try</span>
+<span class="special">{</span> <span class="comment">// try'n'catch blocks are needed to ensure error messages from any exceptions are shown.</span>
+  <span class="identifier">svg_1d_plot</span> <span class="identifier">my_1d_plot</span><span class="special">;</span> <span class="comment">// Construct a plot with all the default constructor values.</span>
+
+  <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Default 1D NaN and infinities Demo"</span><span class="special">)</span> <span class="comment">// Add a string title of the plot.</span>
+    <span class="special">.</span><span class="identifier">x_range</span><span class="special">(-</span><span class="number">5</span><span class="special">,</span> <span class="number">5</span><span class="special">)</span> <span class="comment">// Add a range for the X-axis.</span>
+    <span class="special">.</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"length (m)"</span><span class="special">);</span> <span class="comment">// Add a label for the X-axis.</span>
+</pre>
+<p>
+        Add the one data series, <code class="computeroutput"><span class="identifier">my_data</span></code>
+        and a description, and how the data points are to marked, here a circle with
+        a diameter of 5 pixels.
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">,</span> <span class="string">"1D limits"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">circlet</span><span class="special">).</span><span class="identifier">size</span><span class="special">(</span><span class="number">5</span><span class="special">);</span>
+</pre>
+<p>
+        To put a value label against each data point, switch on the option:
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// Add data point value labels for the X-axis.</span>
+</pre>
+<p>
+        To change the default colors (lightgray and whitesmoke) for the 'at limit'
+        point marker to something more conspicuous for this demonstration:
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">limit_color</span><span class="special">(</span><span class="identifier">blue</span><span class="special">);</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">limit_fill_color</span><span class="special">(</span><span class="identifier">pink</span><span class="special">);</span>
+</pre>
+<p>
+        To use all these settings, finally write the plot to file.
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"demo_1d_limits.svg"</span><span class="special">);</span>
+</pre>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../../../../../doc/src/images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+          the +infinity point is marked on the far right of the plot, the -infinity
+          on the far left, but the NaN (Not A Number) is at zero.
+        </p></td></tr>
+</table></div>
+<p>
+        To echo the new marker colors chosen:
+      </p>
+<pre class="programlisting"><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"limit points stroke color "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">limit_color</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"limit points fill color "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">limit_fill_color</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+</pre>
+<p>
+        Typical output is:
+      </p>
+<pre class="programlisting"><span class="identifier">Output</span><span class="special">:</span>
+
+<span class="identifier">demo_1d_limits</span><span class="special">.</span><span class="identifier">cpp</span>
+<span class="identifier">Linking</span><span class="special">...</span>
+<span class="identifier">Embedding</span> <span class="identifier">manifest</span><span class="special">...</span>
+<span class="identifier">Autorun</span> <span class="string">"j:\Cpp\SVG\debug\demo_1d_limits.exe"</span>
+<span class="identifier">limit</span> <span class="identifier">points</span> <span class="identifier">stroke</span> <span class="identifier">color</span> <span class="identifier">RGB</span><span class="special">(</span><span class="number">0</span><span class="special">,</span><span class="number">0</span><span class="special">,</span><span class="number">255</span><span class="special">)</span>
+<span class="identifier">limit</span> <span class="identifier">points</span> <span class="identifier">fill</span> <span class="identifier">color</span> <span class="identifier">RGB</span><span class="special">(</span><span class="number">255</span><span class="special">,</span><span class="number">192</span><span class="special">,</span><span class="number">203</span><span class="special">)</span>
+<span class="identifier">Build</span> <span class="identifier">Time</span> <span class="number">0</span><span class="special">:</span><span class="number">04</span>
+</pre>
+<p>
+        <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/demo_1d_limits.svg" width="500" height="200"></object></span>
+        See <a href="../../../../example/demo_1d_limits.cpp" target="_top">demo_1d_limits.cpp</a>
+        for full source code and sample output.
+      </p>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="demo_1d_autoscaling.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_1d.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="demo_1d_heat_flow_data.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

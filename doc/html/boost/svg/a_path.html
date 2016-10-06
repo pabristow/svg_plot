@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Struct a_path</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">
+<link rel="prev" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">
+<link rel="next" href="c_path.html" title="Struct c_path">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
+<td align="center"><a href="../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="c_path.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.svg.a_path"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Struct a_path</span></h2>
+<p>boost::svg::a_path &#8212; Draws a elliptical arc from the current point to (x,y), using two radii, axis rotation, and two control flags. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">boost/svg_plot/detail/svg_tag.hpp</a>&gt;
+
+</span>
+<span class="keyword">struct</span> <a class="link" href="a_path.html" title="Struct a_path">a_path</a> <span class="special">:</span> <span class="keyword">public</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">path_point</span> <span class="special">{</span>
+  <span class="comment">// <a class="link" href="a_path.html#boost.svg.a_pathconstruct-copy-destruct">construct/copy/destruct</a></span>
+  <a class="link" href="a_path.html#id172403-bb"><span class="identifier">a_path</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">,</span> 
+         <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// <a class="link" href="a_path.html#id172376-bb">public member functions</a></span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="a_path.html#id172383-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// public data members</span>
+  <span class="keyword">bool</span> <span class="identifier">large_arc</span><span class="special">;</span>  <span class="comment">// true if arc &gt;= 180 degrees wanted. </span>
+  <span class="keyword">bool</span> <span class="identifier">relative</span><span class="special">;</span>  <span class="comment">// If true relative else absolute. </span>
+  <span class="keyword">double</span> <span class="identifier">rx</span><span class="special">;</span>  <span class="comment">// X radius. </span>
+  <span class="keyword">double</span> <span class="identifier">ry</span><span class="special">;</span>  <span class="comment">// Y radius. </span>
+  <span class="keyword">bool</span> <span class="identifier">sweep</span><span class="special">;</span>  <span class="comment">// true if to draw in positive-angle direction </span>
+  <span class="keyword">double</span> <span class="identifier">x</span><span class="special">;</span>  <span class="comment">// X End of arc from current point. </span>
+  <span class="keyword">double</span> <span class="identifier">x_axis_rotation</span><span class="special">;</span>  <span class="comment">// Any rotation of the X axis. </span>
+  <span class="keyword">double</span> <span class="identifier">y</span><span class="special">;</span>  <span class="comment">// Y End of arc from current point. </span>
+<span class="special">}</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id1012417"></a><h2>Description</h2>
+<p>See 8.3.8 The elliptical arc curve commands.! Useful for pie charts, etc. </p>
+<div class="refsect2">
+<a name="id1012419"></a><h3>
+<a name="boost.svg.a_pathconstruct-copy-destruct"></a><code class="computeroutput">a_path</code> 
+        public
+       construct/copy/destruct</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<pre class="literallayout"><a name="id172403-bb"></a><span class="identifier">a_path</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">double</span> rx<span class="special">,</span> <span class="keyword">double</span> ry<span class="special">,</span> <span class="keyword">double</span> x_axis_rotation<span class="special">,</span> 
+       <span class="keyword">bool</span> large_arc <span class="special">=</span> <span class="keyword">false</span><span class="special">,</span> <span class="keyword">bool</span> sweep <span class="special">=</span> <span class="keyword">false</span><span class="special">,</span> <span class="keyword">bool</span> relative <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span></pre>Construct elliptic arc path. </li></ol></div>
+</div>
+<div class="refsect2">
+<a name="id1012512"></a><h3>
+<a name="id172376-bb"></a><code class="computeroutput">a_path</code> public member functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id172383-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands like "M1.2, 3.4", <p>Write elliptical arc path XML to ostream. </p>
+</li></ol></div>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="c_path.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

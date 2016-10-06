@@ -1,0 +1,230 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Tutorial: 1D Autoscale with Multiple Containers</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../tutorial_1d.html" title="1D Tutorials">
+<link rel="prev" href="demo_1d_containers_tutorial.html" title="1-D STL Containers Examples">
+<link rel="next" href="full_1d_layout.html" title="Tutorial: 1D More Layout Examples">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr>
+<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
+<td align="center"><a href="../../../../../../index.html">Home</a></td>
+<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
+<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
+<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="demo_1d_containers_tutorial.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_1d.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="full_1d_layout.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="svg_plot.tutorial_1d.1d_autoscale_containers"></a><a class="link" href="1d_autoscale_containers.html" title="Tutorial: 1D Autoscale with Multiple Containers">Tutorial:
+      1D Autoscale with Multiple Containers</a>
+</h3></div></div></div>
+<p>
+        This example demonstrates autoscaling with <span class="bold"><strong>multiple</strong></span>
+        STL containers.
+      </p>
+<p>
+        First we need a few includes to use Boost.Plot (and some others only needed
+        for this example).
+      </p>
+<pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">svg_1d_plot</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_1d_plot</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">detail</span><span class="special">/</span><span class="identifier">auto_axes</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">show</span><span class="special">;</span> <span class="comment">// A single STL container.</span>
+  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">show_all</span><span class="special">;</span> <span class="comment">// Multiple STL containers.</span>
+  <span class="comment">//using boost::svg::range; // Find min and max of a single STL container.</span>
+  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">range_all</span><span class="special">;//</span> <span class="identifier">Find</span> <span class="identifier">min</span> <span class="keyword">and</span> <span class="identifier">max</span> <span class="identifier">of</span> <span class="identifier">multiple</span> <span class="identifier">STL</span> <span class="identifier">containers</span><span class="special">.</span>
+  <span class="comment">// Note neither of these check for 'limits' (infinite, NaN) values.</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">detail</span><span class="special">/</span><span class="identifier">pair</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="comment">//  using boost::svg::detail::operator&lt;&lt;; // Output pair as, for example: 1.23, 4.56</span>
+
+<span class="comment">//#include &lt;boost/svg_plot/show_1d_settings.hpp&gt;</span>
+<span class="comment">// Only needed for showing which settings in use.</span>
+<span class="comment">//void boost::svg::show_1d_plot_settings(svg_1d_plot&amp;);</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">algorithm</span><span class="special">/</span><span class="identifier">minmax</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+ <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">minmax</span><span class="special">;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">algorithm</span><span class="special">/</span><span class="identifier">minmax_element</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+ <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">minmax_element</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">boolalpha</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">limits</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">numeric_limits</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">vector</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">utility</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">;</span>
+
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">algorithm</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">multiplies</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">transform</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">copy</span><span class="special">;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iterator</span><span class="special">&gt;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">iterator</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">iterator_traits</span><span class="special">;</span>
+  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream_iterator</span><span class="special">;</span>
+</pre>
+<p>
+        This example uses two containers to demonstrate autoscaling. It is common
+        to plot more than one set of data series together. Autoscaling must probably
+        inspect all the containers of these series in order to find axis ranges that
+        will be <span class="bold"><strong>suitable for all of them</strong></span>.
+      </p>
+<pre class="programlisting"><span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">my_data_1</span><span class="special">;</span>
+<span class="comment">// Initialize STL container my_data_1 with some entirely fictional data.</span>
+<span class="identifier">my_data_1</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">0.2</span><span class="special">);</span> <span class="comment">// [0]</span>
+<span class="identifier">my_data_1</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">1.1</span><span class="special">);</span> <span class="comment">// [1]</span>
+<span class="identifier">my_data_1</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">4.2</span><span class="special">);</span> <span class="comment">// [2]</span>
+<span class="identifier">my_data_1</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">3.3</span><span class="special">);</span> <span class="comment">// [3]</span>
+<span class="identifier">my_data_1</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">5.4</span><span class="special">);</span> <span class="comment">// [4]</span>
+<span class="identifier">my_data_1</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">6.5</span><span class="special">);</span> <span class="comment">// [5]</span>
+</pre>
+<p>
+        We might use some convenient functions to list the container to cout.
+      </p>
+<pre class="programlisting"><span class="identifier">show</span><span class="special">(</span><span class="identifier">my_data_1</span><span class="special">);</span> <span class="comment">// Entire container contents.</span>
+</pre>
+<p>
+        Others are easily written, often using std::copy, for example:
+      </p>
+<pre class="programlisting"><span class="identifier">copy</span><span class="special">(</span><span class="identifier">my_data_1_2</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">my_data_1_2</span><span class="special">.</span><span class="identifier">end</span><span class="special">(),</span> <span class="identifier">ostream_iterator</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;(</span><span class="identifier">cout</span><span class="special">,</span> <span class="string">" "</span><span class="special">));</span>
+</pre>
+<p>
+        Now we concoct another equally fictional data series by a transform multiplying
+        by 2.3.
+      </p>
+<pre class="programlisting"><span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">my_data_2</span><span class="special">;</span> <span class="comment">// Create a second data series.</span>
+<span class="identifier">copy</span><span class="special">(</span><span class="identifier">my_data_1</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">my_data_1</span><span class="special">.</span><span class="identifier">end</span><span class="special">(),</span> <span class="identifier">back_inserter</span><span class="special">(</span><span class="identifier">my_data_2</span><span class="special">));</span>
+<span class="comment">// Change the values in an entirely arbitrary way (each * 2.3).</span>
+<span class="identifier">transform</span><span class="special">(</span><span class="identifier">my_data_2</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">my_data_2</span><span class="special">.</span><span class="identifier">end</span><span class="special">(),</span> <span class="identifier">my_data_2</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">bind1st</span><span class="special">(</span><span class="identifier">multiplies</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;(),</span> <span class="number">2.3</span><span class="special">));</span>
+<span class="comment">//cout &lt;&lt; endl &lt;&lt; my_data.size() &lt;&lt; " values in my_data_2. " &lt;&lt; endl;</span>
+</pre>
+<p>
+        Next we need a new STL container, vector say, to hold our multiple containers
+        of data series. They must all be the same STL container type, in this example,
+        <code class="computeroutput"><span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span></code>.
+        And we use pushback to add the containers.
+      </p>
+<pre class="programlisting"><span class="identifier">vector</span><span class="special">&lt;</span><span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="special">&gt;</span> <span class="identifier">my_containers</span><span class="special">;</span>
+
+<span class="identifier">my_containers</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">my_data_1</span><span class="special">);</span> <span class="comment">// Add 1st data series.</span>
+<span class="identifier">my_containers</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">my_data_2</span><span class="special">);</span> <span class="comment">// Add another data series.</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_containers</span><span class="special">.</span><span class="identifier">size</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="string">" containers."</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<span class="identifier">show_all</span><span class="special">(</span><span class="identifier">my_containers</span><span class="special">);</span>
+</pre>
+<p>
+        Finally we can use all the containers to find the minimum of mimimums and
+        maximum of maximums ready to feed into the plot autoscale function.
+      </p>
+<pre class="programlisting"><span class="identifier">pair</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">mm</span> <span class="special">=</span> <span class="identifier">range_all</span><span class="special">(</span><span class="identifier">my_containers</span><span class="special">);</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Data range: "</span>  <span class="special">&lt;&lt;</span> <span class="identifier">mm</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span> <span class="comment">// min &amp; max of all data.</span>
+<span class="identifier">svg_1d_plot</span> <span class="identifier">my_1d_plot</span><span class="special">;</span> <span class="comment">// Construct a plot with all the default constructor values.</span>
+</pre>
+<p>
+        We could feed the minimum and maximum values separately,
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_autoscale</span><span class="special">(</span><span class="identifier">mm</span><span class="special">.</span><span class="identifier">first</span><span class="special">,</span> <span class="identifier">mm</span><span class="special">.</span><span class="identifier">second</span><span class="special">);</span>  <span class="comment">// Use minimum and maximum to autoscale.</span>
+</pre>
+<p>
+        but usually feeding the pair is more convenient. (Perhaps we might want to
+        impose some other minimum and maximum here).
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_autoscale</span><span class="special">(</span><span class="identifier">mm</span><span class="special">);</span>  <span class="comment">// Use overall minimum and maximum to autoscale.</span>
+</pre>
+<p>
+        Finally, we add the data series containers to the plot, and write the SVG
+        out to file.
+      </p>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_data_1</span><span class="special">,</span> <span class="string">"data_1"</span><span class="special">);</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_data_2</span><span class="special">,</span> <span class="string">"data_2"</span><span class="special">).</span><span class="identifier">stroke_color</span><span class="special">(</span><span class="identifier">red</span><span class="special">);</span>
+
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"auto_1d_containers.svg"</span><span class="special">);</span> <span class="comment">// Write the plot to file.</span>
+</pre>
+<p>
+        If we want, we can check the autoscale range used.
+      </p>
+<pre class="programlisting"><span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">detail</span><span class="special">::</span><span class="keyword">operator</span><span class="special">&lt;&lt;;</span> <span class="comment">// To avoid ambiguity.</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"x_range() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_range</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span> <span class="comment">// x_range() 0, 15</span>
+</pre>
+<p>
+        And even all the (hundreds of) plot settings (useful for diagnosis why your
+        plot doesn't meet your expectations).
+      </p>
+<pre class="programlisting"><span class="comment">//show_1d_plot_settings(my_1d_plot);</span>
+</pre>
+<div class="warning"><table border="0" summary="Warning">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../../../../doc/src/images/warning.png"></td>
+<th align="left">Warning</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+          The containers must be of the same type to use the function range_all.
+          If different types of containers, for example some in a set and some in
+          a vector, then the min and max for each container must be computed separately
+          and the minimum of the minimums and the maximum of the maximums injected
+          into the x_autoscale (and/or y_autoscale) call.
+        </p></td></tr>
+</table></div>
+<p>
+        Typical output is:
+      </p>
+<pre class="programlisting"><span class="identifier">Compiling</span><span class="special">...</span>
+<span class="identifier">auto_1d_containers</span><span class="special">.</span><span class="identifier">cpp</span>
+<span class="identifier">Linking</span><span class="special">...</span>
+<span class="identifier">Embedding</span> <span class="identifier">manifest</span><span class="special">...</span>
+<span class="identifier">Autorun</span> <span class="string">"j:\Cpp\SVG\debug\auto_1d_containers.exe"</span>
+<span class="number">6</span> <span class="identifier">values</span> <span class="identifier">in</span> <span class="identifier">container</span><span class="special">:</span> <span class="number">0.2</span> <span class="number">1.1</span> <span class="number">4.2</span> <span class="number">3.3</span> <span class="number">5.4</span> <span class="number">6.5</span>
+<span class="number">2</span> <span class="identifier">containers</span><span class="special">.</span>
+<span class="number">6</span> <span class="identifier">values</span> <span class="identifier">in</span> <span class="identifier">container</span><span class="special">:</span> <span class="number">0.2</span> <span class="number">1.1</span> <span class="number">4.2</span> <span class="number">3.3</span> <span class="number">5.4</span> <span class="number">6.5</span>
+<span class="number">6</span> <span class="identifier">values</span> <span class="identifier">in</span> <span class="identifier">container</span><span class="special">:</span> <span class="number">0.46</span> <span class="number">2.53</span> <span class="number">9.66</span> <span class="number">7.59</span> <span class="number">12.42</span> <span class="number">14.95</span>
+<span class="identifier">Data</span> <span class="identifier">range</span><span class="special">:</span> <span class="number">0.2</span><span class="special">,</span> <span class="number">14.9</span>
+<span class="identifier">x_range</span><span class="special">()</span> <span class="number">0</span><span class="special">,</span> <span class="number">15</span>
+<span class="identifier">Build</span> <span class="identifier">Time</span> <span class="number">0</span><span class="special">:</span><span class="number">03</span>
+
+
+<span class="identifier">with</span> <span class="identifier">unc</span> <span class="keyword">class</span>
+
+  <span class="identifier">Description</span><span class="special">:</span> <span class="identifier">Autorun</span> <span class="string">"J:\Cpp\SVG\Debug\auto_1d_containers.exe"</span>
+  <span class="number">6</span> <span class="identifier">values</span> <span class="identifier">in</span> <span class="identifier">container</span><span class="special">:</span> <span class="number">0.2</span> <span class="number">1.1</span> <span class="number">4.2</span> <span class="number">3.3</span> <span class="number">5.4</span> <span class="number">6.5</span>
+  <span class="number">2</span> <span class="identifier">containers</span><span class="special">.</span>
+  <span class="number">6</span> <span class="identifier">values</span> <span class="identifier">in</span> <span class="identifier">container</span><span class="special">:</span> <span class="number">0.2</span> <span class="number">1.1</span> <span class="number">4.2</span> <span class="number">3.3</span> <span class="number">5.4</span> <span class="number">6.5</span>
+  <span class="number">6</span> <span class="identifier">values</span> <span class="identifier">in</span> <span class="identifier">container</span><span class="special">:</span> <span class="number">0.46</span> <span class="number">2.53</span> <span class="number">9.66</span> <span class="number">7.59</span> <span class="number">12.42</span> <span class="number">14.95</span>
+  <span class="identifier">Data</span> <span class="identifier">range</span><span class="special">:</span> <span class="special">&lt;</span><span class="number">0.2</span><span class="special">,</span> <span class="number">14.95</span><span class="special">&gt;</span>
+  <span class="identifier">x_range</span><span class="special">()</span> <span class="number">0</span><span class="special">,</span> <span class="number">15</span>
+</pre>
+<p>
+        See <a href="../../../../example/auto_1d_containers.cpp" target="_top">auto_1d_containers.cpp</a>
+        for full source code and sample output.
+      </p>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="demo_1d_containers_tutorial.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_1d.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="full_1d_layout.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>
