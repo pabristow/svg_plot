@@ -1038,17 +1038,17 @@ double roundup10(double value)
   value = std::abs(value);
 
   int order = int(floor(log10(value))); // 0 to 9.999, gives 0, 10 to 99.9 gives 2 ...
-  double scaled = value * pow(10., -order); // 0 to 9.99 is unchanged, 10 to 9.99 scaled down to 1. to 9.99
+  double scaled_value = value * pow(10., -order); // 0 to 9.99 is unchanged, 10 to 9.99 scaled down to 1. to 9.99
   double pow10order = is_neg ? -pow(10., order) : pow(10., order); //  power of ten, signed.
-  if(scaled > 5.)
+  if(scaled_value > 5.)
   {
     return 10. * pow10order;
   }
-  else if(scaled > 2.)
+  else if(scaled_value > 2.)
   {
     return 5. * pow10order;
   }
-  else if(scaled > 1.)
+  else if(scaled_value > 1.)
   {
     return  2. * pow10order;
   }
@@ -1072,18 +1072,18 @@ double rounddown10(double value)
   bool is_neg = (value >= 0) ? false : true;
   value = std::abs(value);
   int order = int(floor(log10(value))); // 0 to 9.999, gives 0, 10 to 99.9 gives 2 ...
-  double scaled = value * pow(10., -order); // 0 to 9.99 is unchanged, 10 to 9.99 scaled down to 1. to 9.99
+  double scaled_value = value * pow(10., -order); // 0 to 9.99 is unchanged, 10 to 9.99 scaled down to 1. to 9.99
   double pow10order = is_neg ? -pow(10., order) : pow(10., order); //  power of ten, signed.
 
-  if(scaled <= 2.)
+  if(scaled_value <= 2.)
   {
     return 1. * pow10order;
   }
-  else if(scaled <= 5.)
+  else if(scaled_value <= 5.)
   {
     return 2. * pow10order;
   }
-  else if(scaled <= 10.)
+  else if(scaled_value <= 10.)
   {
     return 5. * pow10order;
   }
@@ -1106,14 +1106,14 @@ double roundup5(double value)
   bool is_neg = (value >= 0) ? false : true;
   value = std::abs(value);
   int order = int(floor(log10(value))); // 0 to 9.999, gives 0, 10 to 99.9 gives 2 ...
-  double scaled = value * pow(10., -order); // 0 to 9.99 is unchanged, 10 to 9.99 scaled down to 1. to 9.99
+  double scaled_value = value * pow(10., -order); // 0 to 9.99 is unchanged, 10 to 9.99 scaled down to 1. to 9.99
   double pow10order = is_neg ? -pow(10., order) : pow(10., order); //  power of ten, signed.
 
-  if(scaled > 5.)
+  if(scaled_value > 5.)
   { // Scale down to 1.
     return 10. * pow10order;
   }
-  else if(scaled > 1.)
+  else if(scaled_value > 1.)
   { //
     return 5. * pow10order;
   }
@@ -1136,14 +1136,14 @@ double rounddown5(double value)
   bool is_neg = (value >= 0) ? false : true;
   value = std::abs(value);
   int order = int(floor(log10(value))); // 0 to 9.999, gives 0, 10 to 99.9 gives 2 ...
-  double scaled = value * pow(10., -order); // 0 to 9.99 is unchanged, 10 to 9.99 scaled down to 1. to 9.99
+  double scaled_value = value * pow(10., -order); // 0 to 9.99 is unchanged, 10 to 9.99 scaled down to 1. to 9.99
   double pow10order = is_neg ? -pow(10., order) : pow(10., order); //  power of ten, signed.
 
-  if(scaled < 2.)
+  if(scaled_value < 2.)
   { //
     return 1. * pow10order;
   }
-  else if(scaled < 10.)
+  else if(scaled_value < 10.)
   { //
     return 5. * pow10order;
   }
@@ -1167,22 +1167,22 @@ double roundup2(double value)
   bool is_neg = (value >= 0) ? false : true;
   value = std::abs(value);
   int order = int(floor(log10(value))); // 0 to 9.999, gives 0, 10 to 99.9 gives 2 ...
-  double scaled = value * pow(10., -order); // 0 to 9.99 is unchanged, 10 to 9.99 scaled down to 1. to 9.99
+  double scaled_value = value * pow(10., -order); // 0 to 9.99 is unchanged, 10 to 9.99 scaled down to 1. to 9.99
   double pow10order = is_neg ? -pow(10., order) : pow(10., order); //  power of ten, signed.
 
-  if(scaled > 8.)
+  if(scaled_value > 8.)
   {
     return 10. * pow10order;
   }
-  else if(scaled > 6.)
+  else if(scaled_value > 6.)
   {
     return 8. * pow10order;
   }
-  else if(scaled > 4.)
+  else if(scaled_value > 4.)
   {
     return 6. * pow10order;
   }
-  else if(scaled > 2.)
+  else if(scaled_value > 2.)
   {
     return 4. * pow10order;
   }
@@ -1205,22 +1205,22 @@ double rounddown2(double value)
   bool is_neg = (value >= 0) ? false : true;
   value = std::abs(value);
   int order = int(floor(log10(value))); // 0 to 9.999, gives 0, 10 to 99.9 gives 2 ...
-  double scaled = value * pow(10., -order); // 0 to 9.99 is unchanged, 10 to 9.99 scaled down to 1. to 9.99
+  double scaled_value = value * pow(10., -order); // 0 to 9.99 is unchanged, 10 to 9.99 scaled down to 1. to 9.99
   double pow10order = is_neg ? -pow(10., order) : pow(10., order); //  power of ten, signed.
 
-  if(scaled < 2.)
+  if(scaled_value < 2.)
   { // Not scaled.
     return 1. * pow10order;
   }
-  else if(scaled < 4.)
+  else if(scaled_value < 4.)
   {
     return 2. * pow10order;
   }
-  else if(scaled < 6.)
+  else if(scaled_value < 6.)
   {
     return 4. * pow10order;
   }
-  else if(scaled < 8.)
+  else if(scaled_value < 8.)
   {
     return 6. * pow10order;
   }

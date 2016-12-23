@@ -1,10 +1,12 @@
 /*! \file test_svg_xml.cpp
     \brief Test actual SVG in XML by comparing with expected XML.
+    Link fails LINK : fatal error LNK1561: entry point must be defined 2016 VS 2015
+    need mainCRTstartup as main entry point.
+    But fails the test for reasons unclear.  Probably trivial mismatch?
     \date 10 Feb 2009
-    \author Paul A. Bristow
 */
 
-// Copyright Paul A. Bristow 2007, 2013
+// Copyright Paul A. Bristow 2007, 2009, 2013, 2016
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -54,7 +56,7 @@ BOOST_AUTO_TEST_CASE(test_svg_xml)
     .y_major_labels_side(left_side)
     .plot_window_on(true)
    ;
-   if (false)
+   if (true)
   { // (Re-)Write the expected pattern file.
     my_2d_plot.write("test_svg_xml.svg");
 

@@ -2642,7 +2642,7 @@ namespace boost
             // TODO what does this reducer do?
 
             std::string label_u; // std_dev or text_plusminus.
-            std::string label_df; // Degrees of freedom estimate.
+            // std::string label_df; // Degrees of freedom estimate.
             std::string pm_symbol = "&#x00A0;&#x00B1;"; //! Unicode space text_plusminus glyph.
             // Might also use ANSI symbol for text_plusminus 0xF1 == '\361' or char(241)
             // but seems to vary with different codepages:
@@ -2679,25 +2679,24 @@ namespace boost
               std::pair<double, double> ci = conf_interval(value, sd, df, derived().alpha_, distrib);
               int m = round_m(derived().epsilon_, sd, derived().uncSigDigits_, distrib);
               using boost::lexical_cast;
-              std::stringstream label;
-              label << " &lt;" // '<' 003C is an XML predefined entity, so use name.
+              std::stringstream label_ci;
+              label_ci << " &lt;" // '<' 003C is an XML predefined entity, so use name.
                   << lexical_cast<double>(round_ms(ci.first, m)) << ", "
                   << lexical_cast<double>(round_ms(ci.second, m))
                   << "&gt;"; // '>' 003e is an XML predefined entity, so use name.
-              std::string label_limits = label.str(); // For example: "<1.23, 1.45>"
+              std::string label_limits = label_ci.str(); // For example: "<1.23, 1.45>"
               t.tspan(label_limits).fill_color(val_style.addlimits_color_).font_size(udf_font);
             }
             if (val_style.df_on_ == true // degrees of freedom is wanted.
                   && (df != (std::numeric_limits<unsigned short int>::max)()) // and deg_free is defined OK.
                 )
             { // Degrees of freedom or number of values-1 used for this estimate of value.
-              std::stringstream label;
-              label.precision(4); // Might need 5 to show 65535?
+              std::stringstream label_df;
+              label_df.precision(4); // Might need 5 to show 65535?
               //label.flags(sty.value_ioflags_); // Leave at default.
-              label << "&#x00A0;(" << df << ")"; // "123"
+              label_df << "&#x00A0;(" << df << ")"; // "123"
               // Explicit space symbol "\&#x00A0;" seems necessary.
-              label_df = label.str();
-              t.tspan(label_df).fill_color(val_style.df_color_).font_size(udf_font);
+              t.tspan(label_df.str()).fill_color(val_style.df_color_).font_size(udf_font);
             }
             if (val_style.id_on_) //
             {  // Add ID or name string.

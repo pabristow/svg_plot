@@ -89,7 +89,6 @@ int main()
     ;
 
 
-
   my_plot.plot(data1, "Lions").stroke_color(blue);
   my_plot.plot(data2, "Tigers").stroke_color(orange);
   my_plot.plot(data3, "Bears").stroke_color(red);

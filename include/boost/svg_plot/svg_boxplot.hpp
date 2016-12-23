@@ -1002,10 +1002,10 @@ public:
     // x_ticks_.longest_label(); // Can't use this for boxplot because
     // it is the length of the value labels.
     y_ticks_.longest_label(); // Updates y_label_max_length_
-    double longest = 0;
+    size_t longest = 0;
     for (size_t i = 0; i < series.size(); i++)
     {
-      double l = series[i].series_info_.text().size(); // Length of an X label.
+      std::size_t l = series[i].series_info_.text().size(); // Length of an X label.
       if(l > longest)
       {
         longest = l;
@@ -1017,7 +1017,7 @@ public:
       // No labels provided so switch off labelling.
       x_ticks_.major_value_labels_side_ = 0;
     }
-    x_ticks_.label_max_length_ = longest;
+    x_ticks_.label_max_length_ = static_cast<double>(longest);
 
     // Check that labels won't collide and advise if they will?
     // Change rotation to avoid collision?
@@ -1799,27 +1799,27 @@ public:
     g_ext_ptr.clip_id(plot_window_clip_);
   } // void draw_outliers
 
-  void draw_boxplot(svg_boxplot_series& series, double x_offset)
+  void draw_boxplot(svg_boxplot_series& a_series, double x_offset)
   { //! Draw a whole boxplot, box, median line, axis whiskers, and outliers.
 
     // const here causes trouble
     // Need to calculate quartiles here to permit custom plot quartile definition.
-    series.calculate_quantiles();
+    a_series.calculate_quantiles();
 
-    draw_whiskers(series.whisker_min_, series.whisker_max_,
-      series.whisker_length_, x_offset,
-      series.min_whisker_style_, series.max_whisker_style_,
-      series.axis_style_);
+    draw_whiskers(a_series.whisker_min_, a_series.whisker_max_,
+      a_series.whisker_length_, x_offset,
+      a_series.min_whisker_style_, a_series.max_whisker_style_,
+      a_series.axis_style_);
 
-    draw_box(series.q1_, series.q3_, x_offset, series.box_width_,
-      series.box_style_);
+    draw_box(a_series.q1_, a_series.q3_, x_offset, a_series.box_width_,
+      a_series.box_style_);
 
-    draw_median(series.median_, x_offset,
-      series.box_width_ - series.box_style_.stroke_width(),
-      series.median_style_, series.values_style_);
+    draw_median(a_series.median_, x_offset,
+      a_series.box_width_ - a_series.box_style_.stroke_width(),
+      a_series.median_style_, a_series.values_style_);
 
-    draw_outliers(x_offset, series.outliers_, series.extreme_outliers_,
-      series.mild_outlier_, series.ext_outlier_, series.values_style_);
+    draw_outliers(x_offset, a_series.outliers_, a_series.extreme_outliers_,
+      a_series.mild_outlier_, a_series.ext_outlier_, a_series.values_style_);
   } // void draw_boxplot
 
   void update_image()

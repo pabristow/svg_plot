@@ -8,11 +8,13 @@
   layout of plots, data markers and lines.\n
 
   (Many items common to 1D and 2D use functions and classes in @c axis_plot_frame).
+  #define BOOST_SVG_DIAGNOSTICS can be added to output diagnostic information.
+
   \author Jacob Voytko & Paul A. Bristow
  */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2007, 2008, 2009, 2012, 2013, 2014
+// Copyright Paul A. Bristow 2007, 2008, 2009, 2012, 2013, 2014, 2016
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -84,8 +86,12 @@ namespace boost
         are unaffected by the order in which data is presented.
        (For 1-D a vector of doubles can be used).
    */
+
+   
    class svg_2d_plot_series
     {
+
+     void draw_straight_lines(const svg_2d_plot_series& series);
 
     friend void draw_straight_lines(const svg_2d_plot_series&);
     public:
@@ -180,14 +186,15 @@ namespace boost
     histogram_style_(no_histogram)
   { // Constructor.
     for(T i = begin; i != end; ++i)
-    { // Sort data points into normal and limited series.
+    { // Sort data points into normal and 'at-limit' series.
       std::pair<Meas, unc<false> > temp = *i;
+      // Only handle uncoordinated uncertainties case unc<false>
       //std::pair<unc<false>, unc<false>> temp = *i;
       Meas ux = temp.first;
       unc<false> uy = temp.second;
       std::pair<double, double> xy = std::make_pair<double, double>(ux.value(), uy.value());
       if(detail::pair_is_limit(xy))
-      { // Either x and/or y is at limit.
+      { // Either x and/or y is 'at-limit'.
         series_limits_.insert(xy);
       }
       else
@@ -353,12 +360,14 @@ namespace boost
 
   int svg_2d_plot_series::values_count()
   { //! \return number of normal values in a data series.
-    return series_.size();
+    // Assume can never have more than max_int values in the data series.
+    // Or could return size_t?
+    return static_cast<int>(series_.size());
   }
 
   int svg_2d_plot_series::limits_count()
   {  //! \return number of values 'at limit' in a data series.
-    return series_limits_.size();
+    return static_cast<int>(series_limits_.size());
   }
 
   // End svg_2d_plot_series Member Functions Definitions.
@@ -438,6 +447,9 @@ namespace boost
       double plot_right_; //!< SVG X coordinate of right side of plot window.
       double plot_top_; //!< SVG Y coordinate of top side of plot window.
       double plot_bottom_; //!< SVG Y coordinate of bottom side of plot window.
+
+      const double margin = 0.5; //!< Plot window margin to allow to rounding etc 
+      //! when checking if a point is inside window with @c is_in_window function.
 
       // enum legend_places{ nowhere, inside...}
       legend_places legend_place_; //!< Place for any legend box.
@@ -817,13 +829,13 @@ my_plot.background_color(ghostwhite) // Whole image.
           { // horizontal so need space for half the label, assumed 4 chars.
             value_space = x_value_label_style_.font_size() * 2; // two font widths.
           }
-          double margin = 0.;
-          margin = (std::max)(image_border_.margin_, value_space);
+          double border_margin = 0.;
+          border_margin = (std::max)(image_border_.margin_, value_space);
           plot_left_ += margin;
           plot_right_ -= margin;
 
           // Might need to do similar for Y-axis if anyone complains.
-          margin = (std::max)(image_border_.margin_, static_cast<double>(y_value_label_style_.font_size()/2) );
+          border_margin = (std::max)(image_border_.margin_, static_cast<double>(y_value_label_style_.font_size()/2) );
           plot_top_ += margin;
           plot_bottom_ -= margin;
         }
@@ -1026,13 +1038,13 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         if (plot_right_ <= plot_left_)
         {
-          std::cout << "plot window left " << plot_left_ << ", right " << plot_right_ << std::endl;
+          std::cout << "plot window left x " << plot_left_ << ", right " << plot_right_ <<"!" << std::endl;
           throw std::runtime_error("Plot window right <= left!");
         }
 
         if (plot_top_ >= plot_bottom_)
         {
-          std::cout << "plot window top " << plot_top_ << ", bottom " << plot_bottom_ << std::endl;
+          std::cout << "plot window top y " << plot_top_ << ", bottom " << plot_bottom_ << "!" << std::endl;
           throw std::runtime_error("Plot window top >= bottom!");
         }
 
@@ -1040,9 +1052,26 @@ my_plot.background_color(ghostwhite) // Whole image.
         // SVG image is 0, 0 at top left,y increase *downwards*
         // Cartesian 0, 0 at bottom left, y increasing upwards.
         x_scale_ = (plot_right_ - plot_left_) / (x_axis_.max_ - x_axis_.min_);
+        if (!boost::math::isnormal(x_scale_))
+        { // Check reasonableness of x scaling.
+          std::cout << "x_scale = " << x_scale_ << ", plot_right = " << plot_right_ << ", plot_left = " << plot_left_
+            << ", x_axis_.max_ " << x_axis_.max_ << "x_axis_.min_" << x_axis_.min_ << std::endl;
+          throw std::range_error("X scaling wrong!");
+        }
         x_shift_ = plot_left_ - x_axis_.min_ * (plot_right_ - plot_left_) / (x_axis_.max_ - x_axis_.min_);
+        if (!boost::math::isnormal(x_shift_))
+        { // Check reasonableness of x scaling.
+          std::cout << "x_shift_ = " << x_shift_ << ", plot_right = " << plot_right_ << ", plot_left = " << plot_left_
+            << ", x_axis_.max_ " << x_axis_.max_ << "x_axis_.min_" << x_axis_.min_ << std::endl;
+          throw std::range_error("X shift wrong!");
+        }
+        
         y_scale_ = -(plot_bottom_-plot_top_) / (y_axis_.max_-y_axis_.min_);
+
+
         y_shift_ = plot_top_ - (y_axis_.max_ * (plot_top_ - plot_bottom_) / (y_axis_.max_ - y_axis_.min_));
+
+
 
         if (x_axis_.axis_line_on_)
         {
@@ -1068,11 +1097,8 @@ my_plot.background_color(ghostwhite) // Whole image.
             new rect_element(plot_left_, plot_top_, (plot_right_ - plot_left_), plot_bottom_ - plot_top_));
         }
 #ifdef BOOST_SVG_DIAGNOSTICS
-        std::cout << "plot window left " << plot_left_ << ", right " << plot_right_ << ", bottom " << plot_bottom_ << ", top " << plot_top_ << std::endl;
+        std::cout << "plot window left x " << plot_left_ << ", right " << plot_right_ << ", bottom y " << plot_bottom_ << ", top " << plot_top_ << "." << std::endl;
 #endif
-
-
-
       } // calculate_plot_window
 
       void draw_y_axis()
@@ -1322,7 +1348,6 @@ my_plot.background_color(ghostwhite) // Whole image.
           center_align, // One might want it to left or right_align?
           upward) // Y label must be drawn vertically.
           );
-
       } // draw_y_axis_label
 
       void draw_y_major_tick(double value, path_element& tick_path, path_element& grid_path)
@@ -1611,7 +1636,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         double x_left(0.); // Start on vertical Y-axis line.
         double x_right(image_.y_size()); // right edge of image.
         double y(value); // Tick position and value label,
-        transform_y(y); // convert to svg.
+        transform_y(y); // Convert y to svg.
 
         if(y_ticks_.minor_grid_on_)
         { // Draw the minor grid, if wanted.
@@ -1670,17 +1695,38 @@ my_plot.background_color(ghostwhite) // Whole image.
           tick_path.M(x_left, y).L(x_right, y); // Draw the horizontal tick.
         }
         else
-        {// Tick is outside the window. Do nothing?  Warn?
+        { // Tick is outside the window, so warn.
 #ifdef BOOST_SVG_DIAGNOSTICS
-          std::cout << "y minor tick at " << y << ", from  " << x_left << " to " << x_right << ", is OUTside window bottom " << plot_bottom_ << " to top " << plot_top_ << std::endl;
+          std::cout << "y minor tick at y = " << y << ", from x = " << x_left << " to " << x_right 
+            << ", is OUTside Y window bottom " << plot_bottom_ << " to top " << plot_top_ << "." << std::endl;
 #endif
         }
       } // void draw_y_minor_tick
 
-      void draw_straight_lines(const svg_2d_plot_series& series)
-      { //! Add line between series of data points (straight rather than a Bezier curve).
-        //! Area fill with color if required.
+      //! Check if a point is within the plot window (or not too far outside).
+      bool is_in_window(double x, double y)
+      {
+        if ((x < plot_left_ - margin) || (x > plot_right_ + margin)
+          || (y < plot_top_ - margin) || (y > plot_bottom_ + margin))
+        {
 
+#ifdef BOOST_SVG_DIAGNOSTICS
+          std::cout << "window x = " << x << ", window y = " << y << " is outside plot window! " << std::endl;
+#endif
+          return false;
+        }
+        else
+        {
+          return true;
+        }
+      } // bool is_in_window(double x, double y)
+
+      // void draw_straight_lines(const svg_2d_plot_series& series);
+
+      //! Add line between series of data points (straight rather than a Bezier curve).
+      //! Area fill with color if specified.
+      void draw_straight_lines(const svg_2d_plot_series& series)
+      {
         g_element& g_ptr = image_.g(detail::PLOT_DATA_LINES).add_g_element();
         g_ptr.clip_id(plot_window_clip_);
         g_ptr.style().stroke_color(series.line_style_.stroke_color_);
@@ -1688,96 +1734,125 @@ my_plot.background_color(ghostwhite) // Whole image.
         g_ptr.style().stroke_width(series.line_style_.width_);
         path_element& path = g_ptr.path();
         path.style().fill_color(series.line_style_.area_fill_);
-
         bool is_fill = !series.line_style_.area_fill_.is_blank();
-        path.style().fill_on(is_fill); // Ensure includes a fill="none" if no fill.
+        path.style().fill_on(is_fill); // Ensure includes a fill="none" if no fill.  
+        //path.style().fill_color(series.line_style_.area_fill_); // Duplicates so no longer needed?
 
-        size_t ignored = 0;  // Data points that lie outside the plot window.
-        size_t lined = 0;  // OK data points that lie inside the plot window.
+        size_t outside_window = 0;  // Data points that lie outside the plot window.
+        size_t inside_window = 0;  // OK data points that lie inside the plot window.
 
-        double prev_x; // Previous X and Y of a data point.
-        double prev_y;
-        if(series.series_.size() > 1)
-        { // Need at least two points for a line  ;-)
+        // If required to fill the area under the plot,
+        // we first have to move from the X-axis (y = 0) to the first point,
+        // and again to the X-axis (y = 0) at the end after the last point. 
+
+        if (series.series_.size() < 2)
+        { // Need at least two points for a line joining them.
+          std::cout << "Only " << series.series_.size() << " points in series " << series.title_ << ", so no line drawn!" << std::endl;
+          // Also need two point  *inside window*, but that is checked later. 
+        }
+        else
+        {
           std::multimap<Meas, unc<false> >::const_iterator j = series.series_.begin();
           //std::multimap<unc<false>, unc<false> >::const_iterator j = series.series_.begin();
-          // If required to fill the area under the plot,
-          // we first have to move from the X-axis (y = 0) to the first point,
-          // and again to the X-axis (y = 0) at the end after the last point.
-
           // Using std::multimap<double, double> was prev_x = (*j).first;
-        find_first_good_point:
-          Meas prev_ux = (*j).first;
-          //unc<false> prev_ux = (*j).first; for unc rather than Meas
-          prev_x = prev_ux.value(); // 1st point X-value.
-          prev_y = 0.; // y = 0, so on horizontal X-axis.
-          transform_point(prev_x, prev_y);
-          if ((prev_x < plot_left_) || (prev_x > plot_right_) || (prev_y < plot_top_) || (prev_y > plot_bottom_))
-          { // Data point is OUTside plot window, so can't draw a line from this point.
-            // so try the next point to see if that is 'good' - inside the window.
-            ++j;
-            goto find_first_good_point;
-          }
+            // was unc<false> prev_ux = (*j).first; for unc rather than Meas
 
-          if(is_fill == true)
-          { // Move to 1st point.
-            //path.style().fill_color(series.line_style_.area_fill_); // Duplicates so no longer needed?
-            path.M(prev_x, prev_y);
-          }
-          // std::multimap<double, double> was transform_y(prev_y = (*j).second);
-          unc<false> prev_uy = (*j).second;
-          // Should be Meas prev_uy = (*j).second;?????
-          prev_y = prev_uy.value();
-          transform_y(prev_y);
-          if ((prev_y < plot_top_) || (prev_y > plot_bottom_))
-          { //y is NOT in the plot window, so no good for start of line.
-            j++;
-            goto find_first_good_point;
-          }
-          if(is_fill == true)
-          { // Area fill wanted.
-            //path.style().fill_color(series.line_style_.area_fill_); // Duplicates so no longer needed?
-            path.L(prev_x, prev_y); // Line from X-axis to 1st point.
+          double prev_x = 0; // Previous X and 
+          double prev_y = 0; // Y of a data point.
+          Meas prev_ux = (*j).first; // x
+          Meas prev_uy = (*j).second; // y
+          // Assigned to keep compiler quiet at line 1817 "warning C4701: potentially uninitialized local variable 'prev_x' used."
+          double y0 = 0.; // y = 0, so is start point for fill area on horizontal X-axis.
+
+          // Try to find a first point inside the plot window.
+          // It may not be the first point in the series.
+          while (j != series.series_.end())
+          {
+            prev_ux = (*j).first; // x
+            prev_uy = (*j).second; // y
+            prev_x = prev_ux.value(); // 1st point X-value.
+            prev_y = prev_uy.value(); // 1st point Y-value.
+#ifdef BOOST_SVG_DIAGNOSTICS
+          std::cout << "1st value x = " << prev_x << ", value y = " << prev_y << "." << std::endl;
+#endif
+            transform_point(prev_x, prev_y);
+            //if ((prev_x < plot_left_) || (prev_x > plot_right_) || (prev_y < plot_top_) || (prev_y > plot_bottom_))
+            if (is_in_window(prev_x, prev_y) == false)
+            { // Data point is OUTside plot window, so can't draw a line from y = 0 to this point.
+              // so try the next point to see if that is 'good' - inside the window.
+#ifdef BOOST_SVG_DIAGNOSTICS
+              std::cout << "1st x = " << prev_x << ", y = " << prev_y << " is outside plot window! " << std::endl;
+#endif
+              ++outside_window;
+              ++j;
+            }
+            else
+            { // Point is inside plot window, so is usable as a 1st point.
+              ++inside_window;
+              if (is_fill == true)
+              { // Move to 1st point.
+                //path.style().fill_color(series.line_style_.area_fill_); // Duplicates so no longer needed?
+                transform_y(y0);
+                path.M(prev_x, y0); // Start on X-axis
+                path.L(prev_x, prev_y); // and draw line to 1st point.
+                // This is to ensure fill.
+              }
+              else
+              {
+                path.M(prev_x, prev_y);  // Just move to 1st good X point.
+              }
+
+              break;  // and continue drawing lines below in another while loop below.
+              // leaving j pointing to 2nd point.
+            }
+          } // while j != series_.end()
+          if (inside_window == 0)
+          {
+            std::cout << "No start point in series " << series.title_ << " is within plot window!" << std::endl;
+            // So no point trying to draw a line!
+            return;
           }
           else
-          { // is_fill == false so area_fill == blank.
-            path.M(prev_x, prev_y);
+          {
+#ifdef BOOST_SVG_DIAGNOSTICS
+            std::cout << "Found 1st point in plot window x = " << prev_x << ", y = " << prev_y << "." << std::endl;
+#endif
           }
-          ++j; // so now refers to 2nd point to plot.
 
           double temp_x(0.);
           double temp_y;
           for(; j != series.series_.end(); ++j)
           {
-            unc<false> temp_ux = (*j).first;
+           // unc<false> temp_ux = (*j).first;
+            Meas temp_ux = (*j).first;
             temp_x = temp_ux.value();
-            unc<false> temp_uy = (*j).second;
+            //unc<false> temp_uy = (*j).second;
+            Meas temp_uy = (*j).second;
             temp_y = temp_uy.value();
+#ifdef BOOST_SVG_DIAGNOSTICS
+            //std::cout << "Line to x = " << temp_x << ", y = " << temp_y << "." << std::endl;
+#endif
             transform_point(temp_x, temp_y);
-            // 
-           // if ((temp_x > plot_left_) && (temp_x < plot_right_) && (temp_y > plot_top_) && (temp_y < plot_bottom_))
-            if ((temp_x >= plot_left_) && (temp_x <= plot_right_) && (temp_y >= plot_top_) && (temp_y <= plot_bottom_))
+            if (is_in_window(temp_x, temp_y) == true)
+            //if ((temp_x >= plot_left_) && (temp_x <= plot_right_) && (temp_y >= plot_top_) && (temp_y <= plot_bottom_))
             { // Data point is inside or on plot window, so draw a line to the point.
+              ++inside_window;
               path.L(temp_x, temp_y); // Line to next point.
               prev_x = temp_x;
               prev_y = temp_y;
-              lined++;
             }
             else
             { // Ignore any data point values outside the plot window.
-              // Not sure that this will do if area fill chosen.
-              ignored++;
+              // Not sure what this will do if area fill chosen.
+              ++outside_window;
 #ifdef BOOST_SVG_DIAGNOSTICS
-              std::cout << "Ignoring x = " << temp_x << ", y = " << temp_y << std::endl;
+              std::cout << "Line draw ignoring  x = " << temp_x << ", y = " << temp_y << std::endl;
 #endif
             }
-
           } // for j'th point
-#ifdef BOOST_SVG_DIAGNOSTICS
-            std::cout << "Draw_lines plotted " << lined << " lines, and ignored " << ignored
-            << ", size of series = " << series.series_.size() << std::endl;
-#endif
-           // BOOST_ASSERT(lined + ignored == series.series_.size());
+
+           BOOST_ASSERT(inside_window -1 + outside_window == series.series_.size());
+           // -1 for the point on the x axis needed for fill.
 
           if(is_fill == true)
           { // Area fill wanted.
@@ -1787,12 +1862,17 @@ my_plot.background_color(ghostwhite) // Whole image.
             // to ensure area below is filled.
           }
         }
+#ifdef BOOST_SVG_DIAGNOSTICS
+            std::cout << "Draw_lines plotted " << inside_window << " lines, and outside window " << outside_window
+            << ", size of series = " << series.series_.size() << std::endl;
+#endif
       } // draw_straight_lines
 
       void draw_bezier_lines(const svg_2d_plot_series& series)
       { //! Add Bezier curve line between data points.
+        //! Warning:
         //! At present it is assumed that all data points lie within the plot window.
-        //!  If this is not true, then strange and unpredictable curves will be produced!
+        //! If this is not true, then strange and unpredictable curves will be produced!
 
         g_element& g_ptr = image_.g(detail::PLOT_DATA_LINES).add_g_element();
         g_ptr.clip_id(plot_window_clip_);
@@ -1826,8 +1906,10 @@ my_plot.background_color(ghostwhite) // Whole image.
           //n_minus_1 = *(iter++);  // begin()
           transform_pair(n_minus_1);
           // Should check that point is inside plot window. TODO?
-          std::pair<Meas, unc<false> > un = *(iter++); // middle
-          n = std::make_pair(un.first.value(), un.second.value()); // X and Y values.
+          {
+            std::pair<Meas, unc<false> > un = *(iter++); // Middle point of trio for bezier.
+            n = std::make_pair(un.first.value(), un.second.value()); // X and Y values.
+          }
           transform_pair(n);
           // Should check that point is inside plot window. TODO?
           path.M(n_minus_1.first, n_minus_1.second); // move m_minus_1, the 1st data point.
@@ -1846,8 +1928,10 @@ my_plot.background_color(ghostwhite) // Whole image.
           {
             n_minus_2 = n_minus_1;
             n_minus_1 = n;
-            std::pair<Meas, unc<false> > un = *iter; // middle
-            n = std::make_pair(un.first.value(), un.second.value()); // X and Y values.
+            {
+              std::pair<Meas, unc<false> > un = *iter; // middle
+              n = std::make_pair(un.first.value(), un.second.value()); // X and Y values.
+            }
             transform_pair(n);
             // Should check that point is inside plot window. TODO?
 
@@ -2061,7 +2145,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           } // for limit point
 #ifdef BOOST_SVG_DIAGNOSTICS
           std::cout << limit_point_in_window_count << " limit points in window, " << limit_point_edge_window_count  << " limits points on edge of window." << std::endl;
-          std::cout << "x " << x_nan_count << " NaNs, " << x_inf_count << " infinities, Y " << y_nan_count << " NaNs, " << y_inf_count << " infinities." << std::endl;
+          std::cout << "X: " << x_nan_count << " NaNs, " << x_inf_count << " infinities, Y: " << y_nan_count << " NaNs, " << y_inf_count << " infinities." << std::endl;
 #endif
 
 

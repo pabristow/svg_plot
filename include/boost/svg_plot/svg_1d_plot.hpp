@@ -579,19 +579,19 @@ void svg_1d_plot::update_image()
       double x = serieses_[i].series_limits_[j];
       if (limit_NaN(x))
       { // is NaN rather than too big or too small.
-        double x = 0.;
-        transform_x(x);
+        double x0 = 0.; // Avoid previous use of x.
+        transform_x(x0);
         // If include zero, OK, else plot on left or right as appropriate.
-        if (x < plot_left_)
+        if (x0 < plot_left_)
         {
-          x = plot_left_;
+          x0 = plot_left_;
         }
-        else if (x > plot_right_)
+        else if (x0 > plot_right_)
         {
-          x = plot_right_;
+          x0 = plot_right_;
         }
-        //else X axis includes zero, so x is OK.
-        draw_plot_point(x, y, g_ptr, serieses_[i].limit_point_style_, Meas(), Meas());
+        //else X axis includes zero, so x0 is OK.
+        draw_plot_point(x0, y, g_ptr, serieses_[i].limit_point_style_, Meas(), Meas());
         // draw_plot_point(x, y, g_ptr, serieses_[i].limit_point_style_, unc<false>(), unc<false>());
       }
       else

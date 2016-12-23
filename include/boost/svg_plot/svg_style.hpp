@@ -1667,9 +1667,6 @@ double bar_style::bar_opt()
 
 // End class bar_style Member Functions Definitions.
 
-
-const std::string strip_e0s(std::string s);
-
 const std::string strip_e0s(std::string s)
 { /* To remove redundant sign and leading zero(s) in exponent, for example, "1.2e+000" becomes "1.2"
     \details Used to work out the longest value label before calculate_plot_window.
@@ -1684,29 +1681,40 @@ const std::string strip_e0s(std::string s)
   using std::string;
   size_t j = s.find("e+000");
   if (j != string::npos)
-  {
-    s.erase(j, 5); // remove "e+000"
+  { // Found "e+000".
+    s.erase(j, 5); // remove "e+000" completely, leaving no e... at all.
     return s;
   }
   j = s.find("e-000");
   if (j != string::npos)
-  {
-    s.erase(j, 5); // remove "e-000"
+  { // 
+    s.erase(j, 5); // remove entire "e-000".
     return s;
   }
   j = s.find("e+00");
   if (j != string::npos)
-  {
-    s.erase(j + 1, 3); // remove "+00", leave d
+  { // Found "e+00", either 1.23e+00 or 2.34e+01 .. e+09
+     // From VS2015 and GCC and Clang all follow C++ standard 
+    // which says use at least two exponent digits (MS was always 3 e+ddd)
+    // "e+00" with no following digit means a real zero exponent.
+   if (s[j+3] == '0')
+    { // is just "e+00" for a zero exponent, so remove the entire string.
+     s.erase(j, 4); // remove "e+00" from "e+00", leaving no e... at all.
+    }
+    else
+    {
+      s.erase(j + 1, 3); // remove "+00" from "e+009", leave d, so becomes e9.
+    }
     return s;
   }
 
   j = s.find("e-00");
   if (j != string::npos)
   {
-    s.erase(j+2, 2); // remove "00", leave "-"
+    s.erase(j+2, 2); // remove "00", leave "-" and any trailing d.
     return s;
   }
+
   j = s.find("e+0");
   if (j != string::npos)
   {
@@ -1716,7 +1724,7 @@ const std::string strip_e0s(std::string s)
   j = s.find("e-0");
   if (j != string::npos)
   {
-    s.erase(j+2, 1); // remove "0", leave "-dd"
+    s.erase(j+2, 1); // remove "-0", leave "-dd"
   }
   return s; //! \return length of trimmed string (perhaps unchanged).
 } // const std::string strip(double d)
@@ -1730,8 +1738,6 @@ const std::string strip_e0s(std::string s)
   unclear how to determine the exact width of digits, so an
   arbitrary average width height ratio wh = 0.7 is used as a good approximation.
   */
-
-//double string_svg_length(const std::string& s, const text_style& style);
 
 double string_svg_length(const std::string& s, const text_style& style)
 {
@@ -1778,7 +1784,6 @@ double string_svg_length(const std::string& s, const text_style& style)
  // std::cout << "string " << s << " has " << d << " characters." << std::endl;
  return d * style.font_size() * wh;
 } // double string_svg_length(
-
 
 }//svg
 }//boost
