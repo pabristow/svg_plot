@@ -189,7 +189,7 @@ public:
     std::pair<Meas, unc<correlated> > operator()(const std::pair<T, U>& a) const
     {  //!< Convert a pair of X and Y uncertain type values to a pair of doubles.
        //! \return pair of Meas & uncs.
-       return std::pair<Meas, unc<correlated> >((Meas)(a.first), (unc<correlated>)(a.second));
+       return std::pair<Meas, unc<correlated> >((Meas)(a.first), (unc<correlated>)(static_cast<double>(a.second)));
     }
 
     template <typename T>    //!< \tparam T Any type convertible to double.
