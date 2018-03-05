@@ -35,39 +35,39 @@
 <span class="keyword">class</span> <a class="link" href="smallest.html" title="Class template smallest">smallest</a> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="smallest.html#smallestconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">explicit</span> <a class="link" href="smallest.html#id171891-bb"><span class="identifier">smallest</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="smallest.html#id171878-bb"><span class="identifier">smallest</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">explicit</span> <a class="link" href="smallest.html#id1063318-bb"><span class="identifier">smallest</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="smallest.html#id1063327-bb"><span class="identifier">smallest</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="smallest.html#id171812-bb">public member functions</a></span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">bool</span> <a class="link" href="smallest.html#id171788-bb"><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">,</span> <span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">bool</span> <a class="link" href="smallest.html#id171825-bb"><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">FPT</span> <a class="link" href="smallest.html#id171855-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="smallest.html#id1063232-bb">public member functions</a></span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">bool</span> <a class="link" href="smallest.html#id1063233-bb"><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">,</span> <span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">bool</span> <a class="link" href="smallest.html#id1063269-bb"><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">FPT</span> <a class="link" href="smallest.html#id1063290-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1006492"></a><h2>Description</h2>
+<a name="id1656466"></a><h2>Description</h2>
 <div class="refsect2">
-<a name="id1006490"></a><h3>
+<a name="id1656479"></a><h3>
 <a name="smallestconstruct-copy-destruct"></a><code class="computeroutput">smallest</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">explicit</span> <a name="id171891-bb"></a><span class="identifier">smallest</span><span class="special">(</span><span class="identifier">T</span> s<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">explicit</span> <a name="id1063318-bb"></a><span class="identifier">smallest</span><span class="special">(</span><span class="identifier">T</span> s<span class="special">)</span><span class="special">;</span></pre>
 <p>&lt;</p>
 <p>David Monniaux, <a href="http://arxiv.org/abs/cs/0701192v4," target="_top">http://arxiv.org/abs/cs/0701192v4,</a> It is somewhat common for beginners to add a comparison check to 0 before computing a division, in order to avoid possible division-by-zero exceptions or the generation of infinite results. A first objection to this practise is that, anyway, computing 1/x for x very close to zero will generate very large numbers that will most probably result in overflows later. Another objection, which few programmers know about and that we wish to draw attention to, is that it may actually fail to work, depending on what the compiler does - that is, the program may actually test that x 6= 0, then, further down, find that x = 0 without any apparent change to x! </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id171878-bb"></a><span class="identifier">smallest</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id1063327-bb"></a><span class="identifier">smallest</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>&lt; Default Constructor. Default smallest_ = 2. * boost::math::tools::min_value&lt;double&gt;(); multiplier m = 2 (must be integer or static_cast&lt;FPT&gt;()) is chosen to allow for a few bits of computation error. Pessimistic multiplier is the number of arithmetic operations, assuming every operation causes a 1 least significant bit error, but a more realistic average would be half this.</p>
 </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1006602"></a><h3>
-<a name="id171812-bb"></a><code class="computeroutput">smallest</code> public member functions</h3>
+<a name="id1656569"></a><h3>
+<a name="id1063232-bb"></a><code class="computeroutput">smallest</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">bool</span> <a name="id171788-bb"></a><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span><span class="special">(</span><span class="identifier">T</span> fp_value<span class="special">,</span> <span class="identifier">T</span> s<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">bool</span> <a name="id1063233-bb"></a><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span><span class="special">(</span><span class="identifier">T</span> fp_value<span class="special">,</span> <span class="identifier">T</span> s<span class="special">)</span><span class="special">;</span></pre>
 <p>&lt; 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -82,7 +82,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">bool</span> <a name="id171825-bb"></a><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span><span class="special">(</span><span class="identifier">T</span> fp_value<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">bool</span> <a name="id1063269-bb"></a><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span><span class="special">(</span><span class="identifier">T</span> fp_value<span class="special">)</span><span class="special">;</span></pre>
 <p>&lt; 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -97,7 +97,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">FPT</span> <a name="id171855-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">FPT</span> <a name="id1063290-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>&lt; 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
