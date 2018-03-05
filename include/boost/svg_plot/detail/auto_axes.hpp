@@ -27,7 +27,7 @@
 #endif
 
 #include <boost/svg_plot/detail/numeric_limits_handling.hpp>
-#include <boost/svg_plot/detail/FP_compare.hpp> // is_small & is_close
+#include <boost/svg_plot/detail/fp_compare.hpp> // is_small & is_close
 #include <boost/quan/meas.hpp> // for value_of.
 
 #include <boost/math/special_functions/fpclassify.hpp>
