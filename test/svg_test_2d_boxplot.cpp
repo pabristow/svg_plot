@@ -12,8 +12,8 @@
 // (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-#include "svg_2d_plot.hpp"
-#include "svg_boxplot.hpp"
+#include <boost/svg_plot/svg_2d_plot.hpp>
+#include <boost/svg_plot/svg_boxplot.hpp>
 
 #include <map>
 #include <cmath>
