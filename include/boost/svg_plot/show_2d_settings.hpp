@@ -63,10 +63,12 @@ void show_2d_plot_settings(svg_2d_plot& plot)
   using boost::svg::detail::operator<<;
   //std::ostream& operator<< (std::ostream& os, const std::pair<double, double>& p); //! Output pair of doubles to ostream.
 
-  std::ios_base::fmtflags iostate = std::cout.flags(); // Save to restore on exit.
+  std::ios_base::fmtflags iostate = std::cout.flags(); // Save all format flags to restore on exit.
+  std::streamsize precision = std::cout.precision();
+  std::cout.precision(4);
   std::cout << std::dec << std::boolalpha << std::endl;
-  std::cout  << std::endl;
 
+  std::cout <<"\nSVG 2-D plot settings" << std::endl;
   std::cout << "axes_on " << plot.axes_on() << std::endl;
   std::cout << "background_border_width " << plot.background_border_width() << std::endl;
   std::cout << "background_border_color " << plot.background_border_color() << std::endl;
@@ -250,6 +252,7 @@ void show_2d_plot_settings(svg_2d_plot& plot)
   std::cout << "data lines width " << plot.data_lines_width() << std::endl;
 
   std::cout.flags(iostate); // Restore saved format flags.
+  std::cout.precision(precision);  // Restore precision.
 } // void show_plot_settings(svg_2d_plot& plot)
 
 } // svg

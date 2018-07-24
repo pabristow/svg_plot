@@ -12,64 +12,64 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- (See accompanying file LICENSE_1_0.txt --> 
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
-<clipPath id="plot_window"><rect x="85.2" y="9" width="388" height="331"/></clipPath>
+<clipPath id="plot_window"><rect x="61.7" y="3.5" width="435" height="342"/></clipPath>
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="400"/></g>
-<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2"><rect x="84.2" y="8" width="390" height="333"/></g>
+<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2"><rect x="60.7" y="2.5" width="437" height="344"/></g>
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="174" y1="8" x2="174" y2="346"/><line x1="84.2" y1="8" x2="84.2" y2="341"/></g>
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="79.2" y1="175" x2="474" y2="175"/><line x1="79.2" y1="341" x2="474" y2="341"/></g>
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M82.2,168 L84.2,168 M82.2,161 L84.2,161 M82.2,155 L84.2,155 M82.2,148 L84.2,148 M82.2,135 L84.2,135 M82.2,128 L84.2,128 M82.2,121 L84.2,121 M82.2,115 L84.2,115 M82.2,101 L84.2,101 M82.2,94.6 L84.2,94.6 M82.2,87.9 L84.2,87.9 M82.2,81.3 L84.2,81.3 M82.2,67.9 L84.2,67.9 M82.2,61.3 L84.2,61.3 M82.2,54.6 L84.2,54.6 M82.2,48 L84.2,48 M82.2,34.6 L84.2,34.6 M82.2,28 L84.2,28 M82.2,21.3 L84.2,21.3 M82.2,14.7 L84.2,14.7 M82.2,175 L84.2,175 M82.2,181 L84.2,181 M82.2,188 L84.2,188 M82.2,194 L84.2,194 M82.2,201 L84.2,201 M82.2,208 L84.2,208 M82.2,214 L84.2,214 M82.2,221 L84.2,221 M82.2,228 L84.2,228 M82.2,234 L84.2,234 M82.2,241 L84.2,241 M82.2,241 L84.2,241 M82.2,248 L84.2,248 M82.2,254 L84.2,254 M82.2,261 L84.2,261 M82.2,268 L84.2,268 M82.2,274 L84.2,274 M82.2,281 L84.2,281 M82.2,288 L84.2,288 M82.2,294 L84.2,294 M82.2,301 L84.2,301 M82.2,308 L84.2,308 M82.2,314 L84.2,314 M82.2,321 L84.2,321 M82.2,328 L84.2,328 M82.2,334 L84.2,334 M82.2,341 L84.2,341 " fill="none"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M186,341 L186,343 M198,341 L198,343 M210,341 L210,343 M222,341 L222,343 M246,341 L246,343 M258,341 L258,343 M270,341 L270,343 M282,341 L282,343 M306,341 L306,343 M318,341 L318,343 M330,341 L330,343 M342,341 L342,343 M366,341 L366,343 M378,341 L378,343 M390,341 L390,343 M402,341 L402,343 M426,341 L426,343 M438,341 L438,343 M450,341 L450,343 M462,341 L462,343 M162,341 L162,343 M150,341 L150,343 M138,341 L138,343 M126,341 L126,343 M102,341 L102,343 M90.2,341 L90.2,343 " fill="none"/></g>
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M79.2,175 L84.2,175 M79.2,141 L84.2,141 M79.2,108 L84.2,108 M79.2,74.6 L84.2,74.6 M79.2,41.3 L84.2,41.3 M79.2,8 L84.2,8 M79.2,175 L84.2,175 M79.2,208 L84.2,208 M79.2,241 L84.2,241 M79.2,274 L84.2,274 M79.2,308 L84.2,308 M79.2,341 L84.2,341 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M174,341 L174,346 M234,341 L234,346 M294,341 L294,346 M354,341 L354,346 M414,341 L414,346 M474,341 L474,346 M174,341 L174,346 M114,341 L114,346 " fill="none"/></g>
+<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="162" y1="2.5" x2="162" y2="352"/><line x1="60.7" y1="2.5" x2="60.7" y2="347"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="55.7" y1="175" x2="498" y2="175"/><line x1="55.7" y1="347" x2="498" y2="347"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M58.7,168 L60.7,168 M58.7,161 L60.7,161 M58.7,154 L60.7,154 M58.7,147 L60.7,147 M58.7,133 L60.7,133 M58.7,126 L60.7,126 M58.7,119 L60.7,119 M58.7,113 L60.7,113 M58.7,98.8 L60.7,98.8 M58.7,91.9 L60.7,91.9 M58.7,85.1 L60.7,85.1 M58.7,78.2 L60.7,78.2 M58.7,64.4 L60.7,64.4 M58.7,57.5 L60.7,57.5 M58.7,50.7 L60.7,50.7 M58.7,43.8 L60.7,43.8 M58.7,30 L60.7,30 M58.7,23.1 L60.7,23.1 M58.7,16.3 L60.7,16.3 M58.7,9.38 L60.7,9.38 M58.7,175 L60.7,175 M58.7,181 L60.7,181 M58.7,188 L60.7,188 M58.7,195 L60.7,195 M58.7,202 L60.7,202 M58.7,209 L60.7,209 M58.7,216 L60.7,216 M58.7,223 L60.7,223 M58.7,230 L60.7,230 M58.7,236 L60.7,236 M58.7,243 L60.7,243 M58.7,243 L60.7,243 M58.7,250 L60.7,250 M58.7,257 L60.7,257 M58.7,264 L60.7,264 M58.7,271 L60.7,271 M58.7,278 L60.7,278 M58.7,285 L60.7,285 M58.7,291 L60.7,291 M58.7,298 L60.7,298 M58.7,305 L60.7,305 M58.7,312 L60.7,312 M58.7,319 L60.7,319 M58.7,326 L60.7,326 M58.7,333 L60.7,333 M58.7,340 L60.7,340 M58.7,347 L60.7,347 " fill="none"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M175,347 L175,349 M188,347 L188,349 M202,347 L202,349 M215,347 L215,349 M242,347 L242,349 M256,347 L256,349 M269,347 L269,349 M282,347 L282,349 M309,347 L309,349 M323,347 L323,349 M336,347 L336,349 M350,347 L350,349 M377,347 L377,349 M390,347 L390,349 M403,347 L403,349 M417,347 L417,349 M444,347 L444,349 M457,347 L457,349 M471,347 L471,349 M484,347 L484,349 M148,347 L148,349 M135,347 L135,349 M121,347 L121,349 M108,347 L108,349 M80.9,347 L80.9,349 M67.4,347 L67.4,349 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M55.7,175 L60.7,175 M55.7,140 L60.7,140 M55.7,106 L60.7,106 M55.7,71.3 L60.7,71.3 M55.7,36.9 L60.7,36.9 M55.7,2.5 L60.7,2.5 M55.7,175 L60.7,175 M55.7,209 L60.7,209 M55.7,243 L60.7,243 M55.7,278 L60.7,278 M55.7,312 L60.7,312 M55.7,347 L60.7,347 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M162,347 L162,352 M229,347 L229,352 M296,347 L296,352 M363,347 L363,352 M430,347 L430,352 M498,347 L498,352 M162,347 L162,352 M94.3,347 L94.3,352 " fill="none"/></g>
 <g id="xTicksValues">
-<text x="174" y="362" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0</text>
-<text x="234" y="362" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2</text>
-<text x="294" y="362" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4</text>
-<text x="354" y="362" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6</text>
-<text x="414" y="362" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8</text>
-<text x="474" y="362" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">10</text>
-<text x="174" y="362" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0</text>
-<text x="114" y="362" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-2</text></g>
+<text x="162" y="367" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0</text>
+<text x="229" y="367" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2</text>
+<text x="296" y="367" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4</text>
+<text x="363" y="367" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6</text>
+<text x="430" y="367" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8</text>
+<text x="498" y="367" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">10</text>
+<text x="162" y="367" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0</text>
+<text x="94.3" y="367" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-2</text></g>
 <g id="yTicksValues">
-<text x="73.2" y="177" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text>
-<text x="73.2" y="144" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">2</text>
-<text x="73.2" y="110" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">4</text>
-<text x="73.2" y="77" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">6</text>
-<text x="73.2" y="43.7" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">8</text>
-<text x="73.2" y="10.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">10</text>
-<text x="73.2" y="177" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text>
-<text x="73.2" y="210" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-2</text>
-<text x="73.2" y="244" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-4</text>
-<text x="73.2" y="277" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-6</text>
-<text x="73.2" y="310" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-8</text>
-<text x="73.2" y="343" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-10</text></g>
+<text x="49.7" y="177" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text>
+<text x="49.7" y="143" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">2</text>
+<text x="49.7" y="108" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">4</text>
+<text x="49.7" y="73.7" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">6</text>
+<text x="49.7" y="39.3" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">8</text>
+<text x="49.7" y="4.9" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">10</text>
+<text x="49.7" y="177" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text>
+<text x="49.7" y="211" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-2</text>
+<text x="49.7" y="246" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-4</text>
+<text x="49.7" y="280" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-6</text>
+<text x="49.7" y="315" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-8</text>
+<text x="49.7" y="349" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-10</text></g>
 <g id="yLabel">
-<text x="42.9" y="175" text-anchor="middle" transform = "rotate(-90 42.9 175 )" font-size="14" font-family="Lucida Sans Unicode">distance (km)</text></g>
+<text x="19.4" y="175" text-anchor="middle" transform = "rotate(-90 19.4 175 )" font-size="14" font-family="Lucida Sans Unicode">distance (km)</text></g>
 <g id="xLabel">
-<text x="279" y="377" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">times (sec)</text></g>
-<g id="plotUnc3" stroke="none" fill="rgb(230,240,255)" stroke-width="1"><ellipse cx="107" cy="320" rx="2.7" ry="45"/><ellipse cx="211" cy="117" rx="50.4" ry="33.5"/><ellipse cx="297" cy="123" rx="36" ry="15"/></g>
-<g id="plotUnc2" stroke="none" fill="rgb(200,230,255)" stroke-width="1"><ellipse cx="107" cy="320" rx="1.8" ry="30"/><ellipse cx="211" cy="117" rx="33.6" ry="22.3"/><ellipse cx="297" cy="123" rx="24" ry="9.99"/></g>
-<g id="plotUnc1" stroke="none" fill="rgb(173,216,230)" stroke-width="1"><ellipse cx="107" cy="320" rx="0.9" ry="15"/><ellipse cx="211" cy="117" rx="16.8" ry="11.2"/><ellipse cx="297" cy="123" rx="12" ry="5"/></g>
-<g id="plotPoints" clip-path="url(#plot_window)"><g stroke="rgb(0,0,0)" fill="rgb(255,255,255)"><circle cx="107" cy="320" r="1"/><circle cx="211" cy="117" r="1"/><circle cx="297" cy="123" r="1"/></g>
+<text x="279" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">times (sec)</text></g>
+<g id="plotUnc3" stroke="none" fill="rgb(230,240,255)" stroke-width="1"><ellipse cx="86.4" cy="325" rx="3.02" ry="46.4"/><ellipse cx="203" cy="115" rx="56.4" ry="34.6"/><ellipse cx="299" cy="121" rx="40.3" ry="15.5"/></g>
+<g id="plotUnc2" stroke="none" fill="rgb(200,230,255)" stroke-width="1"><ellipse cx="86.4" cy="325" rx="2.02" ry="31"/><ellipse cx="203" cy="115" rx="37.6" ry="23"/><ellipse cx="299" cy="121" rx="26.9" ry="10.3"/></g>
+<g id="plotUnc1" stroke="none" fill="rgb(173,216,230)" stroke-width="1"><ellipse cx="86.4" cy="325" rx="1.01" ry="15.5"/><ellipse cx="203" cy="115" rx="18.8" ry="11.5"/><ellipse cx="299" cy="121" rx="13.4" ry="5.16"/></g>
+<g id="plotPoints" clip-path="url(#plot_window)"><g stroke="rgb(0,0,0)" fill="rgb(255,255,255)"><circle cx="86.4" cy="325" r="1"/><circle cx="203" cy="115" r="1"/><circle cx="299" cy="121" r="1"/></g>
 </g>
 <g id="title">
 <text x="250" y="36" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode"></text></g>
 <g id="plotXValues"><g>
-<text x="112" y="317" transform = "rotate(-30 112 317 )" font-size="16" font-family="Times New Roman">-2.23<tspan fill="rgb(0,255,255)" font-size="16" font-family="Times New Roman">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,255,255)" font-size="14" font-family="Times New Roman">0.03</tspan><tspan fill="rgb(128,0,128)" font-size="14" font-family="Times New Roman"> &lt;-2.26, -2.2&gt;</tspan><tspan fill="rgb(255,0,255)" font-size="14" font-family="Times New Roman">&#x00A0;(7)</tspan><tspan fill="rgb(0,0,0)" font-size="16" font-family="Times New Roman"></tspan></text></g>
+<text x="91.4" y="322" transform = "rotate(-30 91.4 322 )" font-size="16" font-family="Times New Roman">-2.23<tspan fill="rgb(0,255,255)" font-size="16" font-family="Times New Roman">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,255,255)" font-size="14" font-family="Times New Roman">0.03</tspan><tspan fill="rgb(128,0,128)" font-size="14" font-family="Times New Roman"> &lt;-2.26, -2.2&gt;</tspan><tspan fill="rgb(255,0,255)" font-size="14" font-family="Times New Roman">&#x00A0;(7)</tspan><tspan fill="rgb(0,0,0)" font-size="16" font-family="Times New Roman"></tspan></text></g>
 <g>
-<text x="216" y="114" transform = "rotate(-30 216 114 )" font-size="16" font-family="Times New Roman">1.23<tspan fill="rgb(0,255,255)" font-size="16" font-family="Times New Roman">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,255,255)" font-size="14" font-family="Times New Roman">0.56</tspan><tspan fill="rgb(128,0,128)" font-size="14" font-family="Times New Roman"> &lt;0.7, 1.8&gt;</tspan><tspan fill="rgb(255,0,255)" font-size="14" font-family="Times New Roman">&#x00A0;(7)</tspan><tspan fill="rgb(0,0,0)" font-size="16" font-family="Times New Roman"></tspan></text></g>
+<text x="208" y="112" transform = "rotate(-30 208 112 )" font-size="16" font-family="Times New Roman">1.23<tspan fill="rgb(0,255,255)" font-size="16" font-family="Times New Roman">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,255,255)" font-size="14" font-family="Times New Roman">0.56</tspan><tspan fill="rgb(128,0,128)" font-size="14" font-family="Times New Roman"> &lt;0.7, 1.8&gt;</tspan><tspan fill="rgb(255,0,255)" font-size="14" font-family="Times New Roman">&#x00A0;(7)</tspan><tspan fill="rgb(0,0,0)" font-size="16" font-family="Times New Roman"></tspan></text></g>
 <g>
-<text x="302" y="120" transform = "rotate(-30 302 120 )" font-size="16" font-family="Times New Roman">4.1<tspan fill="rgb(0,255,255)" font-size="16" font-family="Times New Roman">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,255,255)" font-size="14" font-family="Times New Roman">0.4</tspan><tspan fill="rgb(128,0,128)" font-size="14" font-family="Times New Roman"> &lt;3.7, 4.5&gt;</tspan><tspan fill="rgb(255,0,255)" font-size="14" font-family="Times New Roman">&#x00A0;(7)</tspan><tspan fill="rgb(0,0,0)" font-size="16" font-family="Times New Roman"></tspan></text></g>
+<text x="304" y="118" transform = "rotate(-30 304 118 )" font-size="16" font-family="Times New Roman">4.1<tspan fill="rgb(0,255,255)" font-size="16" font-family="Times New Roman">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,255,255)" font-size="14" font-family="Times New Roman">0.4</tspan><tspan fill="rgb(128,0,128)" font-size="14" font-family="Times New Roman"> &lt;3.7, 4.5&gt;</tspan><tspan fill="rgb(255,0,255)" font-size="14" font-family="Times New Roman">&#x00A0;(7)</tspan><tspan fill="rgb(0,0,0)" font-size="16" font-family="Times New Roman"></tspan></text></g>
 </g>
 <g id="plotYValues"><g>
-<text x="112" y="332" transform = "rotate(-30 112 332 )" font-size="12" font-family="Arial">&#x00A0;&#x00A0;&#x00A0;-8.76<tspan fill="rgb(255,0,0)" font-size="10" font-family="arial">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(255,0,0)" font-size="10" font-family="Arial">&#x00A0;0.9</tspan><tspan fill="rgb(0,100,0)" font-size="10" font-family="Arial"> &lt;-9.5, -8&gt;</tspan><tspan fill="rgb(0,128,0)" font-size="10" font-family="Arial">&#x00A0;(9)</tspan><tspan fill="rgb(0,0,0)" font-size="12" font-family="Arial">&#x00A0;sec</tspan></text></g>
+<text x="91.4" y="337" transform = "rotate(-30 91.4 337 )" font-size="12" font-family="Arial">&#x00A0;&#x00A0;&#x00A0;-8.76<tspan fill="rgb(255,0,0)" font-size="10" font-family="arial">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(255,0,0)" font-size="10" font-family="Arial">&#x00A0;0.9</tspan><tspan fill="rgb(0,100,0)" font-size="10" font-family="Arial"> &lt;-9.5, -8&gt;</tspan><tspan fill="rgb(0,128,0)" font-size="10" font-family="Arial">&#x00A0;(9)</tspan><tspan fill="rgb(0,0,0)" font-size="12" font-family="Arial">&#x00A0;sec</tspan></text></g>
 <g>
-<text x="216" y="128" transform = "rotate(-30 216 128 )" font-size="12" font-family="Arial">&#x00A0;&#x00A0;&#x00A0;3.45<tspan fill="rgb(255,0,0)" font-size="10" font-family="arial">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(255,0,0)" font-size="10" font-family="Arial">&#x00A0;0.67</tspan><tspan fill="rgb(0,100,0)" font-size="10" font-family="Arial"> &lt;2.9, 4&gt;</tspan><tspan fill="rgb(0,128,0)" font-size="10" font-family="Arial">&#x00A0;(9)</tspan><tspan fill="rgb(0,0,0)" font-size="12" font-family="Arial">&#x00A0;sec</tspan></text></g>
+<text x="208" y="127" transform = "rotate(-30 208 127 )" font-size="12" font-family="Arial">&#x00A0;&#x00A0;&#x00A0;3.45<tspan fill="rgb(255,0,0)" font-size="10" font-family="arial">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(255,0,0)" font-size="10" font-family="Arial">&#x00A0;0.67</tspan><tspan fill="rgb(0,100,0)" font-size="10" font-family="Arial"> &lt;2.9, 4&gt;</tspan><tspan fill="rgb(0,128,0)" font-size="10" font-family="Arial">&#x00A0;(9)</tspan><tspan fill="rgb(0,0,0)" font-size="12" font-family="Arial">&#x00A0;sec</tspan></text></g>
 <g>
-<text x="302" y="134" transform = "rotate(-30 302 134 )" font-size="12" font-family="Arial">&#x00A0;&#x00A0;&#x00A0;3.1<tspan fill="rgb(255,0,0)" font-size="10" font-family="arial">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(255,0,0)" font-size="10" font-family="Arial">&#x00A0;0.3</tspan><tspan fill="rgb(0,100,0)" font-size="10" font-family="Arial"> &lt;2.9, 3.3&gt;</tspan><tspan fill="rgb(0,128,0)" font-size="10" font-family="Arial">&#x00A0;(18)</tspan><tspan fill="rgb(0,0,0)" font-size="12" font-family="Arial">&#x00A0;sec</tspan></text></g>
+<text x="304" y="133" transform = "rotate(-30 304 133 )" font-size="12" font-family="Arial">&#x00A0;&#x00A0;&#x00A0;3.1<tspan fill="rgb(255,0,0)" font-size="10" font-family="arial">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(255,0,0)" font-size="10" font-family="Arial">&#x00A0;0.3</tspan><tspan fill="rgb(0,100,0)" font-size="10" font-family="Arial"> &lt;2.9, 3.3&gt;</tspan><tspan fill="rgb(0,128,0)" font-size="10" font-family="Arial">&#x00A0;(18)</tspan><tspan fill="rgb(0,0,0)" font-size="12" font-family="Arial">&#x00A0;sec</tspan></text></g>
 </g>
 </svg>

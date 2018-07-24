@@ -36,7 +36,7 @@
   using std::numeric_limits;
 
 #include <boost/math/special_functions.hpp>
-  using boost::math::isfinite;
+  //using boost::math::isfinite;
 
   // Getting the max and min of x and y data points.
 template <typename T> // T an STL container: array, vector ...

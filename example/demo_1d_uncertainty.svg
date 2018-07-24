@@ -52,7 +52,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <g>
 <text x="149" y="153" transform = "rotate(-30 149 153 )" font-size="10" font-family="Verdana">3.4<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.03</tspan><tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;3.32, 3.48&gt;</tspan><tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(1)</tspan></text></g>
 <g>
-<text x="390" y="153" transform = "rotate(-30 390 153 )" font-size="10" font-family="Verdana">5.9<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;1.#QNAN, 1.#QNAN&gt;</tspan><tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(1)</tspan></text></g>
+<text x="390" y="153" transform = "rotate(-30 390 153 )" font-size="10" font-family="Verdana">5.9<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;nan, nan&gt;</tspan><tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(1)</tspan></text></g>
 <g>
 <text x="71.8" y="153" transform = "rotate(-30 71.8 153 )" font-size="10" font-family="Verdana">2.6<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan><tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.1</tspan><tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;2.48, 2.72&gt;</tspan><tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(5)</tspan></text></g>
 <g>

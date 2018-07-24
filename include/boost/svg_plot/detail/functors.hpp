@@ -43,10 +43,13 @@ public:
     typedef double result_type; //!< result type is double.
 
     //! \tparam T Any type convertible to double.
+    //! returns A single double data value.
     template <class T>
     double operator()(T val) const //! To convert a single data value to double.
     {
-        return (double)val; //! \return Value that has been converted to double.
+      BOOST_STATIC_ASSERT_MSG(std::is_convertible<T, double>::value, "Uncertain types must be convertible to double!");
+
+       return static_cast<double>(val); //! \return Value that has been converted to double.
     }
 }; // class double_1d_convert
 
@@ -95,6 +98,7 @@ public:
       \return value including uncertainty and other information.
     */
     {
+      BOOST_STATIC_ASSERT_MSG(std::is_convertible<T, double>::value, "Uncertain types must be convertible to double!");
       return (Meas)val;
       /*! \return uncertain type (uncertainty, degrees of freedom information, and type meaning undefined).
        Warning C4244: 'argument' : conversion from 'long double' to 'double', possible loss of data.
@@ -112,7 +116,6 @@ public:
     typedef std::pair<double, double> result_type; //!< result type is a pair (X and Y) of doubles.
 
     double i; //!< Current value, 1st set by start(double i0).
-
     void start(double i0)
     { //! Set a start value.
       i = i0;
@@ -121,17 +124,20 @@ public:
      //! Convert a pair of X and Y (whose types can be converted to double values) to a pair of doubles.
      //! \tparam T type whose value can be converted to double.
      //! \tparam U type whose value can be converted to double.
+    //! \returns @c std::pair of double data point values.
     template <typename T, typename U>
     std::pair<double, double> operator()(const std::pair<T, U>& a) const
     { //! Assumes that a conversion from double yields just the value component of the uncertain value.
-        return std::pair<double, double>((double)(a.first), (double)(a.second));
+      BOOST_STATIC_ASSERT_MSG(std::is_convertible<T, double>::value, "Uncertain types must be convertible to double!");
+      BOOST_STATIC_ASSERT_MSG(std::is_convertible<U, double>::value, "Uncertain types must be convertible to double!");
+      return std::pair<double, double>(static_cast<double>(a.first), static_cast<double>(a.second));
     }
 
     template <typename T>
     std::pair<double, double> operator()(T a)
     {  //! Convert a pair of X and Y values to a pair of doubles.
        //! \return pair of doubles.
-        return std::pair<double, double>(i++, (double)a);
+        return std::pair<double, double>(i++, static_cast<double>(a));
     }
 }; // class pair_double_2d_convert
 
@@ -151,19 +157,25 @@ public:
     }
 
     //!< \tparam T type convertible to double.
+    //!< \tparam U type convertible to double.
+    //! \returns A @c std::pair of double data point values.
     template <class T, class U>
     std::pair<unc<correlated>, unc<correlated> > operator()(const std::pair<T, U>& a) const
     {  //!< Convert a pair of X and Y uncertain type values to a pair of doubles.
        //! \return pair of uncs.
+      // Cast to double so that can use with float, long double and UDTs.
+      BOOST_STATIC_ASSERT_MSG(std::is_convertible<T, double>::value, "Uncertain types must be convertible to double!");
+      BOOST_STATIC_ASSERT_MSG(std::is_convertible<U, double>::value, "Uncertain types must be convertible to double!");
        return std::pair<unc<correlated>, unc<correlated> >(
-         (unc<correlated>)(a.first), (unc<correlated>)(a.second)
+         (unc<correlated>)(a.first), (unc<correlated>)(static_cast<double>(a.second))
          );
     }
 
     template <typename T>    //!< \tparam T Any type convertible to double.
     std::pair<unc<correlated>, unc<correlated> > operator()(T a)
     {  //!< Convert a pair of X and Y uncertain type values to a @c std::pair of @c unc.
-        return std::pair<unc <correlated>, unc<correlated> >(i++, (unc<correlated>)a); //! \return pair of unc.
+      BOOST_STATIC_ASSERT_MSG(std::is_convertible<T, double>::value, "Uncertain types must be convertible to double!");
+      return std::pair<unc <correlated>, unc<correlated> >(i++, (unc<correlated>)a); //! \return pair of unc.
     }
 }; // class pair_unc_2d_convert
 
@@ -185,11 +197,16 @@ public:
     }
 
     //!< \tparam T type convertible to double.
+    //!< \tparam U type convertible to double.
+    //! \returns A @c std::pair of double precision data point values.
     template <typename T, typename U>
     std::pair<Meas, unc<correlated> > operator()(const std::pair<T, U>& a) const
     {  //!< Convert a pair of X and Y uncertain type values to a pair of doubles.
        //! \return pair of Meas & uncs.
-       return std::pair<Meas, unc<correlated> >((Meas)(a.first), (unc<correlated>)(a.second));
+       // Cast to double so that can use with float, long double and UDTs.
+      BOOST_STATIC_ASSERT_MSG(std::is_convertible<T, double>::value, "Uncertain types must be convertible to double!");
+      BOOST_STATIC_ASSERT_MSG(std::is_convertible<U, double>::value, "Uncertain types must be convertible to double!");
+      return std::pair<Meas, unc<correlated> >((Meas)(a.first), (unc<correlated>)(static_cast<double>(a.second)));
     }
 
     template <typename T>    //!< \tparam T Any type convertible to double.

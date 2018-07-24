@@ -28,7 +28,7 @@ project
       #  GCC
       <toolset>gcc:<cxxflags>-w # Inhibit all warning messages.
       <toolset>gcc:<cxxflags>-Wno-missing-braces
-      <toolset>gcc:<cxxflags>-std=c++11
+      <toolset>gcc:<cxxflags>-std=c++14
       <toolset>gcc:<cxxflags>-Wno-reorder
       # Darwin
       #<toolset>darwin:<cxxflags>-Wno-missing-braces
@@ -36,7 +36,7 @@ project
       #<toolset>intel:<cxxflags>-Qwd264,239
       #  Clang
       #<toolset>clang:<cxxflags>-w # Inhibit all warning messages.
-      <toolset>clang:<cxxflags>-std=c++11
+      <toolset>clang:<cxxflags>-std=c++17
       <toolset>clang:<cxxflags>-Wno-reorder
       <toolset>clang:<cxxflags>-Wno-unused-variable
       #<toolset>clang:<link>static
