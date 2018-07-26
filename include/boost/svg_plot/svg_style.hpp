@@ -63,9 +63,8 @@ enum rotate_style
 {
   // Might include more steps for others too.
   horizontal = 0, //!< normal horizontal left to right, centered.
-  //uphill = -45, //!< slope up. seems bit steep
   slopeup = -30, //!< slope up.
-  uphill = -45, //!< 45 up.
+  uphill = -45, //!< 45 steep up.
   steepup = -60, //!< up near vertical.
   upward = -90, //!< vertical writing up.
   backup = -135, //!< slope up backwards - upside down!

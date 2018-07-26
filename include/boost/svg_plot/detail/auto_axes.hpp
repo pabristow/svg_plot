@@ -1029,6 +1029,7 @@ std::pair<double, double> range_all(const T& containers) // Container of STL con
 */
 double roundup10(double value)
 {
+  BOOST_MATH_STD_USING
   smallest<> is_small(100. * (std::numeric_limits<double>::min)()); // 100 * min value.
   if (is_small(value) )
   { // Value very close to zero.
@@ -1064,6 +1065,8 @@ double roundup10(double value)
 */
 double rounddown10(double value)
 {
+  BOOST_MATH_STD_USING
+
   smallest<> is_small(100. * (std::numeric_limits<double>::min)()); // 100 * min value
   if (is_small(value))
   { // Value very close to zero.
@@ -1098,6 +1101,8 @@ double rounddown10(double value)
 */
 double roundup5(double value)
 {
+  BOOST_MATH_STD_USING
+
   smallest<> is_small(100. * (std::numeric_limits<double>::min)()); // 100 * min value.
   if (is_small(value) )
   { // Value very close to zero.
@@ -1128,6 +1133,8 @@ double roundup5(double value)
 */
 double rounddown5(double value)
 {
+  BOOST_MATH_STD_USING
+
   smallest<> is_small(100. * (std::numeric_limits<double>::min)()); // 100 * min value
   if (is_small(value))
   { // Value very close to zero.
@@ -1159,6 +1166,8 @@ double rounddown5(double value)
 */
 double roundup2(double value)
 {
+  BOOST_MATH_STD_USING
+
   smallest<> is_small(100. * (std::numeric_limits<double>::min)()); // 100 * min value.
   if (is_small(value) )
   { // Value very close to zero.
@@ -1197,6 +1206,7 @@ double roundup2(double value)
 */
 double rounddown2(double value)
 {
+  BOOST_MATH_STD_USING
   smallest<> is_small(100. * (std::numeric_limits<double>::min)()); // 100 * min value
   if (is_small(value))
   { // Value very close to zero.

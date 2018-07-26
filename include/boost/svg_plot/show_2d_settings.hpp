@@ -68,7 +68,11 @@ void show_2d_plot_settings(svg_2d_plot& plot)
   std::cout.precision(4);
   std::cout << std::dec << std::boolalpha << std::endl;
 
-  std::cout <<"\nSVG 2-D plot settings" << std::endl;
+  std::cout <<"\nSVG 2-D plot settings" 
+              "\n(default units pixels)"
+              "\n========================"
+    << std::endl;
+
   std::cout << "axes_on " << plot.axes_on() << std::endl;
   std::cout << "background_border_width " << plot.background_border_width() << std::endl;
   std::cout << "background_border_color " << plot.background_border_color() << std::endl;
@@ -81,7 +85,7 @@ void show_2d_plot_settings(svg_2d_plot& plot)
   std::cout << "description " << plot.description() << std::endl;
   std::cout << "document_title "  << '"' << plot.document_title()  << '"' << std::endl;
   //std::cout << plot.draw_bezier_lines() << std::endl;
-  std::cout << "x_size " << plot.x_size() << std::endl;
+  std::cout << "image x_size " << plot.x_size() << std::endl;
   std::cout << "image y_size " << plot.y_size() << std::endl;
   //std::cout << "image x & y sizes " << plot.size() << std::endl;
   std::cout << "image_filename " << plot.image_.image_filename() << std::endl;
@@ -241,7 +245,7 @@ void show_2d_plot_settings(svg_2d_plot& plot)
   std::cout << "y_plusminus_color " << plot.y_plusminus_color() << std::endl;
   std::cout << "x_addlimits_on " << plot.x_addlimits_on() << std::endl;
   std::cout << "x_addlimits_color " << plot.x_addlimits_color() << std::endl;
-
+  //
   std::cout << "y_df_on " << plot.y_df_on() << std::endl;
   std::cout << "y_df_color " << plot.y_df_color() << std::endl;
   std::cout << "y_prefix \"" << plot.y_prefix()  << '"' << std::endl;

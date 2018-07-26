@@ -811,34 +811,62 @@ my_plot.background_color(ghostwhite) // Whole image.
         if(plot_window_on_)
         {
           // A margin is needed to allow any plot window border rectangle to show OK.
-          // A small margin is to prevent it overlapping the image border.
-          // Also allows for axis value labels that mark the min and max
-          // that must extend beyond the plot window border,
+          // A minimum small margin (default 3) is to prevent it overlapping the image border.
+          // Might be == image_border size?
+          // Also must allow for axis value labels that mark the min and max ticks
+          // that might extend beyond the plot window border, 
+          // but must extend not beyond image or will be cutoff in mid-value_label.
           // if writing is vertical need only half a font, but half x_ticks_.label_max_space_ if horizontal.
           // x_ticks_.label_max_space_ calculated this - but is not calculated yet!
           // So just allow a few chars.
 
-          double value_space;
+          // x-axis margin adjustment.
+
+          //std::cout << "x font size " << x_ticks_values_font_size() << std::endl;
+          double x_value_space;
             // Really want
             // value_space = x_ticks_.label_max_space_ /2.; // Assume value label is center aligned.
           if (x_ticks_.label_rotation_ != horizontal)
           { // vertical-ish x value labels just need half a font.
-            value_space = x_value_label_style_.font_size() / 2; // half a single font width.
+            x_value_space = x_ticks_values_font_size() / 2; // half a single font width.
           }
           else
-          { // horizontal so need space for half the label, assumed 4 chars.
-            value_space = x_value_label_style_.font_size() * 2; // two font widths.
+          { // horizontal(?-ish) so need space for half the label, assumed 4 chars.
+           // x_value_space = x_value_label_style_.font_size() * 2 ; // few font widths.
+            x_value_space = x_ticks_values_font_size() * 2 ; // few font widths.
           }
-          double border_margin = 0.;
-          border_margin = (std::max)(image_border_.margin_, value_space);
-          plot_left_ += margin;
-          plot_right_ -= margin;
+          //std::cout << "x value_font_space " << x_value_space << std::endl;
+          double border_margin = (std::max)(image_border_.margin_, x_value_space);
+          //std::cout << "x left-right border_margin = " << border_margin << std::endl;
+          //std::cout << "  plot_left before margin " << plot_left_ << std::endl;
+          plot_left_ += border_margin;
+         // std::cout << "  plot_left after margin " << plot_left_ << std::endl;
+          //std::cout << "  plot_right before margin " << plot_right_ << std::endl;
+          plot_right_ -= border_margin;
+          //std::cout << "  plot_right after margin " << plot_right_ << "\n"<< std::endl;
 
-          // Might need to do similar for Y-axis if anyone complains.
-          border_margin = (std::max)(image_border_.margin_, static_cast<double>(y_value_label_style_.font_size()/2) );
-          plot_top_ += margin;
-          plot_bottom_ -= margin;
+          // y-axis top bottom margin adjustment to avoid collisions with title or off image.
+          //std::cout << "y font size " << y_ticks_values_font_size() << std::endl;
+          double y_value_space;
+          if ((y_ticks_.label_rotation_ == downward) | (y_ticks_.label_rotation_ == upward))
+          { // vertical y axis value labels need space for half the label, assumed 4 chars.
+            y_value_space = y_ticks_values_font_size() * 2; // a few font widths.
+          }
+          else
+          { // horizontal(-ish?) axis label so need space for just half the font width.
+            y_value_space = y_ticks_values_font_size() / 2; // half a single font width.
+          }
+          //std::cout << "y value_font_space " << y_value_space << std::endl;
+          border_margin = (std::max)(image_border_.margin_, y_value_space);
+          //std::cout << "y top-bottom border_margin = " << border_margin << std::endl;
+          //std::cout << "  plot_top before margin " << plot_top_ << std::endl;
+          plot_top_ += border_margin;
+         // std::cout << "  plot_top after margin " << plot_top_ << std::endl;
+         // std::cout << "  plot_bottom before margin " << plot_bottom_ << std::endl;
+          plot_bottom_ -= border_margin;
+         // std::cout << "  plot_bottom after margin " << plot_bottom_ << std::endl;
         }
+        // Why not check if legend wanted first?
         size_legend_box(); // Size depends on its contents.
         place_legend_box(); // according to options chosen.
 
@@ -909,7 +937,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         y_ticks_.longest_label();
 
         // Check that labels won't collide and advise if they will - seems very difficult.
-        // Change rotation to avoid collision - not practical.
+        // Change rotation to avoid collision ? Conclude not practicable.
 
         y_ticks_.label_max_space_ = 0.; // Work out space for y labels, depending on orientation.
         if (y_ticks_.label_rotation_ == horizontal)
@@ -2596,7 +2624,7 @@ my_plot.background_color(ghostwhite) // Whole image.
 
       svg_2d_plot& svg_2d_plot::y_major_label_rotation(rotate_style rot)
       { /*! Rotation or orientation of labels for major ticks on vertical Y-axis line.
-        \param rot Default orientation is horizontal.
+        \param rot Default orientation is horizontal (0).
         \see @c rotate_style for possible values: horizontal, uphill...
         */
         y_ticks_.label_rotation_ = rot;
