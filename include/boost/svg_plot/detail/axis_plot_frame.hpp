@@ -2229,6 +2229,7 @@ namespace boost
             bool is_header = (derived().legend_header_.text() != "");
 
            // Assume legend box position has already been sized and positioned by function calculate_legend_box.
+            // This *should* assess if any lines or data point markers are needed.
             double legend_x_start = derived().legend_left_; // Saved box location.
             double legend_width = derived().legend_width_;
             double legend_y_start = derived().legend_top_;
@@ -2297,34 +2298,38 @@ namespace boost
                 { // Restore (or the data points won't use the unc_ellipse!
                   sty.shape_ = unc_ellipse;
                 }
-              }
+              } // Some marker shape.
 
               // Line markers are only really useful for 2-D lines and curves showing functions.
-              if (derived().legend_lines_)
-              { // Need to draw a short line to show color for that data series.
-                  // Line joining points option is true.
-                  if (derived().serieses_[i].line_style_.line_on_ || derived().serieses_[i].line_style_.bezier_on_)
-                  { // Use stroke color from line style.
-                     g_inner_ptr->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_);
-                  }
-                  else
-                  { // Use point stroke color instead.
-                    g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_); // OK with 1D
-                  }
-                  //std::cout << "line g_inner_ptr->style().stroke_color() " << g_inner_ptr->style().stroke_color() << std::endl;
+ // was             if (derived().legend_lines_)
 
-                  g_inner_ptr->push_back(new line_element( // Draw horizontal lines with appropriate color.
-                    legend_x_pos,
-                    legend_y_pos,
-                    legend_x_pos + spacing, // Line sample is one char long.
-                    legend_y_pos));
-                  legend_x_pos += 1.5 * spacing; // Total is short line & a space.
-              } // legend_lines_
+
+              if (derived().serieses_[i].line_style_.line_on_ == true) // Line joining points option is true,
+              { // need to draw a short line to show color for that data series.
+                // derived().legend_lines_ = true; // Some line is drawn.
+                // Better - this should be set during the legend box sizing?
+                if (derived().serieses_[i].line_style_.line_on_ || derived().serieses_[i].line_style_.bezier_on_)
+                { // Use stroke color from line style.
+                  g_inner_ptr->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_);
+                }
+                else
+                { // Use point stroke color instead.
+                  g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_); // OK with 1D.
+                }
+                g_inner_ptr->style().stroke_width(derived().serieses_[i].line_style_.width_);
+                //std::cout << "line g_inner_ptr->style().stroke_color() " << g_inner_ptr->style().stroke_color() << std::endl;
+                g_inner_ptr->push_back(new line_element( // Draw horizontal lines with appropriate color.
+                  legend_x_pos,
+                  legend_y_pos,
+                  legend_x_pos + spacing, // Line sample is one char long.
+                  legend_y_pos));
+                legend_x_pos += 1.5 * spacing; // Total is short line & a space.
+              } // legend line to draw
 
               // Legend text for each Data Series added to the plot.
               g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT));
               g_inner_ptr->push_back(new text_element(
-                legend_x_pos, // allow space for the marker.
+                legend_x_pos, // Allow space for the marker.
                 legend_y_pos,
                 derived().serieses_[i].title_, // Text for this data series.
                 derived().legend_header_.textstyle(),
@@ -4217,11 +4222,8 @@ namespace boost
             return derived().x_axis_.axis_line_on_;
           }
 
-
-
-          ////////////////////////////////
-
-
+          /////////////////////////////////////////////////////////////////////////////////////
+          // Y axis settings.
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::y_axis_on(bool is)
@@ -4389,14 +4391,13 @@ namespace boost
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::y_axis_color()
-          { //! \return  the color of the Y-axis line.
+          { //! \return  The color of the Y-axis line.
             return derived().image_.g(PLOT_Y_AXIS).style().stroke_color();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_label_color(const svg_color& col)
           { //! Set the color of X-axis label (including any units).
-            // add fill as well PAB Oct 07
             derived().image_.g(PLOT_X_LABEL).style().fill_color(col);
             derived().image_.g(PLOT_X_LABEL).style().stroke_color(col);
             return derived();
@@ -4419,7 +4420,7 @@ namespace boost
 
           template <class Derived>
           double axis_plot_frame<Derived>::x_label_width()
-          { //! \return  the width (boldness) of X-axis label (including any units).
+          { //! \return  The width (boldness) of X-axis label (including any units).
             return derived().image_.g(PLOT_X_LABEL).style().stroke_width();
           }
 
@@ -5279,7 +5280,7 @@ namespace boost
         template <class Derived>
         Derived& axis_plot_frame<Derived>::limit_color(const svg_color& col)
         { //! Set the color for 'at limit' point stroke color.
-          // Need to set the series
+          // Need to have set the series frist?
           derived().image_.g(detail::PLOT_LIMIT_POINTS).style().stroke_color(col);
           // derived().serieses_[0].limit_point_color(col); // Would require to add some data first!
           return derived();
@@ -5416,6 +5417,8 @@ namespace boost
           transform_point(x3, y3);
           g_element* g = &(derived()).image_.add_g_element(); // New group.
           g->style().stroke_color(col);
+         // g_inner_ptr->style().stroke_width(derived().serieses_[i].line_style_.width_);
+
           g->push_back(new qurve_element(x1, y1, x2, y2, x3, y3));
           // No checks on X or Y - leave to SVG to not draw outside image.
           // Actually we want to use clip_path for the plot area.

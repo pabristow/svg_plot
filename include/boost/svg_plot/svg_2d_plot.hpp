@@ -1909,6 +1909,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         g_element& g_ptr = image_.g(detail::PLOT_DATA_LINES).add_g_element();
         g_ptr.clip_id(plot_window_clip_);
         g_ptr.style().stroke_color(series.line_style_.stroke_color_);
+        g_ptr.style().stroke_width(series.line_style_.width_);
         path_element& path = g_ptr.path();
 
         // Do not store or use uncertainty info for Bezier.
