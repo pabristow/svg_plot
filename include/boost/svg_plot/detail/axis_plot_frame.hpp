@@ -2216,7 +2216,8 @@ namespace boost
 
           template <class Derived>
           void axis_plot_frame<Derived>::draw_legend()
-          { //! Draw the legend border, text header (if any) and marker lines and/or shapes.
+          { //! Draw the legend border, text header (if any) 
+            //! and data point marker lines and/or shapes.
             // size_t num_points = derived().series.size();
             // cout << derived().legend_box_.width() <<  ' ' << derived().legend_box_.margin() << endl;
 
@@ -2274,20 +2275,22 @@ namespace boost
 
               if(sty.shape_ != none)
               { // Is some data point marker shape to show in legend box.
+
+                // ellipse is special case to show uncertainty of data point.
                 bool was_unc_ellipse = false;
                 if (sty.shape_ == unc_ellipse)
                 {  // Problem here with unc_ellipse with calculation of a suitable size
                    // and also, more fundamentally, the legend box overwrites the PLOT_DATA_UNC layers,
-                   // so as a hack, use a round or circlet instead.
-                  sty.shape_ =  circlet;
-                  was_unc_ellipse = true; // Note so restore after showing circle.
+                  sty.shape_ =  circlet; // so as a hack, use a round or circlet instead.
+                  was_unc_ellipse = true; // Note so can restore after showing circle.
                 }
 
                 draw_plot_point( // Show a plot point like circlet (==round), square, vertical bar...
                   legend_x_pos,
                   legend_y_pos,
                   *g_inner_ptr,
-                  sty, unc<false>(), unc<false>());
+                  sty, 
+                  unc<false>(), unc<false>());  // X and Y position.
                   //was derived().serieses_[i].point_style_, unc(0.), unc(0.));
                 legend_x_pos += 1.5 * spacing;
                 if (was_unc_ellipse)

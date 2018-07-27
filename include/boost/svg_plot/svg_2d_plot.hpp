@@ -220,19 +220,22 @@ namespace boost
   }
 
   svg_2d_plot_series& svg_2d_plot_series::shape(point_shape shape_)
-  { //! Set Data series point marker shape.
+  { //!< Set Data series point marker shape.
+    //!< Example: @c .shape(square), .shape(circlet)
     point_style_.shape_ = shape_;
     return *this;
   }
 
   svg_2d_plot_series& svg_2d_plot_series::size(int size_)
   { //! Set Data series point marker size.
+    //! Example @c .shape(square).size(5).fill_color(red);
     point_style_.size_ = size_;
     return *this;
   }
 
   svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
-  { //! Set Data series line color.
+  { //! Set Data series line (stroke) color.
+    //! Example: @c .line_color(blue)
     line_style_.stroke_color_ = col_;
     return *this;
   }
@@ -475,6 +478,7 @@ namespace boost
       bool legend_on_; //!< true if to provide a legend box.
       bool outside_legend_on_; //!< true if legend box should be outside the plot window.
       bool legend_lines_; //!< true if to add a colored line for each data series in legend box.
+      // This should be any data series?
       bool plot_window_on_; //!< true if to use a separate plot window (not the whole image).
       bool x_ticks_on_; //!< true if X-axis to have ticks.
       bool y_ticks_on_; //!< true if Y-axis to have ticks.
