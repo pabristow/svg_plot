@@ -88,6 +88,13 @@ writes plot `my_plot` to the file "simple_2d.svg".
 
 You can view this file with most internet browsers, and other programs too.
 
+The container type chosen above is a `std::map` used for type `double` here.
+The data type must be convertible to type `double`, so `float`, `double`, and `long double`,
+as well as some __UDT are suitable, but not __multiprecision types.
+If your data is one of these types, it must be converted to `double` before adding to the `std::map`.
+
+Some demonstrations are at [@../../example/convertible_to_double.cpp convertible_to_double.cpp]
+
 [endsect] [/section:tutorial_code_simple Simple program]
 
 [/include 2d_full_tutorial.qbk]

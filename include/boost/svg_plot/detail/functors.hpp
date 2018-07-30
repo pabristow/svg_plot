@@ -6,12 +6,20 @@
     will therefore lose information.  This seems reasonable design decision as any real data
     to be plotted is unlikely to have more than double precision (about 16 decimal digits).
 
+    "svg_plot\example\convertible_to_double.cpp" demonstrates that built-in types
+    @float, @double and @clong double work as expected,
+    as well as a sample User Defined Type fixed-point, 
+    but @b not a Boost.Multiprecision types like cpp_bin_float_quad.
+
+    Non-convertible-to-double types provoke a  compile-time message:
+    "Uncertain types must be convertible to double!"
+
   \author Jacob Voytko and Paul A. Bristow
   \date Mar 2009
 */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2009, 2012, 2013
+// Copyright Paul A. Bristow 2009, 2012, 2013, 2018
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -149,7 +157,7 @@ class pair_unc_2d_convert
 public:
     typedef std::pair<unc<correlated>, unc<correlated> > result_type; //!< result type is pair of uncertain values.
 
-    unc<correlated> i;  //!< Current uncertaint value, 1st set by start(double i0).
+    unc<correlated> i;  //!< Current uncertain value, 1st set by start(double i0).
 
     void start(unc<correlated> i0)
     { //!< Set a start value.
@@ -203,7 +211,7 @@ public:
     std::pair<Meas, unc<correlated> > operator()(const std::pair<T, U>& a) const
     {  //!< Convert a pair of X and Y uncertain type values to a pair of doubles.
        //! \return pair of Meas & uncs.
-       // Cast to double so that can use with float, long double and UDTs.
+       // Cast to double so that can use with float, long double.
       BOOST_STATIC_ASSERT_MSG(std::is_convertible<T, double>::value, "Uncertain types must be convertible to double!");
       BOOST_STATIC_ASSERT_MSG(std::is_convertible<U, double>::value, "Uncertain types must be convertible to double!");
       return std::pair<Meas, unc<correlated> >((Meas)(a.first), (unc<correlated>)(static_cast<double>(a.second)));
