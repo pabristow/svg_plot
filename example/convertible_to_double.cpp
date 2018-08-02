@@ -1,6 +1,6 @@
 /*! 
 \brief 
-Demonstrates plotting various types convertible to double.
+Demonstrates plotting various types that can be converted to double.
 */
 
 //  convertible_to_double.cpp
@@ -28,15 +28,14 @@ Demonstrates plotting various types convertible to double.
 // Example of a Boost.Multiprecision type.
 #include <boost/multiprecision/cpp_bin_float.hpp>
 // using boost::multiprecision:: cpp_bin_float_quad;
-// but not convertible to double.
+// not is_convertible to double, but is_constructible to double.
 
-// Example of a User Defined Type - a fixed point type.
+// Example of a User Defined Type - a fixed point type can also be plotted OK.
 #include <boost/fixed_point/fixed_point_negatable.hpp>
 #include <boost/fixed_point/fixed_point_negatable_cmath.hpp>
-typedef boost::fixed_point::negatable<15, -16> fixed_point_type;
-// Can be plotted OK.
+// for typedef boost::fixed_point::negatable<15, -16> fixed_point_type;
 
-// Some functions to generate trig functions.
+// Some functions to generate some trig functions.
 // template of floating-point type to allow testing of any type.
 template <typename T>
 T f(T x)
@@ -83,7 +82,7 @@ void trig_plots()
                          // are not just on the edge of the plot window.
 
                          // Text settings.
-  my_plot.title("Plot of sin, cos &#x26; tan and sincos functions")
+  my_plot.title("Plot of sin, cos, tan &#x26;  sincos functions")
   // Note: for ampersand must use Unicode &#x26; because it is a reserved symbol in SVG XML.
   // Search engines will provide Unicodes by querying "UNicode ampersand"
   // at sites like https://unicode.org/, 
@@ -161,34 +160,30 @@ void trig_plots()
 
 int main()
 {
+  // Plot test trig data using several floating and fixed point types.
 
   trig_plots<float>(); // OK
-  trig_plots<>(); // default double
+  trig_plots<>(); // default double OK
   trig_plots<double>(); // OK
   trig_plots<long double>(); // OK
-  // OK, no warnings, but range from 
-  //   (std::numeric_limits<long double>::max)() to min() is greater than for double.
+  // OK, no warnings, but for higher-than-double precision types, the range from 
+  // (std::numeric_limits<long double>::max)() to min() is greater than for double.
   // so overflow or underflow on conversion to double is possible.
 
-  //using boost::multiprecision::cpp_bin_float_quad;
-  //trig_plots<cpp_bin_float_quad>();
+  using boost::multiprecision::cpp_bin_float_quad;
+  trig_plots<cpp_bin_float_quad>();
 
-  // i:\modular-boost\boost\svg_plot\detail\functors.hpp(207):
-  // error C2338: Uncertain types must be convertible to double!
-    // error C2440: 'type cast': cannot convert from 'const boost::multiprecision::cpp_bin_float_quad' to 'Meas'
-  // Using map with cpp_bin_float_quad would be very inefficient?
-
-  // Using a fixed-point might also be problematic?
-  //typedef boost::fixed_point::negatable<15, -16> fixed_point_type;
+  // As an example of a User_defined Type a fixed-point is also possible:
+  typedef boost::fixed_point::negatable<15, -16> fixed_point_type;
   trig_plots<fixed_point_type>(); // OK
   // But some fixed_point types might fail this example because
   // the range from max to min might not be great enough for the data to plot chosen.
+
+  // Probably ill-advised, but works, with a warning from use of constant pi which will be 3. not 3.1459...
+  //trig_plots<int>(); //  warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 
   // Hopeless case - but does not provide a very helpful error message.
   // trig_plots<std::string>();
 
   return 0;
 } // int main()
-
-
-//! Demonstrate 

@@ -272,7 +272,7 @@ public:
 
   std::ostream& operator<< (std::ostream& os, const svg_style& s)
   {  /*! Output a string description of a svg_style.
-         Usage: svg_style my_svg_style; cout << my_svg_style << endl;
+         Usage: svg_style my_svg_style; std::cout << my_svg_style << std::endl;
          Outputs:  svg_style(RGB(0,0,0), RGB(0,0,0), 0, no fill, no stroke, no width)
      */
       os << "svg_style("
@@ -324,8 +324,8 @@ class text_style
   public: // Or private?
   int font_size_; //!< Font size (SVG units, default pixels).
   std::string font_family_; //!< Font family, examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode".
-  std::string weight_; //!< Font style, examples: "bold", "normal".
-  std::string style_; //!< Font weight, examples: normal | bold | italic | oblique.
+  std::string style_; //!< Font  style, examples: normal | bold | italic | oblique.
+  std::string weight_; //!< Font, weight examples: "bold", "normal".
   std::string stretch_; //!< Font stretch, examples: normal | wider | narrower.
   std::string decoration_; //!< Font decoration, examples: "underline" | "overline" | "line-through".
 
@@ -416,9 +416,9 @@ public:
   }
 
   const std::string& text_style::font_style() const
-  { //! \return  font style.
+  { //! \return  font style, default normal.
     /*! font-style: normal | bold | italic | oblique.
-       Example "normal" is default.
+       Example: "normal" is default.
      */
     return style_;
  }
@@ -735,7 +735,7 @@ enum point_shape
 class plot_point_style
 { /*! \class boost::svg::plot_point_style
     \brief Shape, color, of data point markers.
-    \details (optional value & uncertainty) not implemented yet.
+    \details (optional x and/or y data point value(s) & optional uncertainty).
   */
   friend std::ostream& operator<< (std::ostream&, plot_point_style);
 
@@ -745,7 +745,7 @@ public:
   int size_; //!< Diameter of circle, height of square, font_size  ...
   point_shape shape_; //!< shape: round, square, point...
   std::string symbols_; //!< Unicode symbol(s) (letters, digits, squiggles etc).\n
-  //! Caution: not all Unicode symbols are output by all browsers!\n
+  //! Caution: not all Unicode symbols are rendered by all browsers!\n
   //! Example: U2721 is Star of David or hexagram,
   //! see http://en.wikipedia.org/wiki/Hexagram, symbols("&#x2721;")
   //! Positioning of symbols (especially > 1 symbols) may be imprecise.
@@ -768,7 +768,7 @@ public:
     const svg_color& fill = blank, //!< Fill color of the centre of the shape.
     int size = 5, //!< Diameter of circle, height of square, font_size  ...
     point_shape shape = circlet, //!< shape: circlet, square, point...
-    const std::string& symbols = "X"); //!< Unicode symbol(s) (letters, digits, squiggles etc).
+    const std::string& symbols = "x"); //!< Unicode symbol(s) (letters, digits, squiggles etc).
 
   plot_point_style& size(int i);
   int size();
@@ -795,7 +795,8 @@ public:
     const std::string& symbols) //!< Unicode symbol(s) (letters, digits, squiggles etc).
   :
     fill_color_(fill), stroke_color_(stroke), size_(size),
-    shape_(shape), symbols_(symbols),
+    shape_(shape),
+    symbols_(symbols),
     show_x_value_(false), show_y_value_(false)
   { // Best to have a fixed-width font for symbols?
     // But there are always problems centering a symbol at the right point.
@@ -820,6 +821,8 @@ public:
 
   plot_point_style& plot_point_style::fill_color(const svg_color& f)
   { //! Set fill color of shape or symbol used to mark data value plot point(s).
+    //! See also stroke_color
+    //! .fill_color(red).stroke_color(black)
     fill_color_ = f;
     return *this;
     //! \return plot_point_style& to make chainable.
@@ -832,6 +835,7 @@ public:
 
   plot_point_style& plot_point_style::stroke_color(const svg_color& f)
   { //! Set stroke color of shape or symbol used to mark data value plot point(s).
+    //! .stroke_color(black).fill_color(red)
     stroke_color_ = f;
     return *this; //! \return plot_point_style& to make chainable.
   }
@@ -843,12 +847,14 @@ public:
 
   plot_point_style& plot_point_style::shape(point_shape s)
   {  //! Set shape used to mark data value plot point(s).
+    //! Example: .shape(circlet).size(10).stroke_color(green).fill_color(red)
     shape_ = s;
     return *this; //! \return plot_point_style& to make chainable.
   }
 
   point_shape plot_point_style::shape()
-  { //! \return  shape used to mark data value plot point(s).
+  { 
+    //! \return  Shape used to mark data value plot point(s).
     return shape_;
   }
 
@@ -856,16 +862,15 @@ public:
   { //! Override default symbol "X" - only effective if .shape(symbol) used.
     symbols_ = s;
     return *this; //! \return plot_point_style& to make chainable.
-
   }
 
   std::string& plot_point_style::symbols()
-  { //! \return plot point marking symbol (only effective if .shape(symbol) used).
+  { //! \return plot data point marking symbol (only effective if .shape(symbol) used).
     return symbols_;
   }
 
   plot_point_style& plot_point_style::style(text_style ts)
-  {
+  { //! Assign a text_style to data point marker symbol(s). 
     symbols_style_ = ts;
     return *this; //! \return plot_point_style& to make chainable.
   }
@@ -890,8 +895,9 @@ std::ostream& operator<< (std::ostream& os, plot_point_style p)
      << p.show_y_value_
 //     << ", symbols style: " << p.symbols_style_  // TODO check this works and alter example.
      << ")";
-/*! \details Example: plot_point_style p;  cout << p << endl;
+/*! \details Example: plot_point_style p;  std::cout << p << std::endl;
    Outputs:  point_style(1, RGB(0,0,0), RGB(0,0,0), 10, X)
+
 */
 return os;
 } // std::ostream& operator<<

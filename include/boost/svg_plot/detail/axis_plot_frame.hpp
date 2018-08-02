@@ -12,6 +12,11 @@
 // (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 
+// Diagnostics by defining
+// BOOST_SVG_POINT_DIAGNOSTICS  // for plot point
+// BOOST_SVG_DIAGNOSTICS  // General.
+// BOOST_SVG_LEGEND_DIAGNOSTICS
+
 #ifndef BOOST_SVG_AXIS_PLOT_FRAME_HPP
 #define BOOST_SVG_AXIS_PLOT_FRAME_HPP
 
@@ -1477,8 +1482,10 @@ namespace boost
           if((x < derived().plot_left_ - 0.01) || (x > derived().plot_right_ + 0.01))
           // Allow a bit extra to allow for round-off errors.
           { // tick value is way outside plot window, so nothing to do.
-            //std::cout << derived().plot_left_ << ' '<< x << std::endl;
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+            //std::cout << "Tick skipped as outside plot window "<< derived().plot_left_ << " at x = " << x << std::endl;
             // This *was* displayed for a plot.
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
             return;
           }
           double y_up(0.); // upper end of tick.
@@ -2047,12 +2054,17 @@ namespace boost
             int point_size =  derived().serieses_[0].point_style_.size();
             // Use height of whichever is the biggest of point marker and font.
             double spacing = (std::max)(font_size, point_size);
-            // std::cout << spacing <<  ' ' << font_size << ' ' << point_size << std::endl;
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+            std::cout << spacing <<  ' ' << font_size << ' ' << point_size << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
             bool is_header = (derived().legend_header_.text() != "");
             //text_element legend_header_; // legend box header or title (if any).
             //text_style legend_style_;
             double longest = string_svg_length(derived().legend_header_.text(), derived().legend_style_);
-            //std::cout << "\nLegend header " << longest << " svg units." << std::endl;
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+            std::cout << "\nLegend header " << longest << " svg units." << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+
             derived().legend_width_ = 2 * (derived().legend_box_.margin() * derived().legend_box_.width());
             // Don't plan to write on either side border, or on the 'forbidden' margins of the box.
             for(size_t i = 0; i < num_series; ++i)
@@ -2064,7 +2076,10 @@ namespace boost
                 longest = siz;
               }
             } // for
-            // std::cout << "\nLongest legend header or data descriptor " << longest << " svg units." << std::endl;
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+            std::cout << "\nLongest legend header or data descriptor " << longest << " svg units." << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+
             derived().legend_width_ += longest * 0.8; // Space for longest text.
             // Kludge factor to allow for not knowing the real length.
 
@@ -2095,8 +2110,9 @@ namespace boost
             }
             derived().legend_height_ += num_series * spacing * 2; // Space for the data point symbols & text.
           } // legend_on_ == true
-
-         //std::cout << "Legend width " << derived().legend_width_ << ", height " << derived().legend_height_ << std::endl;
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+         std::cout << "Legend width " << derived().legend_width_ << ", height " << derived().legend_height_ << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
         } //  void size_legend_box()
 
         template <class Derived>
@@ -2170,12 +2186,13 @@ namespace boost
                derived().plot_bottom_ -= 2 * spacing;
               break;
               } // switch
-
-            //std::cout << "Legend: left " << derived().legend_left_
-            //    << ", right " << derived().legend_right_
-            //    << ", top " << derived().legend_top_
-            //    << ", bottom " << derived().legend_bottom_
-            //    << std::endl;
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+            std::cout << "Legend: left " << derived().legend_left_
+                << ", right " << derived().legend_right_
+                << ", top " << derived().legend_top_
+                << ", bottom " << derived().legend_bottom_
+                << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
               // Check if the location requested will fit,
               // now that we know the size of box needed.
@@ -2219,7 +2236,9 @@ namespace boost
           { //! Draw the legend border, text header (if any) 
             //! and data point marker lines and/or shapes.
             // size_t num_points = derived().series.size();
-            // cout << derived().legend_box_.width() <<  ' ' << derived().legend_box_.margin() << endl;
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+            std::cout << derived().legend_box_.width() <<  ' ' << derived().legend_box_.margin() << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
             int font_size = derived().legend_header_.textstyle().font_size();
             int point_size =  derived().serieses_[0].point_style_.size();
@@ -2301,7 +2320,7 @@ namespace boost
               } // Some marker shape.
 
               // Line markers are only really useful for 2-D lines and curves showing functions.
- // was             if (derived().legend_lines_)
+              // was             if (derived().legend_lines_)
 
 
               if (derived().serieses_[i].line_style_.line_on_ == true) // Line joining points option is true,
@@ -2341,10 +2360,10 @@ namespace boost
           template <class Derived>
           void axis_plot_frame<Derived>::draw_plot_point(double x, double y, // X and Y values (in SVG coordinates).
             g_element& g_ptr,
-            plot_point_style& sty,
+            plot_point_style& sty, 
             unc<false> ux, unc<false> uy) // Default unc ux = 0. and uy = 0. ?
-          { /*! Draw a plot data point marker shape
-              whose size and stroke and fill colors are specified in plot_point_style,
+          { /*! Draw a plot data point marker shape or symbol
+              whose size and stroke and fill colors are specified in plot_point_style sty,
               possibly including uncertainty ellipses showing multiples of standard deviation.
             */
             /*
@@ -2359,25 +2378,42 @@ namespace boost
               TODO Not sure this is fully resolved.
             */
             int size = sty.size_;
-            double half_size = size / 2.;
-            //cout << "point style() "<< sty.style() << endl;
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+            std::cout << "sty.size_ = "<< sty.size_ << std::endl; / picks up shape(diamond).size(20) correctly here.
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+            double half_size = size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
+            sty.symbols_style_.font_size(sty.size_); // Sets font size.
+            //sty.symbols_style_.font_family(sty.font_family_); // 
+            //sty.symbols_style_.font_style(sty.font_style_); // 
+            //sty.symbols_style_.font_weight(sty.font_weight_); // 
+            //sty.symbols_style_.font_stretch(sty.font_stretch_); // 
+            //sty.symbols_style_.font_decoration(sty.font_decoration_); // 
+            //sty.symbols_style_.fill_color(sty.fill_color_); // 
+            //sty.symbols_style_.stroke_color(sty.stroke_color_); // 
+
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+            std::cout << "point style() = "<< sty.style() << std::endl;
+            // point style() = text_style(10, "Lucida Sans Unicode", "", "", "", "")  size is correct here now.
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
             // Whatever shape, text or line, want to use the point style.
             g_ptr.style().stroke_color(sty.stroke_color_);
             g_ptr.style().fill_color(sty.fill_color_);
-
-            //cout << "g_ptr.style() " << g_ptr.style() << endl;
-
-            switch(sty.shape_) // from enum point_shape none, round, square, point, egg
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+            std::cout << "g_ptr.style() = " << g_ptr.style() << std::endl;
+            // g_ptr.style() svg_style(RGB(255,255,0), RGB(255,0,0), 2, fill, stroke, width)
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+            switch(sty.shape_) // Chosen from enum point_shape none, round, square, point, egg
             {
             case none:
-              break;
+              break; // Nothing to display.
 
-            case circlet:
+            // Shapes using SVG line, circle or eclipse functions.
+            case circlet: // Use SVG circle function.
               g_ptr.circle(x, y, (int)half_size);
               break;
 
             case point:
-              g_ptr.circle(x, y, 1); // Fixed size round.
+              g_ptr.circle(x, y, 1); // Fixed size 1 pixel round.
               break;
 
             case square:
@@ -2442,7 +2478,9 @@ namespace boost
               g_ptr.line(x, y - size, x + size, y ); // line left & right from axis.
               // horizontal_line is pretty useless for 1-D because the horizontal line is on the X-axis.
               break;
-            case symbol:
+
+            //  Shapes as symbols using SVG text function, (not using SVG line, circle or eclipse).
+            case symbol: // Unicode symbol.
               g_ptr.text(x, y + half_size, sty.symbols(), sty.style(), center_align, horizontal); // symbol(s), size and center.
 
               // Unicode symbols that work on most browsers are listed at
@@ -2458,10 +2496,17 @@ namespace boost
               break;
             case diamond:
               g_ptr.text(x, y, "&#x2666;", sty.symbols_style_, center_align, horizontal);
+
+  #ifdef BOOST_SVG_POINT_DIAGNOSTICS
+            std::cout << "sty.symbols_style_ " << sty.symbols_style_ << std::endl;
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
               // size / 4. puts bottom tip on the X-axis,
               // size / 2. put center above the X-axis
               // x, y, put on the X-axis - probably what is needed for 2-D plots.
               // diamond, spades, clubs & hearts fill with expected fill_color.
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+              std::cout << "Diamond style font size " << sty.symbols_style_.font_size() << std::endl;
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
               break;
             case asterisk:
               g_ptr.text(x, y - size / 3., "&#x2217;", sty.symbols_style_, center_align, horizontal);
@@ -2486,11 +2531,11 @@ namespace boost
               //
               break;
             case cone: // Pointing down triangle.
-              {
-                bool fill = (sty.fill_color() != blank);
-                g_ptr.triangle(x - half_size, y - size, x + half_size, y - size, x, y, fill);
-              // Last point puts the bottom tip of the triangle on the X-axis (may not be wanted for 2-D).
-              }
+            {
+              bool fill = (sty.fill_color() != blank);
+              g_ptr.triangle(x - half_size, y - size, x + half_size, y - size, x, y, fill);
+            // Last point puts the bottom tip of the triangle on the X-axis (may not be wanted for 2-D).
+            }
               break;
             case triangle: // Pointing up triangle.
                g_ptr.text(x, y , "&#x25B2;", sty.symbols_style_, center_align, horizontal);

@@ -30,6 +30,13 @@
 #  pragma warning (disable : 4512) // Assignment operator could not be generated.
 #endif
 
+// Diagnostics output if these are defined.
+// BOOST_SVG_DIAGNOSTICS
+// BOOST_SVG_VALUE_DIAGNOSTICS
+// BOOST_SVG_LEGEND_DIAGNOSTICS
+// BOOST_SVG_WINDOW_DIAGNOSTICS
+// BOOST_SVG_AXES_DIAGNOSTICS
+
 #include <boost/iterator/transform_iterator.hpp>
 //  using boost::make_transform_iterator;
 
@@ -88,10 +95,10 @@ namespace boost
    */
 
    
-   class svg_2d_plot_series
-    {
+  class svg_2d_plot_series
+  {
 
-     void draw_straight_lines(const svg_2d_plot_series& series);
+    void draw_straight_lines(const svg_2d_plot_series& series);
 
     friend void draw_straight_lines(const svg_2d_plot_series&);
     public:
@@ -177,8 +184,8 @@ namespace boost
     :
     title_(title), //!< Title of a series of data values.
     // plot_point_style(const svg_color& fill = blank, const svg_color& stroke = black,
-    // int size = 5, point_shape shape = circlet, const std::string& symbols = "X")
-    point_style_(black, white, 5, circlet), // Default point style (default fill white).
+    // int size = 5, point_shape shape = circlet, const std::string& symbols = "x")
+    point_style_(black, white, 10, circlet), // Default point style (default fill white).
     limit_point_style_(grey, blank, 10, cone), // Default limit (infinity or NaN) point style.
     line_style_(black, blank, 2, false, false), // Default line style, no fill, width 2, no line_on, no bezier.
     bar_style_(black, blank, 3, no_bar), // Default black, no fill, stick width 3, no bar.
@@ -228,7 +235,7 @@ namespace boost
 
   svg_2d_plot_series& svg_2d_plot_series::size(int size_)
   { //! Set Data series point marker size.
-    //! Example @c .shape(square).size(5).fill_color(red);
+    //! Example @c .shape(square).size(5)
     point_style_.size_ = size_;
     return *this;
   }
@@ -780,12 +787,14 @@ my_plot.background_color(ghostwhite) // Whole image.
         x_axis_label_style_ = x_label_info_.textstyle();
         if (x_label_info_.textstyle() != x_axis_label_style_ )
         {
-          std::cout << "x_label_info_.textstyle() != x_axis_label_style_" << std::endl;
+            std::cout << "x_label_info_.textstyle() != x_axis_label_style_" << std::endl;
+#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
+#endif // BOOST_SVG_WINDOW_DIAGNOSTICS
         }
 
         y_axis_label_style_ = y_label_info_.textstyle();
         if (y_label_info_.textstyle() != y_axis_label_style_ )
-        {
+        { // Warn.
           std::cout << "y_label_info_.textstyle() != y_axis_label_style_!" << std::endl;
         }
 
@@ -794,8 +803,10 @@ my_plot.background_color(ghostwhite) // Whole image.
         { // Leave space at bottom for X-axis label.
           if (x_label_info_.textstyle().font_size() != x_axis_label_style_.font_size())
           { // Temporary check.
+#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
             std::cout << "x_label_info_.textstyle().font_size() "<< x_label_info_.textstyle().font_size() << std::endl;
             std::cout << "x_axis_label_style_.font_size() " << x_axis_label_style_.font_size() << std::endl;
+#endif // BOOST_SVG_WINDOW_DIAGNOSTICS
           }
 
           plot_bottom_ -= x_axis_label_style_.font_size() * text_margin_;
@@ -806,8 +817,10 @@ my_plot.background_color(ghostwhite) // Whole image.
         { // Leave space at left for Y-axis label.
           if (y_label_info_.textstyle().font_size() != y_axis_label_style_.font_size())
           { // Temporary check.
+#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
             std::cout << "y_label_info_.textstyle().font_size() "<< y_label_info_.textstyle().font_size() << std::endl;
             std::cout << "y_axis_label_style_.font_size() " << y_axis_label_style_.font_size() << std::endl;
+#endif // BOOST_SVG_WINDOW_DIAGNOSTICS
           }
           plot_left_ += y_axis_label_style_.font_size() * text_margin_;
         }
@@ -839,18 +852,29 @@ my_plot.background_color(ghostwhite) // Whole image.
            // x_value_space = x_value_label_style_.font_size() * 2 ; // few font widths.
             x_value_space = x_ticks_values_font_size() * 2 ; // few font widths.
           }
-          //std::cout << "x value_font_space " << x_value_space << std::endl;
+#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
+          std::cout << "x value_font_space " << x_value_space << std::endl;
+#endif // BOOST_SVG_WINDOW_DIAGNOSTICS
           double border_margin = (std::max)(image_border_.margin_, x_value_space);
-          //std::cout << "x left-right border_margin = " << border_margin << std::endl;
-          //std::cout << "  plot_left before margin " << plot_left_ << std::endl;
+#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
+          std::cout << "x left-right border_margin = " << border_margin << std::endl;
+          std::cout << "  plot_left before margin " << plot_left_ << std::endl;
+#endif // BOOST_SVG_WINDOW_DIAGNOSTICS
           plot_left_ += border_margin;
-         // std::cout << "  plot_left after margin " << plot_left_ << std::endl;
-          //std::cout << "  plot_right before margin " << plot_right_ << std::endl;
+#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
+          std::cout << "  plot_left after margin " << plot_left_ << std::endl;
+          std::cout << "  plot_right before margin " << plot_right_ << std::endl;
+#endif // BOOST_SVG_WINDOW_DIAGNOSTICS
           plot_right_ -= border_margin;
-          //std::cout << "  plot_right after margin " << plot_right_ << "\n"<< std::endl;
+#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
+          std::cout << "  plot_right after margin " << plot_right_ << "\n"<< std::endl;
+#endif // BOOST_SVG_WINDOW_DIAGNOSTICS
 
           // y-axis top bottom margin adjustment to avoid collisions with title or off image.
+#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
           //std::cout << "y font size " << y_ticks_values_font_size() << std::endl;
+#endif // BOOST_SVG_WINDOW_DIAGNOSTICS
+
           double y_value_space;
           if ((y_ticks_.label_rotation_ == downward) | (y_ticks_.label_rotation_ == upward))
           { // vertical y axis value labels need space for half the label, assumed 4 chars.
@@ -860,15 +884,22 @@ my_plot.background_color(ghostwhite) // Whole image.
           { // horizontal(-ish?) axis label so need space for just half the font width.
             y_value_space = y_ticks_values_font_size() / 2; // half a single font width.
           }
-          //std::cout << "y value_font_space " << y_value_space << std::endl;
           border_margin = (std::max)(image_border_.margin_, y_value_space);
-          //std::cout << "y top-bottom border_margin = " << border_margin << std::endl;
-          //std::cout << "  plot_top before margin " << plot_top_ << std::endl;
+#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
+          std::cout << "y value_font_space " << y_value_space << std::endl;
+          std::cout << "y top-bottom border_margin = " << border_margin << std::endl;
+          std::cout << "  plot_top before margin " << plot_top_ << std::endl;
+#endif // BOOST_SVG_WINDOW_DIAGNOSTICS
+
           plot_top_ += border_margin;
-         // std::cout << "  plot_top after margin " << plot_top_ << std::endl;
-         // std::cout << "  plot_bottom before margin " << plot_bottom_ << std::endl;
+#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
+         std::cout << "  plot_top after margin " << plot_top_ << std::endl;
+         std::cout << "  plot_bottom before margin " << plot_bottom_ << std::endl;
+#endif // BOOST_SVG_WINDOW_DIAGNOSTICS
           plot_bottom_ -= border_margin;
-         // std::cout << "  plot_bottom after margin " << plot_bottom_ << std::endl;
+#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
+         std::cout << "  plot_bottom after margin " << plot_bottom_ << std::endl;
+#endif // BOOST_SVG_WINDOW_DIAGNOSTICS
         }
         // Why not check if legend wanted first?
         size_legend_box(); // Size depends on its contents.
@@ -1128,7 +1159,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           image_.g(detail::PLOT_WINDOW_BACKGROUND).push_back(
             new rect_element(plot_left_, plot_top_, (plot_right_ - plot_left_), plot_bottom_ - plot_top_));
         }
-#ifdef BOOST_SVG_DIAGNOSTICS
+#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
         std::cout << "plot window left x " << plot_left_ << ", right " << plot_right_ << ", bottom y " << plot_bottom_ << ", top " << plot_top_ << "." << std::endl;
 #endif
       } // calculate_plot_window
@@ -1183,10 +1214,9 @@ my_plot.background_color(ghostwhite) // Whole image.
           }
           else
           { // ??? Warn that things have gone wrong?
-#ifdef BOOST_SVG_DIAGNOSTICS
+#ifdef BOOST_SVG_AXES_DIAGNOSTICS
             std::cout << "y axis error, position " << y_axis_position_ << ", window from  " << plot_left_ << " to " << plot_left_ << ", is OUTside window bottom " << plot_bottom_ << " to top " << plot_top_ << std::endl;
 #endif
-
           }
         }
 
@@ -1230,7 +1260,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           }
           else
           {
-            // std::cout << "Missed y " << y << std::endl; // Only miss 0s
+            // std::cout << "Missed y tick" << y << std::endl; // Only miss 0s
           }
         }
 
@@ -1804,7 +1834,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             prev_uy = (*j).second; // y
             prev_x = prev_ux.value(); // 1st point X-value.
             prev_y = prev_uy.value(); // 1st point Y-value.
-#ifdef BOOST_SVG_DIAGNOSTICS
+#ifdef BOOST_SVG_VALUE_DIAGNOSTICS
           std::cout << "1st value x = " << prev_x << ", value y = " << prev_y << "." << std::endl;
 #endif
             transform_point(prev_x, prev_y);
@@ -1812,9 +1842,9 @@ my_plot.background_color(ghostwhite) // Whole image.
             if (is_in_window(prev_x, prev_y) == false)
             { // Data point is OUTside plot window, so can't draw a line from y = 0 to this point.
               // so try the next point to see if that is 'good' - inside the window.
-#ifdef BOOST_SVG_DIAGNOSTICS
+#ifdef BOOST_SVG_VALUE_DIAGNOSTICS
               std::cout << "1st x = " << prev_x << ", y = " << prev_y << " is outside plot window! " << std::endl;
-#endif
+#endif // BOOST_SVG_VALUE_DIAGNOSTICS
               ++outside_window;
               ++j;
             }
@@ -2068,14 +2098,14 @@ my_plot.background_color(ghostwhite) // Whole image.
               ignored++;
 #ifdef BOOST_SVG_DIAGNOSTICS
               std::cout << "Ignoring x = " << x << ", y = " << y << std::endl;
-#endif
+#endif // BOOST_SVG_DIAGNOSTICS
             }
           } // for j
 #ifdef BOOST_SVG_DIAGNOSTICS
           std::cout << plotted << " plotted " << ", and " << ignored << " ignored, " 
             << "size of series = " << serieses_[i].series_.size() << std::endl;
           BOOST_ASSERT(plotted + ignored == serieses_[i].series_.size());
-#endif
+#endif // BOOST_SVG_DIAGNOSTICS
         } // for normal points.
 
         //! Draw the abnormal 'at_limit' points (if any).
