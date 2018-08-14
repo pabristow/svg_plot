@@ -25,7 +25,8 @@ namespace boost
 namespace svg
 {
   /*!
-    \brief Colors that have SVG standard special names.
+    \brief Colors that have SVG standard special names. See https://www.w3schools.com/colors/
+    Example: @c my_plot.background_color(darkgreen).legend_background_color(lightgray).title_color(white) 
     \details  The reason that the underscore separator convention does not match
     the normal Boost format is that these names that are specified by the SVG standard.
     http://www.w3.org/TR/SVG/types.html#ColorKeywords

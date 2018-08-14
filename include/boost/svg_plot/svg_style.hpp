@@ -1,7 +1,7 @@
 /*!
-  \file svg_style.hpp
+  \file
   \brief Styles for SVG specifying font, sizes, shape, color etc for text, values, lines, axes etc.
-  \details SVG style information is fill, stroke, width, line & bezier curve.
+  \details  SVG style information is fill, stroke, width, line & bezier curve.
    This module provides struct plot_point_style & struct plot_line_style
    and class svg_style holding the styles.
    See http://www.w3.org/TR/SVG11/styling.html
@@ -9,6 +9,7 @@
   \author Jacob Voytko and Paul A. Bristow
 */
 
+//  svg_style.hpp
 // Copyright Jacob Voytko 2007
 // Copyright Paul A. Bristow 2008, 2009, 2013
 
@@ -443,23 +444,26 @@ public:
   }
 
   text_style& text_style::font_weight(const std::string& s)
-  { //! svg font-weight: normal | bold | bolder | lighter | 100 | 200 .. 900
-    //! Examples: "bold", "normal"
+  { //! svg font-weight: "normal" | "bold" | "bolder" | "lighter" | "100" | "200" .. "900"
+    //! Examples:  @c .font_weight("bold");
     //! http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
-    //! tests conformance. Only two weights, "bold", "normal", are supported by Firefox, Opera, Inkscape.
+    //! tests conformance.
+    //! Only two weights, "bold", "normal", are supported by Firefox, Opera, Inkscape.
     weight_ = s;
     return *this;
     //! \return reference to text_style to make chainable.
   }
 
   const std::string& text_style::font_stretch() const
-  { //! \return font stretch, for example: normal | wider | narrower .
+  { //! \return font stretch, for example: "normal" | "wider" | "narrower".
     return stretch_;
   }
 
   text_style& text_style::font_stretch(const std::string& s)
-  { //! Examples: "wider" but implementation by browsers varies.
-    //! font-stretch: normal | wider | narrower ...
+  {  //! font-stretch:"normal" | "wider" | "narrower"
+     //! Examples: @c .font_stretch("wider")
+     //! Note that implementation by browsers varies.
+
     stretch_ = s;
     return *this; //! \return reference to text_style to make chainable.
   }
@@ -470,11 +474,13 @@ public:
   }
 
   text_style& text_style::font_decoration(const std::string& s)
-  { /*! Set font decoration.
-      Examples: "underline" | "overline" | "line-through"
+  { /*! Set font decoration: "underline" | "overline" | "line-through" ...
       http://www.croczilla.com/~alex/conformance_suite/svg/text-deco-01-b.svg
       tests line-through and underline.
       But implementation varies.
+      Example @c .font_decoration("underline");
+
+
     */
     decoration_ = s;
     return *this; //! \return reference to text_style to make chainable.
@@ -710,11 +716,12 @@ enum point_shape
   vertical_tick, //!< Vertical tick up from axis.
   horizontal_tick, //!< Horizontal line right from axis.
   //!< Note horizontal will not be useful for 1D plot - will be on the axis.
-  cone, //!< Cone pointing up - 'rightwayup'.
-  triangle, //!< Triangle pointing down 'upsidedown'.
+  cone, //!< Cone pointing up - 'rightwayup'.  Unicode 2580 is down-cone with white center.
+  outside_window, // Marker to show that a point lies outside the plotting area and so is not shown.
+  triangle, //!< Triangle pointing down 'upsidedown'. Unicode &#25BC;
   star, //!< Star (using polygon).
-  lozenge, //!< Lozenge or square with corners pointing up and down..
-  diamond, //!< Diamond card shape.
+  lozenge, //!< Lozenge or square with corners pointing up and down.
+  diamond, //!< Diamond playing card shape.
   heart, //!< Heart playing card shape.
   club, //!< Club playing card shape.
   spade, //!< Spade playing card shape.
@@ -728,6 +735,7 @@ enum point_shape
     See also http://en.wikipedia.org/wiki/List_of_Unicode_characters#Basic_Latin geometric shapes
     that may be a better way to make these symbols: &#25A0 black square ...to &#25FF
     But unclear how many browsers implement these properly.
+    http://jrgraphix.net/r/Unicode/25A0-25FF  http://unicode.org/charts/ https://unicode.org/charts/PDF/U25A0.pdf
   \endverbatim
   */
 }; // enum point_shape
@@ -764,11 +772,11 @@ public:
   //text_style value_style_; // Size, font, color etc of the value.
 
   plot_point_style( //!< Constructor with all defaults.
-    const svg_color& stroke = black,  //!< Color of circumference of shape.
-    const svg_color& fill = blank, //!< Fill color of the centre of the shape.
+    const svg_color& stroke = black,  //!< Color of circumference of shape (default black).
+    const svg_color& fill = blank, //!< Fill color of the centre of the shape (default white).
     int size = 5, //!< Diameter of circle, height of square, font_size  ...
     point_shape shape = circlet, //!< shape: circlet, square, point...
-    const std::string& symbols = "x"); //!< Unicode symbol(s) (letters, digits, squiggles etc).
+    const std::string& symbols = ""); //!< Unicode symbol(s) (letters, digits, squiggles etc), (default letter x).
 
   plot_point_style& size(int i);
   int size();
@@ -798,10 +806,10 @@ public:
     shape_(shape),
     symbols_(symbols),
     show_x_value_(false), show_y_value_(false)
-  { // Best to have a fixed-width font for symbols?
+  { // May be best to have a fixed-width font for symbols?
     // But there are always problems centering a symbol at the right point.
     symbols_style_.font_family("Lucida Sans Unicode");
-    symbols_style_.font_size(size);
+    symbols_style_.font_size(size); // Default size = 5
   }
 
 // Member Function Definitions.
@@ -853,7 +861,7 @@ public:
   }
 
   point_shape plot_point_style::shape()
-  { 
+  {
     //! \return  Shape used to mark data value plot point(s).
     return shape_;
   }
@@ -870,7 +878,7 @@ public:
   }
 
   plot_point_style& plot_point_style::style(text_style ts)
-  { //! Assign a text_style to data point marker symbol(s). 
+  { //! Assign a text_style to data point marker symbol(s).
     symbols_style_ = ts;
     return *this; //! \return plot_point_style& to make chainable.
   }
@@ -928,7 +936,6 @@ public:
   plot_line_style& line_on(bool is) ;
   bool bezier_on() const;
   plot_line_style& bezier_on(bool is);
-
 }; // class plot_line_style
 
 // class plot_line_style function Definitions.
@@ -1267,9 +1274,9 @@ public:
     minor_tick_color_(black), // line stroke color.
     minor_tick_width_(1),
     minor_tick_length_(2),
-    major_grid_color_(svg_color(200, 220, 255)),
+    major_grid_color_(svg_color(200, 220, 255)), // greyblue default color.
     major_grid_width_(1.), // pixels.
-    minor_grid_color_(svg_color(200, 220, 255)),
+    minor_grid_color_(svg_color(200, 220, 255)), // greyblue
     minor_grid_width_(0.5), // pixels.
 
     up_ticks_on_(false), // Draw ticks up from horizontal X-axis line.
@@ -1692,14 +1699,14 @@ const std::string strip_e0s(std::string s)
   }
   j = s.find("e-000");
   if (j != string::npos)
-  { // 
+  { //
     s.erase(j, 5); // remove entire "e-000".
     return s;
   }
   j = s.find("e+00");
   if (j != string::npos)
   { // Found "e+00", either 1.23e+00 or 2.34e+01 .. e+09
-     // From VS2015 and GCC and Clang all follow C++ standard 
+     // From VS2015 and GCC and Clang all follow C++ standard
     // which says use at least two exponent digits (MS was always 3 e+ddd)
     // "e+00" with no following digit means a real zero exponent.
    if (s[j+3] == '0')

@@ -1,21 +1,22 @@
  /*!  \file
   \brief SVG Plot functions common to 1D, 2D and Boxplots.
   \details Functions are derived from base class @c axis_plot_frame.
+  \details Functions are derived from base class @c axis_plot_frame.
   \author Jacob Voytko and Paul A. Bristow
 */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2007, 2008, 2009, 2012, 2013
+// Copyright Paul A. Bristow 2007, 2008, 2009, 2012, 2013, 2018
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
 // (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-// Diagnostics by defining
-// BOOST_SVG_POINT_DIAGNOSTICS  // for plot point
+// Diagnostic output switched on by defining
 // BOOST_SVG_DIAGNOSTICS  // General.
-// BOOST_SVG_LEGEND_DIAGNOSTICS
+// BOOST_SVG_POINT_DIAGNOSTICS  // For plot point.
+// BOOST_SVG_LEGEND_DIAGNOSTICS // For legend box.
 
 #ifndef BOOST_SVG_AXIS_PLOT_FRAME_HPP
 #define BOOST_SVG_AXIS_PLOT_FRAME_HPP
@@ -62,7 +63,11 @@ namespace boost
 
     static const double sin45 = 0.707; //!< Used to calculate 'length' if axis value labels are sloping.
     static const double reducer = 0.9; //!< To make uncertainty and degrees of freedom estimates a bit smaller font to help distinguish from value.
-
+    static const double aspect_ratio = 0.5;  //!< Guess at average height to width of font.
+    //!< used to estimate the length of a title or header string from the font size. 
+    //!< (This can only be approximate as varies on type of font (narrow or bold)
+    //!< and the mix of characters widths (unless monospace font).
+    static const double spacing_factor = 0.75; //!< Spacing factor to control the spacing of the legend data series descriptors.
     // x_axis_position_ and y_axis_position_ use x_axis_intersect & y_axis_intersect
     enum x_axis_intersect
     { //! \enum x_axis_intersect If and how the X axes intersects Y axis.
@@ -88,6 +93,14 @@ namespace boost
       outside_bottom = +4, //!< Outside at bottom.
       somewhere = +5 //!< legend_top_left(x, y)
     };
+
+    // Might be just max, but potential nuisance with avoiding confusion with macro MAX.
+    template <typename T>
+    inline
+    T maxof3(T a, T b, T c)
+    {
+      return ((a > b) ? a : (b > c) ? b : c);
+    }
 
     namespace detail
     { //! \namespace detail Holds base class axis_plot_frame for 1D, 2D and Box plots.
@@ -173,6 +186,8 @@ namespace boost
           Derived& derived()
           { //! Uses Curiously Recurring Template Pattern to allow 1D and 2D to reuse common code.
             //! See http://en.wikipedia.org/wiki/Curiously_Recurring_Template_Pattern .
+            //! Sadly this has the most unwelcome effect of terminally confusing the Visual Studio Intellisense,
+            //! and sometimes the debugger as well :-(
             return static_cast<Derived&>(*this);
           }
           const Derived& derived()const
@@ -266,7 +281,7 @@ namespace boost
               Set a title for plot.
               The string may include Unicode for greek letter and symbols.
               @b example:
-              A title that includes a greek omega and degree symbols:
+              A title that includes a greek omega and degree symbols, for example:
               \code
                 my_plot.title("Plot of &#x3A9; function (&#x00B0;C)");
               \endcode
@@ -1290,1270 +1305,1438 @@ namespace boost
                 has and has not changed, just erase the contents of the
                 legend, title... in the document and start over.
           */
-          template <class Derived>
-          void axis_plot_frame<Derived>::clear_all()
-          {
-            clear_legend();
-            clear_background();
-            clear_x_axis();
-            clear_y_axis();
-            clear_title();
-            clear_points();
-            clear_plot_background();
-            clear_grids();
-          }
+      template <class Derived>
+      void axis_plot_frame<Derived>::clear_all()
+      {
+        clear_legend();
+        clear_background();
+        clear_x_axis();
+        clear_y_axis();
+        clear_title();
+        clear_points();
+        clear_plot_background();
+        clear_grids();
+      }
 
-          std::string sv(double v, const value_style& sty, bool);
+      std::string sv(double v, const value_style& sty, bool);
 
-          template <class Derived>
-          void axis_plot_frame<Derived>::clear_background()
-          { //!< Clear the whole image background layer of the SVG plot.
-            derived().image_.g(PLOT_BACKGROUND).clear();
-          }
+      template <class Derived>
+      void axis_plot_frame<Derived>::clear_background()
+      { //!< Clear the whole image background layer of the SVG plot.
+        derived().image_.g(PLOT_BACKGROUND).clear();
+      }
 
-          template <class Derived>
-          void axis_plot_frame<Derived>::clear_title()
-          { //!< Clear the plot title layer of the SVG plot.
-            derived().image_.g(PLOT_TITLE).clear();
-          }
+      template <class Derived>
+      void axis_plot_frame<Derived>::clear_title()
+      { //!< Clear the plot title layer of the SVG plot.
+        derived().image_.g(PLOT_TITLE).clear();
+      }
 
-          template <class Derived>
-         void axis_plot_frame<Derived>::clear_points()
-          {  //!< Clear the data points layer of the SVG plot.
-            derived().image_.g(PLOT_DATA_POINTS).clear();
-          }
+      template <class Derived>
+      void axis_plot_frame<Derived>::clear_points()
+      {  //!< Clear the data points layer of the SVG plot.
+        derived().image_.g(PLOT_DATA_POINTS).clear();
+      }
 
-          template <class Derived>
-         void axis_plot_frame<Derived>::clear_plot_background()
-          { //!< Clear the plot area background layer of the SVG plot.
-            derived().image_.g(PLOT_WINDOW_BACKGROUND).clear();
-          }
+      template <class Derived>
+      void axis_plot_frame<Derived>::clear_plot_background()
+      { //!< Clear the plot area background layer of the SVG plot.
+        derived().image_.g(PLOT_WINDOW_BACKGROUND).clear();
+      }
 
-          template <class Derived>
-         void axis_plot_frame<Derived>::clear_legend()
-          { //!< Clear the legend layer of the SVG plot.
-            derived().image_.g(PLOT_LEGEND_BACKGROUND).clear();
-            derived().image_.g(PLOT_LEGEND_POINTS).clear();
-            derived().image_.g(PLOT_LEGEND_TEXT).clear();
-          }
+      template <class Derived>
+      void axis_plot_frame<Derived>::clear_legend()
+      { //!< Clear the legend layer of the SVG plot.
+        derived().image_.g(PLOT_LEGEND_BACKGROUND).clear();
+        derived().image_.g(PLOT_LEGEND_POINTS).clear();
+        derived().image_.g(PLOT_LEGEND_TEXT).clear();
+      }
 
-          template <class Derived>
-         void axis_plot_frame<Derived>::clear_x_axis()
-          { //!< Clear the X axis layer of the SVG plot.
-            derived().image_.g(PLOT_X_AXIS).clear();
-            derived().image_.g(PLOT_X_MINOR_TICKS).clear();
-            derived().image_.g(PLOT_X_MAJOR_TICKS).clear();
-            derived().image_.g(PLOT_X_LABEL).clear();
-            derived().image_.g(PLOT_X_TICKS_VALUES).clear();
-          }
+      template <class Derived>
+      void axis_plot_frame<Derived>::clear_x_axis()
+      { //!< Clear the X axis layer of the SVG plot.
+        derived().image_.g(PLOT_X_AXIS).clear();
+        derived().image_.g(PLOT_X_MINOR_TICKS).clear();
+        derived().image_.g(PLOT_X_MAJOR_TICKS).clear();
+        derived().image_.g(PLOT_X_LABEL).clear();
+        derived().image_.g(PLOT_X_TICKS_VALUES).clear();
+      }
 
-          template <class Derived>
-         void axis_plot_frame<Derived>::clear_y_axis()
-          { //!< Clear the Y axis layer of the SVG plot.
-            derived().image_.g(PLOT_Y_AXIS).clear();
-            derived().image_.g(PLOT_Y_MINOR_TICKS).clear();
-            derived().image_.g(PLOT_Y_MAJOR_TICKS).clear();
-            derived().image_.g(PLOT_Y_LABEL).clear();
-          }
+      template <class Derived>
+      void axis_plot_frame<Derived>::clear_y_axis()
+      { //!< Clear the Y axis layer of the SVG plot.
+        derived().image_.g(PLOT_Y_AXIS).clear();
+        derived().image_.g(PLOT_Y_MINOR_TICKS).clear();
+        derived().image_.g(PLOT_Y_MAJOR_TICKS).clear();
+        derived().image_.g(PLOT_Y_LABEL).clear();
+      }
 
-          template <class Derived>
-          void axis_plot_frame<Derived>::clear_grids()
-          { //!< Clear the  grids layer of the SVG plot.
-            derived().image_.g(PLOT_X_MAJOR_GRID).clear();
-            derived().image_.g(PLOT_X_MINOR_GRID).clear();
-            derived().image_.g(PLOT_Y_MAJOR_GRID).clear();
-            derived().image_.g(PLOT_Y_MINOR_GRID).clear();
-          }
+      template <class Derived>
+      void axis_plot_frame<Derived>::clear_grids()
+      { //!< Clear the  grids layer of the SVG plot.
+        derived().image_.g(PLOT_X_MAJOR_GRID).clear();
+        derived().image_.g(PLOT_X_MINOR_GRID).clear();
+        derived().image_.g(PLOT_Y_MAJOR_GRID).clear();
+        derived().image_.g(PLOT_Y_MINOR_GRID).clear();
+      }
 
-        template <class Derived>
-        void axis_plot_frame<Derived>::transform_point(double& x, double& y)
-        { //!< Scale & shift both X & Y to graph Cartesian coordinates.
-          x = derived().x_scale_ * x + derived().x_shift_;
-          y = derived().y_scale_ * y + derived().y_shift_;
-          adjust_limits(x, y); // In case either hits max, min, infinity or NaN.
-        }
+      template <class Derived>
+      void axis_plot_frame<Derived>::transform_point(double& x, double& y)
+      { //!< Scale & shift both X & Y to graph Cartesian coordinates.
+        x = derived().x_scale_ * x + derived().x_shift_;
+        y = derived().y_scale_ * y + derived().y_shift_;
+        adjust_limits(x, y); // In case either hits max, min, infinity or NaN.
+      }
 
-        //template <class Derived>
-       // void axis_plot_frame<Derived>::transform_point(double& x, double& y);
-        // Protected Member Functions Definitions in axis_plot_frame.ipp:
-        // TODO do we need to adjust_limit(x); // In case hits max, min, infinity or NaN?
-        // This implies that user's choice of X-axis range is wrong?
-        // So more drastic action like throwing might be least worst action?
+      //template <class Derived>
+     // void axis_plot_frame<Derived>::transform_point(double& x, double& y);
+      // Protected Member Functions Definitions in axis_plot_frame.ipp:
+      // TODO do we need to adjust_limit(x); // In case hits max, min, infinity or NaN?
+      // This implies that user's choice of X-axis range is wrong?
+      // So more drastic action like throwing might be least worst action?
 
-        template <class Derived>
-        void axis_plot_frame<Derived>::transform_x(double& x)
-        { //!< Scale and shift X value only.
-          x = derived().x_scale_ * x + derived().x_shift_;
-        }
+      template <class Derived>
+      void axis_plot_frame<Derived>::transform_x(double& x)
+      { //!< Scale and shift X value only.
+        x = derived().x_scale_ * x + derived().x_shift_;
+      }
 
-        template <class Derived>
-        void axis_plot_frame<Derived>::transform_y(double& y)
-        { //!< Scale and shift Y value only.
-          y = derived().y_scale_ * y + derived().y_shift_;
-        }
+      template <class Derived>
+      void axis_plot_frame<Derived>::transform_y(double& y)
+      { //!< Scale and shift Y value only.
+        y = derived().y_scale_ * y + derived().y_shift_;
+      }
 
-        template <class Derived>
-        void axis_plot_frame<Derived>::draw_x_minor_tick(double value, path_element& tick_path, path_element& grid_path)
-        { //!< Draw X-axis minor ticks, and optional grid. (Value is NOT (yet) shown beside the minor tick).
-          double x(value); // Tick position and tick value label,
-          transform_x(x); // Convert to svg.
-          double y_bottom(0.); // Start on the horizontal X-axis line.
-          double y_top(derived().image_.y_size()); // Image top.
+      template <class Derived>
+      void axis_plot_frame<Derived>::draw_x_minor_tick(double value, path_element& tick_path, path_element& grid_path)
+      { //!< Draw X-axis minor ticks, and optional grid. (Value is NOT (yet) shown beside the minor tick).
+        double x(value); // Tick position and tick value label,
+        transform_x(x); // Convert to svg.
+        double y_bottom(0.); // Start on the horizontal X-axis line.
+        double y_top(derived().image_.y_size()); // Image top.
 
-          // Draw the minor grid, if wanted.
-          if(derived().x_ticks_.minor_grid_on_)
-          {
-            if(!derived().plot_window_on_)
-            { // Use whole image.
-              // Make space for title and X-axis labels.
-              if(derived().title_on_)
-              { // Allow text_margin_ * font_size around text (pixels).
-                y_bottom += derived().title_info_.textstyle().font_size() * derived().text_margin_;
-              }
-              if(derived().x_axis_.label_on_)
-              {
-                y_top -= derived().x_label_info_.textstyle().font_size() * derived().text_margin_;
-              }
+        // Draw the minor grid, if wanted.
+        if (derived().x_ticks_.minor_grid_on_)
+        {
+          if (!derived().plot_window_on_)
+          { // Use whole image.
+            // Make space for title and X-axis labels.
+            if (derived().title_on_)
+            { // Allow text_margin_ * font_size around text (pixels).
+              y_bottom += derived().title_info_.textstyle().font_size() * derived().text_margin_;
             }
-            else
-            { // plot_window_on_ == true.
-              y_bottom = derived().plot_top_ + derived().plot_window_border_.width_; // Top.
-              y_top = derived().plot_bottom_ - derived().plot_window_border_.width_; // Bottom. Ensure *inside* window.
-            }
-            // Make sure that we are drawing inside the allowed window.
-            if((x >= derived().plot_left_) && (x <= derived().plot_right_)) // allow = too?
+            if (derived().x_axis_.label_on_)
             {
-              //std::cerr << "Writing draw_x_minor_tick grid inside plot window: x = "
-              //  << x << ", plot_left_ = " << derived().plot_left_ << ", plot_right_ = " << derived().plot_right_ << std::endl;
-              grid_path.M(x, y_bottom).L(x, y_top); // Draw grid line.
+              y_top -= derived().x_label_info_.textstyle().font_size() * derived().text_margin_;
             }
-            else
-            { // This will happen but is designed to be ignored!
-              // See comment in draw_x_axis
-              // std::cerr << "Writing draw_x_minor_tick grid OUTside plot window: x = "
-              //  << x << ", plot_left_ = " << derived().plot_left_ << ", plot_right_ = " << derived().plot_right_ << std::endl;
-            }
-          } // x_minor_grid
-
-          // Draw x minor ticks.
-          if (derived().x_ticks_.ticks_on_window_or_on_axis_ < 0)
-          { // Put minor ticks on the plot window border bottom.
-            y_bottom = derived().plot_bottom_; // on the window line.
-            y_top = derived().plot_bottom_; // y_bottom = upper, y_top = lower end of tick.
           }
-          else if (derived().x_ticks_.ticks_on_window_or_on_axis_ > 0)
-          { // Put minor ticks on the plot window border top.
-            y_bottom = derived().plot_top_; // on the window line.
-            y_top = derived().plot_top_; // y_bottom = upper, y_top = lower end of tick.
+          else
+          { // plot_window_on_ == true.
+            y_bottom = derived().plot_top_ + derived().plot_window_border_.width_; // Top.
+            y_top = derived().plot_bottom_ - derived().plot_window_border_.width_; // Bottom. Ensure *inside* window.
           }
-          else // derived().x_ticks_.ticks_on_window_or_on_axis_ == 0
-          { // Internal style, draw tick up and/or down from the X-axis line.
-            y_bottom = derived().x_axis_.axis_; // ON X-axis horizontal line.
-            y_top = derived().x_axis_.axis_;
-          }
-          if(derived().x_ticks_.up_ticks_on_)
+          // Make sure that we are drawing inside the allowed window.
+          if ((x >= derived().plot_left_) && (x <= derived().plot_right_)) // allow = too?
           {
-            y_bottom -= derived().x_ticks_.minor_tick_length_; // up
-          }
-          if (derived().x_ticks_.down_ticks_on_)
-          {
-            y_top += derived().x_ticks_.minor_tick_length_; // down.
-          }
-         // Make sure that we are drawing inside the allowed window.
-          if((x >= derived().plot_left_) && (x <= derived().plot_right_)) // TODO allow < or <=
-          {
-            tick_path.M(x, y_bottom).L(x, y_top);
-            // No value labels on minor ticks, at present.
+            //std::cerr << "Writing draw_x_minor_tick grid inside plot window: x = "
+            //  << x << ", plot_left_ = " << derived().plot_left_ << ", plot_right_ = " << derived().plot_right_ << std::endl;
+            grid_path.M(x, y_bottom).L(x, y_top); // Draw grid line.
           }
           else
           { // This will happen but is designed to be ignored!
             // See comment in draw_x_axis
-            //std::cerr << "Writing draw_x_minor_tick OUTside plot window: x = "
-            // << x << ", plot_left_ = " << derived().plot_left_ << ", plot_right_ = " << derived().plot_right_ << std::endl;
+            // std::cerr << "Writing draw_x_minor_tick grid OUTside plot window: x = "
+            //  << x << ", plot_left_ = " << derived().plot_left_ << ", plot_right_ = " << derived().plot_right_ << std::endl;
           }
-        } // void draw_x_minor_tick
+        } // x_minor_grid
 
-        template <class Derived>
-        void axis_plot_frame<Derived>::draw_x_major_tick(double value, path_element& tick_path, path_element& grid_path)
-        { //! Draw major ticks - and grid too if wanted.
-          //! If major_value_labels_side then value shown beside the major tick.
-          double x(value); //
-          transform_x(x); // x value in svg.
-          if((x < derived().plot_left_ - 0.01) || (x > derived().plot_right_ + 0.01))
-          // Allow a bit extra to allow for round-off errors.
-          { // tick value is way outside plot window, so nothing to do.
+        // Draw x minor ticks.
+        if (derived().x_ticks_.ticks_on_window_or_on_axis_ < 0)
+        { // Put minor ticks on the plot window border bottom.
+          y_bottom = derived().plot_bottom_; // on the window line.
+          y_top = derived().plot_bottom_; // y_bottom = upper, y_top = lower end of tick.
+        }
+        else if (derived().x_ticks_.ticks_on_window_or_on_axis_ > 0)
+        { // Put minor ticks on the plot window border top.
+          y_bottom = derived().plot_top_; // on the window line.
+          y_top = derived().plot_top_; // y_bottom = upper, y_top = lower end of tick.
+        }
+        else // derived().x_ticks_.ticks_on_window_or_on_axis_ == 0
+        { // Internal style, draw tick up and/or down from the X-axis line.
+          y_bottom = derived().x_axis_.axis_; // ON X-axis horizontal line.
+          y_top = derived().x_axis_.axis_;
+        }
+        if (derived().x_ticks_.up_ticks_on_)
+        {
+          y_bottom -= derived().x_ticks_.minor_tick_length_; // up
+        }
+        if (derived().x_ticks_.down_ticks_on_)
+        {
+          y_top += derived().x_ticks_.minor_tick_length_; // down.
+        }
+       // Make sure that we are drawing inside the allowed window.
+        if ((x >= derived().plot_left_) && (x <= derived().plot_right_)) // TODO allow < or <=
+        {
+          tick_path.M(x, y_bottom).L(x, y_top);
+          // No value labels on minor ticks, at present.
+        }
+        else
+        { // This will happen but is designed to be ignored!
+          // See comment in draw_x_axis
+          //std::cerr << "Writing draw_x_minor_tick OUTside plot window: x = "
+          // << x << ", plot_left_ = " << derived().plot_left_ << ", plot_right_ = " << derived().plot_right_ << std::endl;
+        }
+      } // void draw_x_minor_tick
+
+      template <class Derived>
+      void axis_plot_frame<Derived>::draw_x_major_tick(double value, path_element& tick_path, path_element& grid_path)
+      { //! Draw major ticks - and grid too if wanted.
+        //! If major_value_labels_side then value shown beside the major tick.
+        double x(value); //
+        transform_x(x); // x value in svg.
+        if ((x < derived().plot_left_ - 0.01) || (x > derived().plot_right_ + 0.01))
+        // Allow a bit extra to allow for round-off errors.
+        { // tick value is way outside plot window, so nothing to do.
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
             //std::cout << "Tick skipped as outside plot window "<< derived().plot_left_ << " at x = " << x << std::endl;
             // This *was* displayed for a plot.
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-            return;
-          }
-          double y_up(0.); // upper end of tick.
-          double y_down(derived().image_.x_size()); // y_down = lower end of tick.
-          if(derived().x_ticks_.major_grid_on_)
-          { // Draw major grid vertical line.
-            if(!derived().plot_window_on_)
-            { // Allow a modest margin around text of title and X-axis labels, if in use.
-              if(derived().title_on_)
-              {
-                y_up += derived().title_info_.textstyle().font_size() * derived().text_margin_;
-              }
-              if(derived().x_ticks_.major_value_labels_side_ != 0)
-              { // Value may be shown either side the major tick.
-                y_down -= derived().x_label_info_.textstyle().font_size() * derived().text_margin_;
-              }
+          return;
+        }
+        double y_up(0.); // upper end of tick.
+        double y_down(derived().image_.x_size()); // y_down = lower end of tick.
+        if (derived().x_ticks_.major_grid_on_)
+        { // Draw major grid vertical line.
+          if (!derived().plot_window_on_)
+          { // Allow a modest margin around text of title and X-axis labels, if in use.
+            // text_margin_(2.), // for axis label text, as a multiplier of the font size.
+            // Should allow a 'half line space' above and below the label text.
+            if (derived().title_on_)
+            {
+              y_up += derived().title_info_.textstyle().font_size() * derived().text_margin_;
             }
-            else
-            { // plot_window_on_ == true
-              y_up = derived().plot_top_; // Bottom of plot window.
-              y_down = derived().plot_bottom_; // Top of plot window.
+            if (derived().x_ticks_.major_value_labels_side_ != 0)
+            { // Value may be shown either side the major tick.
+              y_down -= derived().x_label_info_.textstyle().font_size() * derived().text_margin_;
             }
-            //if((y_down <= derived().plot_bottom_) && (y_up >= derived().plot_top_) && (x >= derived().plot_left_) && (x <= derived().plot_right_))
-            //{ // Make sure that we are drawing inside the allowed window.
-              grid_path.M(x, y_up).L(x, y_down); // Vertical grid line.
-            //}
-          } // use_x_major_grid
-
-          // Draw major tick (perhaps as well as grid - ticks might be wider than grid).
-          // Make sure that we are drawing inside the allowed plot window.
-          //if((x >= derived().plot_left_) && (x <= derived().plot_right_)) // now <=
-          //{ Removed these checks as round off causes trouble.
-            double x_tick_length = derived().x_ticks_.major_tick_length_;
-            if(derived().x_ticks_.ticks_on_window_or_on_axis_ < 0)
-            { // Put the ticks on the plot window border (was external).
-              y_up = derived().plot_bottom_; // on the window line.
-              y_down = derived().plot_bottom_; // y_up = upper, y_down = lower.
-              if(derived().x_ticks_.up_ticks_on_)
-              {
-                y_up -= x_tick_length; // up
-              }
-              if (derived().x_ticks_.down_ticks_on_)
-              {
-                y_down += x_tick_length; // down.
-              }
-            }
-            else if(derived().x_ticks_.ticks_on_window_or_on_axis_ > 0)
-            { // Put the ticks on the plot window border (was external).
-              y_up = derived().plot_top_; // on the window line.
-              y_down = derived().plot_top_; // y_up = upper, y_down = lower.
-              if(derived().x_ticks_.up_ticks_on_)
-              {
-                y_up -= x_tick_length; // up
-              }
-              if (derived().x_ticks_.down_ticks_on_)
-              {
-                y_down += x_tick_length; // down.
-              }
-            }
-            else
-            { // Draw tick from the central X axis line (Internal_style).
-              y_up = derived().x_axis_.axis_; // X-axis line.
-              y_down = derived().x_axis_.axis_;
-              if(derived().x_ticks_.up_ticks_on_)
-              {
-                y_up -=  x_tick_length; // up
-              }
-              if (derived().x_ticks_.down_ticks_on_)
-              {
-                y_down += x_tick_length; // down.
-              }
-            }
-            tick_path.M(x, y_up).L(x, y_down);
-            // Leaving current position at the bottom end of the tick.
-            // y_up and y-down are the ends of the tick.
-            // These may be on the axis line, or the plot window.
-
-            if(derived().x_ticks_.major_value_labels_side_ != 0)
-            { // Show a value by the horizontal X-axis tick as "1.2" or "3.4e+000"...
-              std::stringstream tick_value_label;
-              tick_value_label.precision(derived().x_ticks_.value_precision_);
-              tick_value_label.flags(derived().x_ticks_.value_ioflags_);
-              tick_value_label << value; // for tick "4", "1.2" or "3.4e+000"...
-              if (derived().x_ticks_.strip_e0s_)
-              { // Remove unecessary e, +, leadings 0s.
-                std::string v = strip_e0s(tick_value_label.str());
-                tick_value_label.str(v);
-              }
-              double y = 0; // Where to start writing from, at end of bottom or top tick, if any.
-              // = 0 is only to avoid unitialised warning.
-              align_style alignment = center_align;
-              // Adjustments to provide space from end of tick before or after writing label.
-              if (derived().x_ticks_.label_rotation_ == upward) // vertical writing up.
-              {  // Shift to center value digits and minus sign on tick.
-                x += derived().x_value_label_style_.font_size() * 0.2;
-                if (derived().x_ticks_.major_value_labels_side_ < 0)
-                { // labels to bottom, so start a little below y_down.
-                  y = y_down + derived().x_value_label_style_.font_size() * 0.6;
-                  alignment = right_align;
-                }
-                else if(derived().x_ticks_.major_value_labels_side_ > 0)
-                { // labels to top, so start a little above y_up.
-                  y = y_up - derived().x_value_label_style_.font_size() * 0.5;
-                  alignment = left_align;
-                }
-              }
-              else if (derived().x_ticks_.label_rotation_ == downward)
-              {  // Should handle other directions too.
-                x -= derived().x_value_label_style_.font_size() * 0.3;
-                if (derived().x_ticks_.major_value_labels_side_ < 0)
-                { // labels to bottom, so start a little below y_down.
-                  y = y_down + derived().x_value_label_style_.font_size() * 0.5;
-                  alignment = left_align;
-                }
-                else if(derived().x_ticks_.major_value_labels_side_ > 0)
-                { // labels to top, so start a little above y_up.
-                  y = y_up - derived().x_value_label_style_.font_size() * 0.5;
-                  alignment = right_align;
-                }
-              }
-              else if (derived().x_ticks_.label_rotation_ == steepup)
-              {  // Should handle other directions too.
-                x -= derived().x_value_label_style_.font_size() * 0.3;
-                if (derived().x_ticks_.major_value_labels_side_ < 0)
-                { // labels upward, so start a little below y_down.
-                  y = y_down + derived().x_value_label_style_.font_size() * 0.5;
-                  alignment = left_align;
-                }
-                else if(derived().x_ticks_.major_value_labels_side_ > 0)
-                { // labels to top, so start a little above y_up.
-                  y = y_up - derived().x_value_label_style_.font_size() * 0.5;
-                  alignment = right_align;
-                }
-              }
-              else if (derived().x_ticks_.label_rotation_ == uphill)
-              { // Assume some 45 slope, so need about sqrt(2) less space.
-                x += derived().x_value_label_style_.font_size() * 0.5;
-                if (derived().x_ticks_.major_value_labels_side_ < 0)
-                { // labels to bottom, so start a little to bottom of y_bottom.
-                  y = y_down + derived().x_value_label_style_.font_size() * sin45;
-                  // Seems to need a bit more space for top than bottom if rotated.
-                  alignment = right_align;
-                }
-                else if(derived().x_ticks_.major_value_labels_side_ > 0)
-                { // labels to top, so start a little to top of y_top.
-                  y = y_up - derived().x_value_label_style_.font_size() * 0.3;
-                  alignment = left_align;
-                }
-              }
-              else if (derived().x_ticks_.label_rotation_ == slopeup)
-              { // Assume for 30 degree slope, need about sqrt(2) less space.
-                x += derived().x_value_label_style_.font_size() * 0.5;
-                if (derived().x_ticks_.major_value_labels_side_ < 0)
-                { // labels to bottom, so start a little to bottom of y_bottom.
-                  y = y_down + derived().x_value_label_style_.font_size() * sin45;
-                  // Seems to need a bit more space for top than bottom if rotated.
-                  alignment = right_align;
-                }
-                else if(derived().x_ticks_.major_value_labels_side_ > 0)
-                { // labels to top, so start a little to top of y_top.
-                  y = y_up - derived().x_value_label_style_.font_size() * 0.2;
-                  alignment = left_align;
-                }
-              }
-              else if (derived().x_ticks_.label_rotation_ == downhill)
-              { // Assume some 45 slope, so need about sqrt(2) less space.
-                x -= derived().x_value_label_style_.font_size() * 0.3;
-                if (derived().x_ticks_.major_value_labels_side_ < 0)
-                { // labels to bottom, so start a little to bottom of y_down.
-                  y = y_down + derived().x_value_label_style_.font_size() * 0.7;
-                  // Seems to need a bit more space for top than bottom if rotated.
-                  alignment = left_align;
-                }
-                else if(derived().x_ticks_.major_value_labels_side_ > 0)
-                { // labels to top, so start a little to top of y_up.
-                 y = y_up - derived().x_value_label_style_.font_size() * 0.3;
-                  alignment = right_align;
-                }
-              }
-              else if (derived().x_ticks_.label_rotation_ == slopedownhill)
-              { // Assume some 30 slope, so need about sqrt(2) less space.
-                x -= derived().x_value_label_style_.font_size() * 0.3;
-                if (derived().x_ticks_.major_value_labels_side_ < 0)
-                { // labels to bottom, so start a little to bottom of y_down.
-                  y = y_down + derived().x_value_label_style_.font_size() * 0.7;
-                  // Seems to need a bit more space for top than bottom if rotated.
-                  alignment = left_align;
-                }
-                else if(derived().x_ticks_.major_value_labels_side_ > 0)
-                { // labels to top, so start a little to top of y_up.
-                 y = y_up - derived().x_value_label_style_.font_size() * 0.3;
-                  alignment = right_align;
-                }
-              }
-              else if (derived().x_ticks_.label_rotation_ == steepdown)
-              {  // Should handle other directions too.
-                x -= derived().x_value_label_style_.font_size() * 0.3;
-                if (derived().x_ticks_.major_value_labels_side_ < 0)
-                { // labels to bottom, so start a little below y_down.
-                  y = y_down + derived().x_value_label_style_.font_size() * 0.5;
-                  alignment = left_align;
-                }
-                else if(derived().x_ticks_.major_value_labels_side_ > 0)
-                { // labels to top, so start a little above y_up.
-                  y = y_up - derived().x_value_label_style_.font_size() * 0.5;
-                  alignment = right_align;
-                }
-              }
-              else if (derived().x_ticks_.label_rotation_ == horizontal)
-              { // Tick value label on X-axis is normal default horizontal.
-                if (derived().x_ticks_.major_value_labels_side_ < 0)
-                { // labels to bottom of tick, so start a little below bottom of y_down.
-                  y = y_down + derived().x_value_label_style_.font_size() * 1.3; // 1.3 allows 1/3 font space.
-                  alignment = center_align; // center on the tick.
-                }
-                else if(derived().x_ticks_.major_value_labels_side_ > 0)
-                { // labels to top, so start a little to top of y_up.
-                 y = y_up - derived().x_value_label_style_.font_size() * 0.7;
-                  alignment = center_align;
-                }
-              }
-              else
-              { // upsidedown, backup... - can't see any conceivable use for these.
-                return; // Others not yet implemented.
-              } // rotations
-              if (x <= 0)
-              { // Sanity checks on svg coordinates.
-                throw std::runtime_error("X-tick X value wrong!");
-              }
-              if (y <= 0)
-              {
-                throw std::runtime_error("X-tick Y value wrong!");
-              }
-              // Draw the X ticks value labels, "1", "2" "3" ...
-              if(derived().x_ticks_.ticks_on_window_or_on_axis_ != 0)
-              { // External to plot window style bottom or top.
-                // Always want all values including "0", if labeling external to plot window.
-                // x_ticks_.ticks_on_window_or_on_axis_ == true != 0
-                derived().image_.g(detail::PLOT_X_TICKS_VALUES).text(
-                  x,
-                  y,
-                  tick_value_label.str(),
-                  derived().x_value_label_info_.textstyle(), // font, size etc
-                  alignment, derived().x_ticks_.label_rotation_);
-              }
-              else
-              {
-                if ((value != 0) && derived().x_axis_.axis_line_on_)
-                { // Avoid a "0" below the X-axis if it would be cut through by any internal vertical Y-axis line.
-                  derived().image_.g(detail::PLOT_X_TICKS_VALUES).text(
-                    x,
-                    y,
-                    tick_value_label.str(),
-                    derived().x_value_label_info_.textstyle(), // font, size etc
-                    alignment,
-                    derived().x_ticks_.label_rotation_);
-                }
-              } // on plot window or 'on axis'.
           }
           else
-          { // Outside plot window - so do nothing?  Warning?
-            //std::cerr << "Writing draw_x_major_tick OUTside plot window: "
-            //  "x = " << x << ", plot_left_ = " << derived().plot_left_ << ", plot_right_ = " << derived().plot_right_ << std::endl;
+          { // plot_window_on_ == true
+            y_up = derived().plot_top_; // Bottom of plot window.
+            y_down = derived().plot_bottom_; // Top of plot window.
           }
-        } // draw_x_major_tick
+          //if((y_down <= derived().plot_bottom_) && (y_up >= derived().plot_top_) && (x >= derived().plot_left_) && (x <= derived().plot_right_))
+          //{ // Make sure that we are drawing inside the allowed window.
+          grid_path.M(x, y_up).L(x, y_down); // Vertical grid line.
+        //}
+        } // use_x_major_grid
 
-        template <class Derived>
-        void axis_plot_frame<Derived>::draw_x_axis()
-        { //! Draw horizontal X-axis line & plot window line to hold, and ticks and grids.
-          if(derived().x_axis_.axis_line_on_)
-          { // Want a horizontal X-axis line drawn.
-            double xleft = derived().plot_left_;
-            double xright = derived().plot_right_;
-            if (derived().x_axis_position_ == x_intersects_y)
-            { // Draw the horizontal X-axis line the full width of the plot window,
-              // perhaps including an addition in lieu of a major tick.
-              if (derived().y_ticks_.left_ticks_on_)
-              {
-                if (derived().y_ticks_.ticks_on_window_or_on_axis_ < 0) // left
-                { // Extend the horizontal line left in lieu of longest tick.
-                  xleft -= (std::max)(derived().y_ticks_.minor_tick_length_, derived().y_ticks_.major_tick_length_);
-                }
-              }
-              else if (derived().y_ticks_.right_ticks_on_)
-              {
-                if (derived().y_ticks_.ticks_on_window_or_on_axis_ > 0) // right
-                { // Extend the horizontal X-axis line right in lieu of longest tick.
-                  xright += (std::max)(derived().y_ticks_.minor_tick_length_, derived().y_ticks_.major_tick_length_);
-                }
-              }
-              double y = derived().x_axis_.axis_; // y = 0, (provided y range includes zero).
-              derived().image_.g(PLOT_X_AXIS).line(xleft, y, xright, y);
-              if (derived().x_ticks_.ticks_on_window_or_on_axis_ < 0) // bottom
-              { // Draw a vertical line holding the ticks on the top of plot window.
-                derived().image_.g(PLOT_X_AXIS).line(xleft, derived().plot_bottom_, xright, derived().plot_bottom_);
-              }
-              else if (derived().x_ticks_.ticks_on_window_or_on_axis_ > 0)  // top
-              {// Draw a vertical line holding the ticks on the bottom of plot window.
-                derived().image_.g(PLOT_X_AXIS).line(xleft, derived().plot_top_, xright, derived().plot_top_);
-              }
-            }
-            else if (derived().x_axis_position_ == top)
-            {
-               derived().image_.g(PLOT_X_AXIS).line(xleft, derived().plot_top_, xright, derived().plot_top_);
-            }
-            else if (derived().x_axis_position_ == bottom)
-            {
-               derived().image_.g(PLOT_X_AXIS).line(xleft, derived().plot_bottom_, xright, derived().plot_bottom_);
-            }
-            else
-            { // warn that things have gone wrong?
-            }
-          } // x_axis_.axis_line_on_
-
-          // Access the paths for the ticks & grids, ready for additions.
-          path_element& minor_tick_path = derived().image_.g(PLOT_X_MINOR_TICKS).path();
-          path_element& major_tick_path = derived().image_.g(PLOT_X_MAJOR_TICKS).path();
-          path_element& minor_grid_path = derived().image_.g(PLOT_X_MINOR_GRID).path();
-          path_element& major_grid_path = derived().image_.g(PLOT_X_MAJOR_GRID).path();
-
-          // x_minor_jump is the interval between minor ticks.
-          double x_minor_jump = derived().x_ticks_.major_interval_ /
-            (derived().x_ticks_.num_minor_ticks_ + 1.);
-
-          // Draw the ticks on the positive side (right of zero).
-          for(double x = 0.; x <= derived().x_axis_.max_; x += derived().x_ticks_.major_interval_)
+        // Draw major tick (perhaps as well as grid - ticks might be wider than grid).
+        // Make sure that we are drawing inside the allowed plot window.
+        //if((x >= derived().plot_left_) && (x <= derived().plot_right_)) // now <=
+        //{ Removed these checks as round off causes trouble.
+        double x_tick_length = derived().x_ticks_.major_tick_length_;
+        if (derived().x_ticks_.ticks_on_window_or_on_axis_ < 0)
+        { // Put the ticks on the plot window border (was external).
+          y_up = derived().plot_bottom_; // on the window line.
+          y_down = derived().plot_bottom_; // y_up = upper, y_down = lower.
+          if (derived().x_ticks_.up_ticks_on_)
           {
-            for(double j = x + x_minor_jump;
-              j < (x + derived().x_ticks_.major_interval_) * (1. - 2 * std::numeric_limits<double>::epsilon());
-              j += x_minor_jump)
-            { // Reduce test value by a few bits to avoid accumulated rounding error
-              // that intermittently puts minor ticks *at same value as* major ticks.
-              // This will output 'orphaned' minor ticks that are beyond the plot window,
-              // if the last major tick does not coincide with the plot window.
-              // These are just ignored in draw_x_minor_tick.
-              // There might be 9 of them, so
-              // if you have the common 9 minor tick between major ticks!
-              // TODO this seems ugly - as does the negative ones below.
-              draw_x_minor_tick(j, minor_tick_path, minor_grid_path);
-            } // for j
-            if ((x != 0. || !derived().y_axis_.axis_line_on_) || (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0))
-            { // Avoid a major tick at x == 0 where there *is* a vertical Y-axis line.
-              // (won't be Y-axis line for 1-D where the zero tick is always wanted).
-              draw_x_major_tick(x, major_tick_path, major_grid_path);
-            }
+            y_up -= x_tick_length; // up
           }
-
-          // Draw the ticks on the negative side (left of zero).
-          for(double x = 0.; x >= derived().x_axis_.min_; // ?? * (1. + 2 * std::numeric_limits<double>::epsilon());
-            x -= derived().x_ticks_.major_interval_) // Want a close to test here?
+          if (derived().x_ticks_.down_ticks_on_)
           {
-            // Draw minor ticks.
-            for(double j = x - x_minor_jump;
-              j > (x - derived().x_ticks_.major_interval_ + x_minor_jump) * (1. + 2 * std::numeric_limits<double>::epsilon());
-              // Increase test value by a few bits to avoid accumulated rounding error
-              // that intermittently puts minor ticks *at same value as* major ticks.
-              j -= x_minor_jump)
-            {
-              if ((j != 0. || !derived().y_axis_.axis_line_on_)  || (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0))
-              { // Avoid a minor tick at x == 0 where there *is* a vertical Y-axis line.
-                // (won't be Y-axis line for 1-D where the zero tick is always wanted).
-                // But no tick means no value label 0 either unless on_plot_window.
-                draw_x_minor_tick(j, minor_tick_path, minor_grid_path);
-              }
-            }
-            if ((x != 0. || !derived().y_axis_.axis_line_on_) || (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0))
-            { // Avoid a major tick at x == 0 where there *is* a vertical Y-axis line.
-              // (won't be Y-axis line for 1-D where the zero tick is always wanted).
-              // But no tick means no value label 0 either unless on_plot_window.
-              draw_x_major_tick(x, major_tick_path, major_grid_path);
-            }
+            y_down += x_tick_length; // down.
           }
-        } // void draw_x_axis()
-
-        template <class Derived>
-        void axis_plot_frame<Derived>::draw_x_axis_label()
-        { //! Draw the X-axis label text (for example, length),
-          //! and append any optional units (for example, km).
-          // X-label color default is set in constructor thus:
-          // image_.g(detail::PLOT_X_LABEL).style().stroke_color(black);
-          // and changed using x_label_color(color);
-          // Similarly for font family and size etc (must be same for both label and units).
-
-          std::string x_label = derived().x_label_info_.text(); // x_axis_ label, and optional units.
-          if (derived().x_axis_.label_units_on_ && (derived().x_units_info_.text() != ""))
-          { // Append the units, if any, user providing brackets () if required.
-            x_label += derived().x_units_info_.text(); // for example: "time (sec)".
+        }
+        else if (derived().x_ticks_.ticks_on_window_or_on_axis_ > 0)
+        { // Put the ticks on the plot window border (was external).
+          y_up = derived().plot_top_; // on the window line.
+          y_down = derived().plot_top_; // y_up = upper, y_down = lower.
+          if (derived().x_ticks_.up_ticks_on_)
+          {
+            y_up -= x_tick_length; // up
           }
+          if (derived().x_ticks_.down_ticks_on_)
+          {
+            y_down += x_tick_length; // down.
+          }
+        }
+        else
+        { // Draw tick from the central X axis line (Internal_style).
+          y_up = derived().x_axis_.axis_; // X-axis line.
+          y_down = derived().x_axis_.axis_;
+          if (derived().x_ticks_.up_ticks_on_)
+          {
+            y_up -= x_tick_length; // up
+          }
+          if (derived().x_ticks_.down_ticks_on_)
+          {
+            y_down += x_tick_length; // down.
+          }
+        }
+        tick_path.M(x, y_up).L(x, y_down);
+        // Leaving current position at the bottom end of the tick.
+        // y_up and y-down are the ends of the tick.
+        // These may be on the axis line, or the plot window.
 
-          double y = derived().plot_bottom_;
-          // Glyphs for western characters are aligned with the left bottom of capital letter,
-          // so need to allow 1/3 more below for any descenders.
-
-          // cout << "derived().x_ticks_.ticks_on_window_or_on_axis_ " << derived().x_ticks_.ticks_on_window_or_on_axis_ << endl;
-          // using derived(0 means debugging doesn't work!  So resort to old-fashioned print statements.
-          if (derived().x_ticks_.ticks_on_window_or_on_axis_ < 0) // -1 means ticks on bottom of plot window.
-          { // Ticks value labels below plot window.
-            if (derived().x_ticks_.major_value_labels_side_ < 0) // bottom
-            { // Shift down to allow for any tick value labels.
-              if ((derived().x_ticks_.label_rotation_ == downward) || (derived().x_ticks_.label_rotation_ == upward))
-              { // downward tick value label direction 90 up or down.
-                y += derived().x_ticks_.label_max_space_;
-                if (derived().x_ticks_.down_ticks_on_ == true)
-                {  // Move down for any downward ticks.
-                  y += 1.1 * (std::max)(derived().x_ticks_.major_tick_length_, derived().x_ticks_.minor_tick_length_); // And avoid macro max trap!
-                  // and a small space.
-                  y += 0.7 * (derived().x_label_info_.textstyle().font_size() + derived().x_value_label_info_.textstyle().font_size()); // best compromise?
-                }
-              }
-              else if ((derived().x_ticks_.label_rotation_ == steepdown) || (derived().x_ticks_.label_rotation_ == steepup))
-              { // downward tick value label direction 60 up or down.
-                y += derived().x_ticks_.label_max_space_;
-                if (derived().x_ticks_.down_ticks_on_ == true)
-                {  // Move down for any downward ticks.
-                  y += 1.1 * (std::max)(derived().x_ticks_.major_tick_length_, derived().x_ticks_.minor_tick_length_); // And avoid macro max trap!
-                  // and a small space.
-                  y += 0.5 * (derived().x_label_info_.textstyle().font_size() + derived().x_value_label_info_.textstyle().font_size()); // best compromise?
-                }
-              }
-              else if ((derived().x_ticks_.label_rotation_ == uphill)  || (derived().x_ticks_.label_rotation_ == downhill))
-              { // sloping 45 degrees up or down.
-                y += derived().x_ticks_.label_max_space_ * sin45; // Move down from end of tick.
-                if (derived().x_ticks_.down_ticks_on_ == true)
-                {  // Move down for any downward ticks.
-                  y += 1.1 * (std::max)(derived().x_ticks_.major_tick_length_, derived().x_ticks_.minor_tick_length_); // And avoid macro max trap!
-                  // and a small space.
-                  y += 0.7 * (derived().x_label_info_.textstyle().font_size() + derived().x_value_label_info_.textstyle().font_size()); // best compromise?
-                }
-              }
-              else if ((derived().x_ticks_.label_rotation_ == slopeup)  || (derived().x_ticks_.label_rotation_ == slopedownhill))
-              { // sloping 30 degrees.
-                y += derived().x_ticks_.label_max_space_ * sin45; // Move down from end of tick.
-                if (derived().x_ticks_.down_ticks_on_ == true)
-                {  // Move down for any downward ticks.
-                  y += 1.1 * (std::max)(derived().x_ticks_.major_tick_length_, derived().x_ticks_.minor_tick_length_); // And avoid macro max trap!
-                  // and a small space.
-                  y += 0.5 * (derived().x_label_info_.textstyle().font_size() + derived().x_value_label_info_.textstyle().font_size()); // best compromise?
-                }
-              }
-              else if (derived().x_ticks_.label_rotation_ == horizontal)
-              { // horizontal X ticks value labels (default).
-                if (derived().x_ticks_.major_value_labels_side_ < 0)
-                { //  Move down to allow space for font size of tick value labels below X-axis.
-                  y += derived().x_value_label_info_.textstyle().font_size() ;
-                }
-                y += derived().x_label_info_.textstyle().font_size() * 1.3; // Allow for the X-axis label font and space.
-                // See also 1.3 factor drawing ticks.
-              }
-              else
-              {
-                std::cout << " Rotation of X label rotation" << derived().x_ticks_.label_rotation_ << "not yet implemented!" << std::endl;
-              }
+        if (derived().x_ticks_.major_value_labels_side_ != 0)
+        { // Show a value by the horizontal X-axis tick as "1.2" or "3.4e+000"...
+          std::stringstream tick_value_label;
+          tick_value_label.precision(derived().x_ticks_.value_precision_);
+          tick_value_label.flags(derived().x_ticks_.value_ioflags_);
+          tick_value_label << value; // for tick "4", "1.2" or "3.4e+000"...
+          if (derived().x_ticks_.strip_e0s_)
+          { // Remove unecessary e, +, leadings 0s.
+            std::string v = strip_e0s(tick_value_label.str());
+            tick_value_label.str(v);
+          }
+          double y = 0; // Where to start writing from, at end of bottom or top tick, if any.
+          // = 0 is only to avoid unitialised warning.
+          align_style alignment = center_align;
+          // Adjustments to provide space from end of tick before or after writing label.
+          if (derived().x_ticks_.label_rotation_ == upward) // vertical writing up.
+          {  // Shift to center value digits and minus sign on tick.
+            x += derived().x_value_label_style_.font_size() * 0.2;
+            if (derived().x_ticks_.major_value_labels_side_ < 0)
+            { // labels to bottom, so start a little below y_down.
+              y = y_down + derived().x_value_label_style_.font_size() * 0.6;
+              alignment = right_align;
             }
             else if (derived().x_ticks_.major_value_labels_side_ > 0)
-            { // Tick labels above, only ticks below, so just move down for height of label font.
-              y += derived().x_label_info_.textstyle().font_size() * 1.3; // Allow for the X-axis label font and space.
-            }
-            else
-            { // derived().x_ticks_.major_value_labels_side_ == 0
-              // So no change for labels.
-              y += derived().x_label_info_.textstyle().font_size() * 1.3; // Allow for the X-axis label font and space.
-            }
-
-            if (derived().x_ticks_.down_ticks_on_)
-            { // Shift down for biggest of any ticks, and bit of space.
-              y += 1.1 * (std::max)(derived().x_ticks_.minor_tick_length_, derived().x_ticks_.major_tick_length_);
-            // y += derived().x_ticks_.value_label_style_.font_size() * 1.; // Shift down to suit tick labels?
+            { // labels to top, so start a little above y_up.
+              y = y_up - derived().x_value_label_style_.font_size() * 0.5;
+              alignment = left_align;
             }
           }
-          else if (derived().x_ticks_.ticks_on_window_or_on_axis_ > 0)
-          {  // = +1 means ticks are on top of plot window.
-             // Shift down from plot window bottom to suit X-axis label.
-             y += derived().x_label_info_.textstyle().font_size() * 1.7;
+          else if (derived().x_ticks_.label_rotation_ == downward)
+          {  // Should handle other directions too.
+            x -= derived().x_value_label_style_.font_size() * 0.3;
+            if (derived().x_ticks_.major_value_labels_side_ < 0)
+            { // labels to bottom, so start a little below y_down.
+              y = y_down + derived().x_value_label_style_.font_size() * 0.5;
+              alignment = left_align;
+            }
+            else if (derived().x_ticks_.major_value_labels_side_ > 0)
+            { // labels to top, so start a little above y_up.
+              y = y_up - derived().x_value_label_style_.font_size() * 0.5;
+              alignment = right_align;
+            }
           }
-          else if (derived().x_ticks_.ticks_on_window_or_on_axis_ == 0)
-          { // Ticks are ON the X-axis line, so X label is just below the plot bottom.
-            // No space needed for ticks.
-             // Character starts at bottom of capital letter, so allow for descenders.
-             //y = derived().image_.y_size() - derived().image_border_width(); // Place X Label just above the image bottom.
-             //y -= derived().image_border_.margin_;
-             y += derived().x_label_info_.textstyle().font_size() * 1.7;
+          else if (derived().x_ticks_.label_rotation_ == steepup)
+          {  // Should handle other directions too.
+            x -= derived().x_value_label_style_.font_size() * 0.3;
+            if (derived().x_ticks_.major_value_labels_side_ < 0)
+            { // labels upward, so start a little below y_down.
+              y = y_down + derived().x_value_label_style_.font_size() * 0.5;
+              alignment = left_align;
+            }
+            else if (derived().x_ticks_.major_value_labels_side_ > 0)
+            { // labels to top, so start a little above y_up.
+              y = y_up - derived().x_value_label_style_.font_size() * 0.5;
+              alignment = right_align;
+            }
           }
-
-          derived().image_.g(PLOT_X_LABEL).push_back(new text_element(
-            ( // x position relative to the x-axis which is middle of plot window.
-            derived().plot_right_ + derived().plot_left_) / 2,  // x coordinate - middle.
-            y, // Down from plot window.
-            x_label,
-            derived().x_label_info_.textstyle(),
-            center_align, horizontal)
-            );
-        } // void draw_x_axis_label()
-
-        template <class Derived>
-        void axis_plot_frame<Derived>::adjust_limits(double& x, double& y)
-          { //! If value of a data point reaches limit of max, min, infinity,
-            //! use the appropriate plot min or max value instead.
-            if(detail::limit_max(x))
-            {
-              x = derived().plot_right_;
+          else if (derived().x_ticks_.label_rotation_ == uphill)
+          { // Assume some 45 slope, so need about sqrt(2) less space.
+            x += derived().x_value_label_style_.font_size() * 0.5;
+            if (derived().x_ticks_.major_value_labels_side_ < 0)
+            { // labels to bottom, so start a little to bottom of y_bottom.
+              y = y_down + derived().x_value_label_style_.font_size() * sin45;
+              // Seems to need a bit more space for top than bottom if rotated.
+              alignment = right_align;
             }
-            if(detail::limit_max(y))
-            {
-              y = derived().plot_top_;
+            else if (derived().x_ticks_.major_value_labels_side_ > 0)
+            { // labels to top, so start a little to top of y_top.
+              y = y_up - derived().x_value_label_style_.font_size() * 0.3;
+              alignment = left_align;
             }
-            if(detail::limit_min(x))
-            {
-              x = derived().plot_left_;
+          }
+          else if (derived().x_ticks_.label_rotation_ == slopeup)
+          { // Assume for 30 degree slope, need about sqrt(2) less space.
+            x += derived().x_value_label_style_.font_size() * 0.5;
+            if (derived().x_ticks_.major_value_labels_side_ < 0)
+            { // labels to bottom, so start a little to bottom of y_bottom.
+              y = y_down + derived().x_value_label_style_.font_size() * sin45;
+              // Seems to need a bit more space for top than bottom if rotated.
+              alignment = right_align;
             }
-            if(detail::limit_min(y))
-            {
-              y = derived().plot_top_;
+            else if (derived().x_ticks_.major_value_labels_side_ > 0)
+            { // labels to top, so start a little to top of y_top.
+              y = y_up - derived().x_value_label_style_.font_size() * 0.2;
+              alignment = left_align;
             }
-            // If value is NaN, use zero instead.
-            // TODO Do we want/get a different color or shape for NaNs?
-            if(detail::limit_NaN(x))
-            {
-              x = 0.;
-              transform_x(x);
+          }
+          else if (derived().x_ticks_.label_rotation_ == downhill)
+          { // Assume some 45 slope, so need about sqrt(2) less space.
+            x -= derived().x_value_label_style_.font_size() * 0.3;
+            if (derived().x_ticks_.major_value_labels_side_ < 0)
+            { // labels to bottom, so start a little to bottom of y_down.
+              y = y_down + derived().x_value_label_style_.font_size() * 0.7;
+              // Seems to need a bit more space for top than bottom if rotated.
+              alignment = left_align;
             }
-            if(detail::limit_NaN(y))
-            {
-              y = 0.;
-              transform_y(y);
+            else if (derived().x_ticks_.major_value_labels_side_ > 0)
+            { // labels to top, so start a little to top of y_up.
+              y = y_up - derived().x_value_label_style_.font_size() * 0.3;
+              alignment = right_align;
             }
-          } // void adjust_limits
-
-
-        template <class Derived>
-        void axis_plot_frame<Derived>::draw_title()
-        { /*! Draw title (for the whole plot).
-            Update title_info_ with position.
-            Assumes align = center_align
-            Using center_align will ensure that title will center correctly
-            because the render engine does the centering.
-            (Even if the original string is made much longer because it contains Unicode,
-            Greek, math symbols etc, taking about 8 characters per symbol.
-            For example, the Unicode symbol for square root is "&#x221A;" but takes only about one character width).
-          */
-          derived().title_info_.x(derived().image_.x_size() / 2.); // Center of image.
-          double y;
-          y = derived().title_info_.textstyle().font_size() * derived().text_margin_; // Leave a linespace above.
-          derived().title_info_.y(y);
-          derived().image_.g(PLOT_TITLE).push_back(new text_element(derived().title_info_));
-        } // void draw_title()
-
-        template <class Derived>
-        void axis_plot_frame<Derived>::size_legend_box()
-        { //! Calculate how big the legend box needs to be.
-          if(derived().legend_on_ == false)
-          { // No legend wanted, so set values to show legend positions invalid?
-            //derived().legend_left_ = -1.;
-            //derived().legend_right_ = -1.;
-            //derived().legend_top_ = -1.;
-            //derived().legend_bottom_ = -1.;
-            derived().legend_height_ = 0.; // At least set the size to zero.
-            derived().legend_width_ = 0.;
-            return;
+          }
+          else if (derived().x_ticks_.label_rotation_ == slopedownhill)
+          { // Assume some 30 slope, so need about sqrt(2) less space.
+            x -= derived().x_value_label_style_.font_size() * 0.3;
+            if (derived().x_ticks_.major_value_labels_side_ < 0)
+            { // labels to bottom, so start a little to bottom of y_down.
+              y = y_down + derived().x_value_label_style_.font_size() * 0.7;
+              // Seems to need a bit more space for top than bottom if rotated.
+              alignment = left_align;
+            }
+            else if (derived().x_ticks_.major_value_labels_side_ > 0)
+            { // labels to top, so start a little to top of y_up.
+              y = y_up - derived().x_value_label_style_.font_size() * 0.3;
+              alignment = right_align;
+            }
+          }
+          else if (derived().x_ticks_.label_rotation_ == steepdown)
+          {  // Should handle other directions too.
+            x -= derived().x_value_label_style_.font_size() * 0.3;
+            if (derived().x_ticks_.major_value_labels_side_ < 0)
+            { // labels to bottom, so start a little below y_down.
+              y = y_down + derived().x_value_label_style_.font_size() * 0.5;
+              alignment = left_align;
+            }
+            else if (derived().x_ticks_.major_value_labels_side_ > 0)
+            { // labels to top, so start a little above y_up.
+              y = y_up - derived().x_value_label_style_.font_size() * 0.5;
+              alignment = right_align;
+            }
+          }
+          else if (derived().x_ticks_.label_rotation_ == horizontal)
+          { // Tick value label on X-axis is normal default horizontal.
+            if (derived().x_ticks_.major_value_labels_side_ < 0)
+            { // labels to bottom of tick, so start a little below bottom of y_down.
+              y = y_down + derived().x_value_label_style_.font_size() * 1.3; // 1.3 allows 1/3 font space.
+              alignment = center_align; // center on the tick.
+            }
+            else if (derived().x_ticks_.major_value_labels_side_ > 0)
+            { // labels to top, so start a little to top of y_up.
+              y = y_up - derived().x_value_label_style_.font_size() * 0.7;
+              alignment = center_align;
+            }
           }
           else
-          { // legend_on_ == true
-            // Work out the size the legend box needs to be to hold the
-            // header, markers, lines & text.
-            size_t num_series = derived().serieses_.size(); // How many data series.
-            int font_size = derived().legend_header_.textstyle().font_size();
-            int point_size =  derived().serieses_[0].point_style_.size();
-            // Use height of whichever is the biggest of point marker and font.
-            double spacing = (std::max)(font_size, point_size);
-#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-            std::cout << spacing <<  ' ' << font_size << ' ' << point_size << std::endl;
-#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
-            bool is_header = (derived().legend_header_.text() != "");
-            //text_element legend_header_; // legend box header or title (if any).
-            //text_style legend_style_;
-            double longest = string_svg_length(derived().legend_header_.text(), derived().legend_style_);
-#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-            std::cout << "\nLegend header " << longest << " svg units." << std::endl;
-#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
-
-            derived().legend_width_ = 2 * (derived().legend_box_.margin() * derived().legend_box_.width());
-            // Don't plan to write on either side border, or on the 'forbidden' margins of the box.
-            for(size_t i = 0; i < num_series; ++i)
-            { // Find the longest text (if longer than header) in all the data series.
-              std::string s = derived().serieses_[i].title_;
-              double siz = string_svg_length(s, derived().legend_style_);
-              if (siz > longest)
-              {
-                longest = siz;
-              }
-            } // for
-#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-            std::cout << "\nLongest legend header or data descriptor " << longest << " svg units." << std::endl;
-#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
-
-            derived().legend_width_ += longest * 0.8; // Space for longest text.
-            // Kludge factor to allow for not knowing the real length.
-
-            // Allow width for a leading space, and trailing
-              derived().legend_width_ += spacing * 2.5;
-
-            // & trailing space before box margin.
-            // if (derived().serieses_[i].line_style_.line_on_) // line joining points.
-            if (derived().legend_lines_)
-            { // Add for colored line marker in legend.
-              derived().legend_width_ += spacing * 1.5;
-            }
-            if(derived().serieses_[0].point_style_.shape() != none)
-            { // Add for any colored data point marker, cross, round... & space.
-              derived().legend_width_ += 1.5 * derived().serieses_[0].point_style_.size();
-            }
-            // else no point marker.
-
-            // legend_height must be *at least* enough for
-            // any legend header and text_margin(s) around it
-            // (if any) plus a text_margin_ top and bottom.
-            // Add more height depending on the number of lines of text.
-            derived().legend_height_ = spacing; // At top
-            if ( (is_header) // is a legend header line.
-              && (derived().legend_header_.text() != "") )
-            {
-              derived().legend_height_ += 2 * font_size; // text & space after.
-            }
-            derived().legend_height_ += num_series * spacing * 2; // Space for the data point symbols & text.
-          } // legend_on_ == true
-#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-         std::cout << "Legend width " << derived().legend_width_ << ", height " << derived().legend_height_ << std::endl;
-#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
-        } //  void size_legend_box()
-
-        template <class Derived>
-        void axis_plot_frame<Derived>::place_legend_box()
-        { //! Place legend box (if required).
-          if(derived().legend_on_ == true) // Legend box required.
+          { // upsidedown, backup... - can't see any conceivable use for these.
+            return; // Others not yet implemented.
+          } // rotations
+          if (x <= 0)
+          { // Sanity checks on svg coordinates.
+            throw std::runtime_error("X-tick X value wrong!");
+          }
+          if (y <= 0)
           {
-            derived().outside_legend_on_ = true; // Unless proves to be inside.
-            //double spacing = derived().legend_box_.margin(); // Might be better to use this, but needs redoing.
-            double spacing = derived().y_axis_label_style_.font_size() * 1.; // Around any legend box - beyond any border.
-            switch (derived().legend_place_)
-            {
-            case nowhere:
-              return; // Actually places it at (0, 0), probably overwriting the plot.
-            case somewhere:
-              // Assume legend_top_left will place it somewhere where there is nothing else.
-               //derived().legend_left_; set by legend_top_left
-               //derived().legend_top_;
-               derived().legend_bottom_ = derived().legend_top_ + derived().legend_height_;
-               derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
-               break;
-            case inside:
-              derived().outside_legend_on_ = false;
-              if (derived().legend_left_ == -1)
-              { // Legend box position NOT been set by legend_top_left.
-                // Default inside position is top left level with plot window.
-              derived().legend_left_ = derived().image_border_.width_ + derived().image_border_.margin_; // left image edge + space.
-              derived().plot_left_ += derived().legend_width_ + spacing; // Push plot window right same amount to make room,
-              derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
-              derived().legend_top_ = derived().plot_top_; // Level with top of plot window.
-              derived().legend_bottom_ = derived().legend_top_ + derived().legend_height_;
+            throw std::runtime_error("X-tick Y value wrong!");
+          }
+          // Draw the X ticks value labels, "1", "2" "3" ...
+          if (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0)
+          { // External to plot window style bottom or top.
+            // Always want all values including "0", if labeling external to plot window.
+            // x_ticks_.ticks_on_window_or_on_axis_ == true != 0
+            derived().image_.g(detail::PLOT_X_TICKS_VALUES).text(
+              x,
+              y,
+              tick_value_label.str(),
+              derived().x_value_label_info_.textstyle(), // font, size etc
+              alignment, derived().x_ticks_.label_rotation_);
+          }
+          else
+          {
+            if ((value != 0) && derived().x_axis_.axis_line_on_)
+            { // Avoid a "0" below the X-axis if it would be cut through by any internal vertical Y-axis line.
+              derived().image_.g(detail::PLOT_X_TICKS_VALUES).text(
+                x,
+                y,
+                tick_value_label.str(),
+                derived().x_value_label_info_.textstyle(), // font, size etc
+                alignment,
+                derived().x_ticks_.label_rotation_);
             }
-             else
-             { // Legend position has been specified by legend_top_left.
-                break;
-             }
-             break;
-                // If outside then reserve space for legend by reducing plot window.
-            case outside_right: // Default legend position is outside_right,
-              // so that it isn't too close to the image edge or the plot window.
-              derived().plot_right_ -= derived().legend_width_ + spacing; // Narrow plot window from right.
-              derived().legend_left_ = derived().plot_right_  + spacing; // plot + border.
-              derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
-              derived().legend_top_ = derived().plot_top_; // Level with top of plot window.
-              derived().legend_bottom_ = derived().legend_top_ + derived().legend_height_;
-              break;
-            case outside_left:
-              derived().plot_left_ += derived().legend_width_ + spacing /2 ; // Push plot window right same amount to make room,
-              derived().legend_left_ = derived().image_border_.width_ + derived().image_border_.margin_; // left image edge + space.
-              derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
-              derived().legend_top_ = derived().plot_top_; // Level with top of plot window.
-              derived().legend_bottom_ = derived().legend_top_ + derived().legend_height_;
-             break;
-            case outside_top:
-              // Centered.
-               derived().legend_left_ = derived().image_.x_size() / 2. - derived().legend_width_ / 2; // Center.
-               derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
-               derived().plot_top_ += derived().legend_height_ + spacing;
-               derived().legend_top_ = derived().title_info_.y() + derived().title_font_size() * derived().text_margin_;
-               derived().legend_top_ += spacing;
-               derived().legend_bottom_ = derived().legend_top_ + derived().legend_height_;
-              break;
-            case outside_bottom:
-               // Centered.
-               derived().legend_bottom_ = derived().image_.y_size();
-               derived().legend_bottom_ -= (derived().image_border_.width_ + derived().image_border_.margin_); // up
-               derived().legend_top_ = derived().legend_bottom_ - derived().legend_height_;
-               derived().legend_left_ = derived().image_.x_size()/  2. - derived().legend_width_ / 2; // Center.
-               derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
-               derived().plot_bottom_ = derived().legend_top_;
-               derived().plot_bottom_ -= 2 * spacing;
-              break;
-              } // switch
+          } // on plot window or 'on axis'.
+        }
+        else
+        { // Outside plot window - so do nothing?  Warning?
+          //std::cerr << "Writing draw_x_major_tick OUTside plot window: "
+          //  "x = " << x << ", plot_left_ = " << derived().plot_left_ << ", plot_right_ = " << derived().plot_right_ << std::endl;
+        }
+      } // draw_x_major_tick
+
+      template <class Derived>
+      void axis_plot_frame<Derived>::draw_x_axis()
+      { //! Draw horizontal X-axis line & plot window line to hold, and ticks and grids.
+        if (derived().x_axis_.axis_line_on_)
+        { // Want a horizontal X-axis line drawn.
+          double xleft = derived().plot_left_;
+          double xright = derived().plot_right_;
+          if (derived().x_axis_position_ == x_intersects_y)
+          { // Draw the horizontal X-axis line the full width of the plot window,
+            // perhaps including an addition in lieu of a major tick.
+            if (derived().y_ticks_.left_ticks_on_)
+            {
+              if (derived().y_ticks_.ticks_on_window_or_on_axis_ < 0) // left
+              { // Extend the horizontal line left in lieu of longest tick.
+                xleft -= (std::max)(derived().y_ticks_.minor_tick_length_, derived().y_ticks_.major_tick_length_);
+              }
+            }
+            else if (derived().y_ticks_.right_ticks_on_)
+            {
+              if (derived().y_ticks_.ticks_on_window_or_on_axis_ > 0) // right
+              { // Extend the horizontal X-axis line right in lieu of longest tick.
+                xright += (std::max)(derived().y_ticks_.minor_tick_length_, derived().y_ticks_.major_tick_length_);
+              }
+            }
+            double y = derived().x_axis_.axis_; // y = 0, (provided y range includes zero).
+            derived().image_.g(PLOT_X_AXIS).line(xleft, y, xright, y);
+            if (derived().x_ticks_.ticks_on_window_or_on_axis_ < 0) // bottom
+            { // Draw a vertical line holding the ticks on the top of plot window.
+              derived().image_.g(PLOT_X_AXIS).line(xleft, derived().plot_bottom_, xright, derived().plot_bottom_);
+            }
+            else if (derived().x_ticks_.ticks_on_window_or_on_axis_ > 0)  // top
+            {// Draw a vertical line holding the ticks on the bottom of plot window.
+              derived().image_.g(PLOT_X_AXIS).line(xleft, derived().plot_top_, xright, derived().plot_top_);
+            }
+          }
+          else if (derived().x_axis_position_ == top)
+          {
+            derived().image_.g(PLOT_X_AXIS).line(xleft, derived().plot_top_, xright, derived().plot_top_);
+          }
+          else if (derived().x_axis_position_ == bottom)
+          {
+            derived().image_.g(PLOT_X_AXIS).line(xleft, derived().plot_bottom_, xright, derived().plot_bottom_);
+          }
+          else
+          { // warn that things have gone wrong?
+          }
+        } // x_axis_.axis_line_on_
+
+        // Access the paths for the ticks & grids, ready for additions.
+        path_element& minor_tick_path = derived().image_.g(PLOT_X_MINOR_TICKS).path();
+        path_element& major_tick_path = derived().image_.g(PLOT_X_MAJOR_TICKS).path();
+        path_element& minor_grid_path = derived().image_.g(PLOT_X_MINOR_GRID).path();
+        path_element& major_grid_path = derived().image_.g(PLOT_X_MAJOR_GRID).path();
+
+        // x_minor_jump is the interval between minor ticks.
+        double x_minor_jump = derived().x_ticks_.major_interval_ /
+          (derived().x_ticks_.num_minor_ticks_ + 1.);
+
+        // Draw the ticks on the positive side (right of zero).
+        for (double x = 0.; x <= derived().x_axis_.max_; x += derived().x_ticks_.major_interval_)
+        {
+          for (double j = x + x_minor_jump;
+            j < (x + derived().x_ticks_.major_interval_) * (1. - 2 * std::numeric_limits<double>::epsilon());
+            j += x_minor_jump)
+          { // Reduce test value by a few bits to avoid accumulated rounding error
+            // that intermittently puts minor ticks *at same value as* major ticks.
+            // This will output 'orphaned' minor ticks that are beyond the plot window,
+            // if the last major tick does not coincide with the plot window.
+            // These are just ignored in draw_x_minor_tick.
+            // There might be 9 of them, so
+            // if you have the common 9 minor tick between major ticks!
+            // TODO this seems ugly - as does the negative ones below.
+            draw_x_minor_tick(j, minor_tick_path, minor_grid_path);
+          } // for j
+          if ((x != 0. || !derived().y_axis_.axis_line_on_) || (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0))
+          { // Avoid a major tick at x == 0 where there *is* a vertical Y-axis line.
+            // (won't be Y-axis line for 1-D where the zero tick is always wanted).
+            draw_x_major_tick(x, major_tick_path, major_grid_path);
+          }
+        }
+
+        // Draw the ticks on the negative side (left of zero).
+        for (double x = 0.; x >= derived().x_axis_.min_; // ?? * (1. + 2 * std::numeric_limits<double>::epsilon());
+          x -= derived().x_ticks_.major_interval_) // Want a close to test here?
+        {
+          // Draw minor ticks.
+          for (double j = x - x_minor_jump;
+            j > (x - derived().x_ticks_.major_interval_ + x_minor_jump) * (1. + 2 * std::numeric_limits<double>::epsilon());
+            // Increase test value by a few bits to avoid accumulated rounding error
+            // that intermittently puts minor ticks *at same value as* major ticks.
+            j -= x_minor_jump)
+          {
+            if ((j != 0. || !derived().y_axis_.axis_line_on_) || (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0))
+            { // Avoid a minor tick at x == 0 where there *is* a vertical Y-axis line.
+              // (won't be Y-axis line for 1-D where the zero tick is always wanted).
+              // But no tick means no value label 0 either unless on_plot_window.
+              draw_x_minor_tick(j, minor_tick_path, minor_grid_path);
+            }
+          }
+          if ((x != 0. || !derived().y_axis_.axis_line_on_) || (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0))
+          { // Avoid a major tick at x == 0 where there *is* a vertical Y-axis line.
+            // (won't be Y-axis line for 1-D where the zero tick is always wanted).
+            // But no tick means no value label 0 either unless on_plot_window.
+            draw_x_major_tick(x, major_tick_path, major_grid_path);
+          }
+        }
+      } // void draw_x_axis()
+
+      template <class Derived>
+      void axis_plot_frame<Derived>::draw_x_axis_label()
+      { //! Draw the X-axis label text (for example, length),
+        //! and append any optional units (for example, km).
+        // X-label color default is set in constructor thus:
+        // image_.g(detail::PLOT_X_LABEL).style().stroke_color(black);
+        // and changed using x_label_color(color);
+        // Similarly for font family and size etc (must be same for both label and units).
+
+        std::string x_label = derived().x_label_info_.text(); // x_axis_ label, and optional units.
+        if (derived().x_axis_.label_units_on_ && (derived().x_units_info_.text() != ""))
+        { // Append the units, if any, user providing brackets () if required.
+          x_label += derived().x_units_info_.text(); // for example: "time (sec)".
+        }
+
+        double y = derived().plot_bottom_;
+        // Glyphs for western characters are aligned with the left bottom of capital letter,
+        // so need to allow 1/3 more below for any descenders.
+
+        // cout << "derived().x_ticks_.ticks_on_window_or_on_axis_ " << derived().x_ticks_.ticks_on_window_or_on_axis_ << endl;
+        // using derived(0 means debugging doesn't work!  So resort to old-fashioned print statements.
+        if (derived().x_ticks_.ticks_on_window_or_on_axis_ < 0) // -1 means ticks on bottom of plot window.
+        { // Ticks value labels below plot window.
+          if (derived().x_ticks_.major_value_labels_side_ < 0) // bottom
+          { // Shift down to allow for any tick value labels.
+            if ((derived().x_ticks_.label_rotation_ == downward) || (derived().x_ticks_.label_rotation_ == upward))
+            { // downward tick value label direction 90 up or down.
+              y += derived().x_ticks_.label_max_space_;
+              if (derived().x_ticks_.down_ticks_on_ == true)
+              {  // Move down for any downward ticks.
+                y += 1.1 * (std::max)(derived().x_ticks_.major_tick_length_, derived().x_ticks_.minor_tick_length_); // And avoid macro max trap!
+                // and a small space.
+                y += 0.7 * (derived().x_label_info_.textstyle().font_size() + derived().x_value_label_info_.textstyle().font_size()); // best compromise?
+              }
+            }
+            else if ((derived().x_ticks_.label_rotation_ == steepdown) || (derived().x_ticks_.label_rotation_ == steepup))
+            { // downward tick value label direction 60 up or down.
+              y += derived().x_ticks_.label_max_space_;
+              if (derived().x_ticks_.down_ticks_on_ == true)
+              {  // Move down for any downward ticks.
+                y += 1.1 * (std::max)(derived().x_ticks_.major_tick_length_, derived().x_ticks_.minor_tick_length_); // And avoid macro max trap!
+                // and a small space.
+                y += 0.5 * (derived().x_label_info_.textstyle().font_size() + derived().x_value_label_info_.textstyle().font_size()); // best compromise?
+              }
+            }
+            else if ((derived().x_ticks_.label_rotation_ == uphill) || (derived().x_ticks_.label_rotation_ == downhill))
+            { // sloping 45 degrees up or down.
+              y += derived().x_ticks_.label_max_space_ * sin45; // Move down from end of tick.
+              if (derived().x_ticks_.down_ticks_on_ == true)
+              {  // Move down for any downward ticks.
+                y += 1.1 * (std::max)(derived().x_ticks_.major_tick_length_, derived().x_ticks_.minor_tick_length_); // And avoid macro max trap!
+                // and a small space.
+                y += 0.7 * (derived().x_label_info_.textstyle().font_size() + derived().x_value_label_info_.textstyle().font_size()); // best compromise?
+              }
+            }
+            else if ((derived().x_ticks_.label_rotation_ == slopeup) || (derived().x_ticks_.label_rotation_ == slopedownhill))
+            { // sloping 30 degrees.
+              y += derived().x_ticks_.label_max_space_ * sin45; // Move down from end of tick.
+              if (derived().x_ticks_.down_ticks_on_ == true)
+              {  // Move down for any downward ticks.
+                y += 1.1 * (std::max)(derived().x_ticks_.major_tick_length_, derived().x_ticks_.minor_tick_length_); // And avoid macro max trap!
+                // and a small space.
+                y += 0.5 * (derived().x_label_info_.textstyle().font_size() + derived().x_value_label_info_.textstyle().font_size()); // best compromise?
+              }
+            }
+            else if (derived().x_ticks_.label_rotation_ == horizontal)
+            { // horizontal X ticks value labels (default).
+              if (derived().x_ticks_.major_value_labels_side_ < 0)
+              { //  Move down to allow space for font size of tick value labels below X-axis.
+                y += derived().x_value_label_info_.textstyle().font_size();
+              }
+              y += derived().x_label_info_.textstyle().font_size() * 1.3; // Allow for the X-axis label font and space.
+              // See also 1.3 factor drawing ticks.
+            }
+            else
+            {
+              std::cout << " Rotation of X label rotation" << derived().x_ticks_.label_rotation_ << "not yet implemented!" << std::endl;
+            }
+          }
+          else if (derived().x_ticks_.major_value_labels_side_ > 0)
+          { // Tick labels above, only ticks below, so just move down for height of label font.
+            y += derived().x_label_info_.textstyle().font_size() * 1.3; // Allow for the X-axis label font and space.
+          }
+          else
+          { // derived().x_ticks_.major_value_labels_side_ == 0
+            // So no change for labels.
+            y += derived().x_label_info_.textstyle().font_size() * 1.3; // Allow for the X-axis label font and space.
+          }
+
+          if (derived().x_ticks_.down_ticks_on_)
+          { // Shift down for biggest of any ticks, and bit of space.
+            y += 1.1 * (std::max)(derived().x_ticks_.minor_tick_length_, derived().x_ticks_.major_tick_length_);
+          // y += derived().x_ticks_.value_label_style_.font_size() * 1.; // Shift down to suit tick labels?
+          }
+        }
+        else if (derived().x_ticks_.ticks_on_window_or_on_axis_ > 0)
+        {  // = +1 means ticks are on top of plot window.
+           // Shift down from plot window bottom to suit X-axis label.
+          y += derived().x_label_info_.textstyle().font_size() * 1.7;
+        }
+        else if (derived().x_ticks_.ticks_on_window_or_on_axis_ == 0)
+        { // Ticks are ON the X-axis line, so X label is just below the plot bottom.
+          // No space needed for ticks.
+           // Character starts at bottom of capital letter, so allow for descenders.
+           //y = derived().image_.y_size() - derived().image_border_width(); // Place X Label just above the image bottom.
+           //y -= derived().image_border_.margin_;
+          y += derived().x_label_info_.textstyle().font_size() * 1.7;
+        }
+
+        derived().image_.g(PLOT_X_LABEL).push_back(new text_element(
+          ( // x position relative to the x-axis which is middle of plot window.
+            derived().plot_right_ + derived().plot_left_) / 2,  // x coordinate - middle.
+          y, // Down from plot window.
+          x_label,
+          derived().x_label_info_.textstyle(),
+          center_align, horizontal)
+        );
+      } // void draw_x_axis_label()
+
+      template <class Derived>
+      void axis_plot_frame<Derived>::adjust_limits(double& x, double& y)
+      { //! If value of a data point reaches limit of max, min, infinity,
+        //! use the appropriate plot min or max value instead.
+        if (detail::limit_max(x))
+        {
+          x = derived().plot_right_;
+        }
+        if (detail::limit_max(y))
+        {
+          y = derived().plot_top_;
+        }
+        if (detail::limit_min(x))
+        {
+          x = derived().plot_left_;
+        }
+        if (detail::limit_min(y))
+        {
+          y = derived().plot_top_;
+        }
+        // If value is NaN, use zero instead.
+        // TODO Do we want/get a different color or shape for NaNs?
+        if (detail::limit_NaN(x))
+        {
+          x = 0.;
+          transform_x(x);
+        }
+        if (detail::limit_NaN(y))
+        {
+          y = 0.;
+          transform_y(y);
+        }
+      } // void adjust_limits
+
+      template <class Derived>
+      void axis_plot_frame<Derived>::draw_title()
+      { /*! Draw title (for the whole plot).
+          Update title_info_ with position.
+          Assumes align = center_align
+          Using center_align will ensure that title will center correctly
+          because the render engine does the centering.
+          (Even if the original string is made much longer because it contains Unicode,
+          Greek, math symbols etc, taking about 8 characters per symbol.
+          For example, the Unicode symbol for square root is "&#x221A;" but takes only about one character width).
+        */
+        //Image size
+        //  <text x="700" y="0" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">Plot showing several data point marker shapes &#x26; sizes.</text>
+        //  title size 59
+        //  title font size 20
+        //  title font size * size 1180
+        //  Title "Plot showing several data point marker shapes &#x26; sizes."
+        //   may overflow plot image! (Reduce font size or number of characters? Or increase image size?)
+
+       //  std::cout << "Image  = " << derived().title_info_.x(derived().image_.x_size()) << std::endl;
+        //  <text x="700" y="0" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">Plot showing several data point marker shapes &#x26; sizes.</text>
+  
+        // Warn if plot title will overflow image (since it is centered this will truncate at both ends.
+        double is = (derived().image_.x_size());
+        double fs = derived().title_font_size(); // example 20 pixels font height.
+        std::size_t ts = derived().title().size(); // 59 chars
+        double tfs = ts * fs * aspect_ratio;  // no of chars * font height * aspect ratio
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-            std::cout << "Legend: left " << derived().legend_left_
-                << ", right " << derived().legend_right_
-                << ", top " << derived().legend_top_
-                << ", bottom " << derived().legend_bottom_
-                << std::endl;
+        std::cout << "Drawing plot title, image size " << is  // 700
+          << "\n  Title = \"" << derived().title() << "\n" 
+          << "  title size = " << derived().title().size() << " characters" // number of chars.
+          << ",  title font size = " << derived().title_font_size()
+          << ",  title width = " << tfs << std::endl; 
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+        if (is < ts * fs * aspect_ratio)
+        { // Warning!
+          std::cout << "Title \"" << derived().title_info_.text()
+            << "\"\n may overflow plot image!"
+            "\n  (Reduce font size from " << derived().title_font_size()
+            << "   or number of characters from " << derived().title().size()
+            << "  ? "
+            << "\n  Or increase image size from " << derived().image_.x_size()
+            << " )" << std::endl;
+        }
+        derived().title_info_.x(derived().image_.x_size() / 2.); // Center of image.
+        double y = derived().title_info_.textstyle().font_size() * derived().text_margin_; // Leave a margin space above.
+        // default text_margin_(2.), // for title & axis label text, as a multiplier of the font size.
+        // Should allow a 'half line space' above and below the label text.
+        // But text_margin == 1. is rather tight?
+        derived().title_info_.y(y);
+        derived().image_.g(PLOT_TITLE).push_back(new text_element(derived().title_info_));
+      } // void draw_title()
+
+
+      template <class Derived>
+      void axis_plot_frame<Derived>::size_legend_box()
+      { //! Calculate how big the legend box needs to be to hold the 
+        //! title and any point markers (symbols or lines) and any series descriptor text.
+        if (derived().legend_on_ == true)
+        { // Really do want a legend box.
+         size_t num_series = derived().serieses_.size(); // How many data series.
+         bool is_header = (derived().legend_header_.text() != ""); // 
+          // Compute length for legend header.
+          double legend_font_size = derived().legend_header_.textstyle().font_size(); // legend header text font size.
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+          std::cout << "\nLegend \"" << derived().legend_header_.text()
+            << "\", font size = " << legend_font_size << std::endl;
+          // Legend "My Legend", font size = 10
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+          //text_element legend_header_; // legend box header or title (if any).
+          //text_style legend_style_;
+          // string_svg_length avoids chars as Unicode hex increasing the length wrongly,
+          // so each Unicode char counts only as one char, and not 6.
+          double legend_header_length = string_svg_length(derived().legend_header_.text(), derived().legend_style_);
+          // Legend header height from font_size, width from length * font_size * aspect_ratio
+          double legend_header_width = legend_header_length * legend_font_size * aspect_ratio;
+          double legend_header_height = legend_font_size;
+          
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+          std::cout << "Legend header text length = " << derived().legend_header_.text()
+            << ", legend_style_ = " << derived().legend_style_
+            << ", Legend header length " << legend_header_length 
+            << ", length width = " << legend_header_width << " svg units." << std::endl;
+          // Legend text length = My Legend, legend_style_ = text_style(14, "Lucida Sans Unicode", "", "", "", ""),
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
-              // Check if the location requested will fit,
-              // now that we know the size of box needed.
-              if ( (derived().legend_left_ < 0) || (derived().legend_left_ > derived().image_.x_size()))
-              { // left outside image?
-                std::cout << "Legend top left " << derived().legend_left_
-                  << " is outside image size = " << derived().image_.x_size() << std::endl;
-              }
-              if ((derived().legend_right_ < 0) || (derived().legend_right_ > derived().image_.x_size()))
-              { // right outside image?
-                std::cout << "Legend top right " << derived().legend_right_
-                  << " is outside image size = " << derived().image_.x_size() << std::endl;
-              }
-              if ((derived().legend_top_ < 0) || (derived().legend_top_ > derived().image_.y_size()))
-              { // top outside image?
-                std::cout << "Legend top " << derived().legend_top_
-                  << " outside image!" << derived().image_.y_size() << std::endl;
-              }
-              if ((derived().legend_bottom_  < 0 ) || (derived().legend_bottom_ > derived().image_.y_size()))
-              { // bottom outside image?
-                std::cout << "Legend bottom " << derived().legend_bottom_
-                  << " outside " << derived().image_.y_size() << std::endl;
-              }
+          // If assume that descriptor text for each series uses same font as header,
+          // then large marker symbols clash and misalign, 
+          // so spacing needs to use the largest of 
+          // all point marker Unicode symbol font sizes (may be different) and header font size.
 
-               derived().image_.g(detail::PLOT_LEGEND_BACKGROUND)
-              .style().fill_color(derived().legend_box_.fill()) //
-              .stroke_color(derived().legend_box_.stroke())
-              .stroke_width(derived().legend_box_.width())
-              .stroke_on(derived().legend_box_.border_on())
-              ;
+          int biggest_point_size = 0; // Get biggest marker symbol point size in use.
+          for (size_t i = 0; i < num_series; ++i)
+          {
+            if (derived().serieses_[i].point_style_.size() > point_size)
+            {
+              biggest_point_size = derived().serieses_[i].point_style_.size(); // 
+            }
+          }
+          double biggest_point_width = biggest_point_size * aspect_ratio;
+          double longest_line_width = 0; // Get longest line marker point size in use.
+          for (size_t i = 0; i < num_series; ++i)
+          {
+            if (derived().serieses_[i].point_style_.size() > point_size)
+            {
+              longest_line_width = derived().serieses_[i].line_style_.size(); // 
+            }
+          } // for
+          double biggest_line_width = derived().serieses_[i].line_style_.width()
 
-              // Draw border box round legend.
-              g_element* g_ptr = &(derived().image_.g(PLOT_LEGEND_BACKGROUND));
-              g_ptr->push_back(new
-                rect_element(derived().legend_left_, derived().legend_top_, derived().legend_width_, derived().legend_height_));
-            } // if legend_on_
-          } //  void calculate_legend_box()
-
-          template <class Derived>
-          void axis_plot_frame<Derived>::draw_legend()
-          { //! Draw the legend border, text header (if any) 
-            //! and data point marker lines and/or shapes.
-            // size_t num_points = derived().series.size();
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-            std::cout << derived().legend_box_.width() <<  ' ' << derived().legend_box_.margin() << std::endl;
+          std::cout << "biggest point height " << biggest_point_size << ", biggest point_width " << biggest_line_width << " svg units." << std::endl
+            << "line height " << longest_line_size 
+            << ", longest line_width " << biggest_line_width
+            << " svg units." << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+          // Use font size as height (and height * aspect_ratio as width)
+          // of whichever is the biggest of data point marker shape and legend text font.
+          // Compute longest data descriptor longest_title.
+          double longest_data_title_height = 0; // Will remain zero if no data descriptions.
+          double longest_data_title_width = 0;
+          int longest_data_title_length = 0;
+          for (size_t i = 0; i != num_series; ++i)
+          { // Find the longest text (if longer than header - initial longest) in all the data series titles.
+            std::string s = derived().serieses_[i].title_;
+            double length = string_svg_length(s, derived().legend_style_);
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+            std::cout << "plot series " << i << " data descriptor " << length << " svg units." << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+            if (length > longest_data_title_length)
+            {
+              longest_data_title_length = length;
+            }
+          } // for
+          longest_data_title_height = derived().legend_style_.font();
+          longest_data_title_width = longest_data_title_length * derived().legend_style_.font() * aspect_ratio;
+
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+          std::cout << "Longest data series title length = " << longest_data_title 
+            << ", height " << longest_data_title_height 
+            << ", width " << longest_data_title_width << " svg units." << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
-            int font_size = derived().legend_header_.textstyle().font_size();
-            int point_size =  derived().serieses_[0].point_style_.size();
-            // Use whichever is the biggest of point marker and font.
-            double spacing = (std::max)(font_size, point_size);
-            // std::cerr << spacing <<  ' ' << font_size << ' ' << point_size << endl;
-            bool is_header = (derived().legend_header_.text() != "");
+          derived().legend_width_ += longest; 
+          // Add space for longest text of header or data series title.
+          // (Aspect_ratio is kludge factor to allow for not knowing the true SVG length).
+          double marker_width = marker_size * aspect_ratio;
+          derived().legend_width_ += marker_width; // Allow width for a leading space,
+          derived().legend_width_ += marker_width; // and trailing space.
+        // if (derived().serieses_[i].line_style_.line_on_) // Any line joining points.
+          if (derived().legend_lines_ == true)
+          { // Add for colored line marker in legend.
+            derived().legend_width_ += marker_width;
+          }
+          if (derived().serieses_[0].point_style_.shape() != none)
+          { // Add for any colored data point marker, cross, round... 
+            derived().legend_width_ += marker_width;
+            derived().legend_width_ += marker_width; // & space.
+          }
+          // else no point marker.
+// Use the longest
+          double longest = std::max(legend_header)
 
-           // Assume legend box position has already been sized and positioned by function calculate_legend_box.
-            // This *should* assess if any lines or data point markers are needed.
-            double legend_x_start = derived().legend_left_; // Saved box location.
-            double legend_width = derived().legend_width_;
-            double legend_y_start = derived().legend_top_;
-            double legend_height = derived().legend_height_;
+            derived().legend_width_ = (derived().legend_box_.margin() * derived().legend_box_.width());
+          // Leave blank a blank margin and the legend border width on both sides of the box.
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+          std::cout << "Legend box margin = " << derived().legend_box_.margin()
+            << ", legend_box width = " << derived().legend_box_.width()
+            << ", legend width = " << derived().legend_width_ << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
-            // Draw border box round legend.
-            g_element* g_ptr = &(derived().image_.g(PLOT_LEGEND_BACKGROUND));
 
-            g_ptr->push_back(new
-              rect_element(legend_x_start, legend_y_start, legend_width, legend_height));
+          derived().legend_width_ += longest * aspect_ratio; 
+          derived().legend_width_ += derived().legend_box_.margin(); // Final border margin.
 
-            double legend_y_pos = legend_y_start + derived().text_margin_ * spacing;
-            if (is_header)
-            { // Draw the legend header text for example: "My Plot Legend".
-              derived().legend_header_.x(legend_x_start + legend_width / 2.); // / 2. to center in legend box.
-              // Might be better to use center_align here because will fail if legend contains symbols in Unicode.
-              derived().legend_header_.y(legend_y_pos);
-              derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_header_));
-              legend_y_pos += 2 * spacing; // Might be 1.5? - useful if many series makes the box too tall.
+          // legend_height must be enough for
+          // any legend header and text_margin(s) around it
+          // (if any) plus a text_margin_ top and bottom.
+          derived().legend_height_ = legend_font_size; // One font space top.
+          if ((is_header) // is a legend header line.
+            && (derived().legend_header_.text() != "")) // & not blank.
+          {
+            derived().legend_height_ += 2 * legend_font_size; // text & a font space space after.
+          } 
+          // Add more height depending on the number of lines of text.
+          // Place the data series markers and text a bit closer together.
+          derived().legend_height_ += num_series * marker_size * spacing_factor; // Space for all the data point symbols & text.
+          derived().legend_height_ += legend_font_size; // A font space at bottom.
+          derived().legend_height_ += derived().legend_box_.margin(); // Final small margin.
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+        std::cout << "Legend width " << derived().legend_width_ 
+          << ", height " << derived().legend_height_ << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+       }// legend_on_ == true
+      else 
+      { // derived().legend_on_ == false means no legend wanted, 
+        // so set values to show legend positions invalid?
+          derived().legend_height_ = 0.; // At least set the size to zero.
+          derived().legend_width_ = 0.;
+          //derived().legend_left_ = -1.;
+          //derived().legend_right_ = -1.;
+          //derived().legend_top_ = -1.;
+          //derived().legend_bottom_ = -1.;
+          return;
+        }
+    } //  void size_legend_box()
+
+    template <class Derived>
+    void axis_plot_frame<Derived>::place_legend_box()
+    { //! Place legend box (if required).
+      if(derived().legend_on_ == true) // Legend box specified.
+      {
+        derived().outside_legend_on_ = true; // Unless proves to be inside.
+        //double spacing = derived().legend_box_.margin(); // Might be better to use this, but needs redoing.
+        double spacing = derived().y_axis_label_style_.font_size() * 1.; // Around any legend box - beyond any border.
+        switch (derived().legend_place_)
+        {
+        case nowhere:
+          std::cout << "Legend box put nowhere!" << std::endl;
+          return; // Actually places it at (0, 0), probably overwriting the plot!
+        case somewhere:
+          // Assume legend_top_left will place it somewhere where there is nothing else.
+            //derived().legend_left_; set by legend_top_left
+            //derived().legend_top_;
+            derived().legend_bottom_ = derived().legend_top_ + derived().legend_height_;
+            derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
+            break;
+        case inside:
+          derived().outside_legend_on_ = false;
+          if (derived().legend_left_ == -1)
+          { // Legend box position NOT been set by legend_top_left.
+            // Default inside position is top left level with plot window.
+          derived().legend_left_ = derived().image_border_.width_ + derived().image_border_.margin_; // left image edge + space.
+          derived().plot_left_ += derived().legend_width_ + spacing; // Push plot window right same amount to make room,
+          derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
+          derived().legend_top_ = derived().plot_top_; // Level with top of plot window.
+          derived().legend_bottom_ = derived().legend_top_ + derived().legend_height_;
+        }
+          else
+          { // Legend position has been specified by legend_top_left.
+            break;
+          }
+          break;
+            // If outside then reserve space for legend by reducing plot window.
+        case outside_right: // Default legend position is outside_right,
+          // so that it isn't too close to the image edge or the plot window.
+          derived().plot_right_ -= derived().legend_width_ + spacing; // Narrow plot window from right.
+          derived().legend_left_ = derived().plot_right_  + spacing; // plot + border.
+          derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
+          derived().legend_top_ = derived().plot_top_; // Level with top of plot window.
+          derived().legend_bottom_ = derived().legend_top_ + derived().legend_height_;
+          break;
+        case outside_left:
+          derived().plot_left_ += derived().legend_width_ + spacing /2 ; // Push plot window right same amount to make room,
+          derived().legend_left_ = derived().image_border_.width_ + derived().image_border_.margin_; // left image edge + space.
+          derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
+          derived().legend_top_ = derived().plot_top_; // Level with top of plot window.
+          derived().legend_bottom_ = derived().legend_top_ + derived().legend_height_;
+          break;
+        case outside_top:
+          // Centered.
+            derived().legend_left_ = derived().image_.x_size() / 2. - derived().legend_width_ / 2; // Center.
+            derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
+            derived().plot_top_ += derived().legend_height_ + spacing;
+            derived().legend_top_ = derived().title_info_.y() + derived().title_font_size() * derived().text_margin_;
+            derived().legend_top_ += spacing;
+            derived().legend_bottom_ = derived().legend_top_ + derived().legend_height_;
+          break;
+        case outside_bottom:
+            // Centered.
+            derived().legend_bottom_ = derived().image_.y_size();
+            derived().legend_bottom_ -= (derived().image_border_.width_ + derived().image_border_.margin_); // up
+            derived().legend_top_ = derived().legend_bottom_ - derived().legend_height_;
+            derived().legend_left_ = derived().image_.x_size()/  2. - derived().legend_width_ / 2; // Center.
+            derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
+            derived().plot_bottom_ = derived().legend_top_;
+            derived().plot_bottom_ -= 2 * spacing;
+          break;
+          } // switch
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+        std::cout << "Legend box: left = " << derived().legend_left_
+            << ", right = " << derived().legend_right_
+            << ", top = " << derived().legend_top_
+            << ", bottom = " << derived().legend_bottom_
+            << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+          // Check if the location requested will fit,
+          // now that we know the size of box needed.
+          if ( (derived().legend_left_ < 0) || (derived().legend_left_ > derived().image_.x_size()))
+          { // left outside image?
+            std::cout << "Legend top left " << derived().legend_left_
+              << " is outside image size = " << derived().image_.x_size() << std::endl;
+          }
+          if ((derived().legend_right_ < 0) || (derived().legend_right_ > derived().image_.x_size()))
+          { // right outside image?
+            std::cout << "Legend top right " << derived().legend_right_
+              << " is outside image size = " << derived().image_.x_size() << std::endl;
+          }
+          if ((derived().legend_top_ < 0) || (derived().legend_top_ > derived().image_.y_size()))
+          { // top outside image?
+            std::cout << "Legend top " << derived().legend_top_
+              << " outside image!" << derived().image_.y_size() << std::endl;
+          }
+          if ((derived().legend_bottom_  < 0 ) || (derived().legend_bottom_ > derived().image_.y_size()))
+          { // bottom outside image?
+            std::cout << "Legend bottom " << derived().legend_bottom_
+              << " outside " << derived().image_.y_size() << std::endl;
+          }
+
+            derived().image_.g(detail::PLOT_LEGEND_BACKGROUND)
+          .style().fill_color(derived().legend_box_.fill()) //
+          .stroke_color(derived().legend_box_.stroke())
+          .stroke_width(derived().legend_box_.width())
+          .stroke_on(derived().legend_box_.border_on())
+          ;
+
+          // Draw border box round legend.
+          g_element* g_ptr = &(derived().image_.g(PLOT_LEGEND_BACKGROUND));
+          g_ptr->push_back(new
+            rect_element(derived().legend_left_, derived().legend_top_, derived().legend_width_, derived().legend_height_));
+        } // if legend_on_
+      } //  void calculate_legend_box()
+
+    template <class Derived>
+    void axis_plot_frame<Derived>::draw_legend()
+    { //! Draw the legend border, text header (if any) 
+      //! and data point marker lines and/or shapes.
+      size_t num_series = derived().serieses_.size(); // How many data series.
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+      std::cout << "Drawing Legend box border width = " << derived().legend_box_.width() 
+        <<  ", margin = " << derived().legend_box_.margin() 
+      // Legend box margin = 2, legend_box width = 1, legend width = 2
+      << "\n" << num_series << " data series." << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+      double point_size = 0; // Get biggest marker symbol point size in use.
+      for (size_t i = 0; i < num_series; ++i)
+      {
+        if (derived().serieses_[i].point_style_.size() > point_size)
+        {
+          point_size = derived().serieses_[i].point_style_.size(); // 
+        }
+      }
+      double legend_font_size = derived().legend_header_.textstyle().font_size(); // legend header text font size.
+      double marker_size =  derived().serieses_[0].point_style_.style().font_size();
+      // Use whichever is the biggest of point marker shape, marker font, and series descriptor font.
+      // Ideally max of 3 sizes:
+      //  spacing = (std::max)(marker_size, legend_font_size, point_size);
+      double spacing = maxof3(legend_font_size, point_size, marker_size);
+ //     double spacing = (std::max)(legend_font_size, point_size);
+ //     spacing = (std::max)(marker_size, spacing); // in case symbol is bigger.
+      spacing *= derived().text_margin_; // default 1.5
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+        std::cout <<  "Drawing Legend: text_font_size " << legend_font_size 
+          << ", marker shape size = "  << point_size
+          << ", marker symbol font size = "  << marker_size 
+          << ", spacing = " << spacing 
+          << ", text_margin = " << derived().text_margin_ << std::endl;
+        // Drawing Legend: text_font_size 10, marker shape size = 10, marker symbol font size = 10, spacing = 10
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+
+      bool is_header = (derived().legend_header_.text() != "");
+
+      // Assume legend box position has already been sized and positioned by function calculate_legend_box.
+      // This *should* assess if any lines or data point markers are needed.
+      double legend_x_start = derived().legend_left_; // Saved legend box location.
+      double legend_width = derived().legend_width_;
+      double legend_y_start = derived().legend_top_;
+      double legend_height = derived().legend_height_;
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+      std::cout <<  "Drawing Legend box: x = " << legend_x_start
+        << ", legend Y_start = " << legend_y_start
+        << ", width = "  << legend_width
+        << ", height = "  << legend_height
+        << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+      // Select the legend layer.
+      g_element* g_ptr = &(derived().image_.g(PLOT_LEGEND_BACKGROUND));
+      // Draw border box round legend.
+      g_ptr->push_back(new
+        rect_element(legend_x_start, legend_y_start, legend_width, legend_height));
+      // Leave a space above before any text (if text_margin_ == 1. then one biggest font.
+     // double legend_y_pos = legend_y_start + legend_font_size * derived().text_margin_;
+      // This leaves legend title fairly cloe to the border.
+      // Might also use the data series spacing, and looks better.
+      double legend_y_pos = legend_y_start + spacing;
+      if (is_header)
+      { // Draw the centered legend header text for example: "My Plot Legend".
+        derived().legend_header_.x(legend_x_start + legend_width / 2.); // / 2. to center horizontally in legend box.
+        // Might be better to use center_align here because may fail if legend contains symbols in Unicode?
+        // Or could use computed svg_length?
+        derived().legend_header_.y(legend_y_pos);
+        derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_header_));
+        legend_y_pos += legend_font_size * derived().text_margin_; // Leave a text half space below legend header.
+       // legend_y_pos += spacing; // Leave a half data descriptors space below legend header.
+      } // is_header
+
+      g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS));
+      g_element* g_inner_ptr = g_ptr;
+      g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT));
+
+      for(unsigned int i = 0; i != derived().serieses_.size(); ++i)
+      { // Show point marker, perhaps line, & text info for each of the data series.
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+          std::cout << "Data Series #" << i  
+          << " point_style = " <<  derived().serieses_[i].point_style()
+          << "\n line style = " << derived().serieses_[i].line_style() 
+          << "\n point_symbol_style = " <<  derived().serieses_[i].point_font_style()
+          << std::endl;
+//Data Series #1 point_style plot_point_style(14, RGB(0,128,0), RGB(255,192,203), 30, x, text_style(10, "times new roman", "italic", "bold", "narrow", "underline"), 0, 0)
+// line style = point_line_style(RGB(0,0,0), blank area fill, no line, no bezier)
+//  point_symbol_style = italic
+#endif //BOOST_SVG_POINT_DIAGNOSTICS
+        double legend_x_pos = legend_x_start;
+        legend_x_pos += spacing; // space before point marker and/or line & text.
+        g_inner_ptr = &(g_ptr->add_g_element());
+        // Use both stroke & fill colors from the points' style.
+        // Applies to both shape AND line.
+        g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_);
+        g_inner_ptr->style().fill_color(derived().serieses_[i].point_style_.fill_color_);
+        g_inner_ptr->style().stroke_width(derived().serieses_[i].line_style_.width_);
+    std::cout << "g_inner_ptr.style().stroke_color() " << g_inner_ptr->style() << std::endl;
+        plot_point_style& point_style = derived().serieses_[i].point_style_;
+
+        if(point_style.shape_ != none)
+        { // Is some data point marker shape to show in legend box.
+          // ellipse is special case to show uncertainty of data point.
+          bool was_unc_ellipse = false;
+          if (point_style.shape_ == unc_ellipse)
+          {  // Problem here with unc_ellipse with calculation of a suitable size
+              // and also, more fundamentally, the legend box overwrites the PLOT_DATA_UNC layers,
+            point_style.shape_ =  circlet; // so as a hack, use a round or circlet instead.
+            was_unc_ellipse = true; // Note so can restore after showing circle.
+          }
+          // Show a plot point like circlet (==round), square, vertical bar...
+          draw_plot_point( 
+            legend_x_pos,
+            legend_y_pos,
+            *g_inner_ptr,
+            point_style, 
+            unc<false>(), unc<false>());  // X and Y position.
+            //was derived().serieses_[i].point_style_, unc(0.), unc(0.));
+          legend_x_pos += spacing;
+          if (was_unc_ellipse)
+          { // Restore (or the data points won't use the unc_ellipse!)
+            point_style.shape_ = unc_ellipse;
+          }
+        } // Some marker shape.
+
+        // Line markers are only really useful for 2-D lines and curves showing functions.
+        // was             if (derived().legend_lines_)
+
+        if (derived().serieses_[i].line_style_.line_on_ == true) // Line joining points option is true,
+        { // need to draw a short line to show color for that data series.
+          // derived().legend_lines_ = true; // Some line is drawn.
+          // Better - this should be set during the legend box sizing?
+          if (derived().serieses_[i].line_style_.line_on_ || derived().serieses_[i].line_style_.bezier_on_)
+          { // Use stroke color from line style.
+            g_inner_ptr->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_);
+          }
+          else
+          { // Use point stroke color instead.
+            g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_); // OK with 1D.
+          }
+          g_inner_ptr->style().stroke_width(derived().serieses_[i].line_style_.width_);
+          //std::cout << "line g_inner_ptr->style().stroke_color() " << g_inner_ptr->style().stroke_color() << std::endl;
+          g_inner_ptr->push_back(new line_element( // Draw horizontal lines with appropriate color.
+            legend_x_pos,
+            legend_y_pos,
+            legend_x_pos + spacing, // Line sample is one char long.
+            legend_y_pos));
+          legend_x_pos += spacing; // Total is short line & a space.
+        } // legend line to draw
+
+        // Legend text for each Data Series added to the plot.
+        g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT));
+        g_inner_ptr->push_back(new text_element(
+          legend_x_pos, // Allow space for the marker.
+          legend_y_pos,
+          derived().serieses_[i].title_, // Text for this data series.
+          derived().legend_header_.textstyle(),
+          left_align));
+        legend_y_pos += spacing;
+      } // for
+    } // void draw_legend()
+
+      template <class Derived>
+      void axis_plot_frame<Derived>::draw_plot_point(double x, double y, // X and Y values (in SVG coordinates).
+        g_element& g_ptr,
+        plot_point_style& point_style, 
+        unc<false> ux, unc<false> uy) // Default unc ux = 0. and uy = 0. ?
+      { /*! Draw a plot data point marker shape or symbol
+          whose size and stroke and fill colors are specified in plot_point_style sty,
+          possibly including uncertainty ellipses showing multiples of standard deviation.
+        */
+        /*
+          For 1-D plots, the points do not *need* to be centered on the X-axis,
+          and putting them just above, or sitting on, the X-axis is much clearer.
+          For 2-D plots, the symbol center should, of course, be centered exactly on x, y.
+          circle and ellipse are naturally centered on the point.
+          for rectangle x and y half_height offset centers square on the point.
+          But symbols are in a rectangular box and the offset is different for x & y
+          even assuming that the symbol is centered in the rectangle.
+          the vertical and horizontal ticks are deliberately offset above the axes.
+          TODO Not sure this is fully resolved.
+        */
+        double point_size = point_style.size_;
+        double half_height = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
+        double half_width = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
+        double third_height = point_size / 2.8; // Offset y vertical by third of the symbol size to try to centre symbol on the point coordinates.
+
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+        std::cout << "point_style.size_ = "<< point_style.size_ << ", y offset half_height - " << half_height << std::endl; // picks up font size shape(diamond).size(20) correctly here.
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+        point_style.symbols_style_.font_size(point_style.size_); // Sets plot_point marker font size.
+
+        //  want this text_styling
+        //point_style.symbols_style_.font_family("arial"); 
+        //point_style.symbols_style_.font_weight("bold"); 
+        //point_style.symbols_style_.font_decoration("underline"); 
+        //point_style.symbols_style_.font_stretch("wider"); 
+        //point_style.symbols_style_.font_style("italic"); 
+
+        //point_style.symbols_style_.fill_color(sty.fill_color_); // 
+        //point_style.symbols_style_.stroke_color(sty.stroke_color_); // 
+
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+        std::cout << "point style() = "<< point_style.style() << std::endl;
+        // Example: point style() = text_style(10, "Lucida Sans Unicode", "", "", "", "")  size is correct here now.
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+        // Whatever shape, text or line, want to use the point style.
+        g_ptr.style().stroke_color(point_style.stroke_color_);
+        g_ptr.style().fill_color(point_style.fill_color_);
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+        std::cout << "polt point marker g_ptr.style() = " << g_ptr.style() << std::endl;
+        // g_ptr.style() svg_style(RGB(255,255,0), RGB(255,0,0), 2, fill, stroke, width)
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+        switch(point_style.shape_) // Chosen from enum point_shape none, round, square, point, egg
+        {
+        case none:
+          break; // Nothing to display.
+
+        // Shapes using SVG line, circle or eclipse functions.
+        case circlet: // Use SVG circle function.
+          g_ptr.circle(x, y, (int)half_height);
+          break;
+
+        case point:
+          g_ptr.circle(x, y, 1); // Fixed size 1 pixel round.
+          break;
+
+        case square:
+          g_ptr.rect(x - half_width, y - half_height, point_size, point_size);
+          break;
+
+        case egg:
+          // No need for x or y - half width to center on point.
+          g_ptr.ellipse(x, y, half_height, point_size * 1.); // Tall thin egg!
+          break;
+
+        case unc_ellipse:
+          { // std_dev horizontal (and, for 2D, vertical) ellipses for one, two and three standard deviations.
+            double xu = ux.value(); //
+            if (ux.std_dev() > 0)
+            { // std_dev is meaningful.
+              xu +=  ux.std_dev();
+            }
+            transform_x(xu); // To SVG coordinates.
+            double x_radius = std::abs<double>(xu - x);
+            if (x_radius <= 0.)
+            { // Make sure something is visible.
+              x_radius = 1.; // Or size?
             }
 
-            g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS));
-            g_element* g_inner_ptr = g_ptr;
-            g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT));
-
-            for(unsigned int i = 0; i < derived().serieses_.size(); ++i)
-            { // Show point marker, perhaps line, & text info for each of the data series.
-
-              // cout << "Series " << i << endl;
-              // derived().serieses_[i].point_style_ << endl;
-              // cout << derived().serieses_[i].line_style_ << endl;
-
-              double legend_x_pos = legend_x_start;
-              legend_x_pos += spacing; // space before point marker and/or line & text.
-              g_inner_ptr = &(g_ptr->add_g_element());
-              // Use both stroke & fill colors from the points' style.
-              // Applies to both shape AND line.
-              g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_);
-              g_inner_ptr->style().fill_color(derived().serieses_[i].point_style_.fill_color_);
-              g_inner_ptr->style().stroke_width(derived().serieses_[i].line_style_.width_);
-
-              //cout << "g_inner_ptr.style().stroke_color() " << g_inner_ptr->style() << endl;
-              plot_point_style& sty = derived().serieses_[i].point_style_;
-
-              if(sty.shape_ != none)
-              { // Is some data point marker shape to show in legend box.
-
-                // ellipse is special case to show uncertainty of data point.
-                bool was_unc_ellipse = false;
-                if (sty.shape_ == unc_ellipse)
-                {  // Problem here with unc_ellipse with calculation of a suitable size
-                   // and also, more fundamentally, the legend box overwrites the PLOT_DATA_UNC layers,
-                  sty.shape_ =  circlet; // so as a hack, use a round or circlet instead.
-                  was_unc_ellipse = true; // Note so can restore after showing circle.
-                }
-
-                draw_plot_point( // Show a plot point like circlet (==round), square, vertical bar...
-                  legend_x_pos,
-                  legend_y_pos,
-                  *g_inner_ptr,
-                  sty, 
-                  unc<false>(), unc<false>());  // X and Y position.
-                  //was derived().serieses_[i].point_style_, unc(0.), unc(0.));
-                legend_x_pos += 1.5 * spacing;
-                if (was_unc_ellipse)
-                { // Restore (or the data points won't use the unc_ellipse!
-                  sty.shape_ = unc_ellipse;
-                }
-              } // Some marker shape.
-
-              // Line markers are only really useful for 2-D lines and curves showing functions.
-              // was             if (derived().legend_lines_)
-
-
-              if (derived().serieses_[i].line_style_.line_on_ == true) // Line joining points option is true,
-              { // need to draw a short line to show color for that data series.
-                // derived().legend_lines_ = true; // Some line is drawn.
-                // Better - this should be set during the legend box sizing?
-                if (derived().serieses_[i].line_style_.line_on_ || derived().serieses_[i].line_style_.bezier_on_)
-                { // Use stroke color from line style.
-                  g_inner_ptr->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_);
-                }
-                else
-                { // Use point stroke color instead.
-                  g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_); // OK with 1D.
-                }
-                g_inner_ptr->style().stroke_width(derived().serieses_[i].line_style_.width_);
-                //std::cout << "line g_inner_ptr->style().stroke_color() " << g_inner_ptr->style().stroke_color() << std::endl;
-                g_inner_ptr->push_back(new line_element( // Draw horizontal lines with appropriate color.
-                  legend_x_pos,
-                  legend_y_pos,
-                  legend_x_pos + spacing, // Line sample is one char long.
-                  legend_y_pos));
-                legend_x_pos += 1.5 * spacing; // Total is short line & a space.
-              } // legend line to draw
-
-              // Legend text for each Data Series added to the plot.
-              g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT));
-              g_inner_ptr->push_back(new text_element(
-                legend_x_pos, // Allow space for the marker.
-                legend_y_pos,
-                derived().serieses_[i].title_, // Text for this data series.
-                derived().legend_header_.textstyle(),
-                left_align));
-              legend_y_pos += 2 * spacing;
-            } // for
-          } // void draw_legend()
-
-          template <class Derived>
-          void axis_plot_frame<Derived>::draw_plot_point(double x, double y, // X and Y values (in SVG coordinates).
-            g_element& g_ptr,
-            plot_point_style& sty, 
-            unc<false> ux, unc<false> uy) // Default unc ux = 0. and uy = 0. ?
-          { /*! Draw a plot data point marker shape or symbol
-              whose size and stroke and fill colors are specified in plot_point_style sty,
-              possibly including uncertainty ellipses showing multiples of standard deviation.
-            */
-            /*
-              For 1-D plots, the points do not *need* to be centered on the X-axis,
-              and putting them just above, or sitting on, the X-axis is much clearer.
-              For 2-D plots, the symbol center should, of course, be centered exactly on x, y.
-              circle and ellipse are naturally centered on the point.
-              for rectangle x and y half_size offset centers square on the point.
-              But symbols are in a rectangular box and the offset is different for x & y
-              even assuming that the symbol is centered in the rectangle.
-              the vertical and horizontal ticks are deliberately offset above the axes.
-              TODO Not sure this is fully resolved.
-            */
-            int size = sty.size_;
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
-            std::cout << "sty.size_ = "<< sty.size_ << std::endl; / picks up shape(diamond).size(20) correctly here.
-#endif // BOOST_SVG_POINT_DIAGNOSTICS
-            double half_size = size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
-            sty.symbols_style_.font_size(sty.size_); // Sets font size.
-            //sty.symbols_style_.font_family(sty.font_family_); // 
-            //sty.symbols_style_.font_style(sty.font_style_); // 
-            //sty.symbols_style_.font_weight(sty.font_weight_); // 
-            //sty.symbols_style_.font_stretch(sty.font_stretch_); // 
-            //sty.symbols_style_.font_decoration(sty.font_decoration_); // 
-            //sty.symbols_style_.fill_color(sty.fill_color_); // 
-            //sty.symbols_style_.stroke_color(sty.stroke_color_); // 
-
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
-            std::cout << "point style() = "<< sty.style() << std::endl;
-            // point style() = text_style(10, "Lucida Sans Unicode", "", "", "", "")  size is correct here now.
-#endif // BOOST_SVG_POINT_DIAGNOSTICS
-            // Whatever shape, text or line, want to use the point style.
-            g_ptr.style().stroke_color(sty.stroke_color_);
-            g_ptr.style().fill_color(sty.fill_color_);
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
-            std::cout << "g_ptr.style() = " << g_ptr.style() << std::endl;
-            // g_ptr.style() svg_style(RGB(255,255,0), RGB(255,0,0), 2, fill, stroke, width)
-#endif // BOOST_SVG_POINT_DIAGNOSTICS
-            switch(sty.shape_) // Chosen from enum point_shape none, round, square, point, egg
-            {
-            case none:
-              break; // Nothing to display.
-
-            // Shapes using SVG line, circle or eclipse functions.
-            case circlet: // Use SVG circle function.
-              g_ptr.circle(x, y, (int)half_size);
-              break;
-
-            case point:
-              g_ptr.circle(x, y, 1); // Fixed size 1 pixel round.
-              break;
-
-            case square:
-              g_ptr.rect(x - half_size, y - half_size, size, size);
-              break;
-
-            case egg:
-              g_ptr.ellipse(x, y, half_size, size * 2.); // Tall thin egg!
-              break;
-
-            case unc_ellipse:
-              { // std_dev horizontal (and, for 2D, vertical) ellipses for one, two and three standard deviations.
-                double xu = ux.value(); //
-                if (ux.std_dev() > 0)
-                { // std_dev is meaningful.
-                  xu +=  ux.std_dev();
-                }
-                transform_x(xu); // To SVG coordinates.
-                double x_radius = std::abs<double>(xu - x);
-                if (x_radius <= 0.)
-                { // Make sure something is visible.
-                  x_radius = 1.; // Or size?
-                }
-
-                double yu = uy.value();
-                if (uy.std_dev() > 0)
-                { // std_dev is meaningful.
-                   yu += uy.std_dev();
-                }
-
-                transform_y(yu);
-                double y_radius = std::abs<double>(yu - y);
-                if (y_radius <= 0.)
-                { // Make sure something is visible.
-                  y_radius = 1.;
-                }
-                //image_.g(PLOT_DATA_UNC).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
-                // color set in svg_1d_plot         data at present.
-                g_element* gu3_ptr = &(derived().image_.g(PLOT_DATA_UNC3));
-                g_element* gu2_ptr = &(derived().image_.g(PLOT_DATA_UNC2));
-                g_element* gu1_ptr = &(derived().image_.g(PLOT_DATA_UNC1));
-                gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard deviation.
-                gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard deviation..
-                gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard deviation..
-                g_ptr.circle(x, y, 1); // Show x and y values at center using stroke and fill color of data point marker.
-              }
-              break;
-
-             // Offset from center is not an issue with vertical or horizontal ticks.
-
-            case vertical_tick: // Especially neat for 1-D points.
-              g_ptr.line(x, y, x , y - size); // tick up from axis.
-              break;
-            case vertical_line:
-              g_ptr.line(x, y + size, x , y - size); // line up & down from axis.
-              break;
-            case horizontal_tick:
-              // horizontal_tick is pretty useless for 1-D because the horizontal line is on the X-axis.
-              g_ptr.line(x, y, x + size, y ); // tick right from axis.
-              break;
-            case horizontal_line:
-              g_ptr.line(x, y - size, x + size, y ); // line left & right from axis.
-              // horizontal_line is pretty useless for 1-D because the horizontal line is on the X-axis.
-              break;
-
-            //  Shapes as symbols using SVG text function, (not using SVG line, circle or eclipse).
-            case symbol: // Unicode symbol.
-              g_ptr.text(x, y + half_size, sty.symbols(), sty.style(), center_align, horizontal); // symbol(s), size and center.
-
-              // Unicode symbols that work on most browsers are listed at
-              // boost\math\libs\math\doc\sf_and_dist\html4_symbols.qbk,
-              // http://www.htmlhelp.com/reference/html40/entities/symbols.html
-              // and  http://www.alanwood.net/demos/ent4_frame.html
-              // Geometric shapes http://www.unicode.org/charts/PDF/Unicode-3.2/U32-25A0.pdf
-              // Misc symbols http://www.unicode.org/charts/PDF/U2600.pdf
-              // The Unicode value in decimal 9830 or hex x2666 must be prefixed with & and terminated with ;
-              // for example &x2666; for xml
-              // and then enveloped with "" to convert to a std::string, for example: "&#x2666;" for diamond.
-
-              break;
-            case diamond:
-              g_ptr.text(x, y, "&#x2666;", sty.symbols_style_, center_align, horizontal);
-
-  #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-            std::cout << "sty.symbols_style_ " << sty.symbols_style_ << std::endl;
-#endif // BOOST_SVG_POINT_DIAGNOSTICS
-              // size / 4. puts bottom tip on the X-axis,
-              // size / 2. put center above the X-axis
-              // x, y, put on the X-axis - probably what is needed for 2-D plots.
-              // diamond, spades, clubs & hearts fill with expected fill_color.
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
-              std::cout << "Diamond style font size " << sty.symbols_style_.font_size() << std::endl;
-#endif // BOOST_SVG_POINT_DIAGNOSTICS
-              break;
-            case asterisk:
-              g_ptr.text(x, y - size / 3., "&#x2217;", sty.symbols_style_, center_align, horizontal);
-              // asterisk is black filled.
-              // size /3 puts the bottom tip on the X-axis.
-              break;
-            case lozenge:
-              g_ptr.text(x, y - size / 3., "&#x25CA;", sty.symbols_style_, center_align, horizontal);
-              // size / 3 to get tip of lozenge just on the X-axis.
-              // lozenge seems not to fill?
-              break;
-            case club:
-              g_ptr.text(x, y, "&#x2663;", sty.symbols_style_, center_align, horizontal);
-              // x, y, puts club just on the X-axis
-              break;
-            case spade:
-              g_ptr.text(x, y, "&#x2660;", sty.symbols_style_, center_align, horizontal);
-              //
-              break;
-            case heart:
-              g_ptr.text(x, y , "&#x2665;", sty.symbols_style_, center_align, horizontal);
-              //
-              break;
-            case cone: // Pointing down triangle.
-            {
-              bool fill = (sty.fill_color() != blank);
-              g_ptr.triangle(x - half_size, y - size, x + half_size, y - size, x, y, fill);
-            // Last point puts the bottom tip of the triangle on the X-axis (may not be wanted for 2-D).
+            double yu = uy.value();
+            if (uy.std_dev() > 0)
+            { // std_dev is meaningful.
+                yu += uy.std_dev();
             }
-              break;
-            case triangle: // Pointing up triangle.
-               g_ptr.text(x, y , "&#x25B2;", sty.symbols_style_, center_align, horizontal);
-                 // Also could use &#x25BC for pointing down triangle, and
-                 // &#x25B4 for small up-pointing triangle and &#x25BE for small down triangle.
-               break;
-             case star:
-               g_ptr.text(x, y , "&#x2605;", sty.symbols_style_, center_align, horizontal);
-               break;
 
-            case cross: // Not X.
-              g_ptr.line(x, y + size, x , y - size); // line up & down from axis,
-              g_ptr.line(x, y - size, x + size, y ); // & line left & right from axis.
-              // Cross is pretty useless for 1-D because the horizontal line is on the X-axis.
-              break;
-              // TODO Other point_shapes do nothing yet.
+            transform_y(yu);
+            double y_radius = std::abs<double>(yu - y);
+            if (y_radius <= 0.)
+            { // Make sure something is visible.
+              y_radius = 1.;
             }
-          } // void draw_plot_point
+            //image_.g(PLOT_DATA_UNC).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
+            // color set in svg_1d_plot         data at present.
+            g_element* gu3_ptr = &(derived().image_.g(PLOT_DATA_UNC3));
+            g_element* gu2_ptr = &(derived().image_.g(PLOT_DATA_UNC2));
+            g_element* gu1_ptr = &(derived().image_.g(PLOT_DATA_UNC1));
+            gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard deviation.
+            gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard deviation..
+            gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard deviation..
+            g_ptr.circle(x, y, 1); // Show x and y values at center using stroke and fill color of data point marker.
+          }
+          break;
+
+          // Offset from center is not an issue with vertical or horizontal ticks.
+          // But is needed for text and unicode symbols.
+          //point_size / 4. puts bottom tip on the X-axis,
+          //point_size / 2. put center on the X-axis.
+          //x, y, center on the X-axis - probably what is needed for 2-D plots.
+
+        case vertical_tick: // Especially neat for 1-D points.
+          g_ptr.line(x, y, x , y - point_size); // tick up from axis.
+          break;
+        case vertical_line:
+          g_ptr.line(x, y + point_size, x , y - point_size); // line up & down from axis.
+          break;
+        case horizontal_tick:
+          // horizontal_tick is pretty useless for 1-D because the horizontal line is on the X-axis.
+          g_ptr.line(x, y, x + point_size, y ); // tick right from axis.
+          break;
+        case horizontal_line:
+          g_ptr.line(x, y - point_size, x + point_size, y ); // line left & right from axis.
+          // horizontal_line is pretty useless for 1-D because the horizontal line is on the X-axis.
+          break;
+
+        //  Shapes as symbols using SVG text function, (NOT using SVG line, circle or eclipse).
+        case symbol: // Unicode symbol.  see https://unicode-search.net/ for search
+          g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), center_align, horizontal); // symbol(s), size and center.
+
+          // Unicode symbols that work on most browsers are listed at
+          // boost\math\libs\math\doc\sf_and_dist\html4_symbols.qbk,
+          // http://www.htmlhelp.com/reference/html40/entities/symbols.html
+          // and  http://www.alanwood.net/demos/ent4_frame.html
+          // Geometric shapes http://www.unicode.org/charts/PDF/Unicode-3.2/U32-25A0.pdf
+          // Misc symbols http://www.unicode.org/charts/PDF/U2600.pdf
+          // The Unicode value in decimal 9830 or hex x2666 must be prefixed with & and terminated with ;
+          // @b Example: &x2666; for diamond in xml
+          // and then enveloped with "" to convert to a std::string, for example: "&#x2666;" for diamond.
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+          std::cout << "Unicode symbol font size " << point_style.symbols_style_.font_size()
+            << ", at SVG x = " << x << ", y = " << y + half_height<< std::endl;
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+          break;
+        case diamond:
+          g_ptr.text(x, y + third_height, "&#x2666;", point_style.symbols_style_, center_align, horizontal);
+
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+        std::cout << "sty.symbols_style_ " << point_style.symbols_style_ << std::endl;
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+          std::cout << "Diamond style font size " << point_style.symbols_style_.font_size() << std::endl;
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+          // diamond, spades, clubs & hearts fill with expected fill_color.
+          break;
+        case asterisk: // https://unicode-search.net/unicode-namesearch.pl?term=ASTERISK for options
+          // Several options but ASTERISK OPERATOR #2217
+          // U+FE61	SMALL ASTERISK centers OK but is small.
+          // 2732 is open center asterisk.
+          // 273C is open center TEARDROP-SPOKED ASTERISK
+          g_ptr.text(x, y + third_height, "&#x273C;", point_style.symbols_style_, center_align, horizontal);
+          // asterisk is black filled.
+          // .
+          break;
+        case lozenge:
+          g_ptr.text(x, y + third_height, "&#x25CA;", point_style.symbols_style_, center_align, horizontal);
+          // size / 3 to get tip of lozenge just on the X-axis.
+          // lozenge seems not to fill?
+          break;
+        case club:
+          g_ptr.text(x, y + third_height, "&#x2663;", point_style.symbols_style_, center_align, horizontal);
+          // x, y, puts club just on the X-axis.
+          break;
+        case spade:
+          g_ptr.text(x, y + third_height, "&#x2660;", point_style.symbols_style_, center_align, horizontal);
+          //
+          break;
+        case heart:
+          g_ptr.text(x, y + third_height , "&#x2665;", point_style.symbols_style_, center_align, horizontal);
+          //
+          break;
+        case outside_window: // Pointing down triangle used only to show data points that are outside plot window.
+        {
+          bool fill = (point_style.fill_color() != blank);
+          g_ptr.triangle(x - half_height, y - point_size, x + half_height, y - point_size, x, y, fill);
+          // Last point puts the bottom tip of the triangle on the X-axis (so not be suitable for 2-D).
+        }
+          break;
+          // Triangles.
+          // Could use black center &#x25BE for pointing down triangle,
+          // or  &#x25B4 for small black center up-pointing triangle 
+          // or &#x25BE for white center small down triangle.
+          case cone: // pointing down triangle, white centre.
+        g_ptr.text(x, y + third_height, "&#x25BD;", point_style.symbols_style_, center_align, horizontal);
+          // https://unicode.org/charts/PDF/U25A0.pdf
+          break;
+
+        case triangle: // Pointing up triangle.
+            g_ptr.text(x, y  + third_height, "&#x25B2;", point_style.symbols_style_, center_align, horizontal);
+              // Also could use &#x25BC for pointing down triangle, and
+              // &#x25B4 for small up-pointing triangle and &#x25BE for small down triangle.
+              // https://unicode.org/charts/PDF/U25A0.pdf
+            break;
+          case star:
+            g_ptr.text(x, y  + third_height, "&#x2605;", point_style.symbols_style_, center_align, horizontal);
+            break;
+
+        case cross: // Not X. Size is full font size 
+          g_ptr.line(x, y + point_size, x , y - point_size); // line up & down from axis,
+          g_ptr.line(x, y - point_size, x + point_size, y ); // & line left & right from axis.
+          // Cross is pretty useless for 1-D because the horizontal line is on the X-axis.
+          break;
+          // TODO Other point_shapes do nothing yet.
+        }
+      } // void draw_plot_point
 
           template <class Derived>
           void axis_plot_frame<Derived>::draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, Meas uvalue)
@@ -2561,7 +2744,7 @@ namespace boost
           void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, unc<false> uvalue)
              Write one data point (X or Y) value as a string, for example "1.23e-2",
              near the data point marker.
-             Unnecessary e, +, \& leading exponent zeros may optionally be stripped,
+             Unnecessary e, +, \& leading exponent zeros may optionally be stripped (highly recommended),
              and the position and rotation controlled.
              std_dev estimate, typically standard deviation
              (approximately half conventional 95% confidence "plus or minus")
@@ -2696,15 +2879,15 @@ namespace boost
 
             std::string label_u; // std_dev or text_plusminus.
             // std::string label_df; // Degrees of freedom estimate.
-            std::string pm_symbol = "&#x00A0;&#x00B1;"; //! Unicode space text_plusminus glyph.
+            std::string pm_symbol = "&#x00A0;&#x00B1;"; //! Unicode space and text_plusminus glyph.
             // Might also use ANSI symbol for text_plusminus 0xF1 == '\361' or char(241)
             // but seems to vary with different codepages:
             // LOCALE_SYSTEM_DEFAULT LOCALE_IDEFAULTANSICODEPAGE == 1252
             // LOCALE_SYSTEM_DEFAULT  LOCALE_IDEFAULTCODEPAGE ==  850 for country 44 (UK)
             // And seems to vary from console to printable files.
-            // Spaces seem to get lost, so use 00A0 as an explicit space glyph.
+            // Spaces seem to get lost, so use Unicode 00A0 as an explicit space glyph.
             // Layout seems to vary with font - Times New Roman leaves no space after.
-            //text_element& t = g_ptr.text(x, y, label_v, val_style.values_text_style_, al, rot);
+            //text_element& t = g_ptr.text(x, y, label_v, val_style.values_text_style_, val, rot);
            // Optionally, show std_dev as 95% confidence plus minus:  2.1 +-0.012 (23)
 
             // Extra info from Meas.
@@ -3309,7 +3492,7 @@ namespace boost
           }
           template <class Derived>
           std::string axis_plot_frame<Derived>::document_title()
-          { //! \return  document title to the document for header as \verbatim <title> My Title </title> \endverbatim
+          { //! \return Get document title to the document for header as \verbatim <title> My Title </title> \endverbatim
             return derived().image_.document_title();
           }
 
@@ -3462,7 +3645,8 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_labels_strip_e0s(bool cmd)
-          { //! Set if to strip redundant zeros, signs and exponents, for example, reducing "1.2e+000" to "1.2"
+          { //! Set @c true if want to strip redundant zeros, signs and exponents.
+            //! @b Example: reducing "1.2e+000" to "1.2".
             //! This markedly reduces visual clutter, and is the default.
             derived().x_ticks_.strip_e0s_ = cmd;
             return derived();
@@ -3470,7 +3654,8 @@ namespace boost
 
           template <class Derived>
           bool axis_plot_frame<Derived>::y_labels_strip_e0s()
-          { //! \return  if to strip redundant zeros, signs and exponents, for example, reducing "1.2e+000" to "1.2"
+          { //! \return @c true if set to strip redundant zeros, signs and exponents.
+            //! @b Example: reducing "1.2e+000" to "1.2".
             return derived().x_ticks_.strip_e0s_;
           }
 
@@ -3479,13 +3664,15 @@ namespace boost
           { /*!
               Set a title for plot.
               The string may include Unicode for greek letter and symbols.
-              @b example:
+              @b Example:
               A title that includes a greek omega and degree symbols:
               \code
                 my_plot.title("Plot of &#x3A9; function (&#x00B0;C)");
               \endcode
 
               Unicode symbols are at http://unicode.org/charts/symbols.html.
+
+              \note Only set plot title once.
             */
             // Plot title.  TODO
             // new text parent code push_back
@@ -3495,13 +3682,17 @@ namespace boost
             //derived().image_.g(PLOT_TITLE).clear();
             derived().title_info_.text(title);
             derived().title_on_ = true; // Assume display wanted, if bother to set title.
-            return derived();
+            return derived(); // Make chainable.
           }
 
           template <class Derived>
           const std::string axis_plot_frame<Derived>::title()
-          { //! \return  a title for plot, whose string may include Unicode for greek letter and symbols.
-            return derived().title_info_.text();
+          { //! \return  Title for plot,
+            // (whose character string may include Unicode value like &#x3A9; for greek letter and symbols).
+            //! Example: std::cout << "title \"" << my_plot.title() << "\""<< std::endl;
+            //! outputs:
+            //! \verbatim title "Plot showing several data point marker shapes &#x26; sizes." \endverbatim
+            return derived().title_info_.text(); 
           }
 
           template <class Derived>
@@ -5262,7 +5453,7 @@ namespace boost
           int axis_plot_frame<Derived>::x_min_ticks()
           { //! \return  X-axis autoscale minimum number of ticks.
            return derived().x_min_ticks_;
-          }
+          } // x_min_ticks()
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_steps(int steps)
@@ -5275,13 +5466,13 @@ namespace boost
              */
             derived().x_steps_ = steps;
             return derived();
-          }
+          } // x_steps(int steps)
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_steps()
           { //! \return  autoscale to set ticks in steps.
            return derived().x_steps_;
-          }
+          } // x_steps()
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_tight(double tight)

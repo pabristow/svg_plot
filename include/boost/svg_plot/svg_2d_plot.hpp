@@ -1,5 +1,4 @@
 /*!
-  \file
   \brief Create 2D XY plots in Scalable Vector Graphic (SVG) format.
   \details Provides @c svg_2d_plot data and function to create plots,
   and @c svg_2d_plot_series to allow data values to be added.
@@ -32,6 +31,8 @@
 
 // Diagnostics output if these are defined.
 // BOOST_SVG_DIAGNOSTICS
+// BOOST_SVG_DATA_POINT_DIAGNOSTICS
+
 // BOOST_SVG_VALUE_DIAGNOSTICS
 // BOOST_SVG_LEGEND_DIAGNOSTICS
 // BOOST_SVG_WINDOW_DIAGNOSTICS
@@ -94,12 +95,10 @@ namespace boost
        (For 1-D a vector of doubles can be used).
    */
 
-   
+
   class svg_2d_plot_series
   {
-
     void draw_straight_lines(const svg_2d_plot_series& series);
-
     friend void draw_straight_lines(const svg_2d_plot_series&);
     public:
 //! \cond DETAIL
@@ -110,7 +109,8 @@ namespace boost
 
       std::string title_; //!< Title of data series (to show on legend using legend style).
       plot_point_style point_style_; //!< Data point marker like circle, square...
-      plot_point_style limit_point_style_; //!< At limit data point marker. Default is cone pointing down.
+      plot_point_style limit_point_style_; //!< At limit data point marker.
+      // Default is cone pointing down with point at bottom tip, not centered.
       plot_line_style line_style_; //!< Style (color, width...) of line joining data points.
       bar_style bar_style_; //!< Style of bar used in histograms.
       histogram_style histogram_style_; //!< Style of histogram.
@@ -133,6 +133,12 @@ namespace boost
       svg_2d_plot_series& fill_color(const svg_color& col_);
       svg_2d_plot_series& stroke_color(const svg_color& col_);
       svg_2d_plot_series& shape(point_shape shape_);
+      svg_2d_plot_series& point_font_family(const std::string family_);
+      svg_2d_plot_series& point_font_weight(const std::string weight_);
+      svg_2d_plot_series& point_font_decoration(const std::string decoration_);
+      svg_2d_plot_series& point_font_stretch(const std::string stretch_);
+      svg_2d_plot_series& point_font_style(const std::string style_);
+
       svg_2d_plot_series& size(int size_);
       svg_2d_plot_series& line_color(const svg_color& col_);
       svg_2d_plot_series& area_fill(const svg_color& col_);
@@ -144,9 +150,15 @@ namespace boost
       svg_2d_plot_series& bar_color(const svg_color& col);
       svg_2d_plot_series& bar_area_fill(const svg_color& col);
       svg_2d_plot_series& histogram(histogram_option opt_);
+      const std::string point_font_family();
+      const std::string point_font_weight();
+      const std::string point_font_decoration();
+      const std::string point_font_stretch();
+      const std::string point_font_style();
 
       // Declarations of Get functions for the plot series.
       plot_line_style line_style();
+      plot_point_style point_style();
       double line_width();
       bool bezier_on();
       bool line_on();
@@ -186,7 +198,7 @@ namespace boost
     // plot_point_style(const svg_color& fill = blank, const svg_color& stroke = black,
     // int size = 5, point_shape shape = circlet, const std::string& symbols = "x")
     point_style_(black, white, 10, circlet), // Default point style (default fill white).
-    limit_point_style_(grey, blank, 10, cone), // Default limit (infinity or NaN) point style.
+    limit_point_style_(lightgrey, whitesmoke, 10, outside_window), // Default limit (infinity or NaN) outside-window point style.
     line_style_(black, blank, 2, false, false), // Default line style, no fill, width 2, no line_on, no bezier.
     bar_style_(black, blank, 3, no_bar), // Default black, no fill, stick width 3, no bar.
     // -2 block to Y-axis, -1 stick to Y-axis, no_bar,  +1 stick to x_axis, -2 block to X-axis.
@@ -240,7 +252,42 @@ namespace boost
     return *this;
   }
 
-  svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
+  svg_2d_plot_series& svg_2d_plot_series::point_font_family(const std::string family_)
+  { //! Set Data series point marker font family.
+    //! Example @c my_plot.plot(my_data, "my_data").shape("Z").point_font_family("times new roman")
+    point_style_.symbols_style_.font_family(family_);
+    return *this;
+  }
+
+  svg_2d_plot_series& svg_2d_plot_series::point_font_weight(const std::string weight_)
+  { //! Set Data series point marker font weight.
+    //! Example @c my_plot.plot(my_data, "my_data").shape("Z").point_font_weight("bold")
+    point_style_.symbols_style_.font_weight(weight_);
+    return *this;
+  }
+
+  svg_2d_plot_series& svg_2d_plot_series::point_font_decoration(const std::string decoration_)
+  { //! Set Data series point marker font decoration.
+    //! Example @c my_plot.plot(my_data, "my_data").shape("Z").point_font_decoration("underline")
+    point_style_.symbols_style_.font_decoration(decoration_);
+    return *this;
+  }
+
+svg_2d_plot_series& svg_2d_plot_series::point_font_stretch(const std::string stretch_)
+  { //! Set Data series point marker font stretch.
+    //! Example @c my_plot.plot(my_data, "my_data").shape("Z").point_font_stretch("narrow")
+    point_style_.symbols_style_.font_stretch(stretch_);
+    return *this;
+  }
+
+svg_2d_plot_series& svg_2d_plot_series::point_font_style(const std::string style_)
+  { //! Set Data series point marker font style.
+    //! Example @c my_plot.plot(my_data, "my_data").shape("Z").point_font_style("italic")
+    point_style_.symbols_style_.font_style(style_);
+    return *this;
+  }
+
+svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
   { //! Set Data series line (stroke) color.
     //! Example: @c .line_color(blue)
     line_style_.stroke_color_ = col_;
@@ -304,7 +351,12 @@ namespace boost
     return line_style_;
   }
 
-  double svg_2d_plot_series::line_width()
+  plot_point_style svg_2d_plot_series::point_style()
+  { //! \return Point style for data point marker(s).
+    return point_style_;
+  }
+
+    double svg_2d_plot_series::line_width()
   { //! \return Width of line joining data points.
     return line_style_.width_;
   }
@@ -334,9 +386,26 @@ namespace boost
     return point_style_.size_;
   }
 
-  point_shape svg_2d_plot_series::shape()
-  { //! \return Shape of data point marker(s).
-    return point_style_.shape_;
+  // Point font control get functions.
+  const std::string svg_2d_plot_series::point_font_family()
+  { //! \return Font family of data point marker(s) symbol. "arial"
+    return point_style_.symbols_style_.font_family_;
+  }
+  const std::string svg_2d_plot_series::point_font_weight()
+  { //! \return weight of data point marker(s) "bold".
+    return point_style_.symbols_style_.weight_;
+  }
+  const std::string svg_2d_plot_series::point_font_decoration()
+  { //! \return Decoration of data point marker(s) "underline".
+    return point_style_.symbols_style_.decoration_;
+  }
+  const std::string svg_2d_plot_series::point_font_stretch()
+  { //! \return stretch of data point marker(s) "narrow".
+    return point_style_.symbols_style_.stretch_;
+  }
+  const std::string svg_2d_plot_series::point_font_style()
+  { //! \return style of data point marker(s) "bold".
+    return point_style_.symbols_style_.style_;
   }
 
   bar_option svg_2d_plot_series::bar_opt()
@@ -419,7 +488,7 @@ namespace boost
 
       svg image_; //!< Stored so as to avoid rewriting style information constantly.
 
-      double text_margin_; //!< Marginal space around text items like title, text_margin_ * font_size to get distance in svg units.
+      double text_margin_; //!< Marginal space around text items like title. text_margin_ * font_size = distance in svg units.
 
       text_style a_style_; //!< Defaults for text_style (contains font size & type etc).
       text_style title_style_; //!< Style for plot title.
@@ -430,7 +499,7 @@ namespace boost
       text_style y_value_label_style_;//!< Style for data point value labels on Y-axis.
       text_style point_symbols_style_; //!< Style used for symbol marking a data point.
 
-      text_element title_info_; //!< Plot title text.
+      text_element title_info_; //!< Plot title text etc.
       text_element legend_header_; //!< Legend box header or title (if any).
       text_element x_label_info_; //!< X-axis label text, for example: "length".
       text_element x_value_label_info_; //!< X-axis tick value text, for example: "1.2" or "1.2e+001"
@@ -458,13 +527,13 @@ namespace boost
       double plot_top_; //!< SVG Y coordinate of top side of plot window.
       double plot_bottom_; //!< SVG Y coordinate of bottom side of plot window.
 
-      const double margin = 0.5; //!< Plot window margin to allow to rounding etc 
+      const double margin = 0.5; //!< Plot window margin to allow to rounding etc
       //! when checking if a point is inside window with @c is_in_window function.
 
       // enum legend_places{ nowhere, inside...}
       legend_places legend_place_; //!< Place for any legend box.
       double legend_width_; //!< Width of legend box (pixels).
-      double legend_height_; //!< Height of legend box (in pixels).
+      double legend_height_; //!< Height of legend box (pixels).
       // Size of legend box is controlled by its contents,
       // but helpful to store computed coordinates.
       double legend_left_; //!< Left of legend box.
@@ -577,7 +646,8 @@ my_plot.background_color(ghostwhite) // Whole image.
         // Separate X and Y to allow axes to have different styles.
         y_axis_label_style_(14, default_font, "", ""),
         y_value_label_style_(12, default_font, "", ""), // Y-axis tick labels.
-        point_symbols_style_(12, "Lucida Sans Unicode"), // Used for data point marking.
+        point_symbols_style_(12, "Lucida Sans Unicode", "", ""), // Used for data point marking.
+        // Font is to try to ensure that all Unicode symbols are available.
         title_info_(0, 0, "", title_style_, center_align, horizontal),
         x_label_info_(0, 0, "", x_axis_label_style_, center_align, horizontal),
         x_units_info_(0, 0, "", x_value_label_style_, center_align, horizontal),
@@ -591,7 +661,9 @@ my_plot.background_color(ghostwhite) // Whole image.
         y_label_info_(0, 0, "", y_axis_label_style_, center_align, upward),
         y_units_info_(0, 0, "", y_axis_label_style_, center_align, upward),
         y_value_label_info_(0, 0, "", y_value_label_style_, center_align, upward), //
-        text_margin_(2.), // for axis label text, as a multiplier of the font size.
+        text_margin_(1.5), // for title and axis label text, as a multiplier of the font size.
+        // 1.0 places title too near the top, 1.5 seems about right,
+        // 2.0 leaves a bigger gap at top with little gain in the legend.
         // Should allow a 'half line space' above and below the label text.
         image_border_(yellow, white, 2, 3, true, true),
         // margin (parameter 4) needs to be at least the width of the border (parameter 3) to ensure any border color shows.
@@ -603,7 +675,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         plot_window_border_(lightslategray, svg_color(255, 255, 255), 2, 3, true, false),
         legend_box_(yellow, white, 1, 2, true, true),
         legend_header_(0, 0, "", legend_style_, center_align, horizontal),
-        legend_width_(200), // width of legend box (pixels) // TODO isn't this calculated?
+        legend_width_(0), // width of legend box (pixels) //
         legend_height_(0), // height of legend box (pixels)
         legend_left_(-1), legend_right_(-1), legend_top_(-1), legend_bottom_(-1), // Default top left of plot window.
         legend_place_(outside_right), // default but interacts with using plot_window.
@@ -698,7 +770,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         // Grids.
         // Default color & width for grid, used or not.
         // Might avoid empty grid stuff if this was only done if grid used?  TODO
-        image_.g(PLOT_X_MAJOR_GRID).style().stroke_width(x_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255));
+        image_.g(PLOT_X_MAJOR_GRID).style().stroke_width(x_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255)); // #C8DCFF - Hex Color
         image_.g(PLOT_X_MINOR_GRID).style().stroke_width(x_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
         image_.g(PLOT_Y_MAJOR_GRID).style().stroke_width(y_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255));
         image_.g(PLOT_Y_MINOR_GRID).style().stroke_width(y_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
@@ -787,7 +859,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         x_axis_label_style_ = x_label_info_.textstyle();
         if (x_label_info_.textstyle() != x_axis_label_style_ )
         {
-            std::cout << "x_label_info_.textstyle() != x_axis_label_style_" << std::endl;
+            std::cout << "Warning: x_label_info_.textstyle() != x_axis_label_style_!" << std::endl;
 #ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
 #endif // BOOST_SVG_WINDOW_DIAGNOSTICS
         }
@@ -795,7 +867,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         y_axis_label_style_ = y_label_info_.textstyle();
         if (y_label_info_.textstyle() != y_axis_label_style_ )
         { // Warn.
-          std::cout << "y_label_info_.textstyle() != y_axis_label_style_!" << std::endl;
+          std::cout << "Warning: y_label_info_.textstyle() != y_axis_label_style_!" << std::endl;
         }
 
         // Assume that X-axis labels are always at bottom.
@@ -831,7 +903,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           // A minimum small margin (default 3) is to prevent it overlapping the image border.
           // Might be == image_border size?
           // Also must allow for axis value labels that mark the min and max ticks
-          // that might extend beyond the plot window border, 
+          // that might extend beyond the plot window border,
           // but must extend not beyond image or will be cutoff in mid-value_label.
           // if writing is vertical need only half a font, but half x_ticks_.label_max_space_ if horizontal.
           // x_ticks_.label_max_space_ calculated this - but is not calculated yet!
@@ -1128,7 +1200,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             << ", x_axis_.max_ " << x_axis_.max_ << "x_axis_.min_" << x_axis_.min_ << std::endl;
           throw std::range_error("X shift wrong!");
         }
-        
+
         y_scale_ = -(plot_bottom_-plot_top_) / (y_axis_.max_-y_axis_.min_);
 
 
@@ -1759,7 +1831,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         else
         { // Tick is outside the window, so warn.
 #ifdef BOOST_SVG_DIAGNOSTICS
-          std::cout << "y minor tick at y = " << y << ", from x = " << x_left << " to " << x_right 
+          std::cout << "y minor tick at y = " << y << ", from x = " << x_left << " to " << x_right
             << ", is OUTside Y window bottom " << plot_bottom_ << " to top " << plot_top_ << "." << std::endl;
 #endif
         }
@@ -1797,7 +1869,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         path_element& path = g_ptr.path();
         path.style().fill_color(series.line_style_.area_fill_);
         bool is_fill = !series.line_style_.area_fill_.is_blank();
-        path.style().fill_on(is_fill); // Ensure includes a fill="none" if no fill.  
+        path.style().fill_on(is_fill); // Ensure includes a fill="none" if no fill.
         //path.style().fill_color(series.line_style_.area_fill_); // Duplicates so no longer needed?
 
         size_t outside_window = 0;  // Data points that lie outside the plot window.
@@ -1805,12 +1877,12 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         // If required to fill the area under the plot,
         // we first have to move from the X-axis (y = 0) to the first point,
-        // and again to the X-axis (y = 0) at the end after the last point. 
+        // and again to the X-axis (y = 0) at the end after the last point.
 
         if (series.series_.size() < 2)
         { // Need at least two points for a line joining them.
           std::cout << "Only " << series.series_.size() << " points in series " << series.title_ << ", so no line drawn!" << std::endl;
-          // Also need two point  *inside window*, but that is checked later. 
+          // Also need two point  *inside window*, but that is checked later.
         }
         else
         {
@@ -1819,7 +1891,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           // Using std::multimap<double, double> was prev_x = (*j).first;
             // was unc<false> prev_ux = (*j).first; for unc rather than Meas
 
-          double prev_x = 0; // Previous X and 
+          double prev_x = 0; // Previous X and
           double prev_y = 0; // Y of a data point.
           Meas prev_ux = (*j).first; // x
           Meas prev_uy = (*j).second; // y
@@ -2096,16 +2168,16 @@ my_plot.background_color(ghostwhite) // Whole image.
             else
             { // Ignore any data point values outside the plot window.
               ignored++;
-#ifdef BOOST_SVG_DIAGNOSTICS
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
               std::cout << "Ignoring x = " << x << ", y = " << y << std::endl;
-#endif // BOOST_SVG_DIAGNOSTICS
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
             }
           } // for j
-#ifdef BOOST_SVG_DIAGNOSTICS
-          std::cout << plotted << " plotted " << ", and " << ignored << " ignored, " 
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+          std::cout << plotted << " plotted " << ", and " << ignored << " ignored, "
             << "size of series = " << serieses_[i].series_.size() << std::endl;
           BOOST_ASSERT(plotted + ignored == serieses_[i].series_.size());
-#endif // BOOST_SVG_DIAGNOSTICS
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
         } // for normal points.
 
         //! Draw the abnormal 'at_limit' points (if any).
@@ -2188,7 +2260,7 @@ my_plot.background_color(ghostwhite) // Whole image.
                 y = plot_bottom_;
               }
               // else is inside plot window, so draw a limit point marker.
-              // draw_plot_point(x, y, g_ptr, plot_point_style(lightgray, whitesmoke, s, cone)); default.
+              // draw_plot_point(x, y, g_ptr, plot_point_style(lightgray, whitesmoke, s, outside_window)); // default.
             }
             serieses_[i].limit_point_style_.stroke_color_ = image_.g(detail::PLOT_LIMIT_POINTS).style().stroke_color();
             serieses_[i].limit_point_style_.fill_color_ = image_.g(detail::PLOT_LIMIT_POINTS).style().fill_color();
@@ -2196,7 +2268,7 @@ my_plot.background_color(ghostwhite) // Whole image.
 
             if((x > plot_left_) && (x < plot_right_) && (y > plot_top_) && (y < plot_bottom_))
             { // Is inside plot window, so draw a point.
-              // draw_plot_point(x, y, g_ptr, plot_point_style(blank, blank, s, cone)); default.
+              // draw_plot_point(x, y, g_ptr, plot_point_style(blank, blank, s, outside_window)); default.
               draw_plot_point(x, y, g_ptr, serieses_[i].limit_point_style_, unc<false>(), unc<false>());
               limit_point_in_window_count++;
             }
@@ -2210,11 +2282,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           std::cout << limit_point_in_window_count << " limit points in window, " << limit_point_edge_window_count  << " limits points on edge of window." << std::endl;
           std::cout << "X: " << x_nan_count << " NaNs, " << x_inf_count << " infinities, Y: " << y_nan_count << " NaNs, " << y_inf_count << " infinities." << std::endl;
 #endif
-
-
         } // for series
-
-
       } //  void draw_plot_points()
 
       void draw_bars()
@@ -2742,7 +2810,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       svg_2d_plot& svg_2d_plot::y_axis_label_color(const svg_color& col)
-      { //! Set y_axis stroke color.
+      { //! Set y_axis stroke color.  (svg_color(0, 0, 0)), black is default color.)
         //! \note Setting the stroke color may produce fuzzy characters :-(
         image_.g(detail::PLOT_Y_LABEL).style().fill_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
@@ -2767,14 +2835,15 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       svg_2d_plot& svg_2d_plot::y_axis_value_color(const svg_color& col)
-      { //! Set color of Y-axis @b value labels.
+      { //! Set color of Y-axis @b value labels.  (svg_color(0, 0, 0)), black is default color.)
         image_.g(detail::PLOT_Y_TICKS_VALUES).style().stroke_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       svg_color svg_2d_plot::y_axis_value_color()
       { //! \return Color of Y-axis tick value labels.
-        // Only return the stroke color.
+        //! (svg_color(0, 0, 0)), black is default color.)
+        //! \note Only return the stroke color (not the fill_color).
         return image_.g(detail::PLOT_Y_TICKS_VALUES).style().stroke_color();
       }
 
@@ -2790,46 +2859,47 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       svg_2d_plot& svg_2d_plot::y_major_grid_color(const svg_color& col)
-      { //! Set color of Y major grid lines.
+      { //! Set color of Y major grid lines. (svg_color(200, 220, 255)), greyblue is default color.)
+        //! Example: my_plot.y_major_grid_color(lightblue)
         image_.g(detail::PLOT_Y_MAJOR_GRID).style().stroke_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       const svg_color svg_2d_plot::y_major_grid_color()
-      { //! \return Color of Y major grid lines.
+      { //! \return Stroke Color of Y major grid lines. (svg_color(200, 220, 255)), greyblue is default color.)
         return image_.g(detail::PLOT_Y_MAJOR_GRID).style().stroke_color();
       }
 
       svg_2d_plot& svg_2d_plot::y_minor_grid_color(const svg_color& col)
-      { //! Set color of Y minor grid lines.
+      { //! Set stroke color of Y minor grid lines. (svg_color(200, 220, 255)), greyblue is default color.)
         image_.g(detail::PLOT_Y_MINOR_GRID).style().stroke_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       const svg_color svg_2d_plot::y_minor_grid_color()
-      { //! \return Color of Y minor grid lines.
+      { //! \return Color of Y minor grid lines.(svg_color(200, 220, 255)), greyblue is default color.)
         return image_.g(detail::PLOT_Y_MINOR_GRID).style().stroke_color();
       }
 
       svg_2d_plot& svg_2d_plot::y_major_tick_color(const svg_color& col)
-      { //! Set color of Y major tick lines.
+      { //! Set color of Y major tick lines. (svg_color(0, 0, 0)), black is default color.)
         image_.g(detail::PLOT_Y_MAJOR_TICKS).style().stroke_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       const svg_color svg_2d_plot::y_major_tick_color()
-      { //! \return Color of Y major tick lines.
+      { //! \return Color of Y major tick lines. (svg_color(0, 0, 0)), black is default color.)
         return image_.g(detail::PLOT_Y_MAJOR_TICKS).style().stroke_color();
       }
 
       svg_2d_plot& svg_2d_plot::y_minor_tick_color(const svg_color& col)
-      {  //! Set color of Y minor tick lines.
+      {  //! Set color of Y minor tick lines. (svg_color(0, 0, 0)), black is default color.)
         image_.g(detail::PLOT_Y_MINOR_TICKS).style().stroke_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       const svg_color svg_2d_plot::y_minor_tick_color()
-      { //! \return Color of Y minor tick lines.
+      { //! \return Color of Y minor tick lines. (svg_color(0, 0, 0)), black is default color.)
         return image_.g(detail::PLOT_Y_MINOR_TICKS).style().stroke_color();
       }
 
@@ -2976,7 +3046,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       { //! Set true if values of Y data points are to include confidence interval.
         y_values_style_.addlimits_on_ = b;
         return *this; //! \return Reference to svg_2d_plot to make chainable.
-      } 
+      }
 
       svg_2d_plot& svg_2d_plot::y_addlimits_color(const svg_color& col)
       {  //! Set color of Y confidence interval.
@@ -3014,12 +3084,12 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       /*! \brief Set prefix, separator and suffix for Y-axis.\n @b Example:
 
 
-     
-\code         
+
+\code
 my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
 \endcode
        \note If you want a space, you must use a @b Unicode space.
-      */     
+      */
       svg_2d_plot& svg_2d_plot::y_decor(const std::string& pre, const std::string& sep, const std::string& suf)
       {
         y_values_style_.prefix_ = pre;
@@ -3047,8 +3117,8 @@ my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
 
       svg_2d_plot& svg_2d_plot::y_autoscale(double minimum, double maximum)
       { /*! Set minimum & maximum Y values to use to autoscale Y-axis.
-        \param minimum Value to use for autoscale that will be rounded down. 
-        \param maximum Value to use for autoscale that will be rounded up. 
+        \param minimum Value to use for autoscale that will be rounded down.
+        \param maximum Value to use for autoscale that will be rounded up.
         */
         scale_axis(minimum, maximum, // double min and max from two doubles.
         &y_auto_min_value_, &y_auto_max_value_, &y_auto_tick_interval_, &y_auto_ticks_,
@@ -3415,7 +3485,7 @@ my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
           These are probably usable:
         */
 
-        /*!         
+        /*!
           \code
 "arial", "impact", "courier", "lucida console",  "Lucida sans unicode", "verdana", "calibri", "century",
 "lucida calligraphy", "tahoma", "vivaldi", "informal roman", "lucida handwriting", "lucida bright", "helvetica"
@@ -3506,7 +3576,7 @@ my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
       }
 
       std::ios_base::fmtflags svg_2d_plot::y_values_ioflags()
-      { 
+      {
         return y_values_style_.value_ioflags_;  //! \return @c std::iostream format flags for data point values.
       }
 

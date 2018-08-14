@@ -988,7 +988,7 @@ public:
     return *this; //! \return text_element& to make chainable.
   }
 
-  text_element&  alignment(align_style a) // TODO Change name to align????
+  text_element& alignment(align_style a) 
   { //! left_align, right_align, center_align
     align_ = a;
     return *this; //! \return text_element& to make chainable.
@@ -999,7 +999,7 @@ public:
     return align_;
   }
 
-  text_element&  rotation(rotate_style rot)// TODO Change name to rotate???
+  text_element& rotation(rotate_style rot)
   { //! Degrees: horizontal  = 0, upward = -90, downward, upsidedown
     //! Generates: transform = "rotate(-45 100 100 )"
     rotate_ = rot;
@@ -1011,7 +1011,7 @@ public:
     return rotate_;
   }
 
-  // set functions now return *this to be chainable, for example:
+  // All set functions now return *this to be chainable, for example:
   // my_text_element.style(no_style).x(999).y(555).alignment(right_align).rotation(vertical);
 
   text_element& x(double x)
@@ -1058,7 +1058,7 @@ public:
     //!< http://www.w3.org/TR/SVG/text.html#TextElement 10.2
     double x = 0., //!< X = Left edge.
     double y = 0., //!< Y =  Bottom left of (western) character (roman capital).
-    //!< So any text with Y coordinate = 0 shows only the roman lower case descenders!
+    //!< So any text with Y coordinate = 0 shows only the descenders of (roman?) lower case !
     //!< One must increase Y to allow for the height (font size) of the character.
     const std::string text = "", //!< Text string to output (may include Unicode string like "&#x221A;" for square root symbol.
     text_style ts = no_style, //!< Text font style,default left to SVG defaults.
@@ -1096,14 +1096,14 @@ public:
   }
 
   std::string text()
-  { //! \return text string of a text_element.
-    std::stringstream os;
+  { //! \return text @c std::string of a @c text_element.
+    std::ostringstream os;
     generate_text(os);
     return os.str();
   }
 
   void write(std::ostream& os)
-  { //! Output text_element, style & attributes to stream.
+  { //! Output SVG @c text_element, style & attributes to a @c std::stream.
     // Changed to new convention on spaces:
     // NO trailing space, but *start* each item with a space.
     // For debug, may be convenient to start with newline.
@@ -1165,7 +1165,7 @@ public:
     os << '>' ;
     generate_text(os);
     os << "</text>";
-    // Example:
+    // Example: <text x="67.5" y="462" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0</text>
   } // void write(std::ostream& os)
 }; // class text_element_
 

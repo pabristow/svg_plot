@@ -2,7 +2,7 @@
 
   \brief Shows settings and options for 2D Plot.
 
-   \see show_1d_settings.cpp for 1D plot.
+  \see show_1d_settings.cpp for 1D plot.
 */
 
 // Copyright Jacob Voytko 2007
@@ -121,8 +121,8 @@ void show_2d_plot_settings(svg_2d_plot& plot)
   std::cout << "plot_window_y " << plot.plot_window_y() << std::endl;
   std::cout << "plot_window_y_top " << plot.plot_window_y_top() << std::endl;
   std::cout << "plot_window_y_bottom " << plot.plot_window_y_bottom() << std::endl;
-  std::cout << "title_on " << plot.title_on() << std::endl;
-  std::cout << "title \"" << plot.title() << "\""<< std::endl;
+  std::cout << "title_on " << plot.title_on() << std::endl; // true
+  std::cout << "title \"" << plot.title() << "\""<< std::endl; // Expect "My plot title" but get ""
   std::cout << "title_color " << plot.title_color() << std::endl;
   std::cout << "title_font_alignment " << plot.title_font_alignment() << std::endl;
   std::cout << "title_font_decoration " << plot.title_font_decoration() << std::endl;
