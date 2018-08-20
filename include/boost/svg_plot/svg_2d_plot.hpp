@@ -408,6 +408,11 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
     return point_style_.symbols_style_.style_;
   }
 
+  point_shape svg_2d_plot_series::shape()
+  { //! \return shape of data point marker(s). Examples "square", "cone", circlet .... (See enum point_shape)
+    return point_style_.shape_;
+  }
+
   bar_option svg_2d_plot_series::bar_opt()
   { //! \return Bar options.
     return bar_style_.bar_option_;
@@ -463,14 +468,14 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
        (We don't store it in svg because transforming the points after they are
        written to the document would be difficult. We store the Cartesian
        coordinates locally and transform them before we write them).\n
-       (svg_2d_plot inherits from axis_plot_frame.hpp containing functions common to 1 and 2-D).
+       (svg_2d_plot inherits from axis_plot_frame.hpp containing functions common to 1-D and 2-D).
    */
   class svg_2d_plot : public detail::axis_plot_frame<svg_2d_plot>
   {
      friend void show_2d_plot_settings(svg_2d_plot&);
      friend class svg_2d_plot_series;
      friend class detail::axis_plot_frame<svg_2d_plot>;
-     // axis_plot_frame.hpp contains functions common to 1 and 2-D.
+     // axis_plot_frame.hpp contains functions common to 1-D and 2-D.
 
    // private:
   public:
@@ -488,7 +493,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
 
       svg image_; //!< Stored so as to avoid rewriting style information constantly.
 
-      double text_margin_; //!< Marginal space around text items like title. text_margin_ * font_size = distance in svg units.
+      double text_margin_; //!< Marginal space around text items like title. @c text_margin_*font_size = distance in svg units.
 
       text_style a_style_; //!< Defaults for text_style (contains font size & type etc).
       text_style title_style_; //!< Style for plot title.
@@ -2174,7 +2179,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             }
           } // for j
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-          std::cout << plotted << " plotted " << ", and " << ignored << " ignored, "
+          std::cout << plotted << " plotted, and " << ignored << " ignored, "
             << "size of series = " << serieses_[i].series_.size() << std::endl;
           BOOST_ASSERT(plotted + ignored == serieses_[i].series_.size());
 #endif // BOOST_SVG_POINT_DIAGNOSTICS

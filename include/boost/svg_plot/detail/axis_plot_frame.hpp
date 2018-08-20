@@ -94,14 +94,6 @@ namespace boost
       somewhere = +5 //!< legend_top_left(x, y)
     };
 
-    // Might be just max, but potential nuisance with avoiding confusion with macro MAX.
-    template <typename T>
-    inline
-    T maxof3(T a, T b, T c)
-    {
-      return ((a > b) ? a : (b > c) ? b : c);
-    }
-
     namespace detail
     { //! \namespace detail Holds base class axis_plot_frame for 1D, 2D and Box plots.
 
@@ -130,6 +122,22 @@ namespace boost
        and so is returned by all get functions.
 
        */
+
+      // Max and min three item functions use to compare font sizes.
+      template <typename T>
+      inline
+        T max(T a, T b, T c)
+      { //! \return maximum of three items, similar to std::max for two items.
+        return ((a > b) ? a : (b > c) ? b : c);
+      }
+
+      template <typename T>
+      inline
+        T min(T a, T b, T c)
+      { //! \return minimum of three items, similar to std::min for two items.
+        return ((a < b) ? a : (a < c) ? a : c);
+      }
+
       template <class Derived>
       class axis_plot_frame
       {
@@ -2084,149 +2092,114 @@ namespace boost
       } // void draw_title()
 
 
+
       template <class Derived>
       void axis_plot_frame<Derived>::size_legend_box()
       { //! Calculate how big the legend box needs to be to hold the 
-        //! title and any point markers (symbols or lines) and any series descriptor text.
+        //! title and the point markers (symbols or lines) and series descriptor text.
         if (derived().legend_on_ == true)
-        { // Really do want a legend box.
-         size_t num_series = derived().serieses_.size(); // How many data series.
-         bool is_header = (derived().legend_header_.text() != ""); // 
-          // Compute length for legend header.
-          double legend_font_size = derived().legend_header_.textstyle().font_size(); // legend header text font size.
+        { // Want a legend box.
+          bool is_header = (derived().legend_header_.text() != ""); // 
+          size_t num_series = derived().serieses_.size(); // How many data series.
+          int legend_font_size = derived().legend_header_.textstyle().font_size(); // legend header text font size.
+                                                                                   // If assume that descriptor text for each series uses same font as header,
+                                                                                   // then large marker symbols clash and misalign, 
+                                                                                   // so spacing needs to use the largest of 
+                                                                                   // all point marker Unicode symbol font sizes (may be different) and header font size.
+          int point_size = 0; // Get biggest marker symbol point size in use.
+          for (size_t i = 0; i < num_series; ++i)
+          {
+            if (derived().serieses_[i].point_style_.size() > point_size)
+            {
+              point_size = derived().serieses_[i].point_style_.size(); // 
+            }
+          }
+          // Use height of whichever is the biggest of data point marker shape and legend text font.
+          double marker_size = (std::max)(legend_font_size, point_size);
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
           std::cout << "\nLegend \"" << derived().legend_header_.text()
-            << "\", font size = " << legend_font_size << std::endl;
-          // Legend "My Legend", font size = 10
+            << "\", font size = " << legend_font_size << ", largest point size " << point_size << ", marker_size = " << marker_size<< std::endl;
+          // Legend "My Legend", font size = 10, largest point size 30, spacing = 30
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
           //text_element legend_header_; // legend box header or title (if any).
           //text_style legend_style_;
           // string_svg_length avoids chars as Unicode hex increasing the length wrongly,
-          // so each Unicode char counts only as one char, and not 6.
-          double legend_header_length = string_svg_length(derived().legend_header_.text(), derived().legend_style_);
-          // Legend header height from font_size, width from length * font_size * aspect_ratio
-          double legend_header_width = legend_header_length * legend_font_size * aspect_ratio;
-          double legend_header_height = legend_font_size;
-          
+          // so each Unicode char counts only as one char.
+          double longest = string_svg_length(derived().legend_header_.text(), derived().legend_style_);
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-          std::cout << "Legend header text length = " << derived().legend_header_.text()
+          std::cout << "Legend text length = " << derived().legend_header_.text()
             << ", legend_style_ = " << derived().legend_style_
-            << ", Legend header length " << legend_header_length 
-            << ", length width = " << legend_header_width << " svg units." << std::endl;
+            << ", Legend header longest " << longest << " svg units." << std::endl;
           // Legend text length = My Legend, legend_style_ = text_style(14, "Lucida Sans Unicode", "", "", "", ""),
+          // Legend header longest 88.2 svg units.
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
-
-          // If assume that descriptor text for each series uses same font as header,
-          // then large marker symbols clash and misalign, 
-          // so spacing needs to use the largest of 
-          // all point marker Unicode symbol font sizes (may be different) and header font size.
-
-          int biggest_point_size = 0; // Get biggest marker symbol point size in use.
-          for (size_t i = 0; i < num_series; ++i)
-          {
-            if (derived().serieses_[i].point_style_.size() > point_size)
-            {
-              biggest_point_size = derived().serieses_[i].point_style_.size(); // 
-            }
-          }
-          double biggest_point_width = biggest_point_size * aspect_ratio;
-          double longest_line_width = 0; // Get longest line marker point size in use.
-          for (size_t i = 0; i < num_series; ++i)
-          {
-            if (derived().serieses_[i].point_style_.size() > point_size)
-            {
-              longest_line_width = derived().serieses_[i].line_style_.size(); // 
-            }
-          } // for
-          double biggest_line_width = derived().serieses_[i].line_style_.width()
-
-#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-          std::cout << "biggest point height " << biggest_point_size << ", biggest point_width " << biggest_line_width << " svg units." << std::endl
-            << "line height " << longest_line_size 
-            << ", longest line_width " << biggest_line_width
-            << " svg units." << std::endl;
-#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
-          // Use font size as height (and height * aspect_ratio as width)
-          // of whichever is the biggest of data point marker shape and legend text font.
-          // Compute longest data descriptor longest_title.
-          double longest_data_title_height = 0; // Will remain zero if no data descriptions.
-          double longest_data_title_width = 0;
-          int longest_data_title_length = 0;
-          for (size_t i = 0; i != num_series; ++i)
-          { // Find the longest text (if longer than header - initial longest) in all the data series titles.
-            std::string s = derived().serieses_[i].title_;
-            double length = string_svg_length(s, derived().legend_style_);
-#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-            std::cout << "plot series " << i << " data descriptor " << length << " svg units." << std::endl;
-#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
-            if (length > longest_data_title_length)
-            {
-              longest_data_title_length = length;
-            }
-          } // for
-          longest_data_title_height = derived().legend_style_.font();
-          longest_data_title_width = longest_data_title_length * derived().legend_style_.font() * aspect_ratio;
-
-#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-          std::cout << "Longest data series title length = " << longest_data_title 
-            << ", height " << longest_data_title_height 
-            << ", width " << longest_data_title_width << " svg units." << std::endl;
-#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
-
-          derived().legend_width_ += longest; 
-          // Add space for longest text of header or data series title.
-          // (Aspect_ratio is kludge factor to allow for not knowing the true SVG length).
-          double marker_width = marker_size * aspect_ratio;
-          derived().legend_width_ += marker_width; // Allow width for a leading space,
-          derived().legend_width_ += marker_width; // and trailing space.
-        // if (derived().serieses_[i].line_style_.line_on_) // Any line joining points.
-          if (derived().legend_lines_ == true)
-          { // Add for colored line marker in legend.
-            derived().legend_width_ += marker_width;
-          }
-          if (derived().serieses_[0].point_style_.shape() != none)
-          { // Add for any colored data point marker, cross, round... 
-            derived().legend_width_ += marker_width;
-            derived().legend_width_ += marker_width; // & space.
-          }
-          // else no point marker.
-// Use the longest
-          double longest = std::max(legend_header)
-
-            derived().legend_width_ = (derived().legend_box_.margin() * derived().legend_box_.width());
+          derived().legend_width_ = 1 * (derived().legend_box_.margin() * derived().legend_box_.width());
           // Leave blank a blank margin and the legend border width on both sides of the box.
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
           std::cout << "Legend box margin = " << derived().legend_box_.margin()
             << ", legend_box width = " << derived().legend_box_.width()
-            << ", legend width = " << derived().legend_width_ << std::endl;
+            << "legend width = " << derived().legend_width_ << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
-
+          double longest_title = 0;
+          for (size_t i = 0; i < num_series; ++i)
+          { // Find the longest text (if longer than header - initial longest) in all the data series titles.
+            std::string s = derived().serieses_[i].title_;
+            double siz = string_svg_length(s, derived().legend_style_);
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+            std::cout << "plot series data descriptor " << siz << " svg units." << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+            if (siz > longest_title)
+            {
+              longest_title = siz;
+            }
+          } // for
+          if (longest_title > longest)
+          {
+            longest = longest_title;
+          }
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+          std::cout << "longest data series title = " << longest_title 
+            << ", Longest legend header width " << derived().legend_width_ 
+            << ", longest = " << longest << " svg units." << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
           derived().legend_width_ += longest * aspect_ratio; 
-          derived().legend_width_ += derived().legend_box_.margin(); // Final border margin.
+          // Add space for longest text of header or data series title.
+          // (Aspect_ratio is kludge factor to allow for not knowing the true SVG length).
 
-          // legend_height must be enough for
+          derived().legend_width_ += marker_size; // Allow width for a leading space,
+          derived().legend_width_ += marker_size; // and trailing space.
+                                                  // if (derived().serieses_[i].line_style_.line_on_) // Any line joining points.
+          if (derived().legend_lines_ == true)
+          { // Add for colored line marker in legend.
+            derived().legend_width_ += marker_size;
+          }
+          if (derived().serieses_[0].point_style_.shape() != none)
+          { // Add for any colored data point marker, cross, round... & space.
+            derived().legend_width_ += 1. * derived().serieses_[0].point_style_.size();
+          }
+          // else no point marker.
+
+          // legend_height must be *at least* enough for
           // any legend header and text_margin(s) around it
           // (if any) plus a text_margin_ top and bottom.
-          derived().legend_height_ = legend_font_size; // One font space top.
+          derived().legend_height_ = legend_font_size * 3; // One font space top and bottom.
           if ((is_header) // is a legend header line.
-            && (derived().legend_header_.text() != "")) // & not blank.
+            && (derived().legend_header_.text() != ""))
           {
-            derived().legend_height_ += 2 * legend_font_size; // text & a font space space after.
+            derived().legend_height_ += 1 * legend_font_size; // text & a font space space after.
           } 
           // Add more height depending on the number of lines of text.
-          // Place the data series markers and text a bit closer together.
-          derived().legend_height_ += num_series * marker_size * spacing_factor; // Space for all the data point symbols & text.
-          derived().legend_height_ += legend_font_size; // A font space at bottom.
-          derived().legend_height_ += derived().legend_box_.margin(); // Final small margin.
+          marker_size *= 0.75;  // Placew the data series markers and text a bit closer together.
+          derived().legend_height_ += num_series * marker_size; // Space for all the data point symbols & text.
+
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-        std::cout << "Legend width " << derived().legend_width_ 
-          << ", height " << derived().legend_height_ << std::endl;
+          std::cout << "Legend width " << derived().legend_width_ << ", height " << derived().legend_height_ << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
-       }// legend_on_ == true
-      else 
-      { // derived().legend_on_ == false means no legend wanted, 
-        // so set values to show legend positions invalid?
+        }// legend_on_ == true
+        else 
+        { // derived().legend_on_ == false means no legend wanted, 
+          // so set values to show legend positions invalid?
           derived().legend_height_ = 0.; // At least set the size to zero.
           derived().legend_width_ = 0.;
           //derived().legend_left_ = -1.;
@@ -2234,8 +2207,8 @@ namespace boost
           //derived().legend_top_ = -1.;
           //derived().legend_bottom_ = -1.;
           return;
-        }
-    } //  void size_legend_box()
+          }
+        } //  void size_legend_box()
 
     template <class Derived>
     void axis_plot_frame<Derived>::place_legend_box()
@@ -2377,10 +2350,10 @@ namespace boost
       // Use whichever is the biggest of point marker shape, marker font, and series descriptor font.
       // Ideally max of 3 sizes:
       //  spacing = (std::max)(marker_size, legend_font_size, point_size);
-      double spacing = maxof3(legend_font_size, point_size, marker_size);
- //     double spacing = (std::max)(legend_font_size, point_size);
- //     spacing = (std::max)(marker_size, spacing); // in case symbol is bigger.
-      spacing *= derived().text_margin_; // default 1.5
+      double spacing = (std::max)(legend_font_size, point_size);
+      spacing = (std::max)(marker_size, spacing); // in case symbol is bigger.
+     // spacing *= 0.75; // Put the data series lines closer together than the header?
+      spacing *= derived().text_margin_;
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
         std::cout <<  "Drawing Legend: text_font_size " << legend_font_size 
           << ", marker shape size = "  << point_size
@@ -2450,7 +2423,9 @@ namespace boost
         g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_);
         g_inner_ptr->style().fill_color(derived().serieses_[i].point_style_.fill_color_);
         g_inner_ptr->style().stroke_width(derived().serieses_[i].line_style_.width_);
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
     std::cout << "g_inner_ptr.style().stroke_color() " << g_inner_ptr->style() << std::endl;
+#endif //BOOST_SVG_POINT_DIAGNOSTICS
         plot_point_style& point_style = derived().serieses_[i].point_style_;
 
         if(point_style.shape_ != none)
@@ -2515,228 +2490,228 @@ namespace boost
       } // for
     } // void draw_legend()
 
-      template <class Derived>
-      void axis_plot_frame<Derived>::draw_plot_point(double x, double y, // X and Y values (in SVG coordinates).
-        g_element& g_ptr,
-        plot_point_style& point_style, 
-        unc<false> ux, unc<false> uy) // Default unc ux = 0. and uy = 0. ?
-      { /*! Draw a plot data point marker shape or symbol
-          whose size and stroke and fill colors are specified in plot_point_style sty,
-          possibly including uncertainty ellipses showing multiples of standard deviation.
-        */
-        /*
-          For 1-D plots, the points do not *need* to be centered on the X-axis,
-          and putting them just above, or sitting on, the X-axis is much clearer.
-          For 2-D plots, the symbol center should, of course, be centered exactly on x, y.
-          circle and ellipse are naturally centered on the point.
-          for rectangle x and y half_height offset centers square on the point.
-          But symbols are in a rectangular box and the offset is different for x & y
-          even assuming that the symbol is centered in the rectangle.
-          the vertical and horizontal ticks are deliberately offset above the axes.
-          TODO Not sure this is fully resolved.
-        */
-        double point_size = point_style.size_;
-        double half_height = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
-        double half_width = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
-        double third_height = point_size / 2.8; // Offset y vertical by third of the symbol size to try to centre symbol on the point coordinates.
+          template <class Derived>
+          void axis_plot_frame<Derived>::draw_plot_point(double x, double y, // X and Y values (in SVG coordinates).
+            g_element& g_ptr,
+            plot_point_style& point_style, 
+            unc<false> ux, unc<false> uy) // Default unc ux = 0. and uy = 0. ?
+          { /*! Draw a plot data point marker shape or symbol
+              whose size and stroke and fill colors are specified in plot_point_style sty,
+              possibly including uncertainty ellipses showing multiples of standard deviation.
+            */
+            /*
+              For 1-D plots, the points do not *need* to be centered on the X-axis,
+              and putting them just above, or sitting on, the X-axis is much clearer.
+              For 2-D plots, the symbol center should, of course, be centered exactly on x, y.
+              circle and ellipse are naturally centered on the point.
+              for rectangle x and y half_height offset centers square on the point.
+              But symbols are in a rectangular box and the offset is different for x & y
+              even assuming that the symbol is centered in the rectangle.
+              the vertical and horizontal ticks are deliberately offset above the axes.
+              TODO Not sure this is fully resolved.
+            */
+            double point_size = point_style.size_;
+            double half_height = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
+            double half_width = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
+            double third_height = point_size / 2.8; // Offset y vertical by third of the symbol size to try to centre symbol on the point coordinates.
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-        std::cout << "point_style.size_ = "<< point_style.size_ << ", y offset half_height - " << half_height << std::endl; // picks up font size shape(diamond).size(20) correctly here.
+            std::cout << "point_style.size_ = "<< point_style.size_ << ", y offset half_height - " << half_height << std::endl; // picks up font size shape(diamond).size(20) correctly here.
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-        point_style.symbols_style_.font_size(point_style.size_); // Sets plot_point marker font size.
+            point_style.symbols_style_.font_size(point_style.size_); // Sets plot_point marker font size.
 
-        //  want this text_styling
-        //point_style.symbols_style_.font_family("arial"); 
-        //point_style.symbols_style_.font_weight("bold"); 
-        //point_style.symbols_style_.font_decoration("underline"); 
-        //point_style.symbols_style_.font_stretch("wider"); 
-        //point_style.symbols_style_.font_style("italic"); 
+            //  want this text_styling
+            //point_style.symbols_style_.font_family("arial"); 
+            //point_style.symbols_style_.font_weight("bold"); 
+            //point_style.symbols_style_.font_decoration("underline"); 
+            //point_style.symbols_style_.font_stretch("wider"); 
+            //point_style.symbols_style_.font_style("italic"); 
 
-        //point_style.symbols_style_.fill_color(sty.fill_color_); // 
-        //point_style.symbols_style_.stroke_color(sty.stroke_color_); // 
+            //point_style.symbols_style_.fill_color(sty.fill_color_); // 
+            //point_style.symbols_style_.stroke_color(sty.stroke_color_); // 
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-        std::cout << "point style() = "<< point_style.style() << std::endl;
-        // Example: point style() = text_style(10, "Lucida Sans Unicode", "", "", "", "")  size is correct here now.
+            std::cout << "point style() = "<< point_style.style() << std::endl;
+            // Example: point style() = text_style(10, "Lucida Sans Unicode", "", "", "", "")  size is correct here now.
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-        // Whatever shape, text or line, want to use the point style.
-        g_ptr.style().stroke_color(point_style.stroke_color_);
-        g_ptr.style().fill_color(point_style.fill_color_);
+            // Whatever shape, text or line, want to use the point style.
+            g_ptr.style().stroke_color(point_style.stroke_color_);
+            g_ptr.style().fill_color(point_style.fill_color_);
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-        std::cout << "polt point marker g_ptr.style() = " << g_ptr.style() << std::endl;
-        // g_ptr.style() svg_style(RGB(255,255,0), RGB(255,0,0), 2, fill, stroke, width)
+            std::cout << "plot point marker g_ptr.style() = " << g_ptr.style() << std::endl;
+            // g_ptr.style() svg_style(RGB(255,255,0), RGB(255,0,0), 2, fill, stroke, width)
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-        switch(point_style.shape_) // Chosen from enum point_shape none, round, square, point, egg
-        {
-        case none:
-          break; // Nothing to display.
+            switch(point_style.shape_) // Chosen from enum point_shape none, round, square, point, egg
+            {
+            case none:
+              break; // Nothing to display.
 
-        // Shapes using SVG line, circle or eclipse functions.
-        case circlet: // Use SVG circle function.
-          g_ptr.circle(x, y, (int)half_height);
-          break;
+            // Shapes using SVG line, circle or eclipse functions.
+            case circlet: // Use SVG circle function.
+              g_ptr.circle(x, y, (int)half_height);
+              break;
 
-        case point:
-          g_ptr.circle(x, y, 1); // Fixed size 1 pixel round.
-          break;
+            case point:
+              g_ptr.circle(x, y, 1); // Fixed size 1 pixel round.
+              break;
 
-        case square:
-          g_ptr.rect(x - half_width, y - half_height, point_size, point_size);
-          break;
+            case square:
+              g_ptr.rect(x - half_width, y - half_height, point_size, point_size);
+              break;
 
-        case egg:
-          // No need for x or y - half width to center on point.
-          g_ptr.ellipse(x, y, half_height, point_size * 1.); // Tall thin egg!
-          break;
+            case egg:
+              // No need for x or y - half width to center on point.
+              g_ptr.ellipse(x, y, half_height, point_size * 1.); // Tall thin egg!
+              break;
 
-        case unc_ellipse:
-          { // std_dev horizontal (and, for 2D, vertical) ellipses for one, two and three standard deviations.
-            double xu = ux.value(); //
-            if (ux.std_dev() > 0)
-            { // std_dev is meaningful.
-              xu +=  ux.std_dev();
+            case unc_ellipse:
+              { // std_dev horizontal (and, for 2D, vertical) ellipses for one, two and three standard deviations.
+                double xu = ux.value(); //
+                if (ux.std_dev() > 0)
+                { // std_dev is meaningful.
+                  xu +=  ux.std_dev();
+                }
+                transform_x(xu); // To SVG coordinates.
+                double x_radius = std::abs<double>(xu - x);
+                if (x_radius <= 0.)
+                { // Make sure something is visible.
+                  x_radius = 1.; // Or size?
+                }
+
+                double yu = uy.value();
+                if (uy.std_dev() > 0)
+                { // std_dev is meaningful.
+                   yu += uy.std_dev();
+                }
+
+                transform_y(yu);
+                double y_radius = std::abs<double>(yu - y);
+                if (y_radius <= 0.)
+                { // Make sure something is visible.
+                  y_radius = 1.;
+                }
+                //image_.g(PLOT_DATA_UNC).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
+                // color set in svg_1d_plot         data at present.
+                g_element* gu3_ptr = &(derived().image_.g(PLOT_DATA_UNC3));
+                g_element* gu2_ptr = &(derived().image_.g(PLOT_DATA_UNC2));
+                g_element* gu1_ptr = &(derived().image_.g(PLOT_DATA_UNC1));
+                gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard deviation.
+                gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard deviation..
+                gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard deviation..
+                g_ptr.circle(x, y, 1); // Show x and y values at center using stroke and fill color of data point marker.
+              }
+              break;
+
+             // Offset from center is not an issue with vertical or horizontal ticks.
+             // But is needed for text and unicode symbols.
+             //point_size / 4. puts bottom tip on the X-axis,
+             //point_size / 2. put center on the X-axis.
+             //x, y, center on the X-axis - probably what is needed for 2-D plots.
+
+            case vertical_tick: // Especially neat for 1-D points.
+              g_ptr.line(x, y, x , y - point_size); // tick up from axis.
+              break;
+            case vertical_line:
+              g_ptr.line(x, y + point_size, x , y - point_size); // line up & down from axis.
+              break;
+            case horizontal_tick:
+              // horizontal_tick is pretty useless for 1-D because the horizontal line is on the X-axis.
+              g_ptr.line(x, y, x + point_size, y ); // tick right from axis.
+              break;
+            case horizontal_line:
+              g_ptr.line(x, y - point_size, x + point_size, y ); // line left & right from axis.
+              // horizontal_line is pretty useless for 1-D because the horizontal line is on the X-axis.
+              break;
+
+            //  Shapes as symbols using SVG text function, (NOT using SVG line, circle or eclipse).
+            case symbol: // Unicode symbol.  see https://unicode-search.net/ for search
+              g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), center_align, horizontal); // symbol(s), size and center.
+
+              // Unicode symbols that work on most browsers are listed at
+              // boost\math\libs\math\doc\sf_and_dist\html4_symbols.qbk,
+              // http://www.htmlhelp.com/reference/html40/entities/symbols.html
+              // and  http://www.alanwood.net/demos/ent4_frame.html
+              // Geometric shapes http://www.unicode.org/charts/PDF/Unicode-3.2/U32-25A0.pdf
+              // Misc symbols http://www.unicode.org/charts/PDF/U2600.pdf
+              // The Unicode value in decimal 9830 or hex x2666 must be prefixed with & and terminated with ;
+              // @b Example: &x2666; for diamond in xml
+              // and then enveloped with "" to convert to a std::string, for example: "&#x2666;" for diamond.
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+              std::cout << "Unicode symbol font size " << point_style.symbols_style_.font_size()
+                << ", at SVG x = " << x << ", y = " << y + half_height<< std::endl;
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+              break;
+            case diamond:
+              g_ptr.text(x, y + third_height, "&#x2666;", point_style.symbols_style_, center_align, horizontal);
+
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+            std::cout << "sty.symbols_style_ " << point_style.symbols_style_ << std::endl;
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+              std::cout << "Diamond style font size " << point_style.symbols_style_.font_size() << std::endl;
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+              // diamond, spades, clubs & hearts fill with expected fill_color.
+              break;
+            case asterisk: // https://unicode-search.net/unicode-namesearch.pl?term=ASTERISK for options
+              // Several options but ASTERISK OPERATOR #2217
+              // U+FE61	SMALL ASTERISK centers OK but is small.
+              // 2732 is open center asterisk.
+              // 273C is open center TEARDROP-SPOKED ASTERISK
+              g_ptr.text(x, y + third_height, "&#x273C;", point_style.symbols_style_, center_align, horizontal);
+              // asterisk is black filled.
+              // .
+              break;
+            case lozenge:
+              g_ptr.text(x, y + third_height, "&#x25CA;", point_style.symbols_style_, center_align, horizontal);
+              // size / 3 to get tip of lozenge just on the X-axis.
+              // lozenge seems not to fill?
+              break;
+            case club:
+              g_ptr.text(x, y + third_height, "&#x2663;", point_style.symbols_style_, center_align, horizontal);
+              // x, y, puts club just on the X-axis.
+              break;
+            case spade:
+              g_ptr.text(x, y + third_height, "&#x2660;", point_style.symbols_style_, center_align, horizontal);
+              //
+              break;
+            case heart:
+              g_ptr.text(x, y + third_height , "&#x2665;", point_style.symbols_style_, center_align, horizontal);
+              //
+              break;
+            case outside_window: // Pointing down triangle used only to show data points that are outside plot window.
+            {
+              bool fill = (point_style.fill_color() != blank);
+              g_ptr.triangle(x - half_height, y - point_size, x + half_height, y - point_size, x, y, fill);
+              // Last point puts the bottom tip of the triangle on the X-axis (so not be suitable for 2-D).
             }
-            transform_x(xu); // To SVG coordinates.
-            double x_radius = std::abs<double>(xu - x);
-            if (x_radius <= 0.)
-            { // Make sure something is visible.
-              x_radius = 1.; // Or size?
-            }
-
-            double yu = uy.value();
-            if (uy.std_dev() > 0)
-            { // std_dev is meaningful.
-                yu += uy.std_dev();
-            }
-
-            transform_y(yu);
-            double y_radius = std::abs<double>(yu - y);
-            if (y_radius <= 0.)
-            { // Make sure something is visible.
-              y_radius = 1.;
-            }
-            //image_.g(PLOT_DATA_UNC).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
-            // color set in svg_1d_plot         data at present.
-            g_element* gu3_ptr = &(derived().image_.g(PLOT_DATA_UNC3));
-            g_element* gu2_ptr = &(derived().image_.g(PLOT_DATA_UNC2));
-            g_element* gu1_ptr = &(derived().image_.g(PLOT_DATA_UNC1));
-            gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard deviation.
-            gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard deviation..
-            gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard deviation..
-            g_ptr.circle(x, y, 1); // Show x and y values at center using stroke and fill color of data point marker.
-          }
-          break;
-
-          // Offset from center is not an issue with vertical or horizontal ticks.
-          // But is needed for text and unicode symbols.
-          //point_size / 4. puts bottom tip on the X-axis,
-          //point_size / 2. put center on the X-axis.
-          //x, y, center on the X-axis - probably what is needed for 2-D plots.
-
-        case vertical_tick: // Especially neat for 1-D points.
-          g_ptr.line(x, y, x , y - point_size); // tick up from axis.
-          break;
-        case vertical_line:
-          g_ptr.line(x, y + point_size, x , y - point_size); // line up & down from axis.
-          break;
-        case horizontal_tick:
-          // horizontal_tick is pretty useless for 1-D because the horizontal line is on the X-axis.
-          g_ptr.line(x, y, x + point_size, y ); // tick right from axis.
-          break;
-        case horizontal_line:
-          g_ptr.line(x, y - point_size, x + point_size, y ); // line left & right from axis.
-          // horizontal_line is pretty useless for 1-D because the horizontal line is on the X-axis.
-          break;
-
-        //  Shapes as symbols using SVG text function, (NOT using SVG line, circle or eclipse).
-        case symbol: // Unicode symbol.  see https://unicode-search.net/ for search
-          g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), center_align, horizontal); // symbol(s), size and center.
-
-          // Unicode symbols that work on most browsers are listed at
-          // boost\math\libs\math\doc\sf_and_dist\html4_symbols.qbk,
-          // http://www.htmlhelp.com/reference/html40/entities/symbols.html
-          // and  http://www.alanwood.net/demos/ent4_frame.html
-          // Geometric shapes http://www.unicode.org/charts/PDF/Unicode-3.2/U32-25A0.pdf
-          // Misc symbols http://www.unicode.org/charts/PDF/U2600.pdf
-          // The Unicode value in decimal 9830 or hex x2666 must be prefixed with & and terminated with ;
-          // @b Example: &x2666; for diamond in xml
-          // and then enveloped with "" to convert to a std::string, for example: "&#x2666;" for diamond.
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
-          std::cout << "Unicode symbol font size " << point_style.symbols_style_.font_size()
-            << ", at SVG x = " << x << ", y = " << y + half_height<< std::endl;
-#endif // BOOST_SVG_POINT_DIAGNOSTICS
-          break;
-        case diamond:
-          g_ptr.text(x, y + third_height, "&#x2666;", point_style.symbols_style_, center_align, horizontal);
-
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
-        std::cout << "sty.symbols_style_ " << point_style.symbols_style_ << std::endl;
-#endif // BOOST_SVG_POINT_DIAGNOSTICS
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
-          std::cout << "Diamond style font size " << point_style.symbols_style_.font_size() << std::endl;
-#endif // BOOST_SVG_POINT_DIAGNOSTICS
-          // diamond, spades, clubs & hearts fill with expected fill_color.
-          break;
-        case asterisk: // https://unicode-search.net/unicode-namesearch.pl?term=ASTERISK for options
-          // Several options but ASTERISK OPERATOR #2217
-          // U+FE61	SMALL ASTERISK centers OK but is small.
-          // 2732 is open center asterisk.
-          // 273C is open center TEARDROP-SPOKED ASTERISK
-          g_ptr.text(x, y + third_height, "&#x273C;", point_style.symbols_style_, center_align, horizontal);
-          // asterisk is black filled.
-          // .
-          break;
-        case lozenge:
-          g_ptr.text(x, y + third_height, "&#x25CA;", point_style.symbols_style_, center_align, horizontal);
-          // size / 3 to get tip of lozenge just on the X-axis.
-          // lozenge seems not to fill?
-          break;
-        case club:
-          g_ptr.text(x, y + third_height, "&#x2663;", point_style.symbols_style_, center_align, horizontal);
-          // x, y, puts club just on the X-axis.
-          break;
-        case spade:
-          g_ptr.text(x, y + third_height, "&#x2660;", point_style.symbols_style_, center_align, horizontal);
-          //
-          break;
-        case heart:
-          g_ptr.text(x, y + third_height , "&#x2665;", point_style.symbols_style_, center_align, horizontal);
-          //
-          break;
-        case outside_window: // Pointing down triangle used only to show data points that are outside plot window.
-        {
-          bool fill = (point_style.fill_color() != blank);
-          g_ptr.triangle(x - half_height, y - point_size, x + half_height, y - point_size, x, y, fill);
-          // Last point puts the bottom tip of the triangle on the X-axis (so not be suitable for 2-D).
-        }
-          break;
-          // Triangles.
-          // Could use black center &#x25BE for pointing down triangle,
-          // or  &#x25B4 for small black center up-pointing triangle 
-          // or &#x25BE for white center small down triangle.
-          case cone: // pointing down triangle, white centre.
-        g_ptr.text(x, y + third_height, "&#x25BD;", point_style.symbols_style_, center_align, horizontal);
-          // https://unicode.org/charts/PDF/U25A0.pdf
-          break;
-
-        case triangle: // Pointing up triangle.
-            g_ptr.text(x, y  + third_height, "&#x25B2;", point_style.symbols_style_, center_align, horizontal);
-              // Also could use &#x25BC for pointing down triangle, and
-              // &#x25B4 for small up-pointing triangle and &#x25BE for small down triangle.
+              break;
+              // Triangles.
+              // Could use black center &#x25BE for pointing down triangle,
+              // or  &#x25B4 for small black center up-pointing triangle 
+              // or &#x25BE for white center small down triangle.
+              case cone: // pointing down triangle, white centre.
+            g_ptr.text(x, y + third_height, "&#x25BD;", point_style.symbols_style_, center_align, horizontal);
               // https://unicode.org/charts/PDF/U25A0.pdf
-            break;
-          case star:
-            g_ptr.text(x, y  + third_height, "&#x2605;", point_style.symbols_style_, center_align, horizontal);
-            break;
+              break;
 
-        case cross: // Not X. Size is full font size 
-          g_ptr.line(x, y + point_size, x , y - point_size); // line up & down from axis,
-          g_ptr.line(x, y - point_size, x + point_size, y ); // & line left & right from axis.
-          // Cross is pretty useless for 1-D because the horizontal line is on the X-axis.
-          break;
-          // TODO Other point_shapes do nothing yet.
-        }
-      } // void draw_plot_point
+            case triangle: // Pointing up triangle.
+               g_ptr.text(x, y  + third_height, "&#x25B2;", point_style.symbols_style_, center_align, horizontal);
+                 // Also could use &#x25BC for pointing down triangle, and
+                 // &#x25B4 for small up-pointing triangle and &#x25BE for small down triangle.
+                 // https://unicode.org/charts/PDF/U25A0.pdf
+               break;
+             case star:
+               g_ptr.text(x, y  + third_height, "&#x2605;", point_style.symbols_style_, center_align, horizontal);
+               break;
+
+            case cross: // Not X. Size is full font size 
+              g_ptr.line(x, y + point_size, x , y - point_size); // line up & down from axis,
+              g_ptr.line(x, y - point_size, x + point_size, y ); // & line left & right from axis.
+              // Cross is pretty useless for 1-D because the horizontal line is on the X-axis.
+              break;
+              // TODO Other point_shapes do nothing yet.
+            }
+          } // void draw_plot_point
 
           template <class Derived>
           void axis_plot_frame<Derived>::draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, Meas uvalue)
@@ -2744,7 +2719,7 @@ namespace boost
           void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, unc<false> uvalue)
              Write one data point (X or Y) value as a string, for example "1.23e-2",
              near the data point marker.
-             Unnecessary e, +, \& leading exponent zeros may optionally be stripped (highly recommended),
+             Unnecessary e, +, \& leading exponent zeros may optionally be stripped,
              and the position and rotation controlled.
              std_dev estimate, typically standard deviation
              (approximately half conventional 95% confidence "plus or minus")
@@ -2879,15 +2854,15 @@ namespace boost
 
             std::string label_u; // std_dev or text_plusminus.
             // std::string label_df; // Degrees of freedom estimate.
-            std::string pm_symbol = "&#x00A0;&#x00B1;"; //! Unicode space and text_plusminus glyph.
+            std::string pm_symbol = "&#x00A0;&#x00B1;"; //! Unicode space text_plusminus glyph.
             // Might also use ANSI symbol for text_plusminus 0xF1 == '\361' or char(241)
             // but seems to vary with different codepages:
             // LOCALE_SYSTEM_DEFAULT LOCALE_IDEFAULTANSICODEPAGE == 1252
             // LOCALE_SYSTEM_DEFAULT  LOCALE_IDEFAULTCODEPAGE ==  850 for country 44 (UK)
             // And seems to vary from console to printable files.
-            // Spaces seem to get lost, so use Unicode 00A0 as an explicit space glyph.
+            // Spaces seem to get lost, so use 00A0 as an explicit space glyph.
             // Layout seems to vary with font - Times New Roman leaves no space after.
-            //text_element& t = g_ptr.text(x, y, label_v, val_style.values_text_style_, val, rot);
+            //text_element& t = g_ptr.text(x, y, label_v, val_style.values_text_style_, al, rot);
            // Optionally, show std_dev as 95% confidence plus minus:  2.1 +-0.012 (23)
 
             // Extra info from Meas.
