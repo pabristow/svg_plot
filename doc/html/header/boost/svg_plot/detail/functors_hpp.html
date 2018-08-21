@@ -26,10 +26,10 @@
 <div class="titlepage"><div><div><h3 class="title">
 <a name="header.boost.svg_plot.detail.functors_hpp"></a>Header &lt;<a href="../../../../../../../../boost/svg_plot/detail/functors.hpp" target="_top">boost/svg_plot/detail/functors.hpp</a>&gt;</h3></div></div></div>
 <p>Functors to convert data to doubles. </p>
-<p>SVG plot assumes all data are convertible to double or uncertain value type unc before being plotted. The functors are used to convert both 1D and 2D (pairs of data values) to be converted. Note that uncertain value class unc only holds double precision and long double data will therefore lose information. This seems reasonable design decision as any real data to be plotted is unlikely to have more than double precision (about 16 decimal digits).</p>
-<p>Jacob Voytko and Paul A. Bristow </p>
-<p>
-</p>
+<p>SVG plot assumes all data are convertible to double or uncertain value type unc before being plotted. The functors are used to convert both 1D and 2D (pairs of data values) to be converted. Note that uncertain value class unc only holds double precision so higher precision data type will therefore lose information. This seems a reasonable design decision as any real data to be plotted is unlikely to have more than double precision (about 16 decimal digits).</p>
+<p>"svg_plot\example\convertible_to_double.cpp" demonstrates that built-in types <code class="computeroutput">float</code>, <code class="computeroutput">double</code>, <code class="computeroutput">long</code> double @ Boost.Multiprecision <code class="computeroutput">cpp_bin_float_quad</code> work as expected, as well as a sample User Defined Type (UDT) a fixed-point type.</p>
+<p>Types that cannot be converted to double nor constructible from double provoke a compile-time message: "Uncertain types must be convertible to double!"</p>
+<p>(This uses checks using <a href="http://www.cplusplus.com/reference/type_traits/is_constructible/" target="_top">http://www.cplusplus.com/reference/type_traits/is_constructible/</a> <code class="computeroutput">BOOST_STATIC_ASSERT_MSG</code>(std::is_constructible&lt;T, double&gt;::value, "Uncertain types must be convertible to double!"); ). </p>
 <p>Mar 2009 </p>
 <p>
 </p>

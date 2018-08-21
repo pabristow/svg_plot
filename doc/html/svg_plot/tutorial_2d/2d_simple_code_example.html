@@ -150,6 +150,19 @@
 <p>
         You can view this file with most internet browsers, and other programs too.
       </p>
+<p>
+        The container type chosen above is a <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">map</span></code> used
+        for type <code class="computeroutput"><span class="keyword">double</span></code> here. The data
+        type must be convertible to type <code class="computeroutput"><span class="keyword">double</span></code>,
+        so <code class="computeroutput"><span class="keyword">float</span></code>, <code class="computeroutput"><span class="keyword">double</span></code>,
+        and <code class="computeroutput"><span class="keyword">long</span> <span class="keyword">double</span></code>,
+        as well as some __UDT are suitable, but not __multiprecision types. If your
+        data is one of these types, it must be converted to <code class="computeroutput"><span class="keyword">double</span></code>
+        before adding to the <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">map</span></code>.
+      </p>
+<p>
+        Some demonstrations are at <a href="../../../../example/convertible_to_double.cpp" target="_top">convertible_to_double.cpp</a>
+      </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>

@@ -34,10 +34,10 @@
 </span>
 <span class="keyword">struct</span> <a class="link" href="q_path.html" title="Struct q_path">q_path</a> <span class="special">:</span> <span class="keyword">public</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">path_point</span> <span class="special">{</span>
   <span class="comment">// <a class="link" href="q_path.html#boost.svg.q_pathconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="q_path.html#id1073158-bb"><span class="identifier">q_path</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="q_path.html#id569967-bb"><span class="identifier">q_path</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="q_path.html#id1073117-bb">public member functions</a></span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="q_path.html#id1073141-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="q_path.html#id569921-bb">public member functions</a></span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="q_path.html#id569912-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="keyword">bool</span> <span class="identifier">relative</span><span class="special">;</span>  <span class="comment">// If true relative else absolute. </span>
@@ -47,22 +47,22 @@
   <span class="keyword">double</span> <span class="identifier">y1</span><span class="special">;</span>  <span class="comment">// quadratic Bezier curve control Y coordinate. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1680978"></a><h2>Description</h2>
+<a name="id1180396"></a><h2>Description</h2>
 <div class="refsect2">
-<a name="id1680970"></a><h3>
+<a name="id1180386"></a><h3>
 <a name="boost.svg.q_pathconstruct-copy-destruct"></a><code class="computeroutput">q_path</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><a name="id1073158-bb"></a><span class="identifier">q_path</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">bool</span> relative <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id569967-bb"></a><span class="identifier">q_path</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">bool</span> relative <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Constructor quadratic Bezier curve. </p>
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1681063"></a><h3>
-<a name="id1073117-bb"></a><code class="computeroutput">q_path</code> public member functions</h3>
+<a name="id1180472"></a><h3>
+<a name="id569921-bb"></a><code class="computeroutput">q_path</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id1073141-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands like "M1.2, 3.4", <p>&lt; Write a quadratic Bezier curve SVG XML to ostream. </p>
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id569912-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands like "M1.2, 3.4", <p>&lt; Write a quadratic Bezier curve SVG XML to ostream. </p>
 </li></ol></div>
 </div>
 </div>

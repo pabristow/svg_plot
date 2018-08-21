@@ -342,9 +342,9 @@ namespace svg
     double x_; //!< X-axis coordinate of the side of the rectangle which has the smaller x-axis coordinate value.
     double y_; //!< Y-axis coordinate of the side of the rectangle which has the smaller y-axis coordinate value.
     //!< So (0, 0) is top left corner of rectangle.
-    double width_; //!< x + width is top right.
-    double height_; //!< y + height is bottom left.
-    //!< x + width and y + height is bottom right.
+    double width_; //!< x_ + width_ is top right.
+    double height_; //!< y_ + height_ is bottom left.
+    //!< x_ + width_ and y_ + height_ is bottom right.
   public:
 
     rect_element(double x, double y, double w, double h)

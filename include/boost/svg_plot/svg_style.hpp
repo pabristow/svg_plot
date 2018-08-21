@@ -5,8 +5,12 @@
    This module provides struct plot_point_style & struct plot_line_style
    and class svg_style holding the styles.
    See http://www.w3.org/TR/SVG11/styling.html
+
+   #define BOOST_SVG_STYLE_DIAGNOSTICS for diagnostic output.
+
   \date Mar 2009
   \author Jacob Voytko and Paul A. Bristow
+
 */
 
 //  svg_style.hpp
@@ -25,6 +29,8 @@
 #  pragma warning (disable : 4512) // assignment operator could not be generated.
 #endif
 
+//#define BOOST_SVG_STYLE_DIAGNOSTICS for diagnostic output.
+
 #include "svg_color.hpp"
 // using svg_color
 #include "detail/svg_style_detail.hpp"
@@ -41,11 +47,17 @@ namespace boost
 namespace svg
 {
 
+  static const double aspect_ratio = 0.6;  //!< aspect_ratio is a guess at average height to width of font.
+  //!< used to estimate the svg length of a title or header string from the font size. 
+  //!< (This can only be quite approximate as varies on type of font (narrow or bold)
+  //!< and the mix of characters widths (unless monospace font).
+
   /*! Default font chosen is a Unicode font like ['Lucida Sans Unicode] that
    has the best chance of ['symbols] being rendered corrrectly.
    Used for title, legend, axes ... unless overridden by an explicit font specification.
   */
   const static char* default_font("Lucida Sans Unicode");
+
 
 // Forward declarations of classes in svg_style.hpp
 class svg_style; // Holds the basic stroke, fill colors and width, and their switches.
@@ -390,12 +402,12 @@ public:
   text_style& text_style::font_size(unsigned int i)
   { //! Set font size (svg units usually pixels) default 10.
     font_size_ = i;
-    return *this; //! \return text_style& to make chainable.
-    //! \return reference to text_style to make chainable.
+    return *this; 
+    //! \return reference to @c text_style& to make chainable.
   }
 
   const std::string& text_style::font_family() const
-  { //! \return  font family as string.
+  { //! \return font family as @c std::string, for example: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"..
     return font_family_;
   }
 
@@ -407,8 +419,10 @@ public:
       http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-01-t.svg\n
       which tests three styles of font, serif, sans-serif and mono-spaced.\n
       \verbatim
-        <text font-family="Georgia, 'Minion Web', 'Times New Roman', Times, 'MS PMincho', Heisei-Mincho, serif " x="20" y="80">A serifed face</text>\n
-        <text font-family="Arial, 'Arial Unicode', 'Myriad Web', Geneva, 'Lucida Sans Unicode', 'MS PGothic', Osaka, sans-serif " x="20" y="160">A sans-serif face</text>\n
+        <text font-family="Georgia, 'Minion Web', 'Times New Roman', Times, 'MS PMincho', Heisei-Mincho, serif " x="20" y="80">A serifed face</text>
+
+        <text font-family="Arial, 'Arial Unicode', 'Myriad Web', Geneva, 'Lucida Sans Unicode', 'MS PGothic', Osaka, sans-serif " x="20" y="160">A sans-serif face</text>
+
         <text font-family="'Lucida Console', 'Courier New', Courier, Monaco, 'MS Gothic', Osaka-Mono, monospace" x="20" y="240">A mono (iW) face</text>
       \endverbatim
     */
@@ -1140,7 +1154,7 @@ public:
   }
 
   double axis_line_style::width()
-  { //! \return  width of an axis line.
+  { //! \returns width of an axis line (pixels).
     return axis_width_;
   }
 
@@ -1741,32 +1755,43 @@ const std::string strip_e0s(std::string s)
   return s; //! \return length of trimmed string (perhaps unchanged).
 } // const std::string strip(double d)
 
- static const double wh = 0.7; //!< font text width/height ratio.
+ // static const double wh = 0.7; //!< font text width/height ratio.
+// Now aspect_ratio.
   /*! \details
   http://www.w3.org/TR/SVG/text.html#FontSizeProperty
-  Font size is the height of the text's font, so width = wh * font_size.
+  Font size is the height of the text's font, so width = aspect_ratio * font_size.
 
   Even after reading http://www.w3.org/TR/SVG/fonts.html,\n
   unclear how to determine the exact width of digits, so an
-  arbitrary average width height ratio wh = 0.7 is used as a good approximation.
+  arbitrary average width height ratio aspect_ratio = 0.7 is used as a good approximation.
   */
 
 double string_svg_length(const std::string& s, const text_style& style)
 {
   /*
+  \brief Compute svg length of @c std::string.
+  \param s @c std::string that may contains embedded Unicode symbols in hex format, for example &#x3A9;
+  \param style text_style containing font size, family, weight etc. \sa text_style.
   \verbatim
-  To avoid big centering misalignments caused by a Unicode hex value
-  counting as 6 characters instead of one actual symbol,
+  To avoid big length and centering misalignments caused by
+  a 7 character Unicode hex value counting as 6 characters instead of one actual symbol,
   if possible use an actual length, but probably platform and/or browser-dependent,
   else use average char width,
   and deal with Unicode, for example &#x3A9; = greek omega,
-  counting each symbol(s) embedded between & and ; as one character,
-  and ignore embedded xml like <sub> (not implemented by all browsers yet).
+  counting each symbol(s) embedded between & and ; as one character.
+
+  Also ignore embedded xml like <sub> (not implemented by all browsers yet).
+
+  Uses @c aspect_ratio to estimate width of characters from font_size (height).
   \endverbatim
-  \return length of string in SVG units depending on text_style (font size etc).
+  \returns length of string in SVG units depending on text_style (font size etc).
+
+  \example
+    \code double title_svg_length = string_svg_length(derived().title(), derived().title_info_.textstyle());
+    \endcode
  */
 
- double d = 0.; // Estimated or actual width of resulting svg string.
+ int chars = 0; // Actual number of characters in string.
  bool in_esc = false;
  for (std::string::const_iterator i = s.begin(); i != s.end(); i++)
  {
@@ -1776,7 +1801,7 @@ double string_svg_length(const std::string& s, const text_style& style)
        while ((*i != ';')
          && (i != s.end())) // In case mistakenly not null terminated.
        {
-          i++; // Only count a Unicode string like &#x3A9; as 1 character (omega) wide.
+          i++; // Only count a Unicode string like &#x3A9; as 1 character (greek omega) wide.
        }
        in_esc = false;
     }
@@ -1788,14 +1813,17 @@ double string_svg_length(const std::string& s, const text_style& style)
        {
            i++; // Only count <...>; as NO characters wide.
        }
-       d--;
+       chars--;
        in_esc = false;
     }
-    d++;
+    chars++;
  }
- // std::cout << "string " << s << " has " << d << " characters." << std::endl;
- return d * style.font_size() * wh;
-} // double string_svg_length(
+ double svg_length = chars * (style.font_size() * aspect_ratio);  // Estimated width of svg string.
+#ifdef BOOST_SVG_STYLE_DIAGNOSTICS
+  std::cout << "string \"" << s << "\" has " << chars << " characters, and svg length is " << svg_length << std::endl;
+#endif // BOOST_SVG_STYLE_DIAGNOSTICS
+ return svg_length;
+} // double string_svg_length(const std::string& s, const text_style& style)
 
 }//svg
 }//boost

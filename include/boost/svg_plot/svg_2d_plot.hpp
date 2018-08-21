@@ -13,7 +13,7 @@
  */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2007, 2008, 2009, 2012, 2013, 2014, 2016
+// Copyright Paul A. Bristow 2007, 2008, 2009, 2012, 2013, 2014, 2016, 2018
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -72,6 +72,9 @@ namespace boost
 
     // Forward declarations.
 //! \cond DETAIL
+    //! Add/uncomment in jamfile.v2
+    // <doxygen:param>ENABLED_SECTIONS="DETAIL" # enable Doxygen indexing of all DETAIL sections.  (Only useful for maintainers).
+
     const std::string strip_e0s(std::string s); // Strip unnecessary zeros and e and sign.
 //! \endcond
     class svg_2d_plot; // 2D Plot framework.
@@ -493,7 +496,8 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
 
       svg image_; //!< Stored so as to avoid rewriting style information constantly.
 
-      double text_margin_; //!< Marginal space around text items like title. @c text_margin_*font_size = distance in svg units.
+      double text_margin_; //!< Marginal space factor around text items like title. @c text_margin_*font_size = vertical distance in svg units,
+      //!< @c text_margin_*font_size = horizontal distance in svg units.
 
       text_style a_style_; //!< Defaults for text_style (contains font size & type etc).
       text_style title_style_; //!< Style for plot title.
@@ -555,17 +559,25 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       ticks_labels_style x_ticks_; //!< Style of X-axis tick marks and labels.
       ticks_labels_style y_ticks_; //!< Style of Y-axis tick marks and labels.
 
-      bool title_on_; //!< true if to display a title for the whole plot.
-      bool legend_on_; //!< true if to provide a legend box.
-      bool outside_legend_on_; //!< true if legend box should be outside the plot window.
-      bool legend_lines_; //!< true if to add a colored line for each data series in legend box.
+      bool title_on_; //!< true if to display a title for the whole plot (default @c true).
+      bool legend_on_;//!< true if to provide a legend box (default false unless a legend header title is set so that legend_header_.text() != "").
+      bool is_legend_header_; //!< @c true if legend_header_.text() != "" (for example: @c .legend_title("My Legend");) (default @c false).
+      bool is_a_point_marker_; //! @c true if any data series have point markers to show in legend (default @c false).
+      bool is_a_data_series_line_;  //!< @c true if any series have lines to show in legend (default @c false). Example: @c .line_on(true). 
+      bool is_a_data_series_text_;  //!< @c true is any series should show text describing the data series (default @c false). For example: @c my_plot.plot(my_data_0, "my_data_0_text"); 
+      double legend_font_size_; //!< Font size of legend header/title.
+      double series_text_font_size_; //!< Font size of lines of text describing data series (at present same as legend_font_size_).
+      double legend_widest_line_; //!< Width of longest of legend header/title and widest data series pointer+line+text.
+      double biggest_point_font_size_; //!< Biggest point marker symbol - determines vertical spacing.
+      bool outside_legend_on_; //!< @c true if legend box should be outside the plot window (default @c true).
+      bool legend_lines_; //!< @c true if wish to add a colored line for each data series in legend box.
       // This should be any data series?
       bool plot_window_on_; //!< true if to use a separate plot window (not the whole image).
-      bool x_ticks_on_; //!< true if X-axis to have ticks.
-      bool y_ticks_on_; //!< true if Y-axis to have ticks.
-      bool x_values_on_; //!< true if values of X data are shown (as 1.23).
-      bool y_values_on_; //!< true if values of Y data are shown (as 3.45).
-      bool xy_values_on_; //!< true if values of X & Y pairs are shown (as 1.23, 3.43).
+      bool x_ticks_on_; //!< @c true if X-axis to have ticks.
+      bool y_ticks_on_; //!< @c true if Y-axis to have ticks.
+      bool x_values_on_; //!< @c true if values of X data are shown (as 1.23).
+      bool y_values_on_; //!< @c true if values of Y data are shown (as 3.45).
+      bool xy_values_on_; //!< @c true if values of X & Y pairs are shown (as 1.23, 3.43).
 
       int x_axis_position_; //!< Intersection with Y-axis, or not.
       int y_axis_position_; //!< Intersection with X-axis, or not.
@@ -684,11 +696,18 @@ my_plot.background_color(ghostwhite) // Whole image.
         legend_height_(0), // height of legend box (pixels)
         legend_left_(-1), legend_right_(-1), legend_top_(-1), legend_bottom_(-1), // Default top left of plot window.
         legend_place_(outside_right), // default but interacts with using plot_window.
-        legend_on_(false),
-        legend_longest_(0),
-        outside_legend_on_(true),
-        plot_window_clip_("plot_window"), // for <clipPath id="plot_window" ...
         title_on_(true),
+        legend_on_(false),
+        is_legend_header_(false),
+        is_a_point_marker_(false),
+        is_a_data_series_line_(false),
+        is_a_data_series_text_(false),
+        legend_font_size_(0.), //!< legend header or title font size (set in @c size_legend_box and used to @c draw_legend_box).
+        legend_widest_line_(0), //!< Longest width of sum of point marker, line and data series text and legend header.
+        biggest_point_font_size_(0.), //!< Biggest font of point marker, line and data series text and legend header.
+        outside_legend_on_(true), //!< @c true if legend is @b outside the plot window axes (default true).
+        plot_window_clip_("plot_window"), // for <clipPath id="plot_window" ...
+
         plot_window_on_(true),
         // Can have either or both X and Y value shown.
         x_values_on_(false), // If X values of data points are shown.
@@ -703,7 +722,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         alpha_(0.05), //!<  alpha for calculating confidence interval, default 0.05 for 95%.
         // oss.iword(confidenceIndex) / 1.e6; 95% confidence.
         epsilon_(0.05), // = oss.iword(roundingLossIndex) / 1.e3; // = allow 5% rounding loss.
-        uncSigDigits_(2), // = oss.iword(setUncSigDigitsIndex); // ISO standard =2 by default.
+        uncSigDigits_(2), // = oss.iword(setUncSigDigitsIndex); // ISO standard = 2 by default.
         isNoisyDigit_(false), // Add extra digit to display?
 
         // Autoscaling defaults.
