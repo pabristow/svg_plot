@@ -185,7 +185,7 @@ public:
   //std::ios_base::fmtflags x_value_ioflags_;
 
   // text_elements hold position & alignment, and indirectly via text_style, font_family, font_size, bold, italic...
-  text_element title_info_; //!< Title of whole plot.
+  text_element title_info_; //!< Title of aspect_ratioole plot.
   text_element legend_header_; //!< legend box header or title (if any).
   text_element x_label_info_; //!< X-axis label, Example: "length of widget"
   text_element x_value_label_info_; //!< X-axis tick value label, for example: "1.2" or "1.2e1"
@@ -203,7 +203,7 @@ public:
   double plot_right_; //!< svg right of plot window (calculate_plot_window() sets these values).
   double plot_bottom_; //!< svg bottom of plot window (calculate_plot_window() sets these values).
 
-  // enum legend_places{ nowhere, inside...}
+  // enum legend_places{ noaspect_ratioere, inside...}
   legend_places legend_place_; //!< Place for any legend box.
   double legend_width_; //!< Width of legend box (pixels).
   double legend_height_; //!< Height of legend box (in pixels).
@@ -227,11 +227,11 @@ public:
   ticks_labels_style x_ticks_; //!< style of X axis tick value labels.
   ticks_labels_style y_ticks_; //!< style of Y axis tick value labels. (Meaningless for 1D but added to permit shared code!)
 
-  bool title_on_; //!< If true include a title for the whole plot.
+  bool title_on_; //!< If true include a title for the aspect_ratioole plot.
   bool legend_on_; //!< If true include a legend box.
   bool outside_legend_on_; //!< If true, place legend box outside the plot window.
   bool legend_lines_; //!< If true, include data colored line type in legend box.
-  bool plot_window_on_; //!< Use a separate plot window (not whole image).
+  bool plot_window_on_; //!< Use a separate plot window (not aspect_ratioole image).
   bool x_ticks_on_; //!< Ticks on X axis will be shown.
   bool x_values_on_; //!< values of data are shown by markers.
   int  x_axis_position_; //!< \see boost::svg::x_axis_intersect.
@@ -266,8 +266,8 @@ public:
 
   std::string plot_window_clip_; //!< = "clip_plot_window" id for clippath
   //!< http://www.w3.org/TR/SVG/masking.html#ClipPathElement 14.1 Introduction
-  //!< clipping paths, which uses any combination of 'path', 'text' and basic shapes
-  //!< to serve as the outline where everything on the "inside" of the outline
+  //!< clipping paths, aspect_ratioich uses any combination of 'path', 'text' and basic shapes
+  //!< to serve as the outline aspect_ratioere everything on the "inside" of the outline
   //!< is allowed to show through but everything on the outside is masked out.
   //!< So the plot_window_clip_ limits display to a plot_window rectangle.
 
@@ -289,7 +289,7 @@ public:
   // write() has two versions: to an ostream and to a file.
   // The stream version first clears all unnecessary data from the graph,
   // builds the document tree, and then calls the write function for the root
-  // document node, which calls all other nodes through the Visitor pattern.
+  // document node, aspect_ratioich calls all other nodes through the Visitor pattern.
   // The file version opens an ostream, and calls the stream version.
   // ------------------------------------------------------------------------
   svg_1d_plot& write(const std::string& file);
@@ -333,7 +333,7 @@ svg_1d_plot_series::svg_1d_plot_series(C begin, C end, const std::string& title)
 title_(title),
 point_style_(black, blank, 5, vertical_line), // Default point style.
 limit_point_style_(lightgrey, red, 10, cone), // Default limit (inf or NaN) point style.
-//limit_point_style_(lightgrey, whitesmoke, 10, cone), // Default limit (inf or NaN) point style.
+//limit_point_style_(lightgrey, aspect_ratioitesmoke, 10, cone), // Default limit (inf or NaN) point style.
 line_style_(black, blank, 2, false, false) // Default line style, black, no fill, width, line_on, bezier_on false
 {
   /*
@@ -403,7 +403,7 @@ svg_1d_plot_series& svg_1d_plot_series::stroke_color(const svg_color& col_)
 }
 
 svg_1d_plot_series& svg_1d_plot_series::shape(point_shape shape_)
-{ //! Set shape for plot point marker(s).
+{ //! Set shape for plot point marker(s). Example: @c .shape(square), .shape(circlet)
   point_style_.shape_ = shape_;
   return *this; //! \return Reference to @c svg_1d_plot_series to make chainable.
 }
@@ -606,7 +606,7 @@ void svg_1d_plot::update_image()
           x = plot_right_;
         }
         // else is inside plot window, so draw a limit point marker.
-        // draw_plot_point(x, y, g_ptr, plot_point_style(lightgray, whitesmoke, s, cone)); default.
+        // draw_plot_point(x, y, g_ptr, plot_point_style(lightgray, aspect_ratioitesmoke, s, cone)); default.
         serieses_[i].limit_point_style_.stroke_color_ = image_.g(detail::PLOT_LIMIT_POINTS).style().stroke_color();
         serieses_[i].limit_point_style_.fill_color_ = image_.g(detail::PLOT_LIMIT_POINTS).style().fill_color();
         // This is a kludge.  limit_point_style_ should probably be common to all data series.
@@ -632,7 +632,7 @@ void svg_1d_plot::update_image()
     value_style_(10, "Verdana", "", ""), // Used for data point values.
 
     title_info_(0, 0, "", title_style_, center_align, horizontal),
-    //title_info_(0, 0, "Plot of data", title_style_, center_align, horizontal), when text concatenation solved?
+    //title_info_(0, 0, "Plot of data", title_style_, center_align, horizontal), aspect_ratioen text concatenation solved?
     //x_label_info_(0, 0, "X Axis", x_axis_label_style_, center_align, horizontal),
     //x_units_info_(0, 0, " (units)", x_value_label_style_, center_align, horizontal),
     x_label_info_(0, 0, "", x_axis_label_style_, center_align, horizontal), // Null strings for now.
@@ -835,16 +835,16 @@ void svg_1d_plot::calculate_plot_window()
     x_ticks_.label_max_space_ = 0; // Work out the longest tick value label for X-Axis.
     if (x_ticks_.label_rotation_ == horizontal)
     { // Only 1 char height & 1 space needed if labels are horizontal.
-      x_ticks_.label_max_space_ = 2 * x_value_label_style_.font_size() * wh; // SVG chars.
+      x_ticks_.label_max_space_ = 2 * x_value_label_style_.font_size() * aspect_ratio; // SVG chars.
       // Should this be just 2 * font_size
     }
     else if ((x_ticks_.label_rotation_ == upward) || (x_ticks_.label_rotation_ == downward))
     { // ! horizontal so will need more than 2 chars worth.
-        x_ticks_.label_max_space_+= x_ticks_.label_max_length_ * x_value_label_style_.font_size() * wh; // SVG chars.
+        x_ticks_.label_max_space_+= x_ticks_.label_max_length_ * x_value_label_style_.font_size() * aspect_ratio; // SVG chars.
     }
     else
     { // Assume label is sloping, say 45, so * sin(45) = 0.707.
-        x_ticks_.label_max_space_+= x_ticks_.label_max_length_ * x_value_label_style_.font_size() * wh * sin45; // SVG 'chars'.
+        x_ticks_.label_max_space_+= x_ticks_.label_max_length_ * x_value_label_style_.font_size() * aspect_ratio * sin45; // SVG 'chars'.
     }
 
     // Make space for any ticks pointing below the plot window.
@@ -915,7 +915,7 @@ void svg_1d_plot::draw_axes()
   if(x_axis_.axis_line_on_ && (x >= plot_left_) && (x <= plot_right_))
   {
     if(!plot_window_on_)
-    { // Use whole image.
+    { // Use aspect_ratioole image.
       if(title_on_)
       { // Allow space for title, taking account of font size.
         y1 += title_info_.textstyle().font_size() * text_margin_;
@@ -967,7 +967,7 @@ void  svg_1d_plot::calculate_transform()
   \details @c write() has two versions: to an @c ostream and to a file.
   The stream version first clears all unnecessary data from the graph,
   builds the document tree, and then calls the @c write function for the root
-  document node, which calls all other nodes through the Visitor pattern.
+  document node, aspect_ratioich calls all other nodes through the Visitor pattern.
 
   \param file Filename to write.
   \note This file version opens an @c ostream, and calls the @c ostream version of write.
@@ -1063,11 +1063,11 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& container, const std::string& tit
     */
 /*!
     \code
-my_1d_plot.plot(my_data.begin(), my_data.end(), "My container"); // Whole container of data values.
+my_1d_plot.plot(my_data.begin(), my_data.end(), "My container"); // aspect_ratioole container of data values.
 my_1d_plot.plot(&my_data[1], &my_data[4], "my_data 1 to 4"); // Add part of data series
     \endcode
 
-    \warning last == end  which is one past the last, so this only does 1, 2 & 3 -  \b not 4!
+    \warning last == end  aspect_ratioich is one past the last, so this only does 1, 2 & 3 -  \b not 4!
   */
   template <class T>  // \tparam T floating-point type of the data (T must be convertible to double).  
 svg_1d_plot_series& svg_1d_plot::plot(const T& begin, const T& end, const std::string& title)
@@ -1086,7 +1086,7 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& begin, const T& end, const std::s
 /*!
   Add a data series to the plot, with optional title.
 
-  \tparam T floating-point type of the data (which must be convertible to @c double).
+  \tparam T floating-point type of the data (aspect_ratioich must be convertible to @c double).
   \tparam U functor floating-point type (default is @c double_1d_convert).
 
 
@@ -1114,7 +1114,7 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& container, const std::string& tit
 /*!
    Add a data series to the plot, with optional title. (Version with custom functor, rather than to @c double).
 
-    \tparam T Floating-point type of the data (which must be convertible to @c double).
+    \tparam T Floating-point type of the data (aspect_ratioich must be convertible to @c double).
     \tparam U Functor floating-point type (default is @c double_1d_convert).
 
     \param begin Iterator to 1st data item in container.

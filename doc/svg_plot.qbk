@@ -2,7 +2,7 @@
     [quickbook 1.7]
     [id svg_plot]
     [authors [Voytko, Jake], [Bristow, Paul A.]]
-    [copyright 2007 to 2013 Jake Voytko and Paul A. Bristow]
+    [copyright 2007 to 2018 Jake Voytko and Paul A. Bristow]
     [license
         Distributed under the Boost Software License, Version 1.0.
         (See accompanying file LICENSE_1_0.txt or copy at
@@ -154,6 +154,10 @@ the SVG standard.
 
     <index type="macro_name">
     <title>Macro Index</title>
+    </index>
+
+    <index type="typdef">
+    <title>typedef Index</title>
     </index>
 
    <index/>

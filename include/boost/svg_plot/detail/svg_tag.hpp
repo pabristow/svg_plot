@@ -2109,7 +2109,7 @@ public:
       return *(static_cast<rect_element*>(&children[children.size()-1]));
     }
 
-    circle_element& circle(double x, double y, unsigned int radius = 5)
+    circle_element& circle(double x, double y, double radius = 5.)
     { //! Add a new circle element.
       //! \return A reference to the new child node just created.
       children.push_back(new circle_element(x, y, radius));

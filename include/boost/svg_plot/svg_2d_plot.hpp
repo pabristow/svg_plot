@@ -78,7 +78,7 @@ namespace boost
     const std::string strip_e0s(std::string s); // Strip unnecessary zeros and e and sign.
 //! \endcond
     class svg_2d_plot; // 2D Plot framework.
-    class svg_2d_plot_series; // One series of data to plot.
+    class svg_2d_plot_series; // One series of 2D data values to plot.
 
  /*!  \class boost::svg::svg_2d_plot_series
       \brief Holds a series of 2D data values (points) to be plotted.
@@ -97,7 +97,6 @@ namespace boost
         are unaffected by the order in which data is presented.
        (For 1-D a vector of doubles can be used).
    */
-
 
   class svg_2d_plot_series
   {
@@ -242,8 +241,8 @@ namespace boost
   }
 
   svg_2d_plot_series& svg_2d_plot_series::shape(point_shape shape_)
-  { //!< Set Data series point marker shape.
-    //!< Example: @c .shape(square), .shape(circlet)
+  { //! Set Data series point marker shape.
+    //! Example: @c .shape(square), .shape(circlet)
     point_style_.shape_ = shape_;
     return *this;
   }
@@ -391,7 +390,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
 
   // Point font control get functions.
   const std::string svg_2d_plot_series::point_font_family()
-  { //! \return Font family of data point marker(s) symbol. "arial"
+  { //! \return Font family of data point marker(s) symbol. Examples: "arial", "verdana", "courier" ...
     return point_style_.symbols_style_.font_family_;
   }
   const std::string svg_2d_plot_series::point_font_weight()
@@ -399,20 +398,20 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
     return point_style_.symbols_style_.weight_;
   }
   const std::string svg_2d_plot_series::point_font_decoration()
-  { //! \return Decoration of data point marker(s) "underline".
+  { //! \return Decoration of data point marker(s). Examples: "underline", "strikethru".
     return point_style_.symbols_style_.decoration_;
   }
   const std::string svg_2d_plot_series::point_font_stretch()
-  { //! \return stretch of data point marker(s) "narrow".
+  { //! \return stretch of data point marker(s). Examples: "narrow", "wide".
     return point_style_.symbols_style_.stretch_;
   }
   const std::string svg_2d_plot_series::point_font_style()
-  { //! \return style of data point marker(s) "bold".
+  { //! \return style of data point marker(s) "bold", "italic" ..
     return point_style_.symbols_style_.style_;
   }
 
   point_shape svg_2d_plot_series::shape()
-  { //! \return shape of data point marker(s). Examples "square", "cone", circlet .... (See enum point_shape)
+  { //! \return shape of data point marker(s). Examples "square", "cone", circlet ... (See enum point_shape).
     return point_style_.shape_;
   }
 
@@ -501,7 +500,8 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
 
       text_style a_style_; //!< Defaults for text_style (contains font size & type etc).
       text_style title_style_; //!< Style for plot title.
-      text_style legend_style_; //!< Style for legend title and text.
+      text_style legend_style_; //!< Style for legend text.
+      text_style legend_header_style_; //!< Style for legend title.
       text_style x_axis_label_style_; //!< Style for tick labels on X-axis.
       text_style x_value_label_style_; //!< Style for data point value labels on X-axis.
       text_style y_axis_label_style_; //!< Style for tick labels on Y-axis.
@@ -510,6 +510,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
 
       text_element title_info_; //!< Plot title text etc.
       text_element legend_header_; //!< Legend box header or title (if any).
+      text_element legend_text_; //!< Legend box series data descriptor text(if any).
       text_element x_label_info_; //!< X-axis label text, for example: "length".
       text_element x_value_label_info_; //!< X-axis tick value text, for example: "1.2" or "1.2e+001"
       text_element y_label_info_; //!< Y-axis label text, for example: "volume".
@@ -565,10 +566,23 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       bool is_a_point_marker_; //! @c true if any data series have point markers to show in legend (default @c false).
       bool is_a_data_series_line_;  //!< @c true if any series have lines to show in legend (default @c false). Example: @c .line_on(true). 
       bool is_a_data_series_text_;  //!< @c true is any series should show text describing the data series (default @c false). For example: @c my_plot.plot(my_data_0, "my_data_0_text"); 
+      double legend_header_font_size_; //!< Font size of legend header/title.
       double legend_font_size_; //!< Font size of legend header/title.
       double series_text_font_size_; //!< Font size of lines of text describing data series (at present same as legend_font_size_).
       double legend_widest_line_; //!< Width of longest of legend header/title and widest data series pointer+line+text.
       double biggest_point_font_size_; //!< Biggest point marker symbol - determines vertical spacing.
+
+      // Leave a vertical space before any text (if text_margin_ == 1.5 then height of one biggest font).
+      // Leave a horizontal space before any text (if text_margin_ == 1.5 then width of one biggest font).
+      // For example, if font size is 10 and text_margin is 1.5 and aspect ratio is 0.6 then 
+      // Legend_font_size_ = 10, text_margin = 1.5, aspect ratio =  0.6, Vertical_spacing = 15, horizontal_spacing = 9
+      double vertical_spacing_; // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
+      double vertical_line_spacing_; // = derived().legend_font_size_; // One line vertically.
+      double horizontal_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
+      double horizontal_line_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
+      double horizontal_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series). 
+      double vertical_marker_line_spacing_; // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
+
       bool outside_legend_on_; //!< @c true if legend box should be outside the plot window (default @c true).
       bool legend_lines_; //!< @c true if wish to add a colored line for each data series in legend box.
       // This should be any data series?
@@ -657,7 +671,8 @@ my_plot.background_color(ghostwhite) // Whole image.
         // See documentation for default settings rationale.
         // text_styles:
         title_style_(18, default_font, "", ""),  // last "bold" ?
-        legend_style_(14, default_font, "", ""), // 2nd "italic"?
+        legend_header_style_(14, default_font, "", "bold"), // 2nd "bold"?
+        legend_style_(12, default_font, "", ""), // 2nd "italic"?
         x_axis_label_style_(14, default_font, "", ""),
         x_value_label_style_(12, default_font, "", ""), // X-axis tick labels.
         // Separate X and Y to allow axes to have different styles.
@@ -691,7 +706,8 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         plot_window_border_(lightslategray, svg_color(255, 255, 255), 2, 3, true, false),
         legend_box_(yellow, white, 1, 2, true, true),
-        legend_header_(0, 0, "", legend_style_, center_align, horizontal),
+        legend_header_(0, 0, "", legend_header_style_, center_align, horizontal),
+        legend_text_(0, 0, "", legend_style_, center_align, horizontal),
         legend_width_(0), // width of legend box (pixels) //
         legend_height_(0), // height of legend box (pixels)
         legend_left_(-1), legend_right_(-1), legend_top_(-1), legend_bottom_(-1), // Default top left of plot window.
@@ -702,9 +718,20 @@ my_plot.background_color(ghostwhite) // Whole image.
         is_a_point_marker_(false),
         is_a_data_series_line_(false),
         is_a_data_series_text_(false),
-        legend_font_size_(0.), //!< legend header or title font size (set in @c size_legend_box and used to @c draw_legend_box).
+        legend_header_font_size_(0.), //!< legend header or title font size (set in @c size_legend_box and used to @c draw_legend).
+        // derived().legend_header_.textstyle().font_size();
+        // 
+        legend_font_size_(0.), //!< legend header or title font size (set in @c size_legend_box and used to @c draw_legend).
         legend_widest_line_(0), //!< Longest width of sum of point marker, line and data series text and legend header.
         biggest_point_font_size_(0.), //!< Biggest font of point marker, line and data series text and legend header.
+
+        vertical_spacing_(0), // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
+        vertical_line_spacing_(0), // = derived().legend_font_size_; // One line vertically.
+        horizontal_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
+        horizontal_line_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
+        horizontal_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series). 
+        vertical_marker_line_spacing_(0), // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
+
         outside_legend_on_(true), //!< @c true if legend is @b outside the plot window axes (default true).
         plot_window_clip_("plot_window"), // for <clipPath id="plot_window" ...
 

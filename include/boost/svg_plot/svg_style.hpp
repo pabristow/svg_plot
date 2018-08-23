@@ -46,8 +46,11 @@ namespace boost
 {
 namespace svg
 {
-
-  static const double aspect_ratio = 0.6;  //!< aspect_ratio is a guess at average height to width of font.
+  typedef double fp_type;  //!< \typedef fp_type Allows switch between using double or float to hold many floating-point items as either @c double or @c float.
+  //!< (32-bit has sufficient precision for data plots, so using @c float might be faster and/or take less space, 
+  //!< but with a small range of @c (std::numeric_limits<>::max)() to (std::numeric_limits<>::min)(), about 10^38 compared to 64-bit 10^308)
+  
+  static const fp_type aspect_ratio = 0.6;  //!< aspect_ratio is a guess at average height to width of font.
   //!< used to estimate the svg length of a title or header string from the font size. 
   //!< (This can only be quite approximate as varies on type of font (narrow or bold)
   //!< and the mix of characters widths (unless monospace font).
@@ -56,9 +59,8 @@ namespace svg
    has the best chance of ['symbols] being rendered corrrectly.
    Used for title, legend, axes ... unless overridden by an explicit font specification.
   */
-  const static char* default_font("Lucida Sans Unicode");
-
-
+  const static char* default_font("Lucida Sans Unicode"); // TODO make sure used.
+  
 // Forward declarations of classes in svg_style.hpp
 class svg_style; // Holds the basic stroke, fill colors and width, and their switches.
 class text_style; // Text and tspan element's font family, size ...
@@ -344,7 +346,7 @@ class text_style
 
 public:
   text_style( //!
-    int size = 12, //!< Default font size (12 pixels).
+    int font_size = 12, //!< Default font size (12 pixels).
     const std::string& font = default_font, //!< Examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"
     const std::string& weight = "", //!< Examples: "bold", "normal"
     const std::string& style = "", //!< font-style: normal | bold | italic | oblique
@@ -712,6 +714,7 @@ public:
     }
 
 // End class value_style Member Functions definitions.
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 enum point_shape
 { //! \enum point_shape used for marking a data point.
@@ -723,8 +726,9 @@ enum point_shape
   */
   square, //!< Square.
   point, //!< Small solid point.
-  egg, //!< Ellipse.
-  unc_ellipse, //!< Ellipse sized using uncertainty estimate of x and y, typically about twice standard deviation or 95% confidence interval.
+  egg, //!< Ellipsoid. Unicode x2B2D is white horizontal, 2B2F is white vertical.
+  unc_ellipse, //!< Ellipse sized using uncertainty estimate of x and y, 
+  //!< typically about twice standard deviation or 95% confidence interval.
   vertical_line,  //!< Vertical line up & down from axis.
   horizontal_line, //!< Horizontal line left & right from axis.
   vertical_tick, //!< Vertical tick up from axis.
@@ -733,7 +737,7 @@ enum point_shape
   cone, //!< Cone pointing up - 'rightwayup'.  Unicode 2580 is down-cone with white center.
   outside_window, // Marker to show that a point lies outside the plotting area and so is not shown.
   triangle, //!< Triangle pointing down 'upsidedown'. Unicode &#25BC;
-  star, //!< Star (using polygon).
+  star, //!< Star.
   lozenge, //!< Lozenge or square with corners pointing up and down.
   diamond, //!< Diamond playing card shape.
   heart, //!< Heart playing card shape.
@@ -857,7 +861,7 @@ public:
 
   plot_point_style& plot_point_style::stroke_color(const svg_color& f)
   { //! Set stroke color of shape or symbol used to mark data value plot point(s).
-    //! .stroke_color(black).fill_color(red)
+    //! @c .stroke_color(black).fill_color(red)
     stroke_color_ = f;
     return *this; //! \return plot_point_style& to make chainable.
   }
@@ -868,15 +872,15 @@ public:
   }
 
   plot_point_style& plot_point_style::shape(point_shape s)
-  {  //! Set shape used to mark data value plot point(s).
-    //! Example: .shape(circlet).size(10).stroke_color(green).fill_color(red)
+  { //! Set shape used to mark data value plot point(s).
+    //! Example: @c .shape(circlet).size(10).stroke_color(green).fill_color(red)
     shape_ = s;
     return *this; //! \return plot_point_style& to make chainable.
   }
 
   point_shape plot_point_style::shape()
-  {
-    //! \return  Shape used to mark data value plot point(s).
+  { // Get shape used to mark data value plot point(s)
+    //! \return @c shape used to mark data value plot point(s).
     return shape_;
   }
 
@@ -1447,8 +1451,8 @@ public:
     box_style(
       const svg_color& scolor = black, //!< stroke color
       const svg_color& fcolor = white, //!< fill color (white = no fill).
-      double width = 1, //!< of border.
-      double margin = 4., //!< Margin around box (SVG units, default pixels).
+      double width = 1., //!< of border.
+      double margin = 1., //!< Margin around box (SVG units, default pixels).
       bool border_on = true, //!< Draw a border of specified width.
       bool fill_on = false //!< Apply fill color.
      );
