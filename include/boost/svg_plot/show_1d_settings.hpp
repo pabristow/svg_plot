@@ -206,6 +206,8 @@ void show_1d_plot_settings(svg_1d_plot& plot)
   cout << "legend_color " << plot.legend_color() << endl;
   cout << "legend_title \"" << plot.legend_title()  << '"' << endl;
   cout << "legend_title_font_size " << plot.legend_title_font_size() << endl;
+  cout << "legend_font_size " << plot.legend_title_font_size() << endl;  // Legend text.
+
   // Not implemented yet.
   //cout << "legend_font_weight " << plot.legend_font_weight() << endl;
   //cout << "legend_font_width " << plot.legend_font_width() << endl;

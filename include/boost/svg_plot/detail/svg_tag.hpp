@@ -868,29 +868,34 @@ public:
     {
       os << " textLength=\"" << text_length_ << "\"";
     }
-    if (style_.font_size() != 0)
+    // https://www.w3.org/TR/SVG11/text.html#FontPropertiesUsedBySVG
+    // 10.10 Font selection properties
+
+   if (style_.font_size() != 0)
     {
       os << " font-size=\"" << style_.font_size() << "\"";
     }
     if (style_.font_family() != "")
-    { // Example: Arial.
+    { // Examples: Arial, Times New Roman.
       os << " font-family=\"" << style_.font_family() << "\"";
     }
     if (style_.font_style().size() != 0)
-    { // Example: italic.
+    { // Examples: 	normal | italic | oblique | inherit
       os << " font-style=\"" << style_.font_style() << "\"";
     }
     if (style_.font_weight().size() != 0)
-    { // Example: bold.
-    os << " font-weight=\"" << style_.font_weight() << "\"";
+    { // Examples: normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 |
+      os << " font-weight=\"" << style_.font_weight() << "\"";
     }
     if (style_.font_stretch().size() != 0)
-    {
-    os << " font-stretch=\"" << style_.font_stretch() << "\"";
+    { // Examples: normal | wider | narrower | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded 
+      os << " font-stretch=\"" << style_.font_stretch() << "\"";
     }
+    // 10.12 Text decoration https://www.w3.org/TR/SVG11/text.html#TextDecorationProperties  
     if (style_.font_decoration().size() != 0)
-    {
-    os << " font-decoration=\"" << style_.font_decoration() << "\"";
+    { 
+      // none | [ underline || overline || line-through || blink ] | inherit
+      os << " text-decoration=\"" << style_.font_decoration() << "\"";
     }
     os << ">" << text_ << "</tspan>";
   } //   void write(std::ostream& os)
@@ -1160,7 +1165,7 @@ public:
     }
     if (style_.font_decoration().size() != 0)
     {
-    os << " font-decoration=\"" << style_.font_decoration() << "\"";
+    os << " text-decoration=\"" << style_.font_decoration() << "\"";
     }
     os << '>' ;
     generate_text(os);

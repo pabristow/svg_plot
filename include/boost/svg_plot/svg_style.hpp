@@ -54,12 +54,13 @@ namespace svg
   //!< used to estimate the svg length of a title or header string from the font size. 
   //!< (This can only be quite approximate as varies on type of font (narrow or bold)
   //!< and the mix of characters widths (unless monospace font).
+  //!< See https://www.w3.org/TR/SVG/text.html#GlyphsMetrics
 
   /*! Default font chosen is a Unicode font like ['Lucida Sans Unicode] that
    has the best chance of ['symbols] being rendered corrrectly.
    Used for title, legend, axes ... unless overridden by an explicit font specification.
   */
-  const static char* default_font("Lucida Sans Unicode"); // TODO make sure used.
+  const static char* default_font("Lucida Sans Unicode"); // TODO make sure used throughout.
   
 // Forward declarations of classes in svg_style.hpp
 class svg_style; // Holds the basic stroke, fill colors and width, and their switches.
@@ -328,30 +329,45 @@ public:
   // End of svg_style definitions.
 
  /*! \class boost::svg::text_style
-     \brief Font family, font size, weight, style, stretch & decoration.
-  */
+     \brief Font size, font family, font weight, font style, stretch & decoration.
+     \details
+     /*! text font family (for example: "Lucida Sans Unicode", "arial" ...).
+     Available fonts depend on the program rendering the SVG XML, usually a browser.
+     The default font (usually "Lucida Sans Unicode") is used
+     if a renderer (in a browser or a converter to PDF like RenderX)
+     does not provide the font specified.
+     A Unicode font has a better chance of providing Unicode symbols, for example, specified as @c \&\#x221E;.
+     Symbols are used to show data points and most shapes use Unicode. 
+     These fonts are probably usable:
+     \code
+     "arial", "impact", "courier", "lucida console",  "Lucida Sans Unicode", "Verdana", "calibri", "century",
+     "lucida calligraphy", "tahoma", "vivaldi", "informal roman", "lucida handwriting", "lucida bright", "helvetica"
+     \endcode
+     */
+
 class text_style
 {
   friend std::ostream& operator<< (std::ostream&, const text_style&);
+  // Output as text, for example: legend_title_style text_style(14, "Lucida Sans Unicode", "", "normal", "", "")
   friend bool operator== (const text_style&, const text_style&);
   friend bool operator!= (const text_style&, const text_style&);
 
   public: // Or private?
   int font_size_; //!< Font size (SVG units, default pixels).
   std::string font_family_; //!< Font family, examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode".
-  std::string style_; //!< Font  style, examples: normal | bold | italic | oblique.
-  std::string weight_; //!< Font, weight examples: "bold", "normal".
-  std::string stretch_; //!< Font stretch, examples: normal | wider | narrower.
+  std::string weight_; //!< Font weight examples: "bold", "normal".
+  std::string style_; //!< Font style, examples: normal | bold | italic | oblique.
+  std::string stretch_; //!< Font stretch, examples: normal | wider | narrower. (Not supported by all browsers).
   std::string decoration_; //!< Font decoration, examples: "underline" | "overline" | "line-through".
 
 public:
   text_style( //!
     int font_size = 12, //!< Default font size (12 pixels).
-    const std::string& font = default_font, //!< Examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"
-    const std::string& weight = "", //!< Examples: "bold", "normal"
-    const std::string& style = "", //!< font-style: normal | bold | italic | oblique
-    const std::string& stretch = "", //!< font-stretch: normal | wider | narrower ...
-    const std::string& decoration = ""); //!< Examples: "underline" | "overline" | "line-through"
+    const std::string& font = default_font, //!< Examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"...
+    const std::string& weight = "", //!< Font weight examples: "bold", "normal".
+    const std::string& style = "", //!< Font style examples: normal | bold | italic | oblique.
+    const std::string& stretch = "", //!< Font stretch examples: normal | wider | narrower ...
+    const std::string& decoration = ""); //!< Font decoration examples: "underline" | "overline" | "line-through".
 
   text_style& font_size(unsigned int i);
   text_style& font_family(const std::string& s);
@@ -359,7 +375,7 @@ public:
   text_style& font_style(const std::string& s);
   text_style& font_stretch(const std::string& s);
   text_style& font_decoration(const std::string& s);
-  // text_style& font_variant(const std::string& s); // Not implemented,
+  // text_style& font_variant(const std::string& s); // Not implemented, nor are others.
 
   int font_size() const;
   const std::string& font_family() const;
@@ -379,7 +395,7 @@ public:
 
 //! Default constructor only sets font size = 20, and leaves other font details as SVG defaults.
 
-  text_style::text_style( //!< Constructor to allow all text style (font etc) to be set.
+  text_style::text_style( //!< Constructor to allow all text style parameters (font size, family, bold...) to be set.
     int size, //!< Font size.
     const std::string& font, //!< Default for browser is sans with Firefox & IE but serif with Opera.
     const std::string& weight, //!< font weight "normal"
@@ -396,8 +412,9 @@ public:
   { // text_style default constructor, defines defaults for all private members.
   }
 
+  // Set and get text_style functions.
   int text_style::font_size() const
-  { //! \return  font size (svg units, usually pixels).
+  { //! \return  text_style's font size (svg units, usually pixels).
     return font_size_;
   }
 
@@ -506,6 +523,7 @@ public:
   // tests for baseline shifted text.  This is needed for subscript and superscript,
   // vital for nice display of units like m^2 and chemical formulae like H2O
   // IE (Adobe SVG viewer) and Opera conforms but not Firefox (yet).
+  // Can also use Unicode symbols like sub and superscript 1,2,3 to get H2O and m2
 
   // operators needed for testing at least.
   bool text_style::operator==(const text_style& ts)

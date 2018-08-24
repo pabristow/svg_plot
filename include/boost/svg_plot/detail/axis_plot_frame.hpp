@@ -320,11 +320,14 @@ namespace boost
           Derived& legend_title(const std::string title); //!<  Set the title for the legend.
           const std::string legend_title(); //!<  \return Title for the legend.
           Derived& legend_font_weight(const std::string& weight); //!<  Set the font weight for the legend title.
-          const std::string& legend_font_weight(); //!<  \return  Font weight for the legend title.
-          Derived& legend_font_family(const std::string& family); //!<  Set the font family for the legend title.
+          const std::string& legend_font_weight(); //!<  \return  Font weight for the legend text.
+          Derived& legend_font_family(const std::string& family); //!<  Set the font family for the legend text.
           const std::string& legend_font_family(); //!<  \return  the font family for the legend title.
-          Derived& legend_title_font_size(unsigned int size); //!<  \return Font family for the legend title.
+          Derived& legend_title_font_size(unsigned int size); //!<  \return Font size for the legend title.
           unsigned int legend_title_font_size(); //!<  \return Font size for the legend title (svg units, default pixels).
+          Derived& legend_title_font_weight(const std::string& weight); //!<  Set the font weight for the legend title.
+          const std::string& legend_title_font_weight(); //!<  \return  Font weight for the legend title.
+
           Derived& legend_top_left(double x, double y); //!<  Set position of top left of legend box (svg coordinates, default pixels).
             //! (Bottom right is controlled by contents, so the user cannot set it).
           const std::pair<double, double> legend_top_left(); //!<  \return  SVG coordinate (default pixels) of top left of legend box.
@@ -344,8 +347,8 @@ namespace boost
           Derived& legend_header_font_size(int size); //!<  Set legend header font size (svg units, default pixels).
           int legend_header_font_size(); //!<\return  legend header font size (svg units, default pixels).
 
-          Derived& legend_font_size(int size); //!<  Set legend text font size (svg units, default pixels).
-          int legend_font_size(); //!<\return  legend text font size (svg units, default pixels).
+          Derived& legend_font_size (unsigned int size); //!<  Set legend text font size (svg units, default pixels).
+          unsigned int legend_font_size(); //!<\return  legend text font size (svg units, default pixels).
 
           Derived& plot_window_on(bool cmd); //!<Set true if a plot window is wanted (or false if the whole image is to be used).
           bool plot_window_on();//!<\return  true if a plot window is wanted (or false if the whole image is to be used).
@@ -833,6 +836,10 @@ namespace boost
 //          Derived& axis_plot_frame<Derived>::legend_font_weight(const std::string& weight);
 //          template <class Derived>
 //          const std::string& axis_plot_frame<Derived>::legend_font_weight();
+//          template <class Derived>
+//          Derived& axis_plot_frame<Derived>::legend_title_font_weight(const std::string& weight);
+//          template <class Derived>
+//          const std::string& axis_plot_frame<Derived>::legend_title_font_weight();
 //          template <class Derived>
 //          Derived& axis_plot_frame<Derived>::legend_font_family(const std::string& family);
 //          template <class Derived>
@@ -2074,13 +2081,17 @@ namespace boost
         //double tfs = ts * fs * aspect_ratio;  // no of chars * font height * aspect ratio
 
         double title_svg_length = string_svg_length(derived().title(), derived().title_info_.textstyle());
-#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+#ifdef BOOST_SVG_TITLE_DIAGNOSTICS
         std::cout << "Drawing plot title, image x width " << derived().image_.x_size()  // default 700
           << "\n  Title = \"" << derived().title() << "\n" 
           << "  title has = " << derived().title().size() << " characters" // number of chars.
+          << ", title text SVG width = " << title_svg_length 
           << ", title font size = " << derived().title_font_size()
-          << ", title width = " << title_svg_length << std::endl; 
-#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+          << ", title font family = " << derived().title_font_family()
+          << ", title font weight = " << derived().title_font_weight()
+          << ",\n title_style_ = " << derived().title_style_
+          << std::endl; 
+#endif // BOOST_SVG_TITLE_DIAGNOSTICS
         if (title_svg_length > derived().image_.x_size())
         { // Issue Warning that title is too long or too big font!
           std::cout << "Title \"" << derived().title_info_.text()
@@ -2113,14 +2124,21 @@ namespace boost
     { // So want a legend box, set with .legend_on(true).
       // Check if any legend header or title.
       derived().is_legend_header_ = (derived().legend_header_.text() != ""); 
-      derived().legend_font_size_ = derived().legend_header_.textstyle().font_size(); // legend header text font size.
-      derived().legend_header_font_size_ = derived().legend_header_.textstyle().font_size(); // legend data series text font size.
-      // Assume the same for now TODO.
-      derived().series_text_font_size_ = derived().legend_font_size_;  // Assume header/title use same font as data series text.
+      // my_plot_1.legend_font_size()
+
+      // Copy the default style info into text_element legend_text_
+      derived().legend_text_.textstyle(derived().legend_text_style_);
+      derived().legend_header_.textstyle(derived().legend_header_style_);
+      // Uses the default legend_text_style_ for both
+
+      derived().legend_text_font_size_   = derived().legend_text_.textstyle().font_size(); // legend data series text font size. 
+      derived().legend_header_font_size_ = derived().legend_header_.textstyle().font_size(); // legend header text font size.
       // If assume that descriptor text for each series uses same font as header,
       // and then have larger marker symbols then will clash and misalign, 
       // so vertical spacing needs to use the largest of 
       // all point marker Unicode symbol font sizes (may be different) and legend header font size.
+
+      // https://www.w3.org/TR/SVG/text.html#GlyphsMetrics
 
       size_t num_series = derived().serieses_.size(); // How many data series in this plot.
       derived().biggest_point_font_size_ = derived().legend_header_.textstyle().font_size(); 
@@ -2131,7 +2149,7 @@ namespace boost
         // or data series with longest combination of point marker + line + text (if any).
         string_svg_length(derived().legend_header_.text(), derived().legend_header_style_);
       // Assume longest is the legend title until a longer data series_width is found below.
-      std::cout << "string_svg length" <<  string_svg_length(derived().legend_header_.text(), derived().legend_header_style_) << std::endl;
+      std::cout << "string_svg_length = " <<  string_svg_length(derived().legend_header_.text(), derived().legend_header_style_) << std::endl;
 
       for (size_t i = 0; i < num_series; ++i)
       {
@@ -2142,7 +2160,7 @@ namespace boost
           derived().is_a_point_marker_ = true; // So will need to provide a space for any other series without a point marker.
           point_size = derived().serieses_[i].point_style_.size(); // 
           series_width += point_size * aspect_ratio; // (Aspect_ratio is kludge factor to allow for not knowing the true SVG length).
-          series_width += derived().legend_font_size_ * aspect_ratio; // space - but may not be needed?
+          series_width += derived().legend_text_font_size_ * aspect_ratio; // space - but may not be needed?
           if (point_size > derived().biggest_point_font_size_)
           {  
             derived().biggest_point_font_size_ = point_size;
@@ -2152,14 +2170,14 @@ namespace boost
         if (derived().serieses_[i].line_on() == true)
         { // At least one series has a line joining points.
           derived().is_a_data_series_line_ = true; // So will need to provide a space for any other series without a line.
-          series_width += derived().legend_font_size_ * aspect_ratio; // Assume font for line is same as text (if any).
-          series_width += derived().legend_font_size_ * aspect_ratio; // space - but may not be needed?
+          series_width += derived().legend_text_font_size_ * aspect_ratio; // Assume font for line is same as text (if any).
+          series_width += derived().legend_text_font_size_ * aspect_ratio; // space - but may not be needed?
         }
 
         if (derived().serieses_[i].title_ != "")
         { // Some data series text descriptor.
           derived().is_a_data_series_text_ = true; // So will need to allow space for any data series without text.
-          double series_string_length = string_svg_length(derived().serieses_[i].title_, derived().legend_style_);
+          double series_string_length = string_svg_length(derived().serieses_[i].title_, derived().legend_text_style_);
           // string_svg_length avoids chars as Unicode hex increasing the length wrongly,
           // so each Unicode char counts only as one char.
           series_width += series_string_length;
@@ -2170,44 +2188,38 @@ namespace boost
           derived().legend_widest_line_ = series_width;
         }
       } // for num_series
-#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-      std::cout << "\nLegend header chars \"" << derived().legend_header_.text()
-        << " or " << string_svg_length(derived().legend_header_.text(), derived().legend_style_) << " SVG units"
-        << "\", .legend_font_size_ = " << derived().legend_font_size_ 
-        << ", .biggest_point_font_size_ " << derived().biggest_point_font_size_ 
-        << ", .legend_widest_line_ = " << derived().legend_widest_line_ << std::endl;
-      // Legend "My Legend", font size = 10, largest point size 30, spacing = 30
-#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
       // Use height of whichever is the biggest of data point marker shape and legend header text font,
       // for vertical spacing.  (assuming horizontal line markers have neglible height).
       // is now double biggest_point_font_size_;
-      //text_element legend_header_; // legend box header or title (if any).
-      //text_style legend_style_;
+
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-      std::cout << "Legend text number of chars = " << derived().legend_header_.text().size()
+      std::cout << "\nLegend header \"" << derived().legend_header_.text()
+        << ", chars = " << derived().legend_header_.text().size()
         << ", .legend_header_font_size_ = " << derived().legend_header_font_size_
-        << ", .legend_style_ = " << derived().legend_style_
-        << ", .legend_widest_line_ " << derived().legend_widest_line_ << " svg units." 
+        << ", .legend_text_font_size_ = " << derived().legend_text_font_size_
+        << ",\n .legend_header_style_ = " << derived().legend_header_style_ // not changed from default???
+        << ",\n .legend_text_style_ = " << derived().legend_text_style_     // not changed from default???
+        << ",\n .legend_widest_line_ " << derived().legend_widest_line_ << " svg units."
+        << " or " << string_svg_length(derived().legend_header_.text(), derived().legend_header_style_) << " SVG units"
+        << ", .biggest_point_font_size_ " << derived().biggest_point_font_size_ 
         << std::endl;
-      // Legend text length = My Legend, legend_style_ = text_style(14, "Lucida Sans Unicode", "", "", "", ""),
-      // TODO setting legend font doesn't seem to work right.
-      // Legend header longest 88.2 svg units.
+      // Legend header "Very, very, very long Legend title/header, chars = 41, .legend_header_font_size_ = 17, .legend_text_font_size_ = 11,
+      // .legend_header_style_ = text_style(14, "Lucida Sans Unicode", "", "normal", "", ""),
+       // .legend_text_style_ = text_style(12, "Lucida Sans Unicode", "", "normal", "", ""),
+     // .legend_widest_line_ 344.4 svg units. or 344.4 SVG units, .biggest_point_font_size_ 30
+      //???????????????????????   why have two text_styles not changed?
+
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
-      // Leave a vertical space before any text (if text_margin_ == 1.5 then height of one biggest font).
-      // Leave a horizontal space before any text (if text_margin_ == 1.5 then width of one biggest font).
-      // For example, if font size is 10 and text_margin is 1.5 and aspect ratio is 0.6 then 
-      // Legend_font_size_ = 10, text_margin = 1.5, aspect ratio =  0.6, Vertical_spacing = 15, horizontal_spacing = 9
-
-      derived().vertical_spacing_ = derived().legend_font_size_ * derived().text_margin_; // suits legend header text.
-      derived().vertical_line_spacing_ = derived().legend_font_size_; // One line vertically.
-      derived().horizontal_spacing_ = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font.
-      derived().horizontal_line_spacing_ = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
+      derived().vertical_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; // Legend header vertical spacing.
+      derived().vertical_line_spacing_ = derived().legend_text_font_size_; // Legend text line vertical spacing.
+      derived().horizontal_spacing_ = derived().legend_text_font_size_ * aspect_ratio; // legend_font width, used as a font.
+      derived().horizontal_line_spacing_ = derived().legend_text_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
       derived().horizontal_marker_spacing_ = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series). 
       derived().vertical_marker_line_spacing_ = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-      std::cout << "Legend_font_size_ = " << derived().legend_font_size_
+      std::cout << "Legend_font_size_ = " << derived().legend_text_font_size_
         << ", text_margin = " << derived().text_margin_ 
         << ", aspect ratio =  " << aspect_ratio
         << ", Vertical_spacing = " << derived().vertical_spacing_ 
@@ -2218,13 +2230,12 @@ namespace boost
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
 
       derived().legend_width_ = derived().legend_widest_line_; // Longest line.
-      derived().legend_width_ += 2 * derived().legend_box_.margin_; // Allow a very small margin.
+      derived().legend_width_ += 2 * derived().legend_box_.margin_; // Allow a very small margin top and bottom.
       if (derived().legend_box_.border_on_ == true)
       {  // If a border, allow for its width both sides.
         derived().legend_width_ += 2 * derived().legend_box_.width_; 
       }
       derived().legend_width_ += 2 * derived().horizontal_spacing_; // Allow a small blank border both sides.
-
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "Legend box margin = " << derived().legend_box_.margin()
@@ -2233,7 +2244,7 @@ namespace boost
 
       // legend_height must be *at least* enough for
       // any legend header and text_margin(s) around it
-      // (if any) plus a text_margin_ top and bottom.
+      // (if any) plus a small margin_ top and bottom.
 
       derived().legend_height_ = derived().vertical_line_spacing_; // One font space top of legend box.
       if ((derived().is_legend_header_) // A legend header line is wanted,
@@ -2270,7 +2281,7 @@ namespace boost
       {
         derived().outside_legend_on_ = true; // Unless legend is set to be inside.
         // Space around any legend box - beyond any plot or legend border.
-        const double spacing = derived().legend_style_.font_size() * aspect_ratio; // = one legend header font width.
+        const double spacing = derived().legend_text_style_.font_size() * aspect_ratio; // = one legend header font width.
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
         std::cout << "Margin between legend box and plot window (and image border) = " << spacing << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
@@ -2398,14 +2409,15 @@ namespace boost
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-        std::cout <<  "Drawing Legend: legend_font_size " << derived().legend_font_size_ 
-          << ", series text font size = "  << derived().series_text_font_size_
+        std::cout <<  "Drawing Legend: legend_header_font_size " << derived().legend_header_font_size_ 
+          << ", legend text font size = "  << derived().legend_text_font_size_
           << ", biggest marker symbol font size = "  << derived().biggest_point_font_size_
           << ", text_margin = " << derived().text_margin_ << std::endl;
         // Drawing Legend: text_font_size 10, marker shape size = 10, marker symbol font size = 10, spacing = 10
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
-      // Assume legend box position has already been sized by function size_legend_box and positioned by function place_legend_box.
+      // Assume legend box position has already been sized by function size_legend_box,
+      // and positioned by function place_legend_box.
       double legend_x_start = derived().legend_left_; // Saved legend box location.
       double legend_width = derived().legend_width_;
       double legend_y_start = derived().legend_top_;
@@ -2448,10 +2460,11 @@ namespace boost
         << std::endl;      // 
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
       double legend_y_pos = legend_y_start;
-     if (derived().legend_box_.border_on_ == true)
-     {
+      if (derived().legend_box_.border_on_ == true)
+      {
         legend_y_pos += derived().legend_box_.width_;  // If a border, don't write on it!
-     }
+      }
+      legend_y_pos += derived().legend_box_.margin_; // Leave small margin.
       legend_y_pos += derived().vertical_spacing_;
       if (derived().legend_header_.text() != "")
       { // Draw the centered legend header text for example: "My Plot Legend".
@@ -3936,29 +3949,56 @@ namespace boost
           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_title_font_size(unsigned int size)
           { //! Set the font size for the legend title (svg units, default pixels).
-            derived().legend_header_.textstyle().font_size(size);
+           // derived().legend_header_.textstyle().font_size_ = size;
+            derived().legend_text_style_.font_size_ = size;
+
             return derived();
           }
 
           template <class Derived>
           unsigned int axis_plot_frame<Derived>::legend_title_font_size()
           { //! \return  the font size for the legend title (svg units, default pixels).
-            return derived().legend_header_.textstyle().font_size();
+           // return derived().legend_header_.textstyle().font_size();
+            return derived().legend_text_style_.font_size_;
           }
           //Derived& legend_header_font_size(int size); //!<  Set legend header font size (svg units, default pixels).
           //int legend_header_font_size(); //!<\return  legend header font size (svg units, default pixels).
 
           template <class Derived>
-          Derived& axis_plot_frame<Derived>::legend_font_size(int size)
+          Derived& axis_plot_frame<Derived>::legend_title_font_weight(const std::string& weight)
+          { //! Set the font weight for the legend title.
+            derived().legend_header_.textstyle().font_weight_ = weight;
+            return derived(); // Permit chaining.
+          }
+
+          template <class Derived>
+          const std::string& axis_plot_frame<Derived>::legend_title_font_weight()
+          { //! \return  the font weight for the legend title.
+            return derived().legend_header_.textstyle().font_weight();
+          }
+
+          template <class Derived>
+          Derived& axis_plot_frame<Derived>::legend_font_size(unsigned int size)
           { //! Set the font size for the legend title (svg units, default pixels).
-            derived().legend_text_.textstyle().font_size(size);
+           // derived().legend_text_.textstyle().font_size_ = size;
+            std::cout << "set derived().legend_text_style_.font_size_ = size " << size << std::endl; // 11
+            // Gets the default value.
+            std::cout << " derived().legend_text_.textstyle().font_size() = " << derived().legend_text_.textstyle().font_size() << std::endl; // 10
+
+            derived().legend_text_style_.font_size_ = size;
+            std::cout << " derived().legend_text_.textstyle().font_size() = " << derived().legend_text_.textstyle().font_size() << std::endl; // 10
+            std::cout << " derived().legend_text_style_.font_size_ = " << derived().legend_text_style_.font_size_ << std::endl; // 11
             return derived();
           }
 
           template <class Derived>
-          int axis_plot_frame<Derived>::legend_font_size()
+          unsigned int axis_plot_frame<Derived>::legend_font_size()
           { //! \return  the font size for the legend title (svg units, default pixels).
-            return derived().legend_text.textstyle().font_size();
+            //return derived().legend_text_.textstyle().font_size();
+            std::cout << " get derived().legend_text_.textstyle().font_size(); = " << derived().legend_text_.textstyle().font_size() << std::endl; // 11
+            std::cout << "   derived().legend_text_style_.font_size() = " << derived().legend_text_style_.font_size() << std::endl; // 11
+            std::cout << "   derived().legend_text_style_.font_size_ = " << derived().legend_text_style_.font_size_ << std::endl; // 11
+            return derived().legend_text_style_.font_size_; // 11
           }
 
 
@@ -4064,14 +4104,14 @@ namespace boost
           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_header_font_size(int size)
           { //! Set legend header font size (svg units, default pixels).
-            derived().legend_header_.textstyle().font_size(size);
+            derived().legend_header_style_.font_size_ = size;
             return derived();
           }
 
           template <class Derived>
           int axis_plot_frame<Derived>::legend_header_font_size()
-          { //! \return  legend header font size (svg units, default pixels).
-            return derived().legend_header_.textstyle().font_size();
+          { //! \return Get legend header font size (svg units, default pixels).
+            return derived().legend_header_style_.font_size_;
           }
 
           template <class Derived>

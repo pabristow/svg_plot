@@ -1,6 +1,12 @@
 /*! \file show_2d_settings.hpp
 
   \brief Shows settings and options for 2D Plot.
+  Example:
+  \code
+  #include <boost/svg_plot/show_2d_settings.hpp>
+
+  my_plot.show_2d_plot_settings();
+  \endcode
 
   \see show_1d_settings.cpp for 1D plot.
 */
@@ -51,6 +57,8 @@ void show_2d_plot_settings(svg_2d_plot& plot)
     Outputs a long list of over 100 plot parameter settings to @c std::cout.
     This list is invaluable if the plot does not look as expected.
    \warning This creates about 100 lines of output, so should be used sparingly!
+
+
   */
 
   //using std::cout;
@@ -99,11 +107,15 @@ void show_2d_plot_settings(svg_2d_plot& plot)
   std::cout << "legend_color " << plot.legend_color() << std::endl;
   std::cout << "legend_title "  << '"' << plot.legend_title()  << '"' << std::endl;
   std::cout << "legend_title_font_size " << plot.legend_title_font_size() << std::endl;
-  std::cout << "legend_font_weight " << plot.legend_font_weight() << std::endl;
+  std::cout << "legend_title_font_weight " << plot.legend_title_font_weight() << std::endl; // normal or might be bold?
+  std::cout << "legend_font_size " << plot.legend_font_size() << std::endl; // Font for text below title/header.
+  std::cout << "legend_font_weight " << plot.legend_font_weight() << std::endl; // normal or might be bold?
   // Not useful at present, so not longer implemented.
   // std::cout << "legend_font_width " << plot.legend_font_width() << std::endl;
   std::cout << "legend_width " << plot.legend_width() << std::endl;
   std::cout << "legend_lines " << plot.legend_lines() << std::endl;
+  std::cout << "legend_text_style " << plot.legend_text_style_ << std::endl;
+  std::cout << "legend_title_style " << plot.legend_header_style_ << std::endl;
   std::cout << "limit points stroke color " << plot.limit_color() << std::endl;
   std::cout << "limit points fill color " << plot.limit_fill_color() << std::endl;
   std::cout << "license_on " << plot.license_on() << std::endl;
@@ -132,8 +144,8 @@ void show_2d_plot_settings(svg_2d_plot& plot)
   std::cout << "title_font_stretch " << plot.title_font_stretch() << std::endl;
   std::cout << "title_font_style " << plot.title_font_style() << std::endl;
   std::cout << "title_font_weight " << plot.title_font_weight() << std::endl;
-  //std::cout << "title_font_width " << plot.title_font_width() << std::endl;
-  // Not useful at present, so not longer implemented.
+  std::cout << "title_style " << plot.title_style_ << std::endl;
+
   std::cout << "x_values_on "  << plot.x_values_on() << std::endl;
   std::cout << "x_values_font_size "  << plot.x_values_font_size() << std::endl;
   std::cout << "x_values_font_family "  << plot.x_values_font_family() << std::endl;

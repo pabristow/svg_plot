@@ -171,7 +171,7 @@ public:
 
   text_style a_style_; //!< Default text style that contains font size & type etc.
   text_style title_style_; //!< style (font etc) of title.
-  text_style legend_style_; //!<  style (font etc of legend.
+  text_style legend_text_style_; //!<  style (font etc of legend.
   text_style x_axis_label_style_; //!< style of X axis label.
   text_style y_axis_label_style_;  //!< Not used for 1D but needed by axis_plot_frame.hpp.
   text_style x_value_label_style_; //!< style of X ticks value label.
@@ -625,7 +625,7 @@ void svg_1d_plot::update_image()
   svg_1d_plot::svg_1d_plot() :
 
     title_style_(18, "Verdana", "", ""),  // last "bold" ?
-    legend_style_(14, "Verdana", "", ""), // 2nd "italic"?
+    legend_text_style_(14, "Verdana", "", ""), // 2nd "italic"?
     x_axis_label_style_(14, "Verdana", "", ""),
     x_value_label_style_(12, "Verdana", "", ""),
     point_symbols_style_(12, "Lucida Sans Unicode"), // Used for data point marking.
@@ -647,7 +647,7 @@ void svg_1d_plot::update_image()
     image_border_(yellow, white, 1, 10, true, true), // margin should be about axis label font size.
     plot_window_border_(lightgoldenrodyellow, svg_color(255, 255, 255), 1, 3, true, false),
     legend_box_(yellow, white, 1, 2, true, true),
-    legend_header_(0, 0, "", legend_style_, center_align, horizontal),
+    legend_header_(0, 0, "", legend_text_style_, center_align, horizontal),
     legend_width_(200), // width of legend box (pixels) // TODO isn't this calculated?
     legend_height_(0), // height of legend box (pixels)
     legend_left_(-1), legend_right_(-1),legend_top_(-1),legend_bottom_(-1), // Default top left of plot window.
