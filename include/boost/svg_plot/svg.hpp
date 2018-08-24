@@ -386,7 +386,7 @@ private:
       // Example: <defs><style type="text/css"><![CDATA[]]>
       // .axes { fill:none;stroke:#333333;stroke-width:1.6 }
       // .title{ font-size:20px;font-weight:bold;font-style:italic;fill:magenta }
-      // .legend_header{ font-size:16px;font-weight:bold;fill:darkblue;text-anchor:middle }
+      // .legend_title{ font-size:16px;font-weight:bold;fill:darkblue;text-anchor:middle }
       // .legend_item{ font-size:16px;font-weight:normal;fill:blue }
       // .x_axis_value{ font-size:12px;font-weight:normal;fill:black }
       //   </style></defs>

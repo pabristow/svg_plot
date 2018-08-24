@@ -209,18 +209,18 @@ namespace boost
           // Note that Doxygen needs the comments here with the declarations,
           // because comments with the definitions seem to be ignored.
 
-          Derived& size(unsigned int x, unsigned int y); //!<  Set SVG image size (SVG units, default pixels).
+          Derived& size(int x, int y); //!<  Set SVG image size (SVG units, default pixels).
           std::pair<double, double> size(); //!<  \return SVG image size, both horizontal width and vertical height (SVG units, default pixels).
 
-          Derived& x_size(unsigned int i); //!< Set SVG image X-axis size (SVG units, default pixels).
-          unsigned int x_size(); //!<  \return SVG image X-axis size as horizontal width (SVG units, default pixels).
-          unsigned int image_x_size(); //!<  Obselete - deprecated use x_size()
-          Derived& image_x_size(unsigned int i); //!<  Obselete - deprecated - use x_size().
+          Derived& x_size(int i); //!< Set SVG image X-axis size (SVG units, default pixels).
+          int x_size(); //!<  \return SVG image X-axis size as horizontal width (SVG units, default pixels).
+          int image_x_size(); //!<  Obselete - deprecated use x_size()
+          Derived& image_x_size(int i); //!<  Obselete - deprecated - use x_size().
 
-          unsigned int y_size(); //!<  \return SVG image Y-axis size as vertical height (SVG units, default pixels).
-          Derived& y_size(unsigned int i); //!<  Set SVG image Y-axis size (SVG units, default pixels).
-          unsigned int image_y_size(); //!<  Obselete - deprecated - use y_size()
-          Derived& image_y_size(unsigned int i); //!<  Obselete - deprecated - use y_size()
+          int y_size(); //!<  \return SVG image Y-axis size as vertical height (SVG units, default pixels).
+          Derived& y_size(int i); //!<  Set SVG image Y-axis size (SVG units, default pixels).
+          int image_y_size(); //!<  Obselete - deprecated - use y_size()
+          Derived& image_y_size(int i); //!<  Obselete - deprecated - use y_size()
 
           svg_color background_color(); //!< \return Plot background color.
           Derived& background_color(const svg_color& col); //!<  Set plot background color.
@@ -298,8 +298,8 @@ namespace boost
             */
           Derived& title(const std::string title);
           const std::string title(); //!<  \return Title for plot (whose string may include Unicode for greek letter and symbols).
-          Derived& title_font_size(unsigned int i); //!<  Sets the font size for the title (SVG units, default pixels).
-          unsigned int title_font_size(); //!<  \return Font size for the title (SVG units, default pixels).
+          Derived& title_font_size(int i); //!<  Sets the font size for the title (SVG units, default pixels).
+          int title_font_size(); //!<  \return Font size for the title (SVG units, default pixels).
           Derived& title_font_family(const std::string& family); //!<  Set the font family for the title (for example: .title_font_family("Lucida Sans Unicode");
           const std::string& title_font_family(); //!<  \return Font family for the title.
           Derived& title_font_style(const std::string& style);  //!<  Set the font style for the title (default normal).
@@ -323,8 +323,11 @@ namespace boost
           const std::string& legend_font_weight(); //!<  \return  Font weight for the legend text.
           Derived& legend_font_family(const std::string& family); //!<  Set the font family for the legend text.
           const std::string& legend_font_family(); //!<  \return  the font family for the legend title.
-          Derived& legend_title_font_size(unsigned int size); //!<  \return Font size for the legend title.
-          unsigned int legend_title_font_size(); //!<  \return Font size for the legend title (svg units, default pixels).
+          Derived& legend_title_font_size(int size); //!<  \return Font size for the legend title.
+          int legend_title_font_size(); //!<  \return Font size for the legend title (svg units, default pixels).
+          Derived& legend_text_font_size(int size); //!<  \return Font size for the legend text.
+          int legend_text_font_size(); //!<  \return Font size for the legend text (svg units, default pixels).
+
           Derived& legend_title_font_weight(const std::string& weight); //!<  Set the font weight for the legend title.
           const std::string& legend_title_font_weight(); //!<  \return  Font weight for the legend title.
 
@@ -344,11 +347,12 @@ namespace boost
           Derived& legend_place(legend_places l); //!<  Set the position of the legend, \see  boost::svg::legend_places
           legend_places legend_place(); //!<  \return  the position of the legend, \see  boost::svg::legend_places
           bool legend_outside(); //!<  \return  if the legend should be outside the plot area.
-          Derived& legend_header_font_size(int size); //!<  Set legend header font size (svg units, default pixels).
-          int legend_header_font_size(); //!<\return  legend header font size (svg units, default pixels).
+          //Derived& legend_title_font_size(int size); //!<  Set legend header font size (svg units, default pixels).
+          //int legend_title_font_size(); //!<\return  legend header font size (svg units, default pixels).
 
-          Derived& legend_font_size (unsigned int size); //!<  Set legend text font size (svg units, default pixels).
-          unsigned int legend_font_size(); //!<\return  legend text font size (svg units, default pixels).
+          // Now separate size of legend text and title
+          //Derived& legend_font_size (int size); //!<  Set legend text font size (svg units, default pixels).
+          // int legend_font_size(); //!<\return  legend text font size (svg units, default pixels).
 
           Derived& plot_window_on(bool cmd); //!<Set true if a plot window is wanted (or false if the whole image is to be used).
           bool plot_window_on();//!<\return  true if a plot window is wanted (or false if the whole image is to be used).
@@ -384,10 +388,10 @@ namespace boost
             (on the assumption that if label text is set, display is also wanted,
             but can be switched off if  \b not required).
            */
-          Derived& x_label_font_size(unsigned int i); //!<Set X axis label font size (svg units, default pixels).
-          unsigned int x_label_font_size(); //!<\return  X axis label font size (svg units, default pixels).
-          Derived& x_value_font_size(unsigned int i); //!<Set X tick value label font size (svg units, default pixels).
-          unsigned int x_value_font_size(); //!<\return  X tick value label font size (svg units, default pixels).
+          Derived& x_label_font_size(int i); //!<Set X axis label font size (svg units, default pixels).
+          int x_label_font_size(); //!<\return  X axis label font size (svg units, default pixels).
+          Derived& x_value_font_size(int i); //!<Set X tick value label font size (svg units, default pixels).
+           int x_value_font_size(); //!<\return  X tick value label font size (svg units, default pixels).
           Derived& x_label_font_family(const std::string& family); /*!< Set X tick value label font family.
            Available fonts depend on the program rendering the SVG XML, usually a browser.
           The default font (usually "default_font") is used if a render program does not provide the font specified.
@@ -418,8 +422,8 @@ namespace boost
              \endcode
            */
           const std::string& x_ticks_values_font_family(); //!<\return  X ticks value label font family.
-          Derived& x_ticks_values_font_size(unsigned int i); //!<Set X ticks value label font size (svg units, default pixels).
-          unsigned int x_ticks_values_font_size(); //!<Set X ticks value label font size (svg units, default pixels).
+          Derived& x_ticks_values_font_size(int i); //!<Set X ticks value label font size (svg units, default pixels).
+          int x_ticks_values_font_size(); //!<Set X ticks value label font size (svg units, default pixels).
 
           Derived& x_ticks_on_window_or_axis(int side);
             /*!<  Set position of X ticks on window or axis.
@@ -505,8 +509,8 @@ namespace boost
           std::string y_label_units(); //!<\return  the text to add units to the X-axis label.
           Derived& x_values_on(bool b); //!<Set true to show data point values near data points markers.
           bool x_values_on(); //!<\return true if to show data point values near data points markers.
-          Derived& x_values_font_size(unsigned int i); //!<Set font size of data point X values near data points markers.
-          unsigned int x_values_font_size(); //!<\return  font size of data point X values near data points markers.
+          Derived& x_values_font_size(int i); //!<Set font size of data point X values near data points markers.
+          int x_values_font_size(); //!<\return  font size of data point X values near data points markers.
           Derived& x_values_font_family(const std::string& family); //!<Set font family of data point X values near data points markers.
           const std::string& x_values_font_family(); //!<\return font family of data point X values near data points markers.
           Derived& x_major_interval(double inter); //!<Set the interval between X-axis major ticks.
@@ -568,8 +572,8 @@ namespace boost
           Derived& x_major_tick(double d); //!<Set interval (Cartesian units) between major ticks.
           double x_major_tick(); //!<\return  interval (Cartesian units) between major ticks.
           Derived& x_minor_interval(double interval); //!<Set interval between X-axis minor ticks.
-          Derived& x_num_minor_ticks(unsigned int num); //!<Set number of X-axis minor ticks between major ticks.
-          unsigned int x_num_minor_ticks(); //!<\return  number of X-axis minor ticks between major ticks.
+          Derived& x_num_minor_ticks(int num); //!<Set number of X-axis minor ticks between major ticks.
+          int x_num_minor_ticks(); //!<\return  number of X-axis minor ticks between major ticks.
           Derived& x_range(double min_x, double max_x); /*!< Set the range of values on the X-axis.
             The minimum and maximum values must be finite and not too near
             to the minima or maxima that can be represented by floating point double,
@@ -683,33 +687,33 @@ namespace boost
 //          Derived& axis_plot_frame<Derived>::x_autoscale(const T& container); // Use whole 1D data series.
 //
 //          template <class Derived>
-//          Derived& axis_plot_frame<Derived>::size(unsigned int x, unsigned int y);
+//          Derived& axis_plot_frame<Derived>::size(int x, int y);
 //
 //          template <class Derived>
 //          std::pair<double, double> axis_plot_frame<Derived>::size();
 //          template <class Derived>
-//          unsigned int axis_plot_frame<Derived>::image_x_size(); //!< Obselete - deprecated.
+//          int axis_plot_frame<Derived>::image_x_size(); //!< Obselete - deprecated.
 //
 //           template <class Derived>
-//          Derived& axis_plot_frame<Derived>::x_size(unsigned int i);
+//          Derived& axis_plot_frame<Derived>::x_size(int i);
 //
 //          template <class Derived>
-//          unsigned int axis_plot_frame<Derived>::x_size();
+//          int axis_plot_frame<Derived>::x_size();
 //
 //          template <class Derived>
-//          Derived& axis_plot_frame<Derived>::image_x_size(unsigned int i); //!< Obselete - deprecated.
+//          Derived& axis_plot_frame<Derived>::image_x_size(int i); //!< Obselete - deprecated.
 //
 //          template <class Derived>
-//          unsigned int axis_plot_frame<Derived>::image_y_size(); //!< Obselete - deprecated.
+//           int axis_plot_frame<Derived>::image_y_size(); //!< Obselete - deprecated.
 //
 //          template <class Derived>
-//          Derived& axis_plot_frame<Derived>::image_y_size(unsigned int i); //!< Obselete - deprecated.
+//          Derived& axis_plot_frame<Derived>::image_y_size(int i); //!< Obselete - deprecated.
 //
 //          template <class Derived>
-//          unsigned int axis_plot_frame<Derived>::y_size();
+//          int axis_plot_frame<Derived>::y_size();
 //
 //          template <class Derived>
-//          Derived& axis_plot_frame<Derived>::y_size(unsigned int i);
+//          Derived& axis_plot_frame<Derived>::y_size(int i);
 //                    template <class Derived>
 //          svg_color axis_plot_frame<Derived>::background_color();
 //
@@ -788,10 +792,10 @@ namespace boost
 //          const std::string axis_plot_frame<Derived>::title();
 //
 //          template <class Derived>
-//          Derived& axis_plot_frame<Derived>::title_font_size(unsigned int i);
+//          Derived& axis_plot_frame<Derived>::title_font_size(int i);
 //
 //          template <class Derived>
-//          unsigned int axis_plot_frame<Derived>::title_font_size();
+//          int axis_plot_frame<Derived>::title_font_size();
 //
 //
 //          template <class Derived>
@@ -845,9 +849,9 @@ namespace boost
 //          template <class Derived>
 //          const std::string& axis_plot_frame<Derived>::legend_font_family();
 //          template <class Derived>
-//          Derived& axis_plot_frame<Derived>::legend_title_font_size(unsigned int size);
+//          Derived& axis_plot_frame<Derived>::legend_title_font_size(int size);
 //          template <class Derived>
-//          unsigned int axis_plot_frame<Derived>::legend_title_font_size();
+//          int axis_plot_frame<Derived>::legend_title_font_size();
 //          template <class Derived>
 //          Derived& axis_plot_frame<Derived>::legend_top_left(double x, double y);
 //          template <class Derived>
@@ -876,14 +880,10 @@ namespace boost
 //          template <class Derived>
 //          bool axis_plot_frame<Derived>::legend_outside();
 //          template <class Derived>
-//          Derived& axis_plot_frame<Derived>::legend_header_font_size(int size);
+//          Derived& axis_plot_frame<Derived>::legend_title_font_size(int size);
 //          template <class Derived>
-//          int axis_plot_frame<Derived>::legend_header_font_size();
+//          int axis_plot_frame<Derived>::legend_title_font_size();
 //          template <class Derived>
-//          template <class Derived>
-//          Derived& axis_plot_frame<Derived>::legend_font_size(int size);
-//          template <class Derived>
-//          int axis_plot_frame<Derived>::legend_font_size();
 //          Derived& axis_plot_frame<Derived>::plot_window_on(bool cmd);
 //          template <class Derived>
 //          bool axis_plot_frame<Derived>::plot_window_on();
@@ -937,13 +937,13 @@ namespace boost
 //          template <class Derived>
 //          bool axis_plot_frame<Derived>::x_label_on();
 //          template <class Derived>
-//          Derived& axis_plot_frame<Derived>::x_label_font_size(unsigned int i);
+//          Derived& axis_plot_frame<Derived>::x_label_font_size(int i);
 //          template <class Derived>
-//          unsigned int axis_plot_frame<Derived>::x_label_font_size();
+//          int axis_plot_frame<Derived>::x_label_font_size();
 //          template <class Derived>
-//          Derived& axis_plot_frame<Derived>::x_value_font_size(unsigned int i);
+//          Derived& axis_plot_frame<Derived>::x_value_font_size(int i);
 //          template <class Derived>
-//          unsigned int axis_plot_frame<Derived>::x_value_font_size();
+//          int axis_plot_frame<Derived>::x_value_font_size();
 //          template <class Derived>
 //          Derived& axis_plot_frame<Derived>::x_label_font_family(const std::string& family);
 //          template <class Derived>
@@ -968,9 +968,9 @@ namespace boost
 //          template <class Derived>
 //          std::ios_base::fmtflags axis_plot_frame<Derived>::x_ticks_values_ioflags();
 //          template <class Derived>
-//          Derived& axis_plot_frame<Derived>::x_ticks_values_font_size(unsigned int i);
+//          Derived& axis_plot_frame<Derived>::x_ticks_values_font_size(int i);
 //          template <class Derived>
-//          unsigned int axis_plot_frame<Derived>::x_ticks_values_font_size();
+//          int axis_plot_frame<Derived>::x_ticks_values_font_size();
 //          template <class Derived>
 //          Derived& axis_plot_frame<Derived>::x_ticks_values_font_family(const std::string& family);
 //          template <class Derived>
@@ -1131,12 +1131,12 @@ namespace boost
 //          template <class Derived>
 //          bool axis_plot_frame<Derived>::x_values_on();
 //          template <class Derived>
-//          Derived& axis_plot_frame<Derived>::x_values_font_size(unsigned int i);
+//          Derived& axis_plot_frame<Derived>::x_values_font_size(int i);
 //
 //          template <class Derived>
 //          Derived& axis_plot_frame<Derived>::x_values_font_family(const std::string& family);
 //          template <class Derived>
-//          unsigned int axis_plot_frame<Derived>::x_values_font_size();
+//          int axis_plot_frame<Derived>::x_values_font_size();
 //
 //          template <class Derived>
 //          const std::string& axis_plot_frame<Derived>::x_values_font_family();
@@ -1240,9 +1240,9 @@ namespace boost
 //          template <class Derived>
 //          Derived& axis_plot_frame<Derived>::x_minor_interval(double interval);
 //          template <class Derived>
-//          Derived& axis_plot_frame<Derived>::x_num_minor_ticks(unsigned int num);
+//          Derived& axis_plot_frame<Derived>::x_num_minor_ticks(int num);
 //          template <class Derived>
-//          unsigned int axis_plot_frame<Derived>::x_num_minor_ticks();
+//          int axis_plot_frame<Derived>::x_num_minor_ticks();
 //          template <class Derived>
 //          Derived& axis_plot_frame<Derived>::x_range(double min_x, double max_x);
 //          template <class Derived>
@@ -2122,34 +2122,33 @@ namespace boost
   {
     if (derived().legend_on_ == true)
     { // So want a legend box, set with .legend_on(true).
-      // Check if any legend header or title.
-      derived().is_legend_header_ = (derived().legend_header_.text() != ""); 
-      // my_plot_1.legend_font_size()
+      // Check if any legend title or title.
+      derived().is_legend_title_ = (derived().legend_title_.text() != ""); 
 
-      // Copy the default style info into text_element legend_text_
-      derived().legend_text_.textstyle(derived().legend_text_style_);
-      derived().legend_header_.textstyle(derived().legend_header_style_);
-      // Uses the default legend_text_style_ for both
+      derived().legend_text_font_size_  = derived().legend_text_style_.font_size_; // legend data series text font size. 
+      derived().legend_title_font_size_ = derived().legend_title_style_.font_size_; // legend title text font size.
+      std::cout << ", .legend_title_font_size_ = " << derived().legend_title_font_size_
+        << ", .legend_text_font_size_ = " << derived().legend_text_font_size_
+        << std::endl;
 
-      derived().legend_text_font_size_   = derived().legend_text_.textstyle().font_size(); // legend data series text font size. 
-      derived().legend_header_font_size_ = derived().legend_header_.textstyle().font_size(); // legend header text font size.
+
       // If assume that descriptor text for each series uses same font as header,
       // and then have larger marker symbols then will clash and misalign, 
       // so vertical spacing needs to use the largest of 
-      // all point marker Unicode symbol font sizes (may be different) and legend header font size.
+      // all point marker Unicode symbol font sizes (may be different) and legend title font size.
 
       // https://www.w3.org/TR/SVG/text.html#GlyphsMetrics
 
       size_t num_series = derived().serieses_.size(); // How many data series in this plot.
-      derived().biggest_point_font_size_ = derived().legend_header_.textstyle().font_size(); 
+      derived().biggest_point_font_size_ = derived().legend_text_font_size(); // Assume text is smallest.
       std::cout << "derived().biggest_point_font_size_ " << derived().biggest_point_font_size_ << std::endl;
-      // Assume legend header size until a bigger symbol is found.
+      // Assume legend title size until a bigger symbol is found.
       // Below get biggest marker symbol point size in any series to get minimum vertical spacing between lines.
-      derived().legend_widest_line_ = // Longest of either header text 
+      derived().legend_widest_line_ = // Longest of either title text 
         // or data series with longest combination of point marker + line + text (if any).
-        string_svg_length(derived().legend_header_.text(), derived().legend_header_style_);
+        string_svg_length(derived().legend_title_.text(), derived().legend_title_style_);
       // Assume longest is the legend title until a longer data series_width is found below.
-      std::cout << "string_svg_length = " <<  string_svg_length(derived().legend_header_.text(), derived().legend_header_style_) << std::endl;
+      std::cout << "string_svg_length = " <<  string_svg_length(derived().legend_title_.text(), derived().legend_title_style_) << std::endl;
 
       for (size_t i = 0; i < num_series; ++i)
       {
@@ -2189,23 +2188,23 @@ namespace boost
         }
       } // for num_series
 
-      // Use height of whichever is the biggest of data point marker shape and legend header text font,
+      // Use height of whichever is the biggest of data point marker shape and legend title or text font,
       // for vertical spacing.  (assuming horizontal line markers have neglible height).
       // is now double biggest_point_font_size_;
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-      std::cout << "\nLegend header \"" << derived().legend_header_.text()
-        << ", chars = " << derived().legend_header_.text().size()
-        << ", .legend_header_font_size_ = " << derived().legend_header_font_size_
+      std::cout << "\nSize_legend\nLegend title \"" << derived().legend_title_.text()
+        << ", chars = " << derived().legend_title_.text().size()
+        << ", .legend_title_font_size_ = " << derived().legend_title_font_size_
         << ", .legend_text_font_size_ = " << derived().legend_text_font_size_
-        << ",\n .legend_header_style_ = " << derived().legend_header_style_ // not changed from default???
-        << ",\n .legend_text_style_ = " << derived().legend_text_style_     // not changed from default???
+        << ",\n .legend_title_style_ = " << derived().legend_title_style_ // not changed from default???
+        << ",\n .legend_text_style_ = " << derived().legend_text_style_     // is changed 
         << ",\n .legend_widest_line_ " << derived().legend_widest_line_ << " svg units."
-        << " or " << string_svg_length(derived().legend_header_.text(), derived().legend_header_style_) << " SVG units"
+        << " or " << string_svg_length(derived().legend_title_.text(), derived().legend_title_style_) << " SVG units"
         << ", .biggest_point_font_size_ " << derived().biggest_point_font_size_ 
         << std::endl;
-      // Legend header "Very, very, very long Legend title/header, chars = 41, .legend_header_font_size_ = 17, .legend_text_font_size_ = 11,
-      // .legend_header_style_ = text_style(14, "Lucida Sans Unicode", "", "normal", "", ""),
+      // Legend title "Very, very, very long Legend title/header, chars = 41, .legend_title_font_size_ = 17, .legend_text_font_size_ = 11,
+      // .legend_title_style_ = text_style(14, "Lucida Sans Unicode", "", "normal", "", ""),
        // .legend_text_style_ = text_style(12, "Lucida Sans Unicode", "", "normal", "", ""),
      // .legend_widest_line_ 344.4 svg units. or 344.4 SVG units, .biggest_point_font_size_ 30
       //???????????????????????   why have two text_styles not changed?
@@ -2219,7 +2218,7 @@ namespace boost
       derived().horizontal_marker_spacing_ = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series). 
       derived().vertical_marker_line_spacing_ = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-      std::cout << "Legend_font_size_ = " << derived().legend_text_font_size_
+      std::cout << "Legend_rext_font_size_ = " << derived().legend_text_font_size_
         << ", text_margin = " << derived().text_margin_ 
         << ", aspect ratio =  " << aspect_ratio
         << ", Vertical_spacing = " << derived().vertical_spacing_ 
@@ -2243,12 +2242,12 @@ namespace boost
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
       // legend_height must be *at least* enough for
-      // any legend header and text_margin(s) around it
+      // any legend title and text_margin(s) around it
       // (if any) plus a small margin_ top and bottom.
 
       derived().legend_height_ = derived().vertical_line_spacing_; // One font space top of legend box.
-      if ((derived().is_legend_header_) // A legend header line is wanted,
-        && (derived().legend_header_.text() != "")) // but not empty
+      if ((derived().is_legend_title_) // A legend title line is wanted,
+        && (derived().legend_title_.text() != "")) // but not empty
       {
         derived().legend_height_ += 2 * derived().vertical_line_spacing_; // text line & a font space space after.
       } 
@@ -2281,7 +2280,7 @@ namespace boost
       {
         derived().outside_legend_on_ = true; // Unless legend is set to be inside.
         // Space around any legend box - beyond any plot or legend border.
-        const double spacing = derived().legend_text_style_.font_size() * aspect_ratio; // = one legend header font width.
+        const double spacing = derived().legend_text_style_.font_size() * aspect_ratio; // = one legend title font width.
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
         std::cout << "Margin between legend box and plot window (and image border) = " << spacing << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
@@ -2393,7 +2392,7 @@ namespace boost
 
     //! Draw the legend border and background,
     //! (using the size and position computed by function @c size_legend_box),
-    //! and legend text header (if any and if required), 
+    //! and legend text title (if any and if required), 
     //! and any data point marker lines, 
     //! and any shapes for data point markers,
     //! and any data series descriptor text(s).  
@@ -2409,7 +2408,7 @@ namespace boost
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-        std::cout <<  "Drawing Legend: legend_header_font_size " << derived().legend_header_font_size_ 
+        std::cout <<  "Drawing Legend: legend_title_font_size " << derived().legend_title_font_size_ 
           << ", legend text font size = "  << derived().legend_text_font_size_
           << ", biggest marker symbol font size = "  << derived().biggest_point_font_size_
           << ", text_margin = " << derived().text_margin_ << std::endl;
@@ -2450,7 +2449,8 @@ namespace boost
       // Plot window box: left = 26, right = 545.6, top = 48, bottom = 471
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-      std::cout << "Legend_font_size_ = " << derived().legend_font_size_
+      std::cout << "Legend_text_font_size_ = " << derived().legend_text_font_size_
+        << "Legend_title_font_size_ = " << derived().legend_text_font_size_
         << ", text_margin = " << derived().text_margin_ 
         <<", aspect ratio =  " << aspect_ratio
         << ", Vertical_spacing = " << derived().vertical_spacing_ 
@@ -2466,17 +2466,17 @@ namespace boost
       }
       legend_y_pos += derived().legend_box_.margin_; // Leave small margin.
       legend_y_pos += derived().vertical_spacing_;
-      if (derived().legend_header_.text() != "")
-      { // Draw the centered legend header text for example: "My Plot Legend".
-        derived().legend_header_.x(legend_x_start + legend_width / 2.); // / 2. to center horizontally in legend box.
+      if (derived().legend_title_.text() != "")
+      { // Draw the centered legend title text for example: "My Plot Legend".
+        derived().legend_title_.x(legend_x_start + legend_width / 2.); // / 2. to center horizontally in legend box.
         // Might be better to use center_align here because may fail if legend contains symbols in Unicode?
-        derived().legend_header_.y(legend_y_pos);
-        derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_header_));
+        derived().legend_title_.y(legend_y_pos);
+        derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_title_));
         legend_y_pos += derived().vertical_line_spacing_; // Leave a text half space below legend header.
       } // is_header
       legend_y_pos += derived().vertical_line_spacing_; // Leave a text space below any legend header.
 
-      g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Write header text into legend box.
+      g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Write title text into legend box.
       g_element* g_inner_ptr = g_ptr;
       g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT));
 
@@ -2585,7 +2585,7 @@ namespace boost
             legend_x_pos, // Allow space for the marker.
             legend_y_pos,
             derived().serieses_[i].title_, // Text for this data series.
-            derived().legend_header_.textstyle(),
+            derived().legend_text_style_,
             left_align));
         }
         legend_y_pos += derived().vertical_marker_line_spacing_; // Just right spacing between big shapes.
@@ -3423,7 +3423,7 @@ namespace boost
         ////////////////////////////////
 
           template <class Derived>
-          Derived& axis_plot_frame<Derived>::size(unsigned int x, unsigned int y)
+          Derived& axis_plot_frame<Derived>::size(int x, int y)
           { //! Set SVG image size (SVG units, default pixels).
             // Check on sanity of these values?
             derived().image_.size(x, y);
@@ -3464,52 +3464,51 @@ namespace boost
           }
 
           template <class Derived>
-          unsigned int axis_plot_frame<Derived>::image_x_size() //!< Obselete - deprecated.
+          int axis_plot_frame<Derived>::image_x_size() //!< Obselete - deprecated.
           { //! \return SVG image X-axis size as horizontal width (SVG units, default pixels).
             return derived().image_.x_size();
           }
 
           template <class Derived>
-          Derived& axis_plot_frame<Derived>::x_size(unsigned int i)
+          Derived& axis_plot_frame<Derived>::x_size(int i)
           { //! Set SVG image X-axis size (SVG units, default pixels).
             derived().image_.x_size(i);
             return derived();
           }
           template <class Derived>
-          unsigned int axis_plot_frame<Derived>::x_size()
+          int axis_plot_frame<Derived>::x_size()
           { //! Get SVG image X-axis size as horizontal width (SVG units, default pixels).
             //! \return SVG image X-axis size as horizontal width (SVG units, default pixels).
             return derived().image_.x_size();
           }
           template <class Derived>
-          Derived& axis_plot_frame<Derived>::image_x_size(unsigned int i) //!< Obselete - deprecated.
+          Derived& axis_plot_frame<Derived>::image_x_size(int i) //!< Obselete - deprecated.
           { //! Set SVG image X-axis size (SVG units, default pixels).
-            // Can't this be x_size(unsigned int i)
             derived().image_.x_size(i);
             return derived();
           }
 
           template <class Derived>
-          unsigned int axis_plot_frame<Derived>::image_y_size() //!< Obselete - deprecated.
+          int axis_plot_frame<Derived>::image_y_size() //!< Obselete - deprecated.
           { //! \return SVG image Y-axis size as vertical height (SVG units, default pixels).
             return derived().image_.y_size();
           }
 
           template <class Derived>
-          Derived& axis_plot_frame<Derived>::image_y_size(unsigned int i) //!< Obselete - deprecated.
+          Derived& axis_plot_frame<Derived>::image_y_size(int i) //!< Obselete - deprecated.
           {//! Set SVG image Y-axis size (SVG units, default pixels).
             derived().image_.y_size(i);
             return derived();
           }
 
           template <class Derived>
-          unsigned int axis_plot_frame<Derived>::y_size()
+          int axis_plot_frame<Derived>::y_size()
           { //! \return SVG image Y-axis size as vertical height (SVG units, default pixels).
             return derived().image_.y_size();
           }
 
                    template <class Derived>
-          Derived& axis_plot_frame<Derived>::y_size(unsigned int i)
+          Derived& axis_plot_frame<Derived>::y_size(int i)
           {//! Set SVG image Y-axis size (SVG units, default pixels).
             derived().image_.y_size(i);
             return derived();
@@ -3562,7 +3561,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::description(const std::string d)
-          { /*! Writes description to the document for header, for example:
+          { /*! Writes description to the SVG document for header, for example:
               \verbatim
                 <desc> My Data </desc>
               \endverbatim
@@ -3573,26 +3572,26 @@ namespace boost
 
           template <class Derived>
           const std::string& axis_plot_frame<Derived>::description()
-          { //! \return  description of the document for header as \verbatim <desc> ... </desc> \endverbatim
+          { //! \return Description of the document for title as \verbatim <desc> ... </desc> \endverbatim
             return derived().image_.description();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::document_title(const std::string d)
-          { //! Write document title to the SVG document for header as \verbatim <title> My Title </title>  \endverbatim
+          { //! Write document title to the SVG document for title as \verbatim <title> My Title </title>  \endverbatim
             derived().image_.document_title(d);
             return derived();
           }
           template <class Derived>
           std::string axis_plot_frame<Derived>::document_title()
-          { //! \return Get document title to the document for header as \verbatim <title> My Title </title> \endverbatim
+          { //! \return Get document title to the document for title as \verbatim <title> My Title </title> \endverbatim
             return derived().image_.document_title();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::copyright_holder(const std::string d)
           { //! Writes copyright_holder to the document
-            //! (for header as \verbatim <!-- SVG Plot Copyright Paul A. Bristow 2007 --> ) \endverbatim
+            //! (as \verbatim <!-- SVG Plot Copyright Paul A. Bristow 2007 --> ) \endverbatim
             //! and as \verbatim metadata: <meta name="copyright" content="Paul A. Bristow" /meta> \endverbatim
             derived().image_.copyright_holder(d);
             return derived();
@@ -3789,14 +3788,14 @@ namespace boost
           }
 
           template <class Derived>
-          Derived& axis_plot_frame<Derived>::title_font_size(unsigned int i)
+          Derived& axis_plot_frame<Derived>::title_font_size(int i)
           { //! Sets the font size for the title (svg units, default pixels).
             derived().title_info_.textstyle().font_size(i);
             return derived();
           }
 
           template <class Derived>
-          unsigned int axis_plot_frame<Derived>::title_font_size()
+          int axis_plot_frame<Derived>::title_font_size()
           { //! \return  the font size for the title (svg units, default pixels).
             return derived().title_info_.textstyle().font_size();
           }
@@ -3910,97 +3909,96 @@ namespace boost
           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_title(const std::string title)
           { //! Set the title for the legend.
-            derived().legend_header_.text(title);
+            derived().legend_title_.text(title);
             return derived();
           }
 
           template <class Derived>
           const std::string axis_plot_frame<Derived>::legend_title()
           { //! \return  the title for the legend.
-            return derived().legend_header_.text();
+            return derived().legend_title_.text();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_font_weight(const std::string& weight)
           { //! Set the font weight for the legend title.
-            derived().legend_header_.textstyle().font_weight(weight);
+            derived().legend_title_style_.font_weight_ = weight;
             return derived();
           }
 
           template <class Derived>
           const std::string& axis_plot_frame<Derived>::legend_font_weight()
           { //! \return  the font weight for the legend title.
-            return derived().legend_header_.textstyle().font_weight();
+            return derived().legend_title_style_.weight_;
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_font_family(const std::string& family)
           { //! Set the font family for the legend title.
-            derived().legend_header_.textstyle().font_family(family);
+            derived().legend_title_style_.font_family_ = family;
             return derived();
           }
 
           template <class Derived>
           const std::string& axis_plot_frame<Derived>::legend_font_family()
           { //! \return  the font family for the legend title.
-            return derived().legend_header_.textstyle().font_family();
+            return derived().legend_title_style_.font_family_;
           }
 
           template <class Derived>
-          Derived& axis_plot_frame<Derived>::legend_title_font_size(unsigned int size)
+          Derived& axis_plot_frame<Derived>::legend_title_font_size(int size)
           { //! Set the font size for the legend title (svg units, default pixels).
-           // derived().legend_header_.textstyle().font_size_ = size;
-            derived().legend_text_style_.font_size_ = size;
-
+            derived().legend_title_style_.font_size_ = size;
             return derived();
           }
 
           template <class Derived>
-          unsigned int axis_plot_frame<Derived>::legend_title_font_size()
+          int axis_plot_frame<Derived>::legend_title_font_size()
           { //! \return  the font size for the legend title (svg units, default pixels).
-           // return derived().legend_header_.textstyle().font_size();
-            return derived().legend_text_style_.font_size_;
+            return derived().legend_title_style_.font_size_;
           }
-          //Derived& legend_header_font_size(int size); //!<  Set legend header font size (svg units, default pixels).
-          //int legend_header_font_size(); //!<\return  legend header font size (svg units, default pixels).
+          //Derived& legend_title_font_size(int size); //!<  Set legend header font size (svg units, default pixels).
+          //int legend_title_font_size(); //!<\return  legend header font size (svg units, default pixels).
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_title_font_weight(const std::string& weight)
           { //! Set the font weight for the legend title.
-            derived().legend_header_.textstyle().font_weight_ = weight;
+            derived().legend_title_style_.font_weight_ = weight;
             return derived(); // Permit chaining.
           }
 
           template <class Derived>
           const std::string& axis_plot_frame<Derived>::legend_title_font_weight()
           { //! \return  the font weight for the legend title.
-            return derived().legend_header_.textstyle().font_weight();
+            return derived().legend_title_style_.weight_;
           }
 
+          // Now separate title and text font sizes
           template <class Derived>
-          Derived& axis_plot_frame<Derived>::legend_font_size(unsigned int size)
+          Derived& axis_plot_frame<Derived>::legend_text_font_size(int size)
           { //! Set the font size for the legend title (svg units, default pixels).
            // derived().legend_text_.textstyle().font_size_ = size;
-            std::cout << "set derived().legend_text_style_.font_size_ = size " << size << std::endl; // 11
+            //std::cout << "set derived().legend_text_style_.font_size_ = size " << size << std::endl; // 11
             // Gets the default value.
-            std::cout << " derived().legend_text_.textstyle().font_size() = " << derived().legend_text_.textstyle().font_size() << std::endl; // 10
+            //std::cout << " derived().legend_text_.textstyle().font_size() = " << derived().legend_text_.textstyle().font_size() << std::endl; // still 10 is default
 
             derived().legend_text_style_.font_size_ = size;
-            std::cout << " derived().legend_text_.textstyle().font_size() = " << derived().legend_text_.textstyle().font_size() << std::endl; // 10
-            std::cout << " derived().legend_text_style_.font_size_ = " << derived().legend_text_style_.font_size_ << std::endl; // 11
+            //std::cout << " derived().legend_text_.textstyle().font_size() = " << derived().legend_text_.textstyle().font_size() << std::endl; // Still 10 - default
+            // So this expression derived().legend_text_.textstyle().font_size()
+            // does NOT update derived().legend_text_style_.font_size_ as expected.
+            //std::cout << " derived().legend_text_style_.font_size_ = " << derived().legend_text_style_.font_size_ << std::endl; // 11 set as expected.
             return derived();
           }
 
           template <class Derived>
-          unsigned int axis_plot_frame<Derived>::legend_font_size()
+          int axis_plot_frame<Derived>::legend_text_font_size()
           { //! \return  the font size for the legend title (svg units, default pixels).
             //return derived().legend_text_.textstyle().font_size();
-            std::cout << " get derived().legend_text_.textstyle().font_size(); = " << derived().legend_text_.textstyle().font_size() << std::endl; // 11
-            std::cout << "   derived().legend_text_style_.font_size() = " << derived().legend_text_style_.font_size() << std::endl; // 11
-            std::cout << "   derived().legend_text_style_.font_size_ = " << derived().legend_text_style_.font_size_ << std::endl; // 11
-            return derived().legend_text_style_.font_size_; // 11
+            //std::cout << " get derived().legend_text_.textstyle().font_size(); = " << derived().legend_text_.textstyle().font_size() << std::endl; // 11
+            //std::cout << "   derived().legend_text_style_.font_size() = " << derived().legend_text_style_.font_size() << std::endl; // 11
+            //std::cout << "   derived().legend_text_style_.font_size_ = " << derived().legend_text_style_.font_size_ << std::endl; // 11
+            return derived().legend_text_style_.font_size_; // 11 as expected for both expressions.
           }
-
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_top_left(double x, double y)
@@ -4091,7 +4089,7 @@ namespace boost
 
           template <class Derived>
           legend_places axis_plot_frame<Derived>::legend_place()
-          { //! \return  the position of the legend, \see  boost::svg::legend_places
+          { //! \return  the position of the legend, \see boost::svg::legend_places
             return derived().legend_place_;
           }
 
@@ -4099,19 +4097,6 @@ namespace boost
           bool axis_plot_frame<Derived>::legend_outside()
           { //! \return  if the legend should be outside the plot area.
             return derived().outside_legend_on_;
-          }
-
-          template <class Derived>
-          Derived& axis_plot_frame<Derived>::legend_header_font_size(int size)
-          { //! Set legend header font size (svg units, default pixels).
-            derived().legend_header_style_.font_size_ = size;
-            return derived();
-          }
-
-          template <class Derived>
-          int axis_plot_frame<Derived>::legend_header_font_size()
-          { //! \return Get legend header font size (svg units, default pixels).
-            return derived().legend_header_style_.font_size_;
           }
 
           template <class Derived>
@@ -4136,7 +4121,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::plot_border_color(const svg_color& col)
-          { //! Set the color for the plot window background.
+          { //! Set the color for the plot window background. Example: @c .plot_border_color(lightgoldenrodyellow)
             derived().plot_window_border_.stroke_ = col;
             derived().image_.g(detail::PLOT_WINDOW_BACKGROUND).style().stroke_color(col);
             return derived();
@@ -4323,7 +4308,7 @@ namespace boost
           }
 
           template <class Derived>
-          Derived& axis_plot_frame<Derived>::x_label_font_size(unsigned int i)
+          Derived& axis_plot_frame<Derived>::x_label_font_size(int i)
           { //! Set X axis label font size (svg units, default pixels).
             derived().x_label_info_.textstyle().font_size(i);
             // Also duplicated at
@@ -4332,28 +4317,28 @@ namespace boost
           }
 
           template <class Derived>
-          unsigned int axis_plot_frame<Derived>::x_label_font_size()
+          int axis_plot_frame<Derived>::x_label_font_size()
           { //! \return  X axis label font size (svg units, default pixels).
             return derived().x_label_info_.textstyle().font_size();
           }
 
           template <class Derived>
-          Derived& axis_plot_frame<Derived>::x_value_font_size(unsigned int i)
+          Derived& axis_plot_frame<Derived>::x_value_font_size(int i)
           { //! Set X tick value label font size (svg units, default pixels).
             derived().x_value_value.textstyle().font_size(i);
             return derived();
           }
 
           template <class Derived>
-          unsigned int axis_plot_frame<Derived>::x_value_font_size()
+          int axis_plot_frame<Derived>::x_value_font_size()
           { //! \return  X tick value label font size (svg units, default pixels).
-            return derived().x_value_value.textstyle().font_size();
+            return derived().x_value_value_style_font_size();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_label_font_family(const std::string& family)
           { //! Set X tick value label font family.
-            derived().x_label_info_.textstyle().font_family(family);
+            derived().x_label_info_.textstyle().font_family_ = family;
             return derived();
           }
 
@@ -4430,27 +4415,27 @@ namespace boost
           }
 
           template <class Derived>
-          Derived& axis_plot_frame<Derived>::x_ticks_values_font_size(unsigned int i)
+          Derived& axis_plot_frame<Derived>::x_ticks_values_font_size(int size)
           { //! Set X ticks value label font size (svg units, default pixels).
             //derived().x_ticks_.value_label_style_.font_size(i);
-            derived().x_value_label_info_.textstyle().font_size(i);
+            derived().x_value_label_info_.textstyle().font_size_ = size;
             return derived();
           }
 
           template <class Derived>
-          unsigned int axis_plot_frame<Derived>::x_ticks_values_font_size()
+          int axis_plot_frame<Derived>::x_ticks_values_font_size()
           { //! \return  X ticks value label font size (svg units, default pixels).
             // return derived().x_ticks_.value_label_style_.font_size();
-                   return     derived().x_value_label_info_.textstyle().font_size();
+            //       return derived().x_value_label_info_style_.font_size();
 
-            //return derived().x_ticks_.value_label_info_.font_size();
+            return derived().x_value_label_info_.textstyle().font_size_;
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_ticks_values_font_family(const std::string& family)
           { //! Set X ticks value label font family.
             //derived().x_ticks_.value_label_style_.font_family(family); // is effect same as:
-            derived().x_value_label_info_.textstyle().font_family(family);
+            derived().x_value_label_info_.textstyle().font_family_ = family;
             return derived();
           }
 
@@ -4995,14 +4980,14 @@ namespace boost
           }
 
           template <class Derived>
-          Derived& axis_plot_frame<Derived>::x_values_font_size(unsigned int i)
+          Derived& axis_plot_frame<Derived>::x_values_font_size(int i)
           { //! Set font size of data point X values near data points markers.
             derived().x_values_style_.values_text_style_.font_size(i);
             return derived();
           }
 
           template <class Derived>
-          unsigned int axis_plot_frame<Derived>::x_values_font_size()
+          int axis_plot_frame<Derived>::x_values_font_size()
           { //! \return  font size of data point X values near data points markers.
             return derived().x_values_style_.values_text_style_.font_size();
           }
@@ -5371,14 +5356,14 @@ namespace boost
           }
 
           template <class Derived>
-          Derived& axis_plot_frame<Derived>::x_num_minor_ticks(unsigned int num)
+          Derived& axis_plot_frame<Derived>::x_num_minor_ticks(int num)
           { //! Set number of X-axis minor ticks between major ticks.
             derived().x_ticks_.num_minor_ticks_ = num;
             return derived();
           }
 
           template <class Derived>
-          unsigned int axis_plot_frame<Derived>::x_num_minor_ticks()
+          int axis_plot_frame<Derived>::x_num_minor_ticks()
           { //! \return  number of X-axis minor ticks between major ticks.
             //! Note: NOT float or double!
             return derived().x_ticks_.num_minor_ticks_;

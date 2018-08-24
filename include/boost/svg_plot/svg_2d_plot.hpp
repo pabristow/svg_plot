@@ -501,7 +501,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       text_style a_style_; //!< Defaults for text_style (contains font size & type etc).
       text_style title_style_; //!< Style for plot title.
       text_style legend_text_style_; //!< Style for legend text.
-      text_style legend_header_style_; //!< Style for legend title.
+      text_style legend_title_style_; //!< Style for legend title.
       text_style x_axis_label_style_; //!< Style for tick labels on X-axis.
       text_style x_value_label_style_; //!< Style for data point value labels on X-axis.
       text_style y_axis_label_style_; //!< Style for tick labels on Y-axis.
@@ -509,7 +509,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       text_style point_symbols_style_; //!< Style used for symbol marking a data point.
 
       text_element title_info_; //!< Plot title text etc.
-      text_element legend_header_; //!< Legend box header or title (if any).
+      text_element legend_title_; //!< Legend box header or title (if any).
       text_element legend_text_; //!< Legend box series data descriptor text(if any).
       text_element x_label_info_; //!< X-axis label text, for example: "length".
       text_element x_value_label_info_; //!< X-axis tick value text, for example: "1.2" or "1.2e+001"
@@ -561,12 +561,12 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       ticks_labels_style y_ticks_; //!< Style of Y-axis tick marks and labels.
 
       bool title_on_; //!< true if to display a title for the whole plot (default @c true).
-      bool legend_on_;//!< true if to provide a legend box (default false unless a legend header title is set so that legend_header_.text() != "").
-      bool is_legend_header_; //!< @c true if legend_header_.text() != "" (for example: @c .legend_title("My Legend");) (default @c false).
+      bool legend_on_;//!< true if to provide a legend box (default false unless a legend header title is set so that legend_title_.text() != "").
+      bool is_legend_title_; //!< @c true if legend_title_.text() != "" (for example: @c .legend_title("My Legend");) (default @c false).
       bool is_a_point_marker_; //! @c true if any data series have point markers to show in legend (default @c false).
       bool is_a_data_series_line_;  //!< @c true if any series have lines to show in legend (default @c false). Example: @c .line_on(true). 
       bool is_a_data_series_text_;  //!< @c true is any series should show text describing the data series (default @c false). For example: @c my_plot.plot(my_data_0, "my_data_0_text"); 
-      double legend_header_font_size_; //!< Font size of legend header/title.
+      double legend_title_font_size_; //!< Font size of legend header/title.
       double legend_text_font_size_; //!< Font size of legend text.
      // double series_text_font_size_; //!< Font size of lines of text describing data series.
       double legend_widest_line_; //!< Width of longest of legend header/title and widest data series pointer+line+text.
@@ -671,9 +671,9 @@ my_plot.background_color(ghostwhite) // Whole image.
         // See documentation for default settings rationale.
         // text_styles: //  Font size, font family, font weight, font style, font stretch & font decoration.
         title_style_(18, default_font, "normal", "", "", ""),  // // 3rd parameter weight might be bold?
-        legend_header_style_(14, default_font, "normal", "", "", ""), // 6rd parameter decoration might be underline?
+        legend_title_style_(0, default_font, "normal", "", "", ""), // 6rd parameter decoration might be underline?
         legend_text_style_(10, default_font, "normal", "", "", ""), // 
-        x_axis_label_style_(14, default_font, "", ""),
+        x_axis_label_style_(12, default_font, "", ""),
         x_value_label_style_(12, default_font, "", ""), // X-axis tick labels.
         // Separate X and Y to allow axes to have different styles.
         y_axis_label_style_(14, default_font, "", ""),
@@ -706,7 +706,7 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         plot_window_border_(lightslategray, svg_color(255, 255, 255), 2, 3, true, false),
         legend_box_(yellow, white, 1, 2, true, true),
-        legend_header_(0, 0, "", legend_header_style_, center_align, horizontal),
+        legend_title_(0, 0, "", legend_title_style_, center_align, horizontal),
         legend_text_(0, 0, "", legend_text_style_, center_align, horizontal),
         legend_width_(0), // width of legend box (pixels) //
         legend_height_(0), // height of legend box (pixels)
@@ -714,16 +714,16 @@ my_plot.background_color(ghostwhite) // Whole image.
         legend_place_(outside_right), // default but interacts with using plot_window.
         title_on_(true),
         legend_on_(false),
-        is_legend_header_(false),
+        is_legend_title_(false),
         is_a_point_marker_(false),
         is_a_data_series_line_(false),
         is_a_data_series_text_(false),
-        legend_header_font_size_(0.), //!< legend header or title font size (set in @c size_legend_box and used to @c draw_legend).
-        // derived().legend_header_.textstyle().font_size();
-        legend_text_font_size_(0.), //!< legend header or title font size (set in @c size_legend_box and used to @c draw_legend).
-        // derived().legend_text_.textstyle().font_size();
-        legend_widest_line_(0), //!< Longest width of sum of point marker, line and data series text and legend header.
-        biggest_point_font_size_(0.), //!< Biggest font of point marker, line and data series text and legend header.
+        legend_title_font_size_(0.), //!< legend title font size (set in @c size_legend_box and used to @c draw_legend).
+        // derived().legend_title_style.font_size_;
+        legend_text_font_size_(0.), //!< legend title font size (set in @c size_legend_box and used to @c draw_legend).
+         // derived().legend_text_style.font_size_;
+        legend_widest_line_(0), //!< Longest width of sum of point marker, line and data series text and legend title.
+        biggest_point_font_size_(0.), //!< Biggest font of point marker, line and data series text and legend title.
 
         vertical_spacing_(0), // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
         vertical_line_spacing_(0), // = derived().legend_font_size_; // One line vertically.

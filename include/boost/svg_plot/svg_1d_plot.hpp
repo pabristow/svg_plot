@@ -186,7 +186,7 @@ public:
 
   // text_elements hold position & alignment, and indirectly via text_style, font_family, font_size, bold, italic...
   text_element title_info_; //!< Title of aspect_ratioole plot.
-  text_element legend_header_; //!< legend box header or title (if any).
+  text_element legend_title_; //!< legend box header or title (if any).
   text_element x_label_info_; //!< X-axis label, Example: "length of widget"
   text_element x_value_label_info_; //!< X-axis tick value label, for example: "1.2" or "1.2e1"
   text_element x_units_info_; //!< For example, to display, "length (meter)"
@@ -647,7 +647,7 @@ void svg_1d_plot::update_image()
     image_border_(yellow, white, 1, 10, true, true), // margin should be about axis label font size.
     plot_window_border_(lightgoldenrodyellow, svg_color(255, 255, 255), 1, 3, true, false),
     legend_box_(yellow, white, 1, 2, true, true),
-    legend_header_(0, 0, "", legend_text_style_, center_align, horizontal),
+    legend_title_(0, 0, "", legend_text_style_, center_align, horizontal),
     legend_width_(200), // width of legend box (pixels) // TODO isn't this calculated?
     legend_height_(0), // height of legend box (pixels)
     legend_left_(-1), legend_right_(-1),legend_top_(-1),legend_bottom_(-1), // Default top left of plot window.

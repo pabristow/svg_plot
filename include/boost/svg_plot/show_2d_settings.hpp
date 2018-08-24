@@ -108,14 +108,14 @@ void show_2d_plot_settings(svg_2d_plot& plot)
   std::cout << "legend_title "  << '"' << plot.legend_title()  << '"' << std::endl;
   std::cout << "legend_title_font_size " << plot.legend_title_font_size() << std::endl;
   std::cout << "legend_title_font_weight " << plot.legend_title_font_weight() << std::endl; // normal or might be bold?
-  std::cout << "legend_font_size " << plot.legend_font_size() << std::endl; // Font for text below title/header.
+  std::cout << "legend_font_size " << plot.legend_text_font_size() << std::endl; // Font for text below title/header.
   std::cout << "legend_font_weight " << plot.legend_font_weight() << std::endl; // normal or might be bold?
   // Not useful at present, so not longer implemented.
   // std::cout << "legend_font_width " << plot.legend_font_width() << std::endl;
   std::cout << "legend_width " << plot.legend_width() << std::endl;
   std::cout << "legend_lines " << plot.legend_lines() << std::endl;
   std::cout << "legend_text_style " << plot.legend_text_style_ << std::endl;
-  std::cout << "legend_title_style " << plot.legend_header_style_ << std::endl;
+  std::cout << "legend_title_style " << plot.legend_title_style_ << std::endl;
   std::cout << "limit points stroke color " << plot.limit_color() << std::endl;
   std::cout << "limit points fill color " << plot.limit_fill_color() << std::endl;
   std::cout << "license_on " << plot.license_on() << std::endl;
