@@ -876,19 +876,19 @@ public:
 
   path_element& path()
   { //! Construct an empty path, ready for additions with chainable functions M., L., ...
-    return document.path(); //! \return reference to path element.
+    return document.path(); //! \return reference to @c path_element.
   }
 
   clip_path_element& clip_path(const rect_element& rect, const std::string& id)
   { //! Rectangle outside which 'painting' is 'clipped' so doesn't show.
     clip_paths.push_back(clip_path_element(id, rect));
-    return clip_paths[clip_paths.size()-1]; //! \return Reference to clip_path element.
+    return clip_paths[clip_paths.size()-1]; //! \return Reference to @c clip_path_element.
   }
 
   g_element& add_g_element()
   { //! Add information about a group element to the document.
     //! Increments the size of the array of g_elements, returned by g_element.size().
-    return document.add_g_element(); //! \return reference to the added group element.
+    return document.add_g_element(); //! \return reference to the added group element @c add_g_element.
   }
 
   g_element& g(int i)

@@ -55,6 +55,7 @@ namespace svg
   //!< (This can only be quite approximate as varies on type of font (narrow or bold)
   //!< and the mix of characters widths (unless monospace font).
   //!< See https://www.w3.org/TR/SVG/text.html#GlyphsMetrics
+  //!< https://www.w3.org/TR/SVG/text.html#InterfaceSVGTextContentElement
 
   /*! Default font chosen is a Unicode font like ['Lucida Sans Unicode] that
    has the best chance of ['symbols] being rendered corrrectly.
@@ -104,10 +105,11 @@ enum place
   top_side = +1,
 };
 
-const std::string strip_e0s(std::string s);
 // Ugly hack to remove unwanted sign and leading zero(s) in exponent.
-double string_svg_length(const std::string& s, const text_style& style);
+const std::string strip_e0s(std::string s);
+
 // Estimate length of string when appears as svg units.
+double string_svg_length(const std::string& s, const text_style& style);
 
 /*!
  This is the style information for any group (g) tag.

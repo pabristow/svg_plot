@@ -478,8 +478,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
      friend class svg_2d_plot_series;
      friend class detail::axis_plot_frame<svg_2d_plot>;
      // axis_plot_frame.hpp contains functions common to 1-D and 2-D.
-
-   // private:
+   // private: // Doesn't help?
   public:
 
   //! \cond DETAIL
@@ -581,7 +580,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       double horizontal_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
       double horizontal_line_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
       double horizontal_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series). 
-      double vertical_marker_line_spacing_; // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
+      double vertical_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
 
       bool outside_legend_on_; //!< @c true if legend box should be outside the plot window (default @c true).
       bool legend_lines_; //!< @c true if wish to add a colored line for each data series in legend box.
@@ -730,7 +729,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         horizontal_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
         horizontal_line_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
         horizontal_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series). 
-        vertical_marker_line_spacing_(0), // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
+        vertical_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
 
         outside_legend_on_(true), //!< @c true if legend is @b outside the plot window axes (default true).
         plot_window_clip_("plot_window"), // for <clipPath id="plot_window" ...
