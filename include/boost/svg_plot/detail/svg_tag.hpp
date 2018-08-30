@@ -1167,6 +1167,13 @@ public:
     {
     os << " text-decoration=\"" << style_.font_decoration() << "\"";
     }
+    // Might add text_length here?
+    //if (style_.text_length != 0)
+    //{
+    //  os << " textLength=\"" << style_.text_length() << "\"";
+    //}
+
+
     os << '>' ;
     generate_text(os);
     os << "</text>";
@@ -2138,6 +2145,9 @@ public:
       children.push_back(new text_element(x, y, text, style, align, rotate));
       return *(static_cast<text_element*>(&children[children.size()-1]));
     }
+
+    // Might add   text_length here - see svg_tag  and svg.hpp 2131 
+
 
     // push_back info about polygon shapes:
 

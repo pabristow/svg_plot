@@ -1846,6 +1846,12 @@ double string_svg_length(const std::string& s, const text_style& style)
 #ifdef BOOST_SVG_STYLE_DIAGNOSTICS
   std::cout << "string \"" << s << "\" has " << chars << " characters, and svg length is " << svg_length << std::endl;
 #endif // BOOST_SVG_STYLE_DIAGNOSTICS
+
+  // I:\modular-boost\libs\svg_plot\example\SVG_text_width_height.cpp shows that width can be quite a bit wrong.
+  // Aspect ratio can vary from 0.4 to 0.55 so estimate of 1 units could increase to 1.4 in worst case, as observed.
+  // For example 1000 svg units might take between 180 and 240 random chars.
+  // So must use textLength="estimated" to ensure it fits.
+
  return svg_length;
 } // double string_svg_length(const std::string& s, const text_style& style)
 

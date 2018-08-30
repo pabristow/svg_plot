@@ -816,11 +816,27 @@ public:
   }
 
   text_element& text(double x, double y, const std::string& text,
-    const text_style& style, // size, font etc.
+    const text_style& style, // font size, font family etc.
     align_style align, rotate_style rotate)
   { //! push_back information about text to the document, with location, style, alignment & rotation.
-    return document.text(x, y, text, style, align, rotate);
+    return document.text(x, y, text, style, align, rotate); // see svg.hpp 2131 for definition.
   }
+  /* Might add text_length
+  // textLength = "<length>"
+  The author's computation of the total sum of all of the advance values that correspond to character data within this element,
+  including the advance value on the glyph (horizontal or vertical),
+  the effect of properties ‘kerning’, ‘letter-spacing’ and ‘word-spacing’ and adjustments 
+  due to attributes ‘dx’ and ‘dy’ on ‘tspan’ elements. 
+  
+  This value is used to calibrate the user agent's own calculations with that of the author.
+  The purpose of this attribute is to allow the author to achieve exact alignment, 
+  in visual rendering order after any bidirectional reordering, for the first and last rendered glyphs that correspond to this element;
+  thus, for the last rendered character (in visual rendering order after any bidirectional reordering), 
+  any supplemental inter-character spacing beyond normal glyph advances are ignored (in most cases) 
+  when the user agent determines the appropriate amount to expand/compress the text string to fit within a length of ‘textLength’.
+  */
+
+  // https://www.w3.org/TR/SVG11/text.html#TextElementTextLengthAttribute
 
   // Polygon for shapes with many vertices.
   polygon_element& polygon(double x, double y, bool f = true) // 1st point only, add others later with .P(x, y).

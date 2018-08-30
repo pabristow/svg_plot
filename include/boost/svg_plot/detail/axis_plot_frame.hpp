@@ -5,6 +5,7 @@
 
   #define BOOST_SVG_LEGEND_DIAGNOSTICS for diagnostics of plot legend.
   #define BOOST_SVG_TITLE_DIAGNOSTICS for diagnostics of plot title.
+  #define BOOST_SVG_POINT_DIAGNOSTICS for diagnostics of data point markers.
 
   \author Jacob Voytko and Paul A. Bristow
 */
@@ -299,7 +300,9 @@ namespace boost
           Derived& title(const std::string title);
           const std::string title(); //!<  \return Title for plot (whose string may include Unicode for greek letter and symbols).
           Derived& title_font_size(int i); //!<  Sets the font size for the title (SVG units, default pixels).
-          int title_font_size(); //!<  \return Font size for the title (SVG units, default pixels).
+          int title_font_size(); //!<  return Font size for the title (SVG units, default pixels). Example: /code std::cout << my_plot.title_font_size() ... \endcode
+          text_style& title_style(); //!<  \return All styl info for the title, font, famil, size ... (SVG units, default pixels).
+
           Derived& title_font_family(const std::string& family); //!<  Set the font family for the title (for example: .title_font_family("Lucida Sans Unicode");
           const std::string& title_font_family(); //!<  \return Font family for the title.
           Derived& title_font_style(const std::string& style);  //!<  Set the font style for the title (default normal).
@@ -2101,7 +2104,7 @@ namespace boost
         if (title_svg_length > derived().image_.x_size())
         { // Issue Warning that title is too long or too big font!
           std::cout << "Title \"" << derived().title_info_.text()
-            << "\"\n  width " << title_svg_length << " (SVG units) may overflow plot image!"
+            << "\"\n  estimated width " << title_svg_length << " (SVG units) may overflow plot image!"
             "\n  (Reduce font size from " << derived().title_font_size()
             << ", or number of characters from " << derived().title().size()
             << ", or increase image size from " << derived().image_.x_size()
@@ -3877,6 +3880,12 @@ namespace boost
             //! outputs:
             //! \verbatim title "Plot showing several data point marker shapes &#x26; sizes." \endverbatim
             return derived().title_info_.text(); 
+          }
+
+          template <class Derived>
+          text_style& axis_plot_frame<Derived>::title_style()
+          { //! \return  the font size for the title (svg units, default pixels).
+            return derived().title_style_;
           }
 
           template <class Derived>
