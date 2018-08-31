@@ -669,15 +669,15 @@ my_plot.background_color(ghostwhite) // Whole image.
         :
         // See documentation for default settings rationale.
         // text_styles: //  Font size, font family, font weight, font style, font stretch & font decoration.
-        title_style_(18, default_font, "normal", "", "", ""),  // // 3rd parameter weight might be bold?
-        legend_title_style_(0, default_font, "normal", "", "", ""), // 6rd parameter decoration might be underline?
-        legend_text_style_(10, default_font, "normal", "", "", ""), // 
-        x_axis_label_style_(12, default_font, "", ""),
-        x_value_label_style_(12, default_font, "", ""), // X-axis tick labels.
+        title_style_(18, default_font, "normal", "", "", "", 0),  // // 3rd parameter weight might be bold?
+        legend_title_style_(0, default_font, "normal", "", "", "", 0), // 6rd parameter decoration might be underline?
+        legend_text_style_(10, default_font, "normal", "", "", "", 0), // 
+        x_axis_label_style_(12, default_font, "", "","", "", 0),
+        x_value_label_style_(12, default_font, "", "","", "", 0), // X-axis tick labels.
         // Separate X and Y to allow axes to have different styles.
-        y_axis_label_style_(14, default_font, "", ""),
-        y_value_label_style_(12, default_font, "", ""), // Y-axis tick labels.
-        point_symbols_style_(12, "Lucida Sans Unicode", "", ""), // Used for data point marking.
+        y_axis_label_style_(14, default_font, "", "", "", "", 0),
+        y_value_label_style_(12, default_font, "", "", "", "", 0), // Y-axis tick labels.
+        point_symbols_style_(12, "Lucida Sans Unicode", "", "", "", "", 0), // Used for data point marking.
         // Font is to try to ensure that all Unicode symbols are available.
         title_info_(0, 0, "", title_style_, center_align, horizontal),
         x_label_info_(0, 0, "", x_axis_label_style_, center_align, horizontal),
@@ -907,21 +907,27 @@ my_plot.background_color(ghostwhite) // Whole image.
         // by copying to ensure they are the same.
         // TODO Sort this out properly by a major class reorganisation!
         x_axis_label_style_ = x_label_info_.textstyle();
-        if (x_label_info_.textstyle() != x_axis_label_style_ )
+        if (x_label_info_.textstyle() != x_axis_label_style_)
         {
-            std::cout << "Warning: x_label_info_.textstyle() != x_axis_label_style_!" << std::endl;
-#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
-#endif // BOOST_SVG_WINDOW_DIAGNOSTICS
+          std::cout << "Warning: x_label_info_.textstyle() != x_axis_label_style_!" << std::endl;
+          std::cout << "x_label_info_.textstyle() = " << x_label_info_.textstyle() << ", "
+            << "x_axis_label_style_ = " << x_axis_label_style_ << std::endl;
         }
+
+#ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
+#endif // BOOST_SVG_WINDOW_DIAGNOSTICS  
 
         y_axis_label_style_ = y_label_info_.textstyle();
         if (y_label_info_.textstyle() != y_axis_label_style_ )
         { // Warn.
           std::cout << "Warning: y_label_info_.textstyle() != y_axis_label_style_!" << std::endl;
+          std::cout << "y_label_info_.textstyle() = " << y_label_info_.textstyle() << ", "
+            << "y_axis_label_style_ = " << y_axis_label_style_ << std::endl;
+
         }
 
         // Assume that X-axis labels are always at bottom.
-        if(x_axis_.label_on_ == true == true && x_label_info_.text() != "")
+        if(x_axis_.label_on_ == true && x_label_info_.text() != "")
         { // Leave space at bottom for X-axis label.
           if (x_label_info_.textstyle().font_size() != x_axis_label_style_.font_size())
           { // Temporary check.
@@ -930,12 +936,11 @@ my_plot.background_color(ghostwhite) // Whole image.
             std::cout << "x_axis_label_style_.font_size() " << x_axis_label_style_.font_size() << std::endl;
 #endif // BOOST_SVG_WINDOW_DIAGNOSTICS
           }
-
           plot_bottom_ -= x_axis_label_style_.font_size() * text_margin_;
           // plot_bottom_ -= x_label_info_.textstyle().font_size() * text_margin_; // OK
         }
         // Assume that Y-axis labels are always at left.
-        if(y_axis_.label_on_ == true == true && y_label_info_.text() != "")
+        if(y_axis_.label_on_ == true && y_label_info_.text() != "")
         { // Leave space at left for Y-axis label.
           if (y_label_info_.textstyle().font_size() != y_axis_label_style_.font_size())
           { // Temporary check.

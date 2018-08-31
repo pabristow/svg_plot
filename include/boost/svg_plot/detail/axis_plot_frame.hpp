@@ -297,12 +297,13 @@ namespace boost
 
               Unicode symbols are at http://unicode.org/charts/symbols.html.
             */
-          Derived& title(const std::string title);
+          Derived& title(const std::string title); //! \return @c std::string text for the title, 
+          //! (whose string may include Unicode for greek letter and symbols).
           const std::string title(); //!<  \return Title for plot (whose string may include Unicode for greek letter and symbols).
+          text_style& title_style(); //!<  \return All style info for the title, font, famil, size ... (SVG units, default pixels).
+
           Derived& title_font_size(int i); //!<  Sets the font size for the title (SVG units, default pixels).
           int title_font_size(); //!<  return Font size for the title (SVG units, default pixels). Example: /code std::cout << my_plot.title_font_size() ... \endcode
-          text_style& title_style(); //!<  \return All styl info for the title, font, famil, size ... (SVG units, default pixels).
-
           Derived& title_font_family(const std::string& family); //!<  Set the font family for the title (for example: .title_font_family("Lucida Sans Unicode");
           const std::string& title_font_family(); //!<  \return Font family for the title.
           Derived& title_font_style(const std::string& style);  //!<  Set the font style for the title (default normal).
@@ -317,6 +318,10 @@ namespace boost
           int title_font_rotation(); //!<  \return  the rotation for the title font (degrees).
           Derived& title_font_alignment(align_style alignment);  //!<  Set the alignment for the title.
           align_style title_font_alignment(); //!<  \return  the alignment for the title.
+          Derived& title_text_length(double); //!<  Sets the text_length for the title (SVG units, default pixels).
+          double title_text_length(); //!<  return text_length for the title (SVG units, default pixels).
+          // Example: /code std::cout << my_plot.title_text_length() ... \endcode
+
           // Legend.
           Derived& legend_width(double width); //!<  Set the width for the legend box.
           double legend_width(); //!<  \return Width for the legend box.
@@ -1794,8 +1799,8 @@ namespace boost
           } // on plot window or 'on axis'.
         }
         else
-        { // Outside plot window - so do nothing?  Warning?
-          //std::cerr << "Writing draw_x_major_tick OUTside plot window: "
+        { // Outside plot window!
+          //std::cerr << "Warning : writing a draw_x_major_tick OUTSIDE the plot window: "
           //  "x = " << x << ", plot_left_ = " << derived().plot_left_ << ", plot_right_ = " << derived().plot_right_ << std::endl;
         }
       } // draw_x_major_tick
@@ -3884,8 +3889,11 @@ namespace boost
 
           template <class Derived>
           text_style& axis_plot_frame<Derived>::title_style()
-          { //! \return  the font size for the title (svg units, default pixels).
-            return derived().title_style_;
+          { //! \return  Font size for the title (svg units, default pixels).
+            //! Example: std::cout << "title style " << my_2d_plot.title_style() << std::endl;
+            //! Outputs: title style text_style(10, "Lucida Sans Unicode", "", "normal", "", "", 900)
+            return derived().title_info_.textstyle(); // Gets expected title style.
+ //           return derived().title_style_;  // Gets default title font size :-(
           }
 
           template <class Derived>
@@ -3990,6 +3998,20 @@ namespace boost
           align_style axis_plot_frame<Derived>::title_font_alignment()
           { //! \return  the alignment for the title.
             return derived().title_info_.alignment();
+          }
+
+
+          template <class Derived>
+          Derived& axis_plot_frame<Derived>::title_text_length(double length)
+          { //! Sets the the estimated text length for the title (svg units, default pixels).
+            derived().title_info_.textstyle().text_length(length);
+            return derived();
+          }
+
+          template <class Derived>
+          double axis_plot_frame<Derived>::title_text_length()
+          { //! \return the estimated text length for the title (svg units, default pixels).
+            return derived().title_info_.textstyle().text_length();
           }
 
           // Legend.

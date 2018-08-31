@@ -66,7 +66,7 @@ namespace svg
 // Forward declarations of classes in svg_style.hpp
 class svg_style; // Holds the basic stroke, fill colors and width, and their switches.
 class text_style; // Text and tspan element's font family, size ...
-class value_style; // Data series point value information, text, color, uncertainty & df, orientation.
+class value_style; // Data series point value information, text, color, uncertainty & df, orientation, and textLength.
 class plot_point_style; // Shape, color, (optional value & uncertainty) of data point markers.
 class plot_line_style; // Style of line joining data series values.
 class axis_line_style; // Style of the x and/or y axes lines. But NOT the ticks and value labels.
@@ -328,7 +328,7 @@ public:
    */
  } // void write
 
-  // End of svg_style definitions.
+  // End of svg_style definitions. /////////////////////////////////////////////
 
  /*! \class boost::svg::text_style
      \brief Font size, font family, font weight, font style, stretch & decoration.
@@ -345,12 +345,15 @@ public:
      "arial", "impact", "courier", "lucida console",  "Lucida Sans Unicode", "Verdana", "calibri", "century",
      "lucida calligraphy", "tahoma", "vivaldi", "informal roman", "lucida handwriting", "lucida bright", "helvetica"
      \endcode
+
+     http://www.fileformat.info/info/unicode/font/index.htm provdes a fuller listing of support by many fonts;
+     those awarded 4 or 5 stars are probably most useful.
      */
 
 class text_style
 {
   friend std::ostream& operator<< (std::ostream&, const text_style&);
-  // Output as text, for example: legend_title_style text_style(14, "Lucida Sans Unicode", "", "normal", "", "")
+  // Output as text, for example: legend_title_style text_style(14, "Lucida Sans Unicode", "", "normal", "", "", 0)
   friend bool operator== (const text_style&, const text_style&);
   friend bool operator!= (const text_style&, const text_style&);
 
@@ -361,6 +364,8 @@ class text_style
   std::string style_; //!< Font style, examples: normal | bold | italic | oblique.
   std::string stretch_; //!< Font stretch, examples: normal | wider | narrower. (Not supported by all browsers).
   std::string decoration_; //!< Font decoration, examples: "underline" | "overline" | "line-through".
+  double text_length_; //!< Estimate of SVG length of text used to compress or expand into this width.
+  // Only actually used if text_length_ > 0.
 
 public:
   text_style( //!
@@ -369,67 +374,96 @@ public:
     const std::string& weight = "", //!< Font weight examples: "bold", "normal".
     const std::string& style = "", //!< Font style examples: normal | bold | italic | oblique.
     const std::string& stretch = "", //!< Font stretch examples: normal | wider | narrower ...
-    const std::string& decoration = ""); //!< Font decoration examples: "underline" | "overline" | "line-through".
+    const std::string& decoration = "", //!< Font decoration examples: "underline" | "overline" | "line-through".
+    double text_length = 0); //!< Estimated length of text string.
 
-  text_style& font_size(unsigned int i);
+  text_style(const text_style & rhs); // Copy constructor.
+
+  // text_style Setters.
+  text_style& font_size(int i);
   text_style& font_family(const std::string& s);
   text_style& font_weight(const std::string& s);
   text_style& font_style(const std::string& s);
   text_style& font_stretch(const std::string& s);
   text_style& font_decoration(const std::string& s);
   // text_style& font_variant(const std::string& s); // Not implemented, nor are others.
+  text_style& text_length(double);
 
+  // text_style Getters.
   int font_size() const;
   const std::string& font_family() const;
   const std::string& font_style() const;
   const std::string& font_weight() const;
   const std::string& font_stretch() const;
   const std::string& font_decoration() const;
+  double text_length() const;
 
   // Comparison operators useful for testing at least.
   bool operator==(const text_style& ts);
   bool operator!=(const text_style& ts);
   // bool operator==(const text_style& lhs, const text_style& rhs);
+  text_style& operator=(const text_style& rhs);
 
 }; //   class text_style
 
 // class text_style function *Definitions*.
 
-//! Default constructor only sets font size = 20, and leaves other font details as SVG defaults.
-
-  text_style::text_style( //!< Constructor to allow all text style parameters (font size, family, bold...) to be set.
-    int size, //!< Font size.
-    const std::string& font, //!< Default for browser is sans with Firefox & IE but serif with Opera.
-    const std::string& weight, //!< font weight "normal"
-    const std::string& style, //!< font-style: normal
-    const std::string& stretch, //!< font-stretch: normal
-    const std::string& decoration) //!< No decoration.
+text_style::text_style( //!< Constructor to allow all text style parameters (font size, family, bold...) to be set.
+  int size, //!< Font size.
+  const std::string& font, //!< Default for browser is sans with Firefox & IE but serif with Opera.
+  const std::string& weight, //!< font weight "normal"
+  const std::string& style, //!< font-style: normal
+  const std::string& stretch, //!< font-stretch: normal
+  const std::string& decoration, //!< No decoration.
+  double text_length)
   : // Constructor.
   font_size_(size),
   font_family_(font),
   weight_(weight),
   style_(style),
   stretch_(stretch),
-  decoration_(decoration)
+  decoration_(decoration),
+  text_length_(text_length)
   { // text_style default constructor, defines defaults for all private members.
   }
 
-  // Set and get text_style functions.
-  int text_style::font_size() const
-  { //! \return  text_style's font size (svg units, usually pixels).
-    return font_size_;
-  }
+//! text_style Copy constructor.
+text_style::text_style(const text_style& rhs)
+  :
+  font_size_(rhs.font_size_),
+  font_family_(rhs.font_family_),
+  weight_(rhs.weight_),
+  style_(rhs.style_),
+  stretch_(rhs.stretch_),
+  decoration_(rhs.decoration_),
+  text_length_(rhs.text_length_)
+{
+} // 
 
-  text_style& text_style::font_size(unsigned int i)
+text_style& boost::svg::text_style::operator=(const text_style& rhs)
+{ //! Assignment operator=.
+  font_size_ = rhs.font_size_;
+  font_family_ = rhs.font_family_;
+  weight_ = rhs.weight_;
+  style_ = rhs.style_;
+  stretch_ = rhs.stretch_;
+  decoration_ = rhs.decoration_;
+  text_length_ = rhs.text_length_;
+  return *this; //! \return text_style& to make chainable.
+}
+
+  // Set and get text_style functions.
+
+  text_style& text_style::font_size(int i)
   { //! Set font size (svg units usually pixels) default 10.
     font_size_ = i;
     return *this; 
     //! \return reference to @c text_style& to make chainable.
   }
 
-  const std::string& text_style::font_family() const
-  { //! \return font family as @c std::string, for example: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"..
-    return font_family_;
+  int text_style::font_size() const
+  { //! \return  text_style's font size (svg units, usually pixels).
+    return font_size_;
   }
 
   text_style& text_style::font_family(const std::string& s)
@@ -451,13 +485,10 @@ public:
     return *this; //! \return reference to text_style to make chainable.
   }
 
-  const std::string& text_style::font_style() const
-  { //! \return  font style, default normal.
-    /*! font-style: normal | bold | italic | oblique.
-       Example: "normal" is default.
-     */
-    return style_;
- }
+  const std::string& text_style::font_family() const
+  { //! \return @c text_style's font family as @c std::string, for example: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"..
+    return font_family_;
+  }
 
   text_style& text_style::font_style(const std::string& s)
   { /*! Set font style.
@@ -469,16 +500,15 @@ public:
     return *this; //! \return reference to text_style to make chainable.
   }
 
-  const std::string& text_style::font_weight() const
-  {  /*! Set font weight.
-        Example: my_text_style.font_style("bold");\n
-       See also browser conformance tests:\n
-       http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
+  const std::string& text_style::font_style() const
+  { //! \return  font style, default normal.
+    /*! font-style: normal | bold | italic | oblique.
+    Example: "normal" is default.
     */
-    return weight_;
+    return style_;
   }
 
-  text_style& text_style::font_weight(const std::string& s)
+   text_style& text_style::font_weight(const std::string& s)
   { //! svg font-weight: "normal" | "bold" | "bolder" | "lighter" | "100" | "200" .. "900"
     //! Examples:  @c .font_weight("bold");
     //! http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
@@ -489,10 +519,15 @@ public:
     //! \return reference to text_style to make chainable.
   }
 
-  const std::string& text_style::font_stretch() const
-  { //! \return font stretch, for example: "normal" | "wider" | "narrower".
-    return stretch_;
-  }
+   const std::string& text_style::font_weight() const
+   {  /*! Set font weight.
+      Example: my_text_style.font_style("bold");\n
+      See also browser conformance tests:\n
+      http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
+      */
+     return weight_;
+   }
+
 
   text_style& text_style::font_stretch(const std::string& s)
   {  //! font-stretch:"normal" | "wider" | "narrower"
@@ -503,10 +538,11 @@ public:
     return *this; //! \return reference to text_style to make chainable.
   }
 
-  const std::string& text_style::font_decoration() const
-  { //! \return  font decoration.
-    return decoration_;
+  const std::string& text_style::font_stretch() const
+  { //! \return font stretch, for example: "normal" | "wider" | "narrower".
+    return stretch_;
   }
+
 
   text_style& text_style::font_decoration(const std::string& s)
   { /*! Set font decoration: "underline" | "overline" | "line-through" ...
@@ -514,38 +550,95 @@ public:
       tests line-through and underline.
       But implementation varies.
       Example @c .font_decoration("underline");
-
-
     */
     decoration_ = s;
     return *this; //! \return reference to text_style to make chainable.
   }
 
+  const std::string& text_style::font_decoration() const
+  { //! \return  font decoration.
+    return decoration_;
+  }
+
+  // Font-variant-position nornmal, sub and super
+  // https://www.w3.org/TR/css-fonts-3/#font-variant-position-prop 
+  // not implemented, and poorly supported by browsers.
+
+  // baseline-shift 	baseline | sub | super | <percentage> | <length> | inherit
+  // https://www.w3.org/TR/SVG11/text.html#BaselineAlignmentProperties
+
+
+  // Baseline shift not implemented yet.
   // http://www.croczilla.com/~alex/conformance_suite/svg/text-align-02-b.svg
   // tests for baseline shifted text.  This is needed for subscript and superscript,
   // vital for nice display of units like m^2 and chemical formulae like H2O
   // IE (Adobe SVG viewer) and Opera conforms but not Firefox (yet).
-  // Can also use Unicode symbols like sub and superscript 1,2,3 to get H2O and m2
+  // Can also use Unicode symbols like sub and superscript 1,2,3 to get H2O and m2.
 
-  // operators needed for testing at least.
+  // lengthAdjust = "spacing|spacingAndGlyphs"
+  // Indicates the type of adjustments which the user agent shall make to make the rendered length of the text
+  // match the value specified on the ‘textLength’ attribute.
+  // default is spacing (dont' squeeze the glyphs)
+  // spacingAndGlyphs squeezes both.
+  // Not used yet.
+
+  /* https://www.w3.org/TR/SVG11/text.html#FontsTablesBaselines
+  textLength = "<length>"
+    The author's computation of the total sum of all of the advance values that correspond to character data within this element,
+    including the advance value on the glyph (horizontal or vertical),
+    the effect of properties ‘kerning’, ‘letter-spacing’ and ‘word-spacing’ and adjustments due to attributes ‘dx’ and ‘dy’ on ‘tspan’ elements.
+    This value is used to calibrate the user agent's own calculations with that of the author.
+    The purpose of this attribute is to allow the author to achieve exact alignment,
+    in visual rendering order after any bidirectional reordering, for the first and last rendered glyphs 
+    that correspond to this element; thus, for the last rendered character 
+    (in visual rendering order after any bidirectional reordering),
+    any supplemental inter-character spacing beyond normal glyph advances are ignored (in most cases) 
+    when the user agent determines the appropriate amount to expand/compress the text string to fit within a length of ‘textLength’.
+    A negative value is an error (see Error processing).
+    If the attribute is not specified, the effect is as if the author's computation exactly matched the value calculated by the user agent;
+    thus, no advance adjustments are made.
+    */
+
+  inline text_style & text_style::text_length(double length)
+  { //! Set text_length to be rendered from an estimate of length from number of characters in string.
+    text_length_ = length;
+    return *this; //! \return reference to text_style to make chainable.
+  }
+
+  double text_style::text_length() const
+  {
+    return text_length_; //! \return text_length to be rendered from an estimate of length from number of characters in string.
+  }
+
+    // operators needed for testing at least.
   bool text_style::operator==(const text_style& ts)
   { //! Compare text_style for equality (needed for testing).
-   return (ts.font_size_ == font_size_)
+   bool result = (
+     (ts.font_size_ == font_size_)
      && (ts.font_family_ == font_family_)
      && (ts.stretch_ == stretch_)
      && (ts.style_ == style_)
      && (ts.weight_ == weight_)
-     && (ts.decoration_ == decoration_);
+     && (ts.decoration_ == decoration_)
+     && (ts.text_length_ == text_length_)
+     );
+   return result;
   } // operator==
 
   bool text_style::operator!=(const text_style& ts)
   { //! Compare text_style for inequality (needed for testing).
-   return (ts.font_size_ != font_size_)
+   bool result = (
+     (ts.font_size_ != font_size_)
      || (ts.font_family_ != font_family_)
      || (ts.stretch_ != stretch_)
      || (ts.style_ != style_)
      || (ts.weight_ != weight_)
-     || (ts.decoration_ != decoration_);
+     || (ts.decoration_ != decoration_)
+     || (ts.text_length_ != text_length_)
+     );
+
+   return result;
+   ;
   } //  operator!=
 
   bool operator==(const text_style& lhs, const text_style& rhs)
@@ -557,7 +650,8 @@ public:
        && (lhs.stretch_ ==  rhs.stretch_)
        && (lhs.style_ ==  rhs.style_)
        && (lhs.weight_ ==  rhs.weight_)
-       && (lhs.decoration_ ==  rhs.decoration_);
+       && (lhs.decoration_ ==  rhs.decoration_)
+       && (lhs.text_length_ == rhs.text_length_);
   } //   bool operator==(const text_style& lhs, const text_style& rhs)
 
   bool operator!= (const text_style& lhs, const text_style& rhs)
@@ -569,7 +663,8 @@ public:
        && (lhs.stretch_ !=  rhs.stretch_)
        && (lhs.style_ !=  rhs.style_)
        && (lhs.weight_ !=  rhs.weight_)
-       && (lhs.decoration_ !=  rhs.decoration_);
+       && (lhs.decoration_ !=  rhs.decoration_)
+       && (lhs.text_length_ != rhs.text_length_);
   } //   bool operator!= (const text_style& lhs, const text_style& rhs)
 
 std::ostream& operator<< (std::ostream& os, const text_style& ts)
@@ -583,9 +678,11 @@ std::ostream& operator<< (std::ostream& os, const text_style& ts)
        << "\", \""
        << ts.stretch_ << "\", \""
        << ts.decoration_
-       << "\")" ;
-  /*! \details Usage: text_style ts(12, "Arial", "italic", "bold", "", "");  cout << t << endl;
-     Outputs:  text_style(18, "Arial", "italic", "bold", "", "")
+       << "\", " 
+       << ts.text_length_ << ")";
+  /*! \details Example:
+     text_style ts(12, "Arial", "italic", "bold", "", "", 0);  std::cout << t << std::endl;
+     Outputs:  text_style(18, "Arial", "italic", "bold", "", "", 0)
    */
   return os;
 } // std::ostream& operator<<
@@ -1373,7 +1470,7 @@ public:
   } // double label_length
 
   double longest_label()
-  { //! Update label_max_length_ with the longest value label as pixels,
+  { //! Update label_max_length_ with the longest value label as SVG units (default pixels),
     //! return the count of digits etc.
     if(major_value_labels_side_ != 0) // ! none
     { // Show values by the tick as "1.2" or "3.4e+000"...
@@ -1803,6 +1900,38 @@ double string_svg_length(const std::string& s, const text_style& style)
   else use average char width,
   and deal with Unicode, for example &#x3A9; = greek omega,
   counting each symbol(s) embedded between & and ; as one character.
+  To see what symbols are supported see
+  
+  http://www.fileformat.info/info/unicode/font/index.htm
+
+  Font Support for Unicode Characters
+
+  Fonts of interest to Unicode users tab but mainly lists compliance as stars out of 5.
+
+  Font Character Test for Arial Unicode MS has 5 stars
+  http://www.fileformat.info/info/unicode/font/arial_unicode_ms/list.htm lists all the fonts,
+  and those not supported.
+
+  see the 'tab' at the bottom for 'Grid with examples' and characters NOT supported.
+  Supported by blocks shows the 'blocks' like greek, math operators
+
+  http://www.fileformat.info/info/unicode/font/arial_unicode_ms/grid.htm shows all the examples,
+  some of special interest like Unicode Character 'DEGREE CELSIUS' (U+2103)
+  chess symbols, lots of star symbols, 25b0 triangles, Greek 0410, letter and numbers inside circle 24B0, 
+  units like mA, uF 3380, math symbols 2200 like Unicode Character 'CIRCLED DOT OPERATOR' (U+2299),
+
+  Unicode Characters in the Miscellaneous Symbols Block like umbrella, snoman, sun, cloud, cross of jerusalem,
+  male female, chaess
+  and very many cChinese ideograms
+
+  Also 5 stars Code2000, but in practise most fonts given 4 star will be useful.
+
+  For example, 
+  https://www.fileformat.info/info/unicode/font/lucida_sans_unicode/index.htm
+shows Font Character Test for Lucida Sans Unicode.
+tabs of links at the bottom of page:
+
+Unicode characters supported by the Lucida Sans Unicode font
 
   Also ignore embedded xml like <sub> (not implemented by all browsers yet).
 
@@ -1847,7 +1976,8 @@ double string_svg_length(const std::string& s, const text_style& style)
   std::cout << "string \"" << s << "\" has " << chars << " characters, and svg length is " << svg_length << std::endl;
 #endif // BOOST_SVG_STYLE_DIAGNOSTICS
 
-  // I:\modular-boost\libs\svg_plot\example\SVG_text_width_height.cpp shows that width can be quite a bit wrong.
+  // I:\modular-boost\libs\svg_plot\example\SVG_text_width_height.cpp shows that 
+  // width can be quite a bit different from different fonts, especially serif versus sans serif.
   // Aspect ratio can vary from 0.4 to 0.55 so estimate of 1 units could increase to 1.4 in worst case, as observed.
   // For example 1000 svg units might take between 180 and 240 random chars.
   // So must use textLength="estimated" to ensure it fits.

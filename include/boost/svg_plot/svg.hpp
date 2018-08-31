@@ -292,8 +292,6 @@ class svg;
 // svg& write(std::ostream& s_out)
 // svg& write(const std::string& file)
 
-// svg& load_stylesheet(const std::string& input) // Load a stylesheet into string css from an input file.
-
 // Possibles for license strings:
 // static const std::string permit("permits");
 // static const std::string require("requires");
@@ -306,7 +304,7 @@ class svg
   \details  Class to add basic Scalable Vector Graph XML graph elements:
   point, path, line, circle, rect, polygon and text to SVG images,
   including metadata like author, copyright and license.
-  Finally output the final image as SVG XML to a @c std::stream or file.
+  Finally output the final image as SVG XML to a @c std::stream or file of type .svg (by default).
 */
 protected:
   unsigned int x_size_; //!< SVG image X-axis size (in SVG units (default pixels).
@@ -334,9 +332,9 @@ protected:
   // Not sure this is the best place for this?
 
 private:
-//! \cond DETAIL
+//! \cond DETAIL // Dxygen document this section only if DETAIL defined.
   void write_header(std::ostream& s_out)
-  { //! Output the DTD SVG 1.1 header into the svg g_element document.
+  { //! Output the DTD SVG 1.1 header into the SVG g_element document.
     s_out << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
       //<< "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" "
       //<< "\"http://www.w3.org/graphics/svg/1.1/dtd/svg11.dtd\">"
@@ -408,9 +406,9 @@ private:
       document[(unsigned int)i].write(s_out);
     }
   } // write_document
-//! \endcond
+//! \endcond // DETAIL
 public:
-  svg() //! Define default constructor.
+  svg() //! Define clas svg default constructor.
     :
     x_size_(400), //!< X-axis of the whole SVG image (default SVG units, default pixels).
     y_size_(400), //!< Y-axis of the whole SVG image (default SVG units, default pixels).
@@ -419,7 +417,7 @@ public:
     holder_copyright_(""),  //!< Name of copyright holder.
     date_copyright_(""), //!<  Date of copyright claim.
     author_(""), //!< Author of image (defaults to the copyright holder).
-    css_(""), //!< Stylesheet filename.
+    css_(""), //!< Stylesheet filename, if any.
     filename_(""), //!< Name of file to which SVG XML has been written is embedded in the file as an XML comment (if written only to an ostream, filename will not appear in comment).
     is_boost_license_(false), //!< If true, Boost license text is written as comment in SVG XML. (Default is no license). Suggested strings for license permission are "permits", "requires", or "prohibits", or "".
     is_license_(false), //!< If true, license text is written as comment in SVG XML. (Default is no license).
@@ -433,34 +431,34 @@ public:
   }
 
   svg(const svg& rhs) : x_size_(rhs.x_size_), y_size_(rhs.y_size_)
-  { //! Copy constructor copies X and Y image sizes.
-    // TODO Other member data items are NOT copied.  OK?
+  { //! Copy constructor copies ONLY X and Y image sizes.
+    // TODO Other member data items are NOT copied.  OK? Unused and untested, and perhaps not useful.
     // I think this means that in practice one can't copy an existing customised SVG?
   }
 
   // Set & get functions for x_size_ and y_size_
   void x_size(unsigned int x)
-  { //! Set X-axis (horizontal) image size.
+  { //! Set X-axis (horizontal) image size in SVG units (default pixels).
     x_size_ = x;
   }
 
   void y_size(unsigned int y)
-  { //! Set Y-axis (vertical) image size.
+  { //! Set Y-axis (vertical) image size in SVG units (default pixels).
     y_size_ = y;
   }
 
   unsigned int x_size()
-  { //! \return  X-axis (horizontal width) SVG image size.
+  { //! \return  X-axis (horizontal width) SVG image size  in SVG units (default pixels).
     return x_size_;
   }
 
   unsigned int y_size()
-  { //! \return  Y-axis (vertical height) SVG image size.
+  { //! \return  Y-axis (vertical height) SVG image size in SVG units (default pixels).
     return y_size_;
   }
 
   std::pair<double, double> xy_sizes()
-  { //! \return Both X and Y sizes (horizontal width and vertical height) of the SVG image.
+  { //! \return Both X and Y sizes (horizontal width and vertical height) of the SVG image in SVG units (default pixels).
     std::pair<double, double> r;
     r.first = x_size_;
     r.second = y_size_;
@@ -490,7 +488,7 @@ public:
   }
 
   int coord_precision()
-  { //! \return  Decimal digits to be output for X and Y coordinates.
+  { //! \return  Decimal digits precision to be output for X and Y coordinates.
     return coord_precision_;
   }
 
@@ -498,6 +496,7 @@ public:
 
   \details @c svg.write() also has two flavors, a file and an ostream.
   The file version opens an ostream, and calls the stream version.
+
   The stream version first clears all unnecessary data from the graph,
   builds the document tree, and then calls the write function for the root
   document node, which calls all other nodes through the Visitor pattern.
@@ -816,27 +815,29 @@ public:
   }
 
   text_element& text(double x, double y, const std::string& text,
-    const text_style& style, // font size, font family etc.
+    const text_style& style, // font size, font family etc., and any text_length estimate.
     align_style align, rotate_style rotate)
-  { //! push_back information about text to the document, with location, style, alignment & rotation.
-    return document.text(x, y, text, style, align, rotate); // see svg.hpp 2131 for definition.
+  { //! push_back information about text to the document, with location, style (font size, family etc and text_length), alignment & rotation.
+    return document.text(x, y, text, style, align, rotate); // see svg_tag.hpp 2137 for definition.
   }
-  /* Might add text_length
-  // textLength = "<length>"
-  The author's computation of the total sum of all of the advance values that correspond to character data within this element,
+  /*  text_length  SVG XML textLength = "<length>"
+  The author's (this program) computation of the total sum of all of 
+  the advance values that correspond to character data within this element,
   including the advance value on the glyph (horizontal or vertical),
-  the effect of properties ‘kerning’, ‘letter-spacing’ and ‘word-spacing’ and adjustments 
-  due to attributes ‘dx’ and ‘dy’ on ‘tspan’ elements. 
+  the effect of properties ‘kerning’, ‘letter-spacing’ and ‘word-spacing’
+  and adjustments due to attributes ‘dx’ and ‘dy’ on ‘tspan’ elements. 
   
-  This value is used to calibrate the user agent's own calculations with that of the author.
+  This value is used to calibrate the user agent's (renderer) own calculations with that of the author.
   The purpose of this attribute is to allow the author to achieve exact alignment, 
-  in visual rendering order after any bidirectional reordering, for the first and last rendered glyphs that correspond to this element;
+  in visual rendering order after any bidirectional reordering, 
+  for the first and last rendered glyphs that correspond to this element;
   thus, for the last rendered character (in visual rendering order after any bidirectional reordering), 
   any supplemental inter-character spacing beyond normal glyph advances are ignored (in most cases) 
-  when the user agent determines the appropriate amount to expand/compress the text string to fit within a length of ‘textLength’.
+  when the user agent (this program) determines the appropriate amount 
+  to expand/compress the text string to fit within a length of ‘textLength’.
   */
 
-  // https://www.w3.org/TR/SVG11/text.html#TextElementTextLengthAttribute
+  // \sa https://www.w3.org/TR/SVG11/text.html#TextElementTextLengthAttribute
 
   // Polygon for shapes with many vertices.
   polygon_element& polygon(double x, double y, bool f = true) // 1st point only, add others later with .P(x, y).

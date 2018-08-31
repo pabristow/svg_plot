@@ -564,7 +564,7 @@ class text_parent
     { //! Construct from text.
     }
     text_parent(const text_parent& rhs): text_(rhs.text_)
-    { //! Copy construct.
+    { //! Copy constructor.
     }
 }; // class text_parent
 
@@ -601,18 +601,18 @@ private:
   double text_length_;  //!< Allows the author to provide exact alignment.
   //! dx_, dy_, and rotate_ can all be omitted, usually meaning no shift or rotation,
   //! but see http://www.w3.org/TR/SVG/text.html#TSpanElement for ancestor rules.
-  //! but x_, y_, and text_length need a flag.
+  // text_length only used if > 0.
+  //! but x_, y_, need a flag?
   bool use_x_; //!> If true then use X absolute position.
   bool use_y_; //!> If true then use Y absolute position.
-  bool use_text_length_; //!< If true then use user calculated length rather than SVG (not used).
+  //bool use_text_length_; //!< If true then use user calculated length rather than SVG (not used).
   text_style style_; //!< font variants.
-  bool use_style_; //!< If true to use
 
 public:
   tspan_element(const std::string& text, //!< Text string to display.
     const text_style& style = no_style) //!< Text style (font).
   :
-    use_x_(false), use_y_(false), use_text_length_(false),
+    use_x_(false), use_y_(false), 
     text_parent(text), style_(style),
     x_(0), y_(0), dx_(0), dy_(0), rotate_(0), text_length_(0)
   { //! Construct tspan element (with all defaults except text string).
@@ -685,21 +685,21 @@ public:
   tspan_element& text_length(double text_length)
   { //! Set user estimate of text length (see http://www.w3.org/TR/SVG/text.html#TSpanElement TSPAN SVG Specification).
     text_length_ = text_length;
-    use_text_length_ = true;
+   // use_text_length_ = true;
     return *this; //! \return tspan_element& to make chainable.
   }
 
-  tspan_element& font_size(unsigned int size)
+  tspan_element& font_size(int size)
   { //! font size of 1st single character of text string to use with SVG tspan command.
     style_.font_size(size);
-    use_style_ = true;
+  //  use_style_ = true;
     return *this; //! \return tspan_element& to make chainable.
   }
 
   tspan_element& font_family(const std::string& family)
   {//! font family of 1st single character of text string to use with SVG tspan command.
     style_.font_family(family);
-    use_style_ = true;
+  //  use_style_ = true;
     return *this; //! \return tspan_element& to make chainable.
   }
 
@@ -709,7 +709,7 @@ public:
     //! Examples: "italic"
     //! http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
     style_.font_style(style);
-    use_style_ = true;
+  //  use_style_ = true;
     return *this; //! \return tspan_element& to make chainable.
   }
 
@@ -727,14 +727,14 @@ public:
   { //! Set fill color for a tspan element.
     style_info_.fill_color(color);
     style_info_.fill_on(true);
-    use_style_ = true;
+ //   use_style_ = true;
     return *this; //! \return tspan_element& to make chainable.
   }
 
   tspan_element& textstyle(const text_style& style)
   { //! Set text style (font) for a tspan element.
     style_ = style;
-    use_style_ = true;
+ //   use_style_ = true;
     return *this; //! \return tspan_element& to make chainable.
   }
 
@@ -750,6 +750,7 @@ public:
   //text_style& font_style();
   //const text_style& text_style() const;
 
+  // These class tspan functions see not to work as expected??
   const text_style& textstyle()
   { //! \return text_style& to permit access to font family, size ...
     return style_;
@@ -788,17 +789,7 @@ public:
     return rotate_;
   }
 
-  double text_length()
-  { //! Get user estimated length for a text string.
-    return text_length_;
-  }
-
-  bool use_style()
-  { //! Get true if to use the estimated text string length.
-    return use_text_length_;
-  }
-
-  unsigned int font_size()
+  int font_size()
   { //! Get the font size for tspan element (from its text_style).
     return style_.font_size();
   }
@@ -829,12 +820,20 @@ public:
   }
 
   bool fill_on()
-  { //! Get true if to use fill color for tspan element .
+  { //! Get true if to use fill color for tspan element.
     return style_info_.fill_on();
   }
 
+  double text_length()
+  { //! Get user's estimated length for a text string.
+    //! This length may be used to expand or contract the SVG text to fit into this width,
+    //! if text_length_ == 0, then has no effect as is not output by @c write below.
+    //! If < 0 would be an error if output like textLength=-1
+    return style_.text_length_;
+  }
+  
   void write(std::ostream& os)
-  { //! Output SVG XML for tspan_element
+  { //! Output SVG XML for a tspan_element
     os << "<tspan";
     write_attributes(os); // id & clip_path
     style_info_.write(os); // fill, stroke, width...
@@ -863,10 +862,6 @@ public:
     if(use_y_  == true)
     {
       os << " y=\"" << y_ << "\"";
-    }
-    if(use_text_length_ == true)
-    {
-      os << " textLength=\"" << text_length_ << "\"";
     }
     // https://www.w3.org/TR/SVG11/text.html#FontPropertiesUsedBySVG
     // 10.10 Font selection properties
@@ -897,17 +892,19 @@ public:
       // none | [ underline || overline || line-through || blink ] | inherit
       os << " text-decoration=\"" << style_.font_decoration() << "\"";
     }
-    os << ">" << text_ << "</tspan>";
+    if(text_length_ > 0)
+    { // Use estimated text length to expand or compress to the this SVG length.
+      os << " textLength=\"" << text_length_ << "\"";
+    }
+    os << ">" << text_ << "</tspan>";  // The actual text string.
   } //   void write(std::ostream& os)
 }; // class tspan_element
 
 tspan_element::tspan_element(const tspan_element& rhs)
     :
     text_length_(rhs.text_length_), use_x_(rhs.use_x_), use_y_(rhs.use_y_),
-    use_text_length_(rhs.use_text_length_),
     text_parent(rhs), style_(rhs.style_),
     x_(rhs.x_), y_(rhs.y_), dx_(rhs.dx_), dy_(rhs.dy_), rotate_(rhs.rotate_)
-
   { // Separately defined constructor.
   } // tspan_element::tspan_element
 
@@ -978,17 +975,17 @@ public:
   // double y() const;
 
   text_style& textstyle()
-  { //! Get text style for font size, family, decoration ...
+  { //! Get @c text_element textstyle for font size, family, decoration ...
     return style_;
   }
 
   const text_style& textstyle() const
-  { //! Get text style for font size, family, decoration ...
+  { //! Get  @c text_element textstyle for font size, family, decoration ...
     return style_;
   }
 
   text_element& textstyle(text_style& ts)
-  { //! Set text style for font size, family, decoration ...
+  { //! Set  @c text_element text style for font size, family, decoration ...
     style_ = ts;
     return *this; //! \return text_element& to make chainable.
   }
@@ -1072,12 +1069,11 @@ public:
     : // Constructor.
     x_(x), y_(y), // location.
     data_(ptr_vector<text_parent>()),
-    style_(ts), // Simpler to include all these as members?
-    // These is a muddle requiring copying members at present.
-    //size(size), font(font), style_(style), weight(weight), stretch(stretch), decoration(decoration),
+    style_(ts), // Uses copy constructor.
+    //size_(size), font_(font), style_(style), weight_(weight), stretch_(stretch), decoration_(decoration), text_length_(text_length)
     align_(align),
     rotate_(rotate)
-  { //! text_element Default Constructor, defines defaults for all private members.
+  { //! text_element Default Constructor defines defaults for all private members.
     data_.push_back(new text_element_text(text)); // Adds new text string.
   }
 
@@ -1094,7 +1090,7 @@ public:
     y_ = rhs.y_;
     data_.clear(); // Copy data_
     data_.insert(data_.end(), rhs.data_.begin(), rhs.data_.end());
-    style_ = rhs.style_;
+    style_ = rhs.style_; // font_size, family
     align_ = rhs.align_;
     rotate_ = rhs.rotate_;
     return *this; //! \return text_element& to make chainable.
@@ -1148,7 +1144,7 @@ public:
       os << " font-size=\"" << style_.font_size() << "\"";
     }
     if (style_.font_family() != "")
-    { // Example: Arial.
+    { // Example: Arial, Verdana, Times New Roman ...
       os << " font-family=\"" << style_.font_family() << "\"";
     }
     if (style_.font_style().size() != 0)
@@ -1167,13 +1163,10 @@ public:
     {
     os << " text-decoration=\"" << style_.font_decoration() << "\"";
     }
-    // Might add text_length here?
-    //if (style_.text_length != 0)
-    //{
-    //  os << " textLength=\"" << style_.text_length() << "\"";
-    //}
-
-
+    if (style_.text_length() != 0)
+    {
+      os << " textLength=\"" << style_.text_length() << "\"";
+    }
     os << '>' ;
     generate_text(os);
     os << "</text>";
@@ -1839,6 +1832,8 @@ public:
       }
     }
 /*
+//! Add a polygon from a fixed length @c boost::array
+//! \tparam n Number of points in the poly_path
     template<int n>
     polygon_element (boost::array<const poly_path_point, n>& points, bool f = true)
       :
@@ -2043,9 +2038,8 @@ public:
       \verbatim <g id="background" fill="rgb(255,255,255)"><rect width="500" height="350"/></g>
       \endverbatim
    */
-  public: //temporary for experimental gil
+  public: // Simplest, private has little benefit.
 
-//  private:
     ptr_vector<svg_element> children; /*!< Children of this group element node,
       containg graphics elements like text, circle line, polyline...
     */
@@ -2135,9 +2129,10 @@ public:
       return *(static_cast<ellipse_element*>(&children[children.size()-1]));
     }
 
+    // svg::text constructor with defaults. 
     text_element& text(double x = 0., double y = 0.,
-    const std::string& text = "",
-    const text_style& style = no_style, // Use svg implementation's defaults.
+    const std::string& text = "", // Text string to display.
+    const text_style& style = no_style, // default to use SVG implementation's defaults for font family, size.
     const align_style& align = left_align,
     const rotate_style& rotate = horizontal)
     { //! Add a new text element.
@@ -2145,11 +2140,6 @@ public:
       children.push_back(new text_element(x, y, text, style, align, rotate));
       return *(static_cast<text_element*>(&children[children.size()-1]));
     }
-
-    // Might add   text_length here - see svg_tag  and svg.hpp 2131 
-
-
-    // push_back info about polygon shapes:
 
     // Polygon for shapes with many vertices.
     polygon_element& polygon(double x, double y, bool f = true)
@@ -2159,15 +2149,14 @@ public:
       return *(static_cast<polygon_element*>(&children[children.size()-1]));
     }
 
-    //JVTODO: Replace with template version
     polygon_element& polygon(std::vector<poly_path_point>& v, bool f = true)
     { //! Add a new complete polygon element.
-      //! \return A reference to the new child node just created.// push_back a complete many-sided polygon to the document.
+      //! \return A reference to the new child node just created.
+      // push_back a complete many-sided polygon to the document.
       children.push_back(new polygon_element(v, f));
       return *(static_cast<polygon_element*>(&children[children.size()-1]));
     }
 
-    //JVTODO: Replace with template version
     polyline_element& polyline(std::vector<poly_path_point>& v)
     {  //! Add a new complete polyline.
        //! \return A reference to the new child node just created.
