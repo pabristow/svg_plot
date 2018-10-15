@@ -2066,6 +2066,33 @@ namespace boost
         }
       } // void adjust_limits
 
+      bool check_text_fit(const text_style& style, const std::string& text, double font_size, double title_svg_length, double image_size)
+      {
+        // If force text into the x_size (using text_length option), 
+        // then too large a font or too many characters 
+        // may over-compress and push the glyphs to overlap,
+        // so warn here of overflow or over-compress.
+        // A factor of 1.6 more characters than width 
+        // still allows bold characters to not quite collide or overlap.
+        static const double squash_factor = 1.6;
+        if (title_svg_length > image_size * squash_factor)
+        { // Issue Warning that text like title is too long or too big font!
+          std::cout << "Text \"" << text
+            << "\"\n  with an estimated width " << title_svg_length << " (SVG units) may overflow plot space " << image_size
+            << "\n  or over-compress text with compression ratio " << title_svg_length / image_size
+            << ".\n  Reduce font size from " << font_size
+            << ", or number of characters from " << text.size()
+            << ", or increase image size from " << image_size
+            << "?" << std::endl;
+          // Title "Plot showing short legend &#x26; sizes."
+          //   width 378 (SVG units) may overflow plot image!
+          //  (Reduce font size from 30, or number of characters from 21, or increase image size from 300).
+          return false; // Warning given that may not fit or be legible.
+        }
+        return true; // Will fit.
+      } //       bool check_text_fit(title_svg_length , int image_size )
+
+
       template <class Derived>
       void axis_plot_frame<Derived>::draw_title()
       { /*! Draw title (for the whole plot).
@@ -2089,10 +2116,6 @@ namespace boost
         //  <text x="700" y="0" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">Plot showing several data point marker shapes &#x26; sizes.</text>
   
         // Warn if plot title will overflow image (since title is centered, this will truncate at both ends).
-        //double is = (derived().image_.x_size());
-        //double fs = derived().title_font_size(); // example 20 pixels font height.
-        //std::size_t ts = derived().title().size(); // 59 chars
-        //double tfs = ts * fs * aspect_ratio;  // no of chars * font height * aspect ratio
 
         double title_svg_length = string_svg_length(derived().title(), derived().title_info_.textstyle());
 #ifdef BOOST_SVG_TITLE_DIAGNOSTICS
@@ -2103,21 +2126,41 @@ namespace boost
           << ", title font size = " << derived().title_font_size()
           << ", title font family = " << derived().title_font_family()
           << ", title font weight = " << derived().title_font_weight()
+          << ", title text_length = " << derived().title_text_length()
           << ",\n title_style_ = " << derived().title_style_
           << std::endl; 
 #endif // BOOST_SVG_TITLE_DIAGNOSTICS
-        if (title_svg_length > derived().image_.x_size())
+//       bool check_text_fit(const text_style& style, std::string& text, double font_size, double title_svg_length, double image_size)
+
+        // If force title into the x_size (using text_length option), 
+        // then too large a font or too many characters 
+        // may over-compress and push the glyphs to overlap,
+        // so warn here of overflow or over-compress.
+        // A factor of 1.6 more characters than width 
+        // still allows bold characters to not quite collide or overlap.
+        check_text_fit(derived().title_info_.textstyle(), derived().title(), derived().title_font_size(), title_svg_length, derived().image_.x_size());
+
+        /*
+        // If force title into the x_size (using text_length option), 
+        // then too large a font or too many characters 
+        // may over-compress and push the glyphs to overlap,
+        // so warn here of overflow or over-compress.
+        // A factor of 1.6 more characters than width 
+        // still allows bold characters to not quite collide or overlap.
+        if (title_svg_length > derived().image_.x_size() * 1.6)
         { // Issue Warning that title is too long or too big font!
-          std::cout << "Title \"" << derived().title_info_.text()
-            << "\"\n  estimated width " << title_svg_length << " (SVG units) may overflow plot image!"
-            "\n  (Reduce font size from " << derived().title_font_size()
+          std::cout << "Title text \"" << derived().title_info_.text()
+            << "\"\n  with an estimated width " << title_svg_length << " (SVG units) may overflow plot space " << derived().image_.x_size()
+            <<  "\n  or over-compress text with compression ratio " << title_svg_length / derived().image_.x_size() 
+            << ".\n  Reduce font size from " << derived().title_font_size()
             << ", or number of characters from " << derived().title().size()
             << ", or increase image size from " << derived().image_.x_size()
-            << ")." << std::endl;
+            << "?." << std::endl;
           // Title "Plot showing short legend &#x26; sizes."
           //   width 378 (SVG units) may overflow plot image!
           //  (Reduce font size from 30, or number of characters from 21, or increase image size from 300).
         }
+        */
         derived().title_info_.x(derived().image_.x_size() / 2.); // Center of image.
         double y = derived().title_info_.textstyle().font_size() * derived().text_margin_; // Leave a margin space above.
         // default text_margin_(2.), // for title & axis label text, as a multiplier of the font size.
@@ -2143,16 +2186,17 @@ namespace boost
       derived().is_legend_title_ = (derived().legend_title_.text() != ""); 
       derived().legend_text_font_size_  = derived().legend_text_style_.font_size_; // legend data series text font size. 
       derived().legend_title_font_size_ = derived().legend_title_style_.font_size_; // legend title text font size.
-      //std::cout << ", .legend_title_font_size_ = " << derived().legend_title_font_size_
-      //  << ", .legend_text_font_size_ = " << derived().legend_text_font_size_
-      //  << std::endl;
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+      std::cout << "Title " << derived().legend_title_.text() << ", .legend_title_font_size_ = " << derived().legend_title_font_size_
+        << ", .legend_text_font_size_ = " << derived().legend_text_font_size_
+        << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
       // If assume that descriptor text for each series uses same font as header,
       // and then have larger marker symbols then will clash and misalign, 
       // so vertical spacing needs to use the largest of 
       // all point marker Unicode symbol font sizes (may be different) and legend title font size.
       // https://www.w3.org/TR/SVG/text.html#GlyphsMetrics
-
  
       size_t num_series = derived().serieses_.size(); // How many data series in this plot.
       derived().biggest_point_font_size_ = std::max(derived().legend_title_font_size(), derived().legend_text_font_size());
@@ -2191,22 +2235,28 @@ namespace boost
           // string_svg_length avoids chars as Unicode hex increasing the length wrongly,
           // so each Unicode char counts only as one char.
 
-//#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-//          std::cout << " series title " << i << " " << derived().serieses_[i].title_
-//            << ", text string length " << series_string_length
-//            << std::endl;
-//#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+          std::cout << " series title " << i << " " << derived().serieses_[i].title_
+            << ", text string length " << series_string_length
+            << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
           if (series_string_length > longest_text)
           { // Widest found so far.
             longest_text = series_string_length;
             longest_text_chars_count = derived().serieses_[i].title_.size();
-//#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-//            std::cout << " New width from series " << i << ", width = " << series_string_length 
-//              << ", longest_text_chars_count = " << longest_text_chars_count << std::endl;
-//#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+            std::cout << " New width from series " << i << ", width = " << series_string_length 
+              << ", longest_text_chars_count = " << longest_text_chars_count << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
           }
         } // if a data series title line.
       } // for num_series
+
+
+ //     ?????????????????????????? computes text or title width wrongly for comparison here 
+
+
+
 
       // Compute spacing.
       derived().vertical_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; // Legend header vertical spacing.
@@ -2234,19 +2284,20 @@ namespace boost
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
 
       // Compute the width of the longest data series text line.
-      double text_width = longest_text; // actual char text as SVG
+      double text_width = longest_text; // actual char text as SVG units (default pixels).
    
       if (derived().is_a_point_marker_ == true)
       {
-        text_width += derived().biggest_point_font_size_ * aspect_ratio; // marker and 
+        text_width += derived().biggest_point_font_size_ * aspect_ratio; // Data point marker and 
         text_width += derived().biggest_point_font_size_ * aspect_ratio; // a same size space after.
       }
       if (derived().is_a_data_series_line_ = true)
       {
         text_width += derived().horizontal_marker_spacing_; // Line width.
-        text_width += derived().horizontal_marker_spacing_; // space after line.
+        text_width += derived().horizontal_marker_spacing_; // Space after line.
       }
       text_width += derived().horizontal_spacing_; // text font space.
+      std::cout << "Legend text string_svg_length = " <<  text_width << std::endl;
 
       // Compute width of title line.
       double title_width  = // Longest SVG of title
@@ -2262,6 +2313,8 @@ namespace boost
         derived().legend_widest_line_ = title_width;
         use_title_width = true;
         std::cout << "Using title_width " << title_width << " rather than text width " << text_width << std::endl;
+        derived().legend_title_style_.text_length(title_width);
+        std::cout << "Using title_width " << title_width << " for text_length " << derived().legend_title_style_.text_length() << std::endl;
       }
       else
       {
@@ -3957,7 +4010,7 @@ namespace boost
 
           template <class Derived>
           const std::string& axis_plot_frame<Derived>::title_font_stretch()
-          { //! \return  the font stretch for the title.
+          { //! \return the font stretch for the title (default normal), wider or narrow.
             return derived().title_info_.textstyle().font_stretch();
           }
 
@@ -3990,6 +4043,7 @@ namespace boost
           template <class Derived>
           Derived& axis_plot_frame<Derived>::title_font_alignment(align_style alignment)
           { //! Set the alignment for the title.
+            //! \sa align_style for options.
             derived().title_info_.alignment(alignment);
             return derived();
           }
@@ -3997,13 +4051,19 @@ namespace boost
           template <class Derived>
           align_style axis_plot_frame<Derived>::title_font_alignment()
           { //! \return  the alignment for the title.
+            //! \sa align_style for values.
             return derived().title_info_.alignment();
           }
 
-
           template <class Derived>
           Derived& axis_plot_frame<Derived>::title_text_length(double length)
-          { //! Sets the the estimated text length for the title (svg units, default pixels).
+          { //! If length > 0
+            // forces the the estimated text length for the title (svg units, default pixels).
+            //! This expands or compresses the text to fill this width exactly,
+            //! potentially making it so elongated with spaces between letters,
+            //! or compresses so that the glyphs collide so it becomes unreadable.
+            //! Normally only used internally.
+            //! Example: @c .title_text_length(300) // Force text into an arbitrary chosen fixed width - about equal to 80 chars.
             derived().title_info_.textstyle().text_length(length);
             return derived();
           }
@@ -4011,6 +4071,7 @@ namespace boost
           template <class Derived>
           double axis_plot_frame<Derived>::title_text_length()
           { //! \return the estimated text length for the title (svg units, default pixels).
+            //! Default 0
             return derived().title_info_.textstyle().text_length();
           }
 
@@ -5217,12 +5278,13 @@ namespace boost
           template <class Derived>
           int axis_plot_frame<Derived>::x_values_precision()
           { //! \return  iostream decimal digits precision of data point X values near data points markers.
+            //! 
             return derived().x_values_style_.value_precision_;
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_values_ioflags(std::ios_base::fmtflags f)
-          { //! Set iostream format flags of data point X values near data points markers.
+          { //! Set @c std iostream format flags of data point X values near data points markers.
             //! Useful to set hexadecimal, fixed and scientific, (std::ios::scientific).
             derived().x_values_style_.value_ioflags_ = f;
             return derived();

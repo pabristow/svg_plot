@@ -1163,7 +1163,7 @@ public:
     {
     os << " text-decoration=\"" << style_.font_decoration() << "\"";
     }
-    if (style_.text_length() != 0)
+    if (style_.text_length() > 0)
     {
       os << " textLength=\"" << style_.text_length() << "\"";
     }

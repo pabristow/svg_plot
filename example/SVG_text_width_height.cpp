@@ -2,6 +2,10 @@
 \brief 
 Demonstrates actual length of text displayed as SVG.
 
+Shows warning from too much compression using text_length.
+
+And also shows use of text_length can undercompress to space out glyphs to become unreadable.
+
 Font Support for Unicode Characters
 
 https://www.fileformat.info/info/unicode/font/index.htm
@@ -17,7 +21,6 @@ lucida sans unicode 0.49
 verdana 0.48
 arial 0.42
 Tme New Roman 0.4
-
 
 */
 
@@ -75,50 +78,65 @@ int main()
        // .title(a_title) // std::string a_title(340, 'i'); // will exactly, char count 340
       //.title_font_family("Lucida sans Unicode")
       //.title("Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is")
-      // default Lucida sans Unicode 204 chars fill 1000 pixels. , so aspect ration = 1000 /204 = 4.9 div 10 = 0.49
+      // default Lucida sans Unicode 204 chars fill 1000 pixels, so aspect ratio = 1000 /204 = 4.9 div 10 = 0.49
 
     //.title("Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is time time for all good men to come to the")
      //But 204 chars Times New Roman is only 370 mm long
     //.title("Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid")
-    //// 249 chars fit.  So aspect ratio = 1000/250 = 4, so for 10 point aspect ration = 0.4
+    //// 249 chars fit.  So aspect ratio = 1000/250 = 4, so for 10 point aspect ratio = 0.4
     //.title_font_family("Arial")
-    //.title("Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men")
+    .title("Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men")
 //  Arial 10 point 240 chars so aspect ratio = 1000/240 = 0.42
 
     //.title_font_family("verdana")
    //  verdana 10 point 208 chars so aspect ratio = 1/10 * 1000/208 = 0.48
      // Example of using all the text styles:
-      .title_font_size(12)
-      .title_font_family("Arial")
-      .title_font_style("italic")
-      .title_font_weight("bold")
-      .title_font_stretch("narrower") // May have no effect here.
-      .title_font_decoration("underline")
-      .title_text_length(1000) // Force into 900 width.
-      .title("Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the ")
+ //     .title("Now is the time for all good men to come to the aid of the party.")
+      .title_font_size(20)
+      //.title_font_family("Arial")
+      .title_font_family("Times new roman")
+  //    .title_font_style("italic")
+   //   .title_font_weight("bold")
+   //   .title_font_stretch("narrower") // May have no effect here.
+     // .title_font_decoration("underline")
+      .title_text_length(2000) // Force into an arbitrary chosen fixed width = full width of image.
+     // .title_text_length(100) // Force into an arbitrary chosen fixed width - about equal to 60 chars.
+      // This is very long title test:
+      // .title("Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the ")
+      // if no text_length() then get warning
       // font size = 5 is far too small and stretch to fit
       // font size = 20 makes all the letters on top of each other.
-      // font size = 12 is too close to be easily readable with text_length 900
-      // if no text_length() then get warning
-      // even if .title_text_length(1000)  then get message but fits and is readable.
-
-      /*
+      // font size = 12 is just readable with text_length 1000.
+      // font size = 13 is too close and some glyphs collide with text_length 1000.
+      /*  Error message example:
+      title style text_style(13, "Arial", "italic", "bold", "", "underline", 1000), text_length = 1000
       Title "Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the "
-        estimated width 1504.8 (SVG units) may overflow plot image!
-        (Reduce font size from 12, or number of characters from 209, or increase image size from 1000).
+        estimated width 1630.2 (SVG units) may overflow plot image or or over-compress text!
+        (Reduce font size from 13, or number of characters from 209, or increase image size from 1000).
       */
-      
+      // Squash Factor 1.6 chosen on this basis, but might be different for other fonts?
+    
       .plot(my_data_0)
+
       ;
+    // Show just couple of text styles
       //std::cout << "title family " << my_2d_plot.title_font_family() << ", size " << my_2d_plot.title_font_size() << std::endl;
       // title family Lucida Sans Unicode, size 10
 
-    std::cout << "title style " << my_2d_plot.title_style() << ", text_length = " << my_2d_plot.title_text_length() << std::endl;
-    // title style text_style(10, "Arial", "italic", "bold", "narrower", "underline", 900), text_length = 900
+    std::cout << "title style " << my_2d_plot.title_style()  // title style text_style(12, "Arial", "italic", "bold", "narrower", "underline", 1000)
+      << ", text_length = " << my_2d_plot.title_text_length()  // text_length = 1000 
+      << std::endl;
 
+    // Title text "Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the "
+    //  with an estimated width 1630.2 (SVG units) may overflow plot space 1000 or over-compress text with compression ratio 1.6302.
+    //  Reduce font size from 13, or number of characters from 209, or increase image size from 1000?.
     my_2d_plot.write("./svg_ext_width_height.svg"); // Plot output to file.
     // Output contains for the title:
-    // <text x="500" y="15" text-anchor="middle" font-size="10" font-family="Arial" font-style="italic" font-weight="bold" font-stretch="narrower" text-decoration="underline" textLength="900">Now ..
+    //<g id="title">
+    //  <text x="500" y="18" text-anchor="middle" font-size="12" font-family="Arial" font-style="italic" font-weight="bold" font-stretch="narrower" text-decoration="underline" textLength="1e+03">
+    //  Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the 
+    //  </text>
+    //</g>
   }
   catch(const std::exception& e)
   {

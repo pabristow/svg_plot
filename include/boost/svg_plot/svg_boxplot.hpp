@@ -1152,12 +1152,12 @@ public:
     // plot window now calculated, so make some checks (might also check it fits into image?).
     if (plot_right_ <= plot_left_)
     {
-      std::cout << "plot window left " << plot_left_ << ", right " << plot_right_ << std::endl;
+      std::cout << "Plot window left " << plot_left_ << ", right " << plot_right_ << std::endl;
       throw std::runtime_error("Plot window right <= left!");
     }
     if (plot_top_ >= plot_bottom_)
     {
-      std::cout << "plot window top " << plot_top_ << ", bottom " << plot_bottom_ << std::endl;
+      std::cout << "Plot window top " << plot_top_ << ", bottom " << plot_bottom_ << std::endl;
       throw std::runtime_error("Plot window top >= bottom!");
     }
 

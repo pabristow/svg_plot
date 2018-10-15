@@ -369,7 +369,7 @@ class text_style
 
 public:
   text_style( //!
-    int font_size = 12, //!< Default font size (12 pixels).
+    int font_size = 12, //!< Default font size (12 pixels).  NOT const because it might be changed during sizing.
     const std::string& font = default_font, //!< Examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"...
     const std::string& weight = "", //!< Font weight examples: "bold", "normal".
     const std::string& style = "", //!< Font style examples: normal | bold | italic | oblique.
@@ -377,7 +377,7 @@ public:
     const std::string& decoration = "", //!< Font decoration examples: "underline" | "overline" | "line-through".
     double text_length = 0); //!< Estimated length of text string.
 
-  text_style(const text_style & rhs); // Copy constructor.
+  text_style(const text_style & rhs); // Copy constructor.  NOT const because can be changed during sizing.
 
   // text_style Setters.
   text_style& font_size(int i);
@@ -614,13 +614,13 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
   bool text_style::operator==(const text_style& ts)
   { //! Compare text_style for equality (needed for testing).
    bool result = (
-     (ts.font_size_ == font_size_)
+     (ts.font_size_ == font_size_)  // NOT const as may be changed during sizing.
      && (ts.font_family_ == font_family_)
      && (ts.stretch_ == stretch_)
      && (ts.style_ == style_)
      && (ts.weight_ == weight_)
      && (ts.decoration_ == decoration_)
-     && (ts.text_length_ == text_length_)
+     && (ts.text_length_ == text_length_) // NOT const as may be changed during sizing.
      );
    return result;
   } // operator==
@@ -669,20 +669,25 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
 
 std::ostream& operator<< (std::ostream& os, const text_style& ts)
 { //! Output a text style as a text string (mainly useful for diagnostic use).
-    os << "text_style("
-       << ts.font_size_ << ", \""
-       << ts.font_family_ << "\", \""
-       << ts.style_ << "\", \"" // italic
-       << ts.weight_ // bold
-       // enable if implemented by rendering programs.
-       << "\", \""
-       << ts.stretch_ << "\", \""
-       << ts.decoration_
-       << "\", " 
-       << ts.text_length_ << ")";
+  os << "text_style("
+    << ts.font_size_ << ", \""
+    << ts.font_family_ << "\", \""
+    << ts.style_ << "\", \"" // italic
+    << ts.weight_ // bold
+    // Options enabled if implemented by rendering programs.
+    << "\", \""
+    << ts.stretch_ << "\", \""
+    << ts.decoration_ << "\"";
+    if (ts.text_length_ > 0)
+    { // Only show if a text_length is set.
+      os << "\", " << ts.text_length_;
+    }
+    os << ")";
   /*! \details Example:
      text_style ts(12, "Arial", "italic", "bold", "", "", 0);  std::cout << t << std::endl;
-     Outputs:  text_style(18, "Arial", "italic", "bold", "", "", 0)
+     Outputs:  text_style(12, "Arial", "italic", "bold", "", "")
+
+     Outputs:  text_style(12, "Arial", "italic", "bold", "narrower", "underline", 1000)
    */
   return os;
 } // std::ostream& operator<<

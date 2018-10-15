@@ -2508,7 +2508,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           new rect_element(0, 0, image_.x_size(),  image_.y_size()));
 
         calculate_plot_window();
-        draw_title(); // Moved to ensure plot_X and Y are valid.
+        draw_title(); // Moved to ensure plot_X and Y are made valid.
 
         // Define the clip path for the plot window.
         // We don't want to allow overlap of the plot window border lines,
