@@ -1,0 +1,23 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+    - image: "debian:stretch"
+    steps:
+    - checkout
+    - run:
+        name: Install System Dependencies
+        command: |
+          apt-get -qq update
+          apt-get install -y cmake g++
+    - run:
+        name: Creating Build Files
+        command: |
+          cmake . -Bbuild
+    - run:
+        name: Building
+        command: 'cmake --build build --config Release'
+    - run:
+        name: Testing
+        command: 'cmake --build build --config Release --target test'
