@@ -2,6 +2,7 @@
 # ignore all log file in any directory
 *.log
 /**/*.bat
+/**/*.bak
 /**/*.db
 doc/doxywarnings.log
 doc/autodoc.xml
