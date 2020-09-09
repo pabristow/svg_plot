@@ -5,6 +5,8 @@
       and TR1 should provide max, min, denorm_min, infinity and isnan,
       but older compilers and libraries may not provide all these.
 
+      Better to use boost::math throughout?  Done?
+
     \author Jacob Voytko and Paul A. Bristow
 */
 
@@ -27,12 +29,6 @@
 // using boost::svg::unc;
 
 // TODO use the boost version instead to be more portable?
-
-// using boost::math::fpclassify
-// boost::math::
-// template <class T>bool isfinite (T);
-// template <class T>bool isinf (T);
-// template <class T> bool isnan (T);
 
 #include <limits>
   // using std::numeric_limits;
@@ -69,12 +65,9 @@ inline bool limit_min(double a)
 
 inline bool limit_NaN(double a)
 { //! Separate test for NaNs.
-#if defined (BOOST_MSVC)
-    return _isnan(a) ? true : false;
+using boost::math::isnan;
+    return isnan(a) ? true : false;
   // Ternary operator used to remove warning about casting int to bool.
-#else
-    return (std::fpclassify(a) == FP_NAN);
-#endif
 }
 
 inline bool is_limit(double a)

@@ -333,7 +333,7 @@ public:
  /*! \class boost::svg::text_style
      \brief Font size, font family, font weight, font style, stretch & decoration.
      \details
-     /*! text font family (for example: "Lucida Sans Unicode", "arial" ...).
+     text font family (for example: "Lucida Sans Unicode", "arial" ...).
      Available fonts depend on the program rendering the SVG XML, usually a browser.
      The default font (usually "Lucida Sans Unicode") is used
      if a renderer (in a browser or a converter to PDF like RenderX)
@@ -584,18 +584,22 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
 
   /* https://www.w3.org/TR/SVG11/text.html#FontsTablesBaselines
   textLength = "<length>"
-    The author's computation of the total sum of all of the advance values that correspond to character data within this element,
+    The author's computation of the total sum of all of the advance values 
+    that correspond to character data within this element,
     including the advance value on the glyph (horizontal or vertical),
-    the effect of properties ‘kerning’, ‘letter-spacing’ and ‘word-spacing’ and adjustments due to attributes ‘dx’ and ‘dy’ on ‘tspan’ elements.
+    the effect of properties 'kerning', 'letter-spacing' and 'word-spacing' and 
+    adjustments due to attributes 'dx' and 'dy' on 'tspan' elements.
     This value is used to calibrate the user agent's own calculations with that of the author.
     The purpose of this attribute is to allow the author to achieve exact alignment,
     in visual rendering order after any bidirectional reordering, for the first and last rendered glyphs 
     that correspond to this element; thus, for the last rendered character 
     (in visual rendering order after any bidirectional reordering),
     any supplemental inter-character spacing beyond normal glyph advances are ignored (in most cases) 
-    when the user agent determines the appropriate amount to expand/compress the text string to fit within a length of ‘textLength’.
+    when the user agent determines the appropriate amount to expand/compress the text string to fit
+    within a length of 'textLength'.
     A negative value is an error (see Error processing).
-    If the attribute is not specified, the effect is as if the author's computation exactly matched the value calculated by the user agent;
+    If the attribute is not specified, the effect is as if the author's computation exactly matched 
+    the value calculated by the user agent;
     thus, no advance adjustments are made.
     */
 

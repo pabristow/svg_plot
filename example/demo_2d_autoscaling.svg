@@ -12,46 +12,50 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- (See accompanying file LICENSE_1_0.txt --> 
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
-<clipPath id="plot_window"><rect x="25.3" y="48.5" width="471" height="325"/></clipPath>
+<clipPath id="plot_window"><rect x="46.4" y="45" width="427" height="323"/></clipPath>
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="400"/></g>
-<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2"><rect x="24.3" y="47.5" width="473" height="327"/></g>
+<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2"><rect x="45.4" y="44" width="429" height="325"/></g>
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="24.3" y1="47.5" x2="24.3" y2="375"/></g>
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="24.3" y1="375" x2="498" y2="375"/></g>
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M22.3,366 L24.3,366 M22.3,358 L24.3,358 M22.3,350 L24.3,350 M22.3,342 L24.3,342 M22.3,325 L24.3,325 M22.3,317 L24.3,317 M22.3,309 L24.3,309 M22.3,301 L24.3,301 M22.3,285 L24.3,285 M22.3,276 L24.3,276 M22.3,268 L24.3,268 M22.3,260 L24.3,260 M22.3,244 L24.3,244 M22.3,236 L24.3,236 M22.3,227 L24.3,227 M22.3,219 L24.3,219 M22.3,203 L24.3,203 M22.3,195 L24.3,195 M22.3,186 L24.3,186 M22.3,178 L24.3,178 M22.3,162 L24.3,162 M22.3,154 L24.3,154 M22.3,146 L24.3,146 M22.3,137 L24.3,137 M22.3,121 L24.3,121 M22.3,113 L24.3,113 M22.3,105 L24.3,105 M22.3,96.6 L24.3,96.6 M22.3,80.2 L24.3,80.2 M22.3,72 L24.3,72 M22.3,63.9 L24.3,63.9 M22.3,55.7 L24.3,55.7 " fill="none"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M37.8,375 L37.8,377 M51.3,375 L51.3,377 M64.9,375 L64.9,377 M78.4,375 L78.4,377 M105,375 L105,377 M119,375 L119,377 M132,375 L132,377 M146,375 L146,377 M173,375 L173,377 M187,375 L187,377 M200,375 L200,377 M214,375 L214,377 M241,375 L241,377 M254,375 L254,377 M268,375 L268,377 M281,375 L281,377 M308,375 L308,377 M322,375 L322,377 M335,375 L335,377 M349,375 L349,377 M376,375 L376,377 M389,375 L389,377 M403,375 L403,377 M416,375 L416,377 M443,375 L443,377 M457,375 L457,377 M470,375 L470,377 M484,375 L484,377 " fill="none"/></g>
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M19.3,375 L24.3,375 M19.3,334 L24.3,334 M19.3,293 L24.3,293 M19.3,252 L24.3,252 M19.3,211 L24.3,211 M19.3,170 L24.3,170 M19.3,129 L24.3,129 M19.3,88.4 L24.3,88.4 M19.3,47.5 L24.3,47.5 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M24.3,375 L24.3,380 M91.9,375 L91.9,380 M160,375 L160,380 M227,375 L227,380 M295,375 L295,380 M362,375 L362,380 M430,375 L430,380 M497,375 L497,380 " fill="none"/></g>
+<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="45.4" y1="44" x2="45.4" y2="369"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="45.4" y1="369" x2="474" y2="369"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M43.4,361 L45.4,361 M43.4,353 L45.4,353 M43.4,345 L45.4,345 M43.4,337 L45.4,337 M43.4,320 L45.4,320 M43.4,312 L45.4,312 M43.4,304 L45.4,304 M43.4,296 L45.4,296 M43.4,280 L45.4,280 M43.4,272 L45.4,272 M43.4,263 L45.4,263 M43.4,255 L45.4,255 M43.4,239 L45.4,239 M43.4,231 L45.4,231 M43.4,223 L45.4,223 M43.4,215 L45.4,215 M43.4,198 L45.4,198 M43.4,190 L45.4,190 M43.4,182 L45.4,182 M43.4,174 L45.4,174 M43.4,158 L45.4,158 M43.4,150 L45.4,150 M43.4,142 L45.4,142 M43.4,133 L45.4,133 M43.4,117 L45.4,117 M43.4,109 L45.4,109 M43.4,101 L45.4,101 M43.4,92.8 L45.4,92.8 M43.4,76.5 L45.4,76.5 M43.4,68.4 L45.4,68.4 M43.4,60.3 L45.4,60.3 M43.4,52.1 L45.4,52.1 " fill="none"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M57.6,369 L57.6,371 M69.9,369 L69.9,371 M82.1,369 L82.1,371 M94.4,369 L94.4,371 M119,369 L119,371 M131,369 L131,371 M143,369 L143,371 M156,369 L156,371 M180,369 L180,371 M192,369 L192,371 M205,369 L205,371 M217,369 L217,371 M241,369 L241,371 M254,369 L254,371 M266,369 L266,371 M278,369 L278,371 M303,369 L303,371 M315,369 L315,371 M327,369 L327,371 M339,369 L339,371 M364,369 L364,371 M376,369 L376,371 M388,369 L388,371 M401,369 L401,371 M425,369 L425,371 M437,369 L437,371 M450,369 L450,371 M462,369 L462,371 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M40.4,369 L45.4,369 M40.4,328 L45.4,328 M40.4,288 L45.4,288 M40.4,247 L45.4,247 M40.4,207 L45.4,207 M40.4,166 L45.4,166 M40.4,125 L45.4,125 M40.4,84.6 L45.4,84.6 M40.4,44 L45.4,44 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M45.4,369 L45.4,374 M107,369 L107,374 M168,369 L168,374 M229,369 L229,374 M290,369 L290,374 M352,369 L352,374 M413,369 L413,374 M474,369 L474,374 " fill="none"/></g>
 <g id="xTicksValues">
-<text x="24.3" y="395" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">1</text>
-<text x="91.9" y="395" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2</text>
-<text x="160" y="395" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">3</text>
-<text x="227" y="395" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4</text>
-<text x="295" y="395" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">5</text>
-<text x="362" y="395" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6</text>
-<text x="430" y="395" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">7</text>
-<text x="497" y="395" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8</text></g>
+<text x="45.4" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">1</text>
+<text x="107" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2</text>
+<text x="168" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">3</text>
+<text x="229" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4</text>
+<text x="290" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">5</text>
+<text x="352" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6</text>
+<text x="413" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">7</text>
+<text x="474" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8</text></g>
 <g id="yTicksValues">
-<text x="13.3" y="377" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">2</text>
-<text x="13.3" y="336" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">3</text>
-<text x="13.3" y="295" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">4</text>
-<text x="13.3" y="254" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">5</text>
-<text x="13.3" y="213" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">6</text>
-<text x="13.3" y="173" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">7</text>
-<text x="13.3" y="132" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">8</text>
-<text x="13.3" y="90.8" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9</text>
-<text x="13.3" y="49.9" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">10</text></g>
+<text x="34.4" y="371" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">2</text>
+<text x="34.4" y="331" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">3</text>
+<text x="34.4" y="290" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">4</text>
+<text x="34.4" y="250" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">5</text>
+<text x="34.4" y="209" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">6</text>
+<text x="34.4" y="168" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">7</text>
+<text x="34.4" y="128" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">8</text>
+<text x="34.4" y="87" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9</text>
+<text x="34.4" y="46.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">10</text></g>
 <g id="yLabel">
-<text x="-8.6" y="211" text-anchor="middle" transform = "rotate(-90 -8.6 211 )" font-size="14" font-family="Lucida Sans Unicode"></text></g>
+<text x="14.9" y="207" text-anchor="middle" transform = "rotate(-90 14.9 207 )" font-size="14" font-family="Lucida Sans Unicode"></text></g>
 <g id="xLabel">
-<text x="261" y="410" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode"></text></g>
-<g id="plotPoints" clip-path="url(#plot_window)"><g stroke="rgb(0,0,0)" fill="rgb(255,255,255)"><circle cx="31.1" cy="325" r="3"/><circle cx="100" cy="357" r="3"/><circle cx="326" cy="236" r="3"/><circle cx="450" cy="84.3" r="3"/></g>
+<text x="260" y="402" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode"></text></g>
+<g id="plotPoints" clip-path="url(#plot_window)"><g stroke="rgb(0,0,0)" fill="rgb(255,255,255)">
+<text x="51.5" y="322" text-anchor="middle" font-size="6" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="114" y="353" text-anchor="middle" font-size="6" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="319" y="233" text-anchor="middle" font-size="6" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="431" y="82.5" text-anchor="middle" font-size="6" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
 </g>
 <g id="title">
-<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode">Autoscaling 2d Values</text></g>
+<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode" font-weight="normal">Autoscaling 2d Values</text></g>
 <g id="plotXValues"></g>
 <g id="plotYValues"></g>
 </svg>

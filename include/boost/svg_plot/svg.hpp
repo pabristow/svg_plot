@@ -260,6 +260,15 @@ namespace svg
      \endverbatim
    */
 
+    /*
+
+    Another popular option is Creative Commons Attribution-ShareAlike 4.0 International License
+          https://creativecommons.org/licenses/by-sa/4.0/
+
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+    
+    */
+
 //! \cond DETAIL
 // Forward declaration of Class to output Scalable Vector Graph XML graph elements: point, path, line, circle, rect, polygon and text.
 class svg;
@@ -824,8 +833,8 @@ public:
   The author's (this program) computation of the total sum of all of 
   the advance values that correspond to character data within this element,
   including the advance value on the glyph (horizontal or vertical),
-  the effect of properties ‘kerning’, ‘letter-spacing’ and ‘word-spacing’
-  and adjustments due to attributes ‘dx’ and ‘dy’ on ‘tspan’ elements. 
+  the effect of properties 'kerning', 'letter-spacing' and 'word-spacing'
+  and adjustments due to attributes 'dx' and 'dy' on 'tspan' elements. 
   
   This value is used to calibrate the user agent's (renderer) own calculations with that of the author.
   The purpose of this attribute is to allow the author to achieve exact alignment, 
@@ -834,7 +843,7 @@ public:
   thus, for the last rendered character (in visual rendering order after any bidirectional reordering), 
   any supplemental inter-character spacing beyond normal glyph advances are ignored (in most cases) 
   when the user agent (this program) determines the appropriate amount 
-  to expand/compress the text string to fit within a length of ‘textLength’.
+  to expand/compress the text string to fit within a length of 'textLength'.
   */
 
   // \sa https://www.w3.org/TR/SVG11/text.html#TextElementTextLengthAttribute

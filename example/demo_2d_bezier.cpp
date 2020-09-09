@@ -33,7 +33,6 @@ and
 //using std::cos;
 //using std::tan;
 
-
 double f(double x)
 {
   return std::sin(x);
@@ -52,7 +51,7 @@ double h(double x)
 int main()
 {
 
-  using namespace boost::svg; // Very convenient to allow easy access to colors and other items.
+  using namespace boost::svg; // Very convenient to allow easy access to colors and many other items.
 
   std::map<double, double> sin_data, cos_data, tan_data, sincos_data;
 
@@ -78,7 +77,7 @@ int main()
   // Text settings.
   my_plot.title("Plot of sin, cos &#x26; tan and sincos functions")
     // Note: for ampersand must use Unicode &#x26; because it is a reserved symbol in SVG XML.
-    // Search engines will provide Unicodes by querying "UNicode ampersand"
+    // Search engines will provide Unicodes by querying "Unicode ampersand"
     // at sites like https://unicode.org/, 
     // http://www.fileformat.info/info/unicode/char/0026/index.htm and others.
     .title_font_size(28)
@@ -148,8 +147,9 @@ int main()
     .bezier_on(true) // Note smoother at the minima and maxima.
     .shape(none) ; // NO data point markers (and only shows a line in the legend).
 
-  my_plot.write("./demo_2d_bezier.svg"); // Final plot.
+  my_plot.write("demo_2d_bezier.svg"); // Final plot.
 
+  std::cout << "demo_2d_bezier plot written to " << "demo_2d_bezier.svg" << std::endl;
   return 0;
 } // int main()
 

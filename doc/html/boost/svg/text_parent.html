@@ -1,9 +1,9 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Class text_parent</title>
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">
 <link rel="prev" href="text_element_text.html" title="Class text_element_text">
@@ -26,7 +26,7 @@
 <a name="boost.svg.text_parent"></a><div class="titlepage"></div>
 <div class="refnamediv">
 <h2><span class="refentrytitle">Class text_parent</span></h2>
-<p>boost::svg::text_parent &#8212; An ancestor to both tspan and strings for the <a class="link" href="text_element.html" title="Class text_element">text_element</a> class. </p>
+<p>boost::svg::text_parent — An ancestor to both tspan and strings for the <a class="link" href="text_element.html" title="Class text_element">text_element</a> class. </p>
 </div>
 <h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
 <div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">boost/svg_plot/detail/svg_tag.hpp</a>&gt;
@@ -35,36 +35,36 @@
 <span class="keyword">class</span> <a class="link" href="text_parent.html" title="Class text_parent">text_parent</a> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="text_parent.html#boost.svg.text_parentconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="text_parent.html#id561188-bb"><span class="identifier">text_parent</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="text_parent.html#id561206-bb"><span class="identifier">text_parent</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_parent.html" title="Class text_parent">text_parent</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="text_parent.html#id681590-bb"><span class="identifier">text_parent</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="text_parent.html#id681603-bb"><span class="identifier">text_parent</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_parent.html" title="Class text_parent">text_parent</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="text_parent.html#id561175-bb">public member functions</a></span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="text_parent.html#id561169-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="text_parent.html#id681576-bb">public member functions</a></span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="text_parent.html#id681597-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1177366"></a><h2>Description</h2>
+<a name="id1352618"></a><h2>Description</h2>
 <p>This allows an array of both types to be stored in <a class="link" href="text_element.html" title="Class text_element">text_element</a>. </p>
 <div class="refsect2">
-<a name="id1177360"></a><h3>
+<a name="id1352694"></a><h3>
 <a name="boost.svg.text_parentconstruct-copy-destruct"></a><code class="computeroutput">text_parent</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a name="id561188-bb"></a><span class="identifier">text_parent</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> text<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id681590-bb"></a><span class="identifier">text_parent</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> text<span class="special">)</span><span class="special">;</span></pre>
 <p>Construct from text. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id561206-bb"></a><span class="identifier">text_parent</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_parent.html" title="Class text_parent">text_parent</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id681603-bb"></a><span class="identifier">text_parent</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_parent.html" title="Class text_parent">text_parent</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
 <p>Copy constructor. </p>
 </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1177440"></a><h3>
-<a name="id561175-bb"></a><code class="computeroutput">text_parent</code> public member functions</h3>
+<a name="id1352736"></a><h3>
+<a name="id681576-bb"></a><code class="computeroutput">text_parent</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id561169-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id681597-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>
 <p>write functions output SVG commands. </p>
 </li></ol></div>
 </div>
@@ -72,7 +72,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2018 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2018 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

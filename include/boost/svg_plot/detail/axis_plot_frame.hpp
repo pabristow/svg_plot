@@ -2066,14 +2066,15 @@ namespace boost
         }
       } // void adjust_limits
 
-      bool check_text_fit(const text_style& style, const std::string& text, double font_size, double title_svg_length, double image_size)
+      //! \brief Check if the text will fit into the space available.
+      //! \details If force text into the x_size (using text_length option), 
+      //! then too large a font or too many characters 
+      //! may over-compress and push the glyphs to overlap,
+      //! so warn here of overflow or over-compress.
+      //! A factor of 1.6 more characters than width 
+      //! still allows bold characters to not quite collide or overlap.
+      bool check_text_fit(const text_style& /*style*/, const std::string& text, double font_size, double title_svg_length, double image_size)
       {
-        // If force text into the x_size (using text_length option), 
-        // then too large a font or too many characters 
-        // may over-compress and push the glyphs to overlap,
-        // so warn here of overflow or over-compress.
-        // A factor of 1.6 more characters than width 
-        // still allows bold characters to not quite collide or overlap.
         static const double squash_factor = 1.6;
         if (title_svg_length > image_size * squash_factor)
         { // Issue Warning that text like title is too long or too big font!
@@ -2084,9 +2085,12 @@ namespace boost
             << ", or number of characters from " << text.size()
             << ", or increase image size from " << image_size
             << "?" << std::endl;
+          // Might use text_style to show decoration?
+          // For example:
           // Title "Plot showing short legend &#x26; sizes."
           //   width 378 (SVG units) may overflow plot image!
           //  (Reduce font size from 30, or number of characters from 21, or increase image size from 300).
+
           return false; // Warning given that may not fit or be legible.
         }
         return true; // Will fit.
@@ -2291,7 +2295,7 @@ namespace boost
         text_width += derived().biggest_point_font_size_ * aspect_ratio; // Data point marker and 
         text_width += derived().biggest_point_font_size_ * aspect_ratio; // a same size space after.
       }
-      if (derived().is_a_data_series_line_ = true)
+      if (derived().is_a_data_series_line_ == true)
       {
         text_width += derived().horizontal_marker_spacing_; // Line width.
         text_width += derived().horizontal_marker_spacing_; // Space after line.
@@ -2334,9 +2338,9 @@ namespace boost
         << ", .legend_text_font_size_ = " << derived().legend_text_font_size_
         << ",\n .legend_title_style_ = " << derived().legend_title_style_
         << ",\n .legend_text_style_ = " << derived().legend_text_style_ 
-        << ",\n .legend_widest_line_ " << derived().legend_widest_line_ << " svg units."
+        << ",\n .legend_widest_line_ = " << derived().legend_widest_line_ << " svg units."
         << " or " << string_svg_length(derived().legend_title_.text(), derived().legend_title_style_) << " SVG units"
-        << ", .biggest_point_font_size_ " << derived().biggest_point_font_size_ 
+        << ", .biggest_point_font_size_ = " << derived().biggest_point_font_size_ 
         << ",\n longest text line " << longest_text
 
         << std::endl;
@@ -2377,6 +2381,7 @@ namespace boost
       // Compute legend box height.
       // legend_height must be *at least* enough for
       // any legend title and text_margin(s) around it
+      // Or size of marker or line, whichever is the biggest,  TODO compute this fully like the width.
       // (if any) plus a small margin_ top and bottom.
 
       derived().legend_height_ = 2 * derived().legend_box_.margin_; // Always allow a tiny margin top and bottom.
@@ -2432,7 +2437,7 @@ namespace boost
         switch (derived().legend_place_)
         {
         case nowhere:
-          std::cout << "Legend box put nowhere!" << std::endl;
+          std::cout << "Legend box put nowhere!" << std::endl;  // Should not happen!
           return; // Actually places it at (0, 0), probably overwriting the plot!
         case somewhere:
           // Assume legend_top_left will place it somewhere where there is nothing else.
@@ -2617,17 +2622,17 @@ namespace boost
       }
       legend_y_pos += derived().legend_box_.margin_; // Leave small margin.
       legend_y_pos += derived().vertical_spacing_;
-      legend_y_pos += derived().vertical_spacing_ /2;  // Origin 0,0 for glyph is bottom left, so down half a spacing.
+     // legend_y_pos += derived().vertical_spacing_ /2;  // Origin 0,0 for glyph is bottom left, so down half a spacing.
 
-      if (derived().legend_title_.text() != "")
-      { // Draw the centered legend title text for example: "My Plot Legend".
+      if (derived().legend_title_.text() != "") // 
+      { // Is a legend title, so draw the centered legend title text for example: "My Plot Legend".
         derived().legend_title_.x(legend_x_start + legend_width / 2.); // / 2. to center horizontally in legend box.
         // Might be better to use center_align here because may fail if legend contains symbols in Unicode?
         derived().legend_title_.y(legend_y_pos);
         derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_title_));
         legend_y_pos += derived().vertical_line_spacing_; // Leave a text half space below legend header.
       } // is_header
-      legend_y_pos += derived().vertical_line_spacing_; // Leave a text space below any legend header.
+      legend_y_pos += derived().vertical_line_spacing_ /2; // Leave a half text space below any legend header.
 
       g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Write title text into legend box.
       g_element* g_inner_ptr = g_ptr;
@@ -2742,6 +2747,8 @@ namespace boost
             left_align));
         }
         legend_y_pos += derived().vertical_marker_spacing_; // Just right spacing between big shapes.
+        legend_y_pos += derived().vertical_marker_spacing_; // Just right spacing between big shapes.
+
       } // for
     } // void draw_legend()
 

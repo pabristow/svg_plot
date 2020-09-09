@@ -1,9 +1,9 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Header &lt;boost/svg_plot/detail/axis_plot_frame.hpp&gt;</title>
 <link rel="stylesheet" href="../../../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../../../index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="../../../../boost_svg_plot_c___reference.html" title="Boost.SVG plot C++ Reference">
 <link rel="prev" href="../../../../boost/svg/show_all.html" title="Function template show_all">
@@ -30,6 +30,7 @@
 <p>#define BOOST_SVG_LEGEND_DIAGNOSTICS for diagnostics of plot legend. #define BOOST_SVG_TITLE_DIAGNOSTICS for diagnostics of plot title. #define BOOST_SVG_POINT_DIAGNOSTICS for diagnostics of data point markers.</p>
 <p>Jacob Voytko and Paul A. Bristow </p>
 <p>
+
 </p>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">svg</span> <span class="special">{</span>
@@ -37,18 +38,13 @@
     <span class="comment">// Placing of legend box, if requested by legend_on == true. </span>
     <span class="keyword">enum</span> <a name="boost.svg.legend_places"></a>legend_places <span class="special">{</span> nowhere = = 0, inside = = -1, outside_left = = 1, 
                          outside_right = = +2, outside_top = = +3, 
-                         outside_bottom = = +4, somewhere = = +5, 
-                         nowhere = = 0, inside = = -1, outside_left = = 1, 
-                         outside_right = = +2, outside_top = = +3, 
                          outside_bottom = = +4, somewhere = = +5 <span class="special">}</span><span class="special">;</span>
 
     <span class="comment">// If and how the X axes intersects Y axis. </span>
-    <span class="keyword">enum</span> <a name="boost.svg.x_axis_intersect"></a>x_axis_intersect <span class="special">{</span> bottom = = -1, x_intersects_y = = 0, top = = +1, 
-                            bottom = = -1, x_intersects_y = = 0, top = = +1 <span class="special">}</span><span class="special">;</span>
+    <span class="keyword">enum</span> <a name="boost.svg.x_axis_intersect"></a>x_axis_intersect <span class="special">{</span> bottom = = -1, x_intersects_y = = 0, top = = +1 <span class="special">}</span><span class="special">;</span>
 
     <span class="comment">// If and how the Y axes intersects X axis. </span>
-    <span class="keyword">enum</span> <a name="boost.svg.y_axis_intersect"></a>y_axis_intersect <span class="special">{</span> left = = -1, y_intersects_x = = 0, right = = +1, 
-                            left = = -1, y_intersects_x = = 0, right = = +1 <span class="special">}</span><span class="special">;</span>
+    <span class="keyword">enum</span> <a name="boost.svg.y_axis_intersect"></a>y_axis_intersect <span class="special">{</span> left = = -1, y_intersects_x = = 0, right = = +1 <span class="special">}</span><span class="special">;</span>
 
     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">double</span> <a class="link" href="../../../../boost/svg/reducer.html" title="Global reducer">reducer</a><span class="special">;</span>    <span class="comment">// To make uncertainty and degrees of freedom estimates a bit smaller font to help distinguish from value. </span>
     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">double</span> <a class="link" href="../../../../boost/svg/sin45.html" title="Global sin45">sin45</a><span class="special">;</span>    <span class="comment">// Used to calculate 'length' if axis value labels are sloping. </span>
@@ -58,7 +54,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2018 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2018 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -2,7 +2,10 @@
 
 # Runs SVG Plot examples.
 
-# Copyright 2009, 2012, 2014 Paul A. Bristow.
+# Paul@hetpD MINGW64 /i/boost/libs/svg_plot/example (develop)
+# $ b2 toolset=msvc,gcc,clang cxxstd=17 release > svg_plot_examples_msvc_gcc_clang_c++17_9sep2020.log    
+
+# Copyright 2009, 2012, 2014, 2020 Paul A. Bristow.
 
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE_1_0.txt
@@ -53,7 +56,7 @@ project
      # needed for  boost/algorithm/minmax_element.hpp(103)
       #<toolset>msvc:<cxxflags>/wd4610 #
       #<toolset>msvc:<cxxflags>/wd4510 #
-      #<toolset>msvc:<cxxflags>/wd4701 #
+      <toolset>msvc:<cxxflags>/wd4702 # unreachable code (in triangular and uniform distribution).
       <toolset>msvc:<cxxflags>/wd4127 # Expression is constant.
       #<toolset>msvc:<cxxflags>/wd4305 #
       #<toolset>msvc:<cxxflags>/wd4503 # Decorated name length exceeded, name was truncated.
@@ -62,34 +65,36 @@ project
       #<include>../../../boost/quan/
     ;
 
-run 1d_full_layout.cpp ;
-run 1d_simple_style.cpp ;
-run 1d_x_external.cpp ;
-run 1d_x_grid.cpp ;
+# 6 Feb Concentrate on 2D first.
+
+#run 1d_full_layout.cpp ;
+#run 1d_simple_style.cpp ;
+#run 1d_x_external.cpp ;
+#run 1d_x_grid.cpp ;
 run 2d_area_fill.cpp ;
 run 2d_bezier.cpp ;
 run 2d_full.cpp ;
 run 2d_limit.cpp ;
 run 2d_simple.cpp ;
 run 2d_y_grid.cpp ;
-run auto_1d_containers.cpp ;
-run auto_1d_plot.cpp ;
+#run auto_1d_containers.cpp ;
+#run auto_1d_plot.cpp ;
 run auto_2d_plot.cpp ;
 run auto_boxplot.cpp ;
 run boxplot_full.cpp ;
 run boxplot_simple.cpp ;
 run container_minmax.cpp ;
 run demo_1d_autoscaling.cpp ;
-run demo_1d_axis_scaling.cpp ;
-run demo_1d_containers.cpp ;
-run demo_1d_limits.cpp ; #
-run demo_1d_plot.cpp ; # Demonstration of many features for 1D plots.
-run demo_1d_simple.cpp ;
-run demo_1d_uncertainty.cpp ; # Demonstrate showing uncertainty as 1 sd, 2 sd, 3 sd ellipses.
-run demo_1d_values.cpp ; # Demonstration of some simple 1D value formatting.
-run demo_1d_vector.cpp ; # Simple plot of vector of 1D data.
-run demo_1d_x_external.cpp ; #
-run demo_1d_heat_flow_data.cpp ; # demonstrate 1d and boxplot of NIST heatflow data.
+#run demo_1d_axis_scaling.cpp ;
+#run demo_1d_containers.cpp ;
+#run demo_1d_limits.cpp ; #
+#run demo_1d_plot.cpp ; # Demonstration of many features for 1D plots.
+#run demo_1d_simple.cpp ;
+#run demo_1d_uncertainty.cpp ; # Demonstrate showing uncertainty as 1 sd, 2 sd, 3 sd ellipses.
+#run demo_1d_values.cpp ; # Demonstration of some simple 1D value formatting.
+#run demo_1d_vector.cpp ; # Simple plot of vector of 1D data.
+#run demo_1d_x_external.cpp ; #
+#run demo_1d_heat_flow_data.cpp ; # demonstrate 1d and boxplot of NIST heatflow data.
 run demo_2d_autoscaling.cpp ;
 run demo_2d_bars.cpp ; # Demonstrate the bars (& columns or sticks).
 run demo_2d_histogram.cpp ; #  Demonstrate drawing histogram.
@@ -100,18 +105,18 @@ run demo_2d_simple.cpp ; # Demonstration of some simple 2D plot features.
 run demo_2d_uncertainty.cpp ; # Demonstrate showing uncertainty as 1 sd, 2 sd, 3 sd ellipses.
 run demo_2d_values.cpp ; # Demonstration of marking values in 2D plots.
 run demo_annotation.cpp ; # Demonstration of adding textual annotation.
-run demo_boxplot.cpp ; # Demonstration of boxplots.
-run demo_boxplot_full.cpp ; # Demonstration of more options for Boxplots.
-run demo_boxplot_simple.cpp ; # Demonstration of simple boxplot.
-run demo_color.cpp ; # Demonstration of some SVG color features.
-run demo_Hoaglin.cpp ; # Demonstration of Boxplot quartile options.
+#run demo_boxplot.cpp ; # Demonstration of boxplots.
+#run demo_boxplot_full.cpp ; # Demonstration of more options for Boxplots.
+#run demo_boxplot_simple.cpp ; # Demonstration of simple boxplot.
+#run demo_color.cpp ; # Demonstration of some SVG color features.
+#run demo_Hoaglin.cpp ; # Demonstration of Boxplot quartile options.
 run demo_point_markers.cpp ; # Demonstration of marking data point options.
 run demo_rounds.cpp ; # Demonstration of rounding algorithm used for binary, five, decimal autoscaling.
 run demo_svg.cpp ;
 run demo_svg_tspan.cpp ; # Demonstration of tspan commands.
 run svg_colors.cpp ;
 run svg_test.cpp ;
-run svg_test_boxplot.cpp ;
+#run svg_test_boxplot.cpp ;
 #run demo_fp_compare.cpp ;  #
 
 #run test_1d_color_consistency.cpp ;

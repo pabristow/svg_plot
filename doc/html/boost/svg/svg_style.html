@@ -1,9 +1,9 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Class svg_style</title>
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="../../header/boost/svg_plot/svg_style_hpp.html" title="Header &lt;boost/svg_plot/svg_style.hpp&gt;">
 <link rel="prev" href="plot_point_style.html" title="Class plot_point_style">
@@ -26,7 +26,7 @@
 <a name="boost.svg.svg_style"></a><div class="titlepage"></div>
 <div class="refnamediv">
 <h2><span class="refentrytitle">Class svg_style</span></h2>
-<p>boost::svg::svg_style &#8212; basic SVG stroke, fill colors and width, and their switches. </p>
+<p>boost::svg::svg_style — basic SVG stroke, fill colors and width, and their switches. </p>
 </div>
 <h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
 <div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/svg_style_hpp.html" title="Header &lt;boost/svg_plot/svg_style.hpp&gt;">boost/svg_plot/svg_style.hpp</a>&gt;
@@ -35,28 +35,28 @@
 <span class="keyword">class</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="svg_style.html#boost.svg.svg_styleconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="svg_style.html#id636658-bb"><span class="identifier">svg_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_style.html#id636654-bb"><span class="identifier">svg_style</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_style.html#id736656-bb"><span class="identifier">svg_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_style.html#id736644-bb"><span class="identifier">svg_style</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="svg_style.html#id638604-bb">public member functions</a></span>
-  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_style.html#id638568-bb"><span class="identifier">fill_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_style.html#id638612-bb"><span class="identifier">fill_color</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_style.html#id638678-bb"><span class="identifier">fill_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="svg_style.html#id638650-bb"><span class="identifier">fill_on</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="svg_style.html#id638701-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="svg_style.html#id638694-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_style.html#id636457-bb"><span class="identifier">stroke_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_style.html#id636519-bb"><span class="identifier">stroke_color</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_style.html#id636510-bb"><span class="identifier">stroke_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="svg_style.html#id636535-bb"><span class="identifier">stroke_on</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_style.html#id636531-bb"><span class="identifier">stroke_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="svg_style.html#id636579-bb"><span class="identifier">stroke_width</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_style.html#id636589-bb"><span class="identifier">width_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="svg_style.html#id636608-bb"><span class="identifier">width_on</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="svg_style.html#id636615-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="svg_style.html#id736291-bb">public member functions</a></span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_style.html#id736317-bb"><span class="identifier">fill_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_style.html#id736353-bb"><span class="identifier">fill_color</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_style.html#id736347-bb"><span class="identifier">fill_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="svg_style.html#id736363-bb"><span class="identifier">fill_on</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="svg_style.html#id736407-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="svg_style.html#id736401-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_style.html#id736404-bb"><span class="identifier">stroke_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_style.html#id736443-bb"><span class="identifier">stroke_color</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_style.html#id736503-bb"><span class="identifier">stroke_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="svg_style.html#id736480-bb"><span class="identifier">stroke_on</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_style.html#id736518-bb"><span class="identifier">stroke_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="svg_style.html#id736567-bb"><span class="identifier">stroke_width</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_style.html#id736563-bb"><span class="identifier">width_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="svg_style.html#id736627-bb"><span class="identifier">width_on</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="svg_style.html#id736617-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1527218"></a><h2>Description</h2>
+<a name="id1590811"></a><h2>Description</h2>
 <p>This is the style information for any group (g) tag. This could be expanded to include more data from the SVG standard.</p>
 <p>There are some strange effects for text on some browsers (Firefox especially) when only stroke is specified. fill is interpreted as black, and the font outline is fuzzy and bolder.    &lt;g id="title" stroke="rgb(255,0,0)"&gt; .. is red border and black fill.
    (because created as a graphic not a builtin font?)
@@ -71,25 +71,25 @@
    &lt;/g&gt;
    and this is not a graphic. </p>
 <div class="refsect2">
-<a name="id1527211"></a><h3>
+<a name="id1590813"></a><h3>
 <a name="boost.svg.svg_styleconstruct-copy-destruct"></a><code class="computeroutput">svg_style</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
-<li class="listitem"><pre class="literallayout"><a name="id636658-bb"></a><span class="identifier">svg_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><a name="id736656-bb"></a><span class="identifier">svg_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></li>
 <li class="listitem">
-<pre class="literallayout"><a name="id636654-bb"></a><span class="identifier">svg_style</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> stroke<span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> fill<span class="special">,</span> 
+<pre class="literallayout"><a name="id736644-bb"></a><span class="identifier">svg_style</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> stroke<span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> fill<span class="special">,</span> 
           <span class="keyword">unsigned</span> <span class="keyword">int</span> width<span class="special">)</span><span class="special">;</span></pre>
 <p>Construct <code class="computeroutput"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a></code> with specified fill and stroke colors, and width. </p>
 </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1527304"></a><h3>
-<a name="id638604-bb"></a><code class="computeroutput">svg_style</code> public member functions</h3>
+<a name="id1590925"></a><h3>
+<a name="id736291-bb"></a><code class="computeroutput">svg_style</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id638568-bb"></a><span class="identifier">fill_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id736317-bb"></a><span class="identifier">fill_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col<span class="special">)</span><span class="special">;</span></pre>
 <p>Set fill color (and set fill on true, unless color is blank).</p>
 <p>
 </p>
@@ -105,7 +105,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id638612-bb"></a><span class="identifier">fill_color</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id736353-bb"></a><span class="identifier">fill_color</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -120,7 +120,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id638678-bb"></a><span class="identifier">fill_on</span><span class="special">(</span><span class="keyword">bool</span> is<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id736347-bb"></a><span class="identifier">fill_on</span><span class="special">(</span><span class="keyword">bool</span> is<span class="special">)</span><span class="special">;</span></pre>
 <p>Set fill is wanted.</p>
 <p>
 </p>
@@ -136,7 +136,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id638650-bb"></a><span class="identifier">fill_on</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id736363-bb"></a><span class="identifier">fill_on</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -151,15 +151,15 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id638701-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id736407-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
 <p>Compare svg_styles (for inequality). </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id638694-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id736401-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
 <p>Compare svg_styles. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id636457-bb"></a><span class="identifier">stroke_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id736404-bb"></a><span class="identifier">stroke_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col<span class="special">)</span><span class="special">;</span></pre>
 <p>Set stroke color (and set stroke on).</p>
 <p>
 </p>
@@ -175,7 +175,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id636519-bb"></a><span class="identifier">stroke_color</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id736443-bb"></a><span class="identifier">stroke_color</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -190,7 +190,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id636510-bb"></a><span class="identifier">stroke_on</span><span class="special">(</span><span class="keyword">bool</span> is<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id736503-bb"></a><span class="identifier">stroke_on</span><span class="special">(</span><span class="keyword">bool</span> is<span class="special">)</span><span class="special">;</span></pre>
 <p>Set true if SVG stroke is wanted.</p>
 <p>
 </p>
@@ -206,7 +206,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id636535-bb"></a><span class="identifier">stroke_on</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id736480-bb"></a><span class="identifier">stroke_on</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -221,7 +221,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id636531-bb"></a><span class="identifier">stroke_width</span><span class="special">(</span><span class="keyword">double</span> width<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id736518-bb"></a><span class="identifier">stroke_width</span><span class="special">(</span><span class="keyword">double</span> width<span class="special">)</span><span class="special">;</span></pre>
 <p>Set stroke width (and set width on).</p>
 <p>
 </p>
@@ -237,7 +237,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id636579-bb"></a><span class="identifier">stroke_width</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id736567-bb"></a><span class="identifier">stroke_width</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -252,7 +252,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id636589-bb"></a><span class="identifier">width_on</span><span class="special">(</span><span class="keyword">bool</span> is<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id736563-bb"></a><span class="identifier">width_on</span><span class="special">(</span><span class="keyword">bool</span> is<span class="special">)</span><span class="special">;</span></pre>
 <p>Set true to use SVG stroke width.</p>
 <p>
 </p>
@@ -268,7 +268,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id636608-bb"></a><span class="identifier">width_on</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id736627-bb"></a><span class="identifier">width_on</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -283,7 +283,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id636615-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id736617-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>
 <p>Write any stroke, fill colors and/or width info to SVG XML document.</p>
 <p>Example output: &lt;g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"&gt;</p>
 </li>
@@ -293,7 +293,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2018 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2018 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

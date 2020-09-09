@@ -171,7 +171,8 @@ public:
 
   text_style a_style_; //!< Default text style that contains font size & type etc.
   text_style title_style_; //!< style (font etc) of title.
-  text_style legend_text_style_; //!<  style (font etc of legend.
+  text_style legend_text_style_; //!<  style (font etc of legend).
+  text_style legend_title_style_; //!< Style for legend title.
   text_style x_axis_label_style_; //!< style of X axis label.
   text_style y_axis_label_style_;  //!< Not used for 1D but needed by axis_plot_frame.hpp.
   text_style x_value_label_style_; //!< style of X ticks value label.
@@ -203,7 +204,9 @@ public:
   double plot_right_; //!< svg right of plot window (calculate_plot_window() sets these values).
   double plot_bottom_; //!< svg bottom of plot window (calculate_plot_window() sets these values).
 
-  // enum legend_places{ noaspect_ratioere, inside...}
+  // enum legend_places{ where, aspect_ratio, inside...}
+  bool is_legend_title_; //!< @c true if legend_title_.text() != "" (for example: @c .legend_title("My Legend");) (default @c false).
+
   legend_places legend_place_; //!< Place for any legend box.
   double legend_width_; //!< Width of legend box (pixels).
   double legend_height_; //!< Height of legend box (in pixels).
@@ -220,6 +223,26 @@ public:
   //! 0.2 is near top (useful if value labels go downward).
 
   size_t legend_longest_; //!< longest (both header & data) string in legend box,
+  bool is_a_point_marker_; //! @c true if any data series have point markers to show in legend (default @c false).
+  bool is_a_data_series_line_;  //!< @c true if any series have lines to show in legend (default @c false). Example: @c .line_on(true). 
+  bool is_a_data_series_text_;  //!< @c true is any series should show text describing the data series (default @c false). For example: @c my_plot.plot(my_data_0, "my_data_0_text"); 
+  double legend_title_font_size_; //!< Font size of legend header/title.
+  double legend_text_font_size_; //!< Font size of legend text.
+ // double series_text_font_size_; //!< Font size of lines of text describing data series.
+  double legend_widest_line_; //!< Width of longest of legend header/title and widest data series pointer+line+text.
+  double biggest_point_font_size_; //!< Biggest point marker symbol - determines vertical spacing.
+
+
+  // Leave a vertical space before any text (if text_margin_ == 1.5 then height of one biggest font).
+  // Leave a horizontal space before any text (if text_margin_ == 1.5 then width of one biggest font).
+  // For example, if font size is 10 and text_margin is 1.5 and aspect ratio is 0.6 then 
+  // Legend_font_size_ = 10, text_margin = 1.5, aspect ratio =  0.6, Vertical_spacing = 15, horizontal_spacing = 9
+  double vertical_spacing_; // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
+  double vertical_line_spacing_; // = derived().legend_font_size_; // One line vertically.
+  double horizontal_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
+  double horizontal_line_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
+  double horizontal_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series). 
+  double vertical_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
 
   axis_line_style x_axis_; //!< style of X axis line.
   axis_line_style y_axis_; //!< style of Y axis line.

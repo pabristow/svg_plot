@@ -1,9 +1,10 @@
 /*! \file container_minmax.cpp
     \brief Finding minmax of an STL container.
+    \details Provide specialized operator<< for pairs.
     \author Paul A Bristow
 */
 
-// Copyright Paul A Bristow 2008
+// Copyright Paul A Bristow 2008, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -21,6 +22,7 @@
 #include <algorithm>
   using std::min_element;
   using std::max_element;
+  // using std::transform
 
 #include <iostream>
   using std::cout;
@@ -46,27 +48,32 @@
 #include <limits>
   using std::numeric_limits;
 
+
 //namespace detail
 //{
 
   //std::ostream& operator<< (std::ostream&, const std::pair<double, double>&);
   //template<class T1, class T2> std::ostream& operator<< (std::ostream&, std::pair<T1, T1>&);
 
+  //! Output both items of a pair separated by a comma, for example: \code 1.2, 3.4 \endcode
+  //! Permits chaining.
   template<class T1, class T2>
   std::ostream& operator<< (std::ostream& os, const std::pair<T1, T2>& p)
   { // Output a pair of values.
          os << p.first << ", " << p.second;
       // Outputs:  1.2, 3.4
-      return os;
+      return os; // Permit chaining.
   } // std::ostream& operator<<
 
+  //! Output both items of a pair of doubles separated by a comma, for example: \code 1.2, 3.4 \endcode
+  //! Permits chaining.
   std::ostream& operator<< (std::ostream& os, const std::pair<double, double>& p)
   { // Output a pair of double values.
       std::streamsize precision = os.precision(3); // Save & use rather than default precision(6)
       os << p.first << ", " << p.second;
       // Outputs:  1.2, 3.4
       os.precision(precision); // Restore.
-      return os;
+      return os; // Permit chaining.
   } // std::ostream& operator<<
 
   // Maybe better as:
@@ -85,16 +92,17 @@
   // but OK for this purpose.
 //} // namespace detail
 
-
+//! Show all the containers values.
+//! \tparam T an STL container: array, vector ...
 template <typename T> // T an STL container: array, vector ...
 size_t show(const T& container)
-{ // Show all the containers values.
+{ 
   for (typename T::const_iterator it = container.begin(); it != container.end(); it++)
   {
-    cout << *it << ' ';
+    std::cout << *it << ' ';
   }
-  cout << endl;
-  cout << container.size() << " values in container. " << endl;
+  std::cout << std::endl;
+  std::cout << container.size() << " values in container. " << std::endl;
   return container.size();
 } // Container Data series to plot.
 
@@ -108,9 +116,11 @@ size_t show(const T& container)
 //  return containers.size();
 //} // Container Data series to plot.
 
-template <typename T> // T an STL container: container of containers.
+//! Show all the containers of containers values.
+//! \tparam T an STL container: container of containers, array, vector ...
+template <typename T> 
 size_t show_all(const T& containers)
-{ // Show all the containers values.
+{ 
   for (typename T::const_iterator it = containers.begin(); it != containers.end(); it++)
   {
     show(*it);
@@ -148,7 +158,6 @@ size_t show_part(iter begin, iter end) // Iterators.
   cout << count << " values in container used. " << endl;
   return count;
 }// Container Data series to plot.
-
 
 // typedef std::iterator_traits<iter>::value_type would be double, etc
 
@@ -231,13 +240,16 @@ int main()
   my_data.push_back(6.5); // [5]
 
   std::vector<double> my_data_2;
+  std::vector<double> my_data_3;
   // transform(my_data.begin(), my_data.end(), data2.begin(), bind1st(multiplies<double>(), 2.3));
   copy(my_data.begin(), my_data.end(), std::back_inserter(my_data_2));
-  copy(my_data.begin(), my_data.end(), std::ostream_iterator<double>(cout, " "));
+  copy(my_data.begin(), my_data.end(), std::ostream_iterator<double>(std::cout, " "));
   cout << endl << my_data.size() << " values in my_data. " << endl;
-  copy(my_data_2.begin(), my_data_2.end(), std::ostream_iterator<double>(cout, " "));
-  std::transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), std::bind1st(multiplies<double>(), 2.3));
-  copy(my_data_2.begin(), my_data_2.end(), ostream_iterator<double>(cout, " "));
+  std::copy(my_data_2.begin(), my_data_2.end(), std::ostream_iterator<double>(std::cout, " "));
+  const double d = 2.3; // Multiply all items by a constant.
+  std::transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), [d](double i) { return i * d; });
+
+  copy(my_data_2.begin(), my_data_2.end(), ostream_iterator<double>(std::cout, " "));
 
   cout << endl << my_data.size() << " values in my_data. " << endl;
 
@@ -305,14 +317,46 @@ int main()
   std::cout << mm << std::endl; //  1.2, 8.9
   std::cout <<"first " << *my_set.begin()  << ", last " << *(--my_set.end()) << std::endl;
 
-
-
   return 0;
 } // int main()
 
 /*
 
-
+1>container_minmax.cpp
+1>Generating code
+1>Previous IPDB not found, fall back to full compilation.
+1>All 347 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+1>Finished generating code
+1>container_minmax.vcxproj -> I:\Cpp\SVG_plot\svg_plot\x64\Release\container_minmax.exe
+1>Autorun "I:\Cpp\SVG_plot\svg_plot\x64\Release\container_minmax.exe"
+1>0.2 1.1 4.2 3.3 5.4 6.5
+1>6 values in my_data.
+1>0.2 1.1 4.2 3.3 5.4 6.5 0.46 2.53 9.66 7.59 12.42 14.95
+1>6 values in my_data.
+1>2 containers.
+1>0.2 1.1 4.2 3.3 5.4 6.5
+1>6 values in container.
+1>0.46 2.53 9.66 7.59 12.42 14.95
+1>6 values in container.
+1>minmax_elements 0.2 6.5
+1>minmax_elements 0.46 14.95
+1>0.2, 14.9
+1>The smallest element is 0.2
+1>The largest element is  6.5
+1>First value 0.2, last = 6.5
+1>min_element 0.2
+1>minmax_elements 0.2 6.5
+1>0.2, 6.5
+1>0.2 6.5
+1>min_element 1.1
+1>minmax_elements 1.1 4.2
+1>minmax_elements 0.2 6.5
+1>1.2 2.3 3.4 4.5 5.6 6.7 7.8 8.9
+1>8 values in my_set.
+1>minmax_elements 1.2 8.9
+1>1.2, 8.9
+1>first 1.2, last 8.9
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
 
 */
 

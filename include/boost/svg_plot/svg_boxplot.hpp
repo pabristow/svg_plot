@@ -1022,6 +1022,7 @@ public:
     // Check that labels won't collide and advise if they will?
     // Change rotation to avoid collision?
 
+    const double wh = 0.6; // TODO width of font?
     y_ticks_.label_max_space_ = 0.; // Space for Y axis labels, depending on orientation.
     if (y_ticks_.label_rotation_ == horizontal)
     { // Move plot left edge right to give space for y_value_precision_ digits.

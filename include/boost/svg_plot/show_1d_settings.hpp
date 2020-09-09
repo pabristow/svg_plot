@@ -30,7 +30,7 @@ namespace svg
 
   // Declaration, defined below.
   //! \cond DETAIL
-  void show_1d_plot_settings(svg_1d_plot&);
+  void show_1d_plot_settings(svg_1d_plot&, std::ostream&);
   //! \endcond
 
 //! Strings describing each bit in @c std::ios_base::fmtflags.
@@ -159,168 +159,166 @@ const std::string t_or_b(int i)
  return ((i < 0) ? "bottom" : ((i == 0) ? "none" : "top"));
 }
 
-void show_1d_plot_settings(svg_1d_plot& plot)
-{ /*! \brief Diagnostic display to @c std::cout of all settings of a 1D plot.
-     Outputs a long list of about hundred of plot parameter settings to @c cout.
+void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
+{ /*! \brief Diagnostic display of all settings of a 1D plot.
+     Outputs a long list of about hundred of plot parameter settings, by default to @c std::cout.
     This list is invaluable if the plot does not look as expected.
     \warning This creates about 100 lines of output, so should be used sparingly!
+    \param plot Name of svg_1d_plot.
+    \param os @c std::ostream& for output, default @c std::cout.
   */
-  using std::cout;
-  using std::endl;
-  using std::hex;
-  using std::dec;
-  using std::boolalpha;
-  using std::fixed;
 
   using boost::svg::detail::operator<<;
   // std::ostream& operator<< (std::ostream&, const std::pair<double, double>&);
   // defined above.
+  // Save std::cout state in case use the default.
+  std::ios_base::fmtflags flags = std::cout.flags(); // Save format flags to restore on exit.
+  std::streamsize prec = std::cout.precision(); // Save precision to restore on exit.
 
-  std::ios_base::fmtflags flags = cout.flags(); // Save format flags to restore on exit.
-  cout << dec << std::boolalpha << endl;
-  cout << endl;
-
-  cout << "axes_on " << plot.axes_on() << endl;
-  cout << "background_border_width " << plot.background_border_width() << endl;
-  cout << "background_border_color " << plot.background_border_color() << endl;
-  cout << "background_color " << plot.background_color() << endl;
-  cout << "image_border_margin() " << plot.image_border_margin() << endl;
-  cout << "image_border_width() " << plot.image_border_width() << endl;
-  cout << "coord_precision " << plot.coord_precision() << endl;
-  cout << "copyright_date  " << plot.copyright_date() << endl;
-  cout << "copyright_holder " << plot.copyright_holder() << endl;
-  cout << "description "<< plot.description() << endl;
-  cout << "document_title \"" << plot.document_title()  << '"' << endl;
-  //cout << plot.draw_bezier_lines() << endl;
-  cout << "image x_size " << plot.x_size() << endl;
-  cout << "image y_size " << plot.y_size() << endl;
-  cout << "image_size " << plot.size() << endl;
-  cout << "image_filename " << plot.image_.image_filename() << endl;
-  cout << "legend_on " << plot.legend_on() << endl;
+  os << std::dec << std::boolalpha << std::endl;
+  os << "\nShow 1d_plot_settings." << std::endl;
+  os << "axes_on " << plot.axes_on() << std::endl;
+  os << "background_border_width " << plot.background_border_width() << std::endl;
+  os << "background_border_color " << plot.background_border_color() << std::endl;
+  os << "background_color " << plot.background_color() << std::endl;
+  os << "image_border_margin() " << plot.image_border_margin() << std::endl;
+  os << "image_border_width() " << plot.image_border_width() << std::endl;
+  os << "coord_precision " << plot.coord_precision() << std::endl;
+  os << "copyright_date  " << plot.copyright_date() << std::endl;
+  os << "copyright_holder " << plot.copyright_holder() << std::endl;
+  os << "description "<< plot.description() << std::endl;
+  os << "document_title \"" << plot.document_title()  << '"' << std::endl;
+  //os << plot.draw_bezier_lines() << std::endl;
+  os << "image x_size " << plot.x_size() << std::endl;
+  os << "image y_size " << plot.y_size() << std::endl;
+  os << "image_size " << plot.size() << std::endl;
+  os << "image_filename " << plot.image_.image_filename() << std::endl;
+  os << "legend_on " << plot.legend_on() << std::endl;
   std::pair<double, double> lt = plot.legend_top_left();
   std::pair<double, double> rb = plot.legend_bottom_right();
-  cout << "legend_place " << plot.legend_place() << endl;
-  cout << "legend_top_left " << lt << ", legend_bottom_right " << rb << endl;
-  cout << "legend_background_color " << plot.legend_background_color() << endl;
-  cout << "legend_border_color " << plot.legend_border_color() << endl;
-  cout << "legend_color " << plot.legend_color() << endl;
-  cout << "legend_title \"" << plot.legend_title()  << '"' << endl;
-  cout << "legend_title_font_size " << plot.legend_title_font_size() << endl;
-  cout << "legend_font_size " << plot.legend_title_font_size() << endl;  // Legend text.
+  os << "legend_place " << plot.legend_place() << std::endl;
+  os << "legend_top_left " << lt << ", legend_bottom_right " << rb << std::endl;
+  os << "legend_background_color " << plot.legend_background_color() << std::endl;
+  os << "legend_border_color " << plot.legend_border_color() << std::endl;
+  os << "legend_color " << plot.legend_color() << std::endl;
+  os << "legend_title \"" << plot.legend_title()  << '"' << std::endl;
+  os << "legend_title_font_size " << plot.legend_title_font_size() << std::endl;
+  os << "legend_font_size " << plot.legend_title_font_size() << std::endl;  // Legend text.
 
   // Not implemented yet.
-  //cout << "legend_font_weight " << plot.legend_font_weight() << endl;
-  //cout << "legend_font_width " << plot.legend_font_width() << endl;
-  cout << "legend_width " << plot.legend_width() << endl;
-  cout << "legend_lines " << plot.legend_lines() << endl;
+  //os << "legend_font_weight " << plot.legend_font_weight() << std::endl;
+  //os << "legend_font_width " << plot.legend_font_width() << std::endl;
+  os << "legend_width " << plot.legend_width() << std::endl;
+  os << "legend_lines " << plot.legend_lines() << std::endl;
 
-  cout << "limit points stroke color " << plot.limit_color() << endl;
-  cout << "limit points fill color " << plot.limit_fill_color() << endl;
+  os << "limit points stroke color " << plot.limit_color() << std::endl;
+  os << "limit points fill color " << plot.limit_fill_color() << std::endl;
 
-  cout << "license_on " << plot.license_on() << endl;
-  cout << "license_reproduction " << plot.license_reproduction() << endl;
-  cout << "license_distribution " << plot.license_distribution() << endl;
-  cout << "license_attribution " << plot.license_attribution() << endl;
-  cout << "license_commercial_use " << plot.license_commercialuse() << endl;
-  cout << "plot_background_color " << plot.plot_background_color() << endl;
-  cout << "plot_border_color " << plot.plot_border_color() << endl;
-  cout << "plot_border_width " << plot.plot_border_width() << endl;
-  cout << "plot_window_on " << plot.plot_window_on() << endl;
-  cout << "plot_window_x " << plot.plot_window_x() << endl;
-  cout << "plot_window_x_left " << plot.plot_window_x_left() << endl;
-  cout << "plot_window_x_right " << plot.plot_window_x_right() << endl;
-  cout << "plot_window_y " << plot.plot_window_y() << endl;
-  cout << "plot_window_y_top " << plot.plot_window_y_top() << endl;
-  cout << "plot_window_y_bottom " << plot.plot_window_y_bottom() << endl;
-  cout << "title_on " << plot.title_on() << endl;
-  cout << "title \"" << plot.title() << "\""<< endl;
-  cout << "title_color " << plot.title_color() << endl;
-  cout << "title_font_alignment " << plot.title_font_alignment() << endl;
-  cout << "title_font_decoration " << plot.title_font_decoration() << endl;
-  cout << "title_font_family " << plot.title_font_family() << endl;
-  cout << "title_font_rotation " << plot.title_font_rotation() << endl;
-  cout << "title_font_size " << plot.title_font_size() << endl;
-  cout << "title_font_stretch " << plot.title_font_stretch() << endl;
-  cout << "title_font_style " << plot.title_font_style() << endl;
+  os << "license_on " << plot.license_on() << std::endl;
+  os << "license_reproduction " << plot.license_reproduction() << std::endl;
+  os << "license_distribution " << plot.license_distribution() << std::endl;
+  os << "license_attribution " << plot.license_attribution() << std::endl;
+  os << "license_commercial_use " << plot.license_commercialuse() << std::endl;
+  os << "plot_background_color " << plot.plot_background_color() << std::endl;
+  os << "plot_border_color " << plot.plot_border_color() << std::endl;
+  os << "plot_border_width " << plot.plot_border_width() << std::endl;
+  os << "plot_window_on " << plot.plot_window_on() << std::endl;
+  os << "plot_window_x " << plot.plot_window_x() << std::endl;
+  os << "plot_window_x_left " << plot.plot_window_x_left() << std::endl;
+  os << "plot_window_x_right " << plot.plot_window_x_right() << std::endl;
+  os << "plot_window_y " << plot.plot_window_y() << std::endl;
+  os << "plot_window_y_top " << plot.plot_window_y_top() << std::endl;
+  os << "plot_window_y_bottom " << plot.plot_window_y_bottom() << std::endl;
+  os << "title_on " << plot.title_on() << std::endl;
+  os << "title \"" << plot.title() << "\""<< std::endl;
+  os << "title_color " << plot.title_color() << std::endl;
+  os << "title_font_alignment " << plot.title_font_alignment() << std::endl;
+  os << "title_font_decoration " << plot.title_font_decoration() << std::endl;
+  os << "title_font_family " << plot.title_font_family() << std::endl;
+  os << "title_font_rotation " << plot.title_font_rotation() << std::endl;
+  os << "title_font_size " << plot.title_font_size() << std::endl;
+  os << "title_font_stretch " << plot.title_font_stretch() << std::endl;
+  os << "title_font_style " << plot.title_font_style() << std::endl;
   // Not implemented yet.
-  //cout << "title_font_weight " << plot.title_font_weight() << endl;
-  //cout << "title_font_width " << plot.title_font_width() << endl;
-  cout << "x_value_precision " << plot.x_value_precision() << endl;
-  cout << "x_value_ioflags " << hex << plot.x_value_ioflags() << dec << ' ';
-  outFmtFlags(plot.x_value_ioflags(), cout,  ".\n");
-  cout << "x_plusminus_on " << plot.x_plusminus_on() << endl;
-  cout << "x_plusminus_color " << plot.x_plusminus_color() << endl;
-  cout << "x_addlimits_on " << plot.x_addlimits_on() << endl;
-  cout << "x_addlimits_color " << plot.x_addlimits_color() << endl;
-  cout << "x_df_on " << plot.x_df_on() << endl;
-  cout << "x_df_color " << plot.x_df_color() << endl;
+  //os << "title_font_weight " << plot.title_font_weight() << std::endl;
+  //os << "title_font_width " << plot.title_font_width() << std::endl;
+  os << "x_value_precision " << plot.x_value_precision() << std::endl;
+  os << "x_value_ioflags " << std::hex << plot.x_value_ioflags() << std::dec << ' ';
+  outFmtFlags(plot.x_value_ioflags(), os,  ".\n");
+  os << "x_plusminus_on " << plot.x_plusminus_on() << std::endl;
+  os << "x_plusminus_color " << plot.x_plusminus_color() << std::endl;
+  os << "x_addlimits_on " << plot.x_addlimits_on() << std::endl;
+  os << "x_addlimits_color " << plot.x_addlimits_color() << std::endl;
+  os << "x_df_on " << plot.x_df_on() << std::endl;
+  os << "x_df_color " << plot.x_df_color() << std::endl;
 
-  cout << "x_id_on " << plot.x_id_on() << endl;
-  cout << "x_id_color " << plot.x_id_color() << endl;
+  os << "x_id_on " << plot.x_id_on() << std::endl;
+  os << "x_id_color " << plot.x_id_color() << std::endl;
 
-  cout << "x_datetime_on " << plot.x_datetime_on() << endl;
-  cout << "x_datetime_color " << plot.x_datetime_color() << endl;
+  os << "x_datetime_on " << plot.x_datetime_on() << std::endl;
+  os << "x_datetime_color " << plot.x_datetime_color() << std::endl;
 
-  cout << "x_order_on " << plot.x_df_on() << endl;
-  cout << "x_order_color " << plot.x_df_color() << endl;
+  os << "x_order_on " << plot.x_df_on() << std::endl;
+  os << "x_order_color " << plot.x_df_color() << std::endl;
 
-  cout << "x_prefix \"" << plot.x_prefix()  << '"' << endl;
-  cout << "x_separator \"" << plot.x_separator()  << '"' << endl;
-  cout << "x_suffix \"" << plot.x_suffix()  << '"' << endl;
+  os << "x_prefix \"" << plot.x_prefix()  << '"' << std::endl;
+  os << "x_separator \"" << plot.x_separator()  << '"' << std::endl;
+  os << "x_suffix \"" << plot.x_suffix()  << '"' << std::endl;
 
   // Not applicable to 1D
-  //cout << "y_value_precision " << plot.y_value_precision() << endl;
-  //cout << "y_value_ioflags " << hex << plot.y_value_ioflags() << dec << ' ';
-  //outFmtFlags(plot.y_value_ioflags(), cout,  ".\n");
-  cout << "x_max " << plot.x_max() << endl;
-  cout << "x_min " << plot.x_min() << endl;
-  cout << "x_axis_on " << plot.x_axis_on() << endl;
-  cout << "x_axis_color() " << plot.x_axis_color() << endl;
-  cout << "x_axis_label_color " << plot.x_axis_label_color() << endl;
-  cout << "x_values_color " << plot.x_values_color() << endl;
-  cout << "x_axis_width " << plot.x_axis_width() << endl;
-  cout << "x_label_on " << plot.x_label_on() << endl;
-  cout << "x_label \"" << plot.x_label()  << '"' << endl;
-  cout << "x_label_color " << plot.x_label_color() << endl;
-  cout << "x_label_font_family " << plot.x_label_font_family() << endl;
-  cout << "x_label_font_size " << plot.x_label_font_size() << endl;
-  cout << "x_label_units " << plot.x_label_units() << endl;
-  cout << "x_label_units_on " << plot.x_label_units_on() << endl;
+  //os << "y_value_precision " << plot.y_value_precision() << std::endl;
+  //os << "y_value_ioflags " << std::hex << plot.y_value_ioflags() << dec << ' ';
+  //outFmtFlags(plot.y_value_ioflags(), os,  ".\n");
+  os << "x_max " << plot.x_max() << std::endl;
+  os << "x_min " << plot.x_min() << std::endl;
+  os << "x_axis_on " << plot.x_axis_on() << std::endl;
+  os << "x_axis_color() " << plot.x_axis_color() << std::endl;
+  os << "x_axis_label_color " << plot.x_axis_label_color() << std::endl;
+  os << "x_values_color " << plot.x_values_color() << std::endl;
+  os << "x_axis_width " << plot.x_axis_width() << std::endl;
+  os << "x_label_on " << plot.x_label_on() << std::endl;
+  os << "x_label \"" << plot.x_label()  << '"' << std::endl;
+  os << "x_label_color " << plot.x_label_color() << std::endl;
+  os << "x_label_font_family " << plot.x_label_font_family() << std::endl;
+  os << "x_label_font_size " << plot.x_label_font_size() << std::endl;
+  os << "x_label_units " << plot.x_label_units() << std::endl;
+  os << "x_label_units_on " << plot.x_label_units_on() << std::endl;
   // Not implemented yet.
-  //cout << "x_label_width " << plot.x_label_width() << endl;
-  cout << "x_major_labels_side " << l_or_r(plot.x_major_labels_side()) << endl;
-  cout << "x_values_font_size " << plot.x_values_font_size() << endl;
-  cout << "x_values_color " << plot.x_values_color() << endl;
-  cout << "x_values_precision " << plot.x_values_precision() << endl;
-  cout << "x_values_ioflags " << plot.x_values_ioflags() << endl;
-  cout << "x_major_label_rotation " << plot.x_major_label_rotation() << endl;
-  cout << "x_major_grid_color " << plot.x_major_grid_color() << endl;
-  cout << "x_major_grid_on " << plot.x_major_grid_on() << endl;
-  cout << "x_major_grid_width " << plot.x_major_grid_width() << endl;
-  cout << "x_major_interval " << plot.x_major_interval() << endl;
-  cout << "x_major_tick " << plot.x_major_tick() << endl;
-  cout << "x_major_tick_color " << plot.x_major_tick_color() << endl;
-  cout << "x_major_tick_length " << plot.x_major_tick_length() << endl;
-  cout << "x_major_tick_width " << plot.x_major_tick_width() << endl;
-  cout << "x_minor_interval " << plot.x_minor_interval() << endl;
-  cout << "x_minor_tick_color " << plot.x_minor_tick_color() << endl;
-  cout << "x_minor_tick_length " << plot.x_minor_tick_length() << endl;
-  cout << "x_minor_tick_width " << plot.x_minor_tick_width() << endl;
-  cout << "x_minor_grid_on " << plot.x_minor_grid_on() << endl;
-  cout << "x_minor_grid_color " << plot.x_minor_grid_color()<< endl;
-  cout << "x_minor_grid_width " << plot.x_minor_grid_width() << endl;
-  cout << "x_range() " << plot.x_range() << endl;
-  cout << "x_num_minor_ticks " << plot.x_num_minor_ticks() << endl;
-  cout << "x_ticks_down_on " << plot.x_ticks_down_on() << endl;
-  cout << "x_ticks_up_on " << plot.x_ticks_up_on() << endl;
-  cout << "x_ticks_on_window_or_axis " << t_or_b(plot.x_ticks_on_window_or_axis()) << endl;
-  cout << "x_axis_position " << plot.x_axis_position() << endl;
-  cout << "x_autoscale " << plot.x_autoscale() << endl;
-  cout << "x_autoscale_check_limits " << plot.autoscale_check_limits() << endl;
-  cout << "confidence alpha " << plot.confidence() << endl;
-  cout << "data lines width " << plot.data_lines_width() << endl;
-  cout.flags(flags); // Restore.
-} // void show_plot_settings(svg_1d_plot& plot)
+  //os << "x_label_width " << plot.x_label_width() << std::endl;
+  os << "x_major_labels_side " << l_or_r(plot.x_major_labels_side()) << std::endl;
+  os << "x_values_font_size " << plot.x_values_font_size() << std::endl;
+  os << "x_values_color " << plot.x_values_color() << std::endl;
+  os << "x_values_precision " << plot.x_values_precision() << std::endl;
+  os << "x_values_ioflags " << plot.x_values_ioflags() << std::endl;
+  os << "x_major_label_rotation " << plot.x_major_label_rotation() << std::endl;
+  os << "x_major_grid_color " << plot.x_major_grid_color() << std::endl;
+  os << "x_major_grid_on " << plot.x_major_grid_on() << std::endl;
+  os << "x_major_grid_width " << plot.x_major_grid_width() << std::endl;
+  os << "x_major_interval " << plot.x_major_interval() << std::endl;
+  os << "x_major_tick " << plot.x_major_tick() << std::endl;
+  os << "x_major_tick_color " << plot.x_major_tick_color() << std::endl;
+  os << "x_major_tick_length " << plot.x_major_tick_length() << std::endl;
+  os << "x_major_tick_width " << plot.x_major_tick_width() << std::endl;
+  os << "x_minor_interval " << plot.x_minor_interval() << std::endl;
+  os << "x_minor_tick_color " << plot.x_minor_tick_color() << std::endl;
+  os << "x_minor_tick_length " << plot.x_minor_tick_length() << std::endl;
+  os << "x_minor_tick_width " << plot.x_minor_tick_width() << std::endl;
+  os << "x_minor_grid_on " << plot.x_minor_grid_on() << std::endl;
+  os << "x_minor_grid_color " << plot.x_minor_grid_color()<< std::endl;
+  os << "x_minor_grid_width " << plot.x_minor_grid_width() << std::endl;
+  os << "x_range() " << plot.x_range() << std::endl;
+  os << "x_num_minor_ticks " << plot.x_num_minor_ticks() << std::endl;
+  os << "x_ticks_down_on " << plot.x_ticks_down_on() << std::endl;
+  os << "x_ticks_up_on " << plot.x_ticks_up_on() << std::endl;
+  os << "x_ticks_on_window_or_axis " << t_or_b(plot.x_ticks_on_window_or_axis()) << std::endl;
+  os << "x_axis_position " << plot.x_axis_position() << std::endl;
+  os << "x_autoscale " << plot.x_autoscale() << std::endl;
+  os << "x_autoscale_check_limits " << plot.autoscale_check_limits() << std::endl;
+  os << "confidence alpha " << plot.confidence() << std::endl;
+  os << "data lines width " << plot.data_lines_width() << std::endl;
+  os.flags(flags); // Restore.
+  os.precision(prec);
+} // void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& = std::cout)
 
 } // namespace svg
 } // namespace boost

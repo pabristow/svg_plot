@@ -34,10 +34,12 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="xLabel">
 <text x="250" y="180" text-anchor="middle" font-size="14" font-family="Verdana">length (m)</text></g>
 <g id="plotPoints"><g stroke="rgb(0,0,0)">
-<text x="34.9" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;</text>
-<text x="279" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;</text></g>
+<text x="34.9" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;</text>
+<text x="279" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;</text></g>
 </g>
-<g id="limitPoints" stroke="rgb(255,0,0)" fill="rgb(0,128,0)"><polygon points=" 484,96 494,96 489,106"/><polygon points=" 245,96 255,96 250,106"/></g>
+<g id="limitPoints" stroke="rgb(255,0,0)" fill="rgb(0,128,0)">
+<text x="489" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25BD;</text>
+<text x="250" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25BD;</text></g>
 <g id="title">
 <text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Demo point markers Demo</text></g>
 <g id="plotXValues" fill="rgb(255,0,0)"><g>

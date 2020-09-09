@@ -190,7 +190,7 @@ namespace boost
 
   template <typename T>
   svg_2d_plot_series::svg_2d_plot_series(
-      T begin, // \param Begin of data series.
+      T begin, // \param iterator std::begin of data series.
       T end, // \param End of data series.
       std::string title /*  \param @c std::string title Title of data series.
       */
@@ -474,7 +474,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
    */
   class svg_2d_plot : public detail::axis_plot_frame<svg_2d_plot>
   {
-     friend void show_2d_plot_settings(svg_2d_plot&);
+     friend void show_2d_plot_settings(svg_2d_plot&, std::ostream&);
      friend class svg_2d_plot_series;
      friend class detail::axis_plot_frame<svg_2d_plot>;
      // axis_plot_frame.hpp contains functions common to 1-D and 2-D.
@@ -2389,8 +2389,10 @@ my_plot.background_color(ghostwhite) // Whole image.
                  path.style().stroke_width(serieses_[i].bar_style_.width_); // bar_width used for stick line width.
                  path.M(x, y).L(x0, y); // Draw a line from point horizontally to Y-axis.
                  break;
-              case none:
+              case no_bar:
                  break; // Already handled above, so should not get here.
+                 // Clang warns comparison of different enumeration types in switch statement
+                 // ('boost::svg::bar_option' and 'boost::svg::point_shape') [-Wenum-compare-switch]
               case x_stick:
                  path.style().stroke_width(serieses_[i].bar_style_.width_); // bar_width used for stick line width.
                  path.M(x, y).L(x, y0); // Draw a line from point vertically to X-axis.
