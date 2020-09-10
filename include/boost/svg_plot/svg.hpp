@@ -159,15 +159,15 @@
 
 */
 // Copyright Jacob Voytko 2007
-// Copyright Paul A Bristow 2007, 2009
+// Copyright Paul A Bristow 2007, 2009, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
 // (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_SVG_SVG_HPP
-#define BOOST_SVG_SVG_HPP
+#ifndef BOOST_SVG_PLOT_SVG_HPP
+#define BOOST_SVG_PLOT_SVG_HPP
 
 #include <string>
 #include <ostream>
@@ -240,8 +240,6 @@ namespace svg
 */
 
 // Note problem here caused by -- being read as an en dash!
-
-
     static const std::string package_info = //!< Default SVG package information about this program that produced the SVG image (not the image itself).
       "<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> \n"
       "<!-- Use, modification and distribution of Boost.Plot subject to the --> \n"
@@ -249,24 +247,22 @@ namespace svg
       "<!-- (See accompanying file LICENSE_1_0.txt --> \n"
       "<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> \n";
 
-  /*
+  /*!
      Copyright notice to be inserted into plot image produced by this program.
      Note: can have more than one copyright date, or a range.
      Produces a copyright notice as an SVG comment like this:
-     "<!-- Copyright Paul A. Bristow, 2007  --> \n"
+     "<!-- Copyright Paul A. Bristow, 2020  --> \n"
      and as a meta item:
      \verbatim
        <meta name="copyright" content="Paul A. Bristow" />
+       <meta name="Date" content="20071101" />
      \endverbatim
    */
 
-    /*
-
+    /*!
     Another popular option is Creative Commons Attribution-ShareAlike 4.0 International License
           https://creativecommons.org/licenses/by-sa/4.0/
-
     <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-    
     */
 
 //! \cond DETAIL
@@ -830,7 +826,7 @@ public:
     return document.text(x, y, text, style, align, rotate); // see svg_tag.hpp 2137 for definition.
   }
   /*  text_length  SVG XML textLength = "<length>"
-  The author's (this program) computation of the total sum of all of 
+  The author's (this program svg_plot) computation of the total sum of all of 
   the advance values that correspond to character data within this element,
   including the advance value on the glyph (horizontal or vertical),
   the effect of properties 'kerning', 'letter-spacing' and 'word-spacing'
@@ -845,7 +841,6 @@ public:
   when the user agent (this program) determines the appropriate amount 
   to expand/compress the text string to fit within a length of 'textLength'.
   */
-
   // \sa https://www.w3.org/TR/SVG11/text.html#TextElementTextLengthAttribute
 
   // Polygon for shapes with many vertices.
@@ -922,9 +917,10 @@ public:
     return document.g(i); //! \return reference to the ith group element.
   }
 
-  //// -------------------------------------------------------------
-  //// Load stylesheet
-  //// -------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------
+  // Load stylesheet - to provide some defaults like font size, type but not yet implemented. 
+  // ----------------------------------------------------------------------------------------
+
 
   //void load_stylesheet(const std::string& input)
   //{ // Load a stylesheet into string css from an input file.
@@ -955,4 +951,4 @@ public:
 } // namespace svg
 } // namespace boost
 
-#endif // BOOST_SVG_SVG_HPP
+#endif // BOOST_SVG_PLOT_SVG_HPP

@@ -336,7 +336,7 @@ namespace svg
     friend bool operator==(const rect_element&, const rect_element&);
     friend bool operator!=(const rect_element&, const rect_element&);
 
-  public: //temporary for experimental gil
+  public: 
 
 //  private:
     double x_; //!< X-axis coordinate of the side of the rectangle which has the smaller x-axis coordinate value.
@@ -556,6 +556,9 @@ class text_parent
     std::string text_; //!< Actual text string for SVG text.
 
   public:
+
+    virtual ~text_parent() {}
+
     virtual void write(std::ostream& /* o_str */)
     { //! write functions output SVG commands.
     }
@@ -1056,7 +1059,7 @@ public:
   }
 
   text_element(
-    //!< Coordinates of 1st character EM box, see
+    //!< X & Y-Coordinates of 1st character EM box, see
     //!< http://www.w3.org/TR/SVG/text.html#TextElement 10.2
     double x = 0., //!< X = Left edge.
     double y = 0., //!< Y =  Bottom left of (western) character (roman capital).
@@ -1103,12 +1106,13 @@ public:
     return os.str();
   }
 
-  void write(std::ostream& os)
-  { //! Output SVG @c text_element, style & attributes to a @c std::stream.
+   //! Output SVG @c text_element, style & attributes to a @c std::ostream.
     // Changed to new convention on spaces:
     // NO trailing space, but *start* each item with a space.
     // For debug, may be convenient to start with newline.
     // os << " <text x=\"" << x_ << "\" y=\"" << y_ << "\"";
+  void write(std::ostream& os)
+  {
     os << "\n<text x=\"" << x_ << "\" y=\"" << y_ << "\"";
     std::string anchor;
     switch(align_)
@@ -1187,7 +1191,7 @@ public:
       \brief The clipping path restricts the region to which paint can be applied.
       \details 14.3 Clipping paths http://www.w3.org/TR/SVG/masking.html#ClipPathProperty.
     */
-  public: //temporary for experimental gil
+  public: 
 //  private:
     std::string element_id; //!< SVG element id.
     rect_element rect; //!< Clipping rectangle.

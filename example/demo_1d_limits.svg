@@ -27,9 +27,16 @@ xmlns ="http://www.w3.org/2000/svg"
 <text x="58.8" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-4</text></g>
 <g id="xLabel">
 <text x="250" y="180" text-anchor="middle" font-size="14" font-family="Verdana">length (m)</text></g>
-<g id="plotPoints"><g stroke="rgb(0,0,0)"><circle cx="174" cy="106" r="2"/><circle cx="346" cy="106" r="2"/><circle cx="453" cy="106" r="2"/><circle cx="58.8" cy="106" r="2"/></g>
+<g id="plotPoints"><g stroke="rgb(0,0,0)">
+<text x="174" y="108" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="346" y="108" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="453" y="108" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="58.8" y="108" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
 </g>
-<g id="limitPoints" stroke="rgb(0,0,255)" fill="rgb(255,192,203)"><polygon points=" 484,96 494,96 489,106"/><polygon points=" 6,96 16,96 11,106"/><polygon points=" 245,96 255,96 250,106"/></g>
+<g id="limitPoints" stroke="rgb(0,0,255)" fill="rgb(255,192,203)">
+<text x="489" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25BD;</text>
+<text x="11" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25BD;</text>
+<text x="250" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25BD;</text></g>
 <g id="title">
 <text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Default 1D NaN and infinities Demo</text></g>
 <g id="plotXValues"><g>

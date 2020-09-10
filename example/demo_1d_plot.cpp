@@ -3,11 +3,10 @@
     \details Contains Quickbook markup.
 
     \author Paul A. Bristow
-   \date Feb 2009
 */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A Bristow 2008
+// Copyright Paul A Bristow 2008, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.

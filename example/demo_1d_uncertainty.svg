@@ -33,7 +33,9 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="plotUnc3" stroke="rgb(250,250,210)" fill="rgb(250,250,210)" stroke-width="1"><ellipse cx="68.8" cy="156" rx="28.9" ry="3"/><ellipse cx="339" cy="156" rx="57.8" ry="3"/></g>
 <g id="plotUnc2" stroke="rgb(255,218,185)" fill="rgb(255,218,185)" stroke-width="1"><ellipse cx="68.8" cy="156" rx="19.3" ry="2"/><ellipse cx="339" cy="156" rx="38.5" ry="2"/></g>
 <g id="plotUnc1" stroke="rgb(255,0,255)" fill="rgb(255,192,203)" stroke-width="1"><ellipse cx="68.8" cy="156" rx="9.63" ry="1"/><ellipse cx="339" cy="156" rx="19.3" ry="1"/></g>
-<g id="plotPoints"><g stroke="rgb(255,0,0)" fill="rgb(0,128,0)"><circle cx="117" cy="156" r="5"/><circle cx="223" cy="156" r="5"/></g>
+<g id="plotPoints"><g stroke="rgb(255,0,0)" fill="rgb(0,128,0)">
+<text x="117" y="159" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="223" y="159" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
 <g stroke="rgb(0,0,255)"><line x1="20.6" y1="161" x2="20.6" y2="151"/><line x1="310" y1="161" x2="310" y2="151"/><line x1="570" y1="161" x2="570" y2="151"/><line x1="146" y1="161" x2="146" y2="151"/><line x1="387" y1="161" x2="387" y2="151"/></g>
 <g stroke="rgb(255,0,255)" fill="rgb(255,255,224)"><circle cx="68.8" cy="156" r="1"/><circle cx="339" cy="156" r="1"/></g>
 </g>

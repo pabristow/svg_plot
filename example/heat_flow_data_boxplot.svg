@@ -13,39 +13,42 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
 <!-- File ./heat_flow_data_boxplot.svg --> 
-<clipPath id="plot_window"><rect x="82" y="52" width="406" height="229"/></clipPath>
+<clipPath id="plot_window"><rect x="76" y="52" width="412" height="232"/></clipPath>
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="350"/></g>
-<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="87" y="57" width="401" height="224"/></g>
-<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="87" y1="281" x2="488" y2="281"/></g>
-<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="87" y1="281" x2="87" y2="57"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M288,281 L288,286 " fill="none"/></g>
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M82,281 L87,281 M82,249 L87,249 M82,217 L87,217 M82,185 L87,185 M82,153 L87,153 M82,121 L87,121 M82,89 L87,89 " fill="none"/></g>
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M85,275 L87,275 M85,268 L87,268 M85,262 L87,262 M85,256 L87,256 M85,243 L87,243 M85,236 L87,236 M85,230 L87,230 M85,224 L87,224 M85,211 L87,211 M85,204 L87,204 M85,198 L87,198 M85,192 L87,192 M85,179 L87,179 M85,172 L87,172 M85,166 L87,166 M85,159 L87,159 M85,147 L87,147 M85,140 L87,140 M85,134 L87,134 M85,127 L87,127 M85,115 L87,115 M85,108 L87,108 M85,102 L87,102 M85,95.4 L87,95.4 M85,82.6 L87,82.6 M85,76.2 L87,76.2 M85,69.8 L87,69.8 M85,63.4 L87,63.4 " fill="none"/></g>
+<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="81" y="57" width="407" height="227"/></g>
+<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="81" y1="284" x2="488" y2="284"/></g>
+<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="81" y1="284" x2="81" y2="57"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M285,284 L285,289 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M76,284 L81,284 M76,251 L81,251 M76,219 L81,219 M76,186 L81,186 M76,154 L81,154 M76,122 L81,122 M76,89.4 L81,89.4 " fill="none"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M79,277 L81,277 M79,271 L81,271 M79,264 L81,264 M79,258 L81,258 M79,245 L81,245 M79,238 L81,238 M79,232 L81,232 M79,225 L81,225 M79,212 L81,212 M79,206 L81,206 M79,199 L81,199 M79,193 L81,193 M79,180 L81,180 M79,174 L81,174 M79,167 L81,167 M79,161 L81,161 M79,148 L81,148 M79,141 L81,141 M79,135 L81,135 M79,128 L81,128 M79,115 L81,115 M79,109 L81,109 M79,102 L81,102 M79,95.8 L81,95.8 M79,82.9 L81,82.9 M79,76.4 L81,76.4 M79,69.9 L81,69.9 M79,63.5 L81,63.5 " fill="none"/></g>
 <g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="valueLabels" fill="rgb(0,0,0)">
-<text x="288" y="306" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">NIST heat flows</text>
-<text x="76" y="284" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.18</text>
-<text x="76" y="252" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.2</text>
-<text x="76" y="220" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.23</text>
-<text x="76" y="188" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.25</text>
-<text x="76" y="155" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.28</text>
-<text x="76" y="123" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.3</text>
-<text x="76" y="91.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.33</text></g>
+<text x="285" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">NIST heat flows</text>
+<text x="70" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.18</text>
+<text x="70" y="254" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.2</text>
+<text x="70" y="221" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.23</text>
+<text x="70" y="189" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.25</text>
+<text x="70" y="157" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.28</text>
+<text x="70" y="124" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.3</text>
+<text x="70" y="91.8" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.33</text></g>
 <g id="yLabel" fill="rgb(0,0,0)">
-<text x="30.2" y="169" text-anchor="middle" transform = "rotate(-90 30.2 169 )" font-size="14" font-family="Lucida Sans Unicode"></text></g>
+<text x="30.2" y="170" text-anchor="middle" transform = "rotate(-90 30.2 170 )" font-size="14" font-family="Lucida Sans Unicode"></text></g>
 <g id="xLabel" fill="rgb(0,0,0)">
-<text x="288" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode"></text></g>
-<g id="boxAxis" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1"><line x1="288" y1="241" x2="288" y2="108"/></g>
+<text x="285" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode"></text></g>
+<g id="boxAxis" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1"><line x1="285" y1="243" x2="285" y2="108"/></g>
 </g>
-<g id="Median" stroke="rgb(255,0,0)" stroke-width="2"><g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1"><rect x="273" y="152" width="30" height="37.6"/></g>
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1"><line x1="273" y1="170" x2="302" y2="170"/></g>
+<g id="Median" stroke="rgb(255,0,0)" stroke-width="2"><g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1"><rect x="270" y="153" width="30" height="38"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1"><line x1="270" y1="171" x2="299" y2="171"/></g>
 </g>
-<g id="whisker" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)"><g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="273" y1="241" x2="303" y2="241"/></g>
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="273" y1="108" x2="303" y2="108"/></g>
+<g id="whisker" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)"><g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="270" y1="243" x2="300" y2="243"/></g>
+<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="270" y1="108" x2="300" y2="108"/></g>
 </g>
 </g>
-<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)"><g clip-path="url(#plot_window)" stroke="rgb(165,42,42)"><circle cx="288" cy="253" r="2"/><circle cx="288" cy="85.2" r="2"/><circle cx="288" cy="95.3" r="2"/></g>
+<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)"><g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
+<text x="285" y="257" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="285" y="87.1" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="285" y="97.4" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
 </g>
 <g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)"></g>
 <g id="title" fill="rgb(0,0,0)">

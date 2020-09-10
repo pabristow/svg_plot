@@ -175,8 +175,8 @@ void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
   std::ios_base::fmtflags flags = std::cout.flags(); // Save format flags to restore on exit.
   std::streamsize prec = std::cout.precision(); // Save precision to restore on exit.
 
-  os << std::dec << std::boolalpha << std::endl;
-  os << "\nShow 1d_plot_settings." << std::endl;
+  os << std::boolalpha << std::endl;
+  os << "\nShow 1d_plot_settings:" << std::endl;
   os << "axes_on " << plot.axes_on() << std::endl;
   os << "background_border_width " << plot.background_border_width() << std::endl;
   os << "background_border_color " << plot.background_border_color() << std::endl;

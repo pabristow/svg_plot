@@ -34,10 +34,10 @@
 </span>
 <span class="keyword">struct</span> <a class="link" href="m_path.html" title="Struct m_path">m_path</a> <span class="special">:</span> <span class="keyword">public</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">path_point</span> <span class="special">{</span>
   <span class="comment">// <a class="link" href="m_path.html#boost.svg.m_pathconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="m_path.html#id676017-bb"><span class="identifier">m_path</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="m_path.html#id535404-bb"><span class="identifier">m_path</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="m_path.html#id675959-bb">public member functions</a></span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="m_path.html#id675963-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="m_path.html#id535367-bb">public member functions</a></span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="m_path.html#id535395-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="keyword">bool</span> <span class="identifier">relative</span><span class="special">;</span>  <span class="comment">// If true relative else absolute. </span>
@@ -45,23 +45,23 @@
   <span class="keyword">double</span> <span class="identifier">y</span><span class="special">;</span>  <span class="comment">// End of move SVG Y coordinate. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1323236"></a><h2>Description</h2>
+<a name="id1180313"></a><h2>Description</h2>
 <p>See 8.3.2 The "moveto" commands. </p>
 <div class="refsect2">
-<a name="id1323210"></a><h3>
+<a name="id1180340"></a><h3>
 <a name="boost.svg.m_pathconstruct-copy-destruct"></a><code class="computeroutput">m_path</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><a name="id676017-bb"></a><span class="identifier">m_path</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">bool</span> relative <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id535404-bb"></a><span class="identifier">m_path</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">bool</span> relative <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Construct a move to </p>
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1323311"></a><h3>
-<a name="id675959-bb"></a><code class="computeroutput">m_path</code> public member functions</h3>
+<a name="id1180420"></a><h3>
+<a name="id535367-bb"></a><code class="computeroutput">m_path</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id675963-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands like "M1.2, 3.4", <p>write moveto X and Y coordinates to stream, for example: "M52.8571,180 " </p>
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id535395-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands like "M1.2, 3.4", <p>write moveto X and Y coordinates to stream, for example: "M52.8571,180 " </p>
 </li></ol></div>
 </div>
 </div>

@@ -28,8 +28,8 @@ path-constant parent : .. ;  # Beman Dawes - so that inspect.exe will start in b
 echo "nav_images" $(nav_images) ;
 echo "images_location" $(images_location) ;
 
-if --enable-index in  [ modules.peek : ARGV ]
-{
+#if --enable-index in  [ modules.peek : ARGV ]
+#{
    ECHO "Building the SVG_Plot docs with automatic index generation enabled." ;
    using auto-index ;
    project : requirements
@@ -59,11 +59,11 @@ if --enable-index in  [ modules.peek : ARGV ]
 
         <auto-index-prefix>../../..
         <quickbook-define>enable_index ;
-}
-else
-{
-   ECHO "Building the SVG_plot docs with automatic index generation disabled. To get an AutoIndex, try building with --enable-index." ;
-}
+#}
+#else
+#{
+#   ECHO "Building the SVG_plot docs with automatic index generation disabled. To get an AutoIndex, try building with --enable-index." ;
+#}
 
 
 xml svg_plot

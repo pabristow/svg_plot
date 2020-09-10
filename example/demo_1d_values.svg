@@ -30,7 +30,13 @@ xmlns ="http://www.w3.org/2000/svg"
 <text x="42.9" y="204" text-anchor="middle" font-size="12" font-family="Verdana">-4</text></g>
 <g id="xLabel">
 <text x="250" y="330" text-anchor="middle" font-size="14" font-family="Verdana">length (m)</text></g>
-<g id="plotPoints"><g stroke="rgb(0,0,0)"><circle cx="119" cy="181" r="2"/><circle cx="234" cy="181" r="2"/><circle cx="306" cy="181" r="2"/><circle cx="170" cy="181" r="2"/><circle cx="342" cy="181" r="2"/><circle cx="379" cy="181" r="2"/></g>
+<g id="plotPoints"><g stroke="rgb(0,0,0)">
+<text x="119" y="183" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="234" y="183" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="306" y="183" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="170" y="183" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="342" y="183" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="379" y="183" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
 </g>
 <g id="title">
 <text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Default 1D Values Demo</text></g>

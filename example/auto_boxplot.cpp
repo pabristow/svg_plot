@@ -2,16 +2,11 @@
 
    \brief An example to demonstrate boxplot settings, including auto-scaling.
    \details See also:
-     example auto_1d_containers.cpp
-     for an example autoscaling with multiple data series.
-     example demo_boxplot.cpp for a wider range of use.
-
-  \date 11 Feb 2009
-  \author Paul A Bristow
-/*
+     example @c auto_1d_containers.cpp for an example autoscaling with multiple data series.
+     example @c demo_boxplot.cpp for a wider range of use.
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A Bristow 2008
+// Copyright Paul A Bristow 2008, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -27,8 +22,8 @@
 
 //[auto_boxplot_1
 
-/*`First we need a few includes to use Boost.Plot
-(and some others only needed for this example).
+//!`First we need a few includes to use Boost.Plot
+//! (and some others only needed for this example).
 */
 
 #include <boost/quan/meas.hpp>
@@ -100,10 +95,10 @@ int main()
   my_data.push_back(8.1); // [10]
   my_data.push_back(8.5); // [11]
 
-  /*`Also included is an 'at limit' value that could confuse autoscaling.
-  Obviously we do not want the plot range to include infinity.*/
+  /*`Not included is an 'at limit' value that could confuse autoscaling.
+  Obviously we do not want the plot range to include infinity.
   // my_data.push_back(numeric_limits<double>::infinity()); // [12]
-
+  */
   try
   { // Ensure error, warning and information messages from svg_plot are displayed by the catch block.
     
@@ -134,7 +129,6 @@ int main()
     std::cout <<
       "\n""Message from thrown exception was:\n   " << e.what() << std::endl;
   }
-
   //] [/auto_boxplot_2]
 
   return 0;

@@ -250,9 +250,9 @@ namespace svg
   //! SVG standard colors, \see svg_color_constant
   svg_color color_array[] =
   {
-    svg_color(240, 248, 255), // aliceblue
-    svg_color(250, 235, 215), // antiquewhite
-    svg_color(0  , 255, 255), // aqua
+    svg_color(240, 248, 255), // aliceblue [0]
+    svg_color(250, 235, 215), // antiquewhite [1]
+    svg_color(0  , 255, 255), // aqua [3]
     svg_color(127, 255, 212), // aquamarine [4]
     svg_color(240, 255, 255), // azure
     svg_color(245, 245, 220), // beige

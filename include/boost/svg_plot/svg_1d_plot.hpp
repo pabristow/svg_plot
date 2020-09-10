@@ -9,7 +9,7 @@
  */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2008, 2009, 2011, 2012, 2013
+// Copyright Paul A. Bristow 2008, 2009, 2011, 2012, 2013, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -146,9 +146,8 @@ public:
   */
 class svg_1d_plot : public detail::axis_plot_frame<svg_1d_plot>
 {
-
-  friend void show_1d_plot_settings(svg_1d_plot&);
-  //friend void show_2d_plot_settings(svg_1d_plot&); // Surely not needed?
+  friend void show_1d_plot_settings(svg_1d_plot&, std::ostream&);
+  //friend void show_1d_plot_settings(svg_1d_plot&); // Surely not needed?
   friend class detail::axis_plot_frame<svg_1d_plot>;
 
 public:
@@ -186,7 +185,7 @@ public:
   //std::ios_base::fmtflags x_value_ioflags_;
 
   // text_elements hold position & alignment, and indirectly via text_style, font_family, font_size, bold, italic...
-  text_element title_info_; //!< Title of aspect_ratioole plot.
+  text_element title_info_; //!< Title of whole plot.
   text_element legend_title_; //!< legend box header or title (if any).
   text_element x_label_info_; //!< X-axis label, Example: "length of widget"
   text_element x_value_label_info_; //!< X-axis tick value label, for example: "1.2" or "1.2e1"
@@ -217,31 +216,32 @@ public:
   // Both optionally set by legend_top_left.
   double legend_right_; //!< SVG Coordinates of right of legend box,
   double legend_bottom_; //!< bottom of legend box.
+  size_t legend_longest_; //!< longest (both header & data) string in legend box,
+  // (used to calculate how big the legend box needs to be, and thus position of it and plot window).
+
   double x_axis_vertical_; //!< Vertical position of 1D horizontal X-axis line as fraction of window.
   //! 0.5 is at middle(useful if no labels) (default),
   //! 0.8 is near bottom (useful if value labels go upward),
   //! 0.2 is near top (useful if value labels go downward).
 
-  size_t legend_longest_; //!< longest (both header & data) string in legend box,
   bool is_a_point_marker_; //! @c true if any data series have point markers to show in legend (default @c false).
-  bool is_a_data_series_line_;  //!< @c true if any series have lines to show in legend (default @c false). Example: @c .line_on(true). 
-  bool is_a_data_series_text_;  //!< @c true is any series should show text describing the data series (default @c false). For example: @c my_plot.plot(my_data_0, "my_data_0_text"); 
+  bool is_a_data_series_line_;  //!< @c true if any series have lines to show in legend (default @c false). Example: @c .line_on(true).
+  bool is_a_data_series_text_;  //!< @c true is any series should show text describing the data series (default @c false). For example: @c my_plot.plot(my_data_0, "my_data_0_text");
   double legend_title_font_size_; //!< Font size of legend header/title.
   double legend_text_font_size_; //!< Font size of legend text.
  // double series_text_font_size_; //!< Font size of lines of text describing data series.
   double legend_widest_line_; //!< Width of longest of legend header/title and widest data series pointer+line+text.
   double biggest_point_font_size_; //!< Biggest point marker symbol - determines vertical spacing.
 
-
   // Leave a vertical space before any text (if text_margin_ == 1.5 then height of one biggest font).
   // Leave a horizontal space before any text (if text_margin_ == 1.5 then width of one biggest font).
-  // For example, if font size is 10 and text_margin is 1.5 and aspect ratio is 0.6 then 
+  // For example, if font size is 10 and text_margin is 1.5 and aspect ratio is 0.6 then
   // Legend_font_size_ = 10, text_margin = 1.5, aspect ratio =  0.6, Vertical_spacing = 15, horizontal_spacing = 9
   double vertical_spacing_; // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
   double vertical_line_spacing_; // = derived().legend_font_size_; // One line vertically.
   double horizontal_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
   double horizontal_line_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
-  double horizontal_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series). 
+  double horizontal_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
   double vertical_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
 
   axis_line_style x_axis_; //!< style of X axis line.
@@ -256,7 +256,7 @@ public:
   bool legend_lines_; //!< If true, include data colored line type in legend box.
   bool plot_window_on_; //!< Use a separate plot window (not aspect_ratioole image).
   bool x_ticks_on_; //!< Ticks on X axis will be shown.
-  bool x_values_on_; //!< values of data are shown by markers.
+  bool x_values_on_; //!< values of data are shown by values markers.
   int  x_axis_position_; //!< \see boost::svg::x_axis_intersect.
 
   // Parameters for calculating confidence intervals (for both X and Y values).
@@ -345,7 +345,7 @@ public:
 */
 
 /*!
-  \tparam C An iterator into STL container: @c array, @c std::vector<double>, @c std::vector<unc>, @c std::vector<Meas>, @c std::set, @c std::map ... 
+  \tparam C An iterator into STL container: @c array, @c std::vector<double>, @c std::vector<unc>, @c std::vector<Meas>, @c std::set, @c std::map ...
   \param begin iterator to 1st element in container to show.
   \param end iterator to last element in container to show.
   \param title Title of series of data values.
@@ -1092,7 +1092,7 @@ my_1d_plot.plot(&my_data[1], &my_data[4], "my_data 1 to 4"); // Add part of data
 
     \warning last == end  aspect_ratioich is one past the last, so this only does 1, 2 & 3 -  \b not 4!
   */
-  template <class T>  // \tparam T floating-point type of the data (T must be convertible to double).  
+  template <class T>  // \tparam T floating-point type of the data (T must be convertible to double).
 svg_1d_plot_series& svg_1d_plot::plot(const T& begin, const T& end, const std::string& title)
 {
   serieses_.push_back(

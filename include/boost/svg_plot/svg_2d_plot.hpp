@@ -45,7 +45,7 @@
 #include <boost/quan/meas.hpp> // Values with timestamp and uncertainty.
 
 #include <boost/svg_plot/svg.hpp>
-#include <boost/svg_plot/svg_style.hpp>
+#include <boost/svg_plot/svg_style.hpp> // Font and other styles.
 #include <boost/svg_plot/detail/axis_plot_frame.hpp> // Code shared with 2D.
 #include <boost/svg_plot/detail/functors.hpp>
 // using boost::svg::detail::unc_2d_convert;
@@ -73,7 +73,8 @@ namespace boost
     // Forward declarations.
 //! \cond DETAIL
     //! Add/uncomment in jamfile.v2
-    // <doxygen:param>ENABLED_SECTIONS="DETAIL" # enable Doxygen indexing of all DETAIL sections.  (Only useful for maintainers).
+    // <doxygen:param>ENABLED_SECTIONS="DETAIL" # Enable Doxygen indexing of all DETAIL sections.
+    // (Only useful for maintainers).
 
     const std::string strip_e0s(std::string s); // Strip unnecessary zeros and e and sign.
 //! \endcond
