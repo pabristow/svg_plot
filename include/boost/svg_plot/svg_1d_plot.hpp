@@ -309,14 +309,14 @@ public:
 //! \endcond
 
   // ------------------------------------------------------------------------
-  // write() has two versions: to an ostream and to a file.
+  // write() has two versions: to an std::ostream and to a file.
   // The stream version first clears all unnecessary data from the graph,
   // builds the document tree, and then calls the write function for the root
-  // document node, aspect_ratioich calls all other nodes through the Visitor pattern.
-  // The file version opens an ostream, and calls the stream version.
+  // document node, which calls all other nodes through the Visitor pattern.
+  // The file version opens an std::ostream, and calls the stream version.
   // ------------------------------------------------------------------------
   svg_1d_plot& write(const std::string& file);
-  svg_1d_plot& write(std::ostream& s_out);
+  svg_1d_plot& write(std::ostream& os);
 
   // Declarations of several versions of function plot to add data series (with defaults).
   template <typename T>
@@ -1007,17 +1007,31 @@ svg_1d_plot& svg_1d_plot::write(const std::string& file)
   std::ofstream fout(filename.c_str());
   if(fout.fail())
   {
-    throw std::runtime_error("Failed to open " + filename);
+    throw std::runtime_error("Failed to open file " + filename + "!\n");
   }
   image_.image_filename(filename);
   // Note filename for optional output as comment in the .svg file.
   svg_1d_plot::write(fout); // Use the ostream version.
+
+  if (fout.rdstate() != std::ios_base::goodbit)
+  {
+    std::cout << "Writing to file " << filename << " failed!" << std::endl;
+  }
+  fout.close();
+  if (fout.rdstate() != std::ios_base::goodbit)
+  {
+    std::cout << "Closing file " << filename << " failed!" << std::endl;
+  }
+  else
+  {
+    std::cout << "Plot written to file " << filename << "." << std::endl;
+  }
   return *this;
 }
 
-svg_1d_plot& svg_1d_plot::write(std::ostream& s_out)
+svg_1d_plot& svg_1d_plot::write(std::ostream& os)
 { /*! Write SVG image to the specified @c std::ostream.
-    \param s_out  @c std::ostream to write.
+    \param os  @c std::ostream to write out the plot.
 
     \note This function also is used by the write to file function.
     \return @c *this to make chainable.
@@ -1031,25 +1045,24 @@ svg_1d_plot& svg_1d_plot::write(std::ostream& s_out)
     For example, if a curve is shown using 100 points,
     reducing to coord_precision(3) from default of 6 will reduce file size by 300 bytes.
   */
-  image_.write(s_out);
+  image_.write(os);
+
   return (svg_1d_plot&) *this;
 } // write
 
 
- /*! Add a data series to the plot (by default, converting to @c unc @c doubles), with optional title.
+ /*! Add a data series to the plot (by default, converting to @c unc @c doubles), with optional data series title.
 
   \tparam T Floating-point type of the data (@c T must be convertible to @c double).
 
-  \param container Container (for example vector) for the data to be added to the plot.
+  \param container Container (for example std::vector) for the data to be added to the plot.
   \param title Optional title for the data series (default none).
 
   \return Reference to data series just added (to make chainable).
 
   \note This version assumes that \b ALL the data values in the container are used.
   */
-
   //! @b Example:
-
 /*!
   \code
 std::vector<float> my_data; // my container.
@@ -1079,10 +1092,9 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& container, const std::string& tit
     \param end Iterator to one-beyond-end of data in container.
     \param title Optional title for the plot (default is no title).
     \return Reference to the data series just added.
-    \note This version permits a partial range of the container, from begin to end, to be used.
+    \note This version permits a @b partial range of the container, from begin to end, to be used.
 
     @b Example:
-
     */
 /*!
     \code
@@ -1165,9 +1177,6 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& begin, const T& end, const std::s
 // End Definitions of svg_plot_series Public Member Functions.
 } // namespace svg
 } // namespace boost
-
-
-
 
 #if defined (_MSC_VER)
 #  pragma warning(pop)

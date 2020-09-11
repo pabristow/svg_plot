@@ -47,11 +47,11 @@ namespace boost
 namespace svg
 {
   typedef double fp_type;  //!< \typedef fp_type Allows switch between using double or float to hold many floating-point items as either @c double or @c float.
-  //!< (32-bit has sufficient precision for data plots, so using @c float might be faster and/or take less space, 
+  //!< (32-bit has sufficient precision for data plots, so using @c float might be faster and/or take less space,
   //!< but with a small range of @c (std::numeric_limits<>::max)() to (std::numeric_limits<>::min)(), about 10^38 compared to 64-bit 10^308)
-  
+
   static const fp_type aspect_ratio = 0.6;  //!< aspect_ratio is a guess at average height to width of font.
-  //!< used to estimate the svg length of a title or header string from the font size. 
+  //!< used to estimate the svg length of a title or header string from the font size.
   //!< (This can only be quite approximate as varies on type of font (narrow or bold)
   //!< and the mix of characters widths (unless monospace font).
   //!< See https://www.w3.org/TR/SVG/text.html#GlyphsMetrics
@@ -62,7 +62,7 @@ namespace svg
    Used for title, legend, axes ... unless overridden by an explicit font specification.
   */
   const static char* default_font("Lucida Sans Unicode"); // TODO make sure used throughout.
-  
+
 // Forward declarations of classes in svg_style.hpp
 class svg_style; // Holds the basic stroke, fill colors and width, and their switches.
 class text_style; // Text and tspan element's font family, size ...
@@ -339,7 +339,7 @@ public:
      if a renderer (in a browser or a converter to PDF like RenderX)
      does not provide the font specified.
      A Unicode font has a better chance of providing Unicode symbols, for example, specified as @c \&\#x221E;.
-     Symbols are used to show data points and most shapes use Unicode. 
+     Symbols are used to show data points and most shapes use Unicode.
      These fonts are probably usable:
      \code
      "arial", "impact", "courier", "lucida console",  "Lucida Sans Unicode", "Verdana", "calibri", "century",
@@ -438,7 +438,7 @@ text_style::text_style(const text_style& rhs)
   decoration_(rhs.decoration_),
   text_length_(rhs.text_length_)
 {
-} // 
+} //
 
 text_style& boost::svg::text_style::operator=(const text_style& rhs)
 { //! Assignment operator=.
@@ -457,7 +457,7 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
   text_style& text_style::font_size(int i)
   { //! Set font size (svg units usually pixels) default 10.
     font_size_ = i;
-    return *this; 
+    return *this;
     //! \return reference to @c text_style& to make chainable.
   }
 
@@ -561,10 +561,10 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
   }
 
   // Font-variant-position nornmal, sub and super
-  // https://www.w3.org/TR/css-fonts-3/#font-variant-position-prop 
+  // https://www.w3.org/TR/css-fonts-3/#font-variant-position-prop
   // not implemented, and poorly supported by browsers.
 
-  // baseline-shift 	baseline | sub | super | <percentage> | <length> | inherit
+  // baseline-shift   baseline | sub | super | <percentage> | <length> | inherit
   // https://www.w3.org/TR/SVG11/text.html#BaselineAlignmentProperties
 
 
@@ -577,28 +577,28 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
 
   // lengthAdjust = "spacing|spacingAndGlyphs"
   // Indicates the type of adjustments which the user agent shall make to make the rendered length of the text
-  // match the value specified on the ‘textLength’ attribute.
-  // default is spacing (dont' squeeze the glyphs)
+  // match the value specified on the 'textLength' attribute.
+  // default is spacing (don't squeeze the glyphs)
   // spacingAndGlyphs squeezes both.
   // Not used yet.
 
   /* https://www.w3.org/TR/SVG11/text.html#FontsTablesBaselines
   textLength = "<length>"
-    The author's computation of the total sum of all of the advance values 
+    The author's computation of the total sum of all of the advance values
     that correspond to character data within this element,
     including the advance value on the glyph (horizontal or vertical),
-    the effect of properties 'kerning', 'letter-spacing' and 'word-spacing' and 
+    the effect of properties 'kerning', 'letter-spacing' and 'word-spacing' and
     adjustments due to attributes 'dx' and 'dy' on 'tspan' elements.
     This value is used to calibrate the user agent's own calculations with that of the author.
     The purpose of this attribute is to allow the author to achieve exact alignment,
-    in visual rendering order after any bidirectional reordering, for the first and last rendered glyphs 
-    that correspond to this element; thus, for the last rendered character 
+    in visual rendering order after any bidirectional reordering, for the first and last rendered glyphs
+    that correspond to this element; thus, for the last rendered character
     (in visual rendering order after any bidirectional reordering),
-    any supplemental inter-character spacing beyond normal glyph advances are ignored (in most cases) 
+    any supplemental inter-character spacing beyond normal glyph advances are ignored (in most cases)
     when the user agent determines the appropriate amount to expand/compress the text string to fit
     within a length of 'textLength'.
     A negative value is an error (see Error processing).
-    If the attribute is not specified, the effect is as if the author's computation exactly matched 
+    If the attribute is not specified, the effect is as if the author's computation exactly matched
     the value calculated by the user agent;
     thus, no advance adjustments are made.
     */
@@ -853,7 +853,7 @@ enum point_shape
   square, //!< Square.
   point, //!< Small solid point.
   egg, //!< Ellipsoid. Unicode x2B2D is white horizontal, 2B2F is white vertical.
-  unc_ellipse, //!< Ellipse sized using uncertainty estimate of x and y, 
+  unc_ellipse, //!< Ellipse sized using uncertainty estimate of x and y,
   //!< typically about twice standard deviation or 95% confidence interval.
   vertical_line,  //!< Vertical line up & down from axis.
   horizontal_line, //!< Horizontal line left & right from axis.
@@ -1910,7 +1910,7 @@ double string_svg_length(const std::string& s, const text_style& style)
   and deal with Unicode, for example &#x3A9; = greek omega,
   counting each symbol(s) embedded between & and ; as one character.
   To see what symbols are supported see
-  
+
   http://www.fileformat.info/info/unicode/font/index.htm
 
   Font Support for Unicode Characters
@@ -1926,7 +1926,7 @@ double string_svg_length(const std::string& s, const text_style& style)
 
   http://www.fileformat.info/info/unicode/font/arial_unicode_ms/grid.htm shows all the examples,
   some of special interest like Unicode Character 'DEGREE CELSIUS' (U+2103)
-  chess symbols, lots of star symbols, 25b0 triangles, Greek 0410, letter and numbers inside circle 24B0, 
+  chess symbols, lots of star symbols, 25b0 triangles, Greek 0410, letter and numbers inside circle 24B0,
   units like mA, uF 3380, math symbols 2200 like Unicode Character 'CIRCLED DOT OPERATOR' (U+2299),
 
   Unicode Characters in the Miscellaneous Symbols Block like umbrella, snoman, sun, cloud, cross of jerusalem,
@@ -1935,7 +1935,7 @@ double string_svg_length(const std::string& s, const text_style& style)
 
   Also 5 stars Code2000, but in practise most fonts given 4 star will be useful.
 
-  For example, 
+  For example,
   https://www.fileformat.info/info/unicode/font/lucida_sans_unicode/index.htm
 shows Font Character Test for Lucida Sans Unicode.
 tabs of links at the bottom of page:
@@ -1985,7 +1985,7 @@ Unicode characters supported by the Lucida Sans Unicode font
   std::cout << "string \"" << s << "\" has " << chars << " characters, and svg length is " << svg_length << std::endl;
 #endif // BOOST_SVG_STYLE_DIAGNOSTICS
 
-  // I:\modular-boost\libs\svg_plot\example\SVG_text_width_height.cpp shows that 
+  // I:\modular-boost\libs\svg_plot\example\SVG_text_width_height.cpp shows that
   // width can be quite a bit different from different fonts, especially serif versus sans serif.
   // Aspect ratio can vary from 0.4 to 0.55 so estimate of 1 units could increase to 1.4 in worst case, as observed.
   // For example 1000 svg units might take between 180 and 240 random chars.
