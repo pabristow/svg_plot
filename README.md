@@ -11,7 +11,9 @@ The plots are very high quality and can be expanded without loss of quality (no 
 
 The SVG_plot project was originally written by Jake Voytko in 2007 as a Boost-sponsored Google Summer of Code project in 2007. It has been maintained and enhanced since then in Boost Sandbox, but is judged unsuitable for a Boost Library, so now being made more widely available here.
 
-Version 2 adds representation of uncertainty estimates as numbers and zones.
+Version 2 adds representation of uncertainty estimates as numbers and zones and allows far more control of font sizes and appearance controls.
+
+***The develop branch is under major revision (Sep 2020) and is not yet usable.***
 
 [Boost License](http://www.boost.org/LICENSE_1_0.txt).
 
