@@ -525,7 +525,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
 
       rotate_style y_value_label_rotation_; //!< Direction point Y value labels written (default horizontal).
       int y_value_precision_; //!< std::ios precision used for Y value labels (default 3).
-      std::ios_base::fmtflags y_value_ioflags_; //!< std::iosflags used for Y vale labels (default ios::dec).
+      std::ios_base::fmtflags y_value_ioflags_; //!< std::iosflags used for Y value labels (default std::ios::dec).
 
       box_style image_border_; //!< rectangular border box style of all image width, color...
       box_style plot_window_border_; //!< rectangular border box style of plot window width, color...
@@ -537,11 +537,11 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       double plot_top_; //!< SVG Y coordinate of top side of plot window.
       double plot_bottom_; //!< SVG Y coordinate of bottom side of plot window.
 
-      const double margin = 0.5; //!< Plot window margin to allow to rounding etc
+      const double margin = 0.5; //!< Plot window margin to allow for rounding etc
       //! when checking if a point is inside window with @c is_in_window function.
 
       // enum legend_places{ nowhere, inside...}
-      legend_places legend_place_; //!< Place for any legend box.
+      legend_places legend_place_; //!< Place for any legend box, inside, outside, left, right.
       double legend_width_; //!< Width of legend box (pixels).
       double legend_height_; //!< Height of legend box (pixels).
       // Size of legend box is controlled by its contents,
@@ -564,8 +564,8 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       bool legend_on_;//!< true if to provide a legend box (default false unless a legend header title is set so that legend_title_.text() != "").
       bool is_legend_title_; //!< @c true if legend_title_.text() != "" (for example: @c .legend_title("My Legend");) (default @c false).
       bool is_a_point_marker_; //! @c true if any data series have point markers to show in legend (default @c false).
-      bool is_a_data_series_line_;  //!< @c true if any series have lines to show in legend (default @c false). Example: @c .line_on(true). 
-      bool is_a_data_series_text_;  //!< @c true is any series should show text describing the data series (default @c false). For example: @c my_plot.plot(my_data_0, "my_data_0_text"); 
+      bool is_a_data_series_line_;  //!< @c true if any series have lines to show in legend (default @c false). Example: @c .line_on(true).
+      bool is_a_data_series_text_;  //!< @c true is any series should show text describing the data series (default @c false). For example: @c my_plot.plot(my_data_0, "my_data_0_text");
       double legend_title_font_size_; //!< Font size of legend header/title.
       double legend_text_font_size_; //!< Font size of legend text.
      // double series_text_font_size_; //!< Font size of lines of text describing data series.
@@ -574,13 +574,13 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
 
       // Leave a vertical space before any text (if text_margin_ == 1.5 then height of one biggest font).
       // Leave a horizontal space before any text (if text_margin_ == 1.5 then width of one biggest font).
-      // For example, if font size is 10 and text_margin is 1.5 and aspect ratio is 0.6 then 
+      // For example, if font size is 10 and text_margin is 1.5 and aspect ratio is 0.6 then
       // Legend_font_size_ = 10, text_margin = 1.5, aspect ratio =  0.6, Vertical_spacing = 15, horizontal_spacing = 9
       double vertical_spacing_; // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
       double vertical_line_spacing_; // = derived().legend_font_size_; // One line vertically.
       double horizontal_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
       double horizontal_line_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
-      double horizontal_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series). 
+      double horizontal_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
       double vertical_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
 
       bool outside_legend_on_; //!< @c true if legend box should be outside the plot window (default @c true).
@@ -672,7 +672,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         // text_styles: //  Font size, font family, font weight, font style, font stretch & font decoration.
         title_style_(18, default_font, "normal", "", "", "", 0),  // // 3rd parameter weight might be bold?
         legend_title_style_(0, default_font, "normal", "", "", "", 0), // 6rd parameter decoration might be underline?
-        legend_text_style_(10, default_font, "normal", "", "", "", 0), // 
+        legend_text_style_(10, default_font, "normal", "", "", "", 0), //
         x_axis_label_style_(12, default_font, "", "","", "", 0),
         x_value_label_style_(12, default_font, "", "","", "", 0), // X-axis tick labels.
         // Separate X and Y to allow axes to have different styles.
@@ -729,7 +729,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         vertical_line_spacing_(0), // = derived().legend_font_size_; // One line vertically.
         horizontal_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
         horizontal_line_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
-        horizontal_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series). 
+        horizontal_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
         vertical_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
 
         outside_legend_on_(true), //!< @c true if legend is @b outside the plot window axes (default true).
@@ -916,7 +916,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         }
 
 #ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
-#endif // BOOST_SVG_WINDOW_DIAGNOSTICS  
+#endif // BOOST_SVG_WINDOW_DIAGNOSTICS
 
         y_axis_label_style_ = y_label_info_.textstyle();
         if (y_label_info_.textstyle() != y_axis_label_style_ )

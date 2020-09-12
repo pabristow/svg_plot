@@ -4705,7 +4705,7 @@ namespace boost
                \arg @c place > 0 labels to left of Y-axis line )@c left_side) (default),\n
                \arg @c place = 0 (false) no major tick labels on Y-axis. \n
                \arg @c place > 0 labels to right of Y-axis line (@c right_side).
-               \sa enum boost::svg:place for named
+               \sa enum boost::svg:place for named 
             */
             derived().x_ticks_.major_value_labels_side_ = place;
             return derived(); //! \return reference to svg_2d_plot to make chainable.

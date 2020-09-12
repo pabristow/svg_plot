@@ -37,12 +37,11 @@
 //#include <boost/quan/unc.hpp>
 //#include <boost/quan/unc_init.hpp>
 //#include <boost/quan/meas.hpp>
-//#include <boost/svg_plot/impl/src.hpp>
 
 using boost::svg::detail::limit_NaN;
 
 #include <boost/svg_plot/detail/auto_axes.hpp>
-/* Provides variants for @c void boost::svg::scale_axis
+/*! Provides variants for @c void boost::svg::scale_axis
 */
 
 #include <vector>
@@ -58,7 +57,7 @@ namespace svg
 {
   // Forward declarations.
 //! \cond DETAIL
-  const std::string strip_e0s(std::string s); // Strip unnecessary zeros and e and sign.
+  const std::string strip_e0s(std::string s); // Strip unnecessary zeros and e and sign - to minimize value label length.
 //! \endcond
   class svg_1d_plot;   // 1D Plot (that may include one or more data series).
 
@@ -84,7 +83,7 @@ class svg_1d_plot_series
 {
 public:
 //! \cond DETAIL
-  std::vector<Meas> series_; //!< Normal 'OK to plot' data values.
+  std::vector<Meas> series_; //!< Normal 'OK to plot' @c Meas data, values including uncertainty and timestamp.
   //std::vector<unc<false> > series_; //!< Normal 'OK to plot' data values.
   std::vector<double> series_limits_; //!< 'limit' values: too big, too small or NaN.
   // TODO should these be unc too?  Uncertainty info is meaningless, but timestamp etc are OK.
@@ -99,17 +98,16 @@ public:
   /* Scan each data point between the iterators that are passed,
     sorting them into the appropriate @c std::vectors, either normal or not (NaN or infinite).
 
-    \tparam C A STL container: array, vector<double>, set, map ...
+    \tparam C A STL container: \code std::array, std::vector<double>, std::set, std::map ... \endcode
   */
 
   template <typename C>
   svg_1d_plot_series(
   C begin,
   C end,
-  const std::string& title = "");
+  const std::string& title = ""); // Title of plot data series, for example:"Monday", "Tuesday"...
 
-  // Declarations of Set functions for the plot series.
-
+  // Forward declarations of Set functions for the plot series.
   svg_1d_plot_series& fill_color(const svg_color& col_); // Set fill color for plot point marker(s) (chainable).
   svg_1d_plot_series& stroke_color(const svg_color& col_); // Set stroke color for plot point marker(s) (chainable).
   svg_1d_plot_series& shape(point_shape shape_); // Set shape for plot point marker(s) (chainable).
@@ -149,9 +147,10 @@ class svg_1d_plot : public detail::axis_plot_frame<svg_1d_plot>
   friend void show_1d_plot_settings(svg_1d_plot&, std::ostream&);
   //friend void show_1d_plot_settings(svg_1d_plot&); // Surely not needed?
   friend class detail::axis_plot_frame<svg_1d_plot>;
+  // axis_plot_frame.hpp contains functions common to 1-D and 2-D.
 
 public:
-  //protected: // but seems little benefit?
+  //protected: // Perhaps, but seems little benefit?
 
   // Data members Declarations.
 //! \cond DETAIL
@@ -173,16 +172,16 @@ public:
   text_style legend_text_style_; //!<  style (font etc of legend).
   text_style legend_title_style_; //!< Style for legend title.
   text_style x_axis_label_style_; //!< style of X axis label.
-  text_style y_axis_label_style_;  //!< Not used for 1D but needed by axis_plot_frame.hpp.
+  text_style y_axis_label_style_;  //!< Not used for 1D, but needed by axis_plot_frame.hpp.
   text_style x_value_label_style_; //!< style of X ticks value label.
-  text_style y_value_label_style_; //!< Not used for 1D but needed by axis_plot_frame.hpp.
+  text_style y_value_label_style_; //!< Not used for 1D, but needed by axis_plot_frame.hpp.
   text_style point_symbols_style_; //!< Used for data point marking.
-  text_style value_style_; //!< Used for data point value label.
+  text_style value_style_; //!< Used for data point value label.  (should be named value_label_style?)
 
   value_style x_values_style_; //!< Used for data point value marking.
-  //rotate_style x_value_label_rotation_; // Direction point value labels written.
-  //int x_value_precision_;
-  //std::ios_base::fmtflags x_value_ioflags_;
+  rotate_style x_value_label_rotation_; //!< Direction point value labels written (in 45 degree sets).
+  int x_value_precision_; //!< Decimal digits precision for X-axis value labels. (if == 2, 1.2, 6 == 1.23456...)
+  std::ios_base::fmtflags x_value_ioflags_; //!< std::iosflags used for Y value labels (default std::ios::dec).
 
   // text_elements hold position & alignment, and indirectly via text_style, font_family, font_size, bold, italic...
   text_element title_info_; //!< Title of whole plot.
@@ -193,20 +192,23 @@ public:
 
   // No Y-axis info for 1D.
 
-  // Border information for the plot window (not the full image size).
-  box_style image_border_; //!< rectangular border of all image width, color...
-  box_style plot_window_border_; //!< rectangular border of plot window width, color...
-  box_style legend_box_; //!< rectangular box of legend width, color...
+  box_style image_border_; //!< Style of rectangular border of all image width, color...
+  box_style plot_window_border_; //!< Style of rectangular border of plot window width, color...(not the full image size).
+  box_style legend_box_; //!< Style of rectangular box of legend width, color...
 
-  double plot_left_; //!< svg left of plot window (calculate_plot_window() sets these values).
-  double plot_top_; //!< svg top of plot window (calculate_plot_window() sets these values).
-  double plot_right_; //!< svg right of plot window (calculate_plot_window() sets these values).
-  double plot_bottom_; //!< svg bottom of plot window (calculate_plot_window() sets these values).
+  // Plot window location coordinates (default) pixels) (calculate_plot_window() sets these values).
+  double plot_left_; //!< SVG X coordinate (pixels) of left side of plot window.
+  double plot_right_; //!< SVG X coordinate of right side of plot window.
+  double plot_top_; //!< SVG Y coordinate of top side of plot window.
+  double plot_bottom_; //!< SVG Y coordinate of bottom side of plot window.
+
+  const double margin = 0.5; //!< Plot window margin to allow for rounding etc
+  //!                             when checking if a point is inside window with @c is_in_window function.
 
   // enum legend_places{ where, aspect_ratio, inside...}
   bool is_legend_title_; //!< @c true if legend_title_.text() != "" (for example: @c .legend_title("My Legend");) (default @c false).
 
-  legend_places legend_place_; //!< Place for any legend box.
+  legend_places legend_place_; //!< Place for any legend box, inside, outside, left, right.
   double legend_width_; //!< Width of legend box (pixels).
   double legend_height_; //!< Height of legend box (in pixels).
   //!< Size of legend box is controlled by its contents,
@@ -346,8 +348,8 @@ public:
 
 /*!
   \tparam C An iterator into STL container: @c array, @c std::vector<double>, @c std::vector<unc>, @c std::vector<Meas>, @c std::set, @c std::map ...
-  \param begin iterator to 1st element in container to show.
-  \param end iterator to last element in container to show.
+  \param begin Iterator to 1st element in container to show.
+  \param end Iterator to last element in container to show.
   \param title Title of series of data values.
 */
 template <typename C>
@@ -384,7 +386,7 @@ line_style_(black, blank, 2, false, false) // Default line style, black, no fill
     //boost::svg::unc temp = *i; // Assumes unc type.
     //unc<false> temp = *i; // Should provide double, unc, meas ... type.
     // So use auto to automatically make temp the right type.
-    auto temp = *i; // Should provide double, unc, meas ... type.
+    auto temp = *i; // Should provide the right type: double, unc, meas ... type.
     //std::cout << "typeid(temp).name() = " << typeid(temp).name() << std::endl;
     //   typeid(temp).name() = class Meas
     //   typeid(temp).name() = class boost::svg::unc

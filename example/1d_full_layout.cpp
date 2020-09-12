@@ -42,7 +42,8 @@ double h(double x)
 int main()
 {
   using namespace boost::svg; // Convenient to access colors and many other svg_plot items.
-  using boost::svg::svg_color;
+  using boost::svg::svg_color; // Explicitly access SVG colors. 
+  using boost::svg::svg_1d_plot; // Explicitly access 1D SVG plot.
 
   try
   {
@@ -63,22 +64,23 @@ int main()
     svg_1d_plot my_plot;
 
     // Size/scale settings for the plot.
-    my_plot.size(700, 350)
+    my_plot.size(500, 200)
       .x_range(-3, 10);
 
     // Text settings (note chaining 2nd and 3rd settings).
     my_plot.title("Animal Lives")
       .title_font_size(29)
-      .x_label("life-time (months)");
+      .x_label_on(true) // Do want to show X-axis label text.
+      .x_axis_label_color(white)
+      .x_label("life-time (months)"); 
 
     // Commands.
-    my_plot.legend_on(true)
-      .plot_window_on(true)
-      .x_label_on(true)
-      .x_major_labels_side(true);
+    my_plot.legend_on(true) // Do want a legend box - see legend settings below.
+      .plot_window_on(true) // Do want the plot in its own window.
+      .x_major_labels_side(true); 
 
     // Color settings.
-    my_plot.background_color(darkslategray) // == svg_color(47 , 79 , 79 )
+    my_plot.background_color(gray) // 
       // or .background_color(svg_color(47, 79, 79)) //  darkslategray in svg_color.hpp
       .legend_background_color(azure)
       .legend_border_color(gold)
