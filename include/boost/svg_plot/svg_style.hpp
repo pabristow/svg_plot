@@ -860,9 +860,14 @@ enum point_shape
   vertical_tick, //!< Vertical tick up from axis.
   horizontal_tick, //!< Horizontal line right from axis.
   //!< Note horizontal will not be useful for 1D plot - will be on the axis.
-  cone, //!< Cone pointing up - 'rightwayup'.  Unicode 2580 is down-cone with white center.
-  outside_window, // Marker to show that a point lies outside the plotting area and so is not shown.
-  triangle, //!< Triangle pointing down 'upsidedown'. Unicode &#25BC;
+  //!< Triangles https://unicode.org/charts/PDF/U25A0.pdf
+  cone,
+  cone_point_up, //!< Cone pointing right- 'rightwayup'.  Unicode 2580 is down-cone with white center.
+  cone_point_down, //!< Cone pointing down - 'upside down'.  Unicode 2580 is down-cone with white center.
+  cone_point_right, //!< Cone pointing right.  Unicode 2580 is down-cone with white center.
+  cone_point_left, //!< Cone pointing right.  Unicode 2580 is down-cone with white center.
+  outside_window, //! Marker to show that a point lies outside the plotting area, and so is not shown.
+  triangle, //!< Triangle pointing UP. Unicode &#25B3; big and 25B5 for small triangle  
   star, //!< Star.
   lozenge, //!< Lozenge or square with corners pointing up and down.
   diamond, //!< Diamond playing card shape.
@@ -875,7 +880,7 @@ enum point_shape
   \verbatim
     Default letter "X".\n
     Other examples: "&#x3A9;"= greek omega, "&#x2721;" = Star of David hexagram
-    &#2720 Maltese cross & other dingbats. \n
+    &#2720 Maltese cross & other dingbats, like &#x25BABlack right-pointing pointer\n
     See also http://en.wikipedia.org/wiki/List_of_Unicode_characters#Basic_Latin geometric shapes
     that may be a better way to make these symbols: &#25A0 black square ...to &#25FF
     But unclear how many browsers implement these properly.
@@ -943,10 +948,13 @@ public:
     const svg_color& stroke,  //!< Color of circumference of shape.
     const svg_color& fill, //!< Fill color of the centre of the shape.
     int size, //!< Diameter of circle, height of square, font_size  ...
+    // Also symbols_style_.font_size(i); // Also set Font size, in case using a symbol as marker.
     point_shape shape, //!< shape: round, square, point...
     const std::string& symbols) //!< Unicode symbol(s) (letters, digits, squiggles etc).
   :
-    fill_color_(fill), stroke_color_(stroke), size_(size),
+    stroke_color_(stroke), 
+    fill_color_(fill), 
+    size_(size),
     shape_(shape),
     symbols_(symbols),
     show_x_value_(false), show_y_value_(false)
@@ -961,7 +969,7 @@ public:
  plot_point_style& plot_point_style::size(int i)
   { //! Set size of shape or symbol used to mark data value plot point(s).
     size_ = i;  //!< Diameter of circle, height of square, font_size  ...
-    symbols_style_.font_size(i); // Font size, in case using a symbol as marker.
+    symbols_style_.font_size(i); // Also set Font size, in case using a symbol as marker.
     return *this;
     //! \return plot_point_style& to make chainable.
   }

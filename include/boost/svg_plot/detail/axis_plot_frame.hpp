@@ -645,6 +645,10 @@ namespace boost
           svg_color limit_color(); //!<\return  the color for the 'at limit' point stroke color.
           Derived& limit_fill_color(const svg_color&); //!<Set the color for 'at limit' point fill color.
           svg_color limit_fill_color(); //!<\return  the color for the 'at limit' point fill color.
+          // This fails because size is not in svg_style.
+          //Derived& limit_size(const int size); //!< Set the size for 'at limit' point.
+          //int limit_size(); //!<\return The size for the 'at limit' point.
+
           Derived& draw_note
             (double x, double y, std::string note, rotate_style rot = horizontal, align_style al = center_align, const svg_color& = black, text_style& tsty = no_style);
            /*!< \brief Annotate plot with a  text string (perhaps including Unicode), putting note at SVG Coordinates X, Y.
@@ -2949,30 +2953,47 @@ namespace boost
               g_ptr.text(x, y + third_height, "&#x2660;", point_style.symbols_style_, center_align, horizontal);
               //
               break;
-            case heart:
+            case heart: 
               g_ptr.text(x, y + third_height , "&#x2665;", point_style.symbols_style_, center_align, horizontal);
-              //
               break;
             case outside_window: // Pointing down triangle used only to show data points that are outside plot window.
-            {
-              bool fill = (point_style.fill_color() != blank);
-              g_ptr.triangle(x - half_height, y - point_size, x + half_height, y - point_size, x, y, fill);
-              // Last point puts the bottom tip of the triangle on the X-axis (so not be suitable for 2-D).
-            }
+              {
+                bool fill = (point_style.fill_color() != blank);
+                g_ptr.triangle(x - half_height, y - point_size, x + half_height, y - point_size, x, y, fill);
+                // Last point puts the bottom tip of the triangle on the X-axis (so may not be suitable for 2-D).
+              }
               break;
-              // Triangles.
-              // Could use black center &#x25BE for pointing down triangle,
-              // or  &#x25B4 for small black center up-pointing triangle
-              // or &#x25BE for white center small down triangle.
-              case cone: // pointing down triangle, white centre.
-            g_ptr.text(x, y + third_height, "&#x25BD;", point_style.symbols_style_, center_align, horizontal);
+             // Triangles and cones.
+             // https://unicode.org/charts/PDF/U25A0.pdf Geometric Shapes 
+              // There are large and small, and filled black or white centre.
+             // Could use black center &#x25BE for pointing down triangle,
+             // or &#x25B4 for small black center up-pointing triangle
+             // or &#x25BE for white center small down triangle.
+             // or &#x25BA for white center point right triangle.
+            case cone: // Synonym for cone_point_up
+            case cone_point_up: // pointing-up triangle, white centre.
+              g_ptr.text(x, y + third_height, "&#x25BD;", point_style.symbols_style_, center_align, horizontal);
               // https://unicode.org/charts/PDF/U25A0.pdf
               break;
 
-            case triangle: // Pointing up triangle.
-               g_ptr.text(x, y  + third_height, "&#x25B2;", point_style.symbols_style_, center_align, horizontal);
-                 // Also could use &#x25BC for pointing down triangle, and
-                 // &#x25B4 for small up-pointing triangle and &#x25BE for small down triangle.
+            case cone_point_down: // pointing-down triangle, white centre.
+               g_ptr.text(x, y + third_height, "&#x25BD;", point_style.symbols_style_, center_align, horizontal);
+               // https://unicode.org/charts/PDF/U25A0.pdf
+               break;
+
+            case cone_point_right: // small pointing-right triangle, white centre (or 25b7 for bigger one).
+               g_ptr.text(x, y + third_height, "&#x25B9;", point_style.symbols_style_, center_align, horizontal);
+               // <text x="489" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9</text>
+               break;
+
+            case cone_point_left: // small pointing-left triangle, white centre.
+               g_ptr.text(x, y + third_height, "&#x25C3;", point_style.symbols_style_, center_align, horizontal);
+               // https://unicode.org/charts/PDF/U25A0.pdf
+               break;
+
+            case triangle: // Pointing-up triangle, white centre.
+               g_ptr.text(x, y  + third_height, "&#x25B4;", point_style.symbols_style_, center_align, horizontal);
+                 // Also could use &#x25BC for pointing down triangle, or &#x25B4 for small up-pointing triangle.
                  // https://unicode.org/charts/PDF/U25A0.pdf
                break;
              case star:
@@ -2985,8 +3006,6 @@ namespace boost
               // Cross is pretty useless for 1-D because the horizontal line is on the X-axis.
              // g_ptr.text(x, y  + third_height, "&#x274C;", point_style.symbols_style_, center_align, horizontal);
               g_ptr.text(x, y  + third_height, "&#x272F;", point_style.symbols_style_, center_align, horizontal);
-
-
               break;
             }
           } // void draw_plot_point
@@ -5860,7 +5879,7 @@ namespace boost
         template <class Derived>
         Derived& axis_plot_frame<Derived>::limit_color(const svg_color& col)
         { //! Set the color for 'at limit' point stroke color.
-          // Need to have set the series frist?
+          // Need to have set the series first?
           derived().image_.g(detail::PLOT_LIMIT_POINTS).style().stroke_color(col);
           // derived().serieses_[0].limit_point_color(col); // Would require to add some data first!
           return derived();
@@ -5872,12 +5891,27 @@ namespace boost
           return derived().image_.g(detail::PLOT_LIMIT_POINTS).style().stroke_color();
         }
 
+        //template <class Derived>
+        //Derived& axis_plot_frame<Derived>::limit_size(const int size)
+        //{ //! Set the size for 'at limit' marker(s).
+        //  // Need to have set the series first?
+        //  derived().image_.g(detail::PLOT_LIMIT_POINTS).style().font_size(size);
+        //  // derived().serieses_[0].limit_point_size(size); // Would require to add some data first!
+        //  return derived();
+        //}
+
+        //template <class Derived>
+        //int axis_plot_frame<Derived>::limit_size()
+        //{ //! \return The size for the 'at limit' point(s).
+        //  return derived().image_.g(detail::PLOT_LIMIT_POINTS).style().size();
+        //}
+
         template <class Derived>
         Derived& axis_plot_frame<Derived>::limit_fill_color(const svg_color& col)
         { //! Set the color for 'at limit' point fill color.
           derived().image_.g(detail::PLOT_LIMIT_POINTS).style().fill_on(true);
           derived().image_.g(detail::PLOT_LIMIT_POINTS).style().fill_color(col);
-          //derived().serieses_[0].limit_point_style_.fill_color(col);
+          //derived().serieses_[0].limit_point_style_.fill_color(col); // Would require to add some data first!
           return derived();
         }
 

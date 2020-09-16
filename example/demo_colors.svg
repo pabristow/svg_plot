@@ -33,7 +33,7 @@ xmlns ="http://www.w3.org/2000/svg"
 </g>
 <g id="legendText">
 <text x="457" y="87" text-anchor="middle" font-size="14" font-family="Verdana">Legend title</text>
-<text x="441" y="108" font-size="14" font-family="Verdana">My Data</text></g>
+<text x="424" y="108" font-size="14" font-family="Verdana">My Data</text></g>
 <g id="title">
 <text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Demo SVG colors</text></g>
 </svg>

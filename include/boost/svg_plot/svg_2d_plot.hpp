@@ -181,20 +181,19 @@ namespace boost
    // svg_2d_plot_series Member Functions Definitions.
 
    // svg_2d_plot_series constructor.
-      /*!
-        Constructor for a data series to plot
-        \tparam T an STL container: for example: @c multimap.
-        \param begin Starting iterator into container of data series begin() to start at the beginning.
-        \param end Ending iterator into container of data series, end() to finish with the last item.
-        \param title Title for the plot.
-       */
+  /*!
+    Constructor for a data series to plot
+    \tparam T an STL container: for example: @c multimap.
+    \param begin Starting iterator into container of data series begin() to start at the beginning.
+    \param end Ending iterator into container of data series, end() to finish with the last item.
+    \param title Title for the plot.
+   */
 
   template <typename T>
   svg_2d_plot_series::svg_2d_plot_series(
       T begin, // \param iterator std::begin of data series.
       T end, // \param End of data series.
-      std::string title /*  \param @c std::string title Title of data series.
-      */
+      std::string title  // \param @c std::string title Title of data series.//
     )
     :
     title_(title), //!< Title of a series of data values.
@@ -216,7 +215,7 @@ namespace boost
       unc<false> uy = temp.second;
       std::pair<double, double> xy = std::make_pair<double, double>(ux.value(), uy.value());
       if(detail::pair_is_limit(xy))
-      { // Either x and/or y is 'at-limit'.
+      { // Either x and/or y data value is 'at-limit'.
         series_limits_.insert(xy);
       }
       else

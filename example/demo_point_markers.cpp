@@ -5,7 +5,7 @@
 */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A Bristow 2008
+// Copyright Paul A Bristow 2008, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -31,9 +31,8 @@
   using boost::svg::svg_1d_plot;
 
 #include <iostream>
-  using std::cout;
-  using std::endl;
-  using std::hex;
+  //using std::cout;
+  //using std::endl;
 
 #include <vector>
   using std::vector;
@@ -45,11 +44,19 @@
 
 int main()
 {
-  vector<double> my_data;
+  std::vector<double> my_data;
+  my_data.push_back(-10.);
   my_data.push_back(-9.);
+  my_data.push_back(-1.);
   my_data.push_back(1.23);
-  my_data.push_back(numeric_limits<double>::infinity());
-  my_data.push_back(numeric_limits<double>::quiet_NaN());
+  my_data.push_back(2.0);
+  my_data.push_back(8.0);
+  my_data.push_back(99.0); // Finite value that is too big to fit into the plot window.
+
+  // Add some not-normal values to show how they are displayed.
+  my_data.push_back(numeric_limits<double>::infinity()); // Shows as a 
+  my_data.push_back(-numeric_limits<double>::infinity()); // Shows as a 
+  my_data.push_back(numeric_limits<double>::quiet_NaN()); // Shows as a point-down triangle, at the origin.
 
 //[demo_point_markers_2
 
@@ -60,12 +67,13 @@ int main()
     my_1d_plot.title("Demo point markers Demo") // Add a string title of the plot.
       .x_label("length (m)"); // Add a label for the X-axis.
 
-/*`Add the one data series, `my_data` and a description, and how the data points are to marked,
-here a circle with a diameter of 5 pixels.
+/*`Add the one data series, `my_data` and a description, and how the data points are to be marked,
+here a blue diamond with a size of 10 pixels.
 */
-    my_1d_plot.plot(my_data, "1D Values").shape(diamond).size(10);
+    my_1d_plot.plot(my_data, "1D Values").shape(diamond).size(10).fill_color(blue);
 
     // TODO want to display ALL the possible markers - to check they all work too.
+    // But now Unicode markers are allowed/required , there are an 'infinite' number.
 
 /*`To put a value label against each data point, switch on the option:
 */
@@ -75,28 +83,32 @@ here a circle with a diameter of 5 pixels.
 */
     my_1d_plot.x_values_font_size(14) // Change font size for the X-axis value labels.
       .x_values_font_family("Times New Roman") // Change font for the X-axis value labels.
-      .x_values_color(red); // Change color from default black to red.
+      .x_values_color(red); // Change x-values font color from default black to red.
 
  /*` The 'at limit' values (infinity or NaN) markers can be customised, for example:
  */
-    my_1d_plot.limit_color(red).limit_fill_color(green);
+    my_1d_plot.limit_color(red);
+    // my_1d_plot.limit_fill_color(green);  // no effect on some symbols?
+   // my_1d_plot.limit_size(20); // Does not work yet.
+
 
     /*`To use all these settings, finally write the plot to file.
 */
     my_1d_plot.write("demo_point_markers.svg");
 
 /*`If chosen settings do not have the expected effect, is may be helpful to display them.
-
-(All settings can be displayed with `show_1d_plot_settings(my_1d_plot)`.)
+* 
+(All (over one hundred) settings can be displayed with `show_1d_plot_settings(my_1d_plot)`.)
 */
-    cout << "my_1d_plot.x_values_font_size() " << my_1d_plot.x_values_font_size() << endl;
-    cout << "my_1d_plot.x_values_font_family() " << my_1d_plot.x_values_font_family() << endl;
-    cout << "my_1d_plot.x_values_color() " << my_1d_plot.x_values_color() << endl;
-    cout << "my_1d_plot.x_values_precision() " << my_1d_plot.x_values_precision() << endl;
-    cout << "my_1d_plot.x_values_ioflags() " << hex << my_1d_plot.x_values_ioflags() << endl;
+    std::cout << "my_1d_plot.x_values_font_size() " << my_1d_plot.x_values_font_size() << std::endl;
+    std::cout << "my_1d_plot.x_values_font_family() " << my_1d_plot.x_values_font_family() << std::endl;
+    std::cout << "my_1d_plot.x_values_color() " << my_1d_plot.x_values_color() << std::endl;
+    std::cout << "my_1d_plot.x_values_precision() " << my_1d_plot.x_values_precision() << std::endl;
+    std::cout << "my_1d_plot.x_values_ioflags() " << std::hex << my_1d_plot.x_values_ioflags() << std::endl;
 
-    cout << "limit points stroke color " << my_1d_plot.limit_color() << endl;
-    cout << "limit points fill color " << my_1d_plot.limit_fill_color() << endl;
+    std::cout << "limit points stroke color " << my_1d_plot.limit_color() << std::endl;
+    std::cout << "limit points fill color " << my_1d_plot.limit_fill_color() << std::endl;
+    //std::cout << "limit points size " << my_1d_plot.limit_size() << std::endl;
 
 //] [demo_point_markers_2]
   }

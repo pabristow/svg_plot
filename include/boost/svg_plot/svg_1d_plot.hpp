@@ -19,12 +19,6 @@
 #ifndef BOOST_SVG_SVG_1D_PLOT_HPP
 #define BOOST_SVG_SVG_1D_PLOT_HPP
 
-#if defined (_MSC_VER)
-#  pragma warning (push)
-#  pragma warning (disable: 4512) // Assignment operator could not be generated.
-#  pragma warning (disable: 4180) // Qualifier applied to function type has no meaning; ignored.
-#endif
-
 #include <boost/iterator/transform_iterator.hpp>
 // using boost::make_transform_iterator;
 
@@ -38,7 +32,7 @@
 //#include <boost/quan/unc_init.hpp>
 //#include <boost/quan/meas.hpp>
 
-using boost::svg::detail::limit_NaN;
+using boost::svg::detail::limit_NaN;  // Handling of non-finite data values.
 
 #include <boost/svg_plot/detail/auto_axes.hpp>
 /*! Provides variants for @c void boost::svg::scale_axis
@@ -90,7 +84,7 @@ public:
 
   std::string title_; //!< title of data series (to show on legend).
   plot_point_style point_style_; //!< circle, square...
-  plot_point_style limit_point_style_; //!< Default is cone pointing down.
+  plot_point_style limit_point_style_; //!< Default is cone pointing down for 2D or point right for 1D.
   plot_line_style line_style_; //!< No line style for 1-D, only for 2-D.
 //! \endcond
 
@@ -247,10 +241,10 @@ public:
   double vertical_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
 
   axis_line_style x_axis_; //!< style of X axis line.
-  axis_line_style y_axis_; //!< style of Y axis line.
+  axis_line_style y_axis_; //!< style of Y axis line. (Meaningless for 1D but added to permit shared code in axis_plot_frame.hpp!)
 
   ticks_labels_style x_ticks_; //!< style of X axis tick value labels.
-  ticks_labels_style y_ticks_; //!< style of Y axis tick value labels. (Meaningless for 1D but added to permit shared code!)
+  ticks_labels_style y_ticks_; //!< style of Y axis tick value labels. (Meaningless for 1D but added to permit shared code in axis_plot_frame.hpp!)
 
   bool title_on_; //!< If true include a title for the aspect_ratioole plot.
   bool legend_on_; //!< If true include a legend box.
@@ -263,13 +257,13 @@ public:
 
   // Parameters for calculating confidence intervals (for both X and Y values).
   // These might be picked up from uncertain types.
-  double alpha_; // = 0.05; // oss.iword(confidenceIndex) / 1.e6; // Pick up alpha.
-  double epsilon_; // = 0.01; // = oss.iword(roundingLossIndex) / 1.e3; // Pick up rounding loss.
-  int uncSigDigits_; // = 2; // = oss.iword(setUncSigDigitsIndex);  // Pick up significant digits for uncertainty.
-  bool isNoisyDigit_; // = false; // Pick up?
+  double alpha_; // = 0.05; // oss.iword(confidenceIndex) / 1.e6; //!< Pick up alpha or confidence, as a fraction.
+  double epsilon_; // = 0.01; // = oss.iword(roundingLossIndex) / 1.e3; //!< Pick up rounding loss, as a fraction.
+  int uncSigDigits_; // = 2; // = oss.iword(setUncSigDigitsIndex);  //<! Pick up significant digits for showing implied uncertainty.
+  bool isNoisyDigit_; // = false; //!> Is an extra 'noisy' decimal digit shown. TODO Pick up?
 
   // Autoscaling
-  bool autoscale_check_limits_; //!< If true, then check autoscale values for infinity, NaN, max, min.
+  bool autoscale_check_limits_; //!< If true, then check autoscale values for infinity, NaN, max, and min.
   bool x_autoscale_; //!< If true, use any autoscale values for scaling the X axis.
   double autoscale_plusminus_; //!< For uncertain values, allow for text_plusminus ellipses showing 67%, 95% and 99% confidence limits.\n
   //!< For example, if a max value is 1.2 +or- 0.02, then 1.4 will be used for autoscaling the maximum.\n
@@ -311,14 +305,14 @@ public:
 //! \endcond
 
   // ------------------------------------------------------------------------
-  // write() has two versions: to an std::ostream and to a file.
-  // The stream version first clears all unnecessary data from the graph,
-  // builds the document tree, and then calls the write function for the root
-  // document node, which calls all other nodes through the Visitor pattern.
-  // The file version opens an std::ostream, and calls the stream version.
+  //! write() has two versions: to an @c std::ostream and to a file.
+  //! The stream version first clears all unnecessary data from the graph,
+  //! builds the document tree, and then calls the write function for the root
+  //! document node, which calls all other nodes through the Visitor pattern.
+  //! The file version opens an @c std::fstream, and calls the @c std::ostream version.
   // ------------------------------------------------------------------------
-  svg_1d_plot& write(const std::string& file);
-  svg_1d_plot& write(std::ostream& os);
+  svg_1d_plot& write(const std::string& file); //!< Write an SVG plot to a file.
+  svg_1d_plot& write(std::ostream& os); //!> Write an SVG plot to a stream.
 
   // Declarations of several versions of function plot to add data series (with defaults).
   template <typename T>
@@ -347,18 +341,19 @@ public:
 */
 
 /*!
-  \tparam C An iterator into STL container: @c array, @c std::vector<double>, @c std::vector<unc>, @c std::vector<Meas>, @c std::set, @c std::map ...
-  \param begin Iterator to 1st element in container to show.
-  \param end Iterator to last element in container to show.
+  \tparam C An iterator into an STL container: @c array, @c std::vector<double>, @c std::vector<unc>, @c std::vector<Meas>, @c std::set, @c std::map ...
+  \param begin Iterator to 1st element in container to show in the plot.
+  \param end Iterator to last element in container to show in the plot.
   \param title Title of series of data values.
 */
 template <typename C>
 svg_1d_plot_series::svg_1d_plot_series(C begin, C end, const std::string& title)
 : // Constructor.
-title_(title),
-point_style_(black, blank, 5, vertical_line), // Default point style.
-limit_point_style_(lightgrey, red, 10, cone), // Default limit (inf or NaN) point style.
-//limit_point_style_(lightgrey, aspect_ratioitesmoke, 10, cone), // Default limit (inf or NaN) point style.
+title_(title), // of data series.
+point_style_(black, blank, 5, vertical_line, ""), // Default data point marker style vertical line for 1D plots.
+//limit_point_style_(lightgrey, whitesmoke, 10, cone_point_right, ""), // Default limit//  (inf or NaN) point style.  right-pointing pointer.
+limit_point_style_(red, green, 20, cone_point_right, ""), // Default limit (inf or NaN) point style is right-pointing pointer.
+// Size 10 here has no effect :-(
 line_style_(black, blank, 2, false, false) // Default line style, black, no fill, width, line_on, bezier_on false
 {
   /*
@@ -403,7 +398,7 @@ line_style_(black, blank, 2, false, false) // Default line style, black, no fill
   }
 } // svg_plot_series constructor.
 
-// Definitions of svg_plot_series Member Functions.
+// Definitions of svg_plot_series Member Functions to set up the plot colors, font, size, markers, lines etc.
 
 svg_1d_plot_series& svg_1d_plot_series::fill_color(const svg_color& col_)
 { //! Set fill color for plot point marker(s).
@@ -498,7 +493,6 @@ svg_1d_plot_series& svg_1d_plot_series::bezier_on(bool on_)
 { //! Set @c true if to draw bezier curved line joining plot points.
   line_style_.bezier_on_ = on_;
   return *this; //! \return Reference to @c svg_1d_plot_series to make chainable.
-
 }
 
 bool svg_1d_plot_series::bezier_on()
@@ -512,7 +506,7 @@ size_t svg_1d_plot_series::series_count()
 }
 
 size_t svg_1d_plot_series::series_limits_count()
-{ //!  \return Number of  'at limit' values: too big, too small or NaN data values in data series.
+{ //!  \return Number of 'at limit' values: too big, too small or NaN data values in data series.
   return series_limits_.size();
 }
 
@@ -522,7 +516,7 @@ svg_1d_plot_series& svg_1d_plot_series::limit_point_color(const svg_color& col_)
   return *this; //! \return Reference to @c svg_1d_plot_series to make chainable.
 }
 
-// Definition of svg_plot member functions.
+// Definitions of svg_plot member functions.
 
 //! \cond DETAIL
 // Do not document non-user functions.
@@ -555,12 +549,12 @@ void svg_1d_plot::update_image()
   double y(0.); // All 1-D points are plotted are on the horizontal X axis (y = 0) axis.
   transform_y(y);
   if ((y < plot_top_) || (y > plot_bottom_))
-  { // Should never happen!
+  { // So Y position being wrong should never happen! (error in transform?)
     throw std::runtime_error("transform_y(y=0) outside plot window!");
   }
 
   for(unsigned int i = 0; i < serieses_.size(); ++i)
-  { // Plot the data points for each of the data series.
+  { // Plot the normal data points for each of the i data series.
     g_element& g_ptr = image_.g(detail::PLOT_DATA_POINTS).add_g_element();
     g_ptr.style().stroke_color(serieses_[i].point_style_.stroke_color_);
     g_ptr.style().fill_color(serieses_[i].point_style_.fill_color_);
@@ -573,9 +567,10 @@ void svg_1d_plot::update_image()
       // TODO symbols are offset downwards because
       // the origin of the point is the top left of the glyph.
       // Need to offset by the height and width of the font size?
+
       transform_x(x);
       if((x >= plot_left_) && (x <= plot_right_)) // Check point is inside plot_window.
-      // May need a margin here to avoid points just over the window not being shown.
+      // TODO May need a margin here to avoid points just over the window not being shown.
       {
         draw_plot_point(x, y, g_ptr, serieses_[i].point_style_, ux, Meas()); // Marker.
         // (y uncertainty is zero for 1d X values).
@@ -588,7 +583,7 @@ void svg_1d_plot::update_image()
           // TODO Might separate X and Y colors?
         }
         else
-        { // Don't plot anything?  Might leave a marker to show an "off the scale" value?
+        { // Don't plot anything? Might leave a marker to show an "off the scale" value?
         }
       } // if in window
     } // for j
@@ -603,7 +598,7 @@ void svg_1d_plot::update_image()
     {
       double x = serieses_[i].series_limits_[j];
       if (limit_NaN(x))
-      { // is NaN rather than too big or too small.
+      { // is NaN rather than just too big or too small to show in the plot window.
         double x0 = 0.; // Avoid previous use of x.
         transform_x(x0);
         // If include zero, OK, else plot on left or right as appropriate.
@@ -615,23 +610,24 @@ void svg_1d_plot::update_image()
         {
           x0 = plot_right_;
         }
-        //else X axis includes zero, so x0 is OK.
+        // else X axis includes zero, so x0 is OK.
         draw_plot_point(x0, y, g_ptr, serieses_[i].limit_point_style_, Meas(), Meas());
         // draw_plot_point(x, y, g_ptr, serieses_[i].limit_point_style_, unc<false>(), unc<false>());
       }
       else
       { // Not NaN
         transform_x(x);
+        // Avoid overwriting any data marker at either end of the horizontal line.
         if (x < plot_left_)
         {
-          x = plot_left_;
+          x = plot_left_ - serieses_[i].limit_point_style_.size_ /2; // Just half a font size to left of y=0 line.
         }
         else if (x > plot_right_)
         {
-          x = plot_right_;
+          x = plot_right_ + serieses_[i].limit_point_style_.size_ / 2; // Just half a font size to right of y=0 line.
         }
         // else is inside plot window, so draw a limit point marker.
-        // draw_plot_point(x, y, g_ptr, plot_point_style(lightgray, aspect_ratioitesmoke, s, cone)); default.
+        // draw_plot_point(x, y, g_ptr, plot_point_style(lightgray, whitesmoke, s, cone_point_down)); default.
         serieses_[i].limit_point_style_.stroke_color_ = image_.g(detail::PLOT_LIMIT_POINTS).style().stroke_color();
         serieses_[i].limit_point_style_.fill_color_ = image_.g(detail::PLOT_LIMIT_POINTS).style().fill_color();
         // This is a kludge.  limit_point_style_ should probably be common to all data series.
@@ -1179,9 +1175,5 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& begin, const T& end, const std::s
 // End Definitions of svg_plot_series Public Member Functions.
 } // namespace svg
 } // namespace boost
-
-#if defined (_MSC_VER)
-#  pragma warning(pop)
-#endif
 
 #endif // BOOST_SVG_SVG_1D_PLOT_HPP

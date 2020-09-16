@@ -92,9 +92,9 @@ xmlns ="http://www.w3.org/2000/svg"
 </g>
 <g id="legendText" fill="rgb(0,100,0)">
 <text x="459.8" y="92" text-anchor="middle" font-size="14" font-family="Verdana">My Legend &#956;</text>
-<text x="459.4" y="113" font-size="14" font-family="Verdana">data3</text>
-<text x="459.4" y="141.8" font-size="14" font-family="Verdana">data4</text>
-<text x="459.4" y="170.6" font-size="14" font-family="Verdana">data5</text></g>
+<text x="442.6" y="113" font-size="14" font-family="Verdana">data3</text>
+<text x="442.6" y="141.8" font-size="14" font-family="Verdana">data4</text>
+<text x="442.6" y="170.6" font-size="14" font-family="Verdana">data5</text></g>
 <g id="title" fill="rgb(255,0,255)">
 <text x="250" y="40" text-anchor="middle" font-size="20" font-family="Times New Roman">Demo 1D plot <sup>-&#945; </sup> &#x3A9; &#x3A6; &#x221A; &#x221E; &#x3B6; &#x00B1;</text></g>
 </svg>

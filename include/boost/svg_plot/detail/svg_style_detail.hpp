@@ -5,7 +5,7 @@
 
 // svg_style_detail.hpp
 // Copyright Jacob Voytko 2007
-// Copyright  Paul A. Bristow 2008, 2013
+// Copyright  Paul A. Bristow 2008, 2013, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -18,7 +18,8 @@
 #include <string>
 // using std::string;
 
-// This module provides an id string from named parameter
+// This module provides an ID @c std::string from a named parameter 
+//(macro like PLOT_WINDOW_BACKGROUND)
 // so, for example, document_ids_[PLOT_BACKGROUND] == "background".
 // to be used as a SVG group is thus: <g id="background" ... /g>
 
@@ -28,7 +29,7 @@ namespace svg
 {
 namespace detail
 {
-// Caution: these two enum and ids must match because
+// Caution: these two *enum and ids must match* because
 // the enum value is used to index the array of id strings.
 // void set_ids() copies all strings to matching image.get_g_element(i).id()
 // Add any new id items to both!
@@ -56,7 +57,7 @@ enum plot_doc_structure
     PLOT_DATA_UNC2, //! Uncertainty zone of 2 sd from data points.
     PLOT_DATA_UNC1, //! Uncertainty zone of 1 sd from data points.
     PLOT_DATA_POINTS, //! Normal data point markers.
-    PLOT_LIMIT_POINTS, //! 'At limit or NaN' data point markers.
+    PLOT_LIMIT_POINTS, //! 'At limit' infite or NaN data point markers.
     PLOT_LEGEND_BACKGROUND, //! Legend box.
     PLOT_LEGEND_POINTS, //! Legend data series point markers, circle, cross...
     PLOT_LEGEND_TEXT, //! Legend text describing each data series.
@@ -91,7 +92,7 @@ std::string document_ids_[]= //!< Strings used describe and identify SVG layers 
     "plotUnc2",   // Uncertainty zone of 2 sd from data points.
     "plotUnc1",   // Uncertainty zone of 2 sd from data points.
     "plotPoints", // normal data point markers.
-    "limitPoints",  // at limit or NaN data point markers
+    "limitPoints",  // at limit or NaN data point markers.
     "legendBackground", // legend box.
     "legendPoints", // data series point markers, circle, cross...
     "legendText", // text describing each data series.
