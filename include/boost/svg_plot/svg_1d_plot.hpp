@@ -617,23 +617,20 @@ void svg_1d_plot::update_image()
       else
       { // Not NaN assume infinite.
         transform_x(x);
-        plot_point_style& point_style = minus_inf_point_style_; // 
+        plot_point_style& point_style (minus_inf_point_style_); // 
         // Avoid overwriting any data marker at either end of the horizontal line.
         if (x < plot_left_)
         {
-          x = plot_left_ - minus_inf_point_style_.size_ /2; // Just half a font size to left of y=0 line.
-          point_style = minus_inf_point_style_;
-
+          x = plot_left_ - minus_inf_point_style_.size_ /2; // Just half a font size to left of left plot box.
+          draw_plot_point(x, y, g_ptr, minus_inf_point_style_, Meas(), Meas()); // Draw the limit marker.
         }
         else if (x > plot_right_)
         {
-          x = plot_right_ + plus_inf_point_style_.size_ / 2; // Just half a font size to right of y=0 line.
-          point_style = plus_inf_point_style_;
+          x = plot_right_ + plus_inf_point_style_.size_ / 2; // Just half a font size to right of right plot box.
+          draw_plot_point(x, y, g_ptr, plus_inf_point_style_, Meas(), Meas()); // Draw the limit marker.
         }
-        // else is inside plot window, so draw a limit point marker.
-        draw_plot_point(x, y, g_ptr, point_style, Meas(), Meas()); // Draw the limit marker.
+        // else is inside plot window, so draw a limit point marker TODO.
       }
-      // TODO add outwide window items.
     } // for j
   } // for i limits point
 } //   void update_image()

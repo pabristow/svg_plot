@@ -889,12 +889,15 @@ enum point_shape
   */
 }; // enum point_shape
 
+
 class plot_point_style
 { /*! \class boost::svg::plot_point_style
     \brief Shape, color, and symbol or shape of data point markers.
     \details (optional x and/or y data point value(s) & optional uncertainty).
   */
   friend std::ostream& operator<< (std::ostream&, plot_point_style);
+
+ // plot_point_style(const plot_point_style&);  // Copy constructor.
 
 public:
   svg_color fill_color_; //!< Fill color of the centre of the shape.
@@ -927,7 +930,7 @@ public:
     point_shape shape = circlet, //!< shape: circlet, square, point...
     const std::string& symbols = ""); //!< Unicode symbol(s) (letters, digits, squiggles etc), (default letter x).
 
-  plot_point_style& size(int i);
+    plot_point_style& size(int i);
   int size();
   plot_point_style& fill_color(const svg_color& f);
   svg_color& fill_color();
@@ -963,6 +966,21 @@ public:
     symbols_style_.font_family("Lucida Sans Unicode");
     symbols_style_.font_size(size); // Default size = 5
   }
+
+  ////! plot_point_style Copy constructor.
+  //plot_point_style::plot_point_style(const plot_point_style& rhs)
+  //  :
+  //  stroke_color_(rhs.stroke_color_),
+  //  fill_color_(rhs.fill_color_),
+  //  size_(rhs.size_),
+  //  shape_(rhs.shape_),
+  //  symbols_(rhs.symbols_)
+  //{    // ???
+  //  symbols_style_.font_family("Lucida Sans Unicode");
+  //  symbols_style_.font_size(size_); // Default size = 5
+  //} //
+
+
 
 // Member Function Definitions.
 

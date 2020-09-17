@@ -104,9 +104,16 @@ here a blue diamond with a size of 10 pixels.
     std::cout << "my_1d_plot.x_values_precision() " << my_1d_plot.x_values_precision() << std::endl;
     std::cout << "my_1d_plot.x_values_ioflags() " << std::hex << my_1d_plot.x_values_ioflags() << std::dec << std::endl;
 
-    std::cout << "limit points stroke color " << my_1d_plot.nan_limit_color() << std::endl;
-    std::cout << "limit points fill color " << my_1d_plot.nan_limit_fill_color() << std::endl;
-    std::cout << "limit points size " << my_1d_plot.nan_limit_size() << std::endl;
+    std::cout << "NaN limit points stroke color " << my_1d_plot.nan_limit_color() << std::endl;
+    std::cout << "NaN limit points fill color " << my_1d_plot.nan_limit_fill_color() << std::endl;
+    std::cout << "NaN limit points size " << my_1d_plot.nan_limit_size() << std::endl;
+    std::cout << "+infinity limit points stroke color " << my_1d_plot.plus_inf_limit_color() << std::endl;
+    std::cout << "+infinity limit points fill color " << my_1d_plot.plus_inf_limit_fill_color() << std::endl;
+    std::cout << "+infinity limit points size " << my_1d_plot.plus_inf_limit_size() << std::endl;
+
+    std::cout << "-infinity limit points stroke color " << my_1d_plot.minus_inf_limit_color() << std::endl;
+    std::cout << "-infinity limit points fill color " << my_1d_plot.minus_inf_limit_fill_color() << std::endl;
+    std::cout << "-infinity limit points size " << my_1d_plot.minus_inf_limit_size() << std::endl;
 
 //] [demo_point_markers_2]
   }

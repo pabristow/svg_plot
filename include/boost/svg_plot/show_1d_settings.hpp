@@ -211,8 +211,8 @@ void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
   os << "legend_width " << plot.legend_width() << std::endl;
   os << "legend_lines " << plot.legend_lines() << std::endl;
 
-  os << "limit points stroke color " << plot.limit_color() << std::endl;
-  os << "limit points fill color " << plot.limit_fill_color() << std::endl;
+  os << "NaN limit points stroke color " << plot.nan_limit_color() << std::endl;
+  os << "NaN limit points fill color " << plot.nan_limit_fill_color() << std::endl;
 
   os << "license_on " << plot.license_on() << std::endl;
   os << "license_reproduction " << plot.license_reproduction() << std::endl;

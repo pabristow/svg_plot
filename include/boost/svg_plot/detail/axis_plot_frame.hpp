@@ -649,6 +649,22 @@ namespace boost
           Derived& nan_limit_size(const int size); //!< Set the size for NaN point.
           int nan_limit_size(); //!<\return The size for the NaN point.
 
+          Derived& plus_inf_limit_color(const svg_color&); //!<Set the color for +infnity point stroke color.
+          svg_color plus_inf_limit_color(); //!<\return  the color for the +infnity point stroke color.
+          Derived& plus_inf_limit_fill_color(const svg_color&); //!<Set the color for +infnity point fill color.
+          svg_color plus_inf_limit_fill_color(); //!<\return  the color for the +infnity point fill color.
+          // This fails because size is not in svg_style.
+          Derived& plus_inf_limit_size(const int size); //!< Set the size for +infnity point.
+          int plus_inf_limit_size(); //!<\return The size for the NaN point.
+
+          Derived& minus_inf_limit_color(const svg_color&); //!<Set the color for -infinity point stroke color.
+          svg_color minus_inf_limit_color(); //!<\return  the color for the -infinity point stroke color.
+          Derived& minus_inf_limit_fill_color(const svg_color&); //!<Set the color for -infinity point fill color.
+          svg_color minus_inf_limit_fill_color(); //!<\return  the color for the -infinity point fill color.
+          // This fails because size is not in svg_style?
+          Derived& minus_inf_limit_size(const int size); //!< Set the size for -infinity point.
+          int minus_inf_limit_size(); //!<\return The size for the -infinity point.
+
           Derived& draw_note
             (double x, double y, std::string note, rotate_style rot = horizontal, align_style al = center_align, const svg_color& = black, text_style& tsty = no_style);
            /*!< \brief Annotate plot with a  text string (perhaps including Unicode), putting note at SVG Coordinates X, Y.
@@ -5897,17 +5913,84 @@ namespace boost
 
         template <class Derived>
         int axis_plot_frame<Derived>::nan_limit_size()
-        { //! \return The font size for the 'at limit' point(s) marker shape or symbol.
+        { //! \return The font size for the NaN point(s) marker shape or symbol.
           return derived().nan_point_style_.size_;
-          //return derived().image_.g(detail::PLOT_LIMIT_POINTS).size();
+        }
+
+
+        template <class Derived>
+        Derived& axis_plot_frame<Derived>::plus_inf_limit_color(const svg_color& col)
+        { //! Set the color for +infinity  point stroke color.
+          derived().plus_inf_point_style_.stroke_color(col);
+          return derived();
         }
 
         template <class Derived>
+        svg_color axis_plot_frame<Derived>::plus_inf_limit_color()
+        { //! \return  the color for the +infinity  point stroke color.
+          return derived().plus_inf_point_style_.stroke_color();
+        }
+
+        template <class Derived>
+        svg_color axis_plot_frame<Derived>::plus_inf_limit_fill_color()
+        { //! \return  the color for the +infinity  point strokefill color.
+          return derived().plus_inf_point_style_.fill_color();
+        }
+
+        template <class Derived>
+        Derived& axis_plot_frame<Derived>::plus_inf_limit_size(int limit_marker_size)
+        { //! Set the size for +infinity marker(s).
+          derived().plus_inf_point_style_.size(limit_marker_size);
+          return derived();
+        }
+
+        template <class Derived>
+        int axis_plot_frame<Derived>::plus_inf_limit_size()
+        { //! \return The font size for the NaN point(s) marker shape or symbol.
+          return derived().plus_inf_point_style_.size_;
+        }
+
+        template <class Derived>
+        Derived& axis_plot_frame<Derived>::minus_inf_limit_color(const svg_color& col)
+        { //! Set the color for -minus infinity point stroke color.
+          derived().minus_inf_point_style_.stroke_color(col);
+          return derived();
+        }
+        template <class Derived>
+        Derived& axis_plot_frame<Derived>::minus_inf_limit_fill_color(const svg_color& col)
+        { //! Set the color for -minus infinity point fill color.
+          derived().minus_inf_point_style_.fill_color(col);
+          return derived();
+        }
+
+        template <class Derived>
+        svg_color axis_plot_frame<Derived>::minus_inf_limit_fill_color()
+        { //! \return  the color for the +infinity  point strokefill color.
+          return derived().minus_inf_point_style_.fill_color();
+        }
+
+        template <class Derived>
+        svg_color axis_plot_frame<Derived>::minus_inf_limit_color()
+        { //! \return  the color for the -minus infinity  point stroke color.
+          return derived().minus_inf_point_style_.stroke_color();
+        }
+
+        template <class Derived>
+        Derived& axis_plot_frame<Derived>::minus_inf_limit_size(int limit_marker_size)
+        { //! Set the size for -minus infinity marker(s).
+          derived().minus_inf_point_style_.size(limit_marker_size);
+          return derived();
+        }
+
+        template <class Derived>
+        int axis_plot_frame<Derived>::minus_inf_limit_size()
+        { //! \return The font size for the -infinity point(s) marker shape or symbol.
+          return derived().minus_inf_point_style_.size_;
+        }
+
+         template <class Derived>
         Derived& axis_plot_frame<Derived>::nan_limit_fill_color(const svg_color& col)
         { //! Set the color for 'at limit' point fill color.
-          //derived().image_.g(detail::PLOT_LIMIT_POINTS).style().fill_on(true);
-          //derived().image_.g(detail::PLOT_LIMIT_POINTS).style().fill_color(col);
-          //derived().serieses_[0].limit_point_style_.fill_color(col); // Would require to add some data first!
           derived().nan_point_style_.fill_color(col);
           return derived();
         }
