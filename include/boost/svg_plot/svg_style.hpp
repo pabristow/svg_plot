@@ -891,7 +891,7 @@ enum point_shape
 
 class plot_point_style
 { /*! \class boost::svg::plot_point_style
-    \brief Shape, color, of data point markers.
+    \brief Shape, color, and symbol or shape of data point markers.
     \details (optional x and/or y data point value(s) & optional uncertainty).
   */
   friend std::ostream& operator<< (std::ostream&, plot_point_style);
@@ -1042,7 +1042,7 @@ public:
 
 // End class plot_point_style function *Definitions* separated.
 
-std::ostream& operator<< (std::ostream& os, plot_point_style p)
+  std::ostream& operator<< (std::ostream& os, plot_point_style p)
 {  //! Output description of data value plot point marker(s).
   os << "plot_point_style("
      << p.shape_ << ", "
@@ -1067,7 +1067,7 @@ plot_point_style default_plot_point_style();
 
 class plot_line_style
 { //! \class boost::svg::plot_line_style Style of line joining data series values.
-  // TODO dotted and dashed line style would be useful for monochrome plots.
+  // TODO Dotted and dashed line style would be useful for monochrome plots.
 public:
   svg_color stroke_color_; //!< Stroke color of line. (no fill color for lines)
   svg_color area_fill_; //!< Fill color from line to axis. == false means color.is_blank = true, or = blank.
@@ -1171,6 +1171,10 @@ std::ostream& operator<< (std::ostream& os, plot_line_style p)
      << ((p.bezier_on_) ? "bezier)" : "no bezier)");
   return os;
 } // std::ostream& operator<<
+
+// class plot_line_style function Definitions.
+
+// Member Functions.
 
 enum dim
 { //! \enum dim dimension of plot. (Used so that an axis knows what type it is, or none = N).

@@ -84,7 +84,8 @@ public:
 
   std::string title_; //!< title of data series (to show on legend).
   plot_point_style point_style_; //!< circle, square...
-  plot_point_style limit_point_style_; //!< Default is cone pointing down for 2D or point right for 1D.
+  // Limit Marker  settings now in svg_1d_plot class.
+  //plot_point_style limit_point_style_; //!< Default is cone pointing down for 2D or point right for 1D.
   plot_line_style line_style_; //!< No line style for 1-D, only for 2-D.
 //! \endcond
 
@@ -171,6 +172,13 @@ public:
   text_style y_value_label_style_; //!< Not used for 1D, but needed by axis_plot_frame.hpp.
   text_style point_symbols_style_; //!< Used for data point marking.
   text_style value_style_; //!< Used for data point value label.  (should be named value_label_style?)
+  // Not finite values.
+  plot_point_style nan_point_style_; //!< Default is cone pointing down for 2D, or NaN or point left or right for 1D.
+  plot_point_style plus_inf_point_style_; //!< Default is cone pointing right for 2D, or NaN or point left or right for 1D.
+  plot_point_style minus_inf_point_style_; //!< Default is cone pointing left for 2D, or NaN or point left or right for 1D.
+  // Outside plot window values.
+  plot_point_style plus_limit_point_style_; //!< Default is cone pointing up for 2D, or NaN or point left or right for 1D.
+  plot_point_style minus_limit_point_style_; //!< Default is cone pointing down for 2D, or NaN or point left or right for 1D.
 
   value_style x_values_style_; //!< Used for data point value marking.
   rotate_style x_value_label_rotation_; //!< Direction point value labels written (in 45 degree sets).
@@ -352,8 +360,7 @@ svg_1d_plot_series::svg_1d_plot_series(C begin, C end, const std::string& title)
 title_(title), // of data series.
 point_style_(black, blank, 5, vertical_line, ""), // Default data point marker style vertical line for 1D plots.
 //limit_point_style_(lightgrey, whitesmoke, 10, cone_point_right, ""), // Default limit//  (inf or NaN) point style.  right-pointing pointer.
-limit_point_style_(red, green, 20, cone_point_right, ""), // Default limit (inf or NaN) point style is right-pointing pointer.
-// Size 10 here has no effect :-(
+//limit_point_style_(red, green, 20, cone_point_right, ""), // Default limit (inf or NaN) point style is right-pointing pointer.
 line_style_(black, blank, 2, false, false) // Default line style, black, no fill, width, line_on, bezier_on false
 {
   /*
@@ -507,13 +514,7 @@ size_t svg_1d_plot_series::series_count()
 
 size_t svg_1d_plot_series::series_limits_count()
 { //!  \return Number of 'at limit' values: too big, too small or NaN data values in data series.
-  return series_limits_.size();
-}
-
-svg_1d_plot_series& svg_1d_plot_series::limit_point_color(const svg_color& col_)
-{ //! Set of stroke color of 'at limits' points.
-  limit_point_style_.stroke_color_ = col_;
-  return *this; //! \return Reference to @c svg_1d_plot_series to make chainable.
+  return series_limits_.size();  // TODO limit_count would be better name?
 }
 
 // Definitions of svg_plot member functions.
@@ -589,10 +590,10 @@ void svg_1d_plot::update_image()
     } // for j
   } // for i all normal
 
-  // Draw all the 'bad' or at_limit points.
+  // Draw all the not-normal or at_limit points.
   for(unsigned int i = 0; i < serieses_.size(); ++i)
   {
-    g_element& g_ptr = image_.g(detail::PLOT_LIMIT_POINTS);
+    g_element& g_ptr = image_.g(detail::PLOT_LIMIT_POINTS);  // Limit points layer.
 
     for (unsigned int j = 0; j != serieses_[i].series_limits_.size(); ++j)
     {
@@ -611,30 +612,28 @@ void svg_1d_plot::update_image()
           x0 = plot_right_;
         }
         // else X axis includes zero, so x0 is OK.
-        draw_plot_point(x0, y, g_ptr, serieses_[i].limit_point_style_, Meas(), Meas());
-        // draw_plot_point(x, y, g_ptr, serieses_[i].limit_point_style_, unc<false>(), unc<false>());
+        draw_plot_point(x0, y, g_ptr, nan_point_style_, Meas(), Meas());
       }
       else
-      { // Not NaN
+      { // Not NaN assume infinite.
         transform_x(x);
+        plot_point_style& point_style = minus_inf_point_style_; // 
         // Avoid overwriting any data marker at either end of the horizontal line.
         if (x < plot_left_)
         {
-          x = plot_left_ - serieses_[i].limit_point_style_.size_ /2; // Just half a font size to left of y=0 line.
+          x = plot_left_ - minus_inf_point_style_.size_ /2; // Just half a font size to left of y=0 line.
+          point_style = minus_inf_point_style_;
+
         }
         else if (x > plot_right_)
         {
-          x = plot_right_ + serieses_[i].limit_point_style_.size_ / 2; // Just half a font size to right of y=0 line.
+          x = plot_right_ + plus_inf_point_style_.size_ / 2; // Just half a font size to right of y=0 line.
+          point_style = plus_inf_point_style_;
         }
         // else is inside plot window, so draw a limit point marker.
-        // draw_plot_point(x, y, g_ptr, plot_point_style(lightgray, whitesmoke, s, cone_point_down)); default.
-        serieses_[i].limit_point_style_.stroke_color_ = image_.g(detail::PLOT_LIMIT_POINTS).style().stroke_color();
-        serieses_[i].limit_point_style_.fill_color_ = image_.g(detail::PLOT_LIMIT_POINTS).style().fill_color();
-        // This is a kludge.  limit_point_style_ should probably be common to all data series.
-
-        draw_plot_point(x, y, g_ptr, serieses_[i].limit_point_style_, Meas(), Meas());
-        //draw_plot_point(x, y, g_ptr, serieses_[i].limit_point_style_, unc<false>(), unc<false>());
+        draw_plot_point(x, y, g_ptr, point_style, Meas(), Meas()); // Draw the limit marker.
       }
+      // TODO add outwide window items.
     } // for j
   } // for i limits point
 } //   void update_image()
@@ -651,6 +650,13 @@ void svg_1d_plot::update_image()
     x_value_label_style_(12, "Verdana", "", ""),
     point_symbols_style_(12, "Lucida Sans Unicode"), // Used for data point marking.
     value_style_(10, "Verdana", "", ""), // Used for data point values.
+
+    nan_point_style_(green, white, 20, cone_point_down, ""), // Colors and size for NaN markers.
+    plus_inf_point_style_(red, white, 20, cone_point_right, ""), // Colors and size for +infinity markers.
+    minus_inf_point_style_(blue, white, 20, cone_point_left, ""), // Colors and size for -infinity markers.
+
+    plus_limit_point_style_(red, green, 20, cone_point_up, ""), // Colors and size for outside window markers.
+    minus_limit_point_style_(blue, green, 20, cone_point_down, ""), // Colors and size for outside window markers.
 
     title_info_(0, 0, "", title_style_, center_align, horizontal),
     //title_info_(0, 0, "Plot of data", title_style_, center_align, horizontal), aspect_ratioen text concatenation solved?
@@ -734,8 +740,8 @@ void svg_1d_plot::update_image()
   // Note that widths are stored in member data *and* copied here.
   // Not sure if this is wise but ...
   // Font info defaults are set by the constructor above.
-  // Ticks.
 
+  // Ticks.
   y_ticks_.left_ticks_on_ = false; // Needed to ensure don't extend X-axis line.
   y_ticks_.right_ticks_on_ = false;
 
@@ -787,6 +793,11 @@ void svg_1d_plot::calculate_plot_window()
   plot_top_ = 0 + image_border_width();
   plot_right_ = image_.x_size() - image_border_width(); // Bottom right of image.
   plot_bottom_ = image_.y_size() - image_border_width();
+
+  // Leave one char space each side for any limit markers showing +/-infinity and/or NaN.
+  // (half this might do?)
+  plot_left_ += minus_inf_point_style_.size_;
+  plot_right_ -= plus_inf_point_style_.size_;
 
   if(title_on_ && title_info_.text() != "")
   { // Leave space at top for title.

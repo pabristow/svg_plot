@@ -641,13 +641,13 @@ namespace boost
           double x_auto_max_value(); //!< \return X-axis maximum value computed by autoscale.
           double x_auto_tick_interval(); //!<\return  the X-axis major tick interval computed by autoscale.
           int x_auto_ticks(); //!<\return  the X-axis number of major ticks computed by autoscale.
-          Derived& limit_color(const svg_color&); //!<Set the color for 'at limit' point stroke color.
-          svg_color limit_color(); //!<\return  the color for the 'at limit' point stroke color.
-          Derived& limit_fill_color(const svg_color&); //!<Set the color for 'at limit' point fill color.
-          svg_color limit_fill_color(); //!<\return  the color for the 'at limit' point fill color.
+          Derived& nan_limit_color(const svg_color&); //!<Set the color for NaN point stroke color.
+          svg_color nan_limit_color(); //!<\return  the color for the NaN point stroke color.
+          Derived& nan_limit_fill_color(const svg_color&); //!<Set the color for NaN point fill color.
+          svg_color nan_limit_fill_color(); //!<\return  the color for the NaN point fill color.
           // This fails because size is not in svg_style.
-          //Derived& limit_size(const int size); //!< Set the size for 'at limit' point.
-          //int limit_size(); //!<\return The size for the 'at limit' point.
+          Derived& nan_limit_size(const int size); //!< Set the size for NaN point.
+          int nan_limit_size(); //!<\return The size for the NaN point.
 
           Derived& draw_note
             (double x, double y, std::string note, rotate_style rot = horizontal, align_style al = center_align, const svg_color& = black, text_style& tsty = no_style);
@@ -2760,7 +2760,7 @@ namespace boost
           void axis_plot_frame<Derived>::draw_plot_point(double x, double y, // X and Y values (in SVG coordinates).
             g_element& g_ptr,
             plot_point_style& point_style,
-            unc<false> ux, unc<false> uy) // Default unc ux = 0. and uy = 0. ?
+            unc<false> ux, unc<false> uy) // Default unc ux = 0. and uy = 0. ?  Meas?
           { /*! Draw a plot data point marker shape or symbol
               whose size and stroke and fill colors are specified in plot_point_style sty,
               possibly including uncertainty ellipses showing multiples of standard deviation.
@@ -5268,7 +5268,6 @@ namespace boost
             // Might be better to set in x_values_style
             derived().image_.g(PLOT_X_POINT_VALUES).style().fill_color(col);
             //derived().image_.g(PLOT_X_POINT_VALUES).style().stroke_color(col);
-
             return derived();
           }
 
@@ -5877,46 +5876,44 @@ namespace boost
         }
 
         template <class Derived>
-        Derived& axis_plot_frame<Derived>::limit_color(const svg_color& col)
-        { //! Set the color for 'at limit' point stroke color.
-          // Need to have set the series first?
-          derived().image_.g(detail::PLOT_LIMIT_POINTS).style().stroke_color(col);
-          // derived().serieses_[0].limit_point_color(col); // Would require to add some data first!
+        Derived& axis_plot_frame<Derived>::nan_limit_color(const svg_color& col)
+        { //! Set the color for NaN point stroke color.
+          derived().nan_point_style_.stroke_color(col);
           return derived();
         }
 
         template <class Derived>
-        svg_color axis_plot_frame<Derived>::limit_color()
-        { //! \return  the color for the 'at limit' point stroke color.
-          return derived().image_.g(detail::PLOT_LIMIT_POINTS).style().stroke_color();
+        svg_color axis_plot_frame<Derived>::nan_limit_color()
+        { //! \return  the color for the NaN point stroke color.
+          return derived().nan_point_style_.stroke_color();
         }
 
-        //template <class Derived>
-        //Derived& axis_plot_frame<Derived>::limit_size(const int size)
-        //{ //! Set the size for 'at limit' marker(s).
-        //  // Need to have set the series first?
-        //  derived().image_.g(detail::PLOT_LIMIT_POINTS).style().font_size(size);
-        //  // derived().serieses_[0].limit_point_size(size); // Would require to add some data first!
-        //  return derived();
-        //}
-
-        //template <class Derived>
-        //int axis_plot_frame<Derived>::limit_size()
-        //{ //! \return The size for the 'at limit' point(s).
-        //  return derived().image_.g(detail::PLOT_LIMIT_POINTS).style().size();
-        //}
+        template <class Derived>
+        Derived& axis_plot_frame<Derived>::nan_limit_size(int limit_marker_size)
+        { //! Set the size for NaN marker(s).
+          derived().nan_point_style_.size(limit_marker_size);
+          return derived();
+        }
 
         template <class Derived>
-        Derived& axis_plot_frame<Derived>::limit_fill_color(const svg_color& col)
+        int axis_plot_frame<Derived>::nan_limit_size()
+        { //! \return The font size for the 'at limit' point(s) marker shape or symbol.
+          return derived().nan_point_style_.size_;
+          //return derived().image_.g(detail::PLOT_LIMIT_POINTS).size();
+        }
+
+        template <class Derived>
+        Derived& axis_plot_frame<Derived>::nan_limit_fill_color(const svg_color& col)
         { //! Set the color for 'at limit' point fill color.
-          derived().image_.g(detail::PLOT_LIMIT_POINTS).style().fill_on(true);
-          derived().image_.g(detail::PLOT_LIMIT_POINTS).style().fill_color(col);
+          //derived().image_.g(detail::PLOT_LIMIT_POINTS).style().fill_on(true);
+          //derived().image_.g(detail::PLOT_LIMIT_POINTS).style().fill_color(col);
           //derived().serieses_[0].limit_point_style_.fill_color(col); // Would require to add some data first!
+          derived().nan_point_style_.fill_color(col);
           return derived();
         }
 
         template <class Derived>
-        svg_color axis_plot_frame<Derived>::limit_fill_color()
+        svg_color axis_plot_frame<Derived>::nan_limit_fill_color()
         { //! \return  the color for the 'at limit' point fill color.
           return derived().image_.g(detail::PLOT_LIMIT_POINTS).style().fill_color();
         }

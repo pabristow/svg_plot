@@ -54,8 +54,8 @@ int main()
   my_data.push_back(99.0); // Finite value that is too big to fit into the plot window.
 
   // Add some not-normal values to show how they are displayed.
-  my_data.push_back(numeric_limits<double>::infinity()); // Shows as a 
-  my_data.push_back(-numeric_limits<double>::infinity()); // Shows as a 
+  my_data.push_back(numeric_limits<double>::infinity()); // Shows as a point-right triangle or cone.
+  my_data.push_back(-numeric_limits<double>::infinity()); // Shows as a point-left triangle or cone.
   my_data.push_back(numeric_limits<double>::quiet_NaN()); // Shows as a point-down triangle, at the origin.
 
 //[demo_point_markers_2
@@ -87,28 +87,26 @@ here a blue diamond with a size of 10 pixels.
 
  /*` The 'at limit' values (infinity or NaN) markers can be customised, for example:
  */
-    my_1d_plot.limit_color(red);
-    // my_1d_plot.limit_fill_color(green);  // no effect on some symbols?
-   // my_1d_plot.limit_size(20); // Does not work yet.
-
+    //my_1d_plot.limit_color(purple);
+    //my_1d_plot.limit_fill_color(green);
+    //my_1d_plot.limit_size(10);
 
     /*`To use all these settings, finally write the plot to file.
 */
     my_1d_plot.write("demo_point_markers.svg");
 
-/*`If chosen settings do not have the expected effect, is may be helpful to display them.
-* 
+/*`If chosen settings do not have the expected effect, is may be helpful to show them.
 (All (over one hundred) settings can be displayed with `show_1d_plot_settings(my_1d_plot)`.)
 */
     std::cout << "my_1d_plot.x_values_font_size() " << my_1d_plot.x_values_font_size() << std::endl;
     std::cout << "my_1d_plot.x_values_font_family() " << my_1d_plot.x_values_font_family() << std::endl;
     std::cout << "my_1d_plot.x_values_color() " << my_1d_plot.x_values_color() << std::endl;
     std::cout << "my_1d_plot.x_values_precision() " << my_1d_plot.x_values_precision() << std::endl;
-    std::cout << "my_1d_plot.x_values_ioflags() " << std::hex << my_1d_plot.x_values_ioflags() << std::endl;
+    std::cout << "my_1d_plot.x_values_ioflags() " << std::hex << my_1d_plot.x_values_ioflags() << std::dec << std::endl;
 
-    std::cout << "limit points stroke color " << my_1d_plot.limit_color() << std::endl;
-    std::cout << "limit points fill color " << my_1d_plot.limit_fill_color() << std::endl;
-    //std::cout << "limit points size " << my_1d_plot.limit_size() << std::endl;
+    std::cout << "limit points stroke color " << my_1d_plot.nan_limit_color() << std::endl;
+    std::cout << "limit points fill color " << my_1d_plot.nan_limit_fill_color() << std::endl;
+    std::cout << "limit points size " << my_1d_plot.nan_limit_size() << std::endl;
 
 //] [demo_point_markers_2]
   }
