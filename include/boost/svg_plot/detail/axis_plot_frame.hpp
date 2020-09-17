@@ -3004,7 +3004,7 @@ namespace boost
 
             case cone_point_left: // small pointing-left triangle, white centre.
                g_ptr.text(x, y + third_height, "&#x25C3;", point_style.symbols_style_, center_align, horizontal);
-               // https://unicode.org/charts/PDF/U25A0.pdf
+               // https://unicode.org/charts/PDF/U25A0.pdf  Or larger triangle 25C1
                break;
 
             case triangle: // Pointing-up triangle, white centre.

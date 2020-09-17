@@ -553,10 +553,15 @@ void svg_1d_plot::update_image()
   { // So Y position being wrong should never happen! (error in transform?)
     throw std::runtime_error("transform_y(y=0) outside plot window!");
   }
+  // Symbols are offset downwards because
+  // the origin of the point is the top left of the glyph.
+  // Need to offset by the height and width of the font size?
+  y -= 3.; 
 
   for(unsigned int i = 0; i < serieses_.size(); ++i)
   { // Plot the normal data points for each of the i data series.
     g_element& g_ptr = image_.g(detail::PLOT_DATA_POINTS).add_g_element();
+    // Set the color for all the data series markers.
     g_ptr.style().stroke_color(serieses_[i].point_style_.stroke_color_);
     g_ptr.style().fill_color(serieses_[i].point_style_.fill_color_);
 
@@ -565,9 +570,6 @@ void svg_1d_plot::update_image()
       Meas ux = serieses_[i].series_[j];
       // unc<false> ux = serieses_[i].series_[j];
       double x = ux.value();
-      // TODO symbols are offset downwards because
-      // the origin of the point is the top left of the glyph.
-      // Need to offset by the height and width of the font size?
 
       transform_x(x);
       if((x >= plot_left_) && (x <= plot_right_)) // Check point is inside plot_window.
@@ -590,10 +592,16 @@ void svg_1d_plot::update_image()
     } // for j
   } // for i all normal
 
-  // Draw all the not-normal or at_limit points.
+  // Draw all the not-normal +/-infinity, NaN, or at_limit points.
   for(unsigned int i = 0; i < serieses_.size(); ++i)
   {
     g_element& g_ptr = image_.g(detail::PLOT_LIMIT_POINTS);  // Limit points layer.
+
+    // do I need something like this?
+    //g_ptr.style().stroke_color(serieses_[i].point_style_.stroke_color_);
+    //g_ptr.style().fill_color(serieses_[i].point_style_.fill_color_);
+    //g_ptr.style().stroke_color(pink); // Has no effect????
+    //g_ptr.style().fill_color(plus_inf_point_style_.fill_color_);
 
     for (unsigned int j = 0; j != serieses_[i].series_limits_.size(); ++j)
     {
@@ -612,27 +620,33 @@ void svg_1d_plot::update_image()
           x0 = plot_right_;
         }
         // else X axis includes zero, so x0 is OK.
+        g_ptr.style().stroke_color(nan_point_style_.stroke_color_);
+        g_ptr.style().fill_color(nan_point_style_.fill_color_);
         draw_plot_point(x0, y, g_ptr, nan_point_style_, Meas(), Meas());
       }
       else
       { // Not NaN assume infinite.
         transform_x(x);
-        plot_point_style& point_style (minus_inf_point_style_); // 
         // Avoid overwriting any data marker at either end of the horizontal line.
+        // Can still overlap marker with half a font height?  But better if raise the data points a bit more
         if (x < plot_left_)
         {
           x = plot_left_ - minus_inf_point_style_.size_ /2; // Just half a font size to left of left plot box.
+          g_ptr.style().stroke_color(minus_inf_point_style_.stroke_color_);
+          g_ptr.style().fill_color(minus_inf_point_style_.fill_color_);
           draw_plot_point(x, y, g_ptr, minus_inf_point_style_, Meas(), Meas()); // Draw the limit marker.
         }
         else if (x > plot_right_)
         {
           x = plot_right_ + plus_inf_point_style_.size_ / 2; // Just half a font size to right of right plot box.
+          g_ptr.style().stroke_color(plus_inf_point_style_.stroke_color_);
+          g_ptr.style().fill_color(plus_inf_point_style_.fill_color_);
           draw_plot_point(x, y, g_ptr, plus_inf_point_style_, Meas(), Meas()); // Draw the limit marker.
         }
         // else is inside plot window, so draw a limit point marker TODO.
       }
-    } // for j
-  } // for i limits point
+    } // for j limits point
+  } // for i data_series
 } //   void update_image()
 
   /*! Default constructor.
@@ -649,11 +663,11 @@ void svg_1d_plot::update_image()
     value_style_(10, "Verdana", "", ""), // Used for data point values.
 
     nan_point_style_(green, white, 20, cone_point_down, ""), // Colors and size for NaN markers.
-    plus_inf_point_style_(red, white, 20, cone_point_right, ""), // Colors and size for +infinity markers.
-    minus_inf_point_style_(blue, white, 20, cone_point_left, ""), // Colors and size for -infinity markers.
+    plus_inf_point_style_(red, white, 10, cone_point_right, ""), // Colors and size for +infinity markers.
+    minus_inf_point_style_(blue, white, 10, cone_point_left, ""), // Colors and size for -infinity markers.
 
-    plus_limit_point_style_(red, green, 20, cone_point_up, ""), // Colors and size for outside window markers.
-    minus_limit_point_style_(blue, green, 20, cone_point_down, ""), // Colors and size for outside window markers.
+    plus_limit_point_style_(red, white, 20, cone_point_up, ""), // Colors and size for outside window markers.
+    minus_limit_point_style_(blue, white, 20, cone_point_down, ""), // Colors and size for outside window markers.
 
     title_info_(0, 0, "", title_style_, center_align, horizontal),
     //title_info_(0, 0, "Plot of data", title_style_, center_align, horizontal), aspect_ratioen text concatenation solved?

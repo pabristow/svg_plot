@@ -35,10 +35,10 @@
   //using std::endl;
 
 #include <vector>
-  using std::vector;
+ // using std::vector;
 
 #include <limits>
-  using std::numeric_limits;
+ // using std::numeric_limits;
 
 //] [demo_point_markers_1]
 
@@ -48,15 +48,21 @@ int main()
   my_data.push_back(-10.);
   my_data.push_back(-9.);
   my_data.push_back(-1.);
-  my_data.push_back(1.23);
+  my_data.push_back(1.23456); // Data value label will be 1.2 with my_1d_plot.x_values_precision(2); 
   my_data.push_back(2.0);
   my_data.push_back(8.0);
   my_data.push_back(99.0); // Finite value that is too big to fit into the plot window.
 
   // Add some not-normal values to show how they are displayed.
-  my_data.push_back(numeric_limits<double>::infinity()); // Shows as a point-right triangle or cone.
-  my_data.push_back(-numeric_limits<double>::infinity()); // Shows as a point-left triangle or cone.
-  my_data.push_back(numeric_limits<double>::quiet_NaN()); // Shows as a point-down triangle, at the origin.
+  my_data.push_back(-std::numeric_limits<double>::infinity()); // Shows as a point-left triangle or cone.
+  my_data.push_back(std::numeric_limits<double>::infinity()); // Shows as a point-right triangle or cone.
+  my_data.push_back(std::numeric_limits<double>::quiet_NaN()); // Shows as a point-down triangle, at the origin.
+
+  std::vector<double> my_data_2;
+  my_data_2.push_back(-6.);
+  my_data_2.push_back(-4.);
+  my_data_2.push_back(+4);
+  my_data_2.push_back(+6.);
 
 //[demo_point_markers_2
 
@@ -68,16 +74,24 @@ int main()
       .x_label("length (m)"); // Add a label for the X-axis.
 
 /*`Add the one data series, `my_data` and a description, and how the data points are to be marked,
-here a blue diamond with a size of 10 pixels.
+here a blue diamond shape with a size of 10 pixels.
 */
-    my_1d_plot.plot(my_data, "1D Values").shape(diamond).size(10).fill_color(blue);
+    my_1d_plot.plot(my_data, "1D Values").shape(diamond).size(10).stroke_color(red).fill_color(blue);
 
     // TODO want to display ALL the possible markers - to check they all work too.
-    // But now Unicode markers are allowed/required , there are an 'infinite' number.
+    // But now Unicode markers are allowed/required, there are an 'infinite' number.
 
-/*`To put a value label against each data point, switch on the option:
+    my_1d_plot.plot(my_data_2, "More 1D Values").shape(circlet).size(10).stroke_color(blue).fill_color(red);
+
+/*`To put a decimal digit value label against each data point, switch on the option:
 */
-    my_1d_plot.x_values_on(true); // Add a label for the X-axis.
+    my_1d_plot.x_values_on(true); // Add data decimal digit values as labels above the X-axis.
+
+    my_1d_plot.x_values_precision(3); // Decimal digits precision for the X-axis value label, for example "1.23".
+    // if data point value = 1.23456, then Data value label will be 1.2 with my_1d_plot.x_values_precision(2); 
+    my_1d_plot.x_values_rotation(steepup); // Orientation for the X-axis value labels.
+    my_1d_plot.x_values_font_size(7); // Font Size for the X-axis value labels.
+
 
 /*`If the default size and color are not to your taste, set more options, like:
 */
@@ -87,9 +101,9 @@ here a blue diamond with a size of 10 pixels.
 
  /*` The 'at limit' values (infinity or NaN) markers can be customised, for example:
  */
-    //my_1d_plot.limit_color(purple);
-    //my_1d_plot.limit_fill_color(green);
-    //my_1d_plot.limit_size(10);
+    //my_1d_plot.nan_limit_color(purple);
+    //my_1d_plot.nan_limit_fill_color(green); // No effect on fill color?
+    //my_1d_plot.nan_limit_size(20); 
 
     /*`To use all these settings, finally write the plot to file.
 */
@@ -110,7 +124,6 @@ here a blue diamond with a size of 10 pixels.
     std::cout << "+infinity limit points stroke color " << my_1d_plot.plus_inf_limit_color() << std::endl;
     std::cout << "+infinity limit points fill color " << my_1d_plot.plus_inf_limit_fill_color() << std::endl;
     std::cout << "+infinity limit points size " << my_1d_plot.plus_inf_limit_size() << std::endl;
-
     std::cout << "-infinity limit points stroke color " << my_1d_plot.minus_inf_limit_color() << std::endl;
     std::cout << "-infinity limit points fill color " << my_1d_plot.minus_inf_limit_fill_color() << std::endl;
     std::cout << "-infinity limit points size " << my_1d_plot.minus_inf_limit_size() << std::endl;
