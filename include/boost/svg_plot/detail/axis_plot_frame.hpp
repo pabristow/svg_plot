@@ -335,8 +335,10 @@ namespace boost
           int legend_font_size(); //!<  \return Font size for the legend title (svg units, default pixels).
           Derived& legend_title_font_size(int size); //!<  \return Font size for the legend title.
           int legend_title_font_size(); //!<  \return Font size for the legend title (svg units, default pixels).
-          Derived& legend_text_font_size(int size); //!<  \return Font size for the legend text.
+          Derived& legend_text_font_size(int size); //!<  Set Font size for the legend text.
           int legend_text_font_size(); //!<  \return Font size for the legend text (svg units, default pixels).
+          //Derived& legend_text_color(const svg_color& col); //!<  Set color for the legend text.
+          //svg_color legend_text_color(); //!<  \return Color for the legend text.
 
           Derived& legend_title_font_weight(const std::string& weight); //!<  Set the font weight for the legend title.
           const std::string& legend_title_font_weight(); //!<  \return  Font weight for the legend title.
@@ -2697,15 +2699,16 @@ namespace boost
             point_style.shape_ =  egg; // so as a hack, use a Unicode egg instead. 2B2C to 2B2F
             was_unc_ellipse = true; // Note so can restore after showing circle.
           }
+          
           // Show a SVG plot point like vertical bar...
           draw_plot_point(
             legend_x_pos,
-            legend_y_pos - 3.,
+            legend_y_pos - point_style.size_ /3, // Move up third a marker font size to align with text.
             *g_inner_ptr,
             point_style,
             unc<false>(), unc<false>());  // X and Y position.
             // was derived().serieses_[i].point_style_, unc(0.), unc(0.));
-          legend_x_pos += derived().horizontal_marker_spacing_; // Trailing space.
+          legend_x_pos += derived().horizontal_marker_spacing_ * 2; // Trailing space.
 
           if (was_unc_ellipse)
           { // Restore from using egg (or the data points won't use the unc_ellipse!)
@@ -2716,7 +2719,7 @@ namespace boost
         { // Other data series have a point marker (but not this one).
           if (derived().is_a_point_marker_ == true)
           {
-            legend_x_pos += derived().horizontal_marker_spacing_;  // Leave a space where marker would be.
+            legend_x_pos += derived().horizontal_marker_spacing_ * 2;  // Leave a space where marker would be.
           }
         }
 
@@ -4253,6 +4256,21 @@ namespace boost
             //std::cout << "   derived().legend_text_style_.font_size_ = " << derived().legend_text_style_.font_size_ << std::endl; // 11
             return derived().legend_text_style_.font_size_; // 11 as expected for both expressions.
           }
+
+          //template <class Derived>
+          //Derived& axis_plot_frame<Derived>::legend_text_color(const svg_color& color)
+          //{ //! Set the stroke font color for the legend text. 
+          ////! Example: @c my_plot.legend_text_color(red);
+          //  derived().legend_text_style_.stroke_color_ = color;
+          //  return derived(); // Permit chaining.
+          //}
+
+          //template <class Derived>
+          //svg_color axis_plot_frame<Derived>::legend_text_color()
+          //{ //! \return  Font stroke color for the legend text.
+          //  return derived().legend_text_style_.stroke_color_;
+          //}
+
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_top_left(double x, double y)
