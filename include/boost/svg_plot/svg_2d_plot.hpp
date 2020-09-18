@@ -13,7 +13,7 @@
  */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2007, 2008, 2009, 2012, 2013, 2014, 2016, 2018
+// Copyright Paul A. Bristow 2007 - 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -518,6 +518,14 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       text_element y_value_label_info_; //!< Y-axis tick value text, for example: "1.2" or "1.2e+001"
 
       text_style value_style_; //!< Style used for data point value label.
+      // +/-Infinity and NaN
+      plot_point_style nan_point_style_; //!< Default is cone pointing down for 2D, or NaN or point left or right for 1D.
+      plot_point_style plus_inf_point_style_; //!< Default is cone pointing right for 2D, or NaN or point left or right for 1D.
+      plot_point_style minus_inf_point_style_; //!< Default is cone pointing left for 2D, or NaN or point left or right for 1D.
+      // Outside plot window values.
+      plot_point_style plus_limit_point_style_; //!< Default is cone pointing up for 2D, or NaN or point left or right for 1D.
+      plot_point_style minus_limit_point_style_; //!< Default is cone pointing down for 2D, or NaN or point left or right for 1D.
+
       value_style x_values_style_; //!< Data point X value marking, font, size etc.
       value_style y_values_style_; //!< Data point Y value marking, font, size etc.
       bool x_plusminus_on_; //!<  http://en.wikipedia.org/wiki/Plus-minus_sign Unicode \&\#0xB1; HTML \&plusmn;
@@ -735,12 +743,19 @@ my_plot.background_color(ghostwhite) // Whole image.
         plot_window_clip_("plot_window"), // for <clipPath id="plot_window" ...
 
         plot_window_on_(true),
-        // Can have either or both X and Y value shown.
+        // Lable data point with label. With 2D can have either or both X and Y values shown.
         x_values_on_(false), // If X values of data points are shown.
         y_values_on_(false), // If Y values of data points are shown.
         xy_values_on_(false), // If X & Y values of data are shown as a pair.
         x_values_style_(horizontal, 3, std::ios::dec, true, value_style_, black, black, false, false),
         y_values_style_(downward, 3, std::ios::dec, true, value_style_, black, black, false, false),
+
+        nan_point_style_(green, white, 20, cone_point_down, ""), // Colors and size for NaN markers.
+        plus_inf_point_style_(red, white, 10, cone_point_right, ""), // Colors and size for +infinity markers.
+        minus_inf_point_style_(blue, white, 10, cone_point_left, ""), // Colors and size for -infinity markers.
+
+        plus_limit_point_style_(red, white, 20, cone_point_up, ""), // Colors and size for outside window markers.
+        minus_limit_point_style_(blue, white, 20, cone_point_down, ""), // Colors and size for outside window markers.
 
         text_plusminus_(1.),
         // Confidence interval parameters.
@@ -1030,7 +1045,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         }
         // Why not check if legend wanted first?
         size_legend_box(); // Size depends on its contents.
-        place_legend_box(); // according to options chosen.
+        place_legend_box(); // According to options chosen.
 
         // Because there may be several datasets,
         // and the scaling can be done by anyone or all of them.
@@ -2236,7 +2251,6 @@ my_plot.background_color(ghostwhite) // Whole image.
         } // for normal points.
 
         //! Draw the abnormal 'at_limit' points (if any).
-
         using boost::svg::detail::limit_NaN;
 
         for(unsigned int i = 0; i < serieses_.size(); ++i)
@@ -2551,7 +2565,7 @@ my_plot.background_color(ghostwhite) // Whole image.
     public: // Declarations of member functions.
 
       // All return @c *this to permit chaining, documented with
-      // \return Reference to svg_2d_plot_series to make chainable.
+      // \verbatim \return Reference to svg_2d_plot_series to make chainable. \endverbatim
 
       // write() has two flavors, a file and a ostream.
       // The file version opens an ostream, and calls the stream version.

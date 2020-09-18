@@ -260,6 +260,18 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "confidence alpha " << plot.confidence() << std::endl;
   os << "data lines width " << plot.data_lines_width() << std::endl;
 
+  // Infinite, NaN and out of plot window markers.
+  os << "NaN limit points stroke color " << plot.nan_limit_color() << std::endl;
+  os << "NaN limit points fill color " << plot.nan_limit_fill_color() << std::endl;
+  os << "NaN limit points size " << plot.nan_limit_size() << std::endl;
+  os << "+infinity limit points stroke color " << plot.plus_inf_limit_color() << std::endl;
+  os << "+infinity limit points fill color " << plot.plus_inf_limit_fill_color() << std::endl;
+  os << "+infinity limit points size " << plot.plus_inf_limit_size() << std::endl;
+  os << "-infinity limit points stroke color " << plot.minus_inf_limit_color() << std::endl;
+  os << "-infinity limit points fill color " << plot.minus_inf_limit_fill_color() << std::endl;
+  os << "-infinity limit points size " << plot.minus_inf_limit_size() << std::endl;
+
+
   os.flags(iostate); // Restore saved format flags.
   os.precision(precision);  // Restore precision.
 } // void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)

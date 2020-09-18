@@ -599,9 +599,12 @@ void svg_1d_plot::update_image()
 
     // do I need something like this?
     //g_ptr.style().stroke_color(serieses_[i].point_style_.stroke_color_);
-    //g_ptr.style().fill_color(serieses_[i].point_style_.fill_color_);
     //g_ptr.style().stroke_color(pink); // Has no effect????
     //g_ptr.style().fill_color(plus_inf_point_style_.fill_color_);
+
+    y += 6; // Put the limit markers on the level of the X-axis line to avoid possible collision 
+    // with any marker right at either end of the X-axis line.
+    // This puts the NaN marker over the origin, but that's OK?
 
     for (unsigned int j = 0; j != serieses_[i].series_limits_.size(); ++j)
     {

@@ -78,9 +78,6 @@ here a blue diamond shape with a size of 10 pixels.
 */
     my_1d_plot.plot(my_data, "1D Values").shape(diamond).size(10).stroke_color(red).fill_color(blue);
 
-    // TODO want to display ALL the possible markers - to check they all work too.
-    // But now Unicode markers are allowed/required, there are an 'infinite' number.
-
     my_1d_plot.plot(my_data_2, "More 1D Values").shape(circlet).size(10).stroke_color(blue).fill_color(red);
 
 /*`To put a decimal digit value label against each data point, switch on the option:

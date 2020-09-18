@@ -2613,8 +2613,7 @@ namespace boost
         ;
 
       // Draw border box round legend with background.
-      g_ptr->push_back(new
-        rect_element(legend_x_start, legend_y_start, legend_width, legend_height));
+      g_ptr->push_back(new rect_element(legend_x_start, legend_y_start, legend_width, legend_height));
       // Placed Legend box: left = 554, right = 682.4, width = 120, top = 48, bottom = 358, height = 310,
       // Plot window box: left = 26, right = 545.6, top = 48, bottom = 471
 
@@ -2701,13 +2700,12 @@ namespace boost
           // Show a SVG plot point like vertical bar...
           draw_plot_point(
             legend_x_pos,
-            legend_y_pos,
+            legend_y_pos - 3.,
             *g_inner_ptr,
             point_style,
             unc<false>(), unc<false>());  // X and Y position.
             // was derived().serieses_[i].point_style_, unc(0.), unc(0.));
-          legend_x_pos += derived().horizontal_marker_spacing_;
-          //legend_x_pos += derived().horizontal_spacing_; // Trailing space.
+          legend_x_pos += derived().horizontal_marker_spacing_; // Trailing space.
 
           if (was_unc_ellipse)
           { // Restore from using egg (or the data points won't use the unc_ellipse!)
@@ -2715,15 +2713,14 @@ namespace boost
           }
         } // A marker shape for this series.
         else
-        { // Other data series have a point marker.
+        { // Other data series have a point marker (but not this one).
           if (derived().is_a_point_marker_ == true)
           {
-            legend_x_pos += derived().horizontal_marker_spacing_;
-            //legend_x_pos += derived().horizontal_spacing_; // Trailing space.
+            legend_x_pos += derived().horizontal_marker_spacing_;  // Leave a space where marker would be.
           }
         }
 
-        // Line markers are only really useful for 2-D lines and curves showing functions.
+        // Line markers are really useful for 2-D lines and curves showing functions.
         if (derived().serieses_[i].line_style_.line_on_ == true) // Line joining points option is true,
         { // so need to draw a short line to show color for line joining points for that data series.
           // derived().legend_lines_ = true; // Some line is drawn for at least one data series.

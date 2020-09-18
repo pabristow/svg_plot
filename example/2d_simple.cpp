@@ -50,7 +50,7 @@ int main()
     map3[2.3] = 6.0;
     map3[8.3] = 4.1;
 
-    using namespace boost::svg;
+    using namespace boost::svg;  // Convenient for access to all SVG functions and colors.
 
     svg_2d_plot my_plot;
 
@@ -69,10 +69,9 @@ int main()
 
     my_plot.write("./2d_simple.svg");
 
-    show_2d_plot_settings(my_plot);
+    //show_2d_plot_settings(my_plot);
 
     return boost::exit_success;
-    return 0;
   }
   catch (std::exception& ex)
   {

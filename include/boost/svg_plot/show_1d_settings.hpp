@@ -327,8 +327,6 @@ void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
   os << "-infinity limit points fill color " << plot.minus_inf_limit_fill_color() << std::endl;
   os << "-infinity limit points size " << plot.minus_inf_limit_size() << std::endl;
 
-
-
   os.flags(flags); // Restore.
   os.precision(prec);
 } // void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& = std::cout)
