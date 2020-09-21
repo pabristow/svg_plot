@@ -156,7 +156,7 @@ namespace boost
          void draw_x_major_tick(double i, path_element& tick_path, path_element& grid_path); // (& grid).
          void draw_x_axis();
          void draw_legend();
-         void size_legend_box();
+         void size_legend_box();  // Compute the size of the legend box from fonts, title and marker points and text.
          void place_legend_box();
          void draw_title();
          void adjust_limits(double& x, double& y);
@@ -2196,8 +2196,9 @@ namespace boost
         derived().image_.g(PLOT_TITLE).push_back(new text_element(derived().title_info_));
       } // void draw_title()
 
-  //! Calculate how big the legend box needs to be to hold the legend title
-  //! and the data point markers (symbols or shapes),
+  //! Size_legend_box Calculate how big the legend box needs to be to hold
+  //! any legend title and
+  //! the data point markers (symbols or shapes),
   //! and any line marks showing lines used joining points,
   //! and any data series descriptor text(s).
   template <class Derived>
@@ -2211,7 +2212,7 @@ namespace boost
       // Check if any legend title or title.
       derived().is_legend_title_ = (derived().legend_title_.text() != "");
       derived().legend_text_font_size_  = derived().legend_text_style_.font_size_; // legend data series text font size.
-      derived().legend_title_font_size_ = derived().legend_title_style_.font_size_; // legend title text font size.
+      derived().legend_title_font_size_ = derived().legend_title_style_.font_size_; // legend title text_font size.
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "Title " << derived().legend_title_.text() << ", .legend_title_font_size_ = " << derived().legend_title_font_size_
         << ", .legend_text_font_size_ = " << derived().legend_text_font_size_
@@ -2219,7 +2220,7 @@ namespace boost
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
       // If assume that descriptor text for each series uses same font as header,
-      // and then have larger marker symbols then will clash and misalign,
+      // and then if have larger marker symbols then will clash and misalign,
       // so vertical spacing needs to use the largest of
       // all point marker Unicode symbol font sizes (may be different) and legend title font size.
       // https://www.w3.org/TR/SVG/text.html#GlyphsMetrics
@@ -2278,16 +2279,16 @@ namespace boost
         } // if a data series title line.
       } // for num_series
 
+ //     ?????????????????????????? computes text or title width wrongly for comparison here.
 
- //     ?????????????????????????? computes text or title width wrongly for comparison here
-
-
-
-
-      // Compute spacing.
-      derived().vertical_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; // Legend header vertical spacing.
+      // Compute Y-axis vertical spacing.
+      derived().vertical_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; // Legend header/title vertical spacing.
+      //derived().vertical_margin_ = derived().legend_text_font_size_ * derived().text_margin_; // Legend header/title vertical spacing.
+      //      text_margin = 1.5; //!< Plot window margin to allow for rounding etc
       derived().vertical_line_spacing_ =   derived().legend_text_font_size_; // Legend text line vertical spacing.
+      // A fraction of the largest of the legend text or, if no legend title then the marker_symbol/line/text.
       derived().vertical_marker_spacing_ = derived().biggest_point_font_size_ * 0.72; // Suits line spacing of markers, lines and text.
+      // Compute X-axis horizontal spacing.
       derived().horizontal_spacing_ =      derived().legend_text_font_size_ * aspect_ratio; // legend_font width, used as a font.
       derived().horizontal_line_spacing_ = derived().legend_text_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
       derived().horizontal_marker_spacing_ = derived().biggest_point_font_size_ * 0.72 * aspect_ratio; // Width of biggest marker used if no marker on a series).
@@ -2295,9 +2296,8 @@ namespace boost
 // #ifdef BOOST_SVG_POINT_DIAGNOSTICS
       #ifdef      BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "Spacings"
-        "\nLegend_text_font_size_ = "
-        << derived().legend_text_font_size_
-        << ", Legend_title_font_size_" << derived().legend_title_font_size_
+        "\nLegend_text_font_size_ = " << derived().legend_text_font_size_
+        << ", Legend_title_font_size_ = " << derived().legend_title_font_size_
         << ", text_margin = " << derived().text_margin_
         << ", aspect ratio =  " << aspect_ratio
         << ", Vertical_spacing = " << derived().vertical_spacing_
@@ -2309,7 +2309,7 @@ namespace boost
         << std::endl;
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
 
-      // Compute the width of the longest data series text line.
+      // X-Axis Compute the width of the longest data series text line.
       double text_width = longest_text; // actual char text as SVG units (default pixels).
 
       if (derived().is_a_point_marker_ == true)
@@ -2349,11 +2349,11 @@ namespace boost
       }
 
       // Use height of whichever is the biggest of data point marker shape and legend title or text font,
-      // for vertical spacing, (assuming horizontal line markers have neglible height).
+      // for vertical spacing, (assuming horizontal line markers have neglible height so fill use marker text font size).
       // is now double biggest_point_font_size_;
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-      std::cout << "\nSet_legend box dimensions"
+      std::cout << "\nSet_legend box dimensions:"
         "\nLegend title \"" << derived().legend_title_.text()
         << ", chars = " << derived().legend_title_.text().size()
         << ", .legend_title_font_size_ = " << derived().legend_title_font_size_
@@ -2400,7 +2400,7 @@ namespace boost
       // Legend width 274.5, height 140
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
-      // Compute legend box height.
+      // Y-axis Compute legend box height.
       // legend_height must be *at least* enough for
       // any legend title and text_margin(s) around it
       // Or size of marker or line, whichever is the biggest,  TODO compute this fully like the width.
@@ -2562,7 +2562,8 @@ namespace boost
         } // if legend_on_
       } //  void place_legend_box()
 
-    //! Draw the legend border and background,
+    //! Draw the legend box.
+    //! border and background,
     //! (using the size and position computed by function @c size_legend_box),
     //! and legend text title (if any and if required),
     //! and any data point marker lines,
@@ -2621,10 +2622,9 @@ namespace boost
 
       // #ifdef BOOST_SVG_POINT_DIAGNOSTICS
 #ifdef      BOOST_SVG_LEGEND_DIAGNOSTICS
-      std::cout << "Spacings"
-        "\nLegend_text_font_size_ = "
-        << derived().legend_text_font_size_
-        << ", Legend_title_font_size_" << derived().legend_title_font_size_
+      std::cout << "Legend Spacings:"
+        "\nLegend_text_font_size_ = "  << derived().legend_text_font_size_
+        << ", Legend_title_font_size_ = " << derived().legend_title_font_size_
         << ", text_margin = " << derived().text_margin_
         << ", aspect ratio =  " << aspect_ratio
         << ", Vertical_spacing = " << derived().vertical_spacing_
@@ -2642,8 +2642,8 @@ namespace boost
         legend_y_pos += derived().legend_box_.width_;  // If a border, don't write on it!
       }
       legend_y_pos += derived().legend_box_.margin_; // Leave small margin.
-      legend_y_pos += derived().vertical_spacing_;
-     // legend_y_pos += derived().vertical_spacing_ /2;  // Origin 0,0 for glyph is bottom left, so down half a spacing.
+      legend_y_pos += derived().vertical_marker_spacing_; // Fraction of biggest font.
+      legend_y_pos += derived().legend_text_font_size_; // Legend title font height so that top of title char is below space.
 
       if (derived().legend_title_.text() != "") //
       { // Is a legend title, so draw the centered legend title text for example: "My Plot Legend".
@@ -2651,13 +2651,13 @@ namespace boost
         // Might be better to use center_align here because may fail if legend contains symbols in Unicode?
         derived().legend_title_.y(legend_y_pos);
         derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_title_));
-        legend_y_pos += derived().vertical_line_spacing_; // Leave a text half space below legend header.
+        legend_y_pos += derived().vertical_marker_spacing_ /2; // Leave a text half space below legend header.
       } // is_header
-      legend_y_pos += derived().vertical_line_spacing_ /2; // Leave a half text space below any legend header.
 
-      g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Write title text into legend box.
+      g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Prepare to write title text into legend box.
       g_element* g_inner_ptr = g_ptr;
-      g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT));
+      g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Write title text into legend box.
+      legend_y_pos += derived().vertical_marker_spacing_ /2; // Fraction of biggest font.
 
       for(unsigned int i = 0; i != derived().serieses_.size(); ++i)
       { // Show any point marker, maybe line, & maybe text info for each of the data series.
@@ -2699,11 +2699,11 @@ namespace boost
             point_style.shape_ =  egg; // so as a hack, use a Unicode egg instead. 2B2C to 2B2F
             was_unc_ellipse = true; // Note so can restore after showing circle.
           }
-          
+
           // Show a SVG plot point like vertical bar...
           draw_plot_point(
             legend_x_pos,
-            legend_y_pos - point_style.size_ /3, // Move up third a marker font size to align with text.
+            legend_y_pos, // - point_style.size_ /10, // Move up third a marker font size to align with text.
             *g_inner_ptr,
             point_style,
             unc<false>(), unc<false>());  // X and Y position.
@@ -2766,11 +2766,11 @@ namespace boost
             derived().legend_text_style_,
             left_align));
         }
-        legend_y_pos += derived().vertical_marker_spacing_; // Just right spacing between big shapes.
-        legend_y_pos += derived().vertical_marker_spacing_; // Just right spacing between big shapes.
+        legend_y_pos += derived().vertical_marker_spacing_; // Fraction of biggest font.
 
       } // for
     } // void draw_legend()
+
 
           template <class Derived>
           void axis_plot_frame<Derived>::draw_plot_point(double x, double y, // X and Y values (in SVG coordinates).
@@ -2969,7 +2969,7 @@ namespace boost
               g_ptr.text(x, y + third_height, "&#x2660;", point_style.symbols_style_, center_align, horizontal);
               //
               break;
-            case heart: 
+            case heart:
               g_ptr.text(x, y + third_height , "&#x2665;", point_style.symbols_style_, center_align, horizontal);
               break;
             case outside_window: // Pointing down triangle used only to show data points that are outside plot window.
@@ -2980,7 +2980,7 @@ namespace boost
               }
               break;
              // Triangles and cones.
-             // https://unicode.org/charts/PDF/U25A0.pdf Geometric Shapes 
+             // https://unicode.org/charts/PDF/U25A0.pdf Geometric Shapes
               // There are large and small, and filled black or white centre.
              // Could use black center &#x25BE for pointing down triangle,
              // or &#x25B4 for small black center up-pointing triangle
@@ -4183,28 +4183,8 @@ namespace boost
           { //! \return  the font size for the legend title (svg units, default pixels).
             return derived().legend_title_style_.font_size_;
           }
-          //Derived& legend_title_font_size(int size); //!<  Set legend header font size (svg units, default pixels).
-          //int legend_title_font_size(); //!<\return  legend header font size (svg units, default pixels).
-
-          template <class Derived>
-          Derived& axis_plot_frame<Derived>::legend_font_size(int size)
-          { //! Set Font size for @b both the legend title and legend text (svg units, default pixels).
-            derived().legend_title_style_.font_size_ = size;
-            derived().legend_text_style_.font_size_ = size;
-            return derived();
-          }
-
-          template <class Derived>
-          int axis_plot_frame<Derived>::legend_font_size()
-          { //! \return  Font size for the legend title (svg units, default pixels).
-            //! \note If function @c .legend_font_size(size) has been used to set both title and text font sizes,
-            //! then these will be the same (unless altered by a call of @c.legend_text_font_size(size)).
-            return derived().legend_title_style_.font_size_;
-            // return derived().legend_text_style_.font_size_;
-          }
-
-
-          template <class Derived>
+   
+           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_title_font_weight(const std::string& weight)
           { //! Set the font weight for the legend title.  Example: @c my_plot.legend_title_font_size(10);
             derived().legend_title_style_.font_weight_ = weight;
@@ -4215,6 +4195,28 @@ namespace boost
           const std::string& axis_plot_frame<Derived>::legend_title_font_weight()
           { //! \return  the font weight for the legend title.
             return derived().legend_title_style_.weight_;
+          }
+
+          // Separate title and text font sizes.
+          template <class Derived>
+          Derived& axis_plot_frame<Derived>::legend_text_font_size(int size)
+          { //! Set the font size for the legend title (svg units, default pixels).
+            derived().legend_text_style_.font_size_ = size;
+            return derived(); // Make chainable.
+          }
+
+
+         //template <class Derived>
+         // Derived& axis_plot_frame<Derived>::legend_text_font_size(int size)
+         // { //! Set Font size for legend text (svg units, default pixels).
+         //   derived().legend_text_style_.font_size_ = size;
+         //   return derived();
+         // }
+
+          template <class Derived>
+          int axis_plot_frame<Derived>::legend_text_font_size()
+          { //! \return  Font size for the legend text used for marker descriptions (svg units, default pixels).
+            return derived().legend_text_style_.font_size_;
           }
 
           template <class Derived>
@@ -4230,36 +4232,10 @@ namespace boost
             return derived().legend_text_style_.weight_;
           }
 
-          // Now separate title and text font sizes
-          template <class Derived>
-          Derived& axis_plot_frame<Derived>::legend_text_font_size(int size)
-          { //! Set the font size for the legend title (svg units, default pixels).
-           // derived().legend_text_.textstyle().font_size_ = size;
-            //std::cout << "set derived().legend_text_style_.font_size_ = size " << size << std::endl; // 11
-            // Gets the default value.
-            //std::cout << " derived().legend_text_.textstyle().font_size() = " << derived().legend_text_.textstyle().font_size() << std::endl; // still 10 is default
-
-            derived().legend_text_style_.font_size_ = size;
-            //std::cout << " derived().legend_text_.textstyle().font_size() = " << derived().legend_text_.textstyle().font_size() << std::endl; // Still 10 - default
-            // So this expression derived().legend_text_.textstyle().font_size()
-            // does NOT update derived().legend_text_style_.font_size_ as expected.
-            //std::cout << " derived().legend_text_style_.font_size_ = " << derived().legend_text_style_.font_size_ << std::endl; // 11 set as expected.
-            return derived();
-          }
-
-          template <class Derived>
-          int axis_plot_frame<Derived>::legend_text_font_size()
-          { //! \return  the font size for the legend title (svg units, default pixels).
-            //return derived().legend_text_.textstyle().font_size();
-            //std::cout << " get derived().legend_text_.textstyle().font_size(); = " << derived().legend_text_.textstyle().font_size() << std::endl; // 11
-            //std::cout << "   derived().legend_text_style_.font_size() = " << derived().legend_text_style_.font_size() << std::endl; // 11
-            //std::cout << "   derived().legend_text_style_.font_size_ = " << derived().legend_text_style_.font_size_ << std::endl; // 11
-            return derived().legend_text_style_.font_size_; // 11 as expected for both expressions.
-          }
 
           //template <class Derived>
           //Derived& axis_plot_frame<Derived>::legend_text_color(const svg_color& color)
-          //{ //! Set the stroke font color for the legend text. 
+          //{ //! Set the stroke font color for the legend text.
           ////! Example: @c my_plot.legend_text_color(red);
           //  derived().legend_text_style_.stroke_color_ = color;
           //  return derived(); // Permit chaining.
@@ -4755,7 +4731,7 @@ namespace boost
                \arg @c place > 0 labels to left of Y-axis line )@c left_side) (default),\n
                \arg @c place = 0 (false) no major tick labels on Y-axis. \n
                \arg @c place > 0 labels to right of Y-axis line (@c right_side).
-               \sa enum boost::svg:place for named 
+               \sa enum boost::svg:place for named
             */
             derived().x_ticks_.major_value_labels_side_ = place;
             return derived(); //! \return reference to svg_2d_plot to make chainable.

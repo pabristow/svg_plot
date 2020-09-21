@@ -98,7 +98,8 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "legend_border_color " << plot.legend_border_color() << std::endl;
   os << "legend_color " << plot.legend_color() << std::endl;
   os << "legend_title "  << '"' << plot.legend_title()  << '"' << std::endl;
-  os << "legend_font_size " << plot.legend_text_font_size() << std::endl; // Font for both text and title.
+  os << "legend_text_font_size " << plot.legend_text_font_size() << std::endl; // Font for marker text.
+  os << "legend_title_font_size " << plot.legend_title_font_size() << std::endl; // Font for legend title.
   os << "legend_font_weight " << plot.legend_font_weight() << std::endl; // normal or might be bold.
   os << "legend_text_font_size " << plot.legend_text_font_size() << std::endl;
   os << "legend_title_font_size " << plot.legend_title_font_size() << std::endl;

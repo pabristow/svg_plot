@@ -678,7 +678,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         // See documentation for default settings rationale.
         // text_styles: //  Font size, font family, font weight, font style, font stretch & font decoration.
         title_style_(18, default_font, "normal", "", "", "", 0),  // // 3rd parameter weight might be bold?
-        legend_title_style_(0, default_font, "normal", "", "", "", 0), // 6rd parameter decoration might be underline?
+        legend_title_style_(10, default_font, "normal", "", "", "", 0), // 6rd parameter decoration might be underline?
         legend_text_style_(10, default_font, "normal", "", "", "", 0), //
         x_axis_label_style_(12, default_font, "", "","", "", 0),
         x_value_label_style_(12, default_font, "", "","", "", 0), // X-axis tick labels.
@@ -700,10 +700,14 @@ my_plot.background_color(ghostwhite) // Whole image.
         y_label_info_(0, 0, "", y_axis_label_style_, center_align, upward),
         y_units_info_(0, 0, "", y_axis_label_style_, center_align, upward),
         y_value_label_info_(0, 0, "", y_value_label_style_, center_align, upward), //
-        text_margin_(1.5), // for title and axis label text, as a multiplier of the font size.
+
+        // Should allow a 'half font space' above and below the text.
+        text_margin_(1.5), // for title and axis label text, 
+        // as a multiplier of the biggest font size of legend title and any marker symbols.
         // 1.0 places title too near the top, 1.5 seems about right,
         // 2.0 leaves a bigger gap at top with little gain in the legend.
-        // Should allow a 'half line space' above and below the label text.
+        // This isn't the best way to do this?  This confuses a margin space with the font size?
+
         image_border_(yellow, white, 2, 3, true, true),
         // margin (parameter 4) needs to be at least the width of the border (parameter 3) to ensure any border color shows.
         // margin should be about axis tick label font size to
