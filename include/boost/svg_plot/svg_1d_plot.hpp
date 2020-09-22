@@ -235,7 +235,7 @@ public:
   double legend_text_font_size_; //!< Font size of legend text.
  // double series_text_font_size_; //!< Font size of lines of text describing data series.
   double legend_widest_line_; //!< Width of longest of legend header/title and widest data series pointer+line+text.
-  double biggest_point_font_size_; //!< Biggest point marker symbol - determines vertical spacing.
+  double biggest_point_marker_font_size_; //!< Biggest point marker symbol - determines vertical spacing.
 
   // Leave a vertical space before any text (if text_margin_ == 1.5 then height of one biggest font).
   // Leave a horizontal space before any text (if text_margin_ == 1.5 then width of one biggest font).
@@ -245,8 +245,8 @@ public:
   double vertical_line_spacing_; // = derived().legend_font_size_; // One line vertically.
   double horizontal_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
   double horizontal_line_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
-  double horizontal_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
-  double vertical_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
+  double horizontal_marker_spacing_; // = derived().biggest_point_marker_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
+  double vertical_marker_spacing_; // = derived().biggest_point_marker_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
 
   axis_line_style x_axis_; //!< style of X axis line.
   axis_line_style y_axis_; //!< style of Y axis line. (Meaningless for 1D but added to permit shared code in axis_plot_frame.hpp!)
@@ -741,10 +741,10 @@ void svg_1d_plot::update_image()
 
   // Set other SVG color, stroke & width defaults for various child PLOT nodes.
   image_.g(PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);
-  image_.g(PLOT_BACKGROUND).style().stroke_width(image_border_.width_); //
+  image_.g(PLOT_BACKGROUND).style().stroke_width(image_border_.border_width_); //
   image_.g(PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
   image_.g(PLOT_WINDOW_BACKGROUND).style().fill_color(plot_window_border_.fill_);
-  image_.g(PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.width_).stroke_color(plot_window_border_.stroke_);
+  image_.g(PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.border_width_).stroke_color(plot_window_border_.stroke_);
   image_.g(PLOT_LIMIT_POINTS).style().stroke_color(lightslategray).fill_color(antiquewhite);
   image_.g(PLOT_X_AXIS).style().stroke_color(black).stroke_width(x_axis_.width());
   image_.g(PLOT_DATA_UNC3).style().stroke_color(lightgoldenrodyellow).fill_color(lightgoldenrodyellow).stroke_width(1);

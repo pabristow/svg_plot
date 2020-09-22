@@ -1598,7 +1598,7 @@ class box_style
 public:
     svg_color stroke_; //!< Box line (stroke) color.
     svg_color fill_; //!< Box fill color.
-    double width_; //!< plot border rectangle width.
+    double border_width_; //!< plot border rectangle width.
     double margin_; //!< Marginal (pixels) space around the box (inside or out).
     bool border_on_; //!< Display the border of the box.
     bool fill_on_; //!< Color fill the box.
@@ -1638,7 +1638,7 @@ box_style::box_style(
   bool border_on,// = true, // Draw a border of width.
   bool fill_on) //= false) // Apply fill color.
     :
-  stroke_(scolor), fill_(fcolor), width_(width),
+  stroke_(scolor), fill_(fcolor), border_width_(width),
   margin_(margin),
   border_on_(border_on),
   fill_on_(fill_on)
@@ -1671,13 +1671,13 @@ box_style::box_style(
 
   box_style& box_style::width(double w)
   { //! Set width for box.
-    width_ = w;
+    border_width_ = w;
     return *this; //! \return box_style& to make chainable.
   }
 
   double box_style::width()
   {
-    return width_; //! \return width for box.
+    return border_width_; //! \return width for box.
   }
 
   box_style& box_style::margin(double w)

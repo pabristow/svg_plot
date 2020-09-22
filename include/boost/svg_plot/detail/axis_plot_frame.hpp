@@ -852,8 +852,8 @@ namespace boost
           }
           else
           { // plot_window_on_ == true.
-            y_bottom = derived().plot_top_ + derived().plot_window_border_.width_; // Top.
-            y_top = derived().plot_bottom_ - derived().plot_window_border_.width_; // Bottom. Ensure *inside* window.
+            y_bottom = derived().plot_top_ + derived().plot_window_border_.border_width_; // Top.
+            y_top = derived().plot_bottom_ - derived().plot_window_border_.border_width_; // Bottom. Ensure *inside* window.
           }
           // Make sure that we are drawing inside the allowed window.
           if ((x >= derived().plot_left_) && (x <= derived().plot_right_)) // allow = too?
@@ -1588,14 +1588,14 @@ namespace boost
       // https://www.w3.org/TR/SVG/text.html#GlyphsMetrics
 
       size_t num_series = derived().serieses_.size(); // How many data series in this plot.
-      derived().biggest_point_font_size_ = std::max(derived().legend_title_font_size(), derived().legend_text_font_size());
-      std::cout << "Biggest of text and title font derived().biggest_point_font_size_ " << derived().biggest_point_font_size_ << std::endl;
+      derived().biggest_point_marker_font_size_ = std::max(derived().legend_title_font_size(), derived().legend_text_font_size());
+      std::cout << "Biggest of text and title font derived().biggest_point_marker_font_size_ " << derived().biggest_point_marker_font_size_ << std::endl;
       // Assume legend title or text size until a bigger symbol is found.
       // Below get biggest marker symbol point size in any series to get minimum vertical spacing between lines.
 
       double longest_text = 0;
       std::size_t longest_text_chars_count = 0;
-      derived().biggest_point_font_size_ = 0;
+      derived().biggest_point_marker_font_size_ = 0;
       size_t longest_series_text_number = 0;
       for (size_t i = 0; i != num_series; ++i)
       {
@@ -1605,9 +1605,9 @@ namespace boost
           derived().is_a_point_marker_ = true; // So will need to provide a space for any other series without a point marker.
           point_size = derived().serieses_[i].point_style_.size(); //
           std::cout << "point size series " << i << ", size " << point_size << std::endl;
-          if (point_size > derived().biggest_point_font_size_)
+          if (point_size > derived().biggest_point_marker_font_size_)
           {
-            derived().biggest_point_font_size_ = point_size;
+            derived().biggest_point_marker_font_size_ = point_size;
             std::cout << "new biggest point size series " << i << ", size " << point_size << std::endl;
           }
         } // if shape != none
@@ -1641,23 +1641,21 @@ namespace boost
         } // if a data series title line.
       } // for num_series
 
- //     ?????????????????????????? computes text or title width wrongly for comparison here.
-
       // Compute Y-axis vertical spacing.
       derived().vertical_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; // Legend header/title vertical spacing.
       //derived().vertical_margin_ = derived().legend_text_font_size_ * derived().text_margin_; // Legend header/title vertical spacing.
       //      text_margin = 1.5; //!< Plot window margin to allow for rounding etc
       derived().vertical_line_spacing_ =   derived().legend_text_font_size_; // Legend text line vertical spacing.
       // A fraction of the largest of the legend text or, if no legend title then the marker_symbol/line/text.
-      derived().vertical_marker_spacing_ = derived().biggest_point_font_size_ * 0.72; // Suits line spacing of markers, lines and text.
+      derived().vertical_marker_spacing_ = derived().biggest_point_marker_font_size_ * 0.72; // Suits line spacing of markers, lines and text.
       // Compute X-axis horizontal spacing.
       derived().horizontal_spacing_ =      derived().legend_text_font_size_ * aspect_ratio; // legend_font width, used as a font.
       derived().horizontal_line_spacing_ = derived().legend_text_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
-      derived().horizontal_marker_spacing_ = derived().biggest_point_font_size_ * 0.72 * aspect_ratio; // Width of biggest marker used if no marker on a series).
+      derived().horizontal_marker_spacing_ = derived().biggest_point_marker_font_size_ * 0.72 * aspect_ratio; // Width of biggest marker used if no marker on a series).
 
 // #ifdef BOOST_SVG_POINT_DIAGNOSTICS
       #ifdef      BOOST_SVG_LEGEND_DIAGNOSTICS
-      std::cout << "Spacings"
+      std::cout << "**Spacings"
         "\nLegend_text_font_size_ = " << derived().legend_text_font_size_
         << ", Legend_title_font_size_ = " << derived().legend_title_font_size_
         << ", text_margin = " << derived().text_margin_
@@ -1676,8 +1674,8 @@ namespace boost
 
       if (derived().is_a_point_marker_ == true)
       {
-        text_width += derived().biggest_point_font_size_ * aspect_ratio; // Data point marker and
-        text_width += derived().biggest_point_font_size_ * aspect_ratio; // a same size space after.
+        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // Data point marker and
+        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // a same size space after.
       }
       if (derived().is_a_data_series_line_ == true)
       {
@@ -1712,7 +1710,7 @@ namespace boost
 
       // Use height of whichever is the biggest of data point marker shape and legend title or text font,
       // for vertical spacing, (assuming horizontal line markers have neglible height so fill use marker text font size).
-      // is now double biggest_point_font_size_;
+      // is now double biggest_point_marker_font_size_;
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "\nSet_legend box dimensions:"
@@ -1724,21 +1722,21 @@ namespace boost
         << ",\n .legend_text_style_ = " << derived().legend_text_style_
         << ",\n .legend_widest_line_ = " << derived().legend_widest_line_ << " svg units."
         << " or " << string_svg_length(derived().legend_title_.text(), derived().legend_title_style_) << " SVG units"
-        << ", .biggest_point_font_size_ = " << derived().biggest_point_font_size_
+        << ", .biggest_point_marker_font_size_ = " << derived().biggest_point_marker_font_size_
         << ",\n longest text line " << longest_text
 
         << std::endl;
       // Legend title "Very, very, very long Legend title/header, chars = 34, .legend_title_font_size_ = 17, .legend_text_font_size_ = 11,
       // .legend_title_style_ = text_style(17, "Lucida Sans Unicode", "", "normal", "", ""),
        // .legend_text_style_ = text_style(11, "Lucida Sans Unicode", "", "normal", "", ""),
-     // .legend_widest_line_ 346.4 svg units. or 344.4 SVG units, .biggest_point_font_size_ 30
+     // .legend_widest_line_ 346.4 svg units. or 344.4 SVG units, .biggest_point_marker_font_size_ 30
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
       // Compute final legend box width.
       derived().legend_width_ = 2 * derived().legend_box_.margin_; // Always allow a tiny margin top and bottom.
       if (derived().legend_box_.border_on_ == true)
       {  // If a border, allow for its width left side.
-        derived().legend_width_ += derived().legend_box_.width_;
+        derived().legend_width_ += derived().legend_box_.border_width_;
       }
       derived().legend_width_ += 2 * derived().horizontal_spacing_; // Allow a blank space around both sides.
 
@@ -1753,7 +1751,7 @@ namespace boost
       }
       if (derived().legend_box_.border_on_ == true)
       {  // If a legend box border, allow for its width right side.
-        derived().legend_width_ += derived().legend_box_.width_;
+        derived().legend_width_ += derived().legend_box_.border_width_;
       }
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
@@ -1771,7 +1769,7 @@ namespace boost
       derived().legend_height_ = 2 * derived().legend_box_.margin_; // Always allow a tiny margin top and bottom.
       if (derived().legend_box_.border_on_ == true)
       {  // If a legend box border, allow for its width top side.
-        derived().legend_height_ += derived().legend_box_.width_;
+        derived().legend_height_ += derived().legend_box_.border_width_;
       }
       derived().legend_height_ += derived().vertical_line_spacing_; // One font space top of legend box.
       if ((derived().is_legend_title_) // A legend title line is wanted,
@@ -1785,7 +1783,7 @@ namespace boost
       derived().legend_height_ += derived().vertical_line_spacing_; // One blank font space bottom of legend box.
       if (derived().legend_box_.border_on_ == true)
       {  // If a legend box border, allow for its width bottom side.
-        derived().legend_height_ += derived().legend_box_.width_;
+        derived().legend_height_ += derived().legend_box_.border_width_;
       }
 //////////////////////////////////////////////////////////////////////////////////////////////
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
@@ -1833,7 +1831,7 @@ namespace boost
           if (derived().legend_left_ == -1)
           { // Legend box position NOT been set by legend_top_left.
             // Default inside position is top left level with plot window.
-          derived().legend_left_ = derived().image_border_.width_ + derived().image_border_.margin_; // left image edge + space.
+          derived().legend_left_ = derived().image_border_.border_width_ + derived().image_border_.margin_; // left image edge + space.
           //derived().plot_left_ += derived().legend_width_ + spacing; // Push plot window right same amount to make room,
           derived().plot_left_ += derived().legend_width_; // Push plot window right same amount to make room,
           derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
@@ -1858,7 +1856,7 @@ namespace boost
           break;
         case outside_left: // Legend position is outside left
           derived().plot_left_ += derived().legend_width_ - spacing; // Push plot window right same amount to make room,
-          derived().legend_left_ = derived().image_border_.width_ + derived().image_border_.margin_; // left image edge + space.
+          derived().legend_left_ = derived().image_border_.border_width_ + derived().image_border_.margin_; // left image edge + space.
           derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
           derived().legend_top_ = derived().plot_top_; // Level with top of plot window.
           derived().legend_bottom_ = derived().legend_top_ + derived().legend_height_;
@@ -1875,7 +1873,7 @@ namespace boost
         case outside_bottom:
             // Centered.
             derived().legend_bottom_ = derived().image_.y_size();
-            derived().legend_bottom_ -= (derived().image_border_.width_ + derived().image_border_.margin_); // up
+            derived().legend_bottom_ -= (derived().image_border_.border_width_ + derived().image_border_.margin_); // up
             derived().legend_top_ = derived().legend_bottom_ - derived().legend_height_;
             derived().legend_left_ = derived().image_.x_size()/  2. - derived().legend_width_ / 2; // Center.
             derived().legend_right_ = derived().legend_left_ + derived().legend_width_;
@@ -1927,7 +1925,7 @@ namespace boost
     //! Draw the legend box.
     //! border and background,
     //! (using the size and position computed by function @c size_legend_box),
-    //! and legend text title (if any and if required),
+    //! and legend_title (if any and if required),
     //! and any data point marker lines,
     //! and any shapes for data point markers,
     //! and any data series descriptor text(s).
@@ -1945,7 +1943,7 @@ namespace boost
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
         std::cout <<  "Drawing Legend: legend_title_font_size " << derived().legend_title_font_size_
           << ", legend text font size = "  << derived().legend_text_font_size_
-          << ", biggest marker symbol font size = "  << derived().biggest_point_font_size_
+          << ", biggest marker symbol font size = "  << derived().biggest_point_marker_font_size_
           << ", text_margin = " << derived().text_margin_ << std::endl;
         // Drawing Legend: text_font_size 10, marker shape size = 10, marker symbol font size = 10, spacing = 10
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
@@ -1982,11 +1980,10 @@ namespace boost
       // Placed Legend box: left = 554, right = 682.4, width = 120, top = 48, bottom = 358, height = 310,
       // Plot window box: left = 26, right = 545.6, top = 48, bottom = 471
 
-      // #ifdef BOOST_SVG_POINT_DIAGNOSTICS
 #ifdef      BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "***Legend Spacings:"
         "\nLegend_text_font_size_ = "  << derived().legend_text_font_size_
-        << ", Legend_box_.margin_ = " << derived().legend_box_.width_
+        << ", Legend_box_.margin_ = " << derived().legend_box_.border_width_
         << ", Legend_title_font_size_ = " << derived().legend_title_font_size_
         << ", text_margin = " << derived().text_margin_
         << ", aspect ratio =  " << aspect_ratio
@@ -2002,7 +1999,7 @@ namespace boost
       double legend_y_pos = legend_y_start;
       if (derived().legend_box_.border_on_ == true)
       {
-        legend_y_pos += derived().legend_box_.width_;  // If a border, don't write on it!
+        legend_y_pos += derived().legend_box_.border_width_;  // If a border, don't write on it!
       }
  //     legend_y_pos += derived().legend_box_.margin_; // Leave tiny margin?  1 or 2
       legend_y_pos += derived().vertical_marker_spacing_; // Fraction of text font.
@@ -2037,7 +2034,7 @@ namespace boost
         double legend_x_pos = legend_x_start + derived().legend_box_.margin();
         if (derived().legend_box_.border_on_ == true)
         {
-          legend_x_pos += derived().legend_box_.width_;  // If a border, don't write on it!
+          legend_x_pos += derived().legend_box_.border_width_;  // If a border, don't write on it!
         }
         legend_x_pos += derived().horizontal_spacing_; // space before point marker and/or line & text.
         legend_x_pos += derived().horizontal_marker_spacing_;  // Center of point marker symbol.
@@ -3753,7 +3750,7 @@ namespace boost
           template <class Derived>
           Derived& axis_plot_frame<Derived>::plot_border_width(double w)
           { //! Set the width for the plot window border (svg units, default pixels).
-            derived().plot_window_border_.width_ = w;
+            derived().plot_window_border_.border_width_ = w;
             derived().image_.g(detail::PLOT_WINDOW_BACKGROUND).style().stroke_width(w);
             return derived();
           }
@@ -3775,14 +3772,14 @@ namespace boost
           template <class Derived>
           Derived& axis_plot_frame<Derived>::image_border_width(double w)
           { //! Set the svg image border width (svg units, default pixels).
-            derived().image_border_.width_ = w;
+            derived().image_border_.border_width_ = w;
             return derived();
           }
 
           template <class Derived>
           double axis_plot_frame<Derived>::image_border_width()
           { //! \return  the svg image border width (svg units, default pixels).
-            return derived().image_border_.width_;
+            return derived().image_border_.border_width_;
           }
 
           template <class Derived>

@@ -573,16 +573,11 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       bool is_a_point_marker_; //! @c true if any data series have point markers to show in legend (default @c false).
       bool is_a_data_series_line_;  //!< @c true if any series have lines to show in legend (default @c false). Example: @c .line_on(true).
       bool is_a_data_series_text_;  //!< @c true is any series should show text describing the data series (default @c false). For example: @c my_plot.plot(my_data_0, "my_data_0_text");
-      double legend_title_font_size_; //!< Font size of legend header/title.
-      double legend_text_font_size_; //!< Font size of legend text.
-     // double series_text_font_size_; //!< Font size of lines of text describing data series.
-      double legend_widest_line_; //!< Width of longest of legend header/title and widest data series pointer+line+text.
-      double biggest_point_font_size_; //!< Biggest point marker symbol - determines vertical spacing.
+      double legend_title_font_size_; //!< Font size of legend header/title (pixels).
+      double legend_text_font_size_; //!< Font size of legend series marker text describing data series (pixels).
+      double legend_widest_line_; //!< Width of longest of legend header/title and widest data series point_marker+line+text (pixels).
+      double biggest_point_marker_font_size_; //!< Biggest point_marker symbol of all data_series.
 
-      // Leave a vertical space before any text (if text_margin_ == 1.5 then height of one biggest font).
-      // Leave a horizontal space before any text (if text_margin_ == 1.5 then width of one biggest font).
-      // For example, if font size is 10 and text_margin is 1.5 and aspect ratio is 0.6 then
-      // Legend_font_size_ = 10, text_margin = 1.5, aspect ratio =  0.6, Vertical_spacing = 15, horizontal_spacing = 9
       double vertical_spacing_; // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
       double vertical_line_spacing_; // = derived().legend_font_size_; // One line vertically.
       double horizontal_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
@@ -734,7 +729,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         legend_text_font_size_(0.), //!< legend title font size (set in @c size_legend_box and used to @c draw_legend).
          // derived().legend_text_style.font_size_;
         legend_widest_line_(0), //!< Longest width of sum of point marker, line and data series text and legend title.
-        biggest_point_font_size_(0.), //!< Biggest font of point marker, line and data series text and legend title.
+        biggest_point_marker_font_size_(0.), //!< Biggest font of point marker, line and data series text and legend title.
 
         vertical_spacing_(0), // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
         vertical_line_spacing_(0), // = derived().legend_font_size_; // One line vertically.
@@ -809,9 +804,9 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         image_.g(PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
         image_.g(PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);
-        image_.g(PLOT_BACKGROUND).style().stroke_width(image_border_.width_); //
+        image_.g(PLOT_BACKGROUND).style().stroke_width(image_border_.border_width_); //
         image_.g(PLOT_WINDOW_BACKGROUND).style().fill_color(plot_window_border_.fill_);
-        image_.g(PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.width_).stroke_color(plot_window_border_.stroke_);
+        image_.g(PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.border_width_).stroke_color(plot_window_border_.stroke_);
         image_.g(PLOT_LIMIT_POINTS).style().stroke_color(lightslategray).fill_color(antiquewhite);
         image_.g(PLOT_X_AXIS).style().stroke_color(black).stroke_width(x_axis_.width());
         image_.g(PLOT_Y_AXIS).style().stroke_color(black).stroke_width(y_axis_.width());
@@ -1585,8 +1580,8 @@ my_plot.background_color(ghostwhite) // Whole image.
           }
           else
           { // plot_window_on_ to use full width of plot window.
-            x_left = plot_left_ + plot_window_border_.width_; // Don't write over either border.
-            x_right = plot_right_ - plot_window_border_.width_;
+            x_left = plot_left_ + plot_window_border_.border_width_; // Don't write over either border.
+            x_right = plot_right_ - plot_window_border_.border_width_;
           }
           grid_path.M(x_left, y).L(x_right, y); // Horizontal grid line.
        } // y_major_grid_on
@@ -1858,8 +1853,8 @@ my_plot.background_color(ghostwhite) // Whole image.
           }
           else
           { // plot_window_on_
-            x_left = plot_left_ + plot_window_border_.width_;
-            x_right = plot_right_ - plot_window_border_.width_; // Ensure just *inside* window?
+            x_left = plot_left_ + plot_window_border_.border_width_;
+            x_right = plot_right_ - plot_window_border_.border_width_; // Ensure just *inside* window?
           }
           if((y >= plot_top_) && (y <= plot_bottom_) && (x_left >= plot_left_) && (x_right <= plot_right_) )
           { // Make sure that we are drawing inside the allowed plot window.
