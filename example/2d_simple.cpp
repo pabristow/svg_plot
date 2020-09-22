@@ -17,10 +17,11 @@
 #include <boost/version.hpp> // Boost version info.
 
 #include <boost/svg_plot/svg_2d_plot.hpp> // svg_plot function
-#include <boost/svg_plot/show_2d_settings.hpp> // boost/libs/svg_plot/doc/html/header/boost/svg_plot/show_2d_settings_hpp.html
+//#include <boost/svg_plot/show_2d_settings.hpp> // boost/libs/svg_plot/doc/html/header/boost/svg_plot/show_2d_settings_hpp.html
 
 #include <iostream>
 #include <map> // Container for data.
+// using std::map
 
 int main()
 {
@@ -57,13 +58,13 @@ int main()
     my_plot.title("Race Times")
       .legend_on(true)
       .legend_title("Races")
-      .x_range(-1, 11)
+      .x_range(-1, 11) 
       .y_range(0, 10)
       .x_major_grid_on(true)
       .y_major_grid_on(true)
       ;
 
-    my_plot.plot(map1, "Series 1").stroke_color(blue);
+    my_plot.plot(map1, "Series 1").stroke_color(green);
     my_plot.plot(map2, "Series 2").stroke_color(orange);
     my_plot.plot(map3, "Series 3").stroke_color(red);
 
