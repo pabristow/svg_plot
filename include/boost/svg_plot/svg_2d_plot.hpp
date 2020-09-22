@@ -494,8 +494,14 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
 
       svg image_; //!< Stored so as to avoid rewriting style information constantly.
 
-      double text_margin_; //!< Marginal space factor around text items like title. @c text_margin_*font_size = vertical distance in svg units,
-      //!< @c text_margin_*font_size = horizontal distance in svg units.
+      double text_margin_; //!< Marginal space factor around text items like title and data_series description, @c text_margin_*font_size = vertical distance in svg units,
+      //!< @c text_margin_ * font_size = horizontal distance in svg units.
+      //! https://www.w3.org/TR/SVG/text.html#GlyphsMetrics 11.1.3. Glyph metrics and layout
+      //! says origin (0,0) is bottom left of square 1 x 1 EM box based on M char, (but there may be descenders too for lower case).
+      //! Most often, the (0,0) point in this coordinate system is positioned on the left edge of the EM box,
+      //! but not at the bottom left corner. (necessarily?)
+      //! The Y coordinate of the bottom of a roman capital letter like M is usually zero.
+      //! The descenders on lowercase roman letters have negative coordinate values, perhaps 1/4 of the font size.
 
       text_style a_style_; //!< Defaults for text_style (contains font size & type etc).
       text_style title_style_; //!< Style for plot title.
@@ -578,12 +584,12 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       double legend_widest_line_; //!< Width of longest of legend header/title and widest data series point_marker+line+text (pixels).
       double biggest_point_marker_font_size_; //!< Biggest point_marker symbol of all data_series.
 
-      double vertical_spacing_; // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
+      double vertical_title_spacing_; // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
       double vertical_line_spacing_; // = derived().legend_font_size_; // One line vertically.
-      double horizontal_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
+      double vertical_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
+      double horizontal_title_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
       double horizontal_line_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
       double horizontal_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
-      double vertical_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
 
       bool outside_legend_on_; //!< @c true if legend box should be outside the plot window (default @c true).
       bool legend_lines_; //!< @c true if wish to add a colored line for each data series in legend box.
@@ -696,12 +702,15 @@ my_plot.background_color(ghostwhite) // Whole image.
         y_units_info_(0, 0, "", y_axis_label_style_, center_align, upward),
         y_value_label_info_(0, 0, "", y_value_label_style_, center_align, upward), //
 
-        // Should allow a 'half font space' above and below the text.
-        text_margin_(1.5), // for title and axis label text, 
-        // as a multiplier of the biggest font size of legend title and any marker symbols.
-        // 1.0 places title too near the top, 1.5 seems about right,
-        // 2.0 leaves a bigger gap at top with little gain in the legend.
-        // This isn't the best way to do this?  This confuses a margin space with the font size?
+        // Should allow a 'quarter font space' above and below the text for any descenders.
+        // so real height including any descenders is font_height * 1.25,
+        // then add 0.25 more for a space.
+        text_margin_(1.25), // for title and axis label text, allowing 25% extra for any descenders.
+        // as a multiplier of the biggest EM box font size of legend title and any marker symbols,
+        // used, for example:
+        // derived().vertical_title_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; 
+        // But does not allow for any space between lines, so need explicit space.
+
 
         image_border_(yellow, white, 2, 3, true, true),
         // margin (parameter 4) needs to be at least the width of the border (parameter 3) to ensure any border color shows.
@@ -724,19 +733,22 @@ my_plot.background_color(ghostwhite) // Whole image.
         is_a_point_marker_(false),
         is_a_data_series_line_(false),
         is_a_data_series_text_(false),
+        // Various items used to size and draw legend box.
         legend_title_font_size_(0.), //!< legend title font size (set in @c size_legend_box and used to @c draw_legend).
-        // derived().legend_title_style.font_size_;
-        legend_text_font_size_(0.), //!< legend title font size (set in @c size_legend_box and used to @c draw_legend).
+        // = derived().legend_title_style.font_size_;
+        legend_text_font_size_(0.), //!< legend marker descriptive text font size (set in functions @c size_legend_box and used to @c draw_legend).
          // derived().legend_text_style.font_size_;
-        legend_widest_line_(0), //!< Longest width of sum of point marker, line and data series text and legend title.
         biggest_point_marker_font_size_(0.), //!< Biggest font of point marker, line and data series text and legend title.
+        legend_widest_line_(0), //!< Longest width (on X-axis) of sum of point marker, line and data series text and legend title.
 
-        vertical_spacing_(0), // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
+        vertical_title_spacing_(0), // Legend header/title vertical spacing.
+        //  derived().vertical_title_spacing_ = derived().legend_title_font_size_ * derived().text_margin_;
         vertical_line_spacing_(0), // = derived().legend_font_size_; // One line vertically.
-        horizontal_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
+        vertical_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
+ 
+        horizontal_title_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
         horizontal_line_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
         horizontal_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
-        vertical_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
 
         outside_legend_on_(true), //!< @c true if legend is @b outside the plot window axes (default true).
         plot_window_clip_("plot_window"), // for <clipPath id="plot_window" ...

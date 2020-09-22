@@ -1630,11 +1630,11 @@ namespace boost
             << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
           if (series_string_length > longest_text)
-          { // Widest found so far.
+          { // longest found so far.
             longest_text = series_string_length;
             longest_text_chars_count = derived().serieses_[i].title_.size();
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-            std::cout << " New width from series " << i << ", width = " << series_string_length
+            std::cout << " Greater SVG width from series " << i << ", width = " << series_string_length
               << ", longest_text_chars_count = " << longest_text_chars_count << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
           }
@@ -1642,14 +1642,14 @@ namespace boost
       } // for num_series
 
       // Compute Y-axis vertical spacing.
-      derived().vertical_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; // Legend header/title vertical spacing.
-      //derived().vertical_margin_ = derived().legend_text_font_size_ * derived().text_margin_; // Legend header/title vertical spacing.
-      //      text_margin = 1.5; //!< Plot window margin to allow for rounding etc
-      derived().vertical_line_spacing_ =   derived().legend_text_font_size_; // Legend text line vertical spacing.
+      derived().vertical_title_spacing_ = derived().legend_title_font_size_ * derived().text_margin_; // Legend header/title vertical spacing.
+      //   text_margin = 1.25; //!< Plot window margin to allow for descenders. 
+      derived().vertical_line_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; // Legend data_series text line vertical spacing.
       // A fraction of the largest of the legend text or, if no legend title then the marker_symbol/line/text.
-      derived().vertical_marker_spacing_ = derived().biggest_point_marker_font_size_ * 0.72; // Suits line spacing of markers, lines and text.
+      derived().vertical_marker_spacing_ = derived().biggest_point_marker_font_size_ ; // Suits line spacing of markers, lines and text.
+
       // Compute X-axis horizontal spacing.
-      derived().horizontal_spacing_ =      derived().legend_text_font_size_ * aspect_ratio; // legend_font width, used as a font.
+      derived().horizontal_title_spacing_ =      derived().legend_title_font_size_ * aspect_ratio; // legend_font width, used as a font.
       derived().horizontal_line_spacing_ = derived().legend_text_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
       derived().horizontal_marker_spacing_ = derived().biggest_point_marker_font_size_ * 0.72 * aspect_ratio; // Width of biggest marker used if no marker on a series).
 
@@ -1660,36 +1660,36 @@ namespace boost
         << ", Legend_title_font_size_ = " << derived().legend_title_font_size_
         << ", text_margin = " << derived().text_margin_
         << ", aspect ratio =  " << aspect_ratio
-        << ", Vertical_spacing = " << derived().vertical_spacing_
+        << ", Vertical_title_spacing = " << derived().vertical_title_spacing_
         << ", Vertical_line_spacing = " << derived().vertical_line_spacing_
         << ", Vertical_marker_spacing = " << derived().vertical_marker_spacing_
-        << ", horizontal_spacing = " << derived().horizontal_spacing_
+        << ", horizontal_spacing = " << derived().horizontal_title_spacing_
         << ", horizontal_line_spacing = " << derived().horizontal_line_spacing_
         << ", horizontal_marker_spacing = " << derived().horizontal_marker_spacing_
         << std::endl;
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
 
-      // X-Axis Compute the width of the longest data series text line.
-      double text_width = longest_text; // actual char text as SVG units (default pixels).
+      // X-Axis Compute the width of the longest data series marker and/or line and/or textline.
+      double text_width = longest_text; // Actual char text as SVG units (default pixels).
 
       if (derived().is_a_point_marker_ == true)
-      {
-        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // Data point marker and
-        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // a same size space after.
+      { // Markers for data points in a data series.
+        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // Data point marker, circlet, corss ...
+        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // and a same size space after the marker.
       }
       if (derived().is_a_data_series_line_ == true)
-      {
+      { // Line used to join data points in a data series.
         text_width += derived().horizontal_marker_spacing_; // Line width.
         text_width += derived().horizontal_marker_spacing_; // Space after line.
       }
-      text_width += derived().horizontal_spacing_; // text font space.
+      text_width += derived().horizontal_title_spacing_; // text font space.
       std::cout << "Legend text string_svg_length = " <<  text_width << std::endl;
 
       // Compute width of title line.
       double title_width  = // Longest SVG of title
         string_svg_length(derived().legend_title_.text(), derived().legend_title_style_);
-      title_width += derived().horizontal_spacing_;
-      title_width += derived().horizontal_spacing_;
+      title_width += derived().horizontal_title_spacing_;
+      title_width += derived().horizontal_title_spacing_;
       std::cout << "Legend title string_svg_length = " <<  title_width << std::endl;
 
       bool use_title_width = false;
@@ -1724,8 +1724,8 @@ namespace boost
         << " or " << string_svg_length(derived().legend_title_.text(), derived().legend_title_style_) << " SVG units"
         << ", .biggest_point_marker_font_size_ = " << derived().biggest_point_marker_font_size_
         << ",\n longest text line " << longest_text
-
         << std::endl;
+      // Example
       // Legend title "Very, very, very long Legend title/header, chars = 34, .legend_title_font_size_ = 17, .legend_text_font_size_ = 11,
       // .legend_title_style_ = text_style(17, "Lucida Sans Unicode", "", "normal", "", ""),
        // .legend_text_style_ = text_style(11, "Lucida Sans Unicode", "", "normal", "", ""),
@@ -1738,7 +1738,7 @@ namespace boost
       {  // If a border, allow for its width left side.
         derived().legend_width_ += derived().legend_box_.border_width_;
       }
-      derived().legend_width_ += 2 * derived().horizontal_spacing_; // Allow a blank space around both sides.
+      derived().legend_width_ += 2 * derived().horizontal_title_spacing_; // Allow a blank space around both sides.
 
       if (use_title_width == false)
       { //
@@ -1746,7 +1746,7 @@ namespace boost
       }
       else
       { // title determines the width entirely.
-       // derived().legend_width_ += derived().horizontal_spacing_ * 2; // space
+       // derived().legend_width_ += derived().horizontal_title_spacing_ * 2; // space
         derived().legend_width_ += derived().legend_widest_line_ * 0.72;
       }
       if (derived().legend_box_.border_on_ == true)
@@ -1766,7 +1766,7 @@ namespace boost
       // Or size of marker or line, whichever is the biggest,  TODO compute this fully like the width.
       // (if any) plus a small margin_ top and bottom.
 
-      derived().legend_height_ = 2 * derived().legend_box_.margin_; // Always allow a tiny margin top and bottom.
+      derived().legend_height_ = derived().legend_box_.margin_; // Always allow a tiny margin top and bottom.
       if (derived().legend_box_.border_on_ == true)
       {  // If a legend box border, allow for its width top side.
         derived().legend_height_ += derived().legend_box_.border_width_;
@@ -1775,8 +1775,8 @@ namespace boost
       if ((derived().is_legend_title_) // A legend title line is wanted,
         && (derived().legend_title_.text() != "")) // but not empty
       {
-        derived().legend_height_ += 2 * derived().vertical_line_spacing_; // text line & .
-        derived().legend_height_ += derived().vertical_line_spacing_; // a font space space after.
+        derived().legend_height_ += 2 * derived().vertical_line_spacing_; // text line & 
+        derived().legend_height_ += derived().vertical_line_spacing_; // a font size space after.
       }
       // Add more height depending on the number of lines of data point markers, lines and text.
       derived().legend_height_ += derived().vertical_marker_spacing_ * num_series;
@@ -1987,10 +1987,10 @@ namespace boost
         << ", Legend_title_font_size_ = " << derived().legend_title_font_size_
         << ", text_margin = " << derived().text_margin_
         << ", aspect ratio =  " << aspect_ratio
-        << ", Vertical_spacing = " << derived().vertical_spacing_
+        << ", Vertical_title_spacing = " << derived().vertical_title_spacing_
         << ", Vertical_line_spacing = " << derived().vertical_line_spacing_
         << ", Vertical_marker_spacing = " << derived().vertical_marker_spacing_
-        << ", horizontal_spacing = " << derived().horizontal_spacing_
+        << ", horizontal_spacing = " << derived().horizontal_title_spacing_
         << ", horizontal_line_spacing = " << derived().horizontal_line_spacing_
         << ", horizontal_marker_spacing = " << derived().horizontal_marker_spacing_
         << std::endl;
@@ -2036,7 +2036,7 @@ namespace boost
         {
           legend_x_pos += derived().legend_box_.border_width_;  // If a border, don't write on it!
         }
-        legend_x_pos += derived().horizontal_spacing_; // space before point marker and/or line & text.
+        legend_x_pos += derived().horizontal_title_spacing_; // space before point marker and/or line & text.
         legend_x_pos += derived().horizontal_marker_spacing_;  // Center of point marker symbol.
         g_inner_ptr = &(g_ptr->add_g_element());
         // Use both stroke & fill colors from the points' style.
@@ -2104,14 +2104,14 @@ namespace boost
             legend_x_pos + derived().horizontal_line_spacing_, // Line sample is one char long/wide.
             legend_y_pos));
           legend_x_pos += derived().horizontal_line_spacing_; // Advance by short line distance
-          legend_x_pos += derived().horizontal_spacing_; // & a space.
+          legend_x_pos += derived().horizontal_title_spacing_; // & a space.
         } // legend line to draw
         else
         { // Might need a horizontal space if any other series have a line (but this series does not).
           if (derived().is_a_data_series_line_ == true)
           {
             legend_x_pos += derived().horizontal_line_spacing_; // Total is short line
-            legend_x_pos += derived().horizontal_spacing_; // & a space.
+            legend_x_pos += derived().horizontal_title_spacing_; // & a space.
           }
         } // line_on == true
 

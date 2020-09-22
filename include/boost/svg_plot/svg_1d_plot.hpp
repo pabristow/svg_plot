@@ -241,12 +241,13 @@ public:
   // Leave a horizontal space before any text (if text_margin_ == 1.5 then width of one biggest font).
   // For example, if font size is 10 and text_margin is 1.5 and aspect ratio is 0.6 then
   // Legend_font_size_ = 10, text_margin = 1.5, aspect ratio =  0.6, Vertical_spacing = 15, horizontal_spacing = 9
-  double vertical_spacing_; // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
-  double vertical_line_spacing_; // = derived().legend_font_size_; // One line vertically.
-  double horizontal_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
+  double vertical_title_spacing_; // = derived().legend_title_font_size_ * derived().text_margin_; // suits header text.
+  double vertical_line_spacing_; // = derived().legend_title_font_size_; // One line vertically.
+  double vertical_marker_spacing_; // = derived().biggest_point_marker_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
+ 
+  double horizontal_title_spacing_; // = derived().legend_title_font_size_ * aspect_ratio; // legend_font width,
   double horizontal_line_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
   double horizontal_marker_spacing_; // = derived().biggest_point_marker_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
-  double vertical_marker_spacing_; // = derived().biggest_point_marker_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
 
   axis_line_style x_axis_; //!< style of X axis line.
   axis_line_style y_axis_; //!< style of Y axis line. (Meaningless for 1D but added to permit shared code in axis_plot_frame.hpp!)
