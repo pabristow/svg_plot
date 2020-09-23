@@ -65,14 +65,14 @@ inline bool limit_min(double a)
 
 inline bool limit_NaN(double a)
 { //! Separate test for NaNs.
-using boost::math::isnan;
-    return isnan(a) ? true : false;
+  using boost::math::isnan;
+  return isnan(a) ? true : false;
   // Ternary operator used to remove warning about casting int to bool.
 }
 
 inline bool is_limit(double a)
 { //! Is at some limit.
-    return limit_max(a) || limit_min(a) || limit_NaN(a);
+  return limit_max(a) || limit_min(a) || limit_NaN(a);
 }
 
 inline bool pair_is_limit(std::pair<const double, double> a)

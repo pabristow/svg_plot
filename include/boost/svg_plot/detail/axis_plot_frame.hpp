@@ -1589,11 +1589,11 @@ namespace boost
         { // Some data pointer marker.
           derived().is_a_point_marker_ = true; // So will need to provide a space for any other series without a point marker.
           point_size = derived().serieses_[i].point_style_.size(); //
-          std::cout << "point size series " << i << ", size " << point_size << std::endl;
+          std::cout << "point size series #" << i << ", size " << point_size << std::endl;
           if (point_size > derived().biggest_point_marker_font_size_)
           {
             derived().biggest_point_marker_font_size_ = point_size;
-            std::cout << "new biggest point size series " << i << ", size " << point_size << std::endl;
+            std::cout << "new biggest point size series #" << i << ", size " << point_size << std::endl;
           }
         } // if shape != none
 
@@ -1963,7 +1963,7 @@ namespace boost
       // Placed Legend box: left = 554, right = 682.4, width = 120, top = 48, bottom = 358, height = 310,
       // Plot window box: left = 26, right = 545.6, top = 48, bottom = 471
 
-#ifdef      BOOST_SVG_LEGEND_DIAGNOSTICS
+#ifdef  BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "***Legend Spacings:"
         "\nLegend_text_font_size_ = "  << derived().legend_text_font_size_
         << ", Legend_box_.margin_ = " << derived().legend_box_.border_width_
@@ -2005,9 +2005,9 @@ namespace boost
       for(unsigned int i = 0; i != derived().serieses_.size(); ++i)
       { 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-          std::cout << "Data Series #" << i << " point_style = " <<  derived().serieses_[i].point_style()
-            << "\n line style = " << derived().serieses_[i].line_style()
-            << "\n point_symbol_style = " <<  derived().serieses_[i].point_font_style()  << std::endl;
+          std::cout << "Data Series #" << i << " point_style = " <<  derived().serieses_[i].point_style_
+            << "\n line style = " << derived().serieses_[i].line_style_
+            << "\n point_symbol_style = " <<  derived().serieses_[i].point_style_.symbols_  << std::endl;
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
         double legend_x_pos = legend_x_start + derived().legend_box_.margin();
         if (derived().legend_box_.border_on_ == true)

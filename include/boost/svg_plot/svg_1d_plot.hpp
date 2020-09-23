@@ -82,7 +82,7 @@ public:
   std::vector<double> series_limits_; //!< 'limit' values: too big, too small or NaN.
   // TODO should these be unc too?  Uncertainty info is meaningless, but timestamp etc are OK.
 
-  std::string title_; //!< title of data series (to show on legend).
+  std::string title_; //!< title of data series (to show on legend using legend_style).
   plot_point_style point_style_; //!< circle, square...
   // Limit Marker  settings now in svg_1d_plot class.
   //plot_point_style limit_point_style_; //!< Default is cone pointing down for 2D or point right for 1D.
@@ -112,7 +112,7 @@ public:
   svg_1d_plot_series& line_width(double wid_); // Set line width for plot point marker(s) (chainable).
   svg_1d_plot_series& line_on(bool on_); // Set true for line joining points for plot point marker(s) (chainable).
   svg_1d_plot_series& bezier_on(bool on_); // Set true for curve joining points for plot point marker(s) (chainable).
-  svg_1d_plot_series& limit_point_color(const svg_color& col_); // Set stroke color for 'at limits' point marker.
+//  svg_1d_plot_series& plus_inf_limit_point_color(const svg_color& col_); // Set stroke color for 'at +infinity limits' point marker.
 
   // Get functions for the plot series.
   svg_color fill_color(); // Get fill color for plot point marker(s).
@@ -220,9 +220,6 @@ public:
   // Both optionally set by legend_top_left.
   double legend_right_; //!< SVG Coordinates of right of legend box,
   double legend_bottom_; //!< bottom of legend box.
-  size_t legend_longest_; //!< longest (both header & data) string in legend box,
-  // (used to calculate how big the legend box needs to be, and thus position of it and plot window).
-
   double x_axis_vertical_; //!< Vertical position of 1D horizontal X-axis line as fraction of window.
   //! 0.5 is at middle(useful if no labels) (default),
   //! 0.8 is near bottom (useful if value labels go upward),
@@ -255,7 +252,7 @@ public:
   ticks_labels_style x_ticks_; //!< style of X axis tick value labels.
   ticks_labels_style y_ticks_; //!< style of Y axis tick value labels. (Meaningless for 1D but added to permit shared code in axis_plot_frame.hpp!)
 
-  bool title_on_; //!< If true include a title for the aspect_ratioole plot.
+  bool title_on_; //!< If true include a title for the whole plot.
   bool legend_on_; //!< If true include a legend box.
   bool outside_legend_on_; //!< If true, place legend box outside the plot window.
   bool legend_lines_; //!< If true, include data colored line type in legend box.
@@ -696,7 +693,19 @@ void svg_1d_plot::update_image()
     x_axis_vertical_(0.5), // Vertical position of 1D horizontal X-axis line as fraction of window.
     legend_place_(outside_right), // default but interacts with using plot_window.
     legend_on_(false),
-    legend_longest_(0),
+    legend_widest_line_(0), //!< Longest width (on X-axis) of sum of point marker, line and data series text and legend title.
+  // (used to calculate how wide the legend box needs to be, and thus position of it and plot window).
+
+    vertical_title_spacing_(0), // Legend header/title vertical spacing.
+     //  derived().vertical_title_spacing_ = derived().legend_title_font_size_ * derived().text_margin_;
+    vertical_line_spacing_(0), // = derived().legend_font_size_; // One line vertically.
+    vertical_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
+
+    horizontal_title_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
+    horizontal_line_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
+    horizontal_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
+
+
     outside_legend_on_(true),
     legend_lines_(false), // Not very useful for 1 D as already showing data point marker shapes.
     plot_window_clip_("plot_window"), // for <clipPath id="plot_window" ...
