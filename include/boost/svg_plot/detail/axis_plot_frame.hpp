@@ -1715,7 +1715,8 @@ namespace boost
       {  // If a border, allow for its width left side.
         derived().legend_width_ += derived().legend_box_.border_width_;
       }
-      derived().legend_width_ += 2 * derived().horizontal_title_spacing_; // Allow a blank space around both sides.
+    //  derived().legend_width_ += 2 * derived().horizontal_title_spacing_; // Allow a blank space around both sides.
+      derived().legend_width_ +=  1.5 * derived().horizontal_title_spacing_; // Allow a blank space around both sides is tighter.
 
       if (use_title_width == false)
       { // The markers, lines and text control the width.
@@ -1890,7 +1891,7 @@ namespace boost
               << " is outside image X-size = " << derived().image_.x_size()  << "!" << std::endl;
           }
           if ((derived().legend_top_ < 0) || (derived().legend_top_ > derived().image_.y_size()))
-          { // egend box top edge outside image?
+          { // legend-box top edge outside image?
             std::cout << "Legend top edge " << derived().legend_top_
               << " outside image Y-size " << derived().image_.y_size()  << "!" << std::endl;
           }
@@ -1994,12 +1995,11 @@ namespace boost
         derived().legend_title_.y(legend_y_pos);
         derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_title_));
         legend_y_pos += derived().vertical_title_spacing_ /3; // Leave a fraction space below legend title.
-      } // is header aka is_title
+      } // is_header aka is_title
 
       g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Prepare to write marker, line and description text into legend box.
       g_element* g_inner_ptr = g_ptr;
       g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Write legend title text into legend box.
-
 
       // Show any point marker, maybe line, & maybe text info for each of the data series.
       for(unsigned int i = 0; i != derived().serieses_.size(); ++i)
@@ -2041,15 +2041,15 @@ namespace boost
             was_unc_ellipse = true; // Note so can restore after showing circle.
           }
 
-          // Show a SVG plot point like vertical bar...
+          // Show a SVG plot point like star, circlet ...
           draw_plot_point(
             legend_x_pos,
-            legend_y_pos, // - point_style.size_ /10, // Move up third a marker font size to align with text.
+            legend_y_pos - point_style.size_ / 5, // Move up a bit of a marker font size to align with text.
             *g_inner_ptr,
             point_style,
             unc<false>(), unc<false>());  // X and Y position.
             // was derived().serieses_[i].point_style_, unc(0.), unc(0.));
-          legend_x_pos += derived().horizontal_marker_spacing_ * 2; // Trailing space.
+          legend_x_pos += derived().horizontal_marker_spacing_ * 2; // Trailing space after point-marker.
 
           if (was_unc_ellipse)
           { // Restore from using egg (or the data points won't use the unc_ellipse!)
