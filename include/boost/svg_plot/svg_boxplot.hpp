@@ -24,7 +24,7 @@
 
 // file svg_boxplot.hpp
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2008, 2009, 2013
+// Copyright Paul A. Bristow 2008, 2009, 2013, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -33,12 +33,6 @@
 
 #ifndef BOOST_SVG_SVG_BOXPLOT_HPP
 #define BOOST_SVG_SVG_BOXPLOT_HPP
-
-#if defined (_MSC_VER)
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#  pragma warning(disable: 4127) // conditional expression is constant.
-#endif
 
 #include <boost/iterator/transform_iterator.hpp>
 
@@ -863,10 +857,10 @@ public:
     // Set boxplot color defaults.
     image_.g(boxplot::PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
     image_.g(boxplot::PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);
-    image_.g(boxplot::PLOT_BACKGROUND).style().stroke_width(image_border_.width_); //
+    image_.g(boxplot::PLOT_BACKGROUND).style().stroke_width(image_border_.border_width_); //
 
     image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color(plot_window_border_.fill_);
-    image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.width_).stroke_color(plot_window_border_.stroke_);
+    image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.border_width_).stroke_color(plot_window_border_.stroke_);
     image_.g(boxplot::X_AXIS).style().stroke_color(black).stroke_width(x_axis_.width());
     image_.g(boxplot::Y_AXIS).style().stroke_color(black).stroke_width(y_axis_.width());
 
@@ -933,10 +927,10 @@ public:
   { //! Calculate the position of the plot window.
     // Start by assuming we can use all the svg image,
     // but reduce by the width of any image border.
-    plot_left_ = 0. + image_border_.width_; // Top left of image.
-    plot_top_ = 0. + image_border_.width_;
-    plot_right_ = image_.x_size() - image_border_.width_; // Bottom right of image.
-    plot_bottom_ = image_.y_size() - image_border_.width_;
+    plot_left_ = 0. + image_border_.border_width_; // Top left of image.
+    plot_top_ = 0. + image_border_.border_width_;
+    plot_right_ = image_.x_size() - image_border_.border_width_; // Bottom right of image.
+    plot_bottom_ = image_.y_size() - image_border_.border_width_;
     if(plot_window_on_)
     { // Needed to allow any plot window border rectangle to show OK.
       // A small margin is to prevent it overlapping the image border.
@@ -1339,8 +1333,8 @@ public:
       }
       else
       { // plot_window_on_ to use full width of plot window.
-        x_left = plot_left_ + plot_window_border_.width_; // Don't write over either border.
-        x_right = plot_right_ - plot_window_border_.width_;
+        x_left = plot_left_ + plot_window_border_.border_width_; // Don't write over either border.
+        x_right = plot_right_ - plot_window_border_.border_width_;
       }
       grid_path.M(x_left, y).L(x_right, y); // Horizontal grid line.
    } // y_major_grid_on
@@ -1540,8 +1534,8 @@ public:
       }
       else
       { // plot_window_on_
-        x_left = plot_left_ + plot_window_border_.width_;
-        x_right = plot_right_ - plot_window_border_.width_; // Ensure just *inside* window?
+        x_left = plot_left_ + plot_window_border_.border_width_;
+        x_right = plot_right_ - plot_window_border_.border_width_; // Ensure just *inside* window?
       }
       if((y >= plot_top_) && (y <= plot_bottom_) && (x_left >= plot_left_) && (x_right <= plot_right_) )
       { // Make sure that we are drawing inside the allowed plot window.
@@ -1838,7 +1832,7 @@ public:
     // We don't want to allow too much overlap of the plot window lines,
     // so allow for the border.
 
-    double margin = plot_window_border_.width_ * 5.; // Or more?
+    double margin = plot_window_border_.border_width_ * 5.; // Or more?
     // This controls how much points can overlap the plot window.
     // Might also make margin relative to data value font size and/or data marker size?
     image_.clip_path(rect_element(plot_left_ - margin, // margin left
@@ -2775,11 +2769,6 @@ public:
     y_autoscale_ = true;  // Change (from default false) to use calculated values.
     return *this; //! \return Reference to @c svg_boxplot to make chainable.
   } // y_autoscale(const T& container)
-
-
-#if defined (BOOST_MSVC)
-#  pragma warning(pop)
-#endif
 
 } // namespace svg
 } // namespace boost

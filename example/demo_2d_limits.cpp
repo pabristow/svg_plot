@@ -1,11 +1,10 @@
 /*! \file demo_2d_limits.cpp
     \brief Demonstration of some 2D values including NaN and + and - infinity.
     \details Quickbook markup to include in documentation.
-    \date 19 Feb 2009
     \author Paul A. Bristow
 */
 
-// Copyright Paul A Bristow 2008, 2009, 2013
+// Copyright Paul A Bristow 2008, 2009, 2013, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -115,8 +114,8 @@ We can also keep note of the plot series and use this to interrogate how many no
 /*`To change the default colors (lightgray and whitesmoke) for the 'at limit' point marker
 to something more conspicuous for this demonstration:
 */
-    my_2d_plot.limit_color(blue);
-    my_2d_plot.limit_fill_color(pink);
+    my_2d_plot.plus_inf_limit_color(blue);
+    my_2d_plot.plus_inf_limit_color(pink);
 
 /*`To use all these settings, finally write the plot to file.
 */
@@ -126,8 +125,8 @@ to something more conspicuous for this demonstration:
 
 To echo the new marker colors chosen:
 */
-    cout << "limit points stroke color " << my_2d_plot.limit_color() << endl;
-    cout << "limit points fill color " << my_2d_plot.limit_fill_color() << endl;
+    cout << "limit points stroke color " << my_2d_plot.plus_inf_limit_color() << endl;
+    cout << "limit points fill color " << my_2d_plot.plus_inf_limit_color() << endl;
 
 //] [/demo_2d_limits_2]
   }

@@ -59,7 +59,6 @@ int main()
       .x_range(-5, 5) // Add a range for the X-axis.
       .x_label("length (m)"); // Add a label for the X-axis.
 
-
 /*`Add the one data series, `my_data` and a description, and how the data points are to marked,
 here a circle with a diameter of 5 pixels.
 */
@@ -72,8 +71,8 @@ here a circle with a diameter of 5 pixels.
 /*`To change the default colors (lightgray and whitesmoke) for the 'at limit' point marker
 to something more conspicuous for this demonstration:
 */
-    my_1d_plot.limit_color(blue);
-    my_1d_plot.limit_fill_color(pink);
+    my_1d_plot.plus_inf_limit_color(blue);
+    my_1d_plot.plus_inf_limit_color(pink);
 
 /*`To use all these settings, finally write the plot to file.
 */
@@ -84,8 +83,8 @@ to something more conspicuous for this demonstration:
 
 To echo the new marker colors chosen:
 */
-    cout << "limit points stroke color " << my_1d_plot.limit_color() << endl;
-    cout << "limit points fill color " << my_1d_plot.limit_fill_color() << endl;
+    cout << "+infinity_limit points stroke color " << my_1d_plot.plus_inf_limit_color() << endl;
+    cout << "+infinity_limit points fill color " << my_1d_plot.plus_inf_limit_color() << endl;
 //] [demo_1d_limits_2]
   }
   catch(const std::exception& e)

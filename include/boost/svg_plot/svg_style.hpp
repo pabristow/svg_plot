@@ -8,14 +8,13 @@
 
    #define BOOST_SVG_STYLE_DIAGNOSTICS for diagnostic output.
 
-  \date Mar 2009
   \author Jacob Voytko and Paul A. Bristow
 
 */
 
 //  svg_style.hpp
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2008, 2009, 2013
+// Copyright Paul A. Bristow 2008, 2009, 2013, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -25,14 +24,10 @@
 #ifndef BOOST_SVG_SVG_STYLE_HPP
 #define BOOST_SVG_SVG_STYLE_HPP
 
-#ifdef _MSC_VER
-#  pragma warning (disable : 4512) // assignment operator could not be generated.
-#endif
-
 //#define BOOST_SVG_STYLE_DIAGNOSTICS for diagnostic output.
 
 #include "svg_color.hpp"
-// using svg_color
+// using boost::svg_color
 #include "detail/svg_style_detail.hpp"
 
 #include <iostream>
@@ -51,8 +46,8 @@ namespace svg
   //!< but with a small range of @c (std::numeric_limits<>::max)() to (std::numeric_limits<>::min)(), about 10^38 compared to 64-bit 10^308)
 
   static const fp_type aspect_ratio = 0.6;  //!< aspect_ratio is a guess at average height to width of font.
-  //!< used to estimate the svg length of a title or header string from the font size.
-  //!< (This can only be quite approximate as varies on type of font (narrow or bold)
+  //!< used to estimate the svg length of a title or header string from the font size (height and width of EM - capital M).
+  //!< This can only be quite approximate as varies on type of font (narrow or bold).
   //!< and the mix of characters widths (unless monospace font).
   //!< See https://www.w3.org/TR/SVG/text.html#GlyphsMetrics
   //!< https://www.w3.org/TR/SVG/text.html#InterfaceSVGTextContentElement

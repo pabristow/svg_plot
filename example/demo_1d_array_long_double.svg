@@ -14,26 +14,26 @@ xmlns ="http://www.w3.org/2000/svg"
 
 <!-- File ./demo_1d_array_long_double.svg --> 
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="200"/></g>
-<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="11" y="56" width="478" height="128"/></g>
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="21" y="56" width="458" height="128"/></g>
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="250" y1="56" x2="250" y2="184"/><line x1="11" y1="123" x2="489" y2="123"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M260,123 L260,125 M269,123 L269,125 M279,123 L279,125 M288,123 L288,125 M307,123 L307,125 M317,123 L317,125 M326,123 L326,125 M336,123 L336,125 M355,123 L355,125 M365,123 L365,125 M374,123 L374,125 M384,123 L384,125 M403,123 L403,125 M413,123 L413,125 M422,123 L422,125 M432,123 L432,125 M451,123 L451,125 M460,123 L460,125 M470,123 L470,125 M479,123 L479,125 M240,123 L240,125 M231,123 L231,125 M221,123 L221,125 M212,123 L212,125 M193,123 L193,125 M183,123 L183,125 M174,123 L174,125 M164,123 L164,125 M145,123 L145,125 M135,123 L135,125 M126,123 L126,125 M116,123 L116,125 M97,123 L97,125 M87.5,123 L87.5,125 M77.9,123 L77.9,125 M68.4,123 L68.4,125 M49.2,123 L49.2,125 M39.7,123 L39.7,125 M30.1,123 L30.1,125 M20.6,123 L20.6,125 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M250,123 L250,128 M298,123 L298,128 M346,123 L346,128 M393,123 L393,128 M441,123 L441,128 M489,123 L489,128 M250,123 L250,128 M202,123 L202,128 M154,123 L154,128 M107,123 L107,128 M58.8,123 L58.8,128 M11,123 L11,128 " fill="none"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="250" y1="56" x2="250" y2="184"/><line x1="21" y1="122" x2="479" y2="122"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M259,122 L259,124 M268,122 L268,124 M277,122 L277,124 M287,122 L287,124 M305,122 L305,124 M314,122 L314,124 M323,122 L323,124 M332,122 L332,124 M351,122 L351,124 M360,122 L360,124 M369,122 L369,124 M378,122 L378,124 M397,122 L397,124 M406,122 L406,124 M415,122 L415,124 M424,122 L424,124 M442,122 L442,124 M452,122 L452,124 M461,122 L461,124 M470,122 L470,124 M241,122 L241,124 M232,122 L232,124 M223,122 L223,124 M213,122 L213,124 M195,122 L195,124 M186,122 L186,124 M177,122 L177,124 M168,122 L168,124 M149,122 L149,124 M140,122 L140,124 M131,122 L131,124 M122,122 L122,124 M103,122 L103,124 M94.3,122 L94.3,124 M85.1,122 L85.1,124 M76,122 L76,124 M57.6,122 L57.6,124 M48.5,122 L48.5,124 M39.3,122 L39.3,124 M30.2,122 L30.2,124 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M250,122 L250,128 M296,122 L296,128 M342,122 L342,128 M387,122 L387,128 M433,122 L433,128 M479,122 L479,128 M250,122 L250,128 M204,122 L204,128 M158,122 L158,128 M113,122 L113,128 M66.8,122 L66.8,128 M21,122 L21,128 " fill="none"/></g>
 <g id="xTicksValues">
-<text x="298" y="143" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
-<text x="346" y="143" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
-<text x="393" y="143" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
-<text x="441" y="143" text-anchor="middle" font-size="12" font-family="Verdana">8</text>
-<text x="489" y="143" text-anchor="middle" font-size="12" font-family="Verdana">10</text>
-<text x="202" y="143" text-anchor="middle" font-size="12" font-family="Verdana">-2</text>
-<text x="154" y="143" text-anchor="middle" font-size="12" font-family="Verdana">-4</text>
-<text x="107" y="143" text-anchor="middle" font-size="12" font-family="Verdana">-6</text>
-<text x="58.8" y="143" text-anchor="middle" font-size="12" font-family="Verdana">-8</text>
-<text x="11" y="143" text-anchor="middle" font-size="12" font-family="Verdana">-10</text></g>
+<text x="296" y="143" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="342" y="143" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="387" y="143" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
+<text x="433" y="143" text-anchor="middle" font-size="12" font-family="Verdana">8</text>
+<text x="479" y="143" text-anchor="middle" font-size="12" font-family="Verdana">10</text>
+<text x="204" y="143" text-anchor="middle" font-size="12" font-family="Verdana">-2</text>
+<text x="158" y="143" text-anchor="middle" font-size="12" font-family="Verdana">-4</text>
+<text x="113" y="143" text-anchor="middle" font-size="12" font-family="Verdana">-6</text>
+<text x="66.8" y="143" text-anchor="middle" font-size="12" font-family="Verdana">-8</text>
+<text x="21" y="143" text-anchor="middle" font-size="12" font-family="Verdana">-10</text></g>
 <g id="xLabel">
 <text x="250" y="208" text-anchor="middle" font-size="14" font-family="Verdana"></text></g>
-<g id="plotPoints"><g stroke="rgb(0,0,0)"><line x1="324" y1="125" x2="324" y2="115"/><line x1="119" y1="125" x2="119" y2="115"/><line x1="458" y1="125" x2="458" y2="115"/><line x1="262" y1="125" x2="262" y2="115"/></g>
+<g id="plotPoints"><g stroke="rgb(0,0,0)"><line x1="321" y1="122" x2="321" y2="112"/><line x1="124" y1="122" x2="124" y2="112"/><line x1="449" y1="122" x2="449" y2="112"/><line x1="261" y1="122" x2="261" y2="112"/></g>
 </g>
 <g id="title">
 <text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">array&lt;long double&gt; example</text></g>

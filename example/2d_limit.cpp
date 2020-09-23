@@ -13,13 +13,11 @@
 // For more information, see http://www.boost.org
 
 #include <boost/svg_plot/svg_2d_plot.hpp>
-
-
-#include <map>
+// boost::svg::svg_2d_plot
 #include <limits>
-
-using std::map;
-using namespace boost::svg;
+// infinity
+#include <map>
+//using std::map;
 
 double f(double x)
 { // Function to plot.
@@ -28,7 +26,8 @@ double f(double x)
 
 int main()
 {
-  map<double, double> data1;
+  using namespace boost::svg; // For colors.
+  std::map<double, double> data1;
 
   double inter = 0.5;
   for(double i = -10; i <= 10.; i += inter)
@@ -64,17 +63,17 @@ int main()
          .y_major_interval(20)
          .y_num_minor_ticks(4);
 
-  // Legend settings
+  // Legend-box settings.
   my_plot.legend_title_font_size(15);
 
-  my_plot.limit_color(red).limit_fill_color(pink); // Limit value at x = 0 is +infinity.
+  my_plot.minus_inf_limit_color(lime).plus_inf_limit_color(pink); // Limit value at x = 0 is +infinity.
 
   my_plot.plot(data1, "1 / x").shape(square).size (5).line_on(false);
 
   my_plot.write("./2d_limit.svg");
 
-  std::cout << "" << my_plot.limit_color() << std::endl;
-  std::cout << "" << my_plot.limit_fill_color() << std::endl;
+  std::cout << "" << my_plot.plus_inf_limit_color() << std::endl;
+  std::cout << "" << my_plot.plus_inf_limit_color() << std::endl;
 
   return 0;
 } // int main()

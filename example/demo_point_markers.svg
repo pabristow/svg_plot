@@ -14,37 +14,63 @@ xmlns ="http://www.w3.org/2000/svg"
 
 <!-- File demo_point_markers.svg --> 
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="200"/></g>
-<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="11" y="56" width="478" height="100"/></g>
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="21" y="56" width="458" height="100"/></g>
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="250" y1="56" x2="250" y2="156"/><line x1="11" y1="109" x2="489" y2="109"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M260,109 L260,111 M269,109 L269,111 M279,109 L279,111 M288,109 L288,111 M307,109 L307,111 M317,109 L317,111 M326,109 L326,111 M336,109 L336,111 M355,109 L355,111 M365,109 L365,111 M374,109 L374,111 M384,109 L384,111 M403,109 L403,111 M413,109 L413,111 M422,109 L422,111 M432,109 L432,111 M451,109 L451,111 M460,109 L460,111 M470,109 L470,111 M479,109 L479,111 M240,109 L240,111 M231,109 L231,111 M221,109 L221,111 M212,109 L212,111 M193,109 L193,111 M183,109 L183,111 M174,109 L174,111 M164,109 L164,111 M145,109 L145,111 M135,109 L135,111 M126,109 L126,111 M116,109 L116,111 M97,109 L97,111 M87.5,109 L87.5,111 M77.9,109 L77.9,111 M68.4,109 L68.4,111 M49.2,109 L49.2,111 M39.7,109 L39.7,111 M30.1,109 L30.1,111 M20.6,109 L20.6,111 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M250,109 L250,114 M298,109 L298,114 M346,109 L346,114 M393,109 L393,114 M441,109 L441,114 M489,109 L489,114 M250,109 L250,114 M202,109 L202,114 M154,109 L154,114 M107,109 L107,114 M58.8,109 L58.8,114 M11,109 L11,114 " fill="none"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="250" y1="56" x2="250" y2="156"/><line x1="21" y1="108" x2="479" y2="108"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M259,108 L259,110 M268,108 L268,110 M277,108 L277,110 M287,108 L287,110 M305,108 L305,110 M314,108 L314,110 M323,108 L323,110 M332,108 L332,110 M351,108 L351,110 M360,108 L360,110 M369,108 L369,110 M378,108 L378,110 M397,108 L397,110 M406,108 L406,110 M415,108 L415,110 M424,108 L424,110 M442,108 L442,110 M452,108 L452,110 M461,108 L461,110 M470,108 L470,110 M241,108 L241,110 M232,108 L232,110 M223,108 L223,110 M213,108 L213,110 M195,108 L195,110 M186,108 L186,110 M177,108 L177,110 M168,108 L168,110 M149,108 L149,110 M140,108 L140,110 M131,108 L131,110 M122,108 L122,110 M103,108 L103,110 M94.3,108 L94.3,110 M85.1,108 L85.1,110 M76,108 L76,110 M57.6,108 L57.6,110 M48.5,108 L48.5,110 M39.3,108 L39.3,110 M30.2,108 L30.2,110 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M250,108 L250,114 M296,108 L296,114 M342,108 L342,114 M387,108 L387,114 M433,108 L433,114 M479,108 L479,114 M250,108 L250,114 M204,108 L204,114 M158,108 L158,114 M113,108 L113,114 M66.8,108 L66.8,114 M21,108 L21,114 " fill="none"/></g>
 <g id="xTicksValues">
-<text x="298" y="129" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
-<text x="346" y="129" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
-<text x="393" y="129" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
-<text x="441" y="129" text-anchor="middle" font-size="12" font-family="Verdana">8</text>
-<text x="489" y="129" text-anchor="middle" font-size="12" font-family="Verdana">10</text>
-<text x="202" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-2</text>
-<text x="154" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-4</text>
-<text x="107" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-6</text>
-<text x="58.8" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-8</text>
-<text x="11" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-10</text></g>
+<text x="296" y="129" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
+<text x="342" y="129" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
+<text x="387" y="129" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
+<text x="433" y="129" text-anchor="middle" font-size="12" font-family="Verdana">8</text>
+<text x="479" y="129" text-anchor="middle" font-size="12" font-family="Verdana">10</text>
+<text x="204" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-2</text>
+<text x="158" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-4</text>
+<text x="113" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-6</text>
+<text x="66.8" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-8</text>
+<text x="21" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-10</text></g>
 <g id="xLabel">
 <text x="250" y="180" text-anchor="middle" font-size="14" font-family="Verdana">length (m)</text></g>
-<g id="plotPoints"><g stroke="rgb(0,0,0)">
-<text x="34.9" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;</text>
-<text x="279" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;</text></g>
+<g id="plotPoints"><g stroke="rgb(255,0,0)" fill="rgb(0,0,255)">
+<text x="21" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;</text>
+<text x="43.9" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;</text>
+<text x="227" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;</text>
+<text x="278" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;</text>
+<text x="296" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;</text>
+<text x="433" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;</text></g>
+<g stroke="rgb(0,0,255)" fill="rgb(255,0,0)">
+<text x="113" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="158" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="342" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="387" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
 </g>
-<g id="limitPoints" stroke="rgb(255,0,0)" fill="rgb(0,128,0)">
-<text x="489" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25BD;</text>
-<text x="250" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25BD;</text></g>
+<g id="limitPoints" stroke="rgb(0,128,0)" fill="rgb(255,255,255)">
+<text x="16" y="112" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25C3;</text>
+<text x="484" y="112" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;</text>
+<text x="250" y="115" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">&#x25BD;</text></g>
 <g id="title">
 <text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Demo point markers Demo</text></g>
 <g id="plotXValues" fill="rgb(255,0,0)"><g>
-<text x="34.9" y="86" text-anchor="middle" font-size="14" font-family="Times New Roman">-9</text></g>
+<text x="25" y="97" transform = "rotate(-60 25 97 )" font-size="14" font-family="Times New Roman">-10</text></g>
 <g>
-<text x="279" y="86" text-anchor="middle" font-size="14" font-family="Times New Roman">1.23</text></g>
+<text x="47.9" y="97" transform = "rotate(-60 47.9 97 )" font-size="14" font-family="Times New Roman">-9</text></g>
+<g>
+<text x="231" y="97" transform = "rotate(-60 231 97 )" font-size="14" font-family="Times New Roman">-1</text></g>
+<g>
+<text x="282" y="97" transform = "rotate(-60 282 97 )" font-size="14" font-family="Times New Roman">1.23</text></g>
+<g>
+<text x="300" y="97" transform = "rotate(-60 300 97 )" font-size="14" font-family="Times New Roman">2</text></g>
+<g>
+<text x="437" y="97" transform = "rotate(-60 437 97 )" font-size="14" font-family="Times New Roman">8</text></g>
+<g>
+<text x="117" y="97" transform = "rotate(-60 117 97 )" font-size="14" font-family="Times New Roman">-6</text></g>
+<g>
+<text x="162" y="97" transform = "rotate(-60 162 97 )" font-size="14" font-family="Times New Roman">-4</text></g>
+<g>
+<text x="346" y="97" transform = "rotate(-60 346 97 )" font-size="14" font-family="Times New Roman">4</text></g>
+<g>
+<text x="391" y="97" transform = "rotate(-60 391 97 )" font-size="14" font-family="Times New Roman">6</text></g>
 </g>
 </svg>
