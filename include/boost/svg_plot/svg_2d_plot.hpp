@@ -585,8 +585,9 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       double biggest_point_marker_font_size_; //!< Biggest point_marker symbol of all data_series.
 
       double vertical_title_spacing_; // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
-      double vertical_line_spacing_; // = derived().legend_font_size_; // One line vertically.
+      double vertical_text_spacing_; // = derived().legend_font_size_; // One line vertically.
       double vertical_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
+      double vertical_line_spacing_; // = biggest of line spacing of markers, lines and text.
       double horizontal_title_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
       double horizontal_line_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
       double horizontal_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
@@ -702,15 +703,14 @@ my_plot.background_color(ghostwhite) // Whole image.
         y_units_info_(0, 0, "", y_axis_label_style_, center_align, upward),
         y_value_label_info_(0, 0, "", y_value_label_style_, center_align, upward), //
 
-        // Should allow a 'quarter font space' above and below the text for any descenders.
+        // Should allow a 'fraction font space' below the text for any descenders.
         // so real height including any descenders is font_height * 1.25,
         // then add 0.25 more for a space.
         text_margin_(1.25), // for title and axis label text, allowing 25% extra for any descenders.
         // as a multiplier of the biggest EM box font size of legend title and any marker symbols,
         // used, for example:
-        // derived().vertical_title_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; 
-        // But does not allow for any space between lines, so need explicit space.
-
+        //   derived().vertical_title_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; 
+        // But does not allow for any space between lines, so may need explicit space.
 
         image_border_(yellow, white, 2, 3, true, true),
         // margin (parameter 4) needs to be at least the width of the border (parameter 3) to ensure any border color shows.
@@ -720,7 +720,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         // This is set dynamically in calculate_plot_window because user can change tick value label font size.
 
         plot_window_border_(lightslategray, svg_color(255, 255, 255), 2, 3, true, false),
-        legend_box_(yellow, white, 1, 2, true, true),
+        legend_box_(yellow, white, 1, 1, true, true),
         legend_title_(0, 0, "", legend_title_style_, center_align, horizontal),
         legend_text_(0, 0, "", legend_text_style_, center_align, horizontal),
         legend_width_(0), // width of legend box (pixels) //
@@ -743,8 +743,9 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         vertical_title_spacing_(0), // Legend header/title vertical spacing.
         //  derived().vertical_title_spacing_ = derived().legend_title_font_size_ * derived().text_margin_;
-        vertical_line_spacing_(0), // = derived().legend_font_size_; // One line vertically.
+        vertical_text_spacing_(0), // = derived().legend_font_size_; // One line vertically.
         vertical_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
+        vertical_line_spacing_(0), // biggest of line spacing of markers, lines and text.
  
         horizontal_title_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
         horizontal_line_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.

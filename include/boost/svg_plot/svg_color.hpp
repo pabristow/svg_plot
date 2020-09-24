@@ -5,7 +5,7 @@
   \author Jacob Voytko & Paul A. Bristow
 */
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2007, 2009
+// Copyright Paul A. Bristow 2007, 2009, 2020
 //
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -32,6 +32,10 @@ namespace svg
     http://www.w3.org/TR/SVG/types.html#ColorKeywords
     color "tan" is also renamed to "tanned" to avoid clash with global function name tan in math.h.
   */
+  // enum class is recommended but then all calls would need to be qualified boost::svg::svg_color::black  
+  // I:\boost\boost\svg_plot\svg_color.hpp(131,18): error C2065: 'blank': undeclared identifier and all colors.
+  // If user code also mentions color word in another context then there will be ambiguity.
+  // This means a lot of code changes, and use in all examples, so not done for now.
   enum svg_color_constant
   { //! \enum svg_color_constant SVG standard names for some colors.
     //! See http://www.w3.org/TR/SVG/types.html#ColorKeywords
@@ -94,7 +98,8 @@ namespace svg
     unsigned char r_; //!< red unsigned char provides range [0 to 255].
     unsigned char g_; //!< green unsigned char provides range [0 to 255].
     unsigned char b_; //!< blue unsigned char provides range [0 to 255].
-    bool is_blank_; //!< true means "Not to be displayed" a 'pseudo-color'. If is_blank_ == true should write output to SVG XML file as "none".
+    bool is_blank_; //!< true means "Not to be displayed" a 'pseudo-color' or 'non-color'.
+    // If is_blank_ == true should write output to SVG XML file as text string "none".
 
   public:
 
@@ -201,7 +206,7 @@ namespace svg
   bool operator== (const svg_color& lhs, const svg_color& rhs)
   { //! Compare colors (for equal).
     // Note operator== and operator << both needed to use Boost.Test.
-    if ((rhs.is_blank_ == true) && (rhs.is_blank_ == true))
+    if ((lhs.is_blank_ == true) && (rhs.is_blank_ == true))
     { // Both blank.
       return true;
     }
@@ -211,7 +216,7 @@ namespace svg
   bool operator!= (const svg_color& lhs, const svg_color& rhs)
   { //! Compare colors (for not equal).
     // Note operator== and operator << both needed to use Boost.Test.
-    if ((rhs.is_blank_ == true) || (rhs.is_blank_ == true))
+    if ((lhs.is_blank_ == true) || (rhs.is_blank_ == true))
     { // Either blank.
       return true;
     }

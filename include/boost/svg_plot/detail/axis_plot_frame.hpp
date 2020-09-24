@@ -1629,10 +1629,10 @@ namespace boost
       // Compute Y-axis vertical spacing.
       derived().vertical_title_spacing_ = derived().legend_title_font_size_ * derived().text_margin_; // Legend header/title vertical spacing.
       //   text_margin = 1.25; //!< Add a fraction of font height to allow for descenders. 
-      derived().vertical_line_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; // Legend data_series text vertical spacing.
+      derived().vertical_text_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; // Legend data_series text vertical spacing.
       // Add a fraction of the largest of the legend text or, if no legend title then the marker_symbol/line/text.
       derived().vertical_marker_spacing_ = derived().biggest_point_marker_font_size_ ; // Suits line spacing of markers, lines and text.
-      // ?? Should this be * derived().text_margin_ - and no spaces between lines?
+      derived().vertical_line_spacing_ = std::max(derived().vertical_marker_spacing_, derived().vertical_text_spacing_); // .
 
       // Compute X-axis horizontal spacing.
       derived().horizontal_title_spacing_ =      derived().legend_title_font_size_ * aspect_ratio; // legend_font width, used as a font.
@@ -1641,15 +1641,15 @@ namespace boost
 
 // #ifdef BOOST_SVG_POINT_DIAGNOSTICS
       #ifdef      BOOST_SVG_LEGEND_DIAGNOSTICS
-      std::cout << "**Spacings"
-        "\nLegend_text_font_size_ = " << derived().legend_text_font_size_
-        << ", Legend_title_font_size_ = " << derived().legend_title_font_size_
+      std::cout << "**Legend Spacings"
+           "\nLegend_title_font_size_ = " << derived().legend_title_font_size_
+        << ", Legend_text_font_size_ = " << derived().legend_text_font_size_
         << ", text_margin = " << derived().text_margin_
         << ", aspect ratio =  " << aspect_ratio
-        << ", Vertical_title_spacing = " << derived().vertical_title_spacing_
+        << ", \nVertical_title_spacing = " << derived().vertical_title_spacing_
         << ", Vertical_line_spacing = " << derived().vertical_line_spacing_
         << ", Vertical_marker_spacing = " << derived().vertical_marker_spacing_
-        << ", horizontal_spacing = " << derived().horizontal_title_spacing_
+        << ", \nhorizontal_spacing = " << derived().horizontal_title_spacing_
         << ", horizontal_line_spacing = " << derived().horizontal_line_spacing_
         << ", horizontal_marker_spacing = " << derived().horizontal_marker_spacing_
         << std::endl;
@@ -1757,8 +1757,8 @@ namespace boost
       {
         derived().legend_height_ += derived().vertical_title_spacing_; // Legend title line
       }
-      // Add more height depending on the number of lines of data point markers, lines and text.
-      derived().legend_height_ += derived().vertical_marker_spacing_ * num_series; // 
+      // Add more height depending on the size number of lines of data point markers, lines and text.
+      derived().legend_height_ += derived().vertical_line_spacing_ * num_series; // 
 
       //derived().legend_height_ += derived().vertical_marker_spacing_; // a part space after based on the marker line.
       derived().legend_height_ += derived().vertical_title_spacing_; // a part space after based on the legend title font.
@@ -1917,10 +1917,9 @@ namespace boost
     {
       size_t num_series = derived().serieses_.size(); // How many data series.
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-      std::cout << "Drawing Legend box border width = " << derived().legend_box_.width()
+      std::cout << "***Drawing Legend box border width = " << derived().legend_box_.width()
         <<  ", margin = " << derived().legend_box_.margin()
-      // Legend box margin = 2, legend_box width = 1, legend width = 2
-      << "\n" << num_series << " data series." << std::endl;
+      << "\n to show " << num_series << " data series." << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
@@ -1970,10 +1969,10 @@ namespace boost
         << ", Legend_title_font_size_ = " << derived().legend_title_font_size_
         << ", text_margin = " << derived().text_margin_
         << ", aspect ratio =  " << aspect_ratio
-        << ", Vertical_title_spacing = " << derived().vertical_title_spacing_
+        << "\nVertical_title_spacing = " << derived().vertical_title_spacing_
         << ", Vertical_line_spacing = " << derived().vertical_line_spacing_
         << ", Vertical_marker_spacing = " << derived().vertical_marker_spacing_
-        << ", horizontal_spacing = " << derived().horizontal_title_spacing_
+        << "\nhorizontal_spacing = " << derived().horizontal_title_spacing_
         << ", horizontal_line_spacing = " << derived().horizontal_line_spacing_
         << ", horizontal_marker_spacing = " << derived().horizontal_marker_spacing_
         << std::endl;
@@ -1985,10 +1984,10 @@ namespace boost
         legend_y_pos += derived().legend_box_.border_width_;  // If a border, don't write on it!
       }
      // legend_y_pos += derived().legend_box_.margin_; // Always allow a tiny margin top and bottom?
-      legend_y_pos += derived().vertical_title_spacing_ /3 ; // space before title as a fraction of title font.
+      legend_y_pos += derived().vertical_title_spacing_ /3 ; // Vertical space before title as a fraction of legend-title font.
 
       if (derived().legend_title_.text() != "") //
-      { // Is a legend title, so draw the centered legend title text for example: "My Plot Legend".
+      { // Is a legend-title, so draw the centered legend-title text for example: "My Plot Legend".
         derived().legend_title_.x(legend_x_start + legend_width / 2.); // / 2. to center horizontally in legend box.
         // Might be better to use center_align here because may fail if legend contains symbols in Unicode?
         legend_y_pos += derived().vertical_title_spacing_; // Ready to write title.
@@ -1997,7 +1996,7 @@ namespace boost
         legend_y_pos += derived().vertical_title_spacing_ /3; // Leave a fraction space below legend title.
       } // is_header aka is_title
 
-      g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Prepare to write marker, line and description text into legend box.
+      g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Prepare to write marker, line and description text into legend-box.
       g_element* g_inner_ptr = g_ptr;
       g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Write legend title text into legend box.
 
@@ -2017,7 +2016,7 @@ namespace boost
         legend_x_pos += derived().horizontal_title_spacing_; // space before point marker and/or line & text.
         legend_x_pos += derived().horizontal_marker_spacing_;  // Center of point marker symbol.
 
-        legend_y_pos += derived().vertical_marker_spacing_ ; // size of biggest marker or description text font.
+        legend_y_pos += derived().vertical_line_spacing_ ; // Size of biggest marker or description text font.
 
         g_inner_ptr = &(g_ptr->add_g_element());
         // Use both stroke & fill colors from the point marker's style.

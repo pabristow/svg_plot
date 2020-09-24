@@ -239,9 +239,10 @@ public:
   // For example, if font size is 10 and text_margin is 1.5 and aspect ratio is 0.6 then
   // Legend_font_size_ = 10, text_margin = 1.5, aspect ratio =  0.6, Vertical_spacing = 15, horizontal_spacing = 9
   double vertical_title_spacing_; // = derived().legend_title_font_size_ * derived().text_margin_; // suits header text.
-  double vertical_line_spacing_; // = derived().legend_title_font_size_; // One line vertically.
-  double vertical_marker_spacing_; // = derived().biggest_point_marker_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
- 
+  double vertical_text_spacing_; // = derived().legend_title_font_size_; // One line vertically.
+  double vertical_marker_spacing_; // = derived().biggest_point_marker_font_size_ * 0.8; // Spacing for biggest markers.
+   double vertical_line_spacing_; // = derived().biggest_point_marker_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
+
   double horizontal_title_spacing_; // = derived().legend_title_font_size_ * aspect_ratio; // legend_font width,
   double horizontal_line_spacing_; // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
   double horizontal_marker_spacing_; // = derived().biggest_point_marker_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
@@ -657,10 +658,10 @@ void svg_1d_plot::update_image()
   svg_1d_plot::svg_1d_plot() :
 
     title_style_(18, "Verdana", "", ""),  // last "bold" ?
-    legend_text_style_(14, "Verdana", "", ""), // 2nd "italic"?
-    x_axis_label_style_(14, "Verdana", "", ""),
-    x_value_label_style_(12, "Verdana", "", ""),
-    point_symbols_style_(12, "Lucida Sans Unicode"), // Used for data point marking.
+    legend_text_style_(10, "Verdana", "", ""), // 2nd "italic"?
+    x_axis_label_style_(10, "Verdana", "", ""),
+    x_value_label_style_(10, "Verdana", "", ""),
+    point_symbols_style_(10, "Lucida Sans Unicode"), // Used for data point marking.
     value_style_(10, "Verdana", "", ""), // Used for data point values.
 
     nan_point_style_(green, white, 20, cone_point_down, ""), // Colors and size for NaN markers.
@@ -682,10 +683,18 @@ void svg_1d_plot::update_image()
 
     // Might fill in all values, but there are rather many for ticks_labels_style,
     x_ticks_(X, x_value_label_style_),// so for defaults see ticks_labels_style.
-    text_margin_(2.), // for text as a multiplier of the font size.
+
+    // Should allow a 'fraction font space' above and below the text for any descenders.
+    // so real height including any descenders is font_height * 1.25
+    text_margin_(1.25), // for title and axis label text, allowing 25% extra for any descenders.
+    // as a multiplier of the biggest EM box font size of legend title and any marker symbols,
+    // used, for example:
+    //   derived().vertical_title_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; 
+    // But does not allow for any space between lines, so may need explicit space.
+
     image_border_(yellow, white, 1, 10, true, true), // margin should be about axis label font size.
     plot_window_border_(lightgoldenrodyellow, svg_color(255, 255, 255), 1, 3, true, false),
-    legend_box_(yellow, white, 1, 2, true, true),
+    legend_box_(yellow, white, 1, 1, true, true),
     legend_title_(0, 0, "", legend_text_style_, center_align, horizontal),
     legend_width_(200), // width of legend box (pixels) // TODO isn't this calculated?
     legend_height_(0), // height of legend box (pixels)
@@ -694,17 +703,17 @@ void svg_1d_plot::update_image()
     legend_place_(outside_right), // default but interacts with using plot_window.
     legend_on_(false),
     legend_widest_line_(0), //!< Longest width (on X-axis) of sum of point marker, line and data series text and legend title.
-  // (used to calculate how wide the legend box needs to be, and thus position of it and plot window).
+    // (used to calculate how wide the legend box needs to be, and thus position of it and plot window).
 
     vertical_title_spacing_(0), // Legend header/title vertical spacing.
      //  derived().vertical_title_spacing_ = derived().legend_title_font_size_ * derived().text_margin_;
-    vertical_line_spacing_(0), // = derived().legend_font_size_; // One line vertically.
-    vertical_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8; // Suits line spacing of markers, lines and text.
+    vertical_text_spacing_(0), // = derived().legend_font_size_; // One line vertically.
+    vertical_marker_spacing_(0), // = derived().biggest_point_font_size_ ; // Suits line spacing of markers, lines and text.
+    vertical_line_spacing_(0), // = max(derived(). vertical_marker_spacing_ and vertical_text_spacing_); // Suits data_series line spacing of markers/lines/text.
 
     horizontal_title_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, used as a font .
     horizontal_line_spacing_(0), // = derived().legend_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
     horizontal_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
-
 
     outside_legend_on_(true),
     legend_lines_(false), // Not very useful for 1 D as already showing data point marker shapes.
@@ -803,7 +812,6 @@ void svg_1d_plot::update_image()
     title_on_ = true; // Can be switched off later with `my_1d_plot.title_on(true);`
   }
 } // svg_1d_plot::svg_1d_plot() Default constructor.
-
 
 void svg_1d_plot::calculate_plot_window()
 { //! Calculate the size and position of the plot window,

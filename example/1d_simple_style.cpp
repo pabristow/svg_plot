@@ -24,7 +24,7 @@
 
 int main()
 {
-  // Construct two containers.
+  // Construct two containers using std::vector.
   std::vector<double> reds_times;
   std::vector<double> blues_times;
 
@@ -34,17 +34,17 @@ int main()
   blues_times.push_back(2.1);
   blues_times.push_back(7.8);
 
-  using namespace boost::svg;
+  using namespace boost::svg; // Access to colors and to svg_1d_plot.
 
   // Construct plot.
   svg_1d_plot my_plot;
 
   // Set a few features for the plot.
   my_plot.background_border_color(black)
-         .legend_on(true) // Want a legend box,
-         // .legend_title("") // but no legend heading.
+     .title("Race Times")
+     .legend_on(true) // Want a legend box,
+     // .legend_title("") // but no legend heading.
     .legend_title("Teams")
-         .title("Race Times")
          .x_range(-1, 11);
 
   // Add data to plot.
