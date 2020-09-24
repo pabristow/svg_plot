@@ -34,40 +34,40 @@
 </span>
 <span class="keyword">struct</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">{</span>
   <span class="comment">// <a class="link" href="poly_path_point.html#boost.svg.poly_path_pointconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="poly_path_point.html#id555541-bb"><span class="identifier">poly_path_point</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="poly_path_point.html#id555556-bb"><span class="identifier">poly_path_point</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="poly_path_point.html#id553372-bb"><span class="identifier">poly_path_point</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="poly_path_point.html#id553353-bb"><span class="identifier">poly_path_point</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="poly_path_point.html#id555515-bb">public member functions</a></span>
-  <span class="keyword">void</span> <a class="link" href="poly_path_point.html#id555519-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="poly_path_point.html#id553327-bb">public member functions</a></span>
+  <span class="keyword">void</span> <a class="link" href="poly_path_point.html#id553339-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="keyword">double</span> <span class="identifier">x</span><span class="special">;</span>  <span class="comment">// polygon or polyline path point X SVG coordinate. </span>
   <span class="keyword">double</span> <span class="identifier">y</span><span class="special">;</span>  <span class="comment">// polygon or polyline path point Y SVG coordinate. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1190560"></a><h2>Description</h2>
+<a name="id1188754"></a><h2>Description</h2>
 <p>9.6 polyline &amp; 9.7 The 'polygon' element. </p>
 <div class="refsect2">
-<a name="id1190548"></a><h3>
+<a name="id1188772"></a><h3>
 <a name="boost.svg.poly_path_pointconstruct-copy-destruct"></a><code class="computeroutput">poly_path_point</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a name="id555541-bb"></a><span class="identifier">poly_path_point</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id553372-bb"></a><span class="identifier">poly_path_point</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Construct a polygon or polyline path point from X and Y SVG coordinate. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id555556-bb"></a><span class="identifier">poly_path_point</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id553353-bb"></a><span class="identifier">poly_path_point</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Default constructor. </p>
 </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1190616"></a><h3>
-<a name="id555515-bb"></a><code class="computeroutput">poly_path_point</code> public member functions</h3>
+<a name="id1188828"></a><h3>
+<a name="id553327-bb"></a><code class="computeroutput">poly_path_point</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id555519-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> o_str<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id553339-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> o_str<span class="special">)</span><span class="special">;</span></pre>
 <p>Output SVG XML, Example: " 250,180" Leading space is redundant for 1st after "points= ", but others are separators, and arkward to know which is 1st. </p>
 </li></ol></div>
 </div>

@@ -35,82 +35,82 @@
 <span class="keyword">class</span> <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">:</span> <span class="keyword">public</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_element</span> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="path_element.html#boost.svg.path_elementconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="path_element.html#id557587-bb"><span class="identifier">path_element</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html#id557600-bb"><span class="identifier">path_element</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
+  <a class="link" href="path_element.html#id553130-bb"><span class="identifier">path_element</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html#id553121-bb"><span class="identifier">path_element</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
                <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">""</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">""</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html#id557605-bb"><span class="identifier">path_element</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html#id553159-bb"><span class="identifier">path_element</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="path_element.html#id556690-bb">public member functions</a></span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id556705-bb"><span class="identifier">c</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id556750-bb"><span class="identifier">C</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="path_element.html#id556811-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="path_element.html#id556829-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="path_element.html#id556823-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="path_element.html#id556846-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id556863-bb"><span class="identifier">fill_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="path_element.html#id556879-bb"><span class="identifier">fill_on</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id556903-bb"><span class="identifier">h</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id556933-bb"><span class="identifier">H</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="path_element.html#id556976-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="path_element.html#id556971-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557008-bb"><span class="identifier">l</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557017-bb"><span class="identifier">L</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557053-bb"><span class="identifier">m</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557086-bb"><span class="identifier">M</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="path_element.html#id557115-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="path_element.html#id557128-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557146-bb"><span class="identifier">q</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557200-bb"><span class="identifier">Q</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557231-bb"><span class="identifier">s</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557294-bb"><span class="identifier">S</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557327-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557336-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557361-bb"><span class="identifier">t</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557373-bb"><span class="identifier">T</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557438-bb"><span class="identifier">v</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557470-bb"><span class="identifier">V</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="path_element.html#id557509-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557515-bb"><span class="identifier">z</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id557529-bb"><span class="identifier">Z</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="path_element.html#id552223-bb">public member functions</a></span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552214-bb"><span class="identifier">c</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id550069-bb"><span class="identifier">C</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="path_element.html#id550110-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="path_element.html#id550117-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="path_element.html#id550140-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="path_element.html#id550155-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id550164-bb"><span class="identifier">fill_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="path_element.html#id552425-bb"><span class="identifier">fill_on</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552476-bb"><span class="identifier">h</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552473-bb"><span class="identifier">H</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="path_element.html#id552514-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="path_element.html#id552562-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552561-bb"><span class="identifier">l</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552583-bb"><span class="identifier">L</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552625-bb"><span class="identifier">m</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552619-bb"><span class="identifier">M</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="path_element.html#id552673-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="path_element.html#id552710-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552689-bb"><span class="identifier">q</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552745-bb"><span class="identifier">Q</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552767-bb"><span class="identifier">s</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552856-bb"><span class="identifier">S</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552896-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552884-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552934-bb"><span class="identifier">t</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552976-bb"><span class="identifier">T</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id552999-bb"><span class="identifier">v</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id553016-bb"><span class="identifier">V</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="path_element.html#id553046-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id553042-bb"><span class="identifier">z</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="path_element.html#id553096-bb"><span class="identifier">Z</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="path_element.html#id557606-bb">protected member functions</a></span>
-  <span class="keyword">void</span> <a class="link" href="path_element.html#id557623-bb"><span class="identifier">write_attributes</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="path_element.html#id553179-bb">protected member functions</a></span>
+  <span class="keyword">void</span> <a class="link" href="path_element.html#id553204-bb"><span class="identifier">write_attributes</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="identifier">ptr_vector</span><span class="special">&lt;</span> <a class="link" href="path_point.html" title="Struct path_point">path_point</a> <span class="special">&gt;</span> <span class="identifier">path</span><span class="special">;</span>  <span class="comment">// All the (x, y) coordinate pairs, filled by calls of m, M, l , L... that push_back. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1186310"></a><h2>Description</h2>
+<a name="id1184409"></a><h2>Description</h2>
 <p><a href="http://www.w3.org/TR/SVG/paths.html#PathElement" target="_top">http://www.w3.org/TR/SVG/paths.html#PathElement</a> 8.3.1 General information about path data. A path is defined by including a 'path' element which contains a d="(path data)" attribute, where the d attribute contains the moveto, line, curve (both cubic and quadratic Beziers), arc and closepath instructions. </p>
 <div class="refsect2">
-<a name="id1186297"></a><h3>
+<a name="id1184453"></a><h3>
 <a name="boost.svg.path_elementconstruct-copy-destruct"></a><code class="computeroutput">path_element</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a name="id557587-bb"></a><span class="identifier">path_element</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id553130-bb"></a><span class="identifier">path_element</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
 <p>Copy constructor. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id557600-bb"></a><span class="identifier">path_element</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> style_info<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id_name <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
+<pre class="literallayout"><a name="id553121-bb"></a><span class="identifier">path_element</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> style_info<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id_name <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
              <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> class_name <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
              <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> clip_name <span class="special">=</span> <span class="string">""</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Construct empty path element. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id557605-bb"></a><span class="identifier">path_element</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id553159-bb"></a><span class="identifier">path_element</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Construct an empty path element. </p>
 </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1186535"></a><h3>
-<a name="id556690-bb"></a><code class="computeroutput">path_element</code> public member functions</h3>
+<a name="id1184639"></a><h3>
+<a name="id552223-bb"></a><code class="computeroutput">path_element</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
 <pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> 
-<a name="id556705-bb"></a><span class="identifier">c</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<a name="id552214-bb"></a><span class="identifier">c</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Draws a cubic Bezier curve from the current point to (x,y) using (x1,y1).(relative).</p>
 <p>
 </p>
@@ -127,7 +127,7 @@
 </li>
 <li class="listitem">
 <pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> 
-<a name="id556750-bb"></a><span class="identifier">C</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<a name="id550069-bb"></a><span class="identifier">C</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Draws a cubic Bezier curve from the current point to (x,y) using (x1,y1).(absolute).</p>
 <p>
 </p>
@@ -143,20 +143,20 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id556811-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> class_id<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id550110-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> class_id<span class="special">)</span><span class="special">;</span></pre>
 <p>Class class id, non-unique identifier for an element.</p>
 <p><a href="http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute" target="_top">http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute</a> 6.12 Attributes common to all elements: id and xml:base Example: class="info"</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id556829-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id550117-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Class id, non-unique identifier for an element. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id556823-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id550140-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
 <p>Set name of a clip path, for example: g_ptr.clip_id(plot_window_clip_); </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id556846-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id550155-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -171,7 +171,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id556863-bb"></a><span class="identifier">fill_on</span><span class="special">(</span><span class="keyword">bool</span> on_<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id550164-bb"></a><span class="identifier">fill_on</span><span class="special">(</span><span class="keyword">bool</span> on_<span class="special">)</span><span class="special">;</span></pre>
 <p>Set area fill, on or off.</p>
 <p>
 </p>
@@ -187,7 +187,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id556879-bb"></a><span class="identifier">fill_on</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id552425-bb"></a><span class="identifier">fill_on</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -202,7 +202,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id556903-bb"></a><span class="identifier">h</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id552476-bb"></a><span class="identifier">h</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">)</span><span class="special">;</span></pre>
 <p>Line horizontal (relative).</p>
 <p>
 </p>
@@ -218,7 +218,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id556933-bb"></a><span class="identifier">H</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id552473-bb"></a><span class="identifier">H</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">)</span><span class="special">;</span></pre>
 <p>Line horizontal (absolute).</p>
 <p>
 </p>
@@ -234,12 +234,12 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id556976-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id552514-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
 <p>Provide a unique name for an element. Example: id="plotBackground"</p>
 <p>See <a href="http://www.w3.org/TR/SVG/struct.html#IDAttribute" target="_top">http://www.w3.org/TR/SVG/struct.html#IDAttribute</a> 5.10.1 Attributes common to all elements: id and xml:base The id and xml:base attributes are available on all SVG elements: Attribute definitions: id = "name" Standard XML attribute for assigning a unique name to an element. Refer to the "Extensible Markup Language (XML) 1.0" Recommendation [XML10]. xml:base = "&lt;uri&gt;" Specifies a base URI other than the base URI of the document or external entity. Refer to the "XML Base" specification [XML-BASE]. A group of elements, as well as individual objects, can be given a name using the id attribute. Named groups are needed for several purposes such as animation and re-usable objects.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id556971-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id552562-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -254,7 +254,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557008-bb"></a><span class="identifier">l</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id552561-bb"></a><span class="identifier">l</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Line to (relative).</p>
 <p>
 </p>
@@ -270,7 +270,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557017-bb"></a><span class="identifier">L</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id552583-bb"></a><span class="identifier">L</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Line to (absolute).</p>
 <p>
 </p>
@@ -286,7 +286,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557053-bb"></a><span class="identifier">m</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id552625-bb"></a><span class="identifier">m</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Move relative by x and y.</p>
 <p>
 </p>
@@ -302,7 +302,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557086-bb"></a><span class="identifier">M</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id552619-bb"></a><span class="identifier">M</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Move to absolute x and y.</p>
 <p>
 </p>
@@ -318,15 +318,15 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id557115-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id552673-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
 <p>Compare svg_elements for inequality, useful for Boost.Test. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id557128-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id552710-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
 <p>Compare svg_elements, useful for Boost.Test. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557146-bb"></a><span class="identifier">q</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id552689-bb"></a><span class="identifier">q</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Quadratic Curve Bezier (relative).</p>
 <p>
 </p>
@@ -342,7 +342,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557200-bb"></a><span class="identifier">Q</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id552745-bb"></a><span class="identifier">Q</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Quadratic Curve Bezier (absolute).</p>
 <p>
 </p>
@@ -358,7 +358,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557231-bb"></a><span class="identifier">s</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id552767-bb"></a><span class="identifier">s</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Draws a cubic Bezier curve from the current point to (x,y) (relative).</p>
 <p>
 </p>
@@ -374,7 +374,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557294-bb"></a><span class="identifier">S</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id552856-bb"></a><span class="identifier">S</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Draws a cubic Bezier curve from the current point to (x,y) (absolute).</p>
 <p>
 </p>
@@ -390,7 +390,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id557327-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id552896-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -405,7 +405,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id557336-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id552884-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -420,7 +420,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557361-bb"></a><span class="identifier">t</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id552934-bb"></a><span class="identifier">t</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Draws a quadratic Bezier curve from the current point to (x,y)(relative).</p>
 <p>
 </p>
@@ -436,7 +436,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557373-bb"></a><span class="identifier">T</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id552976-bb"></a><span class="identifier">T</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Draws a quadratic Bezier curve from the current point to (x,y)(absolute).</p>
 <p>
 </p>
@@ -452,7 +452,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557438-bb"></a><span class="identifier">v</span><span class="special">(</span><span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id552999-bb"></a><span class="identifier">v</span><span class="special">(</span><span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Line vertical (relative).</p>
 <p>
 </p>
@@ -468,7 +468,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557470-bb"></a><span class="identifier">V</span><span class="special">(</span><span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id553016-bb"></a><span class="identifier">V</span><span class="special">(</span><span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Line vertical (absolute).</p>
 <p>
 </p>
@@ -484,10 +484,10 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id557509-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands. <p>Write SVG path command. Example:&lt;path d="M5,175 L5,195 M148.571,175" /&gt;  </p>
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id553046-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands. <p>Write SVG path command. Example:&lt;path d="M5,175 L5,195 M148.571,175" /&gt;  </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557515-bb"></a><span class="identifier">z</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id553042-bb"></a><span class="identifier">z</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Path end. Note lower case z, see <code class="computeroutput"><a class="link" href="path_element.html" title="Class path_element">path_element</a></code>&amp; Z() below.</p>
 <p>
 </p>
@@ -503,7 +503,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id557529-bb"></a><span class="identifier">Z</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id553096-bb"></a><span class="identifier">Z</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Path end. Note Upper case Z also provided for compatibility with <a href="http://www.w3.org/TR/SVG/paths.html#PathDataClosePathCommand" target="_top">http://www.w3.org/TR/SVG/paths.html#PathDataClosePathCommand</a> 8.3.3 which allows either case.</p>
 <p>
 </p>
@@ -521,10 +521,10 @@
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1189954"></a><h3>
-<a name="id557606-bb"></a><code class="computeroutput">path_element</code> protected member functions</h3>
+<a name="id1187271"></a><h3>
+<a name="id553179-bb"></a><code class="computeroutput">path_element</code> protected member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id557623-bb"></a><span class="identifier">write_attributes</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> s_out<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id553204-bb"></a><span class="identifier">write_attributes</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> s_out<span class="special">)</span><span class="special">;</span></pre>
 <p>Output group_element id and clip-path.</p>
 <p>Classes inherited from <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code> add other references, 5.3.1, like color, fill, stroke, gradients...</p>
 </li></ol></div>
