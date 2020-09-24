@@ -14,30 +14,30 @@ xmlns ="http://www.w3.org/2000/svg"
 
 <!-- File ./demo_1d_simple.svg --> 
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="200"/></g>
-<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="21" y="56" width="386" height="100"/></g>
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="21" y="42.5" width="400" height="129"/></g>
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="53.2" y1="56" x2="53.2" y2="156"/><line x1="21" y1="108" x2="407" y2="108"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M66,108 L66,110 M78.9,108 L78.9,110 M91.8,108 L91.8,110 M105,108 L105,110 M130,108 L130,110 M143,108 L143,110 M156,108 L156,110 M169,108 L169,110 M195,108 L195,110 M208,108 L208,110 M220,108 L220,110 M233,108 L233,110 M259,108 L259,110 M272,108 L272,110 M285,108 L285,110 M298,108 L298,110 M323,108 L323,110 M336,108 L336,110 M349,108 L349,110 M362,108 L362,110 M388,108 L388,110 M401,108 L401,110 M40.3,108 L40.3,110 M27.4,108 L27.4,110 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M53.2,108 L53.2,114 M118,108 L118,114 M182,108 L182,114 M246,108 L246,114 M310,108 L310,114 M375,108 L375,114 M53.2,108 L53.2,114 " fill="none"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="54.3" y1="42.5" x2="54.3" y2="172"/><line x1="21" y1="110" x2="421" y2="110"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M67.7,110 L67.7,112 M81,110 L81,112 M94.3,110 L94.3,112 M108,110 L108,112 M134,110 L134,112 M148,110 L148,112 M161,110 L161,112 M174,110 L174,112 M201,110 L201,112 M214,110 L214,112 M228,110 L228,112 M241,110 L241,112 M268,110 L268,112 M281,110 L281,112 M294,110 L294,112 M308,110 L308,112 M334,110 L334,112 M348,110 L348,112 M361,110 L361,112 M374,110 L374,112 M401,110 L401,112 M414,110 L414,112 M41,110 L41,112 M27.7,110 L27.7,112 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M54.3,110 L54.3,114 M121,110 L121,114 M188,110 L188,114 M254,110 L254,114 M321,110 L321,114 M388,110 L388,114 M54.3,110 L54.3,114 " fill="none"/></g>
 <g id="xTicksValues">
-<text x="118" y="129" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
-<text x="182" y="129" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
-<text x="246" y="129" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
-<text x="310" y="129" text-anchor="middle" font-size="12" font-family="Verdana">8</text>
-<text x="375" y="129" text-anchor="middle" font-size="12" font-family="Verdana">10</text></g>
+<text x="121" y="128" text-anchor="middle" font-size="10" font-family="Verdana">2</text>
+<text x="188" y="128" text-anchor="middle" font-size="10" font-family="Verdana">4</text>
+<text x="254" y="128" text-anchor="middle" font-size="10" font-family="Verdana">6</text>
+<text x="321" y="128" text-anchor="middle" font-size="10" font-family="Verdana">8</text>
+<text x="388" y="128" text-anchor="middle" font-size="10" font-family="Verdana">10</text></g>
 <g id="xLabel">
-<text x="214" y="180" text-anchor="middle" font-size="14" font-family="Verdana">time (sec)</text></g>
-<g id="plotPoints"><g stroke="rgb(0,0,255)"><line x1="153" y1="108" x2="153" y2="98"/><line x1="188" y1="108" x2="188" y2="98"/></g>
-<g stroke="rgb(255,165,0)"><line x1="121" y1="108" x2="121" y2="98"/><line x1="304" y1="108" x2="304" y2="98"/></g>
+<text x="221" y="188" text-anchor="middle" font-size="10" font-family="Verdana">time (sec)</text></g>
+<g id="plotPoints"><g stroke="rgb(0,0,255)"><line x1="158" y1="109" x2="158" y2="99"/><line x1="194" y1="109" x2="194" y2="99"/></g>
+<g stroke="rgb(255,165,0)"><line x1="124" y1="109" x2="124" y2="99"/><line x1="314" y1="109" x2="314" y2="99"/></g>
 </g>
-<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="415" y="56" width="80.4" height="44"/></g>
-<g id="legendPoints"><g stroke="rgb(0,0,255)" stroke-width="2"><line x1="428" y1="74" x2="428" y2="64"/></g>
-<g stroke="rgb(255,165,0)" stroke-width="2"><line x1="428" y1="79" x2="428" y2="69"/></g>
+<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="427" y="42.5" width="64" height="47"/></g>
+<g id="legendPoints"><g stroke="rgb(0,0,255)" stroke-width="2"><line x1="438" y1="65" x2="438" y2="55"/></g>
+<g stroke="rgb(255,165,0)" stroke-width="2"><line x1="438" y1="77.5" x2="438" y2="67.5"/></g>
 </g>
 <g id="legendText">
-<text x="432" y="70" font-size="14" font-family="Verdana">Dan</text>
-<text x="432" y="75" font-size="14" font-family="Verdana">Elaine</text></g>
+<text x="443" y="61" font-size="10" font-family="Verdana">Dan</text>
+<text x="443" y="73.5" font-size="10" font-family="Verdana">Elaine</text></g>
 <g id="title">
-<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Race Times</text></g>
+<text x="250" y="22.5" text-anchor="middle" font-size="18" font-family="Verdana">Race Times</text></g>
 </svg>
