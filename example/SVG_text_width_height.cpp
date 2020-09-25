@@ -22,11 +22,15 @@ verdana 0.48
 arial 0.42
 Tme New Roman 0.4
 
+in svg_style.hpp 
+  static const fp_type aspect_ratio = 0.6;  //!< aspect_ratio is a guess at average height to width of font.
+
+
 */
 
 // svg_text_width_height.cpp
 
-// Copyright Paul A. Bristow 2018
+// Copyright Paul A. Bristow 2018, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -47,11 +51,9 @@ int main()
   using namespace boost::svg;
   // Very convenient to allow easy access to colors, data point marker shapes and other svg_plot items.
 
-
   try
   { // try'n'catch blocks are needed to ensure error messages from any exceptions are shown.
 
-    //     Legend Example 0
     svg_2d_plot my_2d_plot; // Construct a plot with all the default constructor values.
 
     // Containers to hold some data.
@@ -62,13 +64,14 @@ int main()
     std::string a_title(340, 'i'); // 
 
     my_2d_plot // Nearly all default settings.
-      .size(1000, 100)
- //     .title("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM") // 116 M fill 1000 exactly 465 mm
+      .size(1000, 200)
+      .title("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM") // 116 M fill 1000 exactly 465 mm
+      // So for font width = 20 (type normal) width of an M is 1000/
  //     .title("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM") // 100 M width 400 mm
  //     .title("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii") // 116 i width 160 mm      .title_on(true)
  //     .title(a_title) // std::string a_title(116, 'W');  Fills 1000 completely like 'M'
  //     .title("The Quick brown Fox jumped over the lazy dog. The Quick brown Fox jumped over the lazy dog.The Quick brown Fox jumped over the lazy dog. The Quick brown Fox jumped over the lazy dog.")
- //      181 'mixed' chars 10 font size almost fills (435 mm) 1000 width so each char is 1000 / 181 = 5.5 svg unit   aspect ratio =  0.55
+ //      181 'mixed' chars 10 font size almost fills (435 mm) 1000 width so each char is 1000 / 181 = 5.5 svg unit aspect ratio =  0.55
       // and triggers warning message:
 //         "width 1092 (SVG units) may overflow plot image!
  //        (Reduce font size from 10, or number of characters from 182, or increase image size from 1000)."
@@ -85,14 +88,14 @@ int main()
     //.title("Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid")
     //// 249 chars fit.  So aspect ratio = 1000/250 = 4, so for 10 point aspect ratio = 0.4
     //.title_font_family("Arial")
-    .title("Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men")
+    //.title("Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men")
 //  Arial 10 point 240 chars so aspect ratio = 1000/240 = 0.42
 
     //.title_font_family("verdana")
    //  verdana 10 point 208 chars so aspect ratio = 1/10 * 1000/208 = 0.48
      // Example of using all the text styles:
  //     .title("Now is the time for all good men to come to the aid of the party.")
-      .title_font_size(20)
+      .title_font_size(10)
       //.title_font_family("Arial")
       .title_font_family("Times new roman")
   //    .title_font_style("italic")
@@ -130,10 +133,13 @@ int main()
     // Title text "Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the "
     //  with an estimated width 1630.2 (SVG units) may overflow plot space 1000 or over-compress text with compression ratio 1.6302.
     //  Reduce font size from 13, or number of characters from 209, or increase image size from 1000?.
-    my_2d_plot.write("./svg_ext_width_height.svg"); // Plot output to file.
+    my_2d_plot.write("./svg_text_width_height.svg"); // Plot output to file.
     // Output contains for the title:
     //<g id="title">
-    //  <text x="500" y="18" text-anchor="middle" font-size="12" font-family="Arial" font-style="italic" font-weight="bold" font-stretch="narrower" text-decoration="underline" textLength="1e+03">
+    //  <text x="500" y="18" text-anchor="middle" font-size="12" 
+    //font-family="Arial" font-style="italic" font-weight="bold" font-stretch="narrower" 
+    // text-decoration="underline" 
+    // textLength="1e+03">    <<<<<<<<  note how is forced to use the exact estimated width.
     //  Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the 
     //  </text>
     //</g>

@@ -53,9 +53,9 @@ namespace svg
 //! \cond DETAIL
   const std::string strip_e0s(std::string s); // Strip unnecessary zeros and e and sign - to minimize value label length.
 //! \endcond
-  class svg_1d_plot;   // 1D Plot (that may include one or more data series).
+  class svg_1d_plot;   // 1D Plot (that may include one or more data-series).
 
-  //class svg_1d_plot_series; // A data series to be added to a 1D Plot.
+  //class svg_1d_plot_series; // A data-series to be added to a 1D Plot.
 
 // ------------------------------------------------------------------
 // This allows us to store plot state locally in svg_plot.
@@ -71,7 +71,7 @@ namespace svg
    and their appearance, shape, color and size.\n
    Data points can include their value, and optionally uncertainty and number of degrees of freedom.\n
 
-   Each data series can have a title that can be shown on a legend box with identifying symbols.
+   Each data-series can have a title that can be shown on a legend-box with identifying symbols.
 */
 class svg_1d_plot_series
 {
@@ -82,7 +82,7 @@ public:
   std::vector<double> series_limits_; //!< 'limit' values: too big, too small or NaN.
   // TODO should these be unc too?  Uncertainty info is meaningless, but timestamp etc are OK.
 
-  std::string title_; //!< title of data series (to show on legend using legend_style).
+  std::string title_; //!< title of data-series (to show on legend using legend_style).
   plot_point_style point_style_; //!< circle, square...
   // Limit Marker  settings now in svg_1d_plot class.
   //plot_point_style limit_point_style_; //!< Default is cone pointing down for 2D or point right for 1D.
@@ -100,7 +100,7 @@ public:
   svg_1d_plot_series(
   C begin,
   C end,
-  const std::string& title = ""); // Title of plot data series, for example:"Monday", "Tuesday"...
+  const std::string& title = ""); // Title of plot data-series, for example:"Monday", "Tuesday"...
 
   // Forward declarations of Set functions for the plot series.
   svg_1d_plot_series& fill_color(const svg_color& col_); // Set fill color for plot point marker(s) (chainable).
@@ -123,8 +123,8 @@ public:
   double line_width(); // Get line width for plot point marker(s).
   bool line_on(); // Get true if line is to join data points.
   bool bezier_on(); // Get true if curve if to join data points.
-  size_t series_count(); // Get number of normal data points in this data series.
-  size_t series_limits_count(); // Get number of 'at limits' data points in this data series.
+  size_t series_count(); // Get number of normal data points in this data-series.
+  size_t series_limits_count(); // Get number of 'at limits' data points in this data-series.
 }; // class svg_1d_plot_series
 
  /*! \class boost::svg::svg_1d_plot
@@ -187,7 +187,7 @@ public:
 
   // text_elements hold position & alignment, and indirectly via text_style, font_family, font_size, bold, italic...
   text_element title_info_; //!< Title of whole plot.
-  text_element legend_title_; //!< legend box header or title (if any).
+  text_element legend_title_; //!< legend-box header or title (if any).
   text_element x_label_info_; //!< X-axis label, Example: "length of widget"
   text_element x_value_label_info_; //!< X-axis tick value label, for example: "1.2" or "1.2e1"
   text_element x_units_info_; //!< For example, to display, "length (meter)"
@@ -210,28 +210,28 @@ public:
   // enum legend_places{ where, aspect_ratio, inside...}
   bool is_legend_title_; //!< @c true if legend_title_.text() != "" (for example: @c .legend_title("My Legend");) (default @c false).
 
-  legend_places legend_place_; //!< Place for any legend box, inside, outside, left, right.
-  double legend_width_; //!< Width of legend box (pixels).
-  double legend_height_; //!< Height of legend box (in pixels).
-  //!< Size of legend box is controlled by its contents,
+  legend_places legend_place_; //!< Place for any legend-box, inside, outside, left, right.
+  double legend_width_; //!< Width of legend-box (pixels).
+  double legend_height_; //!< Height of legend-box (in pixels).
+  //!< Size of legend-box is controlled by its contents,
   //!< but helpful to store computed coordinates.
-  double legend_left_; //!< Left of legend box.
-  double legend_top_; //!< Top of legend box.
+  double legend_left_; //!< Left of legend-box.
+  double legend_top_; //!< Top of legend-box.
   // Both optionally set by legend_top_left.
-  double legend_right_; //!< SVG Coordinates of right of legend box,
-  double legend_bottom_; //!< bottom of legend box.
+  double legend_right_; //!< SVG Coordinates of right of legend-box,
+  double legend_bottom_; //!< bottom of legend-box.
   double x_axis_vertical_; //!< Vertical position of 1D horizontal X-axis line as fraction of window.
   //! 0.5 is at middle(useful if no labels) (default),
   //! 0.8 is near bottom (useful if value labels go upward),
   //! 0.2 is near top (useful if value labels go downward).
 
-  bool is_a_point_marker_; //! @c true if any data series have point markers to show in legend (default @c false).
+  bool is_a_point_marker_; //! @c true if any data-series have point markers to show in legend (default @c false).
   bool is_a_data_series_line_;  //!< @c true if any series have lines to show in legend (default @c false). Example: @c .line_on(true).
-  bool is_a_data_series_text_;  //!< @c true is any series should show text describing the data series (default @c false). For example: @c my_plot.plot(my_data_0, "my_data_0_text");
+  bool is_a_data_series_text_;  //!< @c true is any series should show text describing the data-series (default @c false). For example: @c my_plot.plot(my_data_0, "my_data_0_text");
   double legend_title_font_size_; //!< Font size of legend header/title.
   double legend_text_font_size_; //!< Font size of legend text.
- // double series_text_font_size_; //!< Font size of lines of text describing data series.
-  double legend_widest_line_; //!< Width of longest of legend header/title and widest data series pointer+line+text.
+ // double series_text_font_size_; //!< Font size of lines of text describing data-series.
+  double legend_widest_line_; //!< Width of longest of legend header/title and widest data-series pointer+line+text.
   double biggest_point_marker_font_size_; //!< Biggest point marker symbol - determines vertical spacing.
 
   // Leave a vertical space before any text (if text_margin_ == 1.5 then height of one biggest font).
@@ -254,10 +254,10 @@ public:
   ticks_labels_style y_ticks_; //!< style of Y axis tick value labels. (Meaningless for 1D but added to permit shared code in axis_plot_frame.hpp!)
 
   bool title_on_; //!< If true include a title for the whole plot.
-  bool legend_on_; //!< If true include a legend box.
-  bool outside_legend_on_; //!< If true, place legend box outside the plot window.
-  bool legend_lines_; //!< If true, include data colored line type in legend box.
-  bool plot_window_on_; //!< Use a separate plot window (not aspect_ratioole image).
+  bool legend_on_; //!< If true include a legend-box.
+  bool outside_legend_on_; //!< If true, place legend-box outside the plot window.
+  bool legend_lines_; //!< If true, include data colored line type in legend-box.
+  bool plot_window_on_; //!< Use a separate plot window (not whole image).
   bool x_ticks_on_; //!< Ticks on X axis will be shown.
   bool x_values_on_; //!< values of data are shown by values markers.
   int  x_axis_position_; //!< \see boost::svg::x_axis_intersect.
@@ -292,8 +292,8 @@ public:
 
   std::string plot_window_clip_; //!< = "clip_plot_window" id for clippath
   //!< http://www.w3.org/TR/SVG/masking.html#ClipPathElement 14.1 Introduction
-  //!< clipping paths, aspect_ratioich uses any combination of 'path', 'text' and basic shapes
-  //!< to serve as the outline aspect_ratioere everything on the "inside" of the outline
+  //!< clipping paths, which uses any combination of 'path', 'text' and basic shapes
+  //!< to serve as the outline. Everything on the "inside" of the outline
   //!< is allowed to show through but everything on the outside is masked out.
   //!< So the plot_window_clip_ limits display to a plot_window rectangle.
 
@@ -308,7 +308,7 @@ public:
   void calculate_transform(); // Calculate transform form Euclidian to SVG coordinate.
   void draw_axes(); // Draw the X axis (and, for 2-D, also the Y axis) of the plot.
   void update_image(); /* Calls functions to add all plot information to the image, including
-  plot window, axes, ticks, labels, grids, legend, and finally all the data series.*/
+  plot window, axes, ticks, labels, grids, legend, and finally all the data-series.*/
 //! \endcond
 
   // ------------------------------------------------------------------------
@@ -321,7 +321,7 @@ public:
   svg_1d_plot& write(const std::string& file); //!< Write an SVG plot to a file.
   svg_1d_plot& write(std::ostream& os); //!> Write an SVG plot to a stream.
 
-  // Declarations of several versions of function plot to add data series (with defaults).
+  // Declarations of several versions of function plot to add data-series (with defaults).
   template <typename T>
   svg_1d_plot_series& plot(const T& container, const std::string& title = "");
   template <typename T>
@@ -356,7 +356,7 @@ public:
 template <typename C>
 svg_1d_plot_series::svg_1d_plot_series(C begin, C end, const std::string& title)
 : // Constructor.
-title_(title), // of data series.
+title_(title), // of data-series.
 point_style_(black, blank, 5, vertical_line, ""), // Default data point marker style vertical line for 1D plots.
 //limit_point_style_(lightgrey, whitesmoke, 10, cone_point_right, ""), // Default limit//  (inf or NaN) point style.  right-pointing pointer.
 //limit_point_style_(red, green, 20, cone_point_right, ""), // Default limit (inf or NaN) point style is right-pointing pointer.
@@ -507,12 +507,12 @@ bool svg_1d_plot_series::bezier_on()
 }
 
 size_t svg_1d_plot_series::series_count()
-{ //! \return Number of normal 'OK to plot' data values in data series.
+{ //! \return Number of normal 'OK to plot' data values in data-series.
   return series_.size();
 }
 
 size_t svg_1d_plot_series::series_limits_count()
-{ //!  \return Number of 'at limit' values: too big, too small or NaN data values in data series.
+{ //!  \return Number of 'at limit' values: too big, too small or NaN data values in data-series.
   return series_limits_.size();  // TODO limit_count would be better name?
 }
 
@@ -523,7 +523,7 @@ size_t svg_1d_plot_series::series_limits_count()
 
 void svg_1d_plot::update_image()
 { //! Calls functions to add all plot information to the image, including
-  //! plot window, axes, ticks, labels, grids, legend, and finally all the data series.
+  //! plot window, axes, ticks, labels, grids, legend, and finally all the data-series.
 
   clear_all(); // Removes all elements that will show up in a subsequent draw.
 
@@ -558,9 +558,9 @@ void svg_1d_plot::update_image()
   y -= 3.; 
 
   for(unsigned int i = 0; i < serieses_.size(); ++i)
-  { // Plot the normal data points for each of the i data series.
+  { // Plot the normal data points for each of the i data-series.
     g_element& g_ptr = image_.g(detail::PLOT_DATA_POINTS).add_g_element();
-    // Set the color for all the data series markers.
+    // Set the color for all the data-series markers.
     g_ptr.style().stroke_color(serieses_[i].point_style_.stroke_color_);
     g_ptr.style().fill_color(serieses_[i].point_style_.fill_color_);
 
@@ -672,7 +672,7 @@ void svg_1d_plot::update_image()
     minus_limit_point_style_(blue, white, 20, cone_point_down, ""), // Colors and size for outside window markers.
 
     title_info_(0, 0, "", title_style_, center_align, horizontal),
-    //title_info_(0, 0, "Plot of data", title_style_, center_align, horizontal), aspect_ratioen text concatenation solved?
+    //title_info_(0, 0, "Plot of data", title_style_, center_align, horizontal), when text concatenation solved?
     //x_label_info_(0, 0, "X Axis", x_axis_label_style_, center_align, horizontal),
     //x_units_info_(0, 0, " (units)", x_value_label_style_, center_align, horizontal),
     x_label_info_(0, 0, "", x_axis_label_style_, center_align, horizontal), // Null strings for now.
@@ -696,14 +696,14 @@ void svg_1d_plot::update_image()
     plot_window_border_(lightgoldenrodyellow, svg_color(255, 255, 255), 1, 3, true, false),
     legend_box_(yellow, white, 1, 1, true, true),
     legend_title_(0, 0, "", legend_text_style_, center_align, horizontal),
-    legend_width_(200), // width of legend box (pixels) // TODO isn't this calculated?
-    legend_height_(0), // height of legend box (pixels)
+    legend_width_(200), // width of legend-box (pixels) // TODO isn't this calculated?
+    legend_height_(0), // height of legend-box (pixels)
     legend_left_(-1), legend_right_(-1),legend_top_(-1),legend_bottom_(-1), // Default top left of plot window.
     x_axis_vertical_(0.5), // Vertical position of 1D horizontal X-axis line as fraction of window.
     legend_place_(outside_right), // default but interacts with using plot_window.
     legend_on_(false),
-    legend_widest_line_(0), //!< Longest width (on X-axis) of sum of point marker, line and data series text and legend title.
-    // (used to calculate how wide the legend box needs to be, and thus position of it and plot window).
+    legend_widest_line_(0), //!< Longest width (on X-axis) of sum of point marker, line and data-series text and legend title.
+    // (used to calculate how wide the legend-box needs to be, and thus position of it and plot window).
 
     vertical_title_spacing_(0), // Legend header/title vertical spacing.
      //  derived().vertical_title_spacing_ = derived().legend_title_font_size_ * derived().text_margin_;
@@ -746,7 +746,7 @@ void svg_1d_plot::update_image()
     size(500, 200); // Default image size.
   // Only needs to be quite shallow (y_size) for a 1-D plot.
   // (But may need more height (y_size) if long value labels are used, for example: "[time = 1.23 +-0.02 sec]").
-  // 200 barely leaves enough room for five data series in any legend box).
+  // 200 barely leaves enough room for five data-series in any legend-box).
   // (2-D usually needs to be much more rectangular).
 
   using namespace boost::svg::detail; // Avoid detail:: specification.
@@ -815,7 +815,7 @@ void svg_1d_plot::update_image()
 
 void svg_1d_plot::calculate_plot_window()
 { //! Calculate the size and position of the plot window,
-  //! taking account of the length and font size of axes labels, axis ticks, title and legend box.
+  //! taking account of the length and font size of axes labels, axis ticks, title and legend-box.
   //! This version is only for 1-D.
   //! All calculations use SVG units, pixels by default.
 
@@ -979,7 +979,7 @@ void svg_1d_plot::draw_axes()
   if(x_axis_.axis_line_on_ && (x >= plot_left_) && (x <= plot_right_))
   {
     if(!plot_window_on_)
-    { // Use aspect_ratioole image.
+    { // Use whole image.
       if(title_on_)
       { // Allow space for title, taking account of font size.
         y1 += title_info_.textstyle().font_size() * text_margin_;
@@ -1031,7 +1031,7 @@ void  svg_1d_plot::calculate_transform()
   \details @c write() has two versions: to an @c ostream and to a file.
   The stream version first clears all unnecessary data from the graph,
   builds the document tree, and then calls the @c write function for the root
-  document node, aspect_ratioich calls all other nodes through the Visitor pattern.
+  document node, which calls all other nodes through the Visitor pattern.
 
   \param file Filename to write.
   \note This file version opens an @c ostream, and calls the @c ostream version of write.
@@ -1079,7 +1079,7 @@ svg_1d_plot& svg_1d_plot::write(std::ostream& os)
   */
   update_image();
   /*!
-    The default stream precision of 6 decimal digits is probably excessive.
+    The default stream precision of 6 decimal digits is probably excessive for plots.
     4.1 Basic data types, integer or float in decimal or scientific (using E format).
     If image size is under 1000 x 1000, the SVG plot default precision of 3 is probably sufficient.
     This reduces .svg file sizes significantly for curves represented with many data points.
@@ -1092,14 +1092,14 @@ svg_1d_plot& svg_1d_plot::write(std::ostream& os)
 } // write
 
 
- /*! Add a data series to the plot (by default, converting to @c unc @c doubles), with optional data series title.
+ /*! Add a data-series to the plot (by default, converting to @c unc @c doubles), with optional data-series title.
 
   \tparam T Floating-point type of the data (@c T must be convertible to @c double).
 
   \param container Container (for example std::vector) for the data to be added to the plot.
-  \param title Optional title for the data series (default none).
+  \param title Optional title for the data-series (default none).
 
-  \return Reference to data series just added (to make chainable).
+  \return Reference to data-series just added (to make chainable).
 
   \note This version assumes that \b ALL the data values in the container are used.
   */
@@ -1127,23 +1127,23 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& container, const std::string& tit
   return serieses_[serieses_.size() - 1];
 } // plot(const T& container, const std::string& title)
 
- /*! Add a data series to the plot (by default, converting to unc doubles), with optional title.
+ /*! Add a data-series to the plot (by default, converting to unc doubles), with optional title.
     \tparam T floating-point type of the data (T must be convertible to double).
     \param begin Iterator to 1st data item in container.
     \param end Iterator to one-beyond-end of data in container.
     \param title Optional title for the plot (default is no title).
-    \return Reference to the data series just added.
+    \return Reference to the data-series just added.
     \note This version permits a @b partial range of the container, from begin to end, to be used.
 
     @b Example:
     */
 /*!
     \code
-my_1d_plot.plot(my_data.begin(), my_data.end(), "My container"); // aspect_ratioole container of data values.
-my_1d_plot.plot(&my_data[1], &my_data[4], "my_data 1 to 4"); // Add part of data series
+my_1d_plot.plot(my_data.begin(), my_data.end(), "My container"); // Whole container of data values.
+my_1d_plot.plot(&my_data[1], &my_data[4], "my_data 1 to 4"); // Add part of data-series
     \endcode
 
-    \warning last == end  aspect_ratioich is one past the last, so this only does 1, 2 & 3 -  \b not 4!
+    \warning last == end  which is one past the last, so this only does 1, 2 & 3 -  \b not 4!
   */
   template <class T>  // \tparam T floating-point type of the data (T must be convertible to double).
 svg_1d_plot_series& svg_1d_plot::plot(const T& begin, const T& end, const std::string& title)
@@ -1156,13 +1156,13 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& begin, const T& end, const std::s
   );
   /*!
     */
-  return serieses_[serieses_.size() - 1]; // Reference to data series just added.
+  return serieses_[serieses_.size() - 1]; // Reference to data-series just added.
 } // plot
 
 /*!
-  Add a data series to the plot, with optional title.
+  Add a data-series to the plot, with optional title.
 
-  \tparam T floating-point type of the data (aspect_ratioich must be convertible to @c double).
+  \tparam T floating-point type of the data (which must be convertible to @c double).
   \tparam U functor floating-point type (default is @c double_1d_convert).
 
 
@@ -1170,7 +1170,7 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& begin, const T& end, const std::s
   \param title Optional title for the plot (default is no title).
   \param functor Custom functor to convert data value to @c double.
 
-  \return a reference to data series just added (to make chainable).
+  \return a reference to data-series just added (to make chainable).
 
   \note This version of plot includes a functor, allowing other than just convert data values to @c double (the default).
 */
@@ -1184,20 +1184,20 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& container, const std::string& tit
     boost::make_transform_iterator(container.end(),   functor),
     title)
   );
-  return serieses_[serieses_.size() - 1]; // Reference to data series just added.
+  return serieses_[serieses_.size() - 1]; // Reference to data-series just added.
 } // plot
 
 /*!
-   Add a data series to the plot, with optional title. (Version with custom functor, rather than to @c double).
+   Add a data-series to the plot, with optional title. (Version with custom functor, rather than to @c double).
 
-    \tparam T Floating-point type of the data (aspect_ratioich must be convertible to @c double).
+    \tparam T Floating-point type of the data (which must be convertible to @c double).
     \tparam U Functor floating-point type (default is @c double_1d_convert).
 
     \param begin Iterator to 1st data item in container.
     \param end Iterator to one-beyond-end of data in container.
     \param title Optional title for the plot (default is no title).
     \param functor Custom functor.
-    \return a reference to data series just added (to make chainable).
+    \return a reference to data-series just added (to make chainable).
 
     \note This version permits a @b partial range, within begin to end, of the container to be used.
 */

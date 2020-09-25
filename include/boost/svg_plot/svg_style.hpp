@@ -1933,14 +1933,11 @@ double string_svg_length(const std::string& s, const text_style& style)
   if possible use an actual length, but probably platform and/or browser-dependent,
   else use average char width,
   and deal with Unicode, for example &#x3A9; = greek omega,
-  counting each symbol(s) embedded between & and ; as one character.
-  To see what symbols are supported see
-
-  http://www.fileformat.info/info/unicode/font/index.htm
+  counting each symbol(s) embedded between & and ; as one EM width character.
 
   Font Support for Unicode Characters
-
-  Fonts of interest to Unicode users tab but mainly lists compliance as stars out of 5.
+   To see what symbols are supported see http://www.fileformat.info/info/unicode/font/index.htm
+ Fonts of interest to Unicode users tab but mainly lists compliance as stars out of 5.
 
   Font Character Test for Arial Unicode MS has 5 stars
   http://www.fileformat.info/info/unicode/font/arial_unicode_ms/list.htm lists all the fonts,
@@ -1954,22 +1951,35 @@ double string_svg_length(const std::string& s, const text_style& style)
   chess symbols, lots of star symbols, 25b0 triangles, Greek 0410, letter and numbers inside circle 24B0,
   units like mA, uF 3380, math symbols 2200 like Unicode Character 'CIRCLED DOT OPERATOR' (U+2299),
 
-  Unicode Characters in the Miscellaneous Symbols Block like umbrella, snoman, sun, cloud, cross of jerusalem,
-  male female, chaess
-  and very many cChinese ideograms
+  Unicode Characters in the Miscellaneous Symbols Block like:
+  umbrella, snowman, sun, cloud, cross of jerusalem, male female, chess and very many Chinese ideograms.
 
   Also 5 stars Code2000, but in practise most fonts given 4 star will be useful.
 
   For example,
   https://www.fileformat.info/info/unicode/font/lucida_sans_unicode/index.htm
 shows Font Character Test for Lucida Sans Unicode.
-tabs of links at the bottom of page:
+tabs of links at the bottom of page:  Unicode characters supported by the Lucida Sans Unicode font
 
-Unicode characters supported by the Lucida Sans Unicode font
-
-  Also ignore embedded xml like <sub> (not implemented by all browsers yet).
-
+  Esimate of length should also ignore embedded xml like <sub> (not implemented by all browsers yet).
   Uses @c aspect_ratio to estimate width of characters from font_size (height).
+
+  SVG function getComputedTextLength() allows a document to compute the actual SVG length needed
+  https://www.w3.org/TR/SVG/text.html#__svg__SVGTextContentElement__getComputedTextLength
+  usable from Javascript and MS windows,
+  but this is no use in a C++ program without a lookup table of all Unicode chars,
+  so the best we can do is to compute an average character width multiplied by number of characters.
+  Also, to avoid any overflow (or underflow) of the box, we can instruct the renderer to stretch and squeeze
+  to fill exactly the estimated width used to write the box border.
+
+  https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/textLength
+  The textLength attribute, available on SVG <text> and <tspan> elements,
+  lets you specify the width of the space into which the text will draw.
+  \code
+    <text y="20" textLength="6em">Small text length</text>
+    <text y="40" textLength="120%">Big text length</text>
+  \endcode
+
   \endverbatim
   \returns length of string in SVG units depending on text_style (font size etc).
 
@@ -1983,7 +1993,7 @@ Unicode characters supported by the Lucida Sans Unicode font
  for (std::string::const_iterator i = s.begin(); i != s.end(); i++)
  {
     if (*i == '&')
-    { // Start of Unicode 'escape sequence'
+    { // Start of Unicode 'escape sequence &#XAB12;' 
       in_esc = true;
        while ((*i != ';')
          && (i != s.end())) // In case mistakenly not null terminated.
@@ -2006,6 +2016,10 @@ Unicode characters supported by the Lucida Sans Unicode font
     chars++;
  }
  double svg_length = chars * (style.font_size() * aspect_ratio);  // Estimated width of svg string.
+
+ // https://www.w3.org/TR/SVG/text.html#__svg__SVGTextContentElement__getComputedTextLength
+// double svg_computed_length = getComputedTextLength();
+
 #ifdef BOOST_SVG_STYLE_DIAGNOSTICS
   std::cout << "string \"" << s << "\" has " << chars << " characters, and svg length is " << svg_length << std::endl;
 #endif // BOOST_SVG_STYLE_DIAGNOSTICS
@@ -2014,7 +2028,8 @@ Unicode characters supported by the Lucida Sans Unicode font
   // width can be quite a bit different from different fonts, especially serif versus sans serif.
   // Aspect ratio can vary from 0.4 to 0.55 so estimate of 1 units could increase to 1.4 in worst case, as observed.
   // For example 1000 svg units might take between 180 and 240 random chars.
-  // So must use textLength="estimated" to ensure it fits.
+  // So must use textLength="estimated" to ensure it fits, for example adding
+  //   textLength="1e+03"
 
  return svg_length;
 } // double string_svg_length(const std::string& s, const text_style& style)
@@ -2023,3 +2038,7 @@ Unicode characters supported by the Lucida Sans Unicode font
 }//boost
 
 #endif // BOOST_SVG_SVG_STYLE_HPP
+
+/*
+
+*/

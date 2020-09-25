@@ -68,7 +68,7 @@ namespace boost
 
     static const double sin45 = 0.707; //!< Used to calculate 'length' if axis value labels are sloping.
     static const double reducer = 0.9; //!< To make uncertainty and degrees of freedom estimates a bit smaller font to help distinguish from value.
- //   static const double aspect_ratio = 0.6;  //!< Guess at average height to width of font. Now in svg_style.hpp
+   // static const double aspect_ratio = 0.6;  //!< Guess at average height to width of font. Now in svg_style.hpp
 
     // x_axis_position_ and y_axis_position_ use x_axis_intersect & y_axis_intersect
     enum x_axis_intersect
@@ -1479,8 +1479,7 @@ namespace boost
       { /*! Draw title (for the whole plot).
           Update title_info_ with position.
           Assumes align = center_align
-          Using center_align will ensure that title will center correctly
-          because the render engine does the centering.
+          Using center_align will ensure that title will center correctly because the render engine does the centering.
           (Even if the original string is made much longer because it contains Unicode,
           Greek, math symbols etc, taking about 8 characters per symbol.
           For example, the Unicode symbol for square root is "&#x221A;" but takes only about one character width).
@@ -1508,18 +1507,22 @@ namespace boost
           << ", title font family = " << derived().title_font_family()
           << ", title font weight = " << derived().title_font_weight()
           << ", title text_length = " << derived().title_text_length()
-          << ",\n title_style_ = " << derived().title_style_
+          << ", title_style_ = " << derived().title_style_
+          << "\n text_margin_ " << derived().text_margin_
           << std::endl;
 #endif // BOOST_SVG_TITLE_DIAGNOSTICS
-//       bool check_text_fit(const text_style& style, std::string& text, double font_size, double title_svg_length, double image_size)
 
         // If force title into the x_size (using text_length option),
         // then too large a font or too many characters may over-compress and push the glyphs to overlap,
         // so warn here of overflow or over-compress.
         // A factor of 1.6 more characters than width still allows bold characters to not quite collide or overlap.
-        check_text_fit(derived().title_info_.textstyle(), derived().title(), derived().title_font_size(), title_svg_length, derived().image_.x_size());
-
+//        bool fit_ok = check_text_fit(
+          bool check_text_fit(const text_style& style, std::string& text, double font_size, double title_svg_length, double image_size)
+           derived().title_info_.textstyle(), derived().title(), derived().title_font_size(), title_svg_length, derived().image_.x_size()
+          );
         /*
+          if fit_ok == false
+        will issue this warning
         // If force title into the x_size (using text_length option),
         // then too large a font or too many characters may over-compress and push the glyphs to overlap,
         // so warn here of overflow or over-compress. A factor of 1.6 more characters than width
@@ -1538,6 +1541,12 @@ namespace boost
           //  (Reduce font size from 30, or number of characters from 21, or increase image size from 300).
         }
         */
+        if (fit_ok == true)
+        { // OK to force title to expand or contract to the estimated title length @c title_svg_length.
+          derived().title_info_.textstyle().text_length(title_svg_length);
+        }
+          
+
         derived().title_info_.x(derived().image_.x_size() / 2.); // Center of image.
         double y = derived().title_info_.textstyle().font_size() * derived().text_margin_; // Leave a margin space above.
         // default text_margin_(2.), // for title & axis label text, as a multiplier of the font size.
@@ -1607,7 +1616,8 @@ namespace boost
           derived().is_a_data_series_text_ = true; // So will need to allow space for any data series without text.
           double series_string_length = string_svg_length(derived().serieses_[i].title_, derived().legend_text_style_);
           // string_svg_length avoids chars as Unicode hex increasing the length wrongly,
-          // so each Unicode char counts only as one char.  Would be better to use the SVG method of estimating true length.
+          // so each Unicode char counts only as one char. 
+          //   Would be better to use the SVG method of estimating true length.
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
           std::cout << " series title " << i << " " << derived().serieses_[i].title_
@@ -1660,7 +1670,7 @@ namespace boost
 
       if (derived().is_a_point_marker_ == true)
       { // Markers for data points in a data series.
-        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // Data point marker, circlet, corss ...
+        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // Data point marker, circlet, cross ...
         text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // and a same size space after the marker.
       }
       if (derived().is_a_data_series_line_ == true)
