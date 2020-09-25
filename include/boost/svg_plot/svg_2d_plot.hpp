@@ -505,8 +505,8 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
 
       text_style a_style_; //!< Defaults for text_style (contains font size & type etc).
       text_style title_style_; //!< Style for plot title.
-      text_style legend_text_style_; //!< Style for legend text.
-      text_style legend_title_style_; //!< Style for legend title.
+      text_style legend_text_style_; //!< Style for legend-text.
+      text_style legend_title_style_; //!< Style for legend-title.
       text_style x_axis_label_style_; //!< Style for tick labels on X-axis.
       text_style x_value_label_style_; //!< Style for data point value labels on X-axis.
       text_style y_axis_label_style_; //!< Style for tick labels on Y-axis.

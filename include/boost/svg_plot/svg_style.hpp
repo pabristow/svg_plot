@@ -382,7 +382,7 @@ public:
   text_style& font_stretch(const std::string& s);
   text_style& font_decoration(const std::string& s);
   // text_style& font_variant(const std::string& s); // Not implemented, nor are others.
-  text_style& text_length(double);
+  text_style& text_length(double); // Force reenderer to contract or expand to this length.
 
   // text_style Getters.
   int font_size() const;

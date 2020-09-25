@@ -25,7 +25,7 @@ Tme New Roman 0.4
 in svg_style.hpp 
   static const fp_type aspect_ratio = 0.6;  //!< aspect_ratio is a guess at average height to width of font.
 
-
+  Examples of using function plot.title_text_length(1000); so squeeze or expand title.
 */
 
 // svg_text_width_height.cpp
@@ -102,8 +102,10 @@ int main()
    //   .title_font_weight("bold")
    //   .title_font_stretch("narrower") // May have no effect here.
      // .title_font_decoration("underline")
-      .title_text_length(2000) // Force into an arbitrary chosen fixed width = full width of image.
-     // .title_text_length(100) // Force into an arbitrary chosen fixed width - about equal to 60 chars.
+      .title_text_length(1500) // Force into an arbitrary chosen fixed width 1500 = more than full width of image so spaced out.
+      // and overflowing chars are lost at both end.
+      .title_text_length(1000) // Force into an arbitrary chosen fixed width 1000 = full width of image.
+     // .title_text_length(800) // Force into an arbitrary chosen fixed width very tight so letter M just touching.
       // This is very long title test:
       // .title("Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the ")
       // if no text_length() then get warning
@@ -139,7 +141,7 @@ int main()
     //  <text x="500" y="18" text-anchor="middle" font-size="12" 
     //font-family="Arial" font-style="italic" font-weight="bold" font-stretch="narrower" 
     // text-decoration="underline" 
-    // textLength="1e+03">    <<<<<<<<  note how is forced to use the exact estimated width.
+    // textLength="1e+03">    <<<<<<<<  note how is forced to use the exact (estimated) width.
     //  Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the time for all good men to come to the aid of the party. Now is the 
     //  </text>
     //</g>

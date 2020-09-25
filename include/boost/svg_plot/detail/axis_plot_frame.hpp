@@ -333,6 +333,9 @@ namespace boost
           const std::string& legend_font_family(); //!<  \return  the font family for the legend title.
           Derived& legend_title_font_size(int size); //!<  \return Font size for the legend title.
           int legend_title_font_size(); //!<  \return Font size for the legend title (svg units, default pixels).
+          Derived& legend_title_text_length(double length); //!<  Sets the text_length for the legend-title (SVG units, default pixels).
+          double legend_title_text_length(); //!<  return text_length for the legend-title (SVG units, default pixels).
+
           Derived& legend_text_font_size(int size); //!<  Set Font size for the legend text.
           int legend_text_font_size(); //!<  \return Font size for the legend text (svg units, default pixels).
           //Derived& legend_text_color(const svg_color& col); //!<  Set color for the legend text.
@@ -341,9 +344,9 @@ namespace boost
           Derived& legend_title_font_weight(const std::string& weight); //!<  Set the font weight for the legend title.
           const std::string& legend_title_font_weight(); //!<  \return  Font weight for the legend title.
 
-          Derived & legend_text_font_weight(const std::string & weight);
+          Derived& legend_text_font_weight(const std::string& weight);
+          const std::string& legend_text_font_weight();
 
-          const std::string & legend_text_font_weight();
 
           Derived& legend_top_left(double x, double y); //!<  Set position of top left of legend box (svg coordinates, default pixels).
             //! (Bottom right is controlled by contents, so the user cannot set it).
@@ -1516,8 +1519,8 @@ namespace boost
         // then too large a font or too many characters may over-compress and push the glyphs to overlap,
         // so warn here of overflow or over-compress.
         // A factor of 1.6 more characters than width still allows bold characters to not quite collide or overlap.
-//        bool fit_ok = check_text_fit(
-          bool check_text_fit(const text_style& style, std::string& text, double font_size, double title_svg_length, double image_size)
+//        bool fit_ok = check_text_fit(const text_style& style, std::string& text, double font_size, double title_svg_length, double image_size)
+          bool fit_ok = check_text_fit(
            derived().title_info_.textstyle(), derived().title(), derived().title_font_size(), title_svg_length, derived().image_.x_size()
           );
         /*
@@ -1541,11 +1544,12 @@ namespace boost
           //  (Reduce font size from 30, or number of characters from 21, or increase image size from 300).
         }
         */
-        if (fit_ok == true)
-        { // OK to force title to expand or contract to the estimated title length @c title_svg_length.
-          derived().title_info_.textstyle().text_length(title_svg_length);
-        }
-          
+        // But this makes is fit the image.x_size and that isn't really what we want for the plot title?
+          // (also shows that underlining is a bad idea for titles).
+        //if (fit_ok == true)
+        //{ // OK to force title to expand or contract to the estimated title length @c title_svg_length.
+        //  derived().title_info_.textstyle().text_length(title_svg_length);
+        //}
 
         derived().title_info_.x(derived().image_.x_size() / 2.); // Center of image.
         double y = derived().title_info_.textstyle().font_size() * derived().text_margin_; // Leave a margin space above.
@@ -1996,10 +2000,15 @@ namespace boost
      // legend_y_pos += derived().legend_box_.margin_; // Always allow a tiny margin top and bottom?
       legend_y_pos += derived().vertical_title_spacing_ /3 ; // Vertical space before title as a fraction of legend-title font.
 
+      double legend_title_svg_length = string_svg_length(derived().legend_title(), derived().legend_title_style_);
+      //std::cout << "%%%%%%%%%%%%  legend_title_svg_length = " << legend_title_svg_length << " svg units (pixels). "<< std::endl;
+      derived().legend_title_style_.text_length(legend_title_svg_length * derived().legend_title_font_size_ * aspect_ratio); 
+      // Tell for legend_title to use estimated length in pixels.
       if (derived().legend_title_.text() != "") //
       { // Is a legend-title, so draw the centered legend-title text for example: "My Plot Legend".
         derived().legend_title_.x(legend_x_start + legend_width / 2.); // / 2. to center horizontally in legend box.
         // Might be better to use center_align here because may fail if legend contains symbols in Unicode?
+
         legend_y_pos += derived().vertical_title_spacing_; // Ready to write title.
         derived().legend_title_.y(legend_y_pos);
         derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_title_));
@@ -3462,7 +3471,7 @@ namespace boost
           template <class Derived>
           double axis_plot_frame<Derived>::title_text_length()
           { //! \return the estimated text length for the title (svg units, default pixels).
-            //! Default 0
+            //! Default 0.
             return derived().title_info_.textstyle().text_length();
           }
 
@@ -3516,7 +3525,7 @@ namespace boost
 
           template <class Derived>
           const std::string& axis_plot_frame<Derived>::legend_font_family()
-          { //! \return  the font family for the legend title.
+          { //! \return Font family for the legend title.
             return derived().legend_title_style_.font_family_;
           }
 
@@ -3581,6 +3590,32 @@ namespace boost
             return derived().legend_text_style_.weight_;
           }
 
+          template <class Derived>
+          Derived& axis_plot_frame<Derived>::legend_title_text_length(double length)
+          { //! If length > 0
+            //! forces the the estimated svg text length for the legend title (svg units, default pixels).
+            //! This expands or compresses the text to fill this width exactly,
+            //! potentially making it so elongated with spaces between letters,
+            //! or compresses so that the glyphs collide so it becomes unreadable.
+            //! Length is SVG unit (pixels) = EM font size * aspect_ratio * char count.
+            //! Normally only used internally.  
+            //! Example: @c .legend_title_text_length(300) // Force text into an arbitrary chosen fixed width (about equal to 80 chars).
+            if (length > 0)
+            {
+              derived().legend_title_.textstyle().text_length(length);
+            }
+          //  derived().title_info_.textstyle().text_length(length);
+            return derived();
+          }
+
+          template <class Derived>
+          double axis_plot_frame<Derived>::legend_title_text_length()
+          { //! \return the set estimated text length for the legend-title (svg units, default pixels).
+            //! Default 0.
+            return derived().legend_title_.textstyle().text_length();
+           // return derived().title_info_.textstyle().text_length();
+
+          }
 
           //template <class Derived>
           //Derived& axis_plot_frame<Derived>::legend_text_color(const svg_color& color)

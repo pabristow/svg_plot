@@ -107,6 +107,7 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "legend_text_font_weight " << plot.legend_text_font_weight() << std::endl; // normal or might be bold?
   os << "legend_text_style " << plot.legend_text_style_ << std::endl;
   os << "legend_title_style " << plot.legend_title_style_ << std::endl;
+  os << "legend_title_text_length " << plot.legend_title_text_length() << std::endl;
   os << "legend_lines " << plot.legend_lines() << std::endl;
   os << "legend_width " << plot.legend_width() << std::endl;
   // Not useful at present, so not longer implemented.
@@ -140,6 +141,7 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "title_font_style " << plot.title_font_style() << std::endl;
   os << "title_font_weight " << plot.title_font_weight() << std::endl;
   os << "title_style " << plot.title_style_ << std::endl;
+  os << "title_text_length " << plot.title_text_length() << std::endl;
 
   os << "x_values_on "  << plot.x_values_on() << std::endl;
   os << "x_values_font_size "  << plot.x_values_font_size() << std::endl;

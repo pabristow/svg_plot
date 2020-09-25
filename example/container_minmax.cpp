@@ -11,10 +11,6 @@
 // (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-#ifdef _MSC_VER
-//#  pragma warning(disable : 4512) //  assignment operator could not be generated
-#endif
-
 #include <boost/algorithm/minmax_element.hpp>
  using boost::minmax_element;
  // minmax_element finds both min and max elements more efficiently than separately.
