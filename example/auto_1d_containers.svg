@@ -14,24 +14,24 @@ xmlns ="http://www.w3.org/2000/svg"
 
 <!-- File auto_1d_containers.svg --> 
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="200"/></g>
-<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="11" y="11" width="478" height="173"/></g>
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="21" y="11" width="458" height="173"/></g>
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="11" y1="11" x2="11" y2="184"/><line x1="11" y1="100" x2="489" y2="100"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M26.9,100 L26.9,102 M42.9,100 L42.9,102 M58.8,100 L58.8,102 M74.7,100 L74.7,102 M107,100 L107,102 M123,100 L123,102 M138,100 L138,102 M154,100 L154,102 M186,100 L186,102 M202,100 L202,102 M218,100 L218,102 M234,100 L234,102 M266,100 L266,102 M282,100 L282,102 M298,100 L298,102 M314,100 L314,102 M346,100 L346,102 M362,100 L362,102 M377,100 L377,102 M393,100 L393,102 M425,100 L425,102 M441,100 L441,102 M457,100 L457,102 M473,100 L473,102 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M11,100 L11,105 M90.7,100 L90.7,105 M170,100 L170,105 M250,100 L250,105 M330,100 L330,105 M409,100 L409,105 M489,100 L489,105 M11,100 L11,105 " fill="none"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="21" y1="11" x2="21" y2="184"/><line x1="21" y1="100" x2="479" y2="100"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M36.3,100 L36.3,102 M51.5,100 L51.5,102 M66.8,100 L66.8,102 M82.1,100 L82.1,102 M113,100 L113,102 M128,100 L128,102 M143,100 L143,102 M158,100 L158,102 M189,100 L189,102 M204,100 L204,102 M219,100 L219,102 M235,100 L235,102 M265,100 L265,102 M281,100 L281,102 M296,100 L296,102 M311,100 L311,102 M342,100 L342,102 M357,100 L357,102 M372,100 L372,102 M387,100 L387,102 M418,100 L418,102 M433,100 L433,102 M448,100 L448,102 M464,100 L464,102 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M21,100 L21,105 M97.3,100 L97.3,105 M174,100 L174,105 M250,100 L250,105 M326,100 L326,105 M403,100 L403,105 M479,100 L479,105 M21,100 L21,105 " fill="none"/></g>
 <g id="xTicksValues">
-<text x="90.7" y="121" text-anchor="middle" font-size="12" font-family="Verdana">2.5</text>
-<text x="170" y="121" text-anchor="middle" font-size="12" font-family="Verdana">5</text>
-<text x="250" y="121" text-anchor="middle" font-size="12" font-family="Verdana">7.5</text>
-<text x="330" y="121" text-anchor="middle" font-size="12" font-family="Verdana">10</text>
-<text x="409" y="121" text-anchor="middle" font-size="12" font-family="Verdana">12.5</text>
-<text x="489" y="121" text-anchor="middle" font-size="12" font-family="Verdana">15</text></g>
+<text x="97.3" y="118" text-anchor="middle" font-size="10" font-family="Verdana">2.5</text>
+<text x="174" y="118" text-anchor="middle" font-size="10" font-family="Verdana">5</text>
+<text x="250" y="118" text-anchor="middle" font-size="10" font-family="Verdana">7.5</text>
+<text x="326" y="118" text-anchor="middle" font-size="10" font-family="Verdana">10</text>
+<text x="403" y="118" text-anchor="middle" font-size="10" font-family="Verdana">12.5</text>
+<text x="479" y="118" text-anchor="middle" font-size="10" font-family="Verdana">15</text></g>
 <g id="xLabel">
-<text x="250" y="208" text-anchor="middle" font-size="14" font-family="Verdana"></text></g>
-<g id="plotPoints"><g stroke="rgb(0,0,0)"><line x1="17.4" y1="103" x2="17.4" y2="92.5"/><line x1="46.1" y1="103" x2="46.1" y2="92.5"/><line x1="145" y1="103" x2="145" y2="92.5"/><line x1="116" y1="103" x2="116" y2="92.5"/><line x1="183" y1="103" x2="183" y2="92.5"/><line x1="218" y1="103" x2="218" y2="92.5"/></g>
-<g stroke="rgb(255,0,0)"><line x1="25.7" y1="103" x2="25.7" y2="92.5"/><line x1="91.6" y1="103" x2="91.6" y2="92.5"/><line x1="319" y1="103" x2="319" y2="92.5"/><line x1="253" y1="103" x2="253" y2="92.5"/><line x1="407" y1="103" x2="407" y2="92.5"/><line x1="487" y1="103" x2="487" y2="92.5"/></g>
+<text x="250" y="201" text-anchor="middle" font-size="10" font-family="Verdana"></text></g>
+<g id="plotPoints"><g stroke="rgb(0,0,0)"><line x1="27.1" y1="99.5" x2="27.1" y2="89.5"/><line x1="54.6" y1="99.5" x2="54.6" y2="89.5"/><line x1="149" y1="99.5" x2="149" y2="89.5"/><line x1="122" y1="99.5" x2="122" y2="89.5"/><line x1="186" y1="99.5" x2="186" y2="89.5"/><line x1="219" y1="99.5" x2="219" y2="89.5"/></g>
+<g stroke="rgb(255,0,0)"><line x1="35" y1="99.5" x2="35" y2="89.5"/><line x1="98.2" y1="99.5" x2="98.2" y2="89.5"/><line x1="316" y1="99.5" x2="316" y2="89.5"/><line x1="253" y1="99.5" x2="253" y2="89.5"/><line x1="400" y1="99.5" x2="400" y2="89.5"/><line x1="477" y1="99.5" x2="477" y2="89.5"/></g>
 </g>
 <g id="title">
-<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana"></text></g>
+<text x="250" y="22.5" text-anchor="middle" font-size="18" font-family="Verdana"></text></g>
 </svg>

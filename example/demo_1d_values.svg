@@ -17,19 +17,19 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="21" y="42.5" width="458" height="279"/></g>
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="174" y1="42.5" x2="174" y2="322"/><line x1="21" y1="185" x2="479" y2="185"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M186,185 L186,187 M198,185 L198,187 M210,185 L210,187 M223,185 L223,187 M247,185 L247,187 M259,185 L259,187 M271,185 L271,187 M284,185 L284,187 M308,185 L308,187 M320,185 L320,187 M332,185 L332,187 M345,185 L345,187 M369,185 L369,187 M381,185 L381,187 M394,185 L394,187 M406,185 L406,187 M430,185 L430,187 M442,185 L442,187 M455,185 L455,187 M467,185 L467,187 M161,185 L161,187 M149,185 L149,187 M137,185 L137,187 M125,185 L125,187 M100,185 L100,187 M88.2,185 L88.2,187 M76,185 L76,187 M63.7,185 L63.7,187 M39.3,185 L39.3,187 M27.1,185 L27.1,187 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M174,185 L174,190 M235,185 L235,190 M296,185 L296,190 M357,185 L357,190 M418,185 L418,190 M479,185 L479,190 M174,185 L174,190 M113,185 L113,190 M51.5,185 L51.5,190 " fill="none"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="174" y1="42.5" x2="174" y2="322"/><line x1="21" y1="184" x2="479" y2="184"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M186,184 L186,186 M198,184 L198,186 M210,184 L210,186 M223,184 L223,186 M247,184 L247,186 M259,184 L259,186 M271,184 L271,186 M284,184 L284,186 M308,184 L308,186 M320,184 L320,186 M332,184 L332,186 M345,184 L345,186 M369,184 L369,186 M381,184 L381,186 M394,184 L394,186 M406,184 L406,186 M430,184 L430,186 M442,184 L442,186 M455,184 L455,186 M467,184 L467,186 M161,184 L161,186 M149,184 L149,186 M137,184 L137,186 M125,184 L125,186 M100,184 L100,186 M88.2,184 L88.2,186 M76,184 L76,186 M63.7,184 L63.7,186 M39.3,184 L39.3,186 M27.1,184 L27.1,186 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M174,184 L174,190 M235,184 L235,190 M296,184 L296,190 M357,184 L357,190 M418,184 L418,190 M479,184 L479,190 M174,184 L174,190 M113,184 L113,190 M51.5,184 L51.5,190 " fill="none"/></g>
 <g id="xTicksValues">
-<text x="235" y="203" text-anchor="middle" font-size="10" font-family="Verdana">2</text>
-<text x="296" y="203" text-anchor="middle" font-size="10" font-family="Verdana">4</text>
-<text x="357" y="203" text-anchor="middle" font-size="10" font-family="Verdana">6</text>
-<text x="418" y="203" text-anchor="middle" font-size="10" font-family="Verdana">8</text>
-<text x="479" y="203" text-anchor="middle" font-size="10" font-family="Verdana">10</text>
-<text x="113" y="203" text-anchor="middle" font-size="10" font-family="Verdana">-2</text>
-<text x="51.5" y="203" text-anchor="middle" font-size="10" font-family="Verdana">-4</text></g>
+<text x="235" y="202" text-anchor="middle" font-size="10" font-family="Verdana">2</text>
+<text x="296" y="202" text-anchor="middle" font-size="10" font-family="Verdana">4</text>
+<text x="357" y="202" text-anchor="middle" font-size="10" font-family="Verdana">6</text>
+<text x="418" y="202" text-anchor="middle" font-size="10" font-family="Verdana">8</text>
+<text x="479" y="202" text-anchor="middle" font-size="10" font-family="Verdana">10</text>
+<text x="113" y="202" text-anchor="middle" font-size="10" font-family="Verdana">-2</text>
+<text x="51.5" y="202" text-anchor="middle" font-size="10" font-family="Verdana">-4</text></g>
 <g id="xLabel">
-<text x="250" y="339" text-anchor="middle" font-size="10" font-family="Verdana">length (m)</text></g>
+<text x="250" y="338" text-anchor="middle" font-size="10" font-family="Verdana">length (m)</text></g>
 <g id="plotPoints"><g stroke="rgb(0,0,0)">
 <text x="125" y="181" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
 <text x="235" y="181" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>

@@ -108,7 +108,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <text x="646" y="78.5" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal">Sin(x)</text>
 <text x="646" y="91" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal">Cos(x)</text></g>
 <g id="title" fill="rgb(255,255,255)">
-<text x="350" y="36.3" text-anchor="middle" font-size="29" font-family="Lucida Sans Unicode" font-weight="normal">Plot of sin and cos functions</text></g>
+<text x="350" y="36.2" text-anchor="middle" font-size="29" font-family="Lucida Sans Unicode" font-weight="normal">Plot of sin and cos functions</text></g>
 <g id="plotXValues"></g>
 <g id="plotYValues"></g>
 </svg>

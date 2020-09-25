@@ -53,13 +53,13 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="plotBackground" stroke="rgb(255,192,203)" fill="rgb(240,248,255)" stroke-width="5"><rect x="21" y="46" width="381.8" height="170.5"/></g>
 <g id="xMinorGrid" stroke="rgb(255,192,203)" stroke-width="1"><path d="M87.82,51 L87.82,211.5 M106.9,51 L106.9,211.5 M126,51 L126,211.5 M145.1,51 L145.1,211.5 M183.3,51 L183.3,211.5 M202.4,51 L202.4,211.5 M221.4,51 L221.4,211.5 M240.5,51 L240.5,211.5 M278.7,51 L278.7,211.5 M297.8,51 L297.8,211.5 M316.9,51 L316.9,211.5 M336,51 L336,211.5 M374.2,51 L374.2,211.5 M393.3,51 L393.3,211.5 M49.64,51 L49.64,211.5 M30.55,51 L30.55,211.5 " fill="none"/></g>
 <g id="xMajorGrid" stroke="rgb(173,216,230)" stroke-width="2"><path d="M68.73,46 L68.73,216.5 M164.2,46 L164.2,216.5 M259.6,46 L259.6,216.5 M355.1,46 L355.1,216.5 M68.73,46 L68.73,216.5 " fill="none"/></g>
-<g id="xAxis" stroke="rgb(0,0,255)" stroke-width="1"><line x1="68.73" y1="46" x2="68.73" y2="216.5"/><line x1="21" y1="136.3" x2="402.8" y2="136.3"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M87.82,129.3 L87.82,143.3 M106.9,129.3 L106.9,143.3 M126,129.3 L126,143.3 M145.1,129.3 L145.1,143.3 M183.3,129.3 L183.3,143.3 M202.4,129.3 L202.4,143.3 M221.4,129.3 L221.4,143.3 M240.5,129.3 L240.5,143.3 M278.7,129.3 L278.7,143.3 M297.8,129.3 L297.8,143.3 M316.9,129.3 L316.9,143.3 M336,129.3 L336,143.3 M374.2,129.3 L374.2,143.3 M393.3,129.3 L393.3,143.3 M49.64,129.3 L49.64,143.3 M30.55,129.3 L30.55,143.3 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="3"><path d="M68.73,126.3 L68.73,146.3 M164.2,126.3 L164.2,146.3 M259.6,126.3 L259.6,146.3 M355.1,126.3 L355.1,146.3 M68.73,126.3 L68.73,146.3 " fill="none"/></g>
+<g id="xAxis" stroke="rgb(0,0,255)" stroke-width="1"><line x1="68.73" y1="46" x2="68.73" y2="216.5"/><line x1="21" y1="136.2" x2="402.8" y2="136.2"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M87.82,129.2 L87.82,143.2 M106.9,129.2 L106.9,143.2 M126,129.2 L126,143.2 M145.1,129.2 L145.1,143.2 M183.3,129.2 L183.3,143.2 M202.4,129.2 L202.4,143.2 M221.4,129.2 L221.4,143.2 M240.5,129.2 L240.5,143.2 M278.7,129.2 L278.7,143.2 M297.8,129.2 L297.8,143.2 M316.9,129.2 L316.9,143.2 M336,129.2 L336,143.2 M374.2,129.2 L374.2,143.2 M393.3,129.2 L393.3,143.2 M49.64,129.2 L49.64,143.2 M30.55,129.2 L30.55,143.2 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="3"><path d="M68.73,126.2 L68.73,146.2 M164.2,126.2 L164.2,146.2 M259.6,126.2 L259.6,146.2 M355.1,126.2 L355.1,146.2 M68.73,126.2 L68.73,146.2 " fill="none"/></g>
 <g id="xTicksValues">
-<text x="164.2" y="159.3" text-anchor="middle" font-size="10" font-family="Verdana">2</text>
-<text x="259.6" y="159.3" text-anchor="middle" font-size="10" font-family="Verdana">4</text>
-<text x="355.1" y="159.3" text-anchor="middle" font-size="10" font-family="Verdana">6</text></g>
+<text x="164.2" y="159.2" text-anchor="middle" font-size="10" font-family="Verdana">2</text>
+<text x="259.6" y="159.2" text-anchor="middle" font-size="10" font-family="Verdana">4</text>
+<text x="355.1" y="159.2" text-anchor="middle" font-size="10" font-family="Verdana">6</text></g>
 <g id="xLabel" stroke="rgb(0,0,255)" fill="rgb(0,0,255)">
 <text x="211.9" y="236.9" text-anchor="middle" font-size="12" font-family="Lucida sans unicode">volume (meter&#179; or m&#179;)</text></g>
 <g id="plotPoints"><g stroke="rgb(255,0,0)" fill="rgb(0,0,255)">
@@ -92,9 +92,9 @@ xmlns ="http://www.w3.org/2000/svg"
 </g>
 <g id="legendText" fill="rgb(0,100,0)">
 <text x="449.9" y="67" text-anchor="middle" font-size="10" font-family="Verdana">My Legend &#956;</text>
-<text x="457.1" y="92" font-size="10" font-family="Verdana">data3</text>
-<text x="457.1" y="112" font-size="10" font-family="Verdana">data4</text>
-<text x="457.1" y="132" font-size="10" font-family="Verdana">data5</text></g>
+<text x="443.9" y="92" font-size="10" font-family="Verdana">data3</text>
+<text x="443.9" y="112" font-size="10" font-family="Verdana">data4</text>
+<text x="443.9" y="132" font-size="10" font-family="Verdana">data5</text></g>
 <g id="title" fill="rgb(255,0,255)">
 <text x="250" y="25" text-anchor="middle" font-size="20" font-family="Times New Roman">Demo 1D plot <sup>-&#945; </sup> &#x3A9; &#x3A6; &#x221A; &#x221E; &#x3B6; &#x00B1;</text></g>
 </svg>
