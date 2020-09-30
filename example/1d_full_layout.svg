@@ -17,7 +17,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(250,250,210)" stroke-width="1"><rect x="21" y="61.8" width="395" height="101"/></g>
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="112" y1="61.8" x2="112" y2="162"/><line x1="21" y1="119" x2="416" y2="119"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="112" y1="61.8" x2="112" y2="163"/><line x1="21" y1="119" x2="416" y2="119"/></g>
 <g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M127,119 L127,126 M142,119 L142,126 M158,119 L158,126 M188,119 L188,126 M203,119 L203,126 M218,119 L218,126 M249,119 L249,126 M264,119 L264,126 M279,119 L279,126 M309,119 L309,126 M325,119 L325,126 M340,119 L340,126 M370,119 L370,126 M385,119 L385,126 M400,119 L400,126 M96.9,119 L96.9,126 M81.7,119 L81.7,126 M66.5,119 L66.5,126 M36.2,119 L36.2,126 M21,119 L21,126 " fill="none"/></g>
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M112,119 L112,133 M173,119 L173,133 M234,119 L234,133 M294,119 L294,133 M355,119 L355,133 M416,119 L416,133 M112,119 L112,133 M51.4,119 L51.4,133 " fill="none"/></g>
 <g id="xTicksValues">
@@ -33,16 +33,16 @@ xmlns ="http://www.w3.org/2000/svg"
 <g stroke="rgb(255,165,0)"><line x1="325" y1="114" x2="325" y2="104"/><line x1="173" y1="114" x2="173" y2="104"/><line x1="81.7" y1="114" x2="81.7" y2="104"/><line x1="51.4" y1="114" x2="51.4" y2="104"/></g>
 <g stroke="rgb(255,0,0)"><line x1="81.7" y1="114" x2="81.7" y2="104"/><line x1="142" y1="114" x2="142" y2="104"/><line x1="203" y1="114" x2="203" y2="104"/><line x1="264" y1="114" x2="264" y2="104"/><line x1="325" y1="114" x2="325" y2="104"/><line x1="385" y1="114" x2="385" y2="104"/></g>
 </g>
-<g id="legendBackground" stroke="rgb(255,215,0)" fill="rgb(240,255,255)" stroke-width="1"><rect x="422" y="61.8" width="69.3" height="83.2"/></g>
-<g id="legendPoints"><g stroke="rgb(0,0,255)" stroke-width="2"><line x1="435" y1="110" x2="435" y2="100"/></g>
+<g id="legendBackground" stroke="rgb(255,215,0)" fill="rgb(240,255,255)" stroke-width="1"><rect x="422" y="61.8" width="69.3" height="83.3"/></g>
+<g id="legendPoints"><g stroke="rgb(0,0,255)" stroke-width="2"><line x1="435" y1="111" x2="435" y2="101"/></g>
 <g stroke="rgb(255,165,0)" stroke-width="2"><line x1="435" y1="123" x2="435" y2="113"/></g>
 <g stroke="rgb(255,0,0)" stroke-width="2"><line x1="435" y1="136" x2="435" y2="126"/></g>
 </g>
 <g id="legendText">
 <text x="456" y="87.8" text-anchor="middle" font-size="10" font-family="Verdana">Animal</text>
-<text x="439" y="106" font-size="10" font-family="Verdana">Lions</text>
+<text x="439" y="107" font-size="10" font-family="Verdana">Lions</text>
 <text x="439" y="119" font-size="10" font-family="Verdana">Tigers</text>
 <text x="439" y="132" font-size="10" font-family="Verdana">Bears</text></g>
 <g id="title" fill="rgb(255,255,255)">
-<text x="250" y="36.2" text-anchor="middle" font-size="29" font-family="Verdana">Animal Lives</text></g>
+<text x="250" y="36.3" text-anchor="middle" font-size="29" font-family="Verdana">Animal Lives</text></g>
 </svg>

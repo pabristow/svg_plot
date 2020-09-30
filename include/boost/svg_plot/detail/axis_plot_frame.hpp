@@ -5,7 +5,7 @@
 
   #define BOOST_SVG_LEGEND_DIAGNOSTICS for diagnostics of plot legend.
   #define BOOST_SVG_TITLE_DIAGNOSTICS for diagnostics of plot title.
-  #define BOOST_SVG_POINT_DIAGNOSTICS for diagnostics of data point markers.
+  #define BOOST_SVG_POINT_DIAGNOSTICS for diagnostics of data-point markers.
 
   \author Jacob Voytko and Paul A. Bristow
 */
@@ -183,7 +183,7 @@ namespace boost
          void clear_x_axis(); //!< Clear the X axis layer of the SVG plot.
          void clear_y_axis(); //! Clear the Y axis layer of the SVG plot.
          void clear_title(); //!< Clear the plot title layer of the SVG plot.
-         void clear_points(); //!< Clear the data points layer of the SVG plot.
+         void clear_points(); //!< Clear the data-points layer of the SVG plot.
          void clear_plot_background(); //!< Clear the plot area background layer of the SVG plot.
          void clear_grids(); //!< Clear the  grids layer of the SVG plot.
 
@@ -265,7 +265,7 @@ namespace boost
               3 decimal digits precision is sufficient for small images.
               4 or 5 decimal digits precision will give higher quality plots,
               especially for larger images, at the expense of larger .svg files,
-              particularly if there are very many data points.
+              particularly if there are very many data-points.
            */
           int coord_precision(); //!<  \return  precision of SVG coordinates in decimal digits.
           /*! Set precision of X-tick label values in decimal digits (default 3).
@@ -352,11 +352,11 @@ namespace boost
             //! (Bottom right is controlled by contents, so the user cannot set it).
           const std::pair<double, double> legend_top_left(); //!<  \return  SVG coordinate (default pixels) of top left of legend box.
           const std::pair<double, double> legend_bottom_right(); //!<  \return SVG coordinate (default pixels) of bottom right of legend box.
-          Derived& legend_lines(bool is); /*!< Set true if legend should include samples of the lines joining data points.
-            This allows different series of data points to be distinguished by different color and/or width.
+          Derived& legend_lines(bool is); /*!< Set true if legend should include samples of the lines joining data-points.
+            This allows different series of data-points to be distinguished by different color and/or width.
             This is especially useful to show plots of different functions and/or different parameters in different colors.
             */
-          bool legend_lines(); //!< \return  true if legend should include samples of the lines joining data points.
+          bool legend_lines(); //!< \return  true if legend should include samples of the lines joining data-points.
           Derived& legend_on(bool cmd); //!< Set @c true if a legend is wanted.
           bool legend_on(); //!< \return @c true if a legend is wanted.
           Derived& x_axis_vertical(double fraction); //!< Set vertical position of X-axis for 1D as fraction of plot window.
@@ -419,10 +419,10 @@ namespace boost
           //!<X-axis ticks values label style.
           Derived& x_ticks_values_color(const svg_color& col);  //!<Set X axis tick value label color.
           svg_color x_ticks_values_color(); //!<\return  X-axis ticks value label color.
-          Derived& x_ticks_values_precision(int p); //!<Set iostream decimal digits precision of data point X values near data points markers.
-          int x_ticks_values_precision(); //!<\return  iostream decimal digits precision of data point X values near data points markers.
-          Derived& x_ticks_values_ioflags(std::ios_base::fmtflags f); //!<Set iostream format flags of data point X values near data points markers.
-          std::ios_base::fmtflags x_ticks_values_ioflags(); //!<\return  iostream format flags of data point X values near data points markers.
+          Derived& x_ticks_values_precision(int p); //!<Set iostream decimal digits precision of data-point X values near data-points markers.
+          int x_ticks_values_precision(); //!<\return  iostream decimal digits precision of data-point X values near data-points markers.
+          Derived& x_ticks_values_ioflags(std::ios_base::fmtflags f); //!<Set iostream format flags of data-point X values near data-points markers.
+          std::ios_base::fmtflags x_ticks_values_ioflags(); //!<\return  iostream format flags of data-point X values near data-points markers.
 
           Derived& x_ticks_values_font_family(const std::string& family); /*!< Set X ticks value label font family.
             Available fonts depend on the program rendering the SVG XML, usually a browser.
@@ -507,8 +507,8 @@ namespace boost
           double x_minor_grid_width(); //!<\return  the width of X-axis minor grid lines.
           Derived& x_axis_width(double width); //!<Set the width of X-axis lines.
           double x_axis_width(); //!<\return  the width of X-axis lines.
-          Derived& data_lines_width(double width); //!<Set the width of lines joining data points.
-          double data_lines_width(); //!<\return  the width of lines joining data points.
+          Derived& data_lines_width(double width); //!<Set the width of lines joining data-points.
+          double data_lines_width(); //!<\return  the width of lines joining data-points.
           Derived& x_label(const std::string& str); //!<Set the text to label the X-axis (and set x_label_on(true)).
           std::string x_label(); //!<\return  the text to label the X-axis.
           Derived& x_label_units(const std::string& str); //!<Set the text to add units to the X-axis label.
@@ -519,48 +519,48 @@ namespace boost
             //!< The label will only be shown if  y_label_on() == true.
           Derived& y_label_units(const std::string& str); //!<Set the text to add units to the Y-axis label.
           std::string y_label_units(); //!<\return  the text to add units to the X-axis label.
-          Derived& x_values_on(bool b); //!<Set true to show data point values near data points markers.
-          bool x_values_on(); //!<\return true if to show data point values near data points markers.
-          Derived& x_values_font_size(int i); //!<Set font size of data point X values near data points markers.
-          int x_values_font_size(); //!<\return  font size of data point X values near data points markers.
-          Derived& x_values_font_family(const std::string& family); //!<Set font family of data point X values near data points markers.
-          const std::string& x_values_font_family(); //!<\return font family of data point X values near data points markers.
+          Derived& x_values_on(bool b); //!<Set true to show data-point values near data-points markers.
+          bool x_values_on(); //!<\return true if to show data-point values near data-points markers.
+          Derived& x_values_font_size(int i); //!<Set font size of data-point X values near data-points markers.
+          int x_values_font_size(); //!<\return  font size of data-point X values near data-points markers.
+          Derived& x_values_font_family(const std::string& family); //!<Set font family of data-point X values near data-points markers.
+          const std::string& x_values_font_family(); //!<\return font family of data-point X values near data-points markers.
           Derived& x_major_interval(double inter); //!<Set the interval between X-axis major ticks.
           double x_major_interval();  //!<\return  the interval between X-axis major ticks.
 
-          Derived& x_values_color(const svg_color& col); //!<Set the color of data point X values near data points markers.
-          svg_color x_values_color(); //!<\return  the color of data point X values near data points markers.
-          Derived& x_values_rotation(rotate_style rotate); //!<\return  the rotation (rotate_style) of data point X values near data points markers.
-          int x_values_rotation(); //!<Set the rotation (rotate_style) of data point X values near data points markers.
-          Derived& x_values_precision(int p); //!<Set iostream decimal digits precision of data point X values near data points markers.
-          int x_values_precision(); //!<\return  iostream decimal digits precision of data point X values near data points markers.
-          Derived& x_values_ioflags(std::ios_base::fmtflags f); //!<Set iostream format flags of data point X values near data points markers.
-          std::ios_base::fmtflags x_values_ioflags(); //!<\return  iostream format flags of data point X values near data points markers.
-          Derived& x_plusminus_on(bool b); //!<Set if to append std_dev estimate to data point X values near data points markers.
-          bool x_plusminus_on(); //!<\return true if to append std_dev estimate to data point X values near data points markers.
+          Derived& x_values_color(const svg_color& col); //!<Set the color of data-point X values near data-points markers.
+          svg_color x_values_color(); //!<\return  the color of data-point X values near data-points markers.
+          Derived& x_values_rotation(rotate_style rotate); //!<\return  the rotation (rotate_style) of data-point X values near data-points markers.
+          int x_values_rotation(); //!<Set the rotation (rotate_style) of data-point X values near data-points markers.
+          Derived& x_values_precision(int p); //!<Set iostream decimal digits precision of data-point X values near data-points markers.
+          int x_values_precision(); //!<\return  iostream decimal digits precision of data-point X values near data-points markers.
+          Derived& x_values_ioflags(std::ios_base::fmtflags f); //!<Set iostream format flags of data-point X values near data-points markers.
+          std::ios_base::fmtflags x_values_ioflags(); //!<\return  iostream format flags of data-point X values near data-points markers.
+          Derived& x_plusminus_on(bool b); //!<Set if to append std_dev estimate to data-point X values near data-points markers.
+          bool x_plusminus_on(); //!<\return true if to append std_dev estimate to data-point X values near data-points markers.
           Derived& x_plusminus_color(const svg_color& col); //!<Set the color of X std_dev of value, for example, the color of 0.02 in "1.23 +-0.02 (9)".
           svg_color x_plusminus_color(); //!<\return the color of X std_dev of value, for example, the color of 0.02 in "1.23 +-0.02 (9)".
 
-          Derived& x_addlimits_on(bool b); //!<Set if to append confidence limits to data point X values near data points markers.
-          bool x_addlimits_on(); //!<\return true if to append confidence limits estimate to data point X values near data points markers.
+          Derived& x_addlimits_on(bool b); //!<Set if to append confidence limits to data-point X values near data-points markers.
+          bool x_addlimits_on(); //!<\return true if to append confidence limits estimate to data-point X values near data-points markers.
           Derived& x_addlimits_color(const svg_color& col); //!<Set the color of X confidence limits of value, for example, the color  in "<1.23, 1.45>".
           svg_color x_addlimits_color(); //!<\return the color of X confidence limits of value, for example, the color of  "<1.23, 1.45>)".
 
 
-          Derived& x_df_on(bool b); //!<Set true if to append a degrees of freedom estimate to data point X values near data points markers.
-          bool x_df_on(); //!<\return true if to append a degrees of freedom estimate to data point X values near data points markers.
+          Derived& x_df_on(bool b); //!<Set true if to append a degrees of freedom estimate to data-point X values near data-points markers.
+          bool x_df_on(); //!<\return true if to append a degrees of freedom estimate to data-point X values near data-points markers.
           Derived& x_df_color(const svg_color& col); //!<Set the color of X degrees of freedom, for example, the color of 9 in "1.23 +-0.02 (9)".
           svg_color x_df_color(); //!<\return the color of X degrees of freedom, for example, the color of 9 in "1.23 +-0.02 (9)".
-          Derived& x_id_on(bool b); //!<Set true if to append append an ID or name to data point X values near data points markers.
-          bool x_id_on(); //!<\return true if to append an ID or name to data point X values near data points markers.
+          Derived& x_id_on(bool b); //!<Set true if to append append an ID or name to data-point X values near data-points markers.
+          bool x_id_on(); //!<\return true if to append an ID or name to data-point X values near data-points markers.
           Derived& x_id_color(const svg_color& col); //!<Set the color of X id or name, for example, the color of text in "my_id".
           svg_color x_id_color(); //!<\return the color of X X id or name, for example, the color of text in "my_id".
-          Derived& x_datetime_on(bool b); //!<Set true if to append date time to data point X values near data points markers.
-          bool x_datetime_on(); //!<\return true if to append an date time to data point X values near data points markers.
+          Derived& x_datetime_on(bool b); //!<Set true if to append date time to data-point X values near data-points markers.
+          bool x_datetime_on(); //!<\return true if to append an date time to data-point X values near data-points markers.
           Derived& x_datetime_color(const svg_color& col); //!<Set the color of X  date time , for example, the color of text in "".
           svg_color x_datetime_color(); //!<\return the color of X date time, for example, the color of text in "".
-          Derived& x_order_on(bool b); //!<Set true if to append append an order # to data point X values near data points markers.
-          bool x_order_on(); //!<\return true if to append an order # to data point X values near data points markers.
+          Derived& x_order_on(bool b); //!<Set true if to append append an order # to data-point X values near data-points markers.
+          bool x_order_on(); //!<\return true if to append an order # to data-point X values near data-points markers.
           Derived& x_order_color(const svg_color& col); //!<Set the color of X order #, for example, the color of #42.
           svg_color x_order_color(); //!<\return the color of X order #, for example, the color of #42.
           Derived& x_decor(const std::string& pre, const std::string& sep = "", const std::string& suf = "");
@@ -617,9 +617,9 @@ namespace boost
           Derived& x_autoscale(bool b); //!< Set @c true if to use autoscale values for X-axis.
           Derived& x_autoscale(std::pair<double, double> p); //!<autoscale X axis using a pair of doubles.
           template <class T> //!< \tparam T an STL container: array, vector ...
-          Derived& x_autoscale(const T& container); //!<autoscale X axis using the whole data series.
+          Derived& x_autoscale(const T& container); //!<autoscale X axis using the whole data-series.
           template <class T> //!<\tparam T an STL container: array, vector ...
-          Derived& x_autoscale(const T& begin, const T& end); //!<Data series using iterators.
+          Derived& x_autoscale(const T& begin, const T& end); //!<data-series using iterators.
           Derived& x_with_zero(bool b); //!<Set X-axis autoscale to include zero (default = false).
           bool x_with_zero(); //!<\return  true if X-axis autoscale to include zero (default = false).
           Derived& x_min_ticks(int min_ticks); //!<Set X-axis autoscale to include at least minimum number of ticks (default = 6).
@@ -632,8 +632,8 @@ namespace boost
              \note: Must \b preceed x_autoscale(data) call).
              */
           int x_steps(); //!<\return  autoscale to set ticks in steps.
-          Derived& x_tight(double tight); //!<Set tolerance to autoscale to permit data points slightly outside both end ticks.
-          double x_tight(); //!<\return  tolerance given to autoscale to permit data points slightly outside both end ticks.
+          Derived& x_tight(double tight); //!<Set tolerance to autoscale to permit data-points slightly outside both end ticks.
+          double x_tight(); //!<\return  tolerance given to autoscale to permit data-points slightly outside both end ticks.
           //!<Get results of autoscaling.
           double x_auto_min_value(); //!< \return X-axis minimum value computed by autoscale.
           double x_auto_max_value(); //!< \return X-axis maximum value computed by autoscale.
@@ -750,7 +750,7 @@ namespace boost
 
       template <class Derived>
       void axis_plot_frame<Derived>::clear_points()
-      {  //!< Clear the data points layer of the SVG plot.
+      {  //!< Clear the data-points layer of the SVG plot.
         derived().image_.g(PLOT_DATA_POINTS).clear();
       }
 
@@ -1414,7 +1414,7 @@ namespace boost
 
       template <class Derived>
       void axis_plot_frame<Derived>::adjust_limits(double& x, double& y)
-      { //! If value of a data point reaches limit of max, min, infinity,
+      { //! If value of a data-point reaches limit of max, min, infinity,
         //! use the appropriate plot min or max value instead.
         if (detail::limit_max(x))
         {
@@ -1488,15 +1488,15 @@ namespace boost
           For example, the Unicode symbol for square root is "&#x221A;" but takes only about one character width).
         */
         //Image size
-        //  <text x="700" y="0" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">Plot showing several data point marker shapes &#x26; sizes.</text>
+        //  <text x="700" y="0" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">Plot showing several data-point marker shapes &#x26; sizes.</text>
         //  title size 59
         //  title font size 20
         //  title font size * size 1180
-        //  Title "Plot showing several data point marker shapes &#x26; sizes."
+        //  Title "Plot showing several data-point marker shapes &#x26; sizes."
         //   may overflow plot image! (Reduce font size or number of characters? Or increase image size?)
 
        //  std::cout << "Image  = " << derived().title_info_.x(derived().image_.x_size()) << std::endl;
-        //  <text x="700" y="0" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">Plot showing several data point marker shapes &#x26; sizes.</text>
+        //  <text x="700" y="0" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">Plot showing several data-point marker shapes &#x26; sizes.</text>
 
         // Warn if plot title will overflow image (since title is centered, this will truncate at both ends).
 
@@ -1562,9 +1562,9 @@ namespace boost
 
   //! Size_legend_box Calculate how big the legend box needs to be to hold
   //! any legend title and
-  //! the data point markers (symbols or shapes),
+  //! the data-point markers (symbols or shapes),
   //! and any line marks showing lines used joining points,
-  //! and any data series descriptor text(s).
+  //! and any data-series descriptor text(s).
   template <class Derived>
   void axis_plot_frame<Derived>::size_legend_box()
   {
@@ -1575,32 +1575,38 @@ namespace boost
     { // So want a legend box, set with .legend_on(true).
       // Check if any legend title or title.
       derived().is_legend_title_ = (derived().legend_title_.text() != "");
-      derived().legend_title_font_size_ = derived().legend_title_style_.font_size_; // legend title font size.
-      derived().legend_text_font_size_  = derived().legend_text_style_.font_size_; // legend data series marker descriptions text_font size. text font size.
+      derived().legend_title_font_size_ = derived().legend_title_style_.font_size_; // legend-title font size.
+      derived().legend_text_font_size_  = derived().legend_text_style_.font_size_; // legend data-series descriptions text font-size.
+      derived().is_a_data_series_line_ = false; // Assume no data-lines.
+      derived().is_a_point_marker_ = false;  // Assume no data-point marker symbols.
+      derived().is_a_data_series_text_ = false;  // Assume no data-series text descriptions.
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "Title " << derived().legend_title_.text() << ", .legend_title_font_size_ = " << derived().legend_title_font_size_
         << ", .legend_text_font_size_ = " << derived().legend_text_font_size_ << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
       // Vertical spacing needs to use the largest of
-      // all point marker Unicode symbol font sizes (may be different) and legend text font size.
+      // all point marker Unicode symbol font sizes (may be different) and legend-text font-size.
       // https://www.w3.org/TR/SVG/text.html#GlyphsMetrics
-      // Line sampple has small height compared to any font.
+      // Line marker has small height compared to any font, so ignore in max height calculation.
 
-      size_t num_series = derived().serieses_.size(); // How many data series in this plot.
-      derived().biggest_point_marker_font_size_ = derived().legend_text_font_size(); // Assume text until a bigger symbol is found.
-      std::cout << "Assume text font derived().biggest_point_marker_font_size_ " << derived().biggest_point_marker_font_size_ << std::endl;
-      // Below get biggest marker symbol point size in any series to get minimum vertical spacing between data series info lines.
+      derived().biggest_point_marker_font_size_ = derived().legend_text_font_size(); 
+      // Assume data-series descriptor text font until a bigger data-series point marker symbol is found.
+      std::cout << "Assume text font derived().biggest_point_marker_font_size_ " 
+        << derived().biggest_point_marker_font_size_ << std::endl;
+
+      // Below get biggest data-point marker symbol point size in any series 
+      // to get minimum vertical spacing between data-series info lines.
       double longest_text = 0;
       std::size_t longest_text_chars_count = 0;
-      derived().biggest_point_marker_font_size_ = 0;
       size_t longest_series_text_number = 0;
+      size_t num_series = derived().serieses_.size(); // How many data-series in this plot.
       for (size_t i = 0; i != num_series; ++i)
       {
         double point_size = 0.;
         if (derived().serieses_[i].point_style_.shape() != none)
-        { // Some data pointer marker.
-          derived().is_a_point_marker_ = true; // So will need to provide a space for any other series without a point marker.
+        { // Some data-point marker.
+          derived().is_a_point_marker_ = true; // So will need to provide a space for any other series *without* a point marker.
           point_size = derived().serieses_[i].point_style_.size(); //
           std::cout << "point size series #" << i << ", size " << point_size << std::endl;
           if (point_size > derived().biggest_point_marker_font_size_)
@@ -1616,12 +1622,12 @@ namespace boost
         }
 
         if (derived().serieses_[i].title_ != "")
-        { // Some data series text descriptor.
-          derived().is_a_data_series_text_ = true; // So will need to allow space for any data series without text.
+        { // Some data-series text descriptor.
+          derived().is_a_data_series_text_ = true; // So will need to allow space for any data-series without text.
           double series_string_length = string_svg_length(derived().serieses_[i].title_, derived().legend_text_style_);
           // string_svg_length avoids chars as Unicode hex increasing the length wrongly,
           // so each Unicode char counts only as one char. 
-          //   Would be better to use the SVG method of estimating true length.
+          // Would be better to use the SVG method of estimating true length, but seems impossible.
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
           std::cout << " series title " << i << " " << derived().serieses_[i].title_
@@ -1636,9 +1642,11 @@ namespace boost
               << ", longest_text_chars_count = " << longest_text_chars_count << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
           }
-        } // if a data series description text line.
+        } // if a data-series description text line.
       } // for num_series
-      std::cout << "Biggest of text and title font derived().biggest_point_marker_font_size_ " << derived().biggest_point_marker_font_size_ << std::endl;
+
+      std::cout << "Biggest font of legend data-series text and title derived().biggest_point_marker_font_size_ "
+        << derived().biggest_point_marker_font_size_ << std::endl;
 
       // Compute Y-axis vertical spacing.
       derived().vertical_title_spacing_ = derived().legend_title_font_size_ * derived().text_margin_; // Legend header/title vertical spacing.
@@ -1669,16 +1677,16 @@ namespace boost
         << std::endl;
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
 
-      // X-Axis Compute the width of the longest data series marker and/or line and/or textline.
+      // X-Axis Compute the width of the longest data-series marker and/or line and/or textline.
       double text_width = longest_text; // Actual char text as SVG units (default pixels).
 
       if (derived().is_a_point_marker_ == true)
-      { // Markers for data points in a data series.
-        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // Data point marker, circlet, cross ...
+      { // Markers for data-points in a data-series.
+        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // data-point marker, circlet, cross ...
         text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // and a same size space after the marker.
       }
       if (derived().is_a_data_series_line_ == true)
-      { // Line used to join data points in a data series.
+      { // Line used to join data-points in a data-series.
         text_width += derived().horizontal_marker_spacing_; // Line width.
         text_width += derived().horizontal_marker_spacing_; // Space after line.
       }
@@ -1755,7 +1763,7 @@ namespace boost
       // legend_height must be *at least* enough for any legend title and text_margin(s) for descenders.
       // Or size of marker or line, whichever is the biggest, plus a small margin_ top and bottom.
 
-       // Use height of whichever is the biggest of data point marker shape and text-font, derived().biggest_point_marker_font_size_
+       // Use height of whichever is the biggest of data-point marker shape and text-font, derived().biggest_point_marker_font_size_
       // for vertical spacing, (assuming horizontal line markers have neglible height so fill use marker text font size).
 
       //derived().legend_height_ = derived().legend_box_.margin_; // Always allow a tiny margin top and bottom.
@@ -1771,7 +1779,7 @@ namespace boost
       {
         derived().legend_height_ += derived().vertical_title_spacing_; // Legend title line
       }
-      // Add more height depending on the size number of lines of data point markers, lines and text.
+      // Add more height depending on the size number of lines of data-point markers, lines and text.
       derived().legend_height_ += derived().vertical_line_spacing_ * num_series; // 
 
       //derived().legend_height_ += derived().vertical_marker_spacing_; // a part space after based on the marker line.
@@ -1922,18 +1930,18 @@ namespace boost
     //! Draw the legend box.
     //! border and background,
     //! (using the size and position computed by function @c size_legend_box),
-    //! and legend_title (if any and if required),
-    //! and any data point marker lines,
-    //! and any shapes for data point markers,
-    //! and any data series descriptor text(s).
+    //! and legend-title (if any and if required),
+    //! and any data-point marker lines,
+    //! and any shapes for data-point markers,
+    //! and any data-series descriptor text(s).
     template <class Derived>
     void axis_plot_frame<Derived>::draw_legend()
     {
-      size_t num_series = derived().serieses_.size(); // How many data series.
+      size_t num_series = derived().serieses_.size(); // How many data-series.
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "***Drawing Legend box border width = " << derived().legend_box_.width()
         <<  ", margin = " << derived().legend_box_.margin()
-      << "\n to show " << num_series << " data series." << std::endl;
+      << "\n to show " << num_series << " data-series." << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
@@ -2019,11 +2027,11 @@ namespace boost
       g_element* g_inner_ptr = g_ptr;
       g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Write legend title text into legend box.
 
-      // Show any point marker, maybe line, & maybe text info for each of the data series.
+      // Show any point marker, maybe line, & maybe text info for each of the data-series.
       for(unsigned int i = 0; i != derived().serieses_.size(); ++i)
       { 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-          std::cout << "Data Series #" << i << " point_style = " <<  derived().serieses_[i].point_style_
+          std::cout << "data-series #" << i << " point_style = " <<  derived().serieses_[i].point_style_
             << "\n line style = " << derived().serieses_[i].line_style_
             << "\n point_symbol_style = " <<  derived().serieses_[i].point_style_.symbols_  << std::endl;
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
@@ -2049,8 +2057,8 @@ namespace boost
         plot_point_style& point_style = derived().serieses_[i].point_style_;
 
         if(point_style.shape_ != none)
-        { // Is some data point marker shape to show in legend box.
-          // ellipse is special case to show uncertainty of data point.
+        { // Is some data-point marker shape to show in legend box.
+          // ellipse is special case to show uncertainty of data-point.
           bool was_unc_ellipse = false;
           if (point_style.shape_ == unc_ellipse)
           {  // Problem here with unc_ellipse with calculation of a suitable size
@@ -2070,12 +2078,12 @@ namespace boost
           legend_x_pos += derived().horizontal_marker_spacing_ * 2; // Trailing space after point-marker.
 
           if (was_unc_ellipse)
-          { // Restore from using egg (or the data points won't use the unc_ellipse!)
+          { // Restore from using egg (or the data-points won't use the unc_ellipse!)
             point_style.shape_ = unc_ellipse;
           }
         } // A marker shape for this series.
         else
-        { // Other data series have a point marker (but not this one).
+        { // Other data-series have a point marker (but not this one).
           if (derived().is_a_point_marker_ == true)
           {
             legend_x_pos += derived().horizontal_marker_spacing_ * 2;  // Leave a space where marker would be.
@@ -2084,8 +2092,8 @@ namespace boost
 
         // Line markers are really useful for 2-D lines and curves showing functions.
         if (derived().serieses_[i].line_style_.line_on_ == true) // Line joining points option is true,
-        { // so need to draw a short line to show color for line joining points for that data series.
-          // derived().legend_lines_ = true; // Some line is drawn for at least one data series.
+        { // so need to draw a short line to show color for line joining points for that data-series.
+          // derived().legend_lines_ = true; // Some line is drawn for at least one data-series.
           // Better - this should be set during the legend box sizing?
           if (derived().serieses_[i].line_style_.line_on_ || derived().serieses_[i].line_style_.bezier_on_)
           { // Use stroke color from line style.
@@ -2114,14 +2122,14 @@ namespace boost
           }
         } // line_on == true
 
-        // Legend text for each Data Series added to the plot.
+        // Legend text for each data-series added to the plot.
         if (derived().is_a_data_series_text_)
         {
           g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT));
           g_inner_ptr->push_back(new text_element(
             legend_x_pos, // Allow space for the marker.
             legend_y_pos,
-            derived().serieses_[i].title_, // Text for this data series.
+            derived().serieses_[i].title_, // Text for this data-series.
             derived().legend_text_style_,
             left_align));
         }
@@ -2135,7 +2143,7 @@ namespace boost
             g_element& g_ptr,
             plot_point_style& point_style,
             unc<false> ux, unc<false> uy) // Default unc ux = 0. and uy = 0. ?  Meas?
-          { /*! Draw a plot data point marker shape or symbol
+          { /*! Draw a plot data-point marker shape or symbol
               whose size and stroke and fill colors are specified in plot_point_style sty,
               possibly including uncertainty ellipses showing multiples of standard deviation.
             */
@@ -2241,7 +2249,7 @@ namespace boost
                 gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard deviation.
                 gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard deviation..
                 gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard deviation..
-                g_ptr.circle(x, y, 1); // Show x and y values at center using stroke and fill color of data point marker.
+                g_ptr.circle(x, y, 1); // Show x and y values at center using stroke and fill color of data-point marker.
               }
               break;
 
@@ -2330,7 +2338,7 @@ namespace boost
             case heart:
               g_ptr.text(x, y + third_height , "&#x2665;", point_style.symbols_style_, center_align, horizontal);
               break;
-            case outside_window: // Pointing down triangle used only to show data points that are outside plot window.
+            case outside_window: // Pointing down triangle used only to show data-points that are outside plot window.
               {
                 bool fill = (point_style.fill_color() != blank);
                 g_ptr.triangle(x - half_height, y - point_size, x + half_height, y - point_size, x, y, fill);
@@ -2388,8 +2396,8 @@ namespace boost
           void axis_plot_frame<Derived>::draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, Meas uvalue)
           { /*!
           void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, unc<false> uvalue)
-             Write one data point (X or Y) value as a string, for example "1.23e-2",
-             near the data point marker.
+             Write one data-point (X or Y) value as a string, for example "1.23e-2",
+             near the data-point marker.
              Unnecessary e, +, \& leading exponent zeros may optionally be stripped,
              and the position and rotation controlled.
              std_dev estimate, typically standard deviation
@@ -2628,7 +2636,7 @@ namespace boost
 
          template <class Derived>
          void axis_plot_frame<Derived>::draw_plot_point_values(double x, double y, g_element& x_g_ptr, g_element& y_g_ptr, const value_style& x_sty, const value_style& y_sty, Meas uncx, unc<false> uncy)
-          { /*! \brief Write the \b pair of data points X and Y values as a string.
+          { /*! \brief Write the \b pair of data-points X and Y values as a string.
                \details
                The x parameter also carries the measurement information for the pair,
                and so is a @c Meas, not just an @c unc<false> as is the Y parameter.
@@ -2986,7 +2994,7 @@ namespace boost
           template <class Derived>/*! \tparam Derived plot class in svg_1d_plot or svg_2d_plot or svg_boxplot. */
           template <class T> /*! \tparam T an STL container: array, vector, list, map ...  */
           Derived& axis_plot_frame<Derived>::x_autoscale(const T& begin, const T& end)
-          { //! Data series (range accessed using iterators) to use to calculate autoscaled X-axis values.
+          { //! data-series (range accessed using iterators) to use to calculate autoscaled X-axis values.
               scale_axis(begin, end,
               &derived().x_auto_min_value_, &derived().x_auto_max_value_, &derived().x_auto_tick_interval_, &derived().x_auto_ticks_,
               derived().autoscale_check_limits_, derived().autoscale_plusminus_,
@@ -2998,8 +3006,8 @@ namespace boost
 
           template <class Derived>
           template <class T> // T an STL container: @c array, @c vector...
-          Derived& axis_plot_frame<Derived>::x_autoscale(const T& container) // Use whole 1D data series.
-          { //! Data series (all values) to use to calculate autoscaled X-axis values.
+          Derived& axis_plot_frame<Derived>::x_autoscale(const T& container) // Use whole 1D data-series.
+          { //! data-series (all values) to use to calculate autoscaled X-axis values.
             //scale_axis(container.begin(), container.end(), // All the container.
             scale_axis(container, // All the container.
             &derived().x_auto_min_value_, &derived().x_auto_max_value_, &derived().x_auto_tick_interval_, &derived().x_auto_ticks_,
@@ -3242,7 +3250,7 @@ namespace boost
               3 decimal digits precision is sufficient for small images.
               4 or 5 decimal digits precision will give higher quality plots,
               especially for larger images, at the expense of larger .svg files,
-              particularly if there are very many data points.
+              particularly if there are very many data-points.
            */
             derived().image_.coord_precision(digits);
             return derived();
@@ -3336,7 +3344,7 @@ namespace boost
             // (whose character string may include Unicode value like &#x3A9; for greek letter and symbols).
             //! Example: std::cout << "title \"" << my_plot.title() << "\""<< std::endl;
             //! outputs:
-            //! \verbatim title "Plot showing several data point marker shapes &#x26; sizes." \endverbatim
+            //! \verbatim title "Plot showing several data-point marker shapes &#x26; sizes." \endverbatim
             return derived().title_info_.text();
           }
 
@@ -3665,8 +3673,8 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_lines(bool is)
-          { //! Set true if legend should include samples of the lines joining data points.
-            //! \details This allows different series of data points to be distinguished by different color and/or width.
+          { //! Set true if legend should include samples of the lines joining data-points.
+            //! \details This allows different series of data-points to be distinguished by different color and/or width.
             //! This is especially useful to show plots of different functions and/or different parameters in different colors.
             derived().legend_lines_ = is;
             return derived();
@@ -3674,7 +3682,7 @@ namespace boost
 
           template <class Derived>
           bool axis_plot_frame<Derived>::legend_lines()
-          {//! \return  true if legend should include samples of the lines joining data points.
+          {//! \return  true if legend should include samples of the lines joining data-points.
             return derived().legend_lines_;
           }
 
@@ -4020,20 +4028,20 @@ namespace boost
           // ticks_labels_style  x_ticks
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_ticks_values_precision(int p)
-          { //! Set iostream decimal digits precision of data point X values near data points markers.
+          { //! Set iostream decimal digits precision of data-point X values near data-points markers.
             derived().x_ticks_.value_precision_ = p;
             return derived();
           }
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_ticks_values_precision()
-          { //! \return  iostream decimal digits precision of data point X values near data points markers.
+          { //! \return  iostream decimal digits precision of data-point X values near data-points markers.
             return derived().x_ticks_.value_precision_;
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_ticks_values_ioflags(std::ios_base::fmtflags f)
-          { //! Set iostream format flags of data point X values near data points markers.
+          { //! Set iostream format flags of data-point X values near data-points markers.
             //! Useful to set hexadecimal, fixed and scientific, (std::ios::scientific).
             derived().x_ticks_.value_ioflags_ = f;
             return derived();
@@ -4041,7 +4049,7 @@ namespace boost
 
           template <class Derived>
           std::ios_base::fmtflags axis_plot_frame<Derived>::x_ticks_values_ioflags()
-          { //! \return  iostream format flags of data point X values near data points markers.
+          { //! \return  iostream format flags of data-point X values near data-points markers.
             //! Might be used to set hexadecimal, fixed and scientific, (std::ios::scientific).
             return derived().x_ticks_.value_ioflags_;
           }
@@ -4520,14 +4528,14 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::data_lines_width(double width)
-          { //! Set the width of lines joining data points.
+          { //! Set the width of lines joining data-points.
             derived().image_.g(PLOT_DATA_LINES).style().stroke_width(width);
             return derived();
           }
 
           template <class Derived>
           double axis_plot_frame<Derived>::data_lines_width()
-          { //! \return  the width of lines joining data points.
+          { //! \return  the width of lines joining data-points.
             return derived().image_.g(PLOT_DATA_LINES).style().stroke_width();
           }
 
@@ -4593,7 +4601,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_values_on(bool b)
-          { //! \return true if values of X data points are shown (for example: 1.23).
+          { //! \return true if values of X data-points are shown (for example: 1.23).
             // (Want override xy_values_on that would otherwise cause overwriting).
             // So the last values_on setting will prevail.
             // But this is only defined in 2D
@@ -4607,33 +4615,33 @@ namespace boost
 
           template <class Derived>
           bool axis_plot_frame<Derived>::x_values_on()
-          { //! If true, show data point values near data points markers.
+          { //! If true, show data-point values near data-points markers.
             return derived().x_values_on_;
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_values_font_size(int i)
-          { //! Set font size of data point X values near data points markers.
+          { //! Set font size of data-point X values near data-points markers.
             derived().x_values_style_.values_text_style_.font_size(i);
             return derived();
           }
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_values_font_size()
-          { //! \return  font size of data point X values near data points markers.
+          { //! \return  font size of data-point X values near data-points markers.
             return derived().x_values_style_.values_text_style_.font_size();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_values_font_family(const std::string& family)
-          { //! Set font family of data point X values near data points markers.
+          { //! Set font family of data-point X values near data-points markers.
             derived().x_values_style_.values_text_style_.font_family(family);
             return derived();
           }
 
           template <class Derived>
           const std::string& axis_plot_frame<Derived>::x_values_font_family()
-          { //! Set font family of data point X values near data points markers.
+          { //! Set font family of data-point X values near data-points markers.
             return derived().x_values_style_.values_text_style_.font_family();
           }
 
@@ -4652,7 +4660,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_values_color(const svg_color& col)
-          { //! Set the color of data point X values near data points markers.
+          { //! Set the color of data-point X values near data-points markers.
             // Function could set both fill (middle) and stroke (outside),
             // but just setting fill is simplest,
             // but does not allow separate inside & outside colors.
@@ -4664,7 +4672,7 @@ namespace boost
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::x_values_color()
-          { //! \return  the color of data point X values near data points markers.
+          { //! \return  the color of data-point X values near data-points markers.
             // Function could get either fill and stroke,
             // return derived().image_.g(PLOT_X_POINT_VALUES).style().stroke_color();
             return derived().image_.g(PLOT_X_POINT_VALUES).style().fill_color();
@@ -4672,7 +4680,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_values_rotation(rotate_style rotate)
-          { //! \return  the rotation (rotate_style) of data point X values near data points markers.
+          { //! \return  the rotation (rotate_style) of data-point X values near data-points markers.
             //! (Degrees: 0 to 360 in 45 steps).
             derived().x_values_style_.value_label_rotation_ = rotate;
             return derived();
@@ -4680,27 +4688,27 @@ namespace boost
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_values_rotation()
-          { //! \return  the rotation of data point X values near data points markers.
+          { //! \return  the rotation of data-point X values near data-points markers.
             return derived().x_values_style_.value_label_rotation_;
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_values_precision(int p)
-          { //! Set iostream decimal digits precision of data point X values near data points markers.
+          { //! Set iostream decimal digits precision of data-point X values near data-points markers.
             derived().x_values_style_.value_precision_ = p;
             return derived();
           }
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_values_precision()
-          { //! \return  iostream decimal digits precision of data point X values near data points markers.
+          { //! \return  iostream decimal digits precision of data-point X values near data-points markers.
             //!
             return derived().x_values_style_.value_precision_;
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_values_ioflags(std::ios_base::fmtflags f)
-          { //! Set @c std iostream format flags of data point X values near data points markers.
+          { //! Set @c std iostream format flags of data-point X values near data-points markers.
             //! Useful to set hexadecimal, fixed and scientific, (std::ios::scientific).
             derived().x_values_style_.value_ioflags_ = f;
             return derived();
@@ -4708,14 +4716,14 @@ namespace boost
 
           template <class Derived>
           std::ios_base::fmtflags axis_plot_frame<Derived>::x_values_ioflags()
-          { //! \return  iostream format flags of data point X values near data points markers.
+          { //! \return  iostream format flags of data-point X values near data-points markers.
             //! Might be used to set hexadecimal, fixed and scientific, (std::ios::scientific).
             return derived().x_values_style_.value_ioflags_;
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_plusminus_on(bool b)
-          { //! Set if to append std_dev estimate to data point X values near data points markers.
+          { //! Set if to append std_dev estimate to data-point X values near data-points markers.
             //! (May not be implemented yet).
             derived().x_values_style_.plusminus_on_ = b;
             return derived();
@@ -4723,7 +4731,7 @@ namespace boost
 
           template <class Derived>
           bool axis_plot_frame<Derived>::x_plusminus_on()
-          { //! \return  if to append std_dev estimate to data point X values near data points markers.
+          { //! \return  if to append std_dev estimate to data-point X values near data-points markers.
             //! (May not be implemented yet).
             return derived().x_values_style_.plusminus_on_;
           }
@@ -4743,7 +4751,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_addlimits_on(bool b)
-          { //! Set if to append confidence limits to data point X values near data points markers.
+          { //! Set if to append confidence limits to data-point X values near data-points markers.
             //! (May not be implemented yet).
             derived().x_values_style_.addlimits_on_ = b;
             return derived();
@@ -4751,7 +4759,7 @@ namespace boost
 
           template <class Derived>
           bool axis_plot_frame<Derived>::x_addlimits_on()
-          { //! \return  if to append confidence limits to data point X values near data points markers.
+          { //! \return  if to append confidence limits to data-point X values near data-points markers.
             //! (May not be implemented yet).
             return derived().x_values_style_.addlimits_on_;
           }
@@ -4771,14 +4779,14 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_df_on(bool b)
-          { //! Set true if to append a degrees of freedom estimate to data point X values near data points markers.
+          { //! Set true if to append a degrees of freedom estimate to data-point X values near data-points markers.
             derived().x_values_style_.df_on_ = b;
             return derived();
           }
 
           template <class Derived>
           bool axis_plot_frame<Derived>::x_df_on()
-          { //! \return true if to append a degrees of freedom estimate to data point X values near data points markers.
+          { //! \return true if to append a degrees of freedom estimate to data-point X values near data-points markers.
             //! (May not be implemented yet).
             return derived().x_values_style_.df_on_;
           }
@@ -4800,7 +4808,7 @@ namespace boost
 
          template <class Derived>
           Derived& axis_plot_frame<Derived>::x_id_on(bool b)
-          { //! Set true if to append a id or name to data point X values near data points markers.
+          { //! Set true if to append a id or name to data-point X values near data-points markers.
             //! (May not be implemented yet).
             derived().x_values_style_.id_on_ = b;
             return derived();
@@ -4808,7 +4816,7 @@ namespace boost
 
           template <class Derived>
           bool axis_plot_frame<Derived>::x_id_on()
-          { //! \return true if to append an ID or name to data point X values near data points markers.
+          { //! \return true if to append an ID or name to data-point X values near data-points markers.
             //! (May not be implemented yet).
             return derived().x_values_style_.id_on_;
           }
@@ -4828,7 +4836,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_datetime_on(bool b)
-          { //! Set true if to append a datetime to data point X values near data points markers.
+          { //! Set true if to append a datetime to data-point X values near data-points markers.
             //! (May not be implemented yet).
             derived().x_values_style_.datetime_on_ = b;
             return derived();
@@ -4836,7 +4844,7 @@ namespace boost
 
           template <class Derived>
           bool axis_plot_frame<Derived>::x_datetime_on()
-          { //! \return true if to append a ID or name to data point X values near data points markers.
+          { //! \return true if to append a ID or name to data-point X values near data-points markers.
             //! (May not be implemented yet).
             return derived().x_values_style_.datetime_on_;
           }
@@ -4856,14 +4864,14 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_order_on(bool b)
-          { //! Set true if to append an order # to data point X values near data points markers.
+          { //! Set true if to append an order # to data-point X values near data-points markers.
             derived().x_values_style_.order_on_ = b;
             return derived();
           }
 
           template <class Derived>
           bool axis_plot_frame<Derived>::x_order_on()
-          { //! \return true if to append an order # to data point X values near data points markers.
+          { //! \return true if to append an order # to data-point X values near data-points markers.
             return derived().x_values_style_.order_on_;
           }
 
@@ -5229,7 +5237,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_tight(double tight)
-          { //! Set tolerance to autoscale to permit data points slightly outside both end ticks.
+          { //! Set tolerance to autoscale to permit data-points slightly outside both end ticks.
             //! default 0.
             //! Must preceed x_autoscale(data) call.
             derived().x_tight_ = tight;
@@ -5238,7 +5246,7 @@ namespace boost
 
          template <class Derived>
          double axis_plot_frame<Derived>::x_tight()
-         { //! \return  tolerance given to autoscale to permit data points slightly outside both end ticks.
+         { //! \return  tolerance given to autoscale to permit data-points slightly outside both end ticks.
            return derived().x_tight_;
          }
 
@@ -5458,7 +5466,7 @@ namespace boost
               \details For example, -10, -10, +10, +10, Default color black.
           */
           derived().calculate_plot_window(); // To ensure the scale and shift are setup for transform.
-          // It would be better to store the line (and curve and text) information like plot data series to
+          // It would be better to store the line (and curve and text) information like plot data-series to
           // ensure that transform works correctly.
           // This assumes that the notes, lines and curves are the last item before the write.
           transform_point(x1, y1);
@@ -5478,7 +5486,7 @@ namespace boost
               \details For example, -10, -10, +10, +10, Default color black.
           */
           derived().calculate_plot_window(); // To ensure the scale and shift are setup for transform.
-          // It would be better to store the line (and curve and text) information like plot data series to
+          // It would be better to store the line (and curve and text) information like plot data-series to
           // ensure that transform works correctly.
           // This assumes that the notes, lines and curves are the last item before the write.
           transform_point(x1, y1);

@@ -104,7 +104,15 @@ int main()
   vector<double> my_data_2; // Create a second data series.
   copy(my_data_1.begin(), my_data_1.end(), back_inserter(my_data_2));
   // Change the values in an entirely arbitrary way (each * 2.3).
-  transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), std::bind1st(multiplies<double>(), 2.3));
+  //std::transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), std::bind1st(std::multiplies<double>(), 2.3));
+  // std::bind1st is deprecated or removed.
+
+  double factor = 2.3456;
+  auto m1 = [factor](double& c) { return c * factor; };
+  std::transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), [factor](double& c) { return c * factor; });
+  //  or 
+   
+    std::transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), m1);
   //cout << endl << my_data.size() << " values in my_data_2. " << endl;
 
   /*`Next we need a new STL container, vector say, to hold our multiple containers of data series.
