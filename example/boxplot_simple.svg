@@ -14,7 +14,7 @@ xmlns ="http://www.w3.org/2000/svg"
 
 <!-- File boxplot_simple.svg --> 
 <clipPath id="plot_window"><rect x="61.6" y="52" width="426" height="232"/></clipPath>
-<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="350"/></g>
+<g id="imageBackground" stroke="rgb(0,0,139)" fill="rgb(240,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="350"/></g>
 <g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="66.6" y="57" width="421" height="227"/></g>
 <g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="66.6" y1="284" x2="488" y2="284"/></g>
 <g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="66.6" y1="284" x2="66.6" y2="57"/></g>

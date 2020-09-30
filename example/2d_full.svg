@@ -21,9 +21,9 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
 <g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="102" y1="58.8" x2="102" y2="477"/><line x1="52.6" y1="58.8" x2="52.6" y2="463"/></g>
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="47.6" y1="444" x2="594" y2="444"/><line x1="47.6" y1="463" x2="594" y2="463"/></g>
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M50.6,434 L52.6,434 M50.6,425 L52.6,425 M50.6,415 L52.6,415 M50.6,396 L52.6,396 M50.6,386 L52.6,386 M50.6,376 L52.6,376 M50.6,357 L52.6,357 M50.6,348 L52.6,348 M50.6,338 L52.6,338 M50.6,319 L52.6,319 M50.6,309 L52.6,309 M50.6,299 L52.6,299 M50.6,280 L52.6,280 M50.6,271 L52.6,271 M50.6,261 L52.6,261 M50.6,242 L52.6,242 M50.6,232 L52.6,232 M50.6,222 L52.6,222 M50.6,203 L52.6,203 M50.6,194 L52.6,194 M50.6,184 L52.6,184 M50.6,165 L52.6,165 M50.6,155 L52.6,155 M50.6,145 L52.6,145 M50.6,126 L52.6,126 M50.6,117 L52.6,117 M50.6,107 L52.6,107 M50.6,87.6 L52.6,87.6 M50.6,78 L52.6,78 M50.6,68.4 L52.6,68.4 M50.6,444 L52.6,444 M50.6,453 L52.6,453 M50.6,463 L52.6,463 " fill="none"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M50.6,434 L52.6,434 M50.6,424 L52.6,424 M50.6,415 L52.6,415 M50.6,396 L52.6,396 M50.6,386 L52.6,386 M50.6,376 L52.6,376 M50.6,357 L52.6,357 M50.6,348 L52.6,348 M50.6,338 L52.6,338 M50.6,319 L52.6,319 M50.6,309 L52.6,309 M50.6,299 L52.6,299 M50.6,280 L52.6,280 M50.6,270 L52.6,270 M50.6,261 L52.6,261 M50.6,242 L52.6,242 M50.6,232 L52.6,232 M50.6,222 L52.6,222 M50.6,203 L52.6,203 M50.6,194 L52.6,194 M50.6,184 L52.6,184 M50.6,165 L52.6,165 M50.6,155 L52.6,155 M50.6,145 L52.6,145 M50.6,126 L52.6,126 M50.6,116 L52.6,116 M50.6,107 L52.6,107 M50.6,87.6 L52.6,87.6 M50.6,78 L52.6,78 M50.6,68.4 L52.6,68.4 M50.6,444 L52.6,444 M50.6,453 L52.6,453 M50.6,463 L52.6,463 " fill="none"/></g>
 <g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M126,463 L126,470 M151,463 L151,470 M176,463 L176,470 M225,463 L225,470 M249,463 L249,470 M274,463 L274,470 M323,463 L323,470 M348,463 L348,470 M372,463 L372,470 M421,463 L421,470 M446,463 L446,470 M471,463 L471,470 M520,463 L520,470 M544,463 L544,470 M569,463 L569,470 M77.2,463 L77.2,470 M52.6,463 L52.6,470 " fill="none"/></g>
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M47.6,444 L52.6,444 M47.6,405 L52.6,405 M47.6,367 L52.6,367 M47.6,328 L52.6,328 M47.6,290 L52.6,290 M47.6,251 L52.6,251 M47.6,213 L52.6,213 M47.6,174 L52.6,174 M47.6,136 L52.6,136 M47.6,97.3 L52.6,97.3 M47.6,58.8 L52.6,58.8 M47.6,444 L52.6,444 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M47.6,444 L52.6,444 M47.6,405 L52.6,405 M47.6,367 L52.6,367 M47.6,328 L52.6,328 M47.6,290 L52.6,290 M47.6,251 L52.6,251 M47.6,213 L52.6,213 M47.6,174 L52.6,174 M47.6,136 L52.6,136 M47.6,97.2 L52.6,97.2 M47.6,58.8 L52.6,58.8 M47.6,444 L52.6,444 " fill="none"/></g>
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M102,463 L102,477 M200,463 L200,477 M298,463 L298,477 M397,463 L397,477 M495,463 L495,477 M594,463 L594,477 M102,463 L102,477 " fill="none"/></g>
 <g id="xTicksValues">
 <text x="102" y="455" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0</text>
@@ -97,7 +97,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <text x="623" y="91" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal">-2 + x^2</text>
 <text x="623" y="104" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal">-1 + 2x</text></g>
 <g id="title" fill="rgb(255,255,255)">
-<text x="350" y="36.3" text-anchor="middle" font-size="29" font-family="Lucida Sans Unicode" font-weight="normal">Plot of Mathematical Functions</text></g>
+<text x="350" y="36.2" text-anchor="middle" font-size="29" font-family="Lucida Sans Unicode" font-weight="normal">Plot of Mathematical Functions</text></g>
 <g id="plotXValues"></g>
 <g id="plotYValues"></g>
 </svg>

@@ -73,8 +73,8 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="419" y="39.5" width="67" height="74.8"/></g>
 <g id="legendPoints"></g>
 <g id="legendText">
-<text x="427" y="57.2" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal">Series 2</text>
-<text x="427" y="69.7" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal">Series 2</text></g>
+<text x="431" y="57.2" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal">Series 2</text>
+<text x="431" y="69.7" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal">Series 2</text></g>
 <g id="title">
 <text x="250" y="22.5" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode" font-weight="normal"></text></g>
 <g id="plotXValues"></g>
