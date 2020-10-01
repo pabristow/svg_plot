@@ -1591,7 +1591,7 @@ namespace boost
       // Line marker has small height compared to any font, so ignore any lines in max height calculation.
 
       derived().biggest_point_marker_font_size_ = derived().legend_text_font_size(); 
-      // Assume data-series descriptor text font until a bigger data-series point marker symbol is found.
+      // Assume data-series-descriptor text font-size until a bigger data-series point marker symbol is found.
       std::cout << "Assume text font derived().biggest_point_marker_font_size_ " 
         << derived().biggest_point_marker_font_size_ << std::endl;
 
@@ -1668,6 +1668,7 @@ namespace boost
       std::cout << "**Legend Spacings"
            "\nLegend_title_font_size_ = " << derived().legend_title_font_size_
         << ", Legend_text_font_size_ = " << derived().legend_text_font_size_
+        << ", biggest_point_marker_font_size_ = " << derived().biggest_point_marker_font_size_
         << ", text_margin = " << derived().text_margin_
         << ", aspect ratio =  " << aspect_ratio
         << ", \nVertical_title_spacing = " << derived().vertical_title_spacing_
@@ -1676,6 +1677,15 @@ namespace boost
         << ", \nhorizontal_spacing = " << derived().horizontal_title_spacing_
         << ", horizontal_line_spacing = " << derived().horizontal_line_spacing_
         << ", horizontal_marker_spacing = " << derived().horizontal_marker_spacing_
+        // ***Legend Spacings:
+        // Legend_text_font_size_ = 8, Legend_box_.margin_ = 1, Legend_title_font_size_ = 8, text_margin = 1.25, aspect ratio = 0.55
+        // Vertical_title_spacing = 10, Vertical_line_spacing = 14, Vertical_marker_spacing = 14
+        // horizontal_spacing = 4.4, horizontal_line_spacing = 4.4, horizontal_marker_spacing = 5.544
+
+
+
+
+
         << std::endl;
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
 
@@ -1719,7 +1729,7 @@ namespace boost
       }
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-      std::cout << "\nSet_legend box dimensions:"
+      std::cout << "\n***Set_legend box dimensions:"
         "\nLegend title \"" << derived().legend_title_.text()
         << ", chars = " << derived().legend_title_.text().size()
         << ", .legend_title_font_size_ = " << derived().legend_title_font_size_
@@ -2013,21 +2023,34 @@ namespace boost
       double legend_title_svg_length = string_svg_length(derived().legend_title(), derived().legend_title_style_);
       //std::cout << "%%%%%%%%%%%%  legend_title_svg_length = " << legend_title_svg_length << " svg units (pixels). "<< std::endl;
       derived().legend_title_style_.text_length(legend_title_svg_length * derived().legend_title_font_size_ * aspect_ratio); 
-      // Tell for legend_title to use estimated length in pixels.
+      // Tell for legend_title to use estimated length in pixels (to avoid trouble with and hex Unicode symbols).
       if (derived().legend_title_.text() != "") //
       { // Is a legend-title, so draw the centered legend-title text for example: "My Plot Legend".
         derived().legend_title_.x(legend_x_start + legend_width / 2.); // / 2. to center horizontally in legend box.
         // Might be better to use center_align here because may fail if legend contains symbols in Unicode?
 
-        legend_y_pos += derived().vertical_title_spacing_; // Ready to write title.
+        legend_y_pos += derived().vertical_title_spacing_; // Move down ready to write legend-title.
         derived().legend_title_.y(legend_y_pos);
+        // Try to ensure it uses the right font and size.
+        derived().legend_title_.textstyle(derived().legend_title_style_);
+        std::cout << "derived().legend_title_.textstyle() = "  << derived().legend_title_.textstyle() << std::endl;
+        // derived().legend_title_.textstyle() = text_style(8, "Lucida Sans Unicode", "", "normal", "", """, 193.6)
+        but is catastrophic spacing out the legned title outside the box!
+          <text x = "446" y = "53.8" text - anchor = "middle" font - size = "8" font - family = "Lucida Sans Unicode" font - weight = "normal" textLength = "194">Race names< / text>
+
+*****************************************************************************************************
+
         derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_title_));
+        // This uses the default legend_title  font_size
+        // legend_title_style_(10, default_font, "normal", "", "", "", 0), // 6rd parameter decoration might be underline?
+        // not the wanted legend_title_font_size_
+
         legend_y_pos += derived().vertical_title_spacing_ /3; // Leave a fraction space below legend title.
       } // is_header aka is_title
 
-      g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Prepare to write marker, line and description text into legend-box.
+      g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Prepare to write data-point-marker, line and description-text into legend-box.
       g_element* g_inner_ptr = g_ptr;
-      g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Write legend title text into legend box.
+      g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Write legend-title text into legend box.
 
       // Show any point-marker, any line, & any text info for each of the data-series.
       for(unsigned int i = 0; i != derived().serieses_.size(); ++i)
@@ -2045,10 +2068,10 @@ namespace boost
         {
           legend_x_pos += derived().legend_box_.border_width_;  // If a border, don't write on it!
         }
-        legend_x_pos += derived().horizontal_title_spacing_; // space before point marker and/or line & text.
-        legend_x_pos += derived().horizontal_marker_spacing_;  // Center of point marker symbol.
+        legend_x_pos += derived().horizontal_title_spacing_; // space before point-marker and/or line & text.
+        legend_x_pos += derived().horizontal_marker_spacing_;  // Center of point-marker symbol.
 
-        legend_y_pos += derived().vertical_line_spacing_ ; // Size of biggest marker or description text font.
+        legend_y_pos += derived().vertical_line_spacing_ ; // == Size of biggest point-marker or description text font.
 
         g_inner_ptr = &(g_ptr->add_g_element());
         // Use both stroke & fill colors and size from the point-marker's style.
@@ -2176,18 +2199,22 @@ namespace boost
             double third_height = point_size / 3.3; // Offset y vertical by third of the symbol size to try to centre symbol on the point y-coordinates.
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-            std::cout << "point_style.size_ = "<< point_style.size_ << ", y offset half_height - " << half_height << std::endl; // Picks up font size shape(diamond).size(20) correctly here.
-            // point_style.size_ = 14, y offset half_height - 7
+            std::cout << "point_style.size_ = "<< point_style.size_ 
+              << ", y offset half_height = " << half_height
+              << ", y offset third_height = " << third_height
+              << std::endl; 
+            // Picks up font size shape(diamond).size(20) correctly here.
+            // point_style.size_ = 14, y offset half_height = 7
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-            point_style.symbols_style_.font_size(point_style.size_); // Sets plot_point marker font size.
+            point_style.symbols_style_.font_size(point_style.size_); // Sets plot_point-marker font-size.
 
-            //  want this text_styling
+            //  Want this text_styling, for example:
             //point_style.symbols_style_.font_family("arial");
             //point_style.symbols_style_.font_weight("bold");
             //point_style.symbols_style_.font_decoration("underline");
             //point_style.symbols_style_.font_stretch("wider");
             //point_style.symbols_style_.font_style("italic");
-
+            // and these colors:
             //point_style.symbols_style_.fill_color(sty.fill_color_); //
             //point_style.symbols_style_.stroke_color(sty.stroke_color_); //
 
@@ -2198,9 +2225,11 @@ namespace boost
             // Whatever shape, text or line, want to use the point style.
             g_ptr.style().stroke_color(point_style.stroke_color_);
             g_ptr.style().fill_color(point_style.fill_color_);
+            g_ptr.style().stroke_color(point_style.stroke_color_);
+            g_ptr.style().fill_color(point_style.fill_color_);
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
             std::cout << "plot point marker g_ptr.style() = " << g_ptr.style() << std::endl;
-            // g_ptr.style() svg_style(RGB(255,255,0), RGB(255,0,0), 2, fill, stroke, width)
+            // g_inner_ptr.style() = svg_style(RGB(255,255,255), RGB(255,0,0), 2, fill, stroke, width)
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
             switch(point_style.shape_) // Chosen from enum point_shape none, round, square, point, egg
             {
