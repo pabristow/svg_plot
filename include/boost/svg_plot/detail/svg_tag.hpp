@@ -2076,9 +2076,9 @@ public:
       if (children.size() > 0)
       { /*!
           \verbatim
-          Avoid useless output like: <g id="legendBackground"></g>
-          TODO check this doesn't mean that useful style is lost?
-        \endverbatim
+            Avoid useless output like: <g id="legendBackground"></g>
+            TODO check this doesn't mean that useful style is lost?
+         \endverbatim
         */
 
         os << "<g"; // Do NOT need space if convention is to start following item with space.

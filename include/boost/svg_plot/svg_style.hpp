@@ -28,7 +28,7 @@
 
 #include "svg_color.hpp"
 // using boost::svg_color
-#include "detail/svg_style_detail.hpp"
+#include "detail/svg_style_detail.hpp" // For enum plot_doc_structure
 
 #include <iostream>
 // using std::ostream;
@@ -45,7 +45,7 @@ namespace svg
   //!< (32-bit has sufficient precision for data plots, so using @c float might be faster and/or take less space,
   //!< but with a small range of @c (std::numeric_limits<>::max)() to (std::numeric_limits<>::min)(), about 10^38 compared to 64-bit 10^308)
 
-  static const fp_type aspect_ratio = 0.6;  //!< aspect_ratio is a guess at average height to width of font.
+  static const fp_type aspect_ratio = 0.55;  //!< aspect_ratio is a guess at average height to width of font.
   //!< used to estimate the svg length of a title or header string from the font size (height and width of EM - capital M).
   //!< This can only be quite approximate as varies on type of font (narrow or bold).
   //!< and the mix of characters widths (unless monospace font).
@@ -61,9 +61,9 @@ namespace svg
 // Forward declarations of classes in svg_style.hpp
 class svg_style; // Holds the basic stroke, fill colors and width, and their switches.
 class text_style; // Text and tspan element's font family, size ...
-class value_style; // Data series point value information, text, color, uncertainty & df, orientation, and textLength.
+class value_style; // data-series point value information, text, color, uncertainty & df, orientation, and textLength.
 class plot_point_style; // Shape, color, (optional value & uncertainty) of data point markers.
-class plot_line_style; // Style of line joining data series values.
+class plot_line_style; // Style of line joining data-series values.
 class axis_line_style; // Style of the x and/or y axes lines. But NOT the ticks and value labels.
 class ticks_labels_style; // Style of the x and y axes ticks, grids and tick value labels.
 class box_style; //  Box colors, size and border switches.
@@ -103,7 +103,7 @@ enum place
 // Ugly hack to remove unwanted sign and leading zero(s) in exponent.
 const std::string strip_e0s(std::string s);
 
-// Estimate length of string when appears as svg units.
+// Estimate length of string when appears (as svg units).
 double string_svg_length(const std::string& s, const text_style& style);
 
 /*!
@@ -216,7 +216,7 @@ public:
   svg_style& svg_style::fill_on(bool is)
   { //! Set fill is wanted.
     fill_on_ = is;
-    return *this; //! \return svg_style& to make chainable.
+    return *this; //! \returns svg_style& to make chainable.
   }
 
   bool svg_style::stroke_on() const
@@ -227,7 +227,7 @@ public:
   svg_style& svg_style::stroke_on(bool is)
   { //! Set true if SVG stroke is wanted.
     stroke_on_ = is;
-    return *this; //! \return svg_style& to make chainable.
+    return *this; //! \returns svg_style& to make chainable.
   }
 
   bool svg_style::width_on() const
@@ -697,7 +697,7 @@ text_style no_style; //!< Text style that uses all constructor defaults.
 
 class value_style
 { /*! \class boost::svg::value_style
-     \brief Data series point value label information, text, color, orientation, (uncertainty & df),
+     \brief data-series point value label information, text, color, orientation, (uncertainty & df),
      name ID string, order in sequence, time and date.
      \details For example, to output: 5.123 +- 0.01 (19).
      Uncertainty and degrees of freedom estimate.
@@ -925,7 +925,7 @@ public:
     point_shape shape = circlet, //!< shape: circlet, square, point...
     const std::string& symbols = ""); //!< Unicode symbol(s) (letters, digits, squiggles etc), (default letter x).
 
-    plot_point_style& size(int i);
+  plot_point_style& size(int i);
   int size();
   plot_point_style& fill_color(const svg_color& f);
   svg_color& fill_color();
@@ -974,8 +974,6 @@ public:
   //  symbols_style_.font_family("Lucida Sans Unicode");
   //  symbols_style_.font_size(size_); // Default size = 5
   //} //
-
-
 
 // Member Function Definitions.
 
@@ -1079,12 +1077,12 @@ return os;
 plot_point_style default_plot_point_style();
 
 class plot_line_style
-{ //! \class boost::svg::plot_line_style Style of line joining data series values.
+{ //! \class boost::svg::plot_line_style Style of line joining data-series values.
   // TODO Dotted and dashed line style would be useful for monochrome plots.
 public:
   svg_color stroke_color_; //!< Stroke color of line. (no fill color for lines)
   svg_color area_fill_; //!< Fill color from line to axis. == false means color.is_blank = true, or = blank.
-  double width_; //!< Width of line joining data series values.
+  double width_; //!< Width of line joining data-series values.
   bool line_on_; //!< If true, data points will be joined by straight line(s).
   bool bezier_on_; //!< If true, data points will be joined by bezier curved line(s).
 

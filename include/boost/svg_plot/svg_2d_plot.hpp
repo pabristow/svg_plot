@@ -199,7 +199,7 @@ namespace boost
     title_(title), //!< Title of a series of data values.
     // plot_point_style(const svg_color& fill = blank, const svg_color& stroke = black,
     // int size = 5, point_shape shape = circlet, const std::string& symbols = "x")
-    point_style_(black, white, 10, circlet), // Default point style (default fill white).
+    point_style_(black, white, 14, circlet), // Default point style (default fill white).
     limit_point_style_(lightgrey, whitesmoke, 10, outside_window), // Default limit (infinity or NaN) outside-window point style.
     line_style_(black, blank, 2, false, false), // Default line style, no fill, width 2, no line_on, no bezier.
     bar_style_(black, blank, 3, no_bar), // Default black, no fill, stick width 3, no bar.
