@@ -100,7 +100,7 @@ enum place
   top_side = +1,
 };
 
-// Ugly hack to remove unwanted sign and leading zero(s) in exponent.
+//! Ugly hack to remove unwanted sign and leading zero(s) in exponent in floating-point decimal digit values.
 const std::string strip_e0s(std::string s);
 
 // Estimate length of string when appears (as svg units).
@@ -133,6 +133,7 @@ class svg_style
 { //! \class boost::svg::svg_style Holds the basic SVG stroke, fill colors and width, and their switches.
   friend std::ostream& operator<< (std::ostream&, const svg_style&);
   //std::ostream& operator<< (std::ostream& os, const svg_style& s)
+  // Used for diagnostic output of all values.
 
 private: // Accesses only by set and get member functions below.
   // Private data member variables names end with _,
@@ -286,15 +287,19 @@ public:
   std::ostream& operator<< (std::ostream& os, const svg_style& s)
   {  /*! Output a string description of a svg_style.
          Usage: svg_style my_svg_style; std::cout << my_svg_style << std::endl;
-         Outputs:  svg_style(RGB(0,0,0), RGB(0,0,0), 0, no fill, no stroke, no width)
+         Outputs, for example:
+         \code
+           svg_style(RGB(0,0,0), RGB(0,0,0), 0, no fill, no stroke, no width)
+           svg_style(RGB(255,255,255), RGB(0,128,0), 2, fill_on, stroke_on, width_on)
+         \endcode
      */
       os << "svg_style("
          << s.fill_ << ", "
          << s.stroke_ << ", "
          << s.width_ << ", " // italic
-         << ((s.fill_on_) ? "fill, " : "no fill, ")
-         << ((s.stroke_on_) ? "stroke, " : "no stroke, ")
-         << ((s.fill_on_) ? "width)" : "no width)");
+         << ((s.fill_on_) ? "fill_on, " : "no fill, ")
+         << ((s.stroke_on_) ? "stroke_on, " : "no stroke, ")
+         << ((s.fill_on_) ? "width_on)" : "no width)");
     return os;
   } // std::ostream& operator<<
 
@@ -326,7 +331,7 @@ public:
   // End of svg_style definitions. /////////////////////////////////////////////
 
  /*! \class boost::svg::text_style
-     \brief Font size, font family, font weight, font style, stretch & decoration.
+     \brief Font size, font family, font weight, font style, stretch & decoration, and text_length.
      \details
      text font family (for example: "Lucida Sans Unicode", "arial" ...).
      Available fonts depend on the program rendering the SVG XML, usually a browser.
@@ -359,7 +364,7 @@ class text_style
   std::string style_; //!< Font style, examples: normal | bold | italic | oblique.
   std::string stretch_; //!< Font stretch, examples: normal | wider | narrower. (Not supported by all browsers).
   std::string decoration_; //!< Font decoration, examples: "underline" | "overline" | "line-through".
-  double text_length_; //!< Estimate of SVG length of text used to compress or expand into this width.
+  double text_length_; //!< Estimate of SVG length of text used to force compress or expand into exactly this width.
   // Only actually used if text_length_ > 0.
 
 public:

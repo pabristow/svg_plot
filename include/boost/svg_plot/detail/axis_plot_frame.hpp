@@ -1681,11 +1681,6 @@ namespace boost
         // Legend_text_font_size_ = 8, Legend_box_.margin_ = 1, Legend_title_font_size_ = 8, text_margin = 1.25, aspect ratio = 0.55
         // Vertical_title_spacing = 10, Vertical_line_spacing = 14, Vertical_marker_spacing = 14
         // horizontal_spacing = 4.4, horizontal_line_spacing = 4.4, horizontal_marker_spacing = 5.544
-
-
-
-
-
         << std::endl;
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
 
@@ -2021,9 +2016,10 @@ namespace boost
       legend_y_pos += derived().vertical_title_spacing_ /3 ; // Vertical space before title as a fraction of legend-title font.
 
       double legend_title_svg_length = string_svg_length(derived().legend_title(), derived().legend_title_style_);
-      //std::cout << "%%%%%%%%%%%%  legend_title_svg_length = " << legend_title_svg_length << " svg units (pixels). "<< std::endl;
-      derived().legend_title_style_.text_length(legend_title_svg_length * derived().legend_title_font_size_ * aspect_ratio); 
-      // Tell for legend_title to use estimated length in pixels (to avoid trouble with and hex Unicode symbols).
+     // std::cout << "%%%%%%%%%%%%  legend_title_svg_length = " << legend_title_svg_length << " svg units (pixels). "<< std::endl;
+     // derived().legend_title_style_.text_length(legend_title_svg_length * derived().legend_title_font_size_ * aspect_ratio); 
+      // Tell legend_title to use estimated length in pixels (to avoid trouble with and hex Unicode symbols).
+      derived().legend_title_style_.text_length(legend_title_svg_length); 
       if (derived().legend_title_.text() != "") //
       { // Is a legend-title, so draw the centered legend-title text for example: "My Plot Legend".
         derived().legend_title_.x(legend_x_start + legend_width / 2.); // / 2. to center horizontally in legend box.
@@ -2035,10 +2031,6 @@ namespace boost
         derived().legend_title_.textstyle(derived().legend_title_style_);
         std::cout << "derived().legend_title_.textstyle() = "  << derived().legend_title_.textstyle() << std::endl;
         // derived().legend_title_.textstyle() = text_style(8, "Lucida Sans Unicode", "", "normal", "", """, 193.6)
-        but is catastrophic spacing out the legned title outside the box!
-          <text x = "446" y = "53.8" text - anchor = "middle" font - size = "8" font - family = "Lucida Sans Unicode" font - weight = "normal" textLength = "194">Race names< / text>
-
-*****************************************************************************************************
 
         derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_title_));
         // This uses the default legend_title  font_size
@@ -2061,7 +2053,10 @@ namespace boost
             << "\n point_symbol_style = " <<  derived().serieses_[i].point_style_.symbols_  
             << "\n point_fill_color = " <<  derived().serieses_[i].point_style_.fill_color_  
             << "\n point_stroke_color = " <<  derived().serieses_[i].point_style_.stroke_color_ 
-            << "\n point_size = " <<  derived().serieses_[i].point_style_.size_  << std::endl;
+            << "\n point_size = " <<  derived().serieses_[i].point_style_.size_ 
+            << "\n point_style = " <<  derived().serieses_[i].point_style_.style()
+  //          << "\n point_width = " <<  derived().serieses_[i].point_style_.width_ 
+            << std::endl;
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
         double legend_x_pos = legend_x_start + derived().legend_box_.margin();
         if (derived().legend_box_.border_on_ == true)
@@ -2074,16 +2069,17 @@ namespace boost
         legend_y_pos += derived().vertical_line_spacing_ ; // == Size of biggest point-marker or description text font.
 
         g_inner_ptr = &(g_ptr->add_g_element());
-        // Use both stroke & fill colors and size from the point-marker's style.
+        // Use both stroke & fill colors and size from the data-point-marker's style.
         // Applies to both shapes AND lines.
       //  g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.font_size_);
         g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_);
         g_inner_ptr->style().fill_color(derived().serieses_[i].point_style_.fill_color_);
-        g_inner_ptr->style().stroke_width(derived().serieses_[i].line_style_.width_);
+        g_inner_ptr->style().stroke_width(derived().serieses_[i].point_style_.style().font_weight());
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "g_inner_ptr.style() = " << g_inner_ptr->style() << std::endl;
-       // g_inner_ptr.style() = svg_style(RGB(255,255,255), RGB(255,0,0), 2, fill, stroke, width)
+       // Ouytputs g_inner_ptr.style() = svg_style(RGB(255,255,255), RGB(0,128,0), 2, fill_on, stroke_on, width_on)
+
     //std::cout << "g_inner_ptr.style().stroke_color() " << g_inner_ptr->style() << std::endl;
     //std::cout << "g_inner_ptr.style().font_size() " << g_inner_ptr->style().font_size() << std::endl;
     //std::cout << "g_inner_ptr.style().stroke_color() " << g_inner_ptr->style().stroke_color_ << std::endl;
@@ -2125,7 +2121,7 @@ namespace boost
           }
         }
 
-        // Line markers are really useful for 2-D lines and curves showing functions.
+        // Line markers are only really useful for 2-D lines and curves showing functions.
         if (derived().serieses_[i].line_style_.line_on_ == true) // Line joining points option is true,
         { // so need to draw a short line to show color for line joining points for that data-series.
           // derived().legend_lines_ = true; // Some line is drawn for at least one data-series.
@@ -2660,10 +2656,9 @@ namespace boost
             }
           } // void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, Meas uvalue)
 
-
+          //! Strip from double value any unnecessary e, +, & leading exponent zeros, reducing "1.200000" to "1.2" or "3.4e1"...
           std::string sv(double v, const value_style& sty, bool precise = false)
-          { //! Strip from double value any unnecessary e, +, & leading exponent zeros, reducing "1.200000" to "1.2" or "3.4e1"...
-            // TODO rename for strip_value?
+          {  // TODO rename for strip_value?
             std::stringstream label;
             // Precision of std_dev is usually less than precision of value,
             // label.precision((unc) ? ((sty.value_precision_ > 3) ?  sty.value_precision_-2 : 1) : sty.value_precision_);

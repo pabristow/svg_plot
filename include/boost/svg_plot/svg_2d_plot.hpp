@@ -550,8 +550,8 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       double plot_top_; //!< SVG Y coordinate of top side of plot window.
       double plot_bottom_; //!< SVG Y coordinate of bottom side of plot window.
 
-      const double margin = 0.5; //!< Plot window margin to allow for rounding etc
-      //! when checking if a point is inside window with @c is_in_window function.
+      const double margin_;  //!< Plot window margin to allow for rounding etc
+      //! when checking if a point is inside window with @c is_in_window function (0.5);
 
       // enum legend_places{ nowhere, inside...}
       legend_places legend_place_; //!< Place for any legend box, inside, outside, left, right.
@@ -678,7 +678,7 @@ my_plot.background_color(ghostwhite) // Whole image.
       svg_2d_plot()
         :
         // See documentation for default settings rationale.
-        // text_styles: //  Font size, font family, font weight, font style, font stretch & font decoration.
+        // text_styles: //  Font size, font family, font weight, font style, font stretch & font decoration, text_length.
         title_style_(18, default_font, "normal", "", "", "", 0),  // // 3rd parameter weight might be bold?
         legend_title_style_(10, default_font, "normal", "", "", "", 0), // 6rd parameter decoration might be underline?
         legend_text_style_(10, default_font, "normal", "", "", "", 0), //
@@ -717,7 +717,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         // margin should be about axis tick label font size to
         // allow for axis value labels that mark the min and max
         // that must extend about half a font width beyond the plot window border.
-        // This is set dynamically in calculate_plot_window because user can change tick value label font size.
+        // This is set dynamically in function calculate_plot_window because user can change tick value label font-size.
 
         plot_window_border_(lightslategray, svg_color(255, 255, 255), 2, 3, true, false),
         legend_box_(yellow, white, 1, 1, true, true),
@@ -755,6 +755,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         plot_window_clip_("plot_window"), // for <clipPath id="plot_window" ...
 
         plot_window_on_(true),
+        margin_(0.5),
         // Lable data point with label. With 2D can have either or both X and Y values shown.
         x_values_on_(false), // If X values of data points are shown.
         y_values_on_(false), // If Y values of data points are shown.
@@ -845,13 +846,13 @@ my_plot.background_color(ghostwhite) // Whole image.
           image_.g(PLOT_Y_MINOR_TICKS).style().stroke_width(y_ticks_.minor_tick_width_).stroke_color(black);
         }
         // Grids.
-        // Default color & width for grid, used or not.
+        // Default stroke color & stroke_width for grid, used or not.
         // Might avoid empty grid stuff if this was only done if grid used?  TODO
         image_.g(PLOT_X_MAJOR_GRID).style().stroke_width(x_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255)); // #C8DCFF - Hex Color
         image_.g(PLOT_X_MINOR_GRID).style().stroke_width(x_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
         image_.g(PLOT_Y_MAJOR_GRID).style().stroke_width(y_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255));
         image_.g(PLOT_Y_MINOR_GRID).style().stroke_width(y_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
-        image_.g(PLOT_DATA_LINES).style().stroke_width(2); // default width.
+        image_.g(PLOT_DATA_LINES).style().stroke_width(2); // Default grid width.
         // Alter with plot.data_lines_width(4);
 
         legend_place_ = (plot_window_on_) ? outside_right : inside; // Defaults.
@@ -1922,8 +1923,8 @@ my_plot.background_color(ghostwhite) // Whole image.
       //! Check if a point is within the plot window (or not too far outside).
       bool is_in_window(double x, double y)
       {
-        if ((x < plot_left_ - margin) || (x > plot_right_ + margin)
-          || (y < plot_top_ - margin) || (y > plot_bottom_ + margin))
+        if ((x < plot_left_ - margin_) || (x > plot_right_ + margin_)
+          || (y < plot_top_ - margin_) || (y > plot_bottom_ + margin_))
         {
 
 #ifdef BOOST_SVG_DIAGNOSTICS
