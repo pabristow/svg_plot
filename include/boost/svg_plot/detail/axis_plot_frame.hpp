@@ -1581,8 +1581,11 @@ namespace boost
       derived().is_a_point_marker_ = false;  // Assume no data-point marker symbols.
       derived().is_a_data_series_text_ = false;  // Assume no data-series text descriptions.
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-      std::cout << "Title " << derived().legend_title_.text() << ", .legend_title_font_size_ = " << derived().legend_title_font_size_
-        << ", .legend_text_font_size_ = " << derived().legend_text_font_size_ << std::endl;
+      std::cout << "Legend-title " << derived().legend_title_.text() << ", .legend_title_font_size_ = " 
+        << "legend title string = " << derived().legend_title_.text()
+        << "legend title string length (count) = " << derived().legend_title_.text().size()
+        << ", .legend_text_font_size_ = " << derived().legend_text_font_size_ 
+        << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
       // Vertical spacing of the data-series lines needs to use the largest of
@@ -1592,15 +1595,15 @@ namespace boost
 
       derived().biggest_point_marker_font_size_ = derived().legend_text_font_size(); 
       // Assume data-series-descriptor text font-size until a bigger data-series point marker symbol is found.
-      std::cout << "Assume text font derived().biggest_point_marker_font_size_ " 
+      std::cout << "Assume text font derived().biggest_point_marker_font_size_ = legend_text_font_size() = " 
         << derived().biggest_point_marker_font_size_ << std::endl;
 
       // Get biggest data-point marker-symbol size in any series 
       // to get minimum vertical spacing between data-series info lines.
-      double longest_text = 0;
+      double longest_legend_text = 0; // SVG units
       std::size_t longest_text_chars_count = 0;
       size_t longest_series_text_number = 0;
-      size_t num_series = derived().serieses_.size(); // How many data-series in this plot.
+      size_t num_series = derived().serieses_.size(); // Number of data-series in this plot.
       for (size_t i = 0; i != num_series; ++i)
       {
         double point_size = 0.;
@@ -1612,7 +1615,7 @@ namespace boost
           if (point_size > derived().biggest_point_marker_font_size_)
           {
             derived().biggest_point_marker_font_size_ = point_size;
-            std::cout << "new biggest point-size series #" << i << ", size " << point_size << std::endl;
+            std::cout << "New biggest point-size series #" << i << ", point_size " << point_size << std::endl;
           }
         } // if shape != none
 
@@ -1624,21 +1627,19 @@ namespace boost
         if (derived().serieses_[i].title_ != "")
         { // Some data-series text-description.
           derived().is_a_data_series_text_ = true; // So will need to allow space for any data-series without text-description.
-          double series_string_length = string_svg_length(derived().serieses_[i].title_, derived().legend_text_style_);
-          // string_svg_length avoids chars as Unicode hex increasing the length wrongly,
-          // so each Unicode char counts only as one char. 
-          // (Would be better to use the SVG method of estimating true length, but seems impossible).
+          double series_string_SVG_length = string_svg_length(derived().serieses_[i].title_, derived().legend_text_style_);
+          // string_svg_length avoids chars as Unicode hex increasing the length wrongly, so each Unicode char counts only as one char. 
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-          std::cout << " series title " << i << " " << derived().serieses_[i].title_
-            << ", text string length " << series_string_length << std::endl;
+          std::cout << " series title #" << i << " \"" << derived().serieses_[i].title_ << "\""
+            << ", text string length " << series_string_SVG_length << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
-          if (series_string_length > longest_text)
+          if (series_string_SVG_length > longest_legend_text)
           { // longest found so far.
-            longest_text = series_string_length;
+            longest_legend_text = series_string_SVG_length;
             longest_text_chars_count = derived().serieses_[i].title_.size();
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-            std::cout << " Greater SVG width from series " << i << ", width = " << series_string_length
+            std::cout << " Greater SVG width from series " << i << ", width = " << series_string_SVG_length
               << ", longest_text_chars_count = " << longest_text_chars_count << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
           }
@@ -1646,7 +1647,7 @@ namespace boost
       } // for num_series
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-      std::cout << "Biggest font of legend data-series text and title derived().biggest_point_marker_font_size_ "
+      std::cout << "Biggest font-size of legend data-series-text and legend-title derived().biggest_point_marker_font_size_ "
         << derived().biggest_point_marker_font_size_ << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
@@ -1672,8 +1673,10 @@ namespace boost
         << ", text_margin = " << derived().text_margin_
         << ", aspect ratio =  " << aspect_ratio
         << ", \nVertical_title_spacing = " << derived().vertical_title_spacing_
-        << ", Vertical_line_spacing = " << derived().vertical_line_spacing_
+        << ", \nVertical_text_spacing = " << derived().vertical_text_spacing_
         << ", Vertical_marker_spacing = " << derived().vertical_marker_spacing_
+        << ", Vertical_line_spacing = " << derived().vertical_line_spacing_
+
         << ", \nhorizontal_spacing = " << derived().horizontal_title_spacing_
         << ", horizontal_line_spacing = " << derived().horizontal_line_spacing_
         << ", horizontal_marker_spacing = " << derived().horizontal_marker_spacing_
@@ -1684,41 +1687,44 @@ namespace boost
         << std::endl;
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
 
-      // X-Axis Compute the width of the longest data-series marker and/or line and/or text-description.
-      double text_width = longest_text; // Actual char text as SVG units (default pixels).
-
-      if (derived().is_a_point_marker_ == true)
-      { // Markers for data-points in a data-series.
-        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // data-point marker, circlet, cross ...
-        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // and a same size space after the marker.
-      }
-      if (derived().is_a_data_series_line_ == true)
-      { // Line used to join data-points in a data-series.
-        text_width += derived().horizontal_marker_spacing_; // Line width.
-        text_width += derived().horizontal_marker_spacing_; // Space after line.
-      }
-      text_width += derived().horizontal_title_spacing_; // text font space.
-      std::cout << "Legend text string_svg_length = " <<  text_width << std::endl;
-
-      // Compute width of title line.
-      double title_width  = // Longest SVG of legend_title.
-      string_svg_length(derived().legend_title_.text(), derived().legend_title_style_);
+     // X-Axis Compute the width of the longest data-series marker and/or line and/or text-description.
+      // Compute width of title line SVG length of legend_title.
+      double title_width = string_svg_length(derived().legend_title_.text(), derived().legend_title_style_);
       title_width += derived().horizontal_title_spacing_;
       title_width += derived().horizontal_title_spacing_;
       std::cout << "Legend title string_svg_length = " <<  title_width << std::endl;
 
+      // Compute width of text line SVG length of text plus any point-markers and/or lines.
+      double text_width = longest_legend_text; // Actual char text as SVG units (default pixels).
+      std::cout << " = " << longest_legend_text << std::endl;
+
+      if (derived().is_a_point_marker_ == true)
+      { // Markers for data-points in a data-series, if any.
+        // width is estimated by multiplying font-size by aspect_ratio about 0.6)
+        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // Width of data-point marker, circlet, cross ...
+        text_width += derived().biggest_point_marker_font_size_ * aspect_ratio; // and a same size width space after the marker.
+      }
+      if (derived().is_a_data_series_line_ == true)
+      { // Line used to join data-points in a data-series.
+        text_width += derived().horizontal_line_spacing_; // Line width (from text font size) and
+        text_width += derived().horizontal_line_spacing_; // space after line.
+      }
+      text_width += derived().horizontal_title_spacing_; // text font space.
+      std::cout << "Legend_text string_svg_length = " <<  text_width << std::endl;
+
       bool use_legend_title_width = false;
-      // Use longest of legend_title and longest_text.
+      // Use longest of legend_title and longest_legend_text.
       if (title_width > text_width)
       {
-        derived().legend_widest_line_ = title_width;
         use_legend_title_width = true;
+        derived().legend_widest_line_ = title_width;
         std::cout << "Using title_width " << title_width << " rather than text width " << text_width << std::endl;
-        derived().legend_title_style_.text_length(title_width);
-        std::cout << "Using title_width " << title_width << " for text_length " << derived().legend_title_style_.text_length() << std::endl;
+        //derived().legend_title_style_.text_length(title_width);
+        //std::cout << "Using text_width " << title_width << " for text_length " << derived().legend_title_style_.text_length() << std::endl;
       }
       else
       {
+        use_legend_title_width = false;
         derived().legend_widest_line_ =  text_width;
         std::cout << "Using text_width " << text_width << " rather than title width " << title_width << std::endl;
       }
@@ -1734,7 +1740,7 @@ namespace boost
         << ",\n .legend_widest_line_ = " << derived().legend_widest_line_ << " svg units."
         << " or " << string_svg_length(derived().legend_title_.text(), derived().legend_title_style_) << " SVG units"
         << ", .biggest_point_marker_font_size_ = " << derived().biggest_point_marker_font_size_
-        << ",\n longest text line " << longest_text
+        << ",\n longest text line " << longest_legend_text
         << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
@@ -1744,7 +1750,6 @@ namespace boost
       {  // If a border, allow for its width left side.
         derived().legend_width_ += derived().legend_box_.border_width_;
       }
-    //  derived().legend_width_ += 2 * derived().horizontal_title_spacing_; // Allow a blank space around both sides.
       derived().legend_width_ +=  1.5 * derived().horizontal_title_spacing_; // Allow a blank space around both sides is tighter.
 
       if (use_legend_title_width == false)
@@ -1752,8 +1757,8 @@ namespace boost
         derived().legend_width_ += derived().legend_widest_line_;
       }
       else
-      { // title determines the width entirely.
-        derived().legend_width_ += derived().legend_widest_line_ * 0.72;
+      { // legend-title determines the width entirely.
+        derived().legend_width_ += derived().legend_widest_line_ ;
       }
       if (derived().legend_box_.border_on_ == true)
       {  // If a legend box border, allow for its width right side.
@@ -2074,7 +2079,6 @@ namespace boost
       //  g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.font_size_);
         g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_);
         g_inner_ptr->style().fill_color(derived().serieses_[i].point_style_.fill_color_);
-        g_inner_ptr->style().stroke_width(derived().serieses_[i].point_style_.style().font_weight());
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "g_inner_ptr.style() = " << g_inner_ptr->style() << std::endl;
@@ -2126,7 +2130,7 @@ namespace boost
         { // so need to draw a short line to show color for line joining points for that data-series.
           // derived().legend_lines_ = true; // Some line is drawn for at least one data-series.
           // Better - this should be set during the legend box sizing?
-          if (derived().serieses_[i].line_style_.line_on_ || derived().serieses_[i].line_style_.bezier_on_)
+         if (derived().serieses_[i].line_style_.line_on_ || derived().serieses_[i].line_style_.bezier_on_)
           { // Use stroke color from line style.
             g_inner_ptr->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_);
           }

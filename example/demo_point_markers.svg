@@ -51,7 +51,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <text x="484" y="113" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;</text>
 <text x="250" y="116" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">&#x25BD;</text></g>
 <g id="title">
-<text x="250" y="22.5" text-anchor="middle" font-size="18" font-family="Verdana">Demo point markers Demo</text></g>
+<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">Demo point markers Demo</text></g>
 <g id="plotXValues" fill="rgb(255,0,0)"><g>
 <text x="25" y="98" transform = "rotate(-60 25 98 )" font-size="14" font-family="Times New Roman">-10</text></g>
 <g>

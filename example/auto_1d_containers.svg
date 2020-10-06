@@ -35,5 +35,5 @@ xmlns ="http://www.w3.org/2000/svg"
 <g stroke="rgb(255,0,0)"><line x1="33.6" y1="99.5" x2="33.6" y2="89.5"/><line x1="90.3" y1="99.5" x2="90.3" y2="89.5"/><line x1="286" y1="99.5" x2="286" y2="89.5"/><line x1="229" y1="99.5" x2="229" y2="89.5"/><line x1="361" y1="99.5" x2="361" y2="89.5"/><line x1="430" y1="99.5" x2="430" y2="89.5"/></g>
 </g>
 <g id="title">
-<text x="250" y="22.5" text-anchor="middle" font-size="18" font-family="Verdana"></text></g>
+<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana"></text></g>
 </svg>

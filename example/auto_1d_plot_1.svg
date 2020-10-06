@@ -35,5 +35,5 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="limitPoints" stroke="rgb(255,0,0)" fill="rgb(255,255,255)">
 <text x="484" y="104" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;</text></g>
 <g id="title">
-<text x="250" y="22.5" text-anchor="middle" font-size="18" font-family="Verdana"></text></g>
+<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana"></text></g>
 </svg>

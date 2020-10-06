@@ -38,7 +38,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <text x="16" y="113" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25C3;</text>
 <text x="250" y="116" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">&#x25BD;</text></g>
 <g id="title">
-<text x="250" y="22.5" text-anchor="middle" font-size="18" font-family="Verdana">Default 1D NaN and infinities Demo</text></g>
+<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">Default 1D NaN and infinities Demo</text></g>
 <g id="plotXValues"><g>
 <text x="177" y="94" text-anchor="middle" font-size="10" font-family="Verdana">-1.6</text></g>
 <g>

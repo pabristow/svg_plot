@@ -13,29 +13,29 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
 <!-- File auto_boxplot.svg --> 
-<clipPath id="plot_window"><rect x="47.2" y="52" width="441" height="232"/></clipPath>
+<clipPath id="plot_window"><rect x="46.6" y="52" width="441" height="232"/></clipPath>
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="350"/></g>
-<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="52.2" y="57" width="436" height="227"/></g>
-<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="52.2" y1="284" x2="488" y2="284"/></g>
-<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="52.2" y1="284" x2="52.2" y2="57"/></g>
+<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="51.6" y="57" width="436" height="227"/></g>
+<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="51.6" y1="284" x2="488" y2="284"/></g>
+<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="51.6" y1="284" x2="51.6" y2="57"/></g>
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M270,284 L270,289 " fill="none"/></g>
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M47.2,284 L52.2,284 M47.2,258 L52.2,258 M47.2,233 L52.2,233 M47.2,208 L52.2,208 M47.2,183 L52.2,183 M47.2,158 L52.2,158 M47.2,133 L52.2,133 M47.2,107 L52.2,107 M47.2,82.2 L52.2,82.2 M47.2,57 L52.2,57 M47.2,284 L52.2,284 " fill="none"/></g>
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M50.2,279 L52.2,279 M50.2,274 L52.2,274 M50.2,268 L52.2,268 M50.2,263 L52.2,263 M50.2,253 L52.2,253 M50.2,248 L52.2,248 M50.2,243 L52.2,243 M50.2,238 L52.2,238 M50.2,228 L52.2,228 M50.2,223 L52.2,223 M50.2,218 L52.2,218 M50.2,213 L52.2,213 M50.2,203 L52.2,203 M50.2,198 L52.2,198 M50.2,193 L52.2,193 M50.2,188 L52.2,188 M50.2,178 L52.2,178 M50.2,173 L52.2,173 M50.2,168 L52.2,168 M50.2,163 L52.2,163 M50.2,153 L52.2,153 M50.2,148 L52.2,148 M50.2,143 L52.2,143 M50.2,138 L52.2,138 M50.2,127 L52.2,127 M50.2,122 L52.2,122 M50.2,117 L52.2,117 M50.2,112 L52.2,112 M50.2,102 L52.2,102 M50.2,97.3 L52.2,97.3 M50.2,92.2 L52.2,92.2 M50.2,87.2 L52.2,87.2 M50.2,77.1 L52.2,77.1 M50.2,72.1 L52.2,72.1 M50.2,67.1 L52.2,67.1 M50.2,62 L52.2,62 M50.2,284 L52.2,284 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M46.6,284 L51.6,284 M46.6,258 L51.6,258 M46.6,233 L51.6,233 M46.6,208 L51.6,208 M46.6,183 L51.6,183 M46.6,158 L51.6,158 M46.6,133 L51.6,133 M46.6,107 L51.6,107 M46.6,82.2 L51.6,82.2 M46.6,57 L51.6,57 M46.6,284 L51.6,284 " fill="none"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M49.6,279 L51.6,279 M49.6,274 L51.6,274 M49.6,268 L51.6,268 M49.6,263 L51.6,263 M49.6,253 L51.6,253 M49.6,248 L51.6,248 M49.6,243 L51.6,243 M49.6,238 L51.6,238 M49.6,228 L51.6,228 M49.6,223 L51.6,223 M49.6,218 L51.6,218 M49.6,213 L51.6,213 M49.6,203 L51.6,203 M49.6,198 L51.6,198 M49.6,193 L51.6,193 M49.6,188 L51.6,188 M49.6,178 L51.6,178 M49.6,173 L51.6,173 M49.6,168 L51.6,168 M49.6,163 L51.6,163 M49.6,153 L51.6,153 M49.6,148 L51.6,148 M49.6,143 L51.6,143 M49.6,138 L51.6,138 M49.6,127 L51.6,127 M49.6,122 L51.6,122 M49.6,117 L51.6,117 M49.6,112 L51.6,112 M49.6,102 L51.6,102 M49.6,97.3 L51.6,97.3 M49.6,92.2 L51.6,92.2 M49.6,87.2 L51.6,87.2 M49.6,77.1 L51.6,77.1 M49.6,72.1 L51.6,72.1 M49.6,67.1 L51.6,67.1 M49.6,62 L51.6,62 M49.6,284 L51.6,284 " fill="none"/></g>
 <g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="valueLabels" fill="rgb(0,0,0)">
 <text x="270" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">Auto boxplot</text>
-<text x="41.2" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text>
-<text x="41.2" y="261" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">1</text>
-<text x="41.2" y="236" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">2</text>
-<text x="41.2" y="210" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">3</text>
-<text x="41.2" y="185" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">4</text>
-<text x="41.2" y="160" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">5</text>
-<text x="41.2" y="135" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">6</text>
-<text x="41.2" y="110" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">7</text>
-<text x="41.2" y="84.6" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">8</text>
-<text x="41.2" y="59.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9</text>
-<text x="41.2" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text></g>
+<text x="40.6" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text>
+<text x="40.6" y="261" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">1</text>
+<text x="40.6" y="236" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">2</text>
+<text x="40.6" y="210" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">3</text>
+<text x="40.6" y="185" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">4</text>
+<text x="40.6" y="160" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">5</text>
+<text x="40.6" y="135" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">6</text>
+<text x="40.6" y="110" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">7</text>
+<text x="40.6" y="84.6" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">8</text>
+<text x="40.6" y="59.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9</text>
+<text x="40.6" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text></g>
 <g id="yLabel" fill="rgb(0,0,0)">
 <text x="30.2" y="170" text-anchor="middle" transform = "rotate(-90 30.2 170 )" font-size="14" font-family="Lucida Sans Unicode">Values</text></g>
 <g id="xLabel" fill="rgb(0,0,0)">
@@ -43,7 +43,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="boxAxis" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1"><line x1="270" y1="279" x2="270" y2="69.6"/></g>
 </g>
 <g id="Median" stroke="rgb(255,0,0)" stroke-width="2"><g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1"><rect x="255" y="101" width="30" height="90.2"/></g>
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1"><line x1="256" y1="116" x2="285" y2="116"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1"><line x1="255" y1="116" x2="284" y2="116"/></g>
 </g>
 <g id="whisker" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)"><g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="255" y1="279" x2="285" y2="279"/></g>
 <g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="255" y1="69.6" x2="285" y2="69.6"/></g>

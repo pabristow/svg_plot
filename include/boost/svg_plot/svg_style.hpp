@@ -103,7 +103,7 @@ enum place
 //! Ugly hack to remove unwanted sign and leading zero(s) in exponent in floating-point decimal digit values.
 const std::string strip_e0s(std::string s);
 
-// Estimate length of string when appears (as svg units).
+// Estimate length of string in SVG units when appears.
 double string_svg_length(const std::string& s, const text_style& style);
 
 /*!
@@ -1913,15 +1913,13 @@ const std::string strip_e0s(std::string s)
   return s; //! \return length of trimmed string (perhaps unchanged).
 } // const std::string strip(double d)
 
- // static const double wh = 0.7; //!< font text width/height ratio.
-// Now aspect_ratio.
   /*! \details
   http://www.w3.org/TR/SVG/text.html#FontSizeProperty
   Font size is the height of the text's font, so width = aspect_ratio * font_size.
 
   Even after reading http://www.w3.org/TR/SVG/fonts.html,\n
   unclear how to determine the exact width of digits, so an
-  arbitrary average width height ratio aspect_ratio = 0.7 is used as a good approximation.
+  arbitrary average width height ratio aspect_ratio = 0.6 is used as a good approximation.
   */
 
 double string_svg_length(const std::string& s, const text_style& style)
@@ -1934,13 +1932,13 @@ double string_svg_length(const std::string& s, const text_style& style)
   To avoid big length and centering misalignments caused by
   a 7 character Unicode hex value counting as 6 characters instead of one actual symbol,
   if possible use an actual length, but probably platform and/or browser-dependent,
-  else use average char width,
+  else use average char width, held in \code static const aspect_ratio \endcode
   and deal with Unicode, for example &#x3A9; = greek omega,
   counting each symbol(s) embedded between & and ; as one EM width character.
 
-  Font Support for Unicode Characters
-   To see what symbols are supported see http://www.fileformat.info/info/unicode/font/index.htm
- Fonts of interest to Unicode users tab but mainly lists compliance as stars out of 5.
+  Font Support for Unicode Characters is pretty good in 2020, but
+  to see what symbols are supported by browsers see http://www.fileformat.info/info/unicode/font/index.htm
+  Fonts of interest to Unicode users tab but mainly lists compliance as stars out of 5.
 
   Font Character Test for Arial Unicode MS has 5 stars
   http://www.fileformat.info/info/unicode/font/arial_unicode_ms/list.htm lists all the fonts,
@@ -2020,11 +2018,12 @@ tabs of links at the bottom of page:  Unicode characters supported by the Lucida
  }
  double svg_length = chars * (style.font_size() * aspect_ratio);  // Estimated width of svg string.
 
+ // Would be nice to be able to use
  // https://www.w3.org/TR/SVG/text.html#__svg__SVGTextContentElement__getComputedTextLength
 // double svg_computed_length = getComputedTextLength();
 
 #ifdef BOOST_SVG_STYLE_DIAGNOSTICS
-  std::cout << "string \"" << s << "\" has " << chars << " characters, and svg length is " << svg_length << std::endl;
+  std::cout << "string \"" << s << "\" has " << chars << " Unicode characters, and svg length is " << svg_length << std::endl;
 #endif // BOOST_SVG_STYLE_DIAGNOSTICS
 
   // I:\modular-boost\libs\svg_plot\example\SVG_text_width_height.cpp shows that
