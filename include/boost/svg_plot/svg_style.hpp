@@ -45,12 +45,13 @@ namespace svg
   //!< (32-bit has sufficient precision for data plots, so using @c float might be faster and/or take less space,
   //!< but with a small range of @c (std::numeric_limits<>::max)() to (std::numeric_limits<>::min)(), about 10^38 compared to 64-bit 10^308)
 
-  static const fp_type aspect_ratio = 0.55;  //!< aspect_ratio is a guess at average height to width of font.
+  static const fp_type aspect_ratio = 0.6;  //!< aspect_ratio is a guess at average height to width of font (0.55 to 0.7?).
   //!< used to estimate the svg length of a title or header string from the font size (height and width of EM - capital M).
-  //!< This can only be quite approximate as varies on type of font (narrow or bold).
+  //!< This can only be quite approximate as varies on type of font and variants (upper or lower, narrow or bold).
   //!< and the mix of characters widths (unless monospace font).
   //!< See https://www.w3.org/TR/SVG/text.html#GlyphsMetrics
   //!< https://www.w3.org/TR/SVG/text.html#InterfaceSVGTextContentElement
+  //! Can also use textLength to coerce into an estimate length.
 
   /*! Default font chosen is a Unicode font like ['Lucida Sans Unicode] that
    has the best chance of ['symbols] being rendered corrrectly.

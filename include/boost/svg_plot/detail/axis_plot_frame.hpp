@@ -1581,9 +1581,9 @@ namespace boost
       derived().is_a_point_marker_ = false;  // Assume no data-point marker symbols.
       derived().is_a_data_series_text_ = false;  // Assume no data-series text descriptions.
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-      std::cout << "Legend-title " << derived().legend_title_.text() << ", .legend_title_font_size_ = " 
-        << "legend title string = " << derived().legend_title_.text()
-        << "legend title string length (count) = " << derived().legend_title_.text().size()
+      std::cout << "Legend-title \"" << derived().legend_title_.text() << "\"\n .legend_title_font_size_ = " 
+        << "legend title string = \"" << derived().legend_title_.text() << "\""
+        << ", legend title string length (count) = " << derived().legend_title_.text().size()
         << ", .legend_text_font_size_ = " << derived().legend_text_font_size_ 
         << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
@@ -1696,7 +1696,7 @@ namespace boost
 
       // Compute width of text line SVG length of text plus any point-markers and/or lines.
       double text_width = longest_legend_text; // Actual char text as SVG units (default pixels).
-      std::cout << " = " << longest_legend_text << std::endl;
+      std::cout << "longest_legend_text = " << longest_legend_text << std::endl;
 
       if (derived().is_a_point_marker_ == true)
       { // Markers for data-points in a data-series, if any.
@@ -1732,7 +1732,7 @@ namespace boost
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "\n***Set_legend box dimensions:"
         "\nLegend title \"" << derived().legend_title_.text()
-        << ", chars = " << derived().legend_title_.text().size()
+        << "\", chars = " << derived().legend_title_.text().size()
         << ", .legend_title_font_size_ = " << derived().legend_title_font_size_
         << ", .legend_text_font_size_ = " << derived().legend_text_font_size_
         << ",\n .legend_title_style_ = " << derived().legend_title_style_
@@ -1949,7 +1949,7 @@ namespace boost
     template <class Derived>
     void axis_plot_frame<Derived>::draw_legend()
     {
-      size_t num_series = derived().serieses_.size(); // How many data-series.
+      size_t num_series = derived().serieses_.size(); // NUmber of data-series.
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "***Drawing Legend box border width = " << derived().legend_box_.width()
         <<  ", margin = " << derived().legend_box_.margin()
@@ -2038,7 +2038,7 @@ namespace boost
         // derived().legend_title_.textstyle() = text_style(8, "Lucida Sans Unicode", "", "normal", "", """, 193.6)
 
         derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_title_));
-        // This uses the default legend_title  font_size
+        // This uses the default legend_title font_size
         // legend_title_style_(10, default_font, "normal", "", "", "", 0), // 6rd parameter decoration might be underline?
         // not the wanted legend_title_font_size_
 
@@ -2160,6 +2160,8 @@ namespace boost
         // Legend text for each data-series added to the plot.
         if (derived().is_a_data_series_text_)
         {
+          double series_string_SVG_length = string_svg_length(derived().serieses_[i].title_, derived().legend_text_style_);
+          derived().legend_text_style_.text_length(series_string_SVG_length); // Force to use estimated SVG length.
           g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT));
           g_inner_ptr->push_back(new text_element(
             legend_x_pos, // Allow space for the marker.
