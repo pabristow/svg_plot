@@ -1960,8 +1960,8 @@ double string_svg_length(const std::string& s, const text_style& style)
 
   For example,
   https://www.fileformat.info/info/unicode/font/lucida_sans_unicode/index.htm
-shows Font Character Test for Lucida Sans Unicode.
-tabs of links at the bottom of page:  Unicode characters supported by the Lucida Sans Unicode font
+  shows Font Character Test for Lucida Sans Unicode.
+  tabs of links at the bottom of page:  Unicode characters supported by the Lucida Sans Unicode font
 
   Esimate of length should also ignore embedded xml like <sub> (not implemented by all browsers yet).
   Uses @c aspect_ratio to estimate width of characters from font_size (height).
@@ -1991,9 +1991,11 @@ tabs of links at the bottom of page:  Unicode characters supported by the Lucida
  */
 
  int chars = 0; // Actual number of characters in string.
+double width = 0.; // Estimated width of characters in string.
  bool in_esc = false;
  for (std::string::const_iterator i = s.begin(); i != s.end(); i++)
  {
+   unsigned char c = *i;
     if (*i == '&')
     { // Start of Unicode 'escape sequence &#XAB12;' 
       in_esc = true;
@@ -2003,9 +2005,11 @@ tabs of links at the bottom of page:  Unicode characters supported by the Lucida
           i++; // Only count a Unicode string like &#x3A9; as 1 character (greek omega) wide.
        }
        in_esc = false;
+       chars++;
+       width += 0.3;  // Assume all Unicode strings are different.  0.3 seems good for uppercase Omega.
     }
     if (*i == '<')
-    { // Embedded xml like <sub> or <super>.
+    { // Ignore embedded XML like <sub> or <super>.
       in_esc = true;
        while ((*i != '>')
          && (i != s.end())) // In case mistakenly not terminated.
@@ -2015,9 +2019,14 @@ tabs of links at the bottom of page:  Unicode characters supported by the Lucida
        chars--;
        in_esc = false;
     }
-    chars++;
+    else
+    { // Actual normal character.
+      chars++;
+      width += (isupper(c) ? 0.65 : aspect_ratio);  // Upper case chars are wider than lower.
+    }
  }
- double svg_length = chars * (style.font_size() * aspect_ratio);  // Estimated width of svg string.
+ //double svg_length = chars * (style.font_size() * aspect_ratio);  // Estimated width of svg string.
+ double svg_length = width * style.font_size();  // Estimated width of svg string.
 
  // Would be nice to be able to use
  // https://www.w3.org/TR/SVG/text.html#__svg__SVGTextContentElement__getComputedTextLength
