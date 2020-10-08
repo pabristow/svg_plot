@@ -155,9 +155,9 @@ namespace boost
          void draw_x_minor_tick(double j, path_element& tick_path, path_element& grid_path); // (& grid).
          void draw_x_major_tick(double i, path_element& tick_path, path_element& grid_path); // (& grid).
          void draw_x_axis();
-         void draw_legend();
          void size_legend_box();  // Compute the size of the legend box from fonts, title and marker points and text.
-         void place_legend_box();
+         void place_legend_box(); //
+         void draw_legend();
          void draw_title();
          void adjust_limits(double& x, double& y);
          void draw_x_axis_label();
@@ -1663,9 +1663,8 @@ namespace boost
       derived().horizontal_title_spacing_ = derived().legend_title_font_size_ * aspect_ratio; // legend_font width, used as a font.
       derived().horizontal_line_spacing_ = derived().legend_text_font_size_ * aspect_ratio; // legend_font width, line width, also used if no line to show in a series.
       derived().horizontal_marker_spacing_ = derived().biggest_point_marker_font_size_ * 0.72 * aspect_ratio; // Width of biggest data-point marker used if no marker on a series).
-
-// #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-      #ifdef      BOOST_SVG_LEGEND_DIAGNOSTICS
+      // Why is the 0.72???
+ #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "**Legend Spacings"
            "\nLegend_title_font_size_ = " << derived().legend_title_font_size_
         << ", Legend_text_font_size_ = " << derived().legend_text_font_size_
@@ -1685,19 +1684,20 @@ namespace boost
         // Vertical_title_spacing = 10, Vertical_line_spacing = 14, Vertical_marker_spacing = 14
         // horizontal_spacing = 4.4, horizontal_line_spacing = 4.4, horizontal_marker_spacing = 5.544
         << std::endl;
-#endif //BOOST_SVG_POINT_DIAGNOSTICS
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
      // X-Axis Compute the width of the longest data-series marker and/or line and/or text-description.
       // Compute width of title line SVG length of legend_title.
       double title_width = string_svg_length(derived().legend_title_.text(), derived().legend_title_style_);
-      title_width += derived().horizontal_title_spacing_;
-      title_width += derived().horizontal_title_spacing_;
       std::cout << "Legend title string_svg_length = " <<  title_width << std::endl;
+      title_width += derived().horizontal_title_spacing_;  // Space before first item: point-marker, line or text.
+//      title_width += derived().horizontal_title_spacing_; // 
 
       // Compute width of text line SVG length of text plus any point-markers and/or lines.
       double text_width = longest_legend_text; // Actual char text as SVG units (default pixels).
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "longest_legend_text = " << longest_legend_text << std::endl;
-
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
       if (derived().is_a_point_marker_ == true)
       { // Markers for data-points in a data-series, if any.
         // width is estimated by multiplying font-size by aspect_ratio about 0.6)
@@ -1706,12 +1706,13 @@ namespace boost
       }
       if (derived().is_a_data_series_line_ == true)
       { // Line used to join data-points in a data-series.
-        text_width += derived().horizontal_line_spacing_; // Line width (from text font size) and
-        text_width += derived().horizontal_line_spacing_; // space after line.
+        text_width += derived().horizontal_line_spacing_; // Line width (from text font-size) and
+        text_width += derived().horizontal_line_spacing_; // one same size space after the line.
       }
       text_width += derived().horizontal_title_spacing_; // text font space.
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "Legend_text string_svg_length = " <<  text_width << std::endl;
-
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
       bool use_legend_title_width = false;
       // Use longest of legend_title and longest_legend_text.
       if (title_width > text_width)
@@ -1828,7 +1829,7 @@ namespace boost
       {
         derived().outside_legend_on_ = true; // Unless legend is set to be inside.
         // Space around any legend box - beyond any plot or legend border.
-        const double spacing = derived().legend_text_style_.font_size() * aspect_ratio; // = one legend title font width.
+        const double spacing = derived().legend_text_style_.font_size() * aspect_ratio; // = one legend text font width.
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
         std::cout << "Margin (and image border) between legend box and plot window  = " << spacing << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
@@ -1939,8 +1940,7 @@ namespace boost
       } //  void place_legend_box()
 
 //! *************************************************************************************
-    //! Draw the legend box.
-    //! border and background,
+    //! Draw the legend box, border and background,
     //! (using the size and position computed by function @c size_legend_box),
     //! and legend-title (if any and if required),
     //! and any data-point marker lines,
@@ -2010,7 +2010,7 @@ namespace boost
         << ", horizontal_line_spacing = " << derived().horizontal_line_spacing_
         << ", horizontal_marker_spacing = " << derived().horizontal_marker_spacing_
         << std::endl;
-#endif //BOOST_SVG_POINT_DIAGNOSTICS
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
       double legend_y_pos = legend_y_start;
       if (derived().legend_box_.border_on_ == true)
@@ -2021,7 +2021,7 @@ namespace boost
       legend_y_pos += derived().vertical_title_spacing_ /3 ; // Vertical space before title as a fraction of legend-title font.
 
       double legend_title_svg_length = string_svg_length(derived().legend_title(), derived().legend_title_style_);
-     // std::cout << "%%%%%%%%%%%%  legend_title_svg_length = " << legend_title_svg_length << " svg units (pixels). "<< std::endl;
+     // std::cout << "legend_title_svg_length = " << legend_title_svg_length << " svg units (pixels). "<< std::endl;
      // derived().legend_title_style_.text_length(legend_title_svg_length * derived().legend_title_font_size_ * aspect_ratio); 
       // Tell legend_title to use estimated length in pixels (to avoid trouble with and hex Unicode symbols).
       derived().legend_title_style_.text_length(legend_title_svg_length); 
@@ -5092,7 +5092,7 @@ namespace boost
 
           template <class Derived>
           std::pair<double, double> axis_plot_frame<Derived>::x_range()
-          { //! \return  the range of values on the X-axis.
+          { //! \return  Range of values on the X-axis.
             //! (Need to use boost::svg::detail::operator<< to display this).
             std::pair<double, double> r;
             r.first = derived().x_axis_.min_;
@@ -5110,7 +5110,7 @@ namespace boost
 
           template <class Derived>
           double axis_plot_frame<Derived>::x_min()
-          { //! \return  the minimum value on the X-axis.
+          { //! \return  Minimum value on the X-axis.
             //! (Can also get both minimum and maximum as a std::pair).
             return derived().x_axis_.min_;
           }
@@ -5125,8 +5125,8 @@ namespace boost
 
           template <class Derived>
           double axis_plot_frame<Derived>::x_max()
-          { //! \return  the maximum value on the X-axis.
-            //! (Can also get both minimum and maximum as a std::pair).
+          { //! \return  Maximum value on the X-axis.
+            //! (Can also get both minimum and maximum as a std::pair using @c x_range).
             return derived().x_axis_.max_;
           }
 
@@ -5140,7 +5140,7 @@ namespace boost
 
           template <class Derived>
           bool axis_plot_frame<Derived>::autoscale_check_limits()
-          { //! \return  to check that values used for autoscale are within limits.
+          { //! \return  @c true if values used for autoscale are to be checked that they are within limits.
             //! Default is true, but can switch off checks for speed.
             return derived().autoscale_check_limits_;
           }
@@ -5164,7 +5164,7 @@ namespace boost
 
           template <class Derived>
           bool axis_plot_frame<Derived>::autoscale()
-          { //! \return true if to use autoscale values for X-axis.
+          { //! \return @c true if to use autoscale values for X-axis.
             //! autoscale() is same as x_autoscale.
            return derived().x_autoscale_;
           }
@@ -5202,11 +5202,11 @@ namespace boost
             //! Default is 0.05 for 95% confidence.
             if (alpha <= 0.)
             { // Warn and leave alpha_ unchanged.
-               std::cout << "alpha must be > 0." << std::endl;
+               std::cout << "alpha must be > 0!" << std::endl;
             }
             else if (alpha > 0.5)
             { // Warn and leave alpha_ unchanged.
-               std::cout << "alpha must be fraction < 0.5 (for example, 0.05 for 95% confidence)" << std::endl;
+               std::cout << "alpha must be a fraction < 0.5 (for example, 0.05 for 95% confidence)!" << std::endl;
             }
             else
             {
@@ -5217,7 +5217,7 @@ namespace boost
 
           template <class Derived>
           double axis_plot_frame<Derived>::confidence()
-          { //! \return  alpha for displaying confidence intervals.
+          { //! \return  alpha used for displaying confidence intervals.
             //! Default is 0.05.
             return derived().alpha_;
           }

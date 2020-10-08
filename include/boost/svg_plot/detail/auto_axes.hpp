@@ -375,9 +375,9 @@ int mnmx(
 */
 void scale_axis(
    double min_value, // Scale axis from explicit input range minimum.
-   double max_value, // Scale axis from input range min & max.
-   double* axis_min_value, // Computed minimum value for the axis, updated by scale_axis.
-   double* axis_max_value, //  Computed maximum value for the axis, updated by scale_axis.
+   double max_value, // Scale axis from input range maximum.
+   double* axis_min_value, // Computed minimum value for the axis, updated by @c scale_axis.
+   double* axis_max_value, //  Computed maximum value for the axis, updated by @c scale_axis.
    double* axis_tick_increment, //  Computed tick increment for the axis, updated by scale_axis.
    int* auto_ticks, // Computed number of ticks, updated by scale_axis.
    //  NO check_limits parameter.

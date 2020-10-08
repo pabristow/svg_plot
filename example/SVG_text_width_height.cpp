@@ -65,7 +65,11 @@ int main()
 
     my_2d_plot // Nearly all default settings.
       .size(1000, 200)
-      .title("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM") // 116 M fill 1000 exactly 465 mm
+      .title("&#x3A9;") // 116 l fill 1000 exactly 465 ll
+       .title("&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;") // 116 &#x3A9; fill 1000 exactly 465 &#x3A9;&#x3A9;
+//     .title("&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;&#x3A9;") // 116 l fill 1000 exactly 465 ll
+    //  .title("llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll") // 116 l fill 1000 exactly 465 ll
+     // .title("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM") // 116 M fill 1000 exactly 465 mm
       // So for font width = 20 (type normal) width of an M is 1000/
  //     .title("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM") // 100 M width 400 mm
  //     .title("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii") // 116 i width 160 mm      .title_on(true)

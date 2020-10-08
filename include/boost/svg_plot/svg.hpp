@@ -322,7 +322,7 @@ protected:
   std::string image_desc_; //!< SVG image description (appears in the SVG file header as \verbatim <desc> ... </desc> \endverbatim).
   std::string holder_copyright_; //!< SVG info on holder of copyright (probably == author, but could be an institution).
   std::string date_copyright_; //!< SVG info on date of copyright claimed.
-  std::string css_; //!< Cascading Style Sheet.
+  std::string css_; //!< Cascading Style Sheet (CSS)  (not yet used or implemented).
   std::string filename_; //!< file SVG XML written to.
   std::string author_; //!< Author(s) name. (Probably == copyright holder).
   bool is_boost_license_; //!< If true, to include the Boost license as a XML comment.
@@ -397,7 +397,7 @@ private:
   } // void write_css(std::ostream& s_out)
 
   void write_document(std::ostream& s_out)
-  { //! \brief Output all of the image to the svg document (Internal function)
+  { //! \brief Output all of the image to the SVG document (Internal function)
     /*! \details Output all clip paths that define a region of the output device
       to which paint can be applied.
      */
@@ -413,7 +413,7 @@ private:
   } // write_document
 //! \endcond // DETAIL
 public:
-  svg() //! Define clas svg default constructor.
+  svg() //! Define class svg default constructor.
     :
     x_size_(400), //!< X-axis of the whole SVG image (default SVG units, default pixels).
     y_size_(400), //!< Y-axis of the whole SVG image (default SVG units, default pixels).
@@ -479,7 +479,7 @@ public:
   { //! \brief Set decimal digits to be output for X and Y coordinates.
     /*! \details Default stream precision 6 decimal digits is probably excessive.\n
 
-      4.1 Basic data types, integer or float in decimal or scientific (using e format).
+      4.1 Basic data types, integer or float in decimal or scientific (using E format).
       3 or 4 probably enough if image size is under 1000 x 1000.
       This will reduce .svg file sizes significantly for curves represented with many data points.\n
 
@@ -508,7 +508,7 @@ public:
 
   TODO provide a filtered-stream version that writes in zipped format type .svgz ?
   http://lists.w3.org/Archives/Public/www-svg/2005Dec/0308.html
-  recommends MUST have  correct Content-Encoding headers.
+  recommends MUST have correct Content-Encoding headers.
   */
   // --------------------------------------------------------------------------------
 
@@ -546,7 +546,7 @@ public:
       "xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
       "xmlns =\"http://www.w3.org/2000/svg\"\n"
 
-      // xml namespace containing svg shapes rect, circle...
+      // XML namespace containing SVG shapes rect, circle...
       // so can write rect or circle avoiding need for qualification svg:rect, svg:circle...
       // This site isn't visited, but if missing Firefox, at least, will fail to render.
 

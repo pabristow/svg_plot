@@ -1970,7 +1970,7 @@ double string_svg_length(const std::string& s, const text_style& style)
   https://www.w3.org/TR/SVG/text.html#__svg__SVGTextContentElement__getComputedTextLength
   usable from Javascript and MS windows,
   but this is no use in a C++ program without a lookup table of all Unicode chars,
-  so the best we can do is to compute an average character width multiplied by number of characters.
+  so the best we can do is to compute an average character width multiplied by number of characters?
   Also, to avoid any overflow (or underflow) of the box, we can instruct the renderer to stretch and squeeze
   to fill exactly the estimated width used to write the box border.
 
@@ -1991,7 +1991,7 @@ double string_svg_length(const std::string& s, const text_style& style)
  */
 
  int chars = 0; // Actual number of characters in string.
-double width = 0.; // Estimated width of characters in string.
+ double width = 0.; // Estimated width of characters in string.
  bool in_esc = false;
  for (std::string::const_iterator i = s.begin(); i != s.end(); i++)
  {
@@ -1999,30 +1999,31 @@ double width = 0.; // Estimated width of characters in string.
     if (*i == '&')
     { // Start of Unicode 'escape sequence &#XAB12;' 
       in_esc = true;
-       while ((*i != ';')
+       while ((*i != ';') // Assume corrctly terminated by ;
          && (i != s.end())) // In case mistakenly not null terminated.
        {
-          i++; // Only count a Unicode string like &#x3A9; as 1 character (greek omega) wide.
+          i++; 
        }
        in_esc = false;
-       chars++;
-       width += 0.3;  // Assume all Unicode strings are different.  0.3 seems good for uppercase Omega.
+       chars++; // Only count a Unicode string like &#x3A9; as 1 character (greek omega) wide.
+       width += aspect_ratio * 1.3;  // Assume all Unicode glyphs are a bit wider? 
     }
-    if (*i == '<')
-    { // Ignore embedded XML like <sub> or <super>.
+    else if (*i == '<')
+    { // Ignore embedded XML like <sub> or <super> used in Quickbook for subscript and superscripts.
+      // (Users should use Unicode symbols to show correctly, for example in units like m^2)
       in_esc = true;
        while ((*i != '>')
          && (i != s.end())) // In case mistakenly not terminated.
        {
            i++; // Only count <...>; as NO characters wide.
        }
-       chars--;
+       chars--;  // Ignore the entire <...> sequence.
        in_esc = false;
     }
     else
-    { // Actual normal character.
+    { // Actual normal ASCII-ish character.
       chars++;
-      width += (isupper(c) ? 0.65 : aspect_ratio);  // Upper case chars are wider than lower.
+      width += (isupper(c) ? aspect_ratio * 1.2 : aspect_ratio);  // Upper case chars are wider than lower.
     }
  }
  //double svg_length = chars * (style.font_size() * aspect_ratio);  // Estimated width of svg string.
@@ -2033,7 +2034,9 @@ double width = 0.; // Estimated width of characters in string.
 // double svg_computed_length = getComputedTextLength();
 
 #ifdef BOOST_SVG_STYLE_DIAGNOSTICS
-  std::cout << "string \"" << s << "\" has " << chars << " Unicode characters, and svg length is " << svg_length << std::endl;
+  std::cout << "string \"" << s << "\" has " << chars << " Unicode characters"
+    ", width = " << width << ", font_size " << style.font_size() << " and svg length is " << svg_length << std::endl;
+  std::cout << "style =  " << style << std::endl;
 #endif // BOOST_SVG_STYLE_DIAGNOSTICS
 
   // I:\modular-boost\libs\svg_plot\example\SVG_text_width_height.cpp shows that

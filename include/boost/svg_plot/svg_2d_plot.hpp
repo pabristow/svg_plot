@@ -23,12 +23,6 @@
 #ifndef BOOST_SVG_SVG_2D_PLOT_HPP
 #define BOOST_SVG_SVG_2D_PLOT_HPP
 
-#ifdef _MSC_VER
-#pragma warning(push)
-#  pragma warning (disable : 4800) // Forcing value to bool 'true' or 'false' (performance warning).
-#  pragma warning (disable : 4512) // Assignment operator could not be generated.
-#endif
-
 // Diagnostics output if these are defined.
 // BOOST_SVG_DIAGNOSTICS
 // BOOST_SVG_DATA_POINT_DIAGNOSTICS
@@ -501,7 +495,8 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       //! Most often, the (0,0) point in this coordinate system is positioned on the left edge of the EM box,
       //! but not at the bottom left corner. (necessarily?)
       //! The Y coordinate of the bottom of a roman capital letter like M is usually zero.
-      //! The descenders on lowercase roman letters have negative coordinate values, perhaps 1/4 of the font size.
+      //! The descenders on lowercase roman letters have negative coordinate values, perhaps 1/4 of the font size,
+      //! so text_margin_ = 1.25 proves suitable.
 
       text_style a_style_; //!< Defaults for text_style (contains font size & type etc).
       text_style title_style_; //!< Style for plot title.
@@ -1136,7 +1131,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         }
         else if((y_ticks_.label_rotation_ == upward) || (y_ticks_.label_rotation_ == downward))
         { // Only need one char & 1 space width from Y-axis value label.
-          y_ticks_.label_max_space_ += 2 * y_value_label_style_.font_size();
+          y_ticks_.label_max_space_ += 2 * y_value_label_style_.font_size_;
         }
         else
         { // Assume some slope 45, so diagonally down from tick,
@@ -1285,11 +1280,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         }
 
         y_scale_ = -(plot_bottom_-plot_top_) / (y_axis_.max_-y_axis_.min_);
-
-
         y_shift_ = plot_top_ - (y_axis_.max_ * (plot_top_ - plot_bottom_) / (y_axis_.max_ - y_axis_.min_));
-
-
 
         if (x_axis_.axis_line_on_)
         {
@@ -1473,7 +1464,7 @@ my_plot.background_color(ghostwhite) // Whole image.
               {  // Allow for any leftward ticks.
                 x -= 1.1 * (std::max)(y_ticks_.major_tick_length_, y_ticks_.minor_tick_length_);// And avoid macro max trap!
               }
-              x -= 0.7 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size()); // best compromise?
+              x -= 0.7 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size_); // best compromise?
 
             }
             else if ((y_ticks_.label_rotation_ == steepdown) || (y_ticks_.label_rotation_ == steepup))
@@ -1486,7 +1477,7 @@ my_plot.background_color(ghostwhite) // Whole image.
               {  // Allow for any leftward ticks.
                 x -= 1.1 * (std::max)(y_ticks_.major_tick_length_, y_ticks_.minor_tick_length_);// And avoid macro max trap!
               }
-              x -= 0.4 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size()); // best compromise?
+              x -= 0.4 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size_); // best compromise?
             }
             else if ((y_ticks_.label_rotation_ == uphill)  || (y_ticks_.label_rotation_ == downhill))
             { // sloping 45 degrees .
@@ -1496,8 +1487,8 @@ my_plot.background_color(ghostwhite) // Whole image.
                 x -= 1.1 * (std::max)(y_ticks_.major_tick_length_, y_ticks_.minor_tick_length_); // And avoid macro max trap!
                 //x -= 1.2 * y_label_info_.textstyle().font_size() ; // Shift left to suit Y labels.
                 //x -= 1.2 * y_value_label_info_.textstyle().font_size() ; // Shift left to suit Y labels.
-                //x -= 1.2 * (std::min)(y_label_info_.textstyle().font_size(), y_value_label_info_.textstyle().font_size() ); // better
-                x -= 0.7 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size()); // best compromise?
+                //x -= 1.2 * (std::min)(y_label_info_.textstyle().font_size(), y_value_label_info_.textstyle().font_size_ ); // better
+                x -= 0.7 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size_); // best compromise?
              }
             }
             else if ((y_ticks_.label_rotation_ == slopeup) || (y_ticks_.label_rotation_ == slopedownhill))
@@ -1508,8 +1499,8 @@ my_plot.background_color(ghostwhite) // Whole image.
                 x -= 1.1 * (std::max)(y_ticks_.major_tick_length_, y_ticks_.minor_tick_length_); // And avoid macro max trap!
                 //x -= 1.2 * y_label_info_.textstyle().font_size() ; // Shift left to suit Y labels.
                 //x -= 1.2 * y_value_label_info_.textstyle().font_size() ; // Shift left to suit Y labels.
-                //x -= 1.2 * (std::min)(y_label_info_.textstyle().font_size(), y_value_label_info_.textstyle().font_size() ); // better
-                x -= 0.7 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size()); // best compromise?
+                //x -= 1.2 * (std::min)(y_label_info_.textstyle().font_size(), y_value_label_info_.textstyle().font_size_ ); // better
+                x -= 0.7 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size_); // best compromise?
              }
             }
             else if  (y_ticks_.label_rotation_ == horizontal)
@@ -1520,7 +1511,7 @@ my_plot.background_color(ghostwhite) // Whole image.
               }
               x -= y_ticks_.label_max_space_; // Move left for the longest tick value label. (Might be zero?)
               //x -= y_label_info_.textstyle().font_size() * 1.0; // Shift left to suit Y labels.
-              x -= 0.6 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size()); // best compromise?
+              x -= 0.6 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size_); // best compromise?
             }
             else
             {
@@ -2136,8 +2127,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           // 0.2 is a scaling factor that Jake used to define the magnitude of the
           // vector of the current control point to be placed, basically
           // taking advantage of the auto-drawing of Bezier curves that exists in
-          // the SVG format, and this is his attempt to give the control point the
-          // proper length.
+          // the SVG format, and this is his attempt to give the control point the proper length.
 
           // Experiment suggests that 0.2 gives distorsions with exp curves.
           // 0.05 is just visually OK with 50 points, but 100 are better.
@@ -2529,8 +2519,7 @@ my_plot.background_color(ghostwhite) // Whole image.
       void update_image()
       { //! Draw the whole SVG image.
         clear_all();
-        // svg paint rules are that later 'painting' writes over
-        // previous painting, so the order of drawing is important.
+        // SVG paint rules are that later 'painting' writes over previous painting, so the order of drawing is important.
 
         // Draw image background (perhaps with border and/or fill color).
         image_.g(detail::PLOT_BACKGROUND).push_back(
@@ -3766,11 +3755,6 @@ my_2d_plot.plot(&my_data[1], &my_data[3], "my_data 1 to 3"); // Add part of data
      image_.write(s_out); // Use the std::ostream version of write.
      return *this; //! \return Reference to svg_2d_plot to make chainable.
    }
-
-#if defined (BOOST_MSVC)
-#  pragma warning(pop)
-#endif
-
   } // namespace svg
 } // namespace boost
 

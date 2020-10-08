@@ -13,56 +13,56 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
 <!-- File boxplot_simple.svg --> 
-<clipPath id="plot_window"><rect x="59.8" y="52" width="428" height="232"/></clipPath>
-<g id="imageBackground" stroke="rgb(0,0,139)" fill="rgb(240,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="350"/></g>
-<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="64.8" y="57" width="423" height="227"/></g>
-<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="64.8" y1="284" x2="488" y2="284"/></g>
-<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="64.8" y1="284" x2="64.8" y2="57"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M206,284 L206,289 M347,284 L347,289 " fill="none"/></g>
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M59.8,284 L64.8,284 M59.8,238 L64.8,238 M59.8,193 L64.8,193 M59.8,148 L64.8,148 M59.8,102 L64.8,102 M59.8,57 L64.8,57 M59.8,284 L64.8,284 " fill="none"/></g>
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M62.8,275 L64.8,275 M62.8,265 L64.8,265 M62.8,256 L64.8,256 M62.8,247 L64.8,247 M62.8,229 L64.8,229 M62.8,220 L64.8,220 M62.8,211 L64.8,211 M62.8,202 L64.8,202 M62.8,184 L64.8,184 M62.8,175 L64.8,175 M62.8,166 L64.8,166 M62.8,157 L64.8,157 M62.8,139 L64.8,139 M62.8,130 L64.8,130 M62.8,120 L64.8,120 M62.8,111 L64.8,111 M62.8,93.3 L64.8,93.3 M62.8,84.2 L64.8,84.2 M62.8,75.1 L64.8,75.1 M62.8,66.1 L64.8,66.1 M62.8,284 L64.8,284 " fill="none"/></g>
+<clipPath id="plot_window"><rect x="61.6" y="52" width="426" height="232"/></clipPath>
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="350"/></g>
+<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="66.6" y="57" width="421" height="227"/></g>
+<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="66.6" y1="284" x2="488" y2="284"/></g>
+<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="66.6" y1="284" x2="66.6" y2="57"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M207,284 L207,289 M348,284 L348,289 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M61.6,284 L66.6,284 M61.6,238 L66.6,238 M61.6,193 L66.6,193 M61.6,148 L66.6,148 M61.6,102 L66.6,102 M61.6,57 L66.6,57 M61.6,284 L66.6,284 " fill="none"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M64.6,275 L66.6,275 M64.6,265 L66.6,265 M64.6,256 L66.6,256 M64.6,247 L66.6,247 M64.6,229 L66.6,229 M64.6,220 L66.6,220 M64.6,211 L66.6,211 M64.6,202 L66.6,202 M64.6,184 L66.6,184 M64.6,175 L66.6,175 M64.6,166 L66.6,166 M64.6,157 L66.6,157 M64.6,139 L66.6,139 M64.6,130 L66.6,130 M64.6,120 L66.6,120 M64.6,111 L66.6,111 M64.6,93.3 L66.6,93.3 M64.6,84.2 L66.6,84.2 M64.6,75.1 L66.6,75.1 M64.6,66.1 L66.6,66.1 M64.6,284 L66.6,284 " fill="none"/></g>
 <g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="valueLabels" fill="rgb(0,0,0)">
-<text x="206" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[50 / x]</text>
-<text x="347" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[40 + 25 * sin(x * 50)]</text>
-<text x="53.8" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text>
-<text x="53.8" y="241" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">20</text>
-<text x="53.8" y="195" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">40</text>
-<text x="53.8" y="150" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">60</text>
-<text x="53.8" y="105" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">80</text>
-<text x="53.8" y="59.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">100</text>
-<text x="53.8" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text></g>
+<text x="207" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[50 / x]</text>
+<text x="348" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[40 + 25 * sin(x * 50)]</text>
+<text x="55.6" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text>
+<text x="55.6" y="241" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">20</text>
+<text x="55.6" y="195" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">40</text>
+<text x="55.6" y="150" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">60</text>
+<text x="55.6" y="105" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">80</text>
+<text x="55.6" y="59.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">100</text>
+<text x="55.6" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0</text></g>
 <g id="yLabel" fill="rgb(0,0,0)">
 <text x="30.2" y="170" text-anchor="middle" transform = "rotate(-90 30.2 170 )" font-size="14" font-family="Lucida Sans Unicode">Population Size</text></g>
 <g id="xLabel" fill="rgb(0,0,0)">
-<text x="276" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">Functions</text></g>
-<g id="boxAxis" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1"><line x1="206" y1="272" x2="206" y2="196"/></g>
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1"><line x1="347" y1="250" x2="347" y2="136"/></g>
+<text x="277" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">Functions</text></g>
+<g id="boxAxis" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1"><line x1="207" y1="272" x2="207" y2="196"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1"><line x1="348" y1="250" x2="348" y2="136"/></g>
 </g>
-<g id="Median" stroke="rgb(255,0,0)" stroke-width="2"><g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1"><rect x="191" y="239" width="30" height="29.6"/></g>
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1"><line x1="191" y1="261" x2="220" y2="261"/></g>
-<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1"><rect x="332" y="154" width="30" height="79.2"/></g>
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1"><line x1="332" y1="195" x2="361" y2="195"/></g>
+<g id="Median" stroke="rgb(255,0,0)" stroke-width="2"><g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1"><rect x="192" y="239" width="30" height="29.6"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1"><line x1="193" y1="261" x2="222" y2="261"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1"><rect x="333" y="154" width="30" height="79.2"/></g>
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1"><line x1="333" y1="195" x2="362" y2="195"/></g>
 </g>
-<g id="whisker" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)"><g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="191" y1="272" x2="221" y2="272"/></g>
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="191" y1="196" x2="221" y2="196"/></g>
+<g id="whisker" stroke="rgb(0,0,0)"><g clip-path="url(#plot_window)"><g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="192" y1="272" x2="222" y2="272"/></g>
+<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="192" y1="196" x2="222" y2="196"/></g>
 </g>
-<g clip-path="url(#plot_window)"><g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="332" y1="250" x2="362" y2="250"/></g>
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="332" y1="136" x2="362" y2="136"/></g>
+<g clip-path="url(#plot_window)"><g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="333" y1="250" x2="363" y2="250"/></g>
+<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1"><line x1="333" y1="136" x2="363" y2="136"/></g>
 </g>
 </g>
 <g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)"><g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
-<text x="206" y="159" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
-<text x="206" y="172" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
-<text x="206" y="182" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
-<text x="206" y="191" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
+<text x="207" y="159" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="207" y="172" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="207" y="182" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="207" y="191" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
 </g>
 <g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)"><g clip-path="url(#plot_window)" stroke="rgb(255,0,0)">
-<text x="206" y="58.5" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;</text>
-<text x="206" y="96.3" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;</text>
-<text x="206" y="123" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;</text>
-<text x="206" y="143" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;</text></g>
+<text x="207" y="58.5" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;</text>
+<text x="207" y="96.3" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;</text>
+<text x="207" y="123" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;</text>
+<text x="207" y="143" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;</text></g>
 </g>
 <g id="title" fill="rgb(0,0,0)">
 <text x="250" y="36" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode">Boxplots of 1/x and sin(x) Functions</text></g>

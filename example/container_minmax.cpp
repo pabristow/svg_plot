@@ -44,7 +44,6 @@
 #include <limits>
   using std::numeric_limits;
 
-
 //namespace detail
 //{
 

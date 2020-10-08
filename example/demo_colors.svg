@@ -14,26 +14,26 @@ xmlns ="http://www.w3.org/2000/svg"
 
 <!-- File demo_colors.svg --> 
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="200"/></g>
-<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="21" y="42.5" width="357" height="129"/></g>
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="21" y="42.5" width="354" height="129"/></g>
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="xAxis" stroke="rgb(0,0,255)" stroke-width="1"><line x1="21" y1="42.5" x2="21" y2="172"/><line x1="21" y1="110" x2="378" y2="110"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M41.4,110 L41.4,112 M61.8,110 L61.8,112 M82.2,110 L82.2,112 M103,110 L103,112 M143,110 L143,112 M164,110 L164,112 M184,110 L184,112 M205,110 L205,112 M246,110 L246,112 M266,110 L266,112 M286,110 L286,112 M307,110 L307,112 M348,110 L348,112 M368,110 L368,112 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M21,110 L21,114 M123,110 L123,114 M225,110 L225,114 M327,110 L327,114 M21,110 L21,114 " fill="none"/></g>
+<g id="xAxis" stroke="rgb(0,0,255)" stroke-width="1"><line x1="21" y1="42.5" x2="21" y2="172"/><line x1="21" y1="110" x2="375" y2="110"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M41.2,110 L41.2,112 M61.5,110 L61.5,112 M81.7,110 L81.7,112 M102,110 L102,112 M142,110 L142,112 M163,110 L163,112 M183,110 L183,112 M203,110 L203,112 M244,110 L244,112 M264,110 L264,112 M284,110 L284,112 M304,110 L304,112 M345,110 L345,112 M365,110 L365,112 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M21,110 L21,114 M122,110 L122,114 M223,110 L223,114 M325,110 L325,114 M21,110 L21,114 " fill="none"/></g>
 <g id="xTicksValues">
-<text x="123" y="128" text-anchor="middle" font-size="10" font-family="Verdana">2</text>
-<text x="225" y="128" text-anchor="middle" font-size="10" font-family="Verdana">4</text>
-<text x="327" y="128" text-anchor="middle" font-size="10" font-family="Verdana">6</text></g>
+<text x="122" y="128" text-anchor="middle" font-size="10" font-family="Verdana">2</text>
+<text x="223" y="128" text-anchor="middle" font-size="10" font-family="Verdana">4</text>
+<text x="325" y="128" text-anchor="middle" font-size="10" font-family="Verdana">6</text></g>
 <g id="xLabel" stroke="rgb(255,0,255)" fill="rgb(255,0,255)">
-<text x="200" y="188" text-anchor="middle" font-size="10" font-family="Verdana">axis</text></g>
-<g id="plotPoints"><g stroke="rgb(0,0,0)"><line x1="72" y1="109" x2="72" y2="99"/><line x1="123" y1="109" x2="123" y2="99"/><line x1="174" y1="109" x2="174" y2="99"/></g>
+<text x="198" y="188" text-anchor="middle" font-size="10" font-family="Verdana">axis</text></g>
+<g id="plotPoints"><g stroke="rgb(0,0,0)"><line x1="71.6" y1="109" x2="71.6" y2="99"/><line x1="122" y1="109" x2="122" y2="99"/><line x1="173" y1="109" x2="173" y2="99"/></g>
 </g>
-<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="384" y="42.5" width="106" height="49.5"/></g>
-<g id="legendPoints"><g stroke="rgb(0,0,0)"><line x1="396" y1="85" x2="396" y2="75"/></g>
+<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="381" y="42.5" width="110" height="49.5"/></g>
+<g id="legendPoints"><g stroke="rgb(0,0,0)"><line x1="395" y1="85" x2="395" y2="75"/></g>
 </g>
 <g id="legendText">
-<text x="437" y="63.5" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode" textLength="79.2">Legend title</text>
-<text x="404" y="81" font-size="10" font-family="Verdana">My Data</text></g>
+<text x="436" y="63.5" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode" textLength="87.8">Legend title</text>
+<text x="403" y="81" font-size="10" font-family="Verdana" textLength="44.4">My Data</text></g>
 <g id="title">
 <text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">Demo SVG colors</text></g>
 </svg>

@@ -12,69 +12,69 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- (See accompanying file LICENSE_1_0.txt --> 
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
-<clipPath id="plot_window"><rect x="80.9" y="44" width="475" height="404"/></clipPath>
+<clipPath id="plot_window"><rect x="83.3" y="44" width="464" height="404"/></clipPath>
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(248,248,255)" stroke-width="2"><rect x="0" y="0" width="700" height="500"/></g>
-<g id="plotBackground" stroke="rgb(0,128,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="79.9" y="43" width="477" height="406"/></g>
-<g id="yMinorGrid" stroke="rgb(240,240,255)" stroke-width="1"><path d="M80.9,434 L556,434 M80.9,374 L556,374 M80.9,344 L556,344 M80.9,284 L556,284 M80.9,254 L556,254 M80.9,193 L556,193 M80.9,163 L556,163 M80.9,103 L556,103 M80.9,73.1 L556,73.1 " fill="none"/></g>
-<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="2"><path d="M80.9,404 L556,404 M80.9,314 L556,314 M80.9,223 L556,223 M80.9,133 L556,133 M80.9,43 L556,43 " fill="none"/></g>
-<g id="xMinorGrid" stroke="rgb(240,240,255)" stroke-width="0.5"><path d="M97.6,44 L97.6,448 M168,44 L168,448 M204,44 L204,448 M274,44 L274,448 M309,44 L309,448 M380,44 L380,448 M415,44 L415,448 M486,44 L486,448 M521,44 L521,448 " fill="none"/></g>
-<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"><path d="M133,43 L133,449 M239,43 L239,449 M345,43 L345,449 M451,43 L451,449 M557,43 L557,449 " fill="none"/></g>
-<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="79.9" y1="43" x2="79.9" y2="449"/></g>
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="79.9" y1="449" x2="557" y2="449"/></g>
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M74.9,434 L79.9,434 M74.9,374 L79.9,374 M74.9,344 L79.9,344 M74.9,284 L79.9,284 M74.9,254 L79.9,254 M74.9,193 L79.9,193 M74.9,163 L79.9,163 M74.9,103 L79.9,103 M74.9,73.1 L79.9,73.1 " fill="none"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M97.6,449 L97.6,454 M168,449 L168,454 M204,449 L204,454 M274,449 L274,454 M309,449 L309,454 M380,449 L380,454 M415,449 L415,454 M486,449 L486,454 M521,449 L521,454 " fill="none"/></g>
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M69.9,404 L79.9,404 M69.9,314 L79.9,314 M69.9,223 L79.9,223 M69.9,133 L79.9,133 M69.9,43 L79.9,43 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M133,449 L133,459 M239,449 L239,459 M345,449 L345,459 M451,449 L451,459 M557,449 L557,459 " fill="none"/></g>
+<g id="plotBackground" stroke="rgb(0,128,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="82.3" y="43" width="466" height="406"/></g>
+<g id="yMinorGrid" stroke="rgb(240,240,255)" stroke-width="1"><path d="M83.3,434 L547,434 M83.3,374 L547,374 M83.3,344 L547,344 M83.3,284 L547,284 M83.3,254 L547,254 M83.3,193 L547,193 M83.3,163 L547,163 M83.3,103 L547,103 M83.3,73.1 L547,73.1 " fill="none"/></g>
+<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="2"><path d="M83.3,404 L547,404 M83.3,314 L547,314 M83.3,223 L547,223 M83.3,133 L547,133 M83.3,43 L547,43 " fill="none"/></g>
+<g id="xMinorGrid" stroke="rgb(240,240,255)" stroke-width="0.5"><path d="M99.6,44 L99.6,448 M169,44 L169,448 M203,44 L203,448 M272,44 L272,448 M307,44 L307,448 M376,44 L376,448 M410,44 L410,448 M479,44 L479,448 M514,44 L514,448 " fill="none"/></g>
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"><path d="M134,43 L134,449 M238,43 L238,449 M341,43 L341,449 M445,43 L445,449 M548,43 L548,449 " fill="none"/></g>
+<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="82.3" y1="43" x2="82.3" y2="449"/></g>
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="82.3" y1="449" x2="548" y2="449"/></g>
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M77.3,434 L82.3,434 M77.3,374 L82.3,374 M77.3,344 L82.3,344 M77.3,284 L82.3,284 M77.3,254 L82.3,254 M77.3,193 L82.3,193 M77.3,163 L82.3,163 M77.3,103 L82.3,103 M77.3,73.1 L82.3,73.1 " fill="none"/></g>
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M99.6,449 L99.6,454 M169,449 L169,454 M203,449 L203,454 M272,449 L272,454 M307,449 L307,454 M376,449 L376,454 M410,449 L410,454 M479,449 L479,454 M514,449 L514,454 " fill="none"/></g>
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M72.3,404 L82.3,404 M72.3,314 L82.3,314 M72.3,223 L82.3,223 M72.3,133 L82.3,133 M72.3,43 L82.3,43 " fill="none"/></g>
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M134,449 L134,459 M238,449 L238,459 M341,449 L341,459 M445,449 L445,459 M548,449 L548,459 " fill="none"/></g>
 <g id="xTicksValues">
-<text x="133" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2.00</text>
-<text x="239" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4.00</text>
-<text x="345" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6.00</text>
-<text x="451" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8.00</text>
-<text x="557" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">1.00e1</text></g>
+<text x="134" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2.00</text>
+<text x="238" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4.00</text>
+<text x="341" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6.00</text>
+<text x="445" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8.00</text>
+<text x="548" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">1.00e1</text></g>
 <g id="yTicksValues">
-<text x="63.9" y="406" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">2.0</text>
-<text x="63.9" y="316" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">4.0</text>
-<text x="63.9" y="226" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">6.0</text>
-<text x="63.9" y="136" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">8.0</text>
-<text x="63.9" y="45.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">10.0</text></g>
+<text x="66.3" y="406" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">2.0</text>
+<text x="66.3" y="316" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">4.0</text>
+<text x="66.3" y="226" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">6.0</text>
+<text x="66.3" y="136" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">8.0</text>
+<text x="66.3" y="45.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">10.0</text></g>
 <g id="yLabel">
 <text x="36.9" y="246" text-anchor="middle" transform = "rotate(-90 36.9 246 )" font-size="14" font-family="Lucida Sans Unicode">Y-axis</text></g>
 <g id="xLabel">
-<text x="318" y="488" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">X-axis</text></g>
-<g id="plotLines" stroke-width="2"><g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="2"><path d="M-503,-3.93e+03 S-460,-3.23e+03 -450,-3.07e+03 S-407,-2.45e+03 -397,-2.3e+03 S-355,-1.75e+03 -344,-1.63e+03 S-302,-1.15e+03 -291,-1.04e+03 S-249,-634 -238,-543 S-196,-210 -185,-137 S-143,124 -132,178 S-89.6,368 -79,404 S-36.7,521 -26.1,539 S16.3,584 26.9,584 S69.3,557 79.9,539 S122,440 133,404 S175,232 186,178 S228,-65.3 239,-137 S281,-453 292,-543 S334,-931 345,-1.04e+03 S387,-1.5e+03 398,-1.63e+03 S440,-2.16e+03 451,-2.3e+03 S493,-2.91e+03 504,-3.07e+03 S557,-4.01e+03 557,-3.93e+03 " fill="none"/></g>
+<text x="315" y="488" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">X-axis</text></g>
+<g id="plotLines" stroke-width="2"><g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="2"><path d="M-487,-3.93e+03 S-446,-3.23e+03 -435,-3.07e+03 S-394,-2.45e+03 -384,-2.3e+03 S-342,-1.75e+03 -332,-1.63e+03 S-291,-1.15e+03 -280,-1.04e+03 S-239,-634 -228,-543 S-187,-210 -177,-137 S-135,124 -125,178 S-83.4,368 -73,404 S-31.6,521 -21.3,539 S20.2,584 30.5,584 S71.9,557 82.3,539 S124,440 134,404 S176,232 186,178 S227,-65.3 238,-137 S279,-453 289,-543 S331,-931 341,-1.04e+03 S383,-1.5e+03 393,-1.63e+03 S434,-2.16e+03 445,-2.3e+03 S486,-2.91e+03 497,-3.07e+03 S548,-4.01e+03 548,-3.93e+03 " fill="none"/></g>
 </g>
 <g id="plotPoints" clip-path="url(#plot_window)"><g stroke="rgb(0,0,0)" fill="rgb(255,0,0)">
-<text x="133" y="435" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="134" y="435" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text>
 <text x="186" y="420" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text>
-<text x="239" y="408" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text>
-<text x="292" y="397" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text>
-<text x="345" y="388" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text>
-<text x="398" y="379" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text>
-<text x="451" y="371" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text>
-<text x="504" y="363" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
+<text x="238" y="408" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="289" y="397" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="341" y="388" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="393" y="379" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="445" y="371" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="497" y="363" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
 <g stroke="rgb(0,0,0)" fill="rgb(255,165,0)">
-<text x="133" y="405" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
+<text x="134" y="405" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text>
 <text x="186" y="180" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,0)">
-<text x="133" y="363" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;</text>
+<text x="134" y="363" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;</text>
 <text x="186" y="273" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;</text>
-<text x="239" y="183" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;</text>
-<text x="292" y="92.4" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;</text></g>
+<text x="238" y="183" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;</text>
+<text x="289" y="92.4" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;</text></g>
 </g>
-<g id="limitPoints" stroke="rgb(119,136,153)" fill="rgb(250,235,215)"><polygon points=" 74.9,439 84.9,439 79.9,449"/><polygon points=" 74.9,439 84.9,439 79.9,449"/><polygon points=" 74.9,439 84.9,439 79.9,449"/><polygon points=" 74.9,439 84.9,439 79.9,449"/><polygon points=" 74.9,439 84.9,439 79.9,449"/><polygon points=" 74.9,439 84.9,439 79.9,449"/><polygon points=" 74.9,439 84.9,439 79.9,449"/><polygon points=" 74.9,439 84.9,439 79.9,449"/><polygon points=" 74.9,439 84.9,439 79.9,449"/><polygon points=" 74.9,439 84.9,439 79.9,449"/></g>
-<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,224)" stroke-width="1"><rect x="562" y="43" width="123" height="90.7"/></g>
+<g id="limitPoints" stroke="rgb(119,136,153)" fill="rgb(250,235,215)"><polygon points=" 77.3,439 87.3,439 82.3,449"/><polygon points=" 77.3,439 87.3,439 82.3,449"/><polygon points=" 77.3,439 87.3,439 82.3,449"/><polygon points=" 77.3,439 87.3,439 82.3,449"/><polygon points=" 77.3,439 87.3,439 82.3,449"/><polygon points=" 77.3,439 87.3,439 82.3,449"/><polygon points=" 77.3,439 87.3,439 82.3,449"/><polygon points=" 77.3,439 87.3,439 82.3,449"/><polygon points=" 77.3,439 87.3,439 82.3,449"/><polygon points=" 77.3,439 87.3,439 82.3,449"/></g>
+<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,224)" stroke-width="1"><rect x="554" y="43" width="132" height="90.7"/></g>
 <g id="legendPoints"><g stroke="rgb(0,0,0)" fill="rgb(255,0,0)">
-<text x="579" y="93.6" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
+<text x="572" y="93.6" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
 <g stroke="rgb(0,0,0)" fill="rgb(255,165,0)">
-<text x="579" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
+<text x="572" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CB;</text></g>
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,0)">
-<text x="579" y="122" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;</text></g>
+<text x="572" y="122" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;</text></g>
 </g>
 <g id="legendText">
-<text x="624" y="70.7" text-anchor="middle" font-size="16" font-family="Lucida Sans Unicode" font-weight="normal" textLength="88">Unicode &#x3A9;&#x3A6;</text>
-<text x="590" y="91.3" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal">Sqrt(x)</text>
-<text x="590" y="105" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal">-2 + x^2</text>
-<text x="590" y="119" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal">-1 + 2x</text></g>
+<text x="620" y="70.7" text-anchor="middle" font-size="16" font-family="Lucida Sans Unicode" font-weight="normal" textLength="104">Unicode &#x3A9;&#x3A6;</text>
+<text x="584" y="91.3" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="43.2">Sqrt(x)</text>
+<text x="584" y="105" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="48">-2 + x^2</text>
+<text x="584" y="119" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="42">-1 + 2x</text></g>
 <g id="title" fill="rgb(255,0,0)">
 <text x="350" y="30" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode" font-weight="normal">Plot of Mathematical Functions XYP</text></g>
 <g id="plotXValues"></g>

@@ -72,7 +72,7 @@ for example, [@http://en.wikipedia.org/wiki/Portable_Network_Graphics Portable N
 [@http://www.w3.org/TR/REC-xml/#sec-comments XML specification]
 and file format for describing two-dimensional vector graphics.
 
-SVG files (.svg) can be viewed with most Internet Browsers:
+SVG files (.svg) can be viewed with any Internet Browsers:
 
 * [@http://www.mozilla.com/firefox/ Mozilla Firefox (version 3 and later)]
 You may wish to associate Firefox with SVG files (or perhaps Inkscape - see below).
@@ -116,14 +116,13 @@ The goals of the project are:
 * To provide very high quality plots suitable for publication, including printing, but with tiny file sizes.
 * To produce and transfer plots quickly enough to be useful in real-time.
 * To represent uncertainty visually and numerically by showing only significant digits, and optionally adding uncertainty and degrees of freedom estimates.
-* To allow the user to talk to the plot classes using coordinate units
-rather than pixels or other arbitrary units.
+* To allow the user to talk to the plot classes using coordinate units rather than pixels or other arbitrary units.
 * To create the backbone of a `svg` class that can be extended to fully support
 the SVG standard.
 * Compliance with the
 [@http://www.w3.org/TR/SVG11/ W3C Scalable Vector Graph standard].
 * Validation using [@http://validator.w3.org/#validate_by_upload W3C Markup Validation Service].
-* Copyright and license conditions built into the SVG file.
+* Copyright claims, dates and license conditions can be easily embedded into the SVG file.
 
 [endsect] [/section:preface Preface]
 
