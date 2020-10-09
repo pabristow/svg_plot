@@ -37,18 +37,19 @@
       </p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">svg_2d_plot</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
   <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">;</span>
+
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">utility</span><span class="special">&gt;</span>
-  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">;</span>
+ <span class="comment">// using std::pair;</span>
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">map</span><span class="special">&gt;</span>
-  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">map</span><span class="special">;</span>
+ <span class="comment">// using std::map;</span>
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">set</span><span class="special">&gt;</span>
-  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">multiset</span><span class="special">;</span>
+<span class="comment">//  using std::multiset;</span>
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span>
-  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">;</span>
-  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+<span class="comment">//  using std::cout;</span>
+<span class="comment">//  using std::endl;</span>
 
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">limits</span><span class="special">&gt;</span>
-  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">numeric_limits</span><span class="special">;</span>
+<span class="comment">//  using std::numeric_limits;</span>
 
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">math</span><span class="special">/</span><span class="identifier">special_functions</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
   <span class="comment">//using boost::math::isfinite;</span>
@@ -74,8 +75,8 @@
   <span class="special">*</span><span class="identifier">y_min</span> <span class="special">=</span> <span class="identifier">px</span><span class="special">.</span><span class="identifier">second</span><span class="special">;</span>
   <span class="special">*</span><span class="identifier">y_max</span> <span class="special">=</span> <span class="identifier">py</span><span class="special">.</span><span class="identifier">second</span><span class="special">;</span>
 
-  <span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"s x_min "</span> <span class="special">&lt;&lt;</span> <span class="special">*</span><span class="identifier">x_min</span> <span class="special">&lt;&lt;</span> <span class="string">", x_max "</span> <span class="special">&lt;&lt;</span> <span class="special">*</span><span class="identifier">x_max</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span> <span class="comment">// x_min 1, x_max 7.3</span>
-  <span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"s y_min "</span> <span class="special">&lt;&lt;</span> <span class="special">*</span><span class="identifier">y_min</span> <span class="special">&lt;&lt;</span> <span class="string">", y_max "</span> <span class="special">&lt;&lt;</span> <span class="special">*</span><span class="identifier">y_max</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span> <span class="comment">// y_min 3.2, y_max 9.1</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"s x_min "</span> <span class="special">&lt;&lt;</span> <span class="special">*</span><span class="identifier">x_min</span> <span class="special">&lt;&lt;</span> <span class="string">", x_max "</span> <span class="special">&lt;&lt;</span> <span class="special">*</span><span class="identifier">x_max</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// x_min 1, x_max 7.3</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"s y_min "</span> <span class="special">&lt;&lt;</span> <span class="special">*</span><span class="identifier">y_min</span> <span class="special">&lt;&lt;</span> <span class="string">", y_max "</span> <span class="special">&lt;&lt;</span> <span class="special">*</span><span class="identifier">y_max</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// y_min 3.2, y_max 9.1</span>
 <span class="special">}</span> <span class="comment">// template &lt;class T&gt; int scale_axis  T an STL container: array, vector ...</span>
 </pre>
 <p>
@@ -107,24 +108,24 @@
 </pre>
 <p>
         Construct <code class="computeroutput"><span class="identifier">myplot</span></code> and add
-        at least a title, specify the both x and y axes are to use autoscaling, and
-        add the one data series to be plotted.
+        at least a title, specify the both X and Y axes are to use autoscaling, and
+        add the one data-series to be plotted.
       </p>
 <pre class="programlisting"><span class="identifier">svg_2d_plot</span> <span class="identifier">my_plot</span><span class="special">;</span>
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Autoscale example"</span><span class="special">);</span> <span class="comment">// Add a title.</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Autoscale example 1"</span><span class="special">);</span> <span class="comment">// Add a title.</span>
 <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">xy_autoscale</span><span class="special">(</span><span class="identifier">my_map</span><span class="special">);</span> <span class="comment">// Specify that both x and y axes are to use autoscaling,</span>
 <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_map</span><span class="special">);</span> <span class="comment">// Add the one data series to be plotted</span>
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./auto_2d_plot.svg"</span><span class="special">);</span> <span class="comment">// And write the SVG image to a file.</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./auto_2d_plot_1.svg"</span><span class="special">);</span> <span class="comment">// And write the SVG image to a file.</span>
 </pre>
 <p>
-        We can show the ranges chosen by autoscaling;
+        We can show the ranges used by autoscaling;
       </p>
-<pre class="programlisting"><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"X min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">x_range</span><span class="special">().</span><span class="identifier">first</span> <span class="special">&lt;&lt;</span> <span class="string">", X max "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">x_range</span><span class="special">().</span><span class="identifier">second</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Y min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">y_range</span><span class="special">().</span><span class="identifier">first</span> <span class="special">&lt;&lt;</span> <span class="string">", Y max "</span>  <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">y_range</span><span class="special">().</span><span class="identifier">second</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"X min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">x_range</span><span class="special">().</span><span class="identifier">first</span> <span class="special">&lt;&lt;</span> <span class="string">", X max "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">x_range</span><span class="special">().</span><span class="identifier">second</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Y min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">y_range</span><span class="special">().</span><span class="identifier">first</span> <span class="special">&lt;&lt;</span> <span class="string">", Y max "</span>  <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">y_range</span><span class="special">().</span><span class="identifier">second</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
 </pre>
 <p>
         Had we know that there were no 'at limits' values, we could have chosen to
-        skip the checks. This might be important for speed if there were thousands
+        skip the checks. This might be important for speed if there are thousands
         of data values.
       </p>
 <pre class="programlisting"><span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">autoscale_check_limits</span><span class="special">(</span><span class="keyword">false</span><span class="special">);</span>  <span class="comment">// Skip checks for speed.</span>
@@ -134,18 +135,25 @@
         or NaNs. We could also chose to autoscale either of the axes separately,
         for example:
       </p>
-<pre class="programlisting"><span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">y_autoscale</span><span class="special">(</span><span class="number">0.4</span><span class="special">,</span> <span class="number">9.3</span><span class="special">);</span> <span class="comment">// autoscale using two doubles.</span>
+<p>
+        But we might consider the Y-axis range of 3 to 10 a little ugly? so instead
+      </p>
+<pre class="programlisting"><span class="identifier">svg_2d_plot</span> <span class="identifier">my_plot_2</span><span class="special">;</span>
+<span class="identifier">my_plot_2</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Autoscale example 2"</span><span class="special">);</span> <span class="comment">// Add a title.</span>
+<span class="identifier">my_plot_2</span><span class="special">.</span><span class="identifier">xy_autoscale</span><span class="special">(</span><span class="identifier">my_map</span><span class="special">);</span> <span class="comment">// Specify that both x and y axes are to use autoscaling.</span>
+<span class="identifier">my_plot_2</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_map</span><span class="special">);</span> <span class="comment">// Add the one data series to be plotted.</span>
 </pre>
 <p>
-        which will chose a neater scale from 0 to 10 for the Y axis.
+        and specify:
       </p>
-<pre class="programlisting"><span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./auto_2d_plot2.svg"</span><span class="special">);</span> <span class="comment">// And write another SVG image to a file.</span>
+<pre class="programlisting"><span class="identifier">my_plot_2</span><span class="special">.</span><span class="identifier">y_autoscale</span><span class="special">(</span><span class="number">0.4</span><span class="special">,</span> <span class="number">9.3</span><span class="special">);</span> <span class="comment">// autoscale using two doubles.</span>
 </pre>
 <p>
-        We can show the ranges chosen by autoscaling;
+        which will chose a neater scale range from 0 to 10 for the Y axis. It is
+        also possible to fully control the factors used by autoscaling with function
+        @c scale_axis. For examples, see \example\demo_1d_axis_scaling.cpp
       </p>
-<pre class="programlisting"><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"X min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">x_range</span><span class="special">().</span><span class="identifier">first</span> <span class="special">&lt;&lt;</span> <span class="string">", X max "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">x_range</span><span class="special">().</span><span class="identifier">second</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Y min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">y_range</span><span class="special">().</span><span class="identifier">first</span> <span class="special">&lt;&lt;</span> <span class="string">", Y max "</span>  <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">y_range</span><span class="special">().</span><span class="identifier">second</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<pre class="programlisting"><span class="identifier">my_plot_2</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./auto_2d_plot_2.svg"</span><span class="special">);</span> <span class="comment">// And write another SVG image to another file.</span>
 </pre>
 <pre class="programlisting"><span class="identifier">Output</span><span class="special">:</span>
 

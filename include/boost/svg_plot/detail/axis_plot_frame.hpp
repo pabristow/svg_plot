@@ -2049,7 +2049,7 @@ namespace boost
       g_element* g_inner_ptr = g_ptr;
       g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Write legend-title text into legend box.
 
-      // Show any point-marker, any line, & any text info for each of the data-series.
+      // Show any data-point-marker, any line, & any text info for each of the data-series.
       for(unsigned int i = 0; i != derived().serieses_.size(); ++i)
       { 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
@@ -2082,7 +2082,7 @@ namespace boost
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "g_inner_ptr.style() = " << g_inner_ptr->style() << std::endl;
-       // Ouytputs g_inner_ptr.style() = svg_style(RGB(255,255,255), RGB(0,128,0), 2, fill_on, stroke_on, width_on)
+       // Outputs g_inner_ptr.style() = svg_style(RGB(255,255,255), RGB(0,128,0), 2, fill_on, stroke_on, width_on)
 
     //std::cout << "g_inner_ptr.style().stroke_color() " << g_inner_ptr->style() << std::endl;
     //std::cout << "g_inner_ptr.style().font_size() " << g_inner_ptr->style().font_size() << std::endl;
@@ -2090,27 +2090,29 @@ namespace boost
     //std::cout << "g_inner_ptr.style().fill_color() " << g_inner_ptr->style().fill_color_ << std::endl;
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
         plot_point_style& point_style = derived().serieses_[i].point_style_;
+        std::cout << " point_style = derived().serieses_[i].point_style_ = " << point_style << std::endl;
+// point_style  = plot_point_style(1, RGB(255,0,0), RGB(0,128,0), 30, , text_style(14, "Lucida Sans Unicode", "", "", "", ""), 0, 0)
 
         if(point_style.shape_ != none)
         { // Is some data-point marker shape to show in legend box.
-          // ellipse is special case to show uncertainty of data-point.
+          // (Ellipse is special case to show uncertainty of data-point).
           bool was_unc_ellipse = false;
           if (point_style.shape_ == unc_ellipse)
           {  // Problem here with unc_ellipse with calculation of a suitable size
-              // and also, more fundamentally, the legend box overwrites the PLOT_DATA_UNC layers,
+             // and also, more fundamentally, the legend box overwrites the PLOT_DATA_UNC layers,
             point_style.shape_ =  egg; // so as a hack, use a Unicode egg instead. 2B2C to 2B2F
             was_unc_ellipse = true; // Note so can restore after showing circle.
           }
 
-          // Show a SVG plot point like star, circlet ...
+          // Show a SVG plot data-point-marker like star, circlet ...
           draw_plot_point(
             legend_x_pos,
-            legend_y_pos - point_style.size_ / 5, // Move up a bit of a data-marker font-size to align with text.
+            legend_y_pos - point_style.size_ / 5, // Move up a bit of a data-point-marker font-size to align with text.
             *g_inner_ptr,
             point_style,
-            unc<false>(), unc<false>());  // X and Y position.
+            unc<false>(), unc<false>());  // X and Y positions.
             // was derived().serieses_[i].point_style_, unc(0.), unc(0.));
-          legend_x_pos += derived().horizontal_marker_spacing_ * 2; // Trailing space after point-marker.
+          legend_x_pos += derived().horizontal_marker_spacing_ * 1.5; // Trailing space after data-point-marker. ? 
 
           if (was_unc_ellipse)
           { // Restore from using egg (or the data-points won't use the unc_ellipse!)
@@ -2121,9 +2123,9 @@ namespace boost
         { // Other data-series have a point marker (but not this one).
           if (derived().is_a_point_marker_ == true)
           {
-            legend_x_pos += derived().horizontal_marker_spacing_ * 2;  // Leave a space where marker would be.
+            legend_x_pos += derived().horizontal_marker_spacing_ * 1.5;  // Leave a space where marker would be.? 
           }
-        }
+        } // is a point_style.shape_
 
         // Line markers are only really useful for 2-D lines and curves showing functions.
         if (derived().serieses_[i].line_style_.line_on_ == true) // Line joining points option is true,
@@ -2206,9 +2208,9 @@ namespace boost
               << ", y offset third_height = " << third_height
               << std::endl; 
             // Picks up font size shape(diamond).size(20) correctly here.
-            // point_style.size_ = 14, y offset half_height = 7
+            // point_style.size_ = 30, y offset half_height = 15, y offset third_height = 9.09091
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-            point_style.symbols_style_.font_size(point_style.size_); // Sets plot_point-marker font-size.
+            point_style.symbols_style_.font_size(point_style.size_); // Sets data-point-marker font-size.
 
             //  Want this text_styling, for example:
             //point_style.symbols_style_.font_family("arial");
@@ -2217,23 +2219,23 @@ namespace boost
             //point_style.symbols_style_.font_stretch("wider");
             //point_style.symbols_style_.font_style("italic");
             // and these colors:
-            //point_style.symbols_style_.fill_color(sty.fill_color_); //
-            //point_style.symbols_style_.stroke_color(sty.stroke_color_); //
+          //  point_style.symbols_style_.fill_color(point_style.fill_color_); //
+          //  point_style.symbols_style_.stroke_color(point_style.stroke_color_); // no color only font-size
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
             std::cout << "point style() = "<< point_style.style() << std::endl;
             // Example: point style() = text_style(10, "Lucida Sans Unicode", "", "", "", "")  size is correct here now.
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-            // Whatever shape, text or line, want to use the point style.
+            // Whatever shape, text or line, want to use the point style colors.
             g_ptr.style().stroke_color(point_style.stroke_color_);
             g_ptr.style().fill_color(point_style.fill_color_);
-            g_ptr.style().stroke_color(point_style.stroke_color_);
-            g_ptr.style().fill_color(point_style.fill_color_);
+
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-            std::cout << "plot point marker g_ptr.style() = " << g_ptr.style() << std::endl;
-            // g_inner_ptr.style() = svg_style(RGB(255,255,255), RGB(255,0,0), 2, fill, stroke, width)
+            std::cout << "data-point-marker g_ptr.style() = " << g_ptr.style() << std::endl;
+           // plot point marker g_ptr.style() = svg_style(RGB(255,0,0), RGB(0,128,0), 0, stroke_on, fill_on, no width)
+
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-            switch(point_style.shape_) // Chosen from enum point_shape none, round, square, point, egg
+            switch(point_style.shape_) // Chosen from enum point_shape none, round, square, point, egg ...
             {
             case none:
               break; // Nothing to display.
@@ -2340,12 +2342,18 @@ namespace boost
 
             case square:
               g_ptr.text(x, y + third_height, "&#x25A1;", point_style.symbols_style_, center_align, horizontal);
-              // 25A1 white square
+              // 25A1 white center square - need fill version?
               break;
 
-            case circlet: // 25CB WHITE CIRCLE or 25EF large circle
-              g_ptr.text(x, y + third_height, "&#x25CB;", point_style.symbols_style_, center_align, horizontal);
-              // square 25A1  circle 25CB
+            case circlet: // 25CB WHITE CIRCLE or 25EF large white circle 25CF black circle
+              // 25CB WHITE CIRCLE not best Unicode circle - the fill is only the circle, not the white center.
+
+             // g_ptr.text(x, y + third_height, "&#x25CF;", point_style.symbols_style_, center_align, horizontal);
+              point_style.symbols("&#x25CF;");
+              std::cout << "point_style.symbols_style_ = " << point_style.symbols_style_ << std::endl;
+              g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), center_align, horizontal);
+              // symbol(s), size and center.
+
               break;
             case diamond:
               g_ptr.text(x, y + third_height, "&#x2666;", point_style.symbols_style_, center_align, horizontal);
@@ -2404,7 +2412,7 @@ namespace boost
               break;
 
             case cone_point_down: // pointing-down triangle, white centre.
-               g_ptr.text(x, y + third_height, "&#x25BD;", point_style.symbols_style_, center_align, horizontal);
+               g_ptr.text(x, y + third_height, "&#x25BF;", point_style.symbols_style_, center_align, horizontal);
                // https://unicode.org/charts/PDF/U25A0.pdf
                break;
 

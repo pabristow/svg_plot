@@ -63,7 +63,7 @@ namespace svg
 class svg_style; // Holds the basic stroke, fill colors and width, and their switches.
 class text_style; // Text and tspan element's font family, size ...
 class value_style; // data-series point value information, text, color, uncertainty & df, orientation, and textLength.
-class plot_point_style; // Shape, color, (optional value & uncertainty) of data point markers.
+class plot_point_style; // Shape, color, (optional value & uncertainty) of data-point-markers.
 class plot_line_style; // Style of line joining data-series values.
 class axis_line_style; // Style of the x and/or y axes lines. But NOT the ticks and value labels.
 class ticks_labels_style; // Style of the x and y axes ticks, grids and tick value labels.
@@ -295,12 +295,12 @@ public:
          \endcode
      */
       os << "svg_style("
-         << s.fill_ << ", "
          << s.stroke_ << ", "
+         << s.fill_ << ", "
          << s.width_ << ", " // italic
-         << ((s.fill_on_) ? "fill_on, " : "no fill, ")
          << ((s.stroke_on_) ? "stroke_on, " : "no stroke, ")
-         << ((s.fill_on_) ? "width_on)" : "no width)");
+         << ((s.fill_on_) ? "fill_on, " : "no fill, ")
+         << ((s.width_on_) ? "width_on)" : "no width)");
     return os;
   } // std::ostream& operator<<
 
@@ -529,7 +529,6 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
      return weight_;
    }
 
-
   text_style& text_style::font_stretch(const std::string& s)
   {  //! font-stretch:"normal" | "wider" | "narrower"
      //! Examples: @c .font_stretch("wider")
@@ -543,7 +542,6 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
   { //! \return font stretch, for example: "normal" | "wider" | "narrower".
     return stretch_;
   }
-
 
   text_style& text_style::font_decoration(const std::string& s)
   { /*! Set font decoration: "underline" | "overline" | "line-through" ...
@@ -561,7 +559,7 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
     return decoration_;
   }
 
-  // Font-variant-position nornmal, sub and super
+  // Font-variant-position normal, sub and super
   // https://www.w3.org/TR/css-fonts-3/#font-variant-position-prop
   // not implemented, and poorly supported by browsers.
 
@@ -615,7 +613,7 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
     return text_length_; //! \return text_length to be rendered from an estimate of length from number of characters in string.
   }
 
-    // operators needed for testing at least.
+   // operators needed for testing at least.
   bool text_style::operator==(const text_style& ts)
   { //! Compare text_style for equality (needed for testing).
    bool result = (
@@ -648,7 +646,7 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
 
   bool operator==(const text_style& lhs, const text_style& rhs)
   { //! Compare two text_style for equality
-    //! Note operator== and operator << both needed to use Boost.text.
+    //! Note operator== and operator << both needed to use Boost.Test.
     //! (But can be avoided with a macro define).
      return (lhs.font_size_ == rhs.font_size_)
        && (lhs.font_family() == rhs.font_family())
@@ -890,17 +888,16 @@ enum point_shape
   */
 }; // enum point_shape
 
-
 class plot_point_style
 { /*! \class boost::svg::plot_point_style
     \brief Shape, color, and symbol or shape of data point markers.
     \details (optional x and/or y data point value(s) & optional uncertainty).
   */
   friend std::ostream& operator<< (std::ostream&, plot_point_style);
-
- // plot_point_style(const plot_point_style&);  // Copy constructor.
-
 public:
+
+  plot_point_style(const plot_point_style&);  // Copy constructor.
+
   svg_color fill_color_; //!< Fill color of the centre of the shape.
   svg_color stroke_color_; //!< Color of circumference of shape.
   int size_; //!< Diameter of circle, height of square, font_size  ...
@@ -968,18 +965,19 @@ public:
     symbols_style_.font_size(size); // Default size = 5
   }
 
-  ////! plot_point_style Copy constructor.
-  //plot_point_style::plot_point_style(const plot_point_style& rhs)
-  //  :
-  //  stroke_color_(rhs.stroke_color_),
-  //  fill_color_(rhs.fill_color_),
-  //  size_(rhs.size_),
-  //  shape_(rhs.shape_),
-  //  symbols_(rhs.symbols_)
-  //{    // ???
-  //  symbols_style_.font_family("Lucida Sans Unicode");
-  //  symbols_style_.font_size(size_); // Default size = 5
-  //} //
+  //! plot_point_style Copy constructor.
+  plot_point_style::plot_point_style(const plot_point_style& rhs) : 
+    stroke_color_(rhs.stroke_color_),
+    fill_color_(rhs.fill_color_),
+    size_(rhs.size_),
+    shape_(rhs.shape_),
+    symbols_(rhs.symbols_),
+    show_x_value_(rhs.show_x_value_),
+    show_y_value_(rhs.show_y_value_)
+  {    // ??? needed to fix font of data-point-markers?
+    symbols_style_.font_family("Lucida Sans Unicode");
+    symbols_style_.font_size(size_); // 
+  } //
 
 // Member Function Definitions.
 
@@ -1073,8 +1071,17 @@ public:
 //     << ", symbols style: " << p.symbols_style_  // TODO check this works and alter example.
      << ")";
 /*! \details Example: plot_point_style p;  std::cout << p << std::endl;
-   Outputs:  point_style(1, RGB(0,0,0), RGB(0,0,0), 10, X)
+   Outputs: 
+   data-series #3 point_style =
+     plot_point_style(19, RGB(0,128,0), RGB(255,192,203), 30, , 
+     text_style(14, "times new roman", "italic", "bold", "narrow", "underline"),
+     0, 0)
 
+   shape is enum 19 (small point)
+   size is 30 pixels
+   symbols = "" - not using one.
+   symbols_style_  is a text_style but size is not same as symbol?
+   0, 0 x and y values are not shown.
 */
 return os;
 } // std::ostream& operator<<

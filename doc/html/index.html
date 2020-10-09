@@ -163,14 +163,38 @@
       and other notes</a></span></dt>
 </dl></dd>
 <dt><span class="section"><a href="svg_plot/todo.html">To Do List</a></span></dt>
+<dt><span class="section"><a href="svg_plot/diagnostics.html">Diagnostic tools</a></span></dt>
 <dt><span class="section"><a href="svg_plot/acknowledgements.html">Acknowledgements</a></span></dt>
-<dt><span class="section"><a href="index/s15.html">Class Index</a></span></dt>
-<dt><span class="section"><a href="index/s16.html">Function Index</a></span></dt>
-<dt><span class="section"><a href="index/s17.html">Macro Index</a></span></dt>
-<dt><span class="section"><a href="index/s18.html">typedef Index</a></span></dt>
-<dt><span class="section"><a href="index/s19.html">Index</a></span></dt>
+<dt><span class="section"><a href="index/s16.html">Class Index</a></span></dt>
+<dt><span class="section"><a href="index/s17.html">Function Index</a></span></dt>
+<dt><span class="section"><a href="index/s18.html">Macro Index</a></span></dt>
+<dt><span class="section"><a href="index/s19.html">typedef Index</a></span></dt>
+<dt><span class="section"><a href="index/s20.html">Index</a></span></dt>
 </dl>
 </div>
+<p>
+    During development a optional display code has been added. In extremis, users
+    may find them useful.
+  </p>
+<p>
+    The following macros will, if defined, create (often much) output:
+  </p>
+<p>
+    BOOST_SVG_LEGEND_DIAGNOSTICS BOOST_SVG_POINT_DIAGNOSTICS BOOST_SVG_STYLE_DIAGNOSTICS
+    BOOST_SVG_DIAGNOSTICS
+  </p>
+<p>
+    // Diagnostics output if these are defined. // BOOST_SVG_DIAGNOSTICS // BOOST_SVG_DATA_POINT_DIAGNOSTICS
+  </p>
+<p>
+    // BOOST_SVG_VALUE_DIAGNOSTICS // BOOST_SVG_LEGEND_DIAGNOSTICS // BOOST_SVG_WINDOW_DIAGNOSTICS
+    // BOOST_SVG_AXES_DIAGNOSTICS
+  </p>
+<p>
+    So for example inserting #define BOOST_SVG_LEGEND_DIAGNOSTICS or adding \DBOOST_SVG_LEGEND_DIAGNOSTICS
+    (MSVC) or -DBOOST_SVG_LEGEND_DIAGNOSTICS (Linux) at the head of your test program
+    will produce information about the sizing and layout of any legend box.
+  </p>
 <div class="important"><table border="0" summary="Important">
 <tr>
 <td rowspan="2" align="center" valign="top" width="25"><img alt="[Important]" src="../../../../doc/src/images/important.png"></td>
@@ -195,7 +219,7 @@
 </table></div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
-<td align="left"><p><small>Last revised: September 24, 2020 at 16:29:48 GMT</small></p></td>
+<td align="left"><p><small>Last revised: October 08, 2020 at 15:42:03 GMT</small></p></td>
 <td align="right"><div class="copyright-footer"></div></td>
 </tr></table>
 <hr>

@@ -65,8 +65,18 @@ BOOST_SVG_POINT_DIAGNOSTICS
 BOOST_SVG_STYLE_DIAGNOSTICS
 BOOST_SVG_DIAGNOSTICS
 
+// Diagnostics output if these are defined.
+// BOOST_SVG_DIAGNOSTICS
+// BOOST_SVG_DATA_POINT_DIAGNOSTICS
+
+// BOOST_SVG_VALUE_DIAGNOSTICS
+// BOOST_SVG_LEGEND_DIAGNOSTICS
+// BOOST_SVG_WINDOW_DIAGNOSTICS
+// BOOST_SVG_AXES_DIAGNOSTICS
+
 So for example inserting  
 #define BOOST_SVG_LEGEND_DIAGNOSTICS
+or adding \DBOOST_SVG_LEGEND_DIAGNOSTICS (MSVC) or -DBOOST_SVG_LEGEND_DIAGNOSTICS (Linux)
 at the head of your test program will produce information about the sizing and layout of any legend box.
 
 [section:diagnostics Diagnostic tools]

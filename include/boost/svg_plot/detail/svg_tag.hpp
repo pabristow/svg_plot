@@ -2136,7 +2136,7 @@ public:
     // svg::text constructor with defaults. 
     text_element& text(double x = 0., double y = 0.,
     const std::string& text = "", // Text string to display.
-    const text_style& style = no_style, // default to use SVG implementation's defaults for font family, size.
+    const text_style& style = no_style, // Default to use SVG implementation's defaults for font family, size.
     const align_style& align = left_align,
     const rotate_style& rotate = horizontal)
     { //! Add a new text element.

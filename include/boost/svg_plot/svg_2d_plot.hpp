@@ -348,7 +348,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
   }
 
   plot_point_style svg_2d_plot_series::point_style()
-  { //! \return Point style for data point marker(s).
+  { //! \return Point style for data-point-marker(s).
     return point_style_;
   }
 
