@@ -2047,7 +2047,7 @@ namespace boost
 
       g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Prepare to write data-point-marker, line and description-text into legend-box.
       g_element* g_inner_ptr = g_ptr;
-      g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Write legend-title text into legend box.
+      //g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Write legend-title text into legend box.
 
       // Show any data-point-marker, any line, & any text info for each of the data-series.
       for(unsigned int i = 0; i != derived().serieses_.size(); ++i)
@@ -2123,7 +2123,7 @@ namespace boost
         { // Other data-series have a point marker (but not this one).
           if (derived().is_a_point_marker_ == true)
           {
-            legend_x_pos += derived().horizontal_marker_spacing_ * 1.5;  // Leave a space where marker would be.? 
+            legend_x_pos += derived().horizontal_marker_spacing_ * 1.5;  // Leave a space where marker would be? 
           }
         } // is a point_style.shape_
 
@@ -2132,6 +2132,7 @@ namespace boost
         { // so need to draw a short line to show color for line joining points for that data-series.
           // derived().legend_lines_ = true; // Some line is drawn for at least one data-series.
           // Better - this should be set during the legend box sizing?
+
          if (derived().serieses_[i].line_style_.line_on_ || derived().serieses_[i].line_style_.bezier_on_)
           { // Use stroke color from line style.
             g_inner_ptr->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_);
@@ -2158,6 +2159,8 @@ namespace boost
             legend_x_pos += derived().horizontal_title_spacing_; // & a space.
           }
         } // line_on == true
+
+      //  g_element* g_inner_ptr = g_ptr;
 
         // Legend text for each data-series added to the plot.
         if (derived().is_a_data_series_text_)
