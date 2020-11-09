@@ -2036,7 +2036,6 @@ public:
       for grouping together related graphics elements).\n
       See http://www.w3.org/TR/SVG/struct.html#NewDocument 5.2.1 Overview.
 
-
       'g' element is a container element for grouping together \verbatim <g /> </g>\endverbatim
       related graphics elements, for example, an image background rectangle with border and fill:
       \verbatim <g id="background" fill="rgb(255,255,255)"><rect width="500" height="350"/></g>

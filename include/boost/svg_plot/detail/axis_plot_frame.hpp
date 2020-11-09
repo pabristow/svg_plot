@@ -1594,9 +1594,11 @@ namespace boost
       // Line marker has small height compared to any font, so ignore any lines in max height calculation.
 
       derived().biggest_point_marker_font_size_ = derived().legend_text_font_size(); 
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
       // Assume data-series-descriptor text font-size until a bigger data-series point marker symbol is found.
       std::cout << "Assume text font derived().biggest_point_marker_font_size_ = legend_text_font_size() = " 
         << derived().biggest_point_marker_font_size_ << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
       // Get biggest data-point marker-symbol size in any series 
       // to get minimum vertical spacing between data-series info lines.
@@ -1611,11 +1613,16 @@ namespace boost
         { // Some data-point marker.
           derived().is_a_point_marker_ = true; // So will need to provide a space for any other series *without a point marker*.
           point_size = derived().serieses_[i].point_style_.size_; //
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
           std::cout << "point size series #" << i << ", size " << point_size << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
+
           if (point_size > derived().biggest_point_marker_font_size_)
           {
             derived().biggest_point_marker_font_size_ = point_size;
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
             std::cout << "New biggest point-size series #" << i << ", point_size " << point_size << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
           }
         } // if shape != none
 
@@ -1689,7 +1696,9 @@ namespace boost
      // X-Axis Compute the width of the longest data-series marker and/or line and/or text-description.
       // Compute width of title line SVG length of legend_title.
       double title_width = string_svg_length(derived().legend_title_.text(), derived().legend_title_style_);
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
       std::cout << "Legend title string_svg_length = " <<  title_width << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
       title_width += derived().horizontal_title_spacing_;  // Space before first item: point-marker, line or text.
 //      title_width += derived().horizontal_title_spacing_; // 
 
@@ -1727,7 +1736,10 @@ namespace boost
       {
         use_legend_title_width = false;
         derived().legend_widest_line_ =  text_width;
-        std::cout << "Using text_width " << text_width << " rather than title width " << title_width << std::endl;
+
+ #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+       std::cout << "Using text_width " << text_width << " rather than title width " << title_width << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
       }
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
@@ -2034,8 +2046,10 @@ namespace boost
         derived().legend_title_.y(legend_y_pos);
         // Try to ensure it uses the right font and size.
         derived().legend_title_.textstyle(derived().legend_title_style_);
+#ifdef  BOOST_SVG_LEGEND_DIAGNOSTICS
         std::cout << "derived().legend_title_.textstyle() = "  << derived().legend_title_.textstyle() << std::endl;
         // derived().legend_title_.textstyle() = text_style(8, "Lucida Sans Unicode", "", "normal", "", """, 193.6)
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
         derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_title_));
         // This uses the default legend_title font_size
@@ -2083,15 +2097,17 @@ namespace boost
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "g_inner_ptr.style() = " << g_inner_ptr->style() << std::endl;
        // Outputs g_inner_ptr.style() = svg_style(RGB(255,255,255), RGB(0,128,0), 2, fill_on, stroke_on, width_on)
+#endif //BOOST_SVG_POINT_DIAGNOSTICS
 
     //std::cout << "g_inner_ptr.style().stroke_color() " << g_inner_ptr->style() << std::endl;
     //std::cout << "g_inner_ptr.style().font_size() " << g_inner_ptr->style().font_size() << std::endl;
     //std::cout << "g_inner_ptr.style().stroke_color() " << g_inner_ptr->style().stroke_color_ << std::endl;
     //std::cout << "g_inner_ptr.style().fill_color() " << g_inner_ptr->style().fill_color_ << std::endl;
-#endif //BOOST_SVG_POINT_DIAGNOSTICS
         plot_point_style& point_style = derived().serieses_[i].point_style_;
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << " point_style = derived().serieses_[i].point_style_ = " << point_style << std::endl;
 // point_style  = plot_point_style(1, RGB(255,0,0), RGB(0,128,0), 30, , text_style(14, "Lucida Sans Unicode", "", "", "", ""), 0, 0)
+#endif //BOOST_SVG_POINT_DIAGNOSTICS
 
         if(point_style.shape_ != none)
         { // Is some data-point marker shape to show in legend box.
@@ -2353,7 +2369,9 @@ namespace boost
 
              // g_ptr.text(x, y + third_height, "&#x25CF;", point_style.symbols_style_, center_align, horizontal);
               point_style.symbols("&#x25CF;");
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
               std::cout << "point_style.symbols_style_ = " << point_style.symbols_style_ << std::endl;
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
               g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), center_align, horizontal);
               // symbol(s), size and center.
 

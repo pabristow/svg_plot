@@ -10,7 +10,7 @@
 // (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-#define BOOST_SVG_LEGEND_DIAGNOSTICS
+//#define BOOST_SVG_LEGEND_DIAGNOSTICS
 // I:\Cpp\SVG_plot\svg_plot\2d_simple\x64\Release\2d_simple.log
 
 #include <boost/cstdlib.hpp> // Boost exit_success and failure values.

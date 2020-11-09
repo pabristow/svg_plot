@@ -1955,8 +1955,8 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         if (series.series_.size() < 2)
         { // Need at least two points for a line joining them.
-          std::cout << "Only " << series.series_.size() << " points in series " << series.title_ << ", so no line drawn!" << std::endl;
-          // Also need two point  *inside window*, but that is checked later.
+          std::cout << "Only " << series.series_.size() << " point in series " << series.title_ << ", so no line drawn!" << std::endl;
+          // Also need two points  *inside window*, but that is checked later.
         }
         else
         {

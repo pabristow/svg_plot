@@ -56,6 +56,8 @@ options to control features have been added.
 
 [endsect] [/section:todo To Do]
 
+[section:diagnostics Diagnostic tools]
+
 During development a optional display code has been added.  In extremis, users may find them useful.
 
 The following macros will, if defined, create (often much) output:
@@ -79,7 +81,6 @@ So for example inserting
 or adding \DBOOST_SVG_LEGEND_DIAGNOSTICS (MSVC) or -DBOOST_SVG_LEGEND_DIAGNOSTICS (Linux)
 at the head of your test program will produce information about the sizing and layout of any legend box.
 
-[section:diagnostics Diagnostic tools]
 
 [endsect] [/section:diagnostics Diagnostic tools]
 

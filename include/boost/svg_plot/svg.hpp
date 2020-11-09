@@ -222,19 +222,15 @@ namespace svg
 \endverbatim
 \n
 \verbatim
-
       <!-- Boost Software License, Version 1.0.-->
 \endverbatim
 \n
 \verbatim
-
       <!-- (See accompanying file LICENSE_1_0.txt -->
 \endverbatim
 \n
 \verbatim
-
       <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) -->
-
 \endverbatim
 
 */
@@ -791,9 +787,9 @@ public:
     return filename_;
   }
 
-  // ------------------------------------------------------------------------
+  // ------------------------------------------------------------------------------
   // Add (push_back) information about line, rec, circle & ellipse to the document.
-  // ------------------------------------------------------------------------
+  // ------------------------------------------------------------------------------
 
   line_element& line(double x1, double y1, double x2, double y2)
   { //! Add (push_back) information about a line to the document.
