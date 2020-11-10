@@ -1940,6 +1940,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         g_ptr.style().stroke_color(series.line_style_.stroke_color_);
         g_ptr.style().fill_color(series.line_style_.area_fill_); // Now set in path below too.
         g_ptr.style().stroke_width(series.line_style_.width_);
+
         path_element& path = g_ptr.path();
         path.style().fill_color(series.line_style_.area_fill_);
         bool is_fill = !series.line_style_.area_fill_.is_blank();

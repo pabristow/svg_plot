@@ -149,6 +149,7 @@ namespace boost
         // Protected (?) Member Functions Declarations (defined below):
 //! \cond DETAIL
 
+        // Forward declarations.
          void transform_point(double &x, double &y); // Scale & shift both X & Y to graph Cartesian coordinates.
          void transform_x(double &x); // Scale & shift both X to graph Cartesian coordinates.
          void transform_y(double &y); // Scale & shift both Y to graph Cartesian coordinates.
@@ -161,9 +162,11 @@ namespace boost
          void draw_title();
          void adjust_limits(double& x, double& y);
          void draw_x_axis_label();
-         void draw_plot_point(double x, double y, g_element& g_ptr, const plot_point_style& sty);
+        // void draw_plot_point(double x, double y, g_element& g_ptr, const plot_point_style& sty); // No X and Y uncertainty info.
+         // Might be better to split the code to provide this simple case of just markers?
          void draw_plot_point(double x, double y, g_element& g_ptr, plot_point_style& sty, unc<false> ux, unc<false> uy);
          void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, Meas uvalue);
+         // Might provide explicit code to match this specification?
          void draw_plot_point_values(double x, double y, g_element& x_g_ptr, g_element& y_g_ptr, const value_style& x_sty, const value_style& y_sty, Meas uncx, Meas uncy);
          void draw_plot_point_values(double x, double y, g_element& x_g_ptr, g_element& y_g_ptr, const value_style& x_sty, const value_style& y_sty, Meas uncx, unc<false> uncy);
 
@@ -173,7 +176,7 @@ namespace boost
               When writing to multiple documents, the contents of the plot
               may change significantly between. Rather than figuring out what
               has and has not changed, just erase the contents of the
-              legend, title... in the document and start over.
+              legend, title ... in the document and start over.
         */
          void clear_all(); // Calls all the other clear_* functions.
 
@@ -190,8 +193,6 @@ namespace boost
 //! \endcond
 
   public: // Could be private but benefits unclear?
-
-//        private:
           Derived& derived()
           { //! Uses Curiously Recurring Template Pattern to allow 1D and 2D to reuse common code.
             //! See http://en.wikipedia.org/wiki/Curiously_Recurring_Template_Pattern .
@@ -1951,7 +1952,7 @@ namespace boost
         } // if legend_on_
       } //  void place_legend_box()
 
-//! *************************************************************************************
+// *************************************************************************************
     //! Draw the legend box, border and background,
     //! (using the size and position computed by function @c size_legend_box),
     //! and legend-title (if any and if required),
@@ -2617,7 +2618,7 @@ namespace boost
             // Spaces seem to get lost, so use 00A0 as an explicit space glyph.
             // Layout seems to vary with font - Times New Roman leaves no space after.
             //text_element& t = g_ptr.text(x, y, label_v, val_style.values_text_style_, al, rot);
-           // Optionally, show std_dev as 95% confidence plus minus:  2.1 +-0.012 (23)
+            // Optionally, show std_dev as 95% confidence plus minus:  2.1 +-0.012 (23)
 
             // Extra info from Meas.
             using boost::posix_time::ptime;

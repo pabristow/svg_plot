@@ -50,22 +50,30 @@ namespace boxplot
     DATA_VALUE_LABELS, //!< Data values labels group element.
     PLOT_TITLE, //!< Whole plot title text group element.
     PLOT_NOTES, //!< Free text and shapes to annotate diagram.
-    BOXPLOT_DOC_CHILDREN
+    BOXPLOT_DOC_CHILDREN // 22 items
   };
 
   //! String descriptors used in SVG XML (matching enum boxplot_doc_structure).
-  std::string document_ids_[] =
+  std::string document_ids_[22] =
   {
       "imageBackground", //< the whole svg image.
       "plotBackground", //< the smaller plot window (if used).
-      "X-axis", "Y-axis",
+      "X-axis",
+      "Y-axis",
       "xMajorTicks", // Probably not used for Boxplots.
-      "yMajorTicks", "yMinorTicks",
-      "YGrid", "yMinorGrid",
+      "yMajorTicks",
+      "yMinorTicks",
+      "YGrid",
+      "yMinorGrid",
       "valueLabels", // tick Value Labels
-      "yLabel", "xLabel",  // axis text labels "length (cm)"
-      "boxAxis", "Box", // vertical Box axis line and box.
-      "Median", "whisker", "mild_outliers", "extreme_outliers",
+      "yLabel",
+      "xLabel",  // axis text labels "length (cm)"
+      "boxAxis",
+      "Box", // vertical Box axis line and box.
+      "Median",
+      "whisker",
+      "mild_outliers",
+      "extreme_outliers",
       "Data Values",
       "title",  // of the whole plot.
       "plotNotes", // Free text and shapes to annotate diagram.

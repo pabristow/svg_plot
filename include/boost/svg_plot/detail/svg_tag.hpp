@@ -1,16 +1,13 @@
 /*! \file
-
-   \brief Boost.Plot SVG plot Implemention details.
+   \brief Boost.Plot SVG plot Implementation details.
    \details See svg.hpp etc for user functions.
       svg_tag.hpp defines all classes that can occur in the SVG parse tree.
-
-   \author Jacob Voytko and Paul A. Bristow
 */
 
 // svg_tag.hpp
 
 // Copyright Jacob Voytko 2007, 2008
-// Copyright Paul A Bristow 2007, 2008, 2009, 2012
+// Copyright Paul A Bristow 2007, 2008, 2009, 2012, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -26,7 +23,7 @@
 // using boost::array;
 
 #include "../svg_style.hpp"
-#include "svg_style_detail.hpp"
+#include "svg_style_detail.hpp" // 
 
 #include <ostream>
 // using std::ostream;
@@ -43,7 +40,7 @@ namespace svg
   // Also copied to svg_fwd.hpp.
 
   class svg_element; // svg_element is base class for:
-  // g_element (group element)
+  // g_element (group element),
   // rect_element, circle_element, line_element, text_element,
   // polyline_element, polygon_element, path_element, clip_path_element,
   class text_parent; // Ancestor to both tspan and strings for the text_element class.
@@ -71,11 +68,9 @@ namespace svg
   struct t_path; // Draws a quadratic Bezier curve from the current point to (x,y).
   struct a_path; // Draws a elliptical arc from the current point to (x,y).
   struct P_path; // Adds another (absolute) point to a polyline or polygon.
-  class g_element; /*! \verbatim
-  'g' element is a container element, <g ... /> </g>
-  for grouping together related graphics elements, for example:
+  class g_element; /* 
+  'g' element is a container element, for grouping together related graphics elements, for example:
    <g stroke="rgb(255,0,0)" <rect x="0" y="0"  width="500"  height="600"/> </g>
-   \endverbatim
    */
 
   class svg_element
@@ -85,10 +80,6 @@ namespace svg
        rect_element, circle_element, line_element, text_element,
        polygon_element, polyline_element, path_element, clip_path_element,
        g_element.\n
-
-       g_element ('g' element is a container element
-       for grouping together related graphics elements).\n
-       See http://www.w3.org/TR/SVG/struct.html#NewDocument 5.2.1 Overview.
     */
 
   protected:
@@ -114,7 +105,7 @@ namespace svg
       }
       // should transform be here allow translate and rotate?
       /*! \details
-        Classes inherited from svg_element add other references, 5.3.1, like color, fill, stroke, gradients...
+        Classes inherited from svg_element add other references, see section 5.3.1, like color, fill, stroke, gradients...
         */
       /*
         \verbatim
@@ -1516,18 +1507,18 @@ public:
   {  /*! \class boost::svg::path_element
      \brief Path element holds places on a path used by move, line ...
      \details
-     http://www.w3.org/TR/SVG/paths.html#PathElement
+     \sa http://www.w3.org/TR/SVG/paths.html#PathElement
      8.3.1 General information about path data.
-     A path is defined by including a 'path'  element
+     A path is defined by including a 'path' element
      which contains a d="(path data)"  attribute,
      where the d attribute contains the moveto, line, curve
      (both cubic and quadratic Beziers), arc and closepath instructions.
      */
-  public: //temporary for experimental gil
-//  private:
-    ptr_vector<path_point> path; //!< All the (x, y) coordinate pairs,
-    //!< filled by calls of m, M, l , L... that push_back.
+  public:
     // bool fill; now inherited from parent svg class.
+
+    ptr_vector<path_point> path; //!< All the (x, y) coordinate pairs,
+    //!< filled by repeated chained calls of functions m, M, l , L... that are push_backed.
 
     path_element(const path_element& rhs)
     { //! Copy constructor.
@@ -1562,7 +1553,7 @@ public:
     // my_path.M(3, 3).l(150, 150).l(200, 200)...;
 
     // Note 2: By convention:
-    // lower case (like m call m_path(x, y, true) for relative
+    // lower case (like m call m_path(x, y, true) for relative,
     // but upper case (like M) calls m_path(x, y, false) for absolute.
 
     path_element& m(double x, double y)
@@ -1585,7 +1576,8 @@ public:
 
     path_element& Z()
     { //! Path end. Note Upper case Z also provided for compatibility with
-      //! http://www.w3.org/TR/SVG/paths.html#PathDataClosePathCommand 8.3.3 which allows either case.
+      //! http://www.w3.org/TR/SVG/paths.html#PathDataClosePathCommand 8.3.3 
+      //! which allows either case.
       path.push_back(new z_path());
       return *this; //! \return path_element& to make chainable.
     }
@@ -1675,7 +1667,7 @@ public:
     }
 
     void write(std::ostream& o_str)
-    { //! Write SVG path command.
+    { //! Write a SVG path command to an @c std::ostream.
       //! Example: \verbatim <path d="M5,175 L5,195 M148.571,175" /> \endverbatim
       if (path.begin() != path.end() )
       { // Is some path info (trying to avoid useless <path d=""/>"
@@ -1687,7 +1679,7 @@ public:
         }
         o_str << "\"";
 
-        write_attributes(o_str); // id & clip_path
+        write_attributes(o_str); // id & clip_path.
         style_info_.write(o_str); // fill, stroke, width...
 
         // line above should write fill = "none" that
@@ -1699,7 +1691,6 @@ public:
         }
         o_str<<"/>"; // closing to match <path d=
       }
-
     } // void write(std::ostream& o_str)
   }; // class path_element
 
@@ -1710,12 +1701,12 @@ public:
       */
     double x; //!< polygon or polyline path point X SVG coordinate.
     double y; //!< polygon or polyline path point Y SVG coordinate.
-    // Polygon & polyline points are always absolute, never relative,
+    // Polygon & polyline points are @b always absolute, never relative,
     // and values have no preceeding letter like M or L,
-    // So NOT derived from path_point.
+    // So @c poly_path_point is NOT derived from @c path_point.
 
     void write(std::ostream& o_str)
-    { //! Output SVG XML,
+    { //! Output poly_path_point as SVG XML,
       //! Example: " 250,180"
       //! Leading space is redundant for 1st after "points= ",
       //! but others are separators, and arkward to know which is 1st.
@@ -1727,9 +1718,8 @@ public:
     { //! Construct a polygon or polyline path point from X and Y SVG coordinate.
     }
 
-    poly_path_point()
-      : x(0.), y(0.)
-    { //! Default constructor.
+    poly_path_point() : x(0.), y(0.)
+    { //! Default constructor places point at SVG origin (top left).
     }
 
   }; // struct poly_path_point
@@ -1913,16 +1903,17 @@ public:
   }; // class polygon_element
 
   std::ostream& operator<< (std::ostream& os, polygon_element& p)
-  { /*! Output poly_path_ points (May be useful  for Boost.Test).
+  { /*! Output all poly_path_ points (May be useful for Boost.Test).
         ptr_vector<poly_path_point> poly_points; All the x, y coordinate pairs,
-        Usage:  polygon_element p(1, 2, 3, 4, 5, 6);
-        cout << p << endl;
+        Example: \code polygon_element p(1, 2, 3, 4, 5, 6);
+        std::cout << p << std::endl;
+        /endcode
         Outputs: (1, 2)(3, 4)(5, 6)
     */
     for(ptr_vector<poly_path_point>::iterator i = p.poly_points.begin(); i != p.poly_points.end(); ++i)
     {
       os << (*i); //  x, y coordinates as " (1, 2)(3, 4)..."
-      // using os << "(" << p.x << ", " << p.y  << ")" ;
+      // Uses \code  os << "(" << p.x << ", " << p.y  << ")" ; \endcode
     }
     return os;
   } // std::ostream& operator<<
@@ -1946,30 +1937,29 @@ public:
      */
   friend std::ostream& operator<< (std::ostream&, polyline_element&);
 
-   public: //temporary for experimental gil
-// private:
+   public: 
+// private: // has little advantage?
     ptr_vector<poly_path_point> poly_points; //!< All the (x, y) coordinate pairs,
     // push_back by calls of p_path(x, y).
-  public:
     //bool fill; // not needed for polyline, unlike polygon.
 
     polyline_element(const polyline_element& rhs)
-    { //! copy constructor.
+    { //! Copy constructor.
       poly_points = (const_cast<polyline_element&>(rhs)).poly_points.release();
     }
 
     polyline_element()
     { //! Construct an 'empty' line.
-      //! Can new line path points add using polyline_element member function P.
+      //! Can new line path points add using polyline_element member function P(x, y).
     }
 
     polyline_element (double x1, double y1)
-    { //! One (x, y) path point, absolute only.
+    { //! Constructor from one (x, y) path point, absolute only.
       poly_points.push_back(new poly_path_point(x1, y1));
     }
 
     polyline_element (double x1, double y1, double x2, double y2)
-    { //! Two (x, y) path points, absolute only.
+    { //! Constructor from  Two (x, y) path points, absolute only.
       poly_points.push_back(new poly_path_point(x1, y1));
       poly_points.push_back(new poly_path_point(x2, y2));
     }
@@ -2010,35 +2000,41 @@ public:
   }; // class polyline_element
 
   std::ostream& operator<< (std::ostream& os, polyline_element& p)
-  { /*! \verbatim
-         Output polyline info (useful for Boost.Test).
-         Example: <polyline points=" 100,100 200,100 300,200 400,400"/>
+  { /*! 
+     Output polyline info (useful for Boost.Test).
+      \verbatim
+         Example: <polyline points=" 100,100  200,100  300,200  400,400"/>
          ptr_vector<poly_path_point> poly_points; // All the x, y coordinate pairs.
-        \endverbatim
-      */
+      \endverbatim
+    */
     for(ptr_vector<poly_path_point>::iterator i = p.poly_points.begin(); i != p.poly_points.end(); ++i)
     {
       os << (*i); //  x, y coordinates as " (1, 2)(3, 4)..."
       // using os << "(" << p.x << ", " << p.y  << ")" ;
     }
     // Usage:  polyline_element p(1, 2, 3, 4, 5, 6);
-    // cout << p << endl;
+    // std::cout << p << std::endl;
     // Outputs: (1, 2)(3, 4)(5, 6)
     return os;
   } // std::ostream& operator<<
 
-
   class g_element: public svg_element
   { /*! \class boost::svg::g_element
       \brief g_element (group element) is the node element of our document tree.
-      'g' element is a container element for grouping together:  \verbatim  <g> ... </g>  \endverbatim
-      \details g_element ('g' element is a container element
-      for grouping together related graphics elements).\n
-      See http://www.w3.org/TR/SVG/struct.html#NewDocument 5.2.1 Overview.
 
-      'g' element is a container element for grouping together \verbatim <g /> </g>\endverbatim
-      related graphics elements, for example, an image background rectangle with border and fill:
-      \verbatim <g id="background" fill="rgb(255,255,255)"><rect width="500" height="350"/></g>
+     g_element is a container element for grouping together related graphics elements).\n
+     See https://www.w3.org/TR/SVG/struct.html#Groups 5.2.1 Overview.
+     Container element is an element which can have graphics elements and other container elements as child elements. 
+     Container elements are: a, clipPath, defs, @b g, marker, mask, pattern, svg, switch, symbol, and unknown.
+
+     A group of elements, as well as individual objects, can be given a name using the @b id attribute.
+     All g_elements should include an id as a string like id="background", or a macro defined in 
+       ../include/boost/svg_plot/detail/svg_style_detail.hpp
+      to index @c std::string @c document_ids_ 
+
+      For example, an image background rectangle with border and fill:
+      \verbatim 
+         <g id="background" fill="rgb(255,255,255)"><rect width="500" height="350"/></g>
       \endverbatim
    */
   public: // Simplest, private has little benefit.
@@ -2048,7 +2044,6 @@ public:
     */
     std::string clip_name;  //!< Name of clip path.
     bool clip_on; //!< true if to clip anything outside the clip path.
-  public:
 
     g_element() : clip_on(false)
     { //! Construct g_element (with no clipping).
@@ -2066,20 +2061,18 @@ public:
 
     void write(std::ostream& os)
     { /*! Output all children of a group element.
-    \verbatim
-         Example:
-         <g fill="rgb(255,255,255)" id="background"><rect x="0" y="0" width="500" height="350"/></g>
-         \endverbatim
+        \verbatim
+          Example:
+           <g fill="rgb(255,255,255)" id="background"><rect x="0" y="0" width="500" height="350"/></g>
+        \endverbatim
       */
 
       if (children.size() > 0)
       { /*!
           \verbatim
             Avoid useless output like: <g id="legendBackground"></g>
-            TODO check this doesn't mean that useful style is lost?
-         \endverbatim
+          \endverbatim
         */
-
         os << "<g"; // Do NOT need space if convention is to start following item with space.
         write_attributes(os); // id="background" (or clip_path)
         style_info_.write(os); // stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
