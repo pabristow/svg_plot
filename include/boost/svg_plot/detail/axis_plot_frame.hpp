@@ -93,7 +93,7 @@ namespace boost
       outside_right = +2, //!< Outside right (Default).
       outside_top = +3, //!< Outside at top.
       outside_bottom = +4, //!< Outside at bottom.
-      somewhere = +5 //!< legend_top_left(x, y)
+      somewhere = +5 //!< Use values set by call of legend_top_left(x, y)
     };
 
     namespace detail
@@ -182,7 +182,6 @@ namespace boost
 
          void clear_legend(); //!< Clear the legend layer of the SVG plot.
          void clear_background(); //!< Clear the whole image background layer of the SVG plot.
-
          void clear_x_axis(); //!< Clear the X axis layer of the SVG plot.
          void clear_y_axis(); //! Clear the Y axis layer of the SVG plot.
          void clear_title(); //!< Clear the plot title layer of the SVG plot.
@@ -348,11 +347,6 @@ namespace boost
           Derived& legend_text_font_weight(const std::string& weight);
           const std::string& legend_text_font_weight();
 
-
-          Derived& legend_top_left(double x, double y); //!<  Set position of top left of legend box (svg coordinates, default pixels).
-            //! (Bottom right is controlled by contents, so the user cannot set it).
-          const std::pair<double, double> legend_top_left(); //!<  \return  SVG coordinate (default pixels) of top left of legend box.
-          const std::pair<double, double> legend_bottom_right(); //!<  \return SVG coordinate (default pixels) of bottom right of legend box.
           Derived& legend_lines(bool is); /*!< Set true if legend should include samples of the lines joining data-points.
             This allows different series of data-points to be distinguished by different color and/or width.
             This is especially useful to show plots of different functions and/or different parameters in different colors.
@@ -362,11 +356,18 @@ namespace boost
           bool legend_on(); //!< \return @c true if a legend is wanted.
           Derived& x_axis_vertical(double fraction); //!< Set vertical position of X-axis for 1D as fraction of plot window.
           bool x_axis_vertical(); //!< \return vertical position of X-axis for 1D as fraction of plot window.
-          Derived& legend_place(legend_places l); //!<  Set the position of the legend, \see  boost::svg::legend_places
+          Derived& legend_place(legend_places l); //!<  Set the position of the legend, \see boost::svg::legend_places
           legend_places legend_place(); //!<  \return  the position of the legend, \see  boost::svg::legend_places
-          bool legend_outside(); //!<  \return  if the legend should be outside the plot area.
+          bool legend_outside(); //!<  \return @c true if the legend should be outside the plot area (default @c true).
           //Derived& legend_title_font_size(int size); //!<  Set legend header font size (svg units, default pixels).
           //int legend_title_font_size(); //!<\return  legend header font size (svg units, default pixels).
+
+          Derived& legend_top_left(const double, const double); //!< Set the top and left SVG coordinates of the legend box.
+          double legend_top(); //!<\return  Top position SVG coordinate of the legend box.
+          double legend_left(); //!<\return  Left position SVG coordinate of the legend box.
+          const std::pair<double, double> legend_top_left(); //!<  \return  SVG coordinate (default pixels) of top left of legend box.
+          const std::pair<double, double> legend_bottom_right(); //!<  \return SVG coordinate (default pixels) of bottom right of legend box.
+
           Derived& plot_window_on(bool cmd); //!<Set true if a plot window is wanted (or false if the whole image is to be used).
           bool plot_window_on();//!<\return  true if a plot window is wanted (or false if the whole image is to be used).
           Derived& plot_border_color(const svg_color& col); //!<Set the color for the plot window background.
@@ -480,6 +481,7 @@ namespace boost
           bool legend_box_fill_on(); //!<\return true if legend box has a background fill color.
           Derived& legend_border_color(const svg_color& col); //!<Set the border stroke color of the legend box.
           svg_color legend_border_color(); //!<\return  the border stroke color of the legend box.
+
           Derived& plot_background_color(const svg_color& col); //!<Set the fill color of the plot window background.
           svg_color plot_background_color(); //!<\return  the fill color of the plot window background.
           const std::string x_axis_position(); //!<\return  the position (or intersection with Y-axis) of the X-axis.
@@ -1729,7 +1731,9 @@ namespace boost
       {
         use_legend_title_width = true;
         derived().legend_widest_line_ = title_width;
+#ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
         std::cout << "Using title_width " << title_width << " rather than text width " << text_width << std::endl;
+#endif // BOOST_SVG_LEGEND_DIAGNOSTICS
         //derived().legend_title_style_.text_length(title_width);
         //std::cout << "Using text_width " << title_width << " for text_length " << derived().legend_title_style_.text_length() << std::endl;
       }
@@ -1836,7 +1840,7 @@ namespace boost
 
     template <class Derived>
     void axis_plot_frame<Derived>::place_legend_box()
-    { //! Place legend box (if required).
+    { //! Place legend box (if legend required).
       //! Default legend position is outside top right, level with plot window.
       if(derived().legend_on_ == true) // A legend box specified.
       {
@@ -1858,7 +1862,7 @@ namespace boost
             break;
         case inside:
           derived().outside_legend_on_ = false;
-          if (derived().legend_left_ == -1)
+          if (derived().legend_left_ < 0 ) // Default is -1.
           { // Legend box position NOT been set by legend_top_left.
             // Default inside position is top left level with plot window.
           derived().legend_left_ = derived().image_border_.border_width_ + derived().image_border_.margin_; // left image edge + space.
@@ -3714,23 +3718,9 @@ namespace boost
           //  return derived().legend_text_style_.stroke_color_;
           //}
 
-
-          template <class Derived>
-          Derived& axis_plot_frame<Derived>::legend_top_left(double x, double y)
-          { //! Set position of top left of legend box (svg coordinates, default pixels).
-            //! Bottom right is controlled by contents, so the user cannot set it.
-            if((x < 0) || (x > derived().image_.x_size()) || (y < 0) || (y > derived().image_.y_size()))
-            {
-              throw std::runtime_error("Legend box position outside image!");
-            }
-            derived().legend_left_ = x;
-            derived().legend_top_ = y;
-            return derived();
-          }
-
           template <class Derived>
           const std::pair<double, double> axis_plot_frame<Derived>::legend_top_left()
-          { //! \return  svg coordinate (default pixels) of top left of legend box.
+          { //! \return  SVG coordinates (default pixels) of top left of legend box.
             std::pair<double, double> r;
             r.first = derived().legend_left_;
             r.second = derived().legend_top_;
@@ -3739,7 +3729,7 @@ namespace boost
 
           template <class Derived>
           const std::pair<double, double> axis_plot_frame<Derived>::legend_bottom_right()
-          { //! \return  svg coordinate (default pixels) of Bottom right of legend box.
+          { //! \return SVG coordinates (default pixels) of Bottom right of legend box.
             std::pair<double, double> r;
             r.first = derived().legend_right_;
             r.second = derived().legend_bottom_;
@@ -3885,7 +3875,7 @@ namespace boost
 
           template <class Derived>
           double axis_plot_frame<Derived>::image_border_width()
-          { //! \return  the svg image border width (svg units, default pixels).
+          { //! \return  SVG image border width (SVG units, default pixels).
             return derived().image_border_.border_width_;
           }
 
@@ -4412,6 +4402,35 @@ namespace boost
           }
 
           template <class Derived>
+          Derived& axis_plot_frame<Derived>::legend_top_left(const double left, const double top)
+          { //! Set top and left coordinates of the legend_box (for use with @c enum @c somewhere).
+            //! These are SVG coordinates, whose origin (0,0) is the top left of the plot.
+            //! So increasing left values move the legend-box to the right, and top values move the legend-box downwards.
+            //! Wanring - this allows the user to place the legend-box anywhere over the plot, perhaps overwriting other info.
+            //! There can be no warning about this!
+            //! A warning @b will be issued if the legend-box will be outside the plot image area.
+            if((left < 0) || (left > derived().image_.x_size()) || (top < 0) || (top > derived().image_.y_size()))
+            {
+              throw std::runtime_error("Legend box position outside image!");
+            }
+            derived().legend_left_ = left;
+            derived().legend_top_ = top;
+            return derived();
+          }
+
+          template <class Derived>
+          double axis_plot_frame<Derived>::legend_top()
+          { //! \return SVG coordinates of legend box top.
+            return derived().legend_top_;
+          }
+
+          template <class Derived>
+          double axis_plot_frame<Derived>::legend_left()
+          { //! \return SVG coordinates of legend box left.
+            return derived().legend_left_;
+          }
+
+          template <class Derived>
           Derived& axis_plot_frame<Derived>::plot_background_color(const svg_color& col)
           { //! Set the fill color of the plot window background.
             derived().image_.g(PLOT_WINDOW_BACKGROUND).style().fill_color(col);
@@ -4420,13 +4439,13 @@ namespace boost
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::plot_background_color()
-          { //! \return  the fill color of the plot window background.
+          { //! \return Fill color of the plot window background.
             return derived().image_.g(PLOT_WINDOW_BACKGROUND).style().fill_color();
           }
 
           template <class Derived>
           const std::string axis_plot_frame<Derived>::x_axis_position()
-          { //! \return  the position (or intersection with Y-axis) of the X-axis.
+          { //! \return Position (or intersection with Y-axis) of the X-axis.
             switch(derived().x_axis_position_)
             {
             case top:

@@ -552,11 +552,10 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       legend_places legend_place_; //!< Place for any legend box, inside, outside, left, right.
       double legend_width_; //!< Width of legend box (pixels).
       double legend_height_; //!< Height of legend box (pixels).
-      // Size of legend box is controlled by its contents,
-      // but helpful to store computed coordinates.
-      double legend_left_; //!< Left of legend box.
-      double legend_top_; //!< Top of legend box.
-      // Both optionally set by legend_top_left.
+      // Size of legend box is controlled by its contents, but helpful to store computed coordinates.
+      double legend_left_; //!< SVG Coordinates of Left of legend box.
+      double legend_top_; //!< SVG Coordinates of Top of legend box.
+      // Both optionally set by function @c legend_top_left(x, y).
       double legend_right_; //!< SVG Coordinates of right of legend box,
       double legend_bottom_; //!< SVG Coordinates of bottom of legend box.
       size_t legend_longest_; //!< longest (both header & data) string in legend box.

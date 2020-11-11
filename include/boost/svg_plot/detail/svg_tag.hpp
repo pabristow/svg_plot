@@ -91,15 +91,17 @@ namespace svg
     void write_attributes(std::ostream& s_out)
     { //! Output group_element id and clip-path.
       if(id_name_.size() != 0)
-      { // Example: id="imageBackground"
+      { // Is an id_name, so output.
         s_out << " id=\"" << id_name_ << "\""; // Prefix with space.
+      // Example: id_name ="imageBackground"
       }
       if(class_name_.size() != 0)
-      {
+      { // Is a class_name, so output.
         s_out << " class=\"" << class_name_ << "\"";
       }
       if(clip_name_.size() != 0)
-      { // Example: clip-path="url(#plot_window)"
+      { // Is a clip_name, so output.
+        // Example: <clipPath id="plot_window"><rect x="53.6" y="40.5" width="339" height="328"/></clipPath>
         s_out << " clip-path=\"url(#" << clip_name_ << ")\""; // Prefix with space.
         // Might be nicer to suffix with newline - but after the >
       }
@@ -137,7 +139,7 @@ namespace svg
     virtual void write(std::ostream& rhs) = 0; //!< write functions output SVG commands.
 
     virtual ~svg_element()
-    { //! destructor.
+    { //! Destructor.
     }
 
     bool operator==(const svg_element& lhs)
@@ -152,12 +154,14 @@ namespace svg
 
     // Set and get member functions.
     svg_style& style()
-    { //! \return  reference to svg_style to provide indirect access to colors & width via style().stroke_color(), fill_color(), width()
+    { //! \return  Reference to @c svg_style to provide indirect access to colors & width 
+      //! via style().stroke_color(), fill_color(), width() etc.
       return style_info_;
     }
 
     const svg_style& style() const
-    { //! \return  reference to const svg_style to provide indirect access to colors & width via style().stroke_color(), fill_color(), width() (const version).
+    { //! \return Reference to @c const @c svg_style to provide indirect access to colors & width
+      //! via style().stroke_color(), fill_color(), width() (const version).
       return style_info_;
     }
 
@@ -183,22 +187,22 @@ namespace svg
    }
 
     std::string id()
-    { //! \return  the unique name for an element, for example id() ="plotBackground".
+    { //! \return  The unique name for an element, for example id() ="plotBackground".
       return id_name_;
     }
 
     void class_id(const std::string& class_id)
-    { //! Class class id, non-unique identifier for an element.
+    { //! Set @c class_id, non-unique string identifier for a Class Attribute.
       /*! \details
         http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute
         6.12 Attributes common to all elements: id and xml:base
-        Example: class="info"
+        Example: class_id == "info"
       */
       class_name_ = class_id;
     }
 
     std::string class_id()
-    { //! Class id, non-unique identifier for an element.
+    { //! \return Class id, non-unique string identifier for an element.
       return class_name_;
     }
 
@@ -208,7 +212,7 @@ namespace svg
     }
 
     std::string clip_id()
-    { //! \return  name of a clip path, for example: g_ptr.clip_id(plot_window_clip_);
+    { //! \return  Name of a clip path, for example: \code g_ptr.clip_id(plot_window_clip_); \endcode
       return clip_name_;
     }
   }; // class svg_element
@@ -906,23 +910,22 @@ class text_element : public svg_element
 { /*! \class boost::svg::text_element
       \brief Holds text with position, size, font, (& styles) & orientation.
       \details
-      Not necessarily shown correctly (or nicely) by all browsers, alas.
-      SVG Coordinates of 1st character EM box, see http://www.w3.org/TR/SVG/text.html#TextElement 10.2
+      SVG Coordinates of 1st character EM box, see http://www.w3.org/TR/SVG/text.html#TextElement 10.2.
 
-      So any text with y coordinate = 0 shows only any roman lower case descenders!\n
+      So any text with y coordinate == 0 shows only any roman lower case descenders!\n
 
       \verbatim
-        (Text may contain embedded xml Unicode characters for Greek, math etc, for example: &#x3A9;).
+        (Text may contain embedded XML Unicode characters for Greek, math, emoji etc, for example: &#x3A9;).
       \endverbatim
-      \n
-      int size; // " font-size = 12"
-      http://www.w3.org/TR/SVG/text.html#CharactersAndGlyphs
-      std::string font;  // font-family: "Arial" | "Times New Roman" | "Verdana" | "Lucida Sans Unicode"
-      "sans", "serif", "times"
-      http://www.w3.org/TR/SVG/text.html#FontFamilyProperty
-      10.10 Font selection properties\n
 
-      std::string style_; // font-style: normal | bold | italic | oblique
+      \n
+      size; // Size (default pixels) of font to use for text. Diagnostics show: " font-size = "12".\n
+      \sa http://www.w3.org/TR/SVG/text.html#CharactersAndGlyphs
+      param std::string font;  // font-family: "Arial" | "Times New Roman" | "Verdana" | "Lucida Sans Unicode"
+      "sans", "serif", "times"
+      http://www.w3.org/TR/SVG/text.html#FontFamilyProperty 10.10 Font selection properties\n
+
+      std::string style; // font-style: normal | bold | italic | oblique
       std::string weight; // font-weight: normal | bold | bolder | lighter | 100 | 200 .. 900
       std::string stretch; // font-stretch: normal | wider | narrower ...
       std::string decoration; // // "underline" | "overline" | "line-through"
@@ -932,7 +935,7 @@ class text_element : public svg_element
       \endverbatim
 
   */
- private: // Access only via member functions below:
+public: // No advantage to make private to access only via member functions below:
   double x_; //!< Left edge.
   double y_; //!< Bottom of roman capital character.
   ptr_vector<text_parent> data_; //!< Stores all of the containing data.
@@ -2126,7 +2129,7 @@ public:
     }
 
     // svg::text constructor with defaults. 
-    text_element& text(double x = 0., double y = 0.,
+    text_element& text(double x = 0., double y = 0., // Location.
     const std::string& text = "", // Text string to display.
     const text_style& style = no_style, // Default to use SVG implementation's defaults for font family, size.
     const align_style& align = left_align,
