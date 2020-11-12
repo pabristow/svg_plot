@@ -83,26 +83,26 @@ namespace svg
     */
 
   protected:
-    svg_style style_info_; //!< Colors fill, stroke, width, get by function style.
+    svg_style style_info_; //!< Colors fill, stroke, width; set and get by function style.
     std::string id_name_; //!< SVG id name, set & get by function id.
     std::string class_name_; //!< SVG class name, set & get by function class id.
     std::string clip_name_; //!< SVG clip path name, set & get by function clip_id.
 
-    void write_attributes(std::ostream& s_out)
+    void write_attributes(std::ostream& os)
     { //! Output group_element id and clip-path.
       if(id_name_.size() != 0)
       { // Is an id_name, so output.
-        s_out << " id=\"" << id_name_ << "\""; // Prefix with space.
+        os << " id=\"" << id_name_ << "\""; // Prefix with space.
       // Example: id_name ="imageBackground"
       }
       if(class_name_.size() != 0)
       { // Is a class_name, so output.
-        s_out << " class=\"" << class_name_ << "\"";
+        os << " class=\"" << class_name_ << "\"";
       }
       if(clip_name_.size() != 0)
       { // Is a clip_name, so output.
         // Example: <clipPath id="plot_window"><rect x="53.6" y="40.5" width="339" height="328"/></clipPath>
-        s_out << " clip-path=\"url(#" << clip_name_ << ")\""; // Prefix with space.
+        os << " clip-path=\"url(#" << clip_name_ << ")\""; // Prefix with space.
         // Might be nicer to suffix with newline - but after the >
       }
       // should transform be here allow translate and rotate?
@@ -116,7 +116,7 @@ namespace svg
           Example URI: fill="url(#Gradient01) // local URL
         \endverbatim
       */
-    } // void write_attributes(std::ostream& s_out)
+    } // void write_attributes(std::ostream& os)
 
   public:
 
@@ -136,7 +136,7 @@ namespace svg
     { //! Default constructor.
     }
 
-    virtual void write(std::ostream& rhs) = 0; //!< write functions output SVG commands.
+    virtual void write(std::ostream& os) = 0; //!< Write function outputs SVG commands for a leaf element.
 
     virtual ~svg_element()
     { //! Destructor.
@@ -231,7 +231,6 @@ namespace svg
 
     */
   public:
-//  private:
     double x1_; //!< Line from (x1_, x2_) to (y1_, y2_)
     double y1_; //!< Line from (x1_, x2_) to (y1_, y2_)
     double x2_; //!< Line from (x1_, x2_) to (y1_, y2_)
@@ -272,8 +271,7 @@ namespace svg
         \brief Quadratic Bezier curved line from (x1, y1) control point (x2, y2) to (x3, y3).
         \details Note x2 is the Bezier control point - the curve will \b not pass thru this point.
     */
-  public: //temporary for experimental gil
-//  private:
+  public: 
     double x1_; //!< Quadratic curved line from (x1_, y1_) control point (x2_, y2_) to (y3_, y3_).
     double x2_; //!< Quadratic curved line from (x1_, y1_) control point (x2_, y2_) to (y3_, y3_).
     double y1_; //!< Quadratic curved line from (x1_, y1_) control point (x2_, y2_) to (y3_, y3_).
@@ -281,7 +279,6 @@ namespace svg
     double x3_; //!< Quadratic curved line from (x1_, y1_) control point (x2_, y2_) to (y3_, y3_).
     double y3_; //!< Quadratic curved line from (x1_, y1_) control point (x2_, y2_) to (y3_, y3_).
 
-  public:
     // bool fill; now inherited from parent svg class.
     qurve_element(double x1, double y1, double x2,  double y2, double x3,  double y3)
       :   x1_(x1), y1_(y1), x2_(x2), y2_(y2),  x3_(x3), y3_(y3)
@@ -301,13 +298,13 @@ namespace svg
     { //!< Quadratic curved line constructor, including svg_element info.
     }
 
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { /*! output quadratic curved line from (x1_, y1_) control point (x2_, y2_) to (x3_, y3_)
        \details
           \verbatim Example:
           \endverbatim
       */
-      o_str << "<path d=\"M" << x1_ << "," << y1_
+      os << "<path d=\"M" << x1_ << "," << y1_
           << " Q" << x2_ << "," << y2_ << " " // Control point - will not pass thru this point.
           //<< x1_ << "," << y1_ << " "
           //<< x2_ << "," << y2_ << " "
@@ -315,9 +312,9 @@ namespace svg
           <<"\"";
       if(style_info_.fill_on() == false)
       {
-        o_str << " fill = \"none\"";
+        os << " fill = \"none\"";
       }
-      o_str<<"/>";
+      os<<"/>";
     }
   }; // class qurve_element
 
@@ -333,7 +330,6 @@ namespace svg
 
   public: 
 
-//  private:
     double x_; //!< X-axis coordinate of the side of the rectangle which has the smaller x-axis coordinate value.
     double y_; //!< Y-axis coordinate of the side of the rectangle which has the smaller y-axis coordinate value.
     //!< So (0, 0) is top left corner of rectangle.
@@ -379,20 +375,6 @@ namespace svg
       return height_;
     }
 
-    void write(std::ostream& rhs)
-    { /*! \verbatim
-        Output SVG XML for rectangle.
-       For example: <rect  x="0" y="0"  width="500"  height="350"/>
-       \endverbatim
-       */
-      rhs << "<rect";
-      write_attributes(rhs); // id (& clip_path)
-      rhs << " x=\"" << x_ << "\""
-        << " y=\"" << y_ << "\""
-        << " width=\"" << width_ << "\""
-        << " height=\""<< height_<< "\"/>";
-    }
-
     bool operator==(const rect_element& lhs)
     { //! Comparison (useful for Boost.Test).
       return (lhs.x() == x_) && (lhs.y() == y_) &&  (lhs.width() == width_) && (lhs.height() == height_);
@@ -401,8 +383,24 @@ namespace svg
     { //!< Comparison rect_elements (useful for Boost.Test).
       return (lhs.x() != x_) || (lhs.y() != y_) ||  (lhs.width() != width_) || (lhs.height() != height_);
     }
+
+    void write(std::ostream& os)
+    { /*!
+      Output SVG XML commands to draw a rectangle.
+      \verbatim
+        For example: <rect  x="0" y="0"  width="500"  height="350"/>
+      \endverbatim
+      */
+      os << "<rect";
+      write_attributes(os); // id (& clip_path)
+      os << " x=\"" << x_ << "\""
+        << " y=\"" << y_ << "\""
+        << " width=\"" << width_ << "\""
+        << " height=\"" << height_ << "\"/>";
+    }
   }; // class rect_element
 
+  // Not sure why these are free functions and not class members?  TODO
   bool operator==(const rect_element& lhs, const rect_element& rhs)
   { //! Compare equality of two SVG rect_elements.
     return (lhs.x() == rhs.x()) && (lhs.y() == rhs.y()) && (lhs.width() == rhs.width()) && (lhs.height() == rhs.height());
@@ -414,7 +412,8 @@ namespace svg
   }
 
   std::ostream& operator<< (std::ostream& os, const rect_element& r)
-  { //! Example: rect_element r(20, 20, 50, 50);  cout << r << endl;
+  { //! Diagnostic output of rectangle coordinates and dimensions.
+    //! Example: rect_element r(20, 20, 50, 50);  std::cout << r << std::endl;
     //! Outputs:  rect(20, 20, 50, 50)
       os << "rect(" << r.x() << ", " << r.y()
          << ", " << r.width() << ", " << r.height() << ")" ;
@@ -426,12 +425,11 @@ namespace svg
   // -----------------------------------------------------------------
   class circle_element : public svg_element
   {/*! \class boost::svg::circle_element
-        \brief Circle from center coordinate, and radius.
+        \brief Circle from coordinates of center, and radius.
         \details
          Represents a single circle.
          http://www.w3.org/TR/SVG/shapes.html#CircleElement
     */
-  private:
     double x;
     double y;
     double radius;
@@ -455,15 +453,15 @@ namespace svg
     { //! Constructor defines all private data.
     }
 
-    void write(std::ostream& rhs)
-    { /*! Output SVG XML
+    void write(std::ostream& os)
+    { /*! Output SVG XML commands to draw a circle:
     \verbatim
        Example: <circle cx="9.78571" cy="185" r="5"/>
     \endverbatim
     */
-      rhs << "<circle";
-      write_attributes(rhs);
-      rhs << " cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << radius << "\"/>";
+      os << "<circle";
+      write_attributes(os);
+      os << " cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << radius << "\"/>";
     }
   }; // class circle_element
 
@@ -521,7 +519,7 @@ namespace svg
 
     void write(std::ostream& os)
     { /*!
-        Output SVG XML for ellipse.
+        Output SVG XML commands to draw an ellipse.
         Example: \<ellipse rx="250" ry="100" fill="red"  /\>
      */
       os << "<ellipse";
@@ -554,7 +552,7 @@ class text_parent
 
     virtual ~text_parent() {}
 
-    virtual void write(std::ostream& /* o_str */)
+    virtual void write(std::ostream& /* os */)
     { //! write functions output SVG commands.
     }
 
@@ -578,9 +576,9 @@ public:
   text_element_text(const text_element_text& rhs): text_parent(rhs)
   { //! Copy construct text element
   }
-  void write(std::ostream& o_str)
+  void write(std::ostream& os)
   { //! write text to stream.
-    o_str << text_;
+    os << text_;
   }
 }; // class text_element_text
 
@@ -595,11 +593,11 @@ private:
   double dx_; //!< Relative X position of a 1st single character of text.
   double dy_; //!< Relative Y position of a 1st single character of text.
   int rotate_; //!< Rotation of a 1st single character of text.
-  // A list of shifts or rotations for several characters is not yet implemented.
+  //! (A list of shifts or rotations for several characters is not yet implemented).
   double text_length_;  //!< Allows the author to provide exact alignment.
   //! dx_, dy_, and rotate_ can all be omitted, usually meaning no shift or rotation,
   //! but see http://www.w3.org/TR/SVG/text.html#TSpanElement for ancestor rules.
-  // text_length only used if > 0.
+  //! (@c text_length_ only used if > 0).
   //! but x_, y_, need a flag?
   bool use_x_; //!> If true then use X absolute position.
   bool use_y_; //!> If true then use Y absolute position.
@@ -1107,7 +1105,7 @@ public:
     // os << " <text x=\"" << x_ << "\" y=\"" << y_ << "\"";
   void write(std::ostream& os)
   {
-    os << "\n<text x=\"" << x_ << "\" y=\"" << y_ << "\"";
+    os << "\n\t<text x=\"" << x_ << "\" y=\"" << y_ << "\"";
     std::string anchor;
     switch(align_)
     {
@@ -1232,19 +1230,19 @@ public:
     double x; //!< End of move SVG X coordinate.
     double y; //!< End of move SVG Y coordinate.
 
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { //! write moveto X and Y coordinates to stream, for example: "M52.8571,180 "
       if(relative)
       {
-        o_str << "m";
+        os << "m";
       }
       else
       { // absolute
-        o_str << "M";
+        os << "M";
       }
-      o_str << x << "," << y << " "; // separator changed to comma for clarity when reading XML source.
+      os << x << "," << y << " "; // separator changed to comma for clarity when reading XML source.
 
-    } // void write(std::ostream& o_str)
+    } // void write(std::ostream& os)
 
     m_path(double x, double y, bool relative = false)
       : path_point(relative),
@@ -1262,9 +1260,9 @@ public:
        Close the current subpath by drawing a straight line
        from the current point to current subpath's initial point.
     */
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { //! Write close current path SVG command.
-      o_str << "Z";
+      os << "Z";
     }
 
     z_path() : path_point(false)
@@ -1280,17 +1278,17 @@ public:
     */
     double x; //!< End of line SVG X coordinate.
     double y; //!< End of line SVG Y coordinate.
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { //! Write line to SVG command.
       if(relative)
       {
-        o_str << "l";
+        os << "l";
       }
       else
       { // Absolute.
-        o_str << "L";
+        os << "L";
       }
-      o_str << x << "," << y << " ";
+      os << x << "," << y << " ";
     }
 
     l_path(double x, double y, bool relative = false)
@@ -1305,17 +1303,17 @@ public:
        which becomes the new current point. No y needed, start from current point y.
     */
     double x; //!< x horizontal SVG coordinate.
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { //! Write horizontal line SVG command.
       if(relative)
       {
-        o_str << "h";
+        os << "h";
       }
       else
       { // Absolute.
-        o_str << "H";
+        os << "H";
       }
-      o_str << x << " ";
+      os << x << " ";
     }
 
     h_path(double x, bool relative = false)
@@ -1330,17 +1328,17 @@ public:
         No x coordinate needed - use current point x.
     */
     double y; //!< Y vertical line SVG coordinate.
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { //! Write vertical line SVG command.
       if(relative)
       {
-        o_str << "v";
+        os << "v";
       }
       else
       { // Absolute.
-        o_str << "V";
+        os << "V";
       }
-      o_str << y << " ";
+      os << y << " ";
     }
 
     v_path(double y, bool relative = false)
@@ -1362,17 +1360,17 @@ public:
     double x; //!< Current (start point).
     double y; //!< Current (start point).
 
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { //!< Write a cubic Bezier curve SVG XML to ostream.
       if(relative)
       {
-        o_str << "c";
+        os << "c";
       }
       else
       { // Absolute.
-        o_str<<"C";
+        os<<"C";
       }
-      o_str << x1 << "," << y1 << " " << x2 << "," << y2 << " "
+      os << x1 << "," << y1 << " " << x2 << "," << y2 << " "
         << x << "," << y << " ";
     } // void write(ostream&)
 
@@ -1393,17 +1391,17 @@ public:
     double x; //!< quadratic Bezier curve end X coordinate.
     double y; //!< quadratic Bezier curve end Y coordinate.
 
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { //!< Write a quadratic Bezier curve SVG XML to ostream.
       if(relative)
       {
-        o_str << "q";
+        os << "q";
       }
       else
       { // Absolute.
-        o_str << "Q";
+        os << "Q";
       }
-      o_str << x1 << " " << y1 << " " << x << " " << y << " ";
+      os << x1 << " " << y1 << " " << x << " " << y << " ";
     }
 
     q_path(double x1, double y1, double x, double y, bool relative = false)
@@ -1422,17 +1420,17 @@ public:
     double y1; //!< Cubic Bezier curve control Y coordinate.
     double x; //!< Cubic Bezier curve end X coordinate.
     double y; //!< Cubic Bezier curve end Y coordinate.
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { //! Write SVG Cubic Bezier curve command.
       if(relative)
       {
-        o_str << "s";
+        os << "s";
       }
       else
       { // Absolute.
-        o_str << "S";
+        os << "S";
       }
-      o_str << x1 << "," << y1 << " "
+      os << x1 << "," << y1 << " "
         << x << "," << y << " ";
     }
 
@@ -1450,17 +1448,17 @@ public:
     double x; //!< SVG X coordinate.
     double y; //!< SVG Y coordinate.
 
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { //! Write SVG command for a cubic Bezier curve.
       if(relative)
       {
-        o_str << "t";
+        os << "t";
       }
       else
       { // Absolute.
-        o_str << "T";
+        os << "T";
       }
-      o_str << x << "," << y << " ";
+      os << x << "," << y << " ";
     }
 
     t_path(double x, double y, bool relative = false)
@@ -1484,17 +1482,17 @@ public:
     bool large_arc; //!< true if arc >= 180 degrees wanted.
     bool sweep; //!< true if to draw in positive-angle direction
 
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { //! Write elliptical arc path XML to ostream.
       if(relative)
       {
-        o_str << "a";
+        os << "a";
       }
       else
       { // Absolute.
-        o_str << "A";
+        os << "A";
       }
-      o_str << rx << "," << ry << " " << x_axis_rotation
+      os << rx << "," << ry << " " << x_axis_rotation
         << ((large_arc) ? 1 : 0) << "," << ((sweep) ? 1 : 0) << " "
         << x << "," << y << " ";
     }
@@ -1669,32 +1667,32 @@ public:
       return *this; //! \return path_element& to make chainable.
     }
 
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { //! Write a SVG path command to an @c std::ostream.
       //! Example: \verbatim <path d="M5,175 L5,195 M148.571,175" /> \endverbatim
       if (path.begin() != path.end() )
       { // Is some path info (trying to avoid useless <path d=""/>"
         // TODO or would this omit useful style & attributes?
-        o_str << "<path d=\"";
+        os << "<path d=\"";
         for(ptr_vector<path_point>::iterator i = path.begin(); i != path.end(); ++i)
         {
-          (*i).write(o_str); // M1,2
+          (*i).write(os); // M1,2
         }
-        o_str << "\"";
+        os << "\"";
 
-        write_attributes(o_str); // id & clip_path.
-        style_info_.write(o_str); // fill, stroke, width...
+        write_attributes(os); // id & clip_path.
+        style_info_.write(os); // fill, stroke, width...
 
         // line above should write fill = "none" that
         // seems to be needed for reasons unclear.
         // Even when g_element does not specify a fill, it seems to be interpreted as black fill.
         if(!fill_on())
         {
-          o_str << " fill=\"none\"";
+          os << " fill=\"none\"";
         }
-        o_str<<"/>"; // closing to match <path d=
+        os<<"/>"; // closing to match <path d=
       }
-    } // void write(std::ostream& o_str)
+    } // void write(std::ostream& os)
   }; // class path_element
 
   struct poly_path_point
@@ -1708,13 +1706,13 @@ public:
     // and values have no preceeding letter like M or L,
     // So @c poly_path_point is NOT derived from @c path_point.
 
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { //! Output poly_path_point as SVG XML,
       //! Example: " 250,180"
       //! Leading space is redundant for 1st after "points= ",
       //! but others are separators, and arkward to know which is 1st.
-      o_str << " " << x << "," << y; // x, y separator comma for clarity.
-    } // void write(std::ostream& o_str)
+      os << " " << x << "," << y; // x, y separator comma for clarity.
+    } // void write(std::ostream& os)
 
     poly_path_point(double x, double y)
       : x(x), y(y)
@@ -1867,26 +1865,26 @@ public:
       return *this; //! \return polygon_element& to make chainable.
     }
 
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     {  /*! \verbatim SVG XML:
             Example: <polygon fill="lime" stroke="blue" stroke-width="10"
             points="850,75  958,137.5 958,262.5 850,325 742,262.6 742,137.5" />
          \endverbatim
        */
-      o_str << "<polygon points=\"";
+      os << "<polygon points=\"";
       for(ptr_vector<poly_path_point>::iterator i = poly_points.begin(); i != poly_points.end(); ++i)
       {
-        (*i).write(o_str); //  x, y coordinates as " 1,2"
+        (*i).write(os); //  x, y coordinates as " 1,2"
       }
-      o_str << "\"";
-      write_attributes(o_str);
-      style_info_.write(o_str);
+      os << "\"";
+      write_attributes(os);
+      style_info_.write(os);
       if(!fill)
       {
-        o_str << " fill = \"none\"";
+        os << " fill = \"none\"";
       }
-      o_str<<"/>";
-    } // void write(std::ostream& o_str)
+      os<<"/>";
+    } // void write(std::ostream& os)
 
     std::ostream& operator<< (std::ostream& os)
     { /*! Output polygon info. (May be useful for Boost.Test.
@@ -1983,22 +1981,22 @@ public:
       return *this; //! \return polyline_element& to make chainable.
     }
 
-    void write(std::ostream& o_str)
+    void write(std::ostream& os)
     { /*! \verbatim
           Output polyline info (useful for Boost.Test).
           Example: <polyline points=" 100,100 200,100 300,200 400,400"/>
           \endverbatim
       */
-      o_str << "<polyline points=\"";
+      os << "<polyline points=\"";
       for(ptr_vector<poly_path_point>::iterator i = poly_points.begin(); i!= poly_points.end(); ++i)
       {
-        (*i).write(o_str); //  x, y coordinates as " 1,2"
+        (*i).write(os); //  x, y coordinates as " 1,2"
       }
-      o_str << "\"";
-      write_attributes(o_str);
-      style_info_.write(o_str);
-      o_str<<"/>";
-    } // void write(std::ostream& o_str)
+      os << "\"";
+      write_attributes(os);
+      style_info_.write(os);
+      os<<"/>";
+    } // void write(std::ostream& os)
 
   }; // class polyline_element
 
@@ -2063,7 +2061,7 @@ public:
     }
 
     void write(std::ostream& os)
-    { /*! Output all children of a group element.
+    { /*! Output all children (leafs) of a group element.
         \verbatim
           Example:
            <g fill="rgb(255,255,255)" id="background"><rect x="0" y="0" width="500" height="350"/></g>
@@ -2071,7 +2069,7 @@ public:
       */
 
       if (children.size() > 0)
-      { /*!
+      { /*! Skip if no child leafs.
           \verbatim
             Avoid useless output like: <g id="legendBackground"></g>
           \endverbatim
@@ -2082,9 +2080,9 @@ public:
         os << ">" ;
         for(unsigned int i = 0; i < children.size(); ++i)
         {
-          children[i].write(os);
+          children[i].write(os);  // Using each element's version of write function.
         }
-        os << "</g>" << std::endl;
+        os << "\n</g>" << std::endl;
       }
     } // void write(std::ostream& rhs)
 

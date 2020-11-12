@@ -1000,11 +1000,11 @@ namespace boost
         // These may be on the axis line, or the plot window.
 
         if (derived().x_ticks_.major_value_labels_side_ != 0)
-        { // Show a value by the horizontal X-axis tick as "1.2" or "3.4e+000"...
+        { // Show a value by the horizontal X-axis tick as "1.2" or "3.4e+1"...
           std::stringstream tick_value_label;
           tick_value_label.precision(derived().x_ticks_.value_precision_);
           tick_value_label.flags(derived().x_ticks_.value_ioflags_);
-          tick_value_label << value; // for tick "4", "1.2" or "3.4e+000"...
+          tick_value_label << value; // for tick "4", "1.2" or "3.4e+1"...
           if (derived().x_ticks_.strip_e0s_)
           { // Remove unecessary e, +, leadings 0s.
             std::string v = strip_e0s(tick_value_label.str());
@@ -1145,17 +1145,22 @@ namespace boost
           }
           else
           { // upsidedown, backup... - can't see any conceivable use for these.
+          std::cout << "Orientation not implemented!" << std::endl;
             return; // Others not yet implemented.
           } // rotations
           if (x <= 0)
-          { // Sanity checks on svg coordinates.
-            throw std::runtime_error("X-tick X value wrong!");
+          { // Sanity checks on ticks value SVG coordinates.
+            throw std::runtime_error("X-tick X value coordinate is wrong!");
           }
           if (y <= 0)
           {
-            throw std::runtime_error("X-tick Y value wrong!");
+            throw std::runtime_error("X-tick Y value coordinate is wrong!");
           }
-          // Draw the X ticks value labels, "1", "2" "3" ...
+          // Draw the X ticks value-labels, "1", "2" "3" ...
+          // Want this:
+          // <g id="xTicksValues">   text-anchor = "middle" font-size = "12" font-family = "Lucida Sans Unicode"
+          //  <text x = "74.5" y = "390" >0 </text >
+          //  <text x = "133" y = "390" >2 </text >...
           if (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0)
           { // External to plot window style bottom or top.
             // Always want all values including "0", if labeling external to plot window.
@@ -1174,8 +1179,10 @@ namespace boost
               derived().image_.g(detail::PLOT_X_TICKS_VALUES).text(
                 x,
                 y,
-                tick_value_label.str(),
-                derived().x_value_label_info_.textstyle(), // font, size etc
+                tick_value_label.str(), 
+                derived().x_value_label_info_.textstyle(), // font, size etc, 
+                // For example: text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode"
+                // But we don't really want to repeat this style info every value label!
                 alignment,
                 derived().x_ticks_.label_rotation_);
             }
@@ -5525,7 +5532,7 @@ namespace boost
 
         template <class Derived>
         Derived& axis_plot_frame<Derived>::draw_note(double x, double y, std::string note, rotate_style rot /*= horizontal*/, align_style al/* = center_align*/, const svg_color& col /* black */, text_style& tsty/* = no_style*/)
-        { /*! \brief Annotate plot with a  text string (perhaps including Unicode), putting note at SVG Coordinates X, Y.
+        { /*! \brief Annotate plot with a text string (perhaps including Unicode), putting note at SVG Coordinates X, Y.
             \details Defaults color black, rotation horizontal and align = center_align
             Using center_align is recommended as it will ensure that will center correctly
             (even if original string is made much longer because it contains Unicode,

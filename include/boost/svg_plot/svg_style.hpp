@@ -12,7 +12,7 @@
 
 */
 
-//  svg_style.hpp
+// svg_style.hpp
 // Copyright Jacob Voytko 2007
 // Copyright Paul A. Bristow 2008, 2009, 2013, 2020
 
@@ -24,11 +24,9 @@
 #ifndef BOOST_SVG_SVG_STYLE_HPP
 #define BOOST_SVG_SVG_STYLE_HPP
 
-//#define BOOST_SVG_STYLE_DIAGNOSTICS for diagnostic output.
-
 #include "svg_color.hpp"
 // using boost::svg_color
-#include "detail/svg_style_detail.hpp" // For enum plot_doc_structure
+#include "detail/svg_style_detail.hpp" // For enum plot_doc_structure.
 
 #include <iostream>
 // using std::ostream;
@@ -51,7 +49,7 @@ namespace svg
   //!< and the mix of characters widths (unless monospace font).
   //!< See https://www.w3.org/TR/SVG/text.html#GlyphsMetrics
   //!< https://www.w3.org/TR/SVG/text.html#InterfaceSVGTextContentElement
-  //! Can also use textLength to coerce into an estimate length.
+  //! Can also use textLength to coerce into an estimated length.
 
   /*! Default font chosen is a Unicode font like ['Lucida Sans Unicode] that
    has the best chance of ['symbols] being rendered corrrectly.
@@ -131,10 +129,10 @@ double string_svg_length(const std::string& s, const text_style& style);
 */
 
 class svg_style
-{ //! \class boost::svg::svg_style Holds the basic SVG stroke, fill colors and width, and their switches.
+{ //! \class boost::svg::svg_style Holds the basic SVG stroke and fill colors, and width, and switches to control if in use, or not.
   friend std::ostream& operator<< (std::ostream&, const svg_style&);
   //std::ostream& operator<< (std::ostream& os, const svg_style& s)
-  // Used for diagnostic output of all values.
+  // Used for diagnostic output of all values of style and state of switches.
 
 private: // Accesses only by set and get member functions below.
   // Private data member variables names end with _,
@@ -142,6 +140,7 @@ private: // Accesses only by set and get member functions below.
   svg_color stroke_; //!< Color of SVG stroke (line or outline).
   svg_color fill_; //!< Color of SVG fill.
   double width_; //!< Width of line.  Only valid if > 0 & width_on_ == true
+  // Switches:
   bool stroke_on_; //!< true if stroke is to be specified.
   bool fill_on_; //!< true if fill to be specified.
   bool width_on_; //!< true if width to be specified.
@@ -151,16 +150,16 @@ public:
   svg_style();
   svg_style(const svg_color& stroke, const svg_color& fill, unsigned int width);
 
-  // Set svg_style member functions
-  // to set fill color and stroke color & width.
+  // Set svg_style member functions to set fill color and stroke color & width , and switches.
   svg_style& stroke_color(const svg_color& col) ;
   svg_style& fill_color(const svg_color& col);
   svg_style& stroke_width(double width);
+  // Switches:
   svg_style& fill_on(bool is);
   svg_style& stroke_on(bool is);
   svg_style& width_on(bool is);
 
-  // Get svg_style member functions to return fill color, stroke color & width.
+  // Get svg_style member functions to return fill color, stroke color & width, and state of switches.
   svg_color fill_color() const;
   svg_color stroke_color() const;
   double stroke_width() const;
@@ -168,7 +167,7 @@ public:
   bool stroke_on() const;
   bool width_on() const;
 
-  void write(std::ostream& os); // Output to file or stream.
+  void write(std::ostream& os); // Output svg_style to file or stream.
 
   // Comparison operators (useful for testing at least).
   bool operator==(svg_style& s);
@@ -306,8 +305,9 @@ public:
 
   void svg_style::write(std::ostream& os)
   { //! Write any stroke, fill colors and/or width info to SVG XML document.
+    //! Example: stroke="rgb(200,220,255)" stroke-width="0.5"
     if(stroke_on_)
-    { // (Note: start with space but no terminating space)
+    { // (Note: start with space but no terminating space).
         os << " stroke=\"";
         stroke_.write(os);
         os << "\"";
@@ -318,7 +318,6 @@ public:
         fill_.write(os);
         os << "\"";
     }
-
     if(width_on_ && (width_ > 0))
     { // We never want a 0 (or <0) width output?
         os << " stroke-width=\""
@@ -672,6 +671,7 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
 
 std::ostream& operator<< (std::ostream& os, const text_style& ts)
 { //! Output a text style as a text string (mainly useful for diagnostic use).
+  // Example: 
   os << "text_style("
     << ts.font_size_ << ", \""
     << ts.font_family_ << "\", \""
@@ -1092,6 +1092,7 @@ plot_point_style default_plot_point_style();
 class plot_line_style
 { //! \class boost::svg::plot_line_style Style of line joining data-series values.
   // TODO Dotted and dashed line style would be useful for monochrome plots.
+  // Use 
 public:
   svg_color stroke_color_; //!< Stroke color of line. (no fill color for lines)
   svg_color area_fill_; //!< Fill color from line to axis. == false means color.is_blank = true, or = blank.
