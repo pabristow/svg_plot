@@ -201,6 +201,8 @@ public:
 
   svg_color svg_style::stroke_color() const
   { //! \return SVG stroke color.
+    //! See svg_color.hpp for @c enum @c svg_color_constant for named colors.
+    //! \sa svg_color.hpp
     return svg_color(stroke_);
   }
 
