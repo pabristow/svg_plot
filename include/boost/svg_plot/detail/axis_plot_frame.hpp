@@ -1190,8 +1190,8 @@ namespace boost
         }
         else
         { // Outside plot window!
-          //std::cerr << "Warning : writing a draw_x_major_tick OUTSIDE the plot window: "
-          //  "x = " << x << ", plot_left_ = " << derived().plot_left_ << ", plot_right_ = " << derived().plot_right_ << std::endl;
+          ////std::cout << "Warning: writing a draw_x_major_tick OUTSIDE the plot window: "
+          ////  "x = " << x << ", plot_left_ = " << derived().plot_left_ << ", plot_right_ = " << derived().plot_right_ << std::endl;
         }
       } // draw_x_major_tick
 

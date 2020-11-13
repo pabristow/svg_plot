@@ -18,10 +18,11 @@
 #include <string>
 // using std::string;
 
-// This module provides an ID @c std::string from a named parameter
-//(macro like PLOT_WINDOW_BACKGROUND)
+// This module provides an g_element ID @c std::string from a named parameter
+//(macro like @c PLOT_WINDOW_BACKGROUND)
 // so, for example, document_ids_[PLOT_BACKGROUND] == "background".
 // to be used as a SVG group is thus: <g id="background" ... /g>
+//
 
 namespace boost
 {
@@ -35,7 +36,8 @@ namespace detail
 // Add any new id items to both!
 
 enum plot_doc_structure
-{ //! \enum plot_doc_structure Plot document structure whose order controls the painting order, later ones overwriting earlier layers.
+{ //! \enum plot_doc_structure
+  //! Plot document structure whose order controls the painting order, later ones overwriting earlier layers.
   PLOT_BACKGROUND = 0, //! Must be zero to index array document_ids_[]
   PLOT_WINDOW_BACKGROUND, //! the smaller plot window (if used).
   PLOT_Y_MINOR_GRID, //! Y minor grid.

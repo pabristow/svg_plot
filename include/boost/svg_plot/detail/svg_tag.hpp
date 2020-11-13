@@ -77,9 +77,7 @@ namespace svg
   { /*! \class boost::svg::svg_element
        \brief svg_element is base class for all the leaf elements.
        \details
-       rect_element, circle_element, line_element, text_element,
-       polygon_element, polyline_element, path_element, clip_path_element,
-       g_element.\n
+       g_element, rect_element, circle_element, line_element, polygon_element, polyline_element, path_element, clip_path_element, text_element, tspan_element.\n
     */
 
   protected:
@@ -90,6 +88,7 @@ namespace svg
 
     void write_attributes(std::ostream& os)
     { //! Output group_element id and clip-path.
+      //! Example: <clipPath id="plot_window"><rect x="53.6" y="40.5" width="339" height="328"/></clipPath>
       if(id_name_.size() != 0)
       { // Is an id_name, so output.
         os << " id=\"" << id_name_ << "\""; // Prefix with space.
@@ -101,7 +100,6 @@ namespace svg
       }
       if(clip_name_.size() != 0)
       { // Is a clip_name, so output.
-        // Example: <clipPath id="plot_window"><rect x="53.6" y="40.5" width="339" height="328"/></clipPath>
         os << " clip-path=\"url(#" << clip_name_ << ")\""; // Prefix with space.
         // Might be nicer to suffix with newline - but after the >
       }
@@ -390,13 +388,15 @@ namespace svg
       \verbatim
         For example: <rect  x="0" y="0"  width="500"  height="350"/>
       \endverbatim
+      Example: \code <rect x="0" y="0" width="500" height="600"/> \endcode
       */
-      os << "<rect";
+      os << "\t<rect";
       write_attributes(os); // id (& clip_path)
       os << " x=\"" << x_ << "\""
         << " y=\"" << y_ << "\""
         << " width=\"" << width_ << "\""
-        << " height=\"" << height_ << "\"/>";
+        << " height=\"" << height_ << "\"/>"
+        "\n";
     }
   }; // class rect_element
 
@@ -543,7 +543,7 @@ namespace svg
 class text_parent
 { /*! \class boost::svg::text_parent
     \brief An ancestor to both tspan and strings for the text_element class.
-    \details This allows an array of both types to be stored in text_element.
+    \details This allows an array of both types to be stored in @c @c text_element.
   */
   protected:
     std::string text_; //!< Actual text string for SVG text.
@@ -571,10 +571,10 @@ class text_element_text : public text_parent
   */
 public:
   text_element_text(const std::string& text): text_parent(text)
-  { //! Construct from text.
+  { //! Construct from text string.
   }
   text_element_text(const text_element_text& rhs): text_parent(rhs)
-  { //! Copy construct text element
+  { //! Copy construct text element.
   }
   void write(std::ostream& os)
   { //! write text to stream.
@@ -585,9 +585,10 @@ public:
 class tspan_element : public text_parent, public svg_element
 { /*! \class boost::svg::tspan_element
     \brief tspan (not text) to be stored in text_parent.
-    \details See 10.5 tspan element http://www.w3.org/TR/SVG/text.html#TSpanElement
+    \details See 10.5 tspan element http://www.w3.org/TR/SVG/text.html#TSpanElement 
+    Example: 
     */
-private:
+public:
   double x_;  //!< Absolute X position.
   double y_;  //!< Absolute Y position.
   double dx_; //!< Relative X position of a 1st single character of text.
@@ -606,18 +607,19 @@ private:
 
 public:
   tspan_element(const std::string& text, //!< Text string to display.
-    const text_style& style = no_style) //!< Text style (font).
+    const text_style& style = no_style) //!< style (font).
   :
     use_x_(false), use_y_(false), 
     text_parent(text), style_(style),
-    x_(0), y_(0), dx_(0), dy_(0), rotate_(0), text_length_(0)
+    x_(0), y_(0), dx_(0), dy_(0), rotate_(0),
+    text_length_(0) // If text_length_ > 0 then compress or expand to this specified length.
   { //! Construct tspan element (with all defaults except text string).
   }
 
-  tspan_element(const tspan_element& rhs); //!< Copy contructor.
+  tspan_element(const tspan_element& rhs); //!< Copy constructor.
     // TODO all may need refactoring to separate declaration from definition - as example below.
 
-  //tspan_element(const tspan_element& rhs)
+  //tspan_element(const tspan_element& rhs)   //!< Copy constructor.
   //  :
   //  x_(rhs.x_), y_(rhs.y_), dx_(rhs.dx_), dy_(rhs.dy_), rotate_(rhs.rotate_),
   //  text_length_(rhs.text_length_), use_x_(rhs.use_x_), use_y_(rhs.use_y_),
@@ -696,7 +698,7 @@ public:
   {//! font family of 1st single character of text string to use with SVG tspan command.
     style_.font_family(family);
   //  use_style_ = true;
-    return *this; //! \return tspan_element& to make chainable.
+    return *this; //! \return @c tspan_element& to make chainable.
   }
 
   tspan_element& font_style(const std::string& style)
@@ -706,7 +708,7 @@ public:
     //! http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
     style_.font_style(style);
   //  use_style_ = true;
-    return *this; //! \return tspan_element& to make chainable.
+    return *this; //! \return @c tspan_element& to make chainable.
   }
 
   tspan_element& font_weight(const std::string& w)
@@ -716,7 +718,7 @@ public:
     //! http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
     //! tests conformance.  Only two weights are supported by Firefox, Opera, Inkscape.
     style_.font_weight(w);
-    return *this; //! \return tspan_element& to make chainable.
+    return *this; //! \return @c tspan_element& to make chainable.
   }
 
   tspan_element& fill_color(const svg_color& color)
@@ -724,14 +726,14 @@ public:
     style_info_.fill_color(color);
     style_info_.fill_on(true);
  //   use_style_ = true;
-    return *this; //! \return tspan_element& to make chainable.
+    return *this; //! \return @c tspan_element& to make chainable.
   }
 
   tspan_element& textstyle(const text_style& style)
-  { //! Set text style (font) for a tspan element.
+  { //! Set text style (font) for a @c tspan_element.
     style_ = style;
  //   use_style_ = true;
-    return *this; //! \return tspan_element& to make chainable.
+    return *this; //! \return @c tspan_element& to make chainable.
   }
 
   // All getters.
@@ -904,8 +906,7 @@ tspan_element::tspan_element(const tspan_element& rhs)
   { // Separately defined constructor.
   } // tspan_element::tspan_element
 
-class text_element : public svg_element
-{ /*! \class boost::svg::text_element
+/*! \class boost::svg::text_element
       \brief Holds text with position, size, font, (& styles) & orientation.
       \details
       SVG Coordinates of 1st character EM box, see http://www.w3.org/TR/SVG/text.html#TextElement 10.2.
@@ -931,21 +932,20 @@ class text_element : public svg_element
       \verbatim
         <text x="250" y="219.5" text-anchor="middle"  font-family="verdana" font-size="12">0 </text>
       \endverbatim
-
   */
+class text_element : public svg_element
+{
 public: // No advantage to make private to access only via member functions below:
-  double x_; //!< Left edge.
-  double y_; //!< Bottom of roman capital character.
+  double x_; //!< Left edge of character.
+  double y_; //!< Bottom of Roman capital character.
   ptr_vector<text_parent> data_; //!< Stores all of the containing data.
   text_style style_; //!< font variants.
-  align_style align_; //!< left_align, right_align, center_align
-  rotate_style rotate_; //!< horizontal, upward, downward, upsidedown
+  align_style align_; //!< Alignment: left_align, right_align, center_align.
+  rotate_style rotate_; //!< Rotation: horizontal, upward, downward, upsidedown.
 
   void generate_text(std::ostream& os)
   {
-    for(ptr_vector<text_parent>::iterator i = data_.begin();
-        i != data_.end();
-        ++i)
+    for(ptr_vector<text_parent>::iterator i = data_.begin(); i != data_.end(); ++i)
     {
       (*i).write(os);
     }
@@ -978,6 +978,7 @@ public:
   { //! Get  @c text_element textstyle for font size, family, decoration ...
     return style_;
   }
+
 
   text_element& textstyle(text_style& ts)
   { //! Set  @c text_element text style for font size, family, decoration ...
@@ -1014,7 +1015,7 @@ public:
   text_element& x(double x)
   { //! x coordinate of text to write.
     x_ = x;
-    return *this; //! \return text_element& to make chainable.
+    return *this; //! \return @c text_element& to make chainable.
   }
 
   double x() const
@@ -1025,7 +1026,7 @@ public:
   text_element& y(double y)
   { //! y coordinate of text to write.
     y_ = y;
-    return *this; //! \return text_element& to make chainable.
+    return *this; //! \return  @c text_element& to make chainable.
   }
 
   double y() const
@@ -1034,7 +1035,7 @@ public:
   }
 
   void text(const std::string& t)
-  { //! Get tspan text string to write.
+  { //! push_back tspan text string to write.
     data_.push_back(new text_element_text(t));
   }
 
@@ -1052,7 +1053,7 @@ public:
 
   text_element(
     //!< X & Y-Coordinates of 1st character EM box, see
-    //!< http://www.w3.org/TR/SVG/text.html#TextElement 10.2
+    //!< \sa http://www.w3.org/TR/SVG/text.html#TextElement 10.2
     double x = 0., //!< X = Left edge.
     double y = 0., //!< Y =  Bottom left of (western) character (roman capital).
     //!< So any text with Y coordinate = 0 shows only the descenders of (roman?) lower case !
@@ -1085,10 +1086,10 @@ public:
     y_ = rhs.y_;
     data_.clear(); // Copy data_
     data_.insert(data_.end(), rhs.data_.begin(), rhs.data_.end());
-    style_ = rhs.style_; // font_size, family
+    style_ = rhs.style_; // font_size, family...
     align_ = rhs.align_;
     rotate_ = rhs.rotate_;
-    return *this; //! \return text_element& to make chainable.
+    return *this; //! \return @c text_element& to make chainable.
   }
 
   std::string text()
@@ -1099,13 +1100,14 @@ public:
   }
 
    //! Output SVG @c text_element, style & attributes to a @c std::ostream.
-    // Changed to new convention on spaces:
-    // NO trailing space, but *start* each item with a space.
-    // For debug, may be convenient to start with newline.
-    // os << " <text x=\"" << x_ << "\" y=\"" << y_ << "\"";
+   // Changing back to OLD convention on spaces:
+   // NO trailing space, but *start* each item with a space.
+   // For debug, may be convenient to start with newline.
+   // Should now use easier to read SVG XML layout.
+   // Example: \verbatim os << " <text x=\"" << x_ << "\" y=\"" << y_ << "\""; \endverbatim
   void write(std::ostream& os)
   {
-    os << "\n\t<text x=\"" << x_ << "\" y=\"" << y_ << "\"";
+    os << "\t<text x=\"" << x_ << "\" y=\"" << y_ << "\"";
     std::string anchor;
     switch(align_)
     {
@@ -1129,11 +1131,11 @@ public:
       os << " text-anchor=\"" << anchor << "\"";
     }
     if(rotate_ != 0)
-    {
-      os << " transform = \"rotate("
+    { // Only show if not normal horizontal writing.
+      os << " transform=\"rotate("
         << rotate_ << " "
         << x_ << " "
-        << y_ << " )\"";
+        << y_ << ")\"";
     }
     if (style_.font_size() != 0)
     {
@@ -1163,10 +1165,10 @@ public:
     {
       os << " textLength=\"" << style_.text_length() << "\"";
     }
-    os << '>' ;
-    generate_text(os);
-    os << "</text>";
-    // Example: <text x="67.5" y="462" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0</text>
+    os << ">" ;
+    generate_text(os); 
+    os << "</text>" "\n";
+    // Example: <text x="67.5" y="462" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">my_text!</text>
   } // void write(std::ostream& os)
 }; // class text_element_
 
@@ -2041,10 +2043,10 @@ public:
   public: // Simplest, private has little benefit.
 
     ptr_vector<svg_element> children; /*!< Children of this group element node,
-      containg graphics elements like text, circle line, polyline...
+      containg graphics elements like text, rect, circle, line, polyline...
     */
     std::string clip_name;  //!< Name of clip path.
-    bool clip_on; //!< true if to clip anything outside the clip path.
+    bool clip_on; //!< @c true if to clip anything outside the clip path.
 
     g_element() : clip_on(false)
     { //! Construct g_element (with no clipping).
@@ -2077,23 +2079,29 @@ public:
         os << "<g"; // Do NOT need space if convention is to start following item with space.
         write_attributes(os); // id="background" (or clip_path)
         style_info_.write(os); // stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
-        os << ">" ;
+        os << ">" 
+          "\n"; // Newline after the g_element id and style is easier to read.
         for(unsigned int i = 0; i < children.size(); ++i)
         {
           children[i].write(os);  // Using each element's version of write function.
         }
-        os << "\n</g>" << std::endl;
+        os << "</g>"  // Assumes newline after previous element like <rect ... />
+       // os << "\n</g>"  // Assumes NO newline after previous element like <rect ... />
+
+          << std::endl;
       }
     } // void write(std::ostream& rhs)
 
     g_element& g(int i)
-    { //! i is index of children nodes.
+    { //! i is index of children nodes (first is zero).
+      //! Example:   \code g_element& g1 = my_svg.g(1); // index is one. \endcode
       return *(static_cast<g_element*>(&children[i])); // \return reference to child node g_element.
     }
 
     g_element& add_g_element()
     { //! Add a new group element.
-      //! \return A reference to the new child node just created.
+      //! \return Reference to the new child node just created.
+      //! Example: \code   g_element& g0 = my_svg.add_g_element(); // Add first (zeroth) new element to the document. \endcode
       children.push_back(new g_element());
       return *(static_cast<g_element*>(&children[children.size()-1]));
     }
