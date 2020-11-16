@@ -75,12 +75,12 @@ namespace svg
 
   class svg_element
   { /*! \class boost::svg::svg_element
-       \brief svg_element is base class for all the leaf elements.
+       \brief svg_element is base class for all the leaf elements @c g_element, @c rect_element.. .
        \details
-       g_element, rect_element, circle_element, line_element, polygon_element, polyline_element, path_element, clip_path_element, text_element, tspan_element.\n
-    */
-
-  protected:
+       \code g_element, rect_element, circle_element, line_element, polygon_element, polyline_element, path_element, clip_path_element, text_element, tspan_element.\n
+       \endcode
+     */
+  public:
     svg_style style_info_; //!< Colors fill, stroke, width; set and get by function style.
     std::string id_name_; //!< SVG id name, set & get by function id.
     std::string class_name_; //!< SVG class name, set & get by function class id.
@@ -116,8 +116,6 @@ namespace svg
       */
     } // void write_attributes(std::ostream& os)
 
-  public:
-
     svg_element(const svg_style& style_info,
                 const std::string& id_name = "",
                 const std::string& class_name = "",
@@ -134,7 +132,7 @@ namespace svg
     { //! Default constructor.
     }
 
-    virtual void write(std::ostream& os) = 0; //!< Write function outputs SVG commands for a leaf element.
+    virtual void write(std::ostream& os) = 0; //!< Write function outputs appropriate SVG commands for a leaf or child element.
 
     virtual ~svg_element()
     { //! Destructor.
@@ -164,7 +162,7 @@ namespace svg
     }
 
     void id(const std::string& id)
-    { //! Provide a unique name for an element. Example: id="plotBackground"
+    { //! Provide a unique name for an element. Example: <g id="plotBackground"
 
       /*! \details
         See http://www.w3.org/TR/SVG/struct.html#IDAttribute
@@ -177,8 +175,7 @@ namespace svg
         xml:base = "<uri>"
         Specifies a base URI other than the base URI of the document or external entity.
         Refer to the "XML Base" specification [XML-BASE].
-        A group of elements, as well as individual objects,
-        can be given a name using the id attribute.
+        A group of elements, as well as individual objects can be given a name using the id attribute.
         Named groups are needed for several purposes such as animation and re-usable objects.
       */
       id_name_ = id;
@@ -234,7 +231,6 @@ namespace svg
     double x2_; //!< Line from (x1_, x2_) to (y1_, y2_)
     double y2_; //!< Line from (x1_, x2_) to (y1_, y2_)
 
-  public:
     line_element(double x1, double y1, double x2,  double y2)
       :   x1_(x1), x2_(x2),  y1_(y1), y2_(y2)
     { //! Constructor assigning all line_element private data.
@@ -249,7 +245,7 @@ namespace svg
                  const std::string& clip_name = "")
                 : x1_(x1), y1_(y1), x2_(x2),y2_(y2),
                   svg_element(style_info, id_name, class_name, clip_name)
-    { //! Constructor assigning all line_element private data,
+    { //! Constructor assigning all line_elementdata,
       //! and also inherited svg_element data.
     }
 
@@ -262,6 +258,16 @@ namespace svg
           << "\" x2=\"" << x2_ << "\" y2=\"" << y2_ << "\"/>";
     }
   }; // class line_element
+
+
+  std::ostream& operator<< (std::ostream& os, const line_element& l)
+  { //! Diagnostic output of line coordinates.
+    //! Example: line_element l(20, 20, 50, 50);  std::cout << l << std::endl;
+    //! Outputs:  rect(20, 20, 50, 50)
+    os << "rect(" << l.x1_ << ", " << l.y1_
+      << ", " << l.x2_ << ", " << l.y2_ << ")";
+    return os;
+  } // std::ostream& operator<<
 
   // Represents a curve (quadratic)
   class qurve_element: public svg_element
@@ -325,7 +331,6 @@ namespace svg
     */
     friend bool operator==(const rect_element&, const rect_element&);
     friend bool operator!=(const rect_element&, const rect_element&);
-
   public: 
 
     double x_; //!< X-axis coordinate of the side of the rectangle which has the smaller x-axis coordinate value.
@@ -428,16 +433,16 @@ namespace svg
         \brief Circle from coordinates of center, and radius.
         \details
          Represents a single circle.
-         http://www.w3.org/TR/SVG/shapes.html#CircleElement
+         \sa http://www.w3.org/TR/SVG/shapes.html#CircleElement
     */
-    double x;
-    double y;
-    double radius;
   public:
+    double x_;
+    double y_;
+    double radius_;
     circle_element(double x,  //!< coordinate X of center of ellipse.
       double y, //!< coordinate Y of center of ellipse.
       double radius = 5) //!< radius of ellipse.
-      : x(x), y(y), radius(radius)
+      : x_(x), y_(y), radius_(radius)
     { //! Constructor defines all private data (default radius only).
     }
 
@@ -448,8 +453,8 @@ namespace svg
                  const std::string& clip_name=""
                  )
       :
-        x(x), y(y),
-        svg_element(style_info, id_name, class_name, clip_name), radius(radius)
+        x_(x), y_(y),
+        svg_element(style_info, id_name, class_name, clip_name), radius_(radius)
     { //! Constructor defines all private data.
     }
 
@@ -461,9 +466,18 @@ namespace svg
     */
       os << "<circle";
       write_attributes(os);
-      os << " cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << radius << "\"/>";
+      os << " cx=\"" << x_ << "\" cy=\"" << y_ << "\" r=\"" << radius_ << "\"/>";
     }
   }; // class circle_element
+
+  std::ostream& operator<< (std::ostream& os, const circle_element& c)
+  { //! Diagnostic output of circle center X and Y coordinates and radius.
+    //! Example: circle_element c(20, 20, 40);  std::cout << c << std::endl;
+    //! Outputs:  
+    os << "circle(" << c.x_ << ", " << c.y_
+      << ", " << c.radius_ << ")";
+    return os;
+  } // std::ostream& operator<<
 
   class ellipse_element : public svg_element
   { /*! \class boost::svg::ellipse_element
@@ -537,27 +551,43 @@ namespace svg
   { //! \enum align_style Represents a single block of text, with font & alignment.
     left_align, //!< Align text to left.
     right_align, //!< Align text to right.
-    center_align //!< Center text.
+    center_align //!< Center align text.
   };
+
+  std::ostream& operator<< (std::ostream& os, align_style al)
+  { //! Outputs: alignment (useful for diagnosis).
+    //! Example: 
+    //! \code align_style al = left_align;  std::cout << "Align is " << al << std::endl; \endcode
+    //! Outputs: Align is left align 
+    if (al == left_align)
+    {
+      os << "left align";
+    }
+    else if (al == center_align)
+    {
+      os << "center";
+    }
+    else if (al == right_align)
+    {
+      os << "right";
+    }
+    else os << "???" << std::endl;
+    return os;
+  } //   std::ostream& operator<< (std::ostream& os, align_style al)
 
 class text_parent
 { /*! \class boost::svg::text_parent
     \brief An ancestor to both tspan and strings for the text_element class.
-    \details This allows an array of both types to be stored in @c @c text_element.
+    \details This allows an array of both types to be stored in @c text_element.
   */
-  protected:
-    std::string text_; //!< Actual text string for SVG text.
-
   public:
-
+    std::string text_; //!< Actual text string for SVG text.
     virtual ~text_parent() {}
-
     virtual void write(std::ostream& /* os */)
     { //! write functions output SVG commands.
     }
-
     text_parent(const std::string& text): text_(text)
-    { //! Construct from text.
+    { //! Construct from string text.
     }
     text_parent(const text_parent& rhs): text_(rhs.text_)
     { //! Copy constructor.
@@ -566,7 +596,7 @@ class text_parent
 
 class text_element_text : public text_parent
 { /*! \class boost::svg::text_element_text
-  \brief text (not tspan) element to be stored in text_parent.
+  \brief text string to be stored in text_parent.
   \details See 10.4 text element http://www.w3.org/TR/SVG/text.html#TextElement
   */
 public:
@@ -582,11 +612,20 @@ public:
   }
 }; // class text_element_text
 
+std::ostream& operator<< (std::ostream& os, text_element_text& t)
+{ //! Outputs: text & style (useful for diagnosis).
+  //! Usage: text_element_text t("Some text);  std::cout << t << std::endl;
+  os << "text_element_text(\"" << t.text_ << "\") " << std::endl;
+  return os;
+} // std::ostream& operator<<
+
+
 class tspan_element : public text_parent, public svg_element
 { /*! \class boost::svg::tspan_element
-    \brief tspan (not text) to be stored in text_parent.
+    \brief tspan (not text_element) to be stored in text_parent.
     \details See 10.5 tspan element http://www.w3.org/TR/SVG/text.html#TSpanElement 
     Example: 
+
     */
 public:
   double x_;  //!< Absolute X position.
@@ -605,9 +644,8 @@ public:
   //bool use_text_length_; //!< If true then use user calculated length rather than SVG (not used).
   text_style style_; //!< font variants.
 
-public:
   tspan_element(const std::string& text, //!< Text string to display.
-    const text_style& style = no_style) //!< style (font).
+    const text_style& style = no_style) //!< text style (font).
   :
     use_x_(false), use_y_(false), 
     text_parent(text), style_(style),
@@ -630,7 +668,7 @@ public:
 
   // All setters (all chainable).
   //tspan_element(const std::string& text, const text_style& style);
-  //tspan_element(const tspan_element&);
+  //tspan_element(const tspan_element&); // Default style.
   //tspan_element& text(const std::string& text);
   //tspan_element& dx(double dx);
   //tspan_element& dy(double dy);
@@ -638,8 +676,7 @@ public:
   //tspan_element& x(double x);
   //tspan_element& y(double y);
   //tspan_element& text_length(double text_length);
-  //  tspan_element& text_style(const text_style& style)
-
+  //tspan_element& text_style(const text_style& style)
 
   tspan_element& text(const std::string& text)
   { //! Set text string to use with SVG tspan command.
@@ -723,8 +760,16 @@ public:
 
   tspan_element& fill_color(const svg_color& color)
   { //! Set fill color for a tspan element.
-    style_info_.fill_color(color);
+    style_info_.fill_color(color);  // svg_element svg_style style_info
     style_info_.fill_on(true);
+ //   use_style_ = true;
+    return *this; //! \return @c tspan_element& to make chainable.
+  }
+
+  tspan_element& stroke_color(const svg_color& color)
+  { //! Set stroke color for a tspan element.
+    style_info_.stroke_color(color);
+    style_info_.stroke_on(true);
  //   use_style_ = true;
     return *this; //! \return @c tspan_element& to make chainable.
   }
@@ -736,8 +781,7 @@ public:
     return *this; //! \return @c tspan_element& to make chainable.
   }
 
-  // All getters.
-
+  // All get functions.
   //tspan_element::std::string text();
   //double x();
   //double y();
@@ -813,13 +857,23 @@ public:
   }
 
   svg_color fill_color()
-  { //! Get the fill color for tspan element .
+  { //! Get the fill color for tspan element from svg_element.
     return style_info_.fill_color();
   }
 
   bool fill_on()
   { //! Get true if to use fill color for tspan element.
     return style_info_.fill_on();
+  }
+
+  svg_color stroke_color()
+  { //! Get the stroke color for tspan element from svg_element.
+    return style_info_.stroke_color();
+  }
+
+  bool stroke_on()
+  { //! Get true if to use stroke color for tspan element.
+    return style_info_.stroke_on();
   }
 
   double text_length()
@@ -896,8 +950,25 @@ public:
     }
     os << ">" << text_ << "</tspan>";  // The actual text string.
   } //   void write(std::ostream& os)
-}; // class tspan_element
 
+  }; // class tspan_element
+
+std::ostream& operator<< (std::ostream& os, const tspan_element& t)
+{ //! Diagnostic output of tspan coordinates and dimensions etc
+  //! Example:   std::cout << r << std::endl;
+  //! Outputs:  
+  os << std::boolalpha << "tspan("
+    << t.x_ << ", " << t.y_ 
+    << ", " << t.dx_ << ", " << t.dy_
+    << ", " << t.rotate_ << ", " << t.text_length_ 
+    << ", " << t.use_x_ << ", " << t.use_y_
+    << ", " << t.style_
+    << ")";
+  return os;
+} // std::ostream& operator<<
+
+
+//! Copy constructor.
 tspan_element::tspan_element(const tspan_element& rhs)
     :
     text_length_(rhs.text_length_), use_x_(rhs.use_x_), use_y_(rhs.use_y_),
@@ -935,7 +1006,7 @@ tspan_element::tspan_element(const tspan_element& rhs)
   */
 class text_element : public svg_element
 {
-public: // No advantage to make private to access only via member functions below:
+public:
   double x_; //!< Left edge of character.
   double y_; //!< Bottom of Roman capital character.
   ptr_vector<text_parent> data_; //!< Stores all of the containing data.
@@ -950,7 +1021,6 @@ public: // No advantage to make private to access only via member functions belo
       (*i).write(os);
     }
   }
-public:
   // Set member functions.
   // void alignment(align_style a);
   // void rotation(rotate_style rot);
@@ -979,7 +1049,6 @@ public:
     return style_;
   }
 
-
   text_element& textstyle(text_style& ts)
   { //! Set  @c text_element text style for font size, family, decoration ...
     style_ = ts;
@@ -987,7 +1056,7 @@ public:
   }
 
   text_element& alignment(align_style a) 
-  { //! left_align, right_align, center_align
+  { //! Set alignment: @c left_align, @c right_align, @c center_align.
     align_ = a;
     return *this; //! \return text_element& to make chainable.
   }
@@ -1005,7 +1074,7 @@ public:
   }
 
   rotate_style rotation() const
-  { //! \return rotation of text element.
+  { //! \return rotation of text element (degrees).
     return rotate_;
   }
 
@@ -1013,24 +1082,24 @@ public:
   // my_text_element.style(no_style).x(999).y(555).alignment(right_align).rotation(vertical);
 
   text_element& x(double x)
-  { //! x coordinate of text to write.
+  { //! X coordinate of text to write.
     x_ = x;
     return *this; //! \return @c text_element& to make chainable.
   }
 
   double x() const
-  { //! x coordinate of text to write.
+  { //! X coordinate of text to write.
     return x_;
   }
 
   text_element& y(double y)
-  { //! y coordinate of text to write.
+  { //! Y coordinate of text to write.
     y_ = y;
     return *this; //! \return  @c text_element& to make chainable.
   }
 
   double y() const
-  { //! y coordinate of text to write.
+  { //! Y coordinate of text to write.
     return y_;
   }
 
@@ -1040,19 +1109,22 @@ public:
   }
 
   tspan_element& tspan(const std::string& t)
-  { //! Add text span element.
+  { //! Add text span element (default text_style).
+    //! data_ in member of text_parent.
     data_.push_back(new tspan_element(t, style_));
     return *(static_cast<tspan_element*>(&data_[data_.size()-1]));
   }
 
   tspan_element& tspan(const std::string& t, const text_style& style)
   { //! Add text span element (with specified text style).
+    //! data_ in member of text_parent.
     data_.push_back(new tspan_element(t, style));
     return *(static_cast<tspan_element*>(&data_[data_.size()-1]));
   }
 
   text_element(
-    //!< X & Y-Coordinates of 1st character EM box, see
+    //!< Constructor
+    //! X & Y-Coordinates of 1st character EM box, see
     //!< \sa http://www.w3.org/TR/SVG/text.html#TextElement 10.2
     double x = 0., //!< X = Left edge.
     double y = 0., //!< Y =  Bottom left of (western) character (roman capital).
@@ -1102,7 +1174,7 @@ public:
    //! Output SVG @c text_element, style & attributes to a @c std::ostream.
    // Changing back to OLD convention on spaces:
    // NO trailing space, but *start* each item with a space.
-   // For debug, may be convenient to start with newline.
+   // For debug, may be convenient to start with newline and tab to indent.
    // Should now use easier to read SVG XML layout.
    // Example: \verbatim os << " <text x=\"" << x_ << "\" y=\"" << y_ << "\""; \endverbatim
   void write(std::ostream& os)
@@ -1131,7 +1203,7 @@ public:
       os << " text-anchor=\"" << anchor << "\"";
     }
     if(rotate_ != 0)
-    { // Only show if not normal horizontal writing.
+    { // Only show rotation info if not normal horizontal writing.
       os << " transform=\"rotate("
         << rotate_ << " "
         << x_ << " "
@@ -1174,9 +1246,19 @@ public:
 
   std::ostream& operator<< (std::ostream& os, text_element& t)
   { //! Outputs: text & style (useful for diagnosis).
-    //! Usage: text_element t(20, 30, "sometest", left_align, horizontal);  cout << t << endl;
-      t.write(os);
-
+    //! Example: 
+    //! \code
+    //!   text_element& t = my_doc.text(100, 100, "My Text", my_text_style, center_align, uphill);
+    //    std::cout << "text_element = " << t << std::endl;
+    //! \endcode
+    // Outputs:  text_element = text_element(100, 100, text_style(20, "serif", "bold", "", "", ""), center, -45)
+      os << "text_element(" << t.x_ << ", " << t.y_
+        //<< ", "  << t.data_
+        << ", " << t.style_ 
+        << ", " << t.align_
+        << ", " << t.rotate_ << ")" 
+        << std::endl;
+      ;
     return os;
   } // std::ostream& operator<<
 

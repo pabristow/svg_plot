@@ -157,7 +157,7 @@ struct t_path; // Draws a quadratic Bezier curve from the current point to (x,y)
 struct a_path; // Draws a elliptical arc from the current point to (x,y).
 class g_element; // 'g' element is a container element for grouping together related graphics elements.
 
-// Note don't try to use accent in Bezier - causes failure in autodoc .xml files - not UTF-8.
+// Note don't try to use accent in Bezier! - causes failure in autodoc .xml files - not UTF-8.
 
 // svg_1d_plot.hpp
 struct svg_plot_series;

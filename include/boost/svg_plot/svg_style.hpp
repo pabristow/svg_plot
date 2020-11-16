@@ -89,6 +89,32 @@ enum rotate_style
   upsidedown = 180 //!< upside down!  (== -180)
 };
 
+std::ostream& operator<< (std::ostream& os, rotate_style & rot)
+{ //! Outputs: rotation style (useful for diagnosis).
+  //! Example: 
+  //! \code align_style al = left_align;
+  //!   std::cout << "Align is " << al << std::endl;
+  //!    std::cout << "rotation = " << r << std::endl;
+  //! \endcode
+  // Outputs:  rot is uphill
+  if (rot == 0) { os << "horizontal"; }
+  else if (rot == -45) { os << "uphill"; }
+  else if (rot == -60) { os << "steepup"; }
+  else if (rot == -90) { os << "upward"; }
+  else if (rot == -135) { os << "backup"; }
+  else if (rot == -180) { os << "leftward"; }
+  else if (rot == 360) { os << "rightward"; }
+  else if (rot == 30) { os << "slopedownhill"; }
+  else if (rot == 45) { os << "downhill"; }
+  else if (rot == 90) { os << "downward"; }
+  else if (rot == 135) { os << "backdown"; }
+  else if (rot == 180) { os << "upsidedown"; }
+  ;
+  return os;
+  } // std::ostream& operator<< (std::ostream & os, rotate_style & rot)
+
+
+
 //! The place for ticks value labels on the axis.
 enum place
 {
@@ -104,7 +130,6 @@ const std::string strip_e0s(std::string s);
 
 // Estimate length of string in SVG units when appears.
 double string_svg_length(const std::string& s, const text_style& style);
-
 /*!
  This is the style information for any group (g) tag.
  This could be expanded to include more data from the SVG standard.
@@ -131,10 +156,9 @@ double string_svg_length(const std::string& s, const text_style& style);
 class svg_style
 { //! \class boost::svg::svg_style Holds the basic SVG stroke and fill colors, and width, and switches to control if in use, or not.
   friend std::ostream& operator<< (std::ostream&, const svg_style&);
-  //std::ostream& operator<< (std::ostream& os, const svg_style& s)
   // Used for diagnostic output of all values of style and state of switches.
 
-private: // Accesses only by set and get member functions below.
+  // Accesses only by set and get member functions below.
   // Private data member variables names end with _,
   // to permit use of names for set & get member functions.
   svg_color stroke_; //!< Color of SVG stroke (line or outline).
@@ -359,7 +383,7 @@ class text_style
   friend bool operator== (const text_style&, const text_style&);
   friend bool operator!= (const text_style&, const text_style&);
 
-  public: // Or private?
+  public: // 
   int font_size_; //!< Font size (SVG units, default pixels).
   std::string font_family_; //!< Font family, examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode".
   std::string weight_; //!< Font weight examples: "bold", "normal".
@@ -370,7 +394,7 @@ class text_style
   // Only actually used if text_length_ > 0.
 
 public:
-  text_style( //!
+  text_style( //! Constructor.
     int font_size = 12, //!< Default font size (12 pixels).  NOT const because it might be changed during sizing.
     const std::string& font = default_font, //!< Examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"...
     const std::string& weight = "", //!< Font weight examples: "bold", "normal".
@@ -389,7 +413,7 @@ public:
   text_style& font_stretch(const std::string& s);
   text_style& font_decoration(const std::string& s);
   // text_style& font_variant(const std::string& s); // Not implemented, nor are others.
-  text_style& text_length(double); // Force reenderer to contract or expand to this length.
+  text_style& text_length(double); // Force renderer to contract or expand to this length.
 
   // text_style Getters.
   int font_size() const;
@@ -689,12 +713,13 @@ std::ostream& operator<< (std::ostream& os, const text_style& ts)
     }
     os << ")";
   /*! \details Example:
-     text_style ts(12, "Arial", "italic", "bold", "", "", 0);  std::cout << t << std::endl;
+     text_style ts(12, "Arial", "italic", "bold", "", "", 0);  std::cout << ts << std::endl;
      Outputs:  text_style(12, "Arial", "italic", "bold", "", "")
 
+     text_style ts(12, "Arial", "italic", "bold", "narrower", "underline", 1000);  std::cout << ts << std::endl;
      Outputs:  text_style(12, "Arial", "italic", "bold", "narrower", "underline", 1000)
    */
-  return os;
+  return os; // Make chainable.
 } // std::ostream& operator<<
 
 // End of class text_style function *Definitions* separated.
@@ -713,7 +738,6 @@ class value_style
      where X value_style is used to provide the prefix and separator, and Y value_style to provide the suffix.
      Prefix, separator and suffix are ignored when X or Y are shown separately using draw_plot_point_value.
      "4.5+- 0.01 (3) Second #2, 2012-Mar-13 13:01:00"
-
   */
 public:
   rotate_style value_label_rotation_; //!< Direction point value labels written.
@@ -945,9 +969,9 @@ public:
 }; // struct plot_point_style
 
 // class plot_point_style function Definitions.
-// Constructor.
 
-  plot_point_style::plot_point_style( //!< Constructor set defaults for data members. (see declaration).
+// Constructor.
+  plot_point_style::plot_point_style( //!< Constructor sets defaults for data members.
     const svg_color& stroke,  //!< Color of circumference of shape.
     const svg_color& fill, //!< Fill color of the centre of the shape.
     int size, //!< Diameter of circle, height of square, font_size  ...
