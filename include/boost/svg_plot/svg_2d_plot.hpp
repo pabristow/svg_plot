@@ -8,8 +8,6 @@
 
   (Many items common to 1D and 2D use functions and classes in @c axis_plot_frame).
   #define BOOST_SVG_DIAGNOSTICS can be added to output diagnostic information.
-
-  \author Jacob Voytko & Paul A. Bristow
  */
 
 // Copyright Jacob Voytko 2007

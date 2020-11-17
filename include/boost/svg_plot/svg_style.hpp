@@ -90,30 +90,30 @@ enum rotate_style
 };
 
 std::ostream& operator<< (std::ostream& os, rotate_style & rot)
-{ //! Outputs: rotation style (useful for diagnosis).
+{ //! Outputs: rotation style as words and degrees from horizontal (useful for diagnosis).
   //! Example: 
   //! \code align_style al = left_align;
   //!   std::cout << "Align is " << al << std::endl;
   //!    std::cout << "rotation = " << r << std::endl;
   //! \endcode
-  // Outputs:  rot is uphill
-  if (rot == 0) { os << "horizontal"; }
-  else if (rot == -45) { os << "uphill"; }
-  else if (rot == -60) { os << "steepup"; }
-  else if (rot == -90) { os << "upward"; }
-  else if (rot == -135) { os << "backup"; }
-  else if (rot == -180) { os << "leftward"; }
-  else if (rot == 360) { os << "rightward"; }
-  else if (rot == 30) { os << "slopedownhill"; }
-  else if (rot == 45) { os << "downhill"; }
-  else if (rot == 90) { os << "downward"; }
-  else if (rot == 135) { os << "backdown"; }
-  else if (rot == 180) { os << "upsidedown"; }
+  // Outputs: \verbatim rot is uphill (-45) \endverbatim
+  if (rot == 0) { os << "horizontal (0)"; }
+  else if (rot == -30) { os << "slopeup (-30)"; }
+  else if (rot == -45) { os << "uphill (-45)"; }
+  else if (rot == -60) { os << "steepup (-60)"; }
+  else if (rot == -90) { os << "upward (-90)"; }
+  else if (rot == -135) { os << "backup (-135)"; }
+  else if (rot == -180) { os << "leftward (-180)"; }
+  else if (rot == 360) { os << "rightward (360)"; }
+  else if (rot == 30) { os << "slopedownhill (30)"; }
+  else if (rot == 45) { os << "downhill (45)"; }
+  else if (rot == 60) { os << "steepdown (60)"; }
+  else if (rot == 90) { os << "downward (90)"; }
+  else if (rot == 135) { os << "backdown (135)"; }
+  else if (rot == 180) { os << "upsidedown (180)"; }
   ;
   return os;
   } // std::ostream& operator<< (std::ostream & os, rotate_style & rot)
-
-
 
 //! The place for ticks value labels on the axis.
 enum place

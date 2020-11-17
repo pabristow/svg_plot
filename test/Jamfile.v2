@@ -1,8 +1,9 @@
 # boost_root/libs/svg_plot/test/jamfile.v2
 
 # SVG Plot Tests using Unit Test Library
+# This tests a few features but most 'tests' are eyeballing output of examples SVG.
 
-# Copyright Paul A. Bristow 2013
+# Copyright Paul A. Bristow 2013, 2020
 
 # From Copyright 2005: Eric Niebler
 # Distributed under the Boost Software License, Version 1.0.
@@ -46,15 +47,15 @@ project SVG_Plot
 
       <toolset>msvc:<iterator_debugging>off
       <toolset>intel-win:<iterator_debugging>off
-	    <toolset>clang:<cxxflags>-std=c++11
-	    <toolset>clang:<cxxflags>-Wno-reorder
-      <toolset>gcc:<cxxflags>-std=c++11
-	    <toolset>gcc:<cxxflags>-Wno-reorder ;
+      <toolset>clang:<cxxflags>-std=c++11
+      <toolset>clang:<cxxflags>-Wno-reorder
+      <toolset>gcc:<cxxflags>-std=c++14
+      <toolset>gcc:<cxxflags>-Wno-reorder ;
 
 test-suite "SVG Plot"
     : [ run 1d_tests.cpp ]
       [ run 1d_color_consistency.cpp ]
       [ run 2d_color_consistency.cpp ]
       [ run test_svg.cpp ]
-      
+      [ run test_svg_xml.cpp ]
     ;
