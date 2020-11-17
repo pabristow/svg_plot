@@ -254,8 +254,8 @@ namespace svg
        writing XML SVG command to draw a straight line.
        */
       /* \verbatim Example: <line x1="5" y1="185" x2="340" y2="185"/> \endverbatim */
-      rhs << "<line x1=\"" << x1_ << "\" y1=\"" << y1_
-          << "\" x2=\"" << x2_ << "\" y2=\"" << y2_ << "\"/>";
+      rhs << "\t"  "<line x1=\"" << x1_ << "\" y1=\"" << y1_
+          << "\" x2=\"" << x2_ << "\" y2=\"" << y2_ << "\"/>" "\n";
     }
   }; // class line_element
 
@@ -332,7 +332,6 @@ namespace svg
     friend bool operator==(const rect_element&, const rect_element&);
     friend bool operator!=(const rect_element&, const rect_element&);
   public: 
-
     double x_; //!< X-axis coordinate of the side of the rectangle which has the smaller x-axis coordinate value.
     double y_; //!< Y-axis coordinate of the side of the rectangle which has the smaller y-axis coordinate value.
     //!< So (0, 0) is top left corner of rectangle.
@@ -464,9 +463,9 @@ namespace svg
        Example: <circle cx="9.78571" cy="185" r="5"/>
     \endverbatim
     */
-      os << "<circle";
+      os << "\t<circle";
       write_attributes(os);
-      os << " cx=\"" << x_ << "\" cy=\"" << y_ << "\" r=\"" << radius_ << "\"/>";
+      os << " cx=\"" << x_ << "\" cy=\"" << y_ << "\" r=\"" << radius_ << "\"/>" "\n";
     }
   }; // class circle_element
 
@@ -475,7 +474,7 @@ namespace svg
     //! Example: circle_element c(20, 20, 40);  std::cout << c << std::endl;
     //! Outputs:  
     os << "circle(" << c.x_ << ", " << c.y_
-      << ", " << c.radius_ << ")";
+      << ", " << c.radius_ << ")" "\n";
     return os;
   } // std::ostream& operator<<
 
@@ -488,14 +487,13 @@ namespace svg
         9.4 The 'ellipse'  element.
         Default is 'horizontal' but can be rotated.
         */
-  private:
+  public:
     double cx_; //!< coordinate x of center of ellipse, default 0.
     double cy_; //!< coordinate y, default 0.
     double rx_; //!< radius x, default 4 pixels.
     double ry_; //!< radius y, default 8 pixels.
     double rotate_; //! rotation in degrees from horizontal (default 0.).
     // Only hacked in - should be in attributes?
-  public:
     ellipse_element(double cx, //!< coordinate X of center of ellipse.
       double cy, //!< coordinate Y  of center of ellipse.
       double rx = 4, //!< X radius default.
@@ -536,14 +534,14 @@ namespace svg
         Output SVG XML commands to draw an ellipse.
         Example: \<ellipse rx="250" ry="100" fill="red"  /\>
      */
-      os << "<ellipse";
+      os << "\t<ellipse";
       write_attributes(os);
       if(rotate_ != 0)
       { // Should this be in atttributes?
         os << " transform= \"" << " rotate=(" << rotate_ << ")\"";
       }
       os << " cx=\"" << cx_ << "\" cy=\"" << cy_ << "\""
-          << " rx=\"" << rx_ << "\" ry=\"" << ry_  << "\"/>";
+          << " rx=\"" << rx_ << "\" ry=\"" << ry_  << "\"/>" "\n";
     }
   }; // class ellipse_element
 
@@ -554,26 +552,26 @@ namespace svg
     center_align //!< Center align text.
   };
 
-  std::ostream& operator<< (std::ostream& os, align_style al)
-  { //! Outputs: alignment (useful for diagnosis).
-    //! Example: 
-    //! \code align_style al = left_align;  std::cout << "Align is " << al << std::endl; \endcode
-    //! Outputs: Align is left align 
-    if (al == left_align)
-    {
-      os << "left align";
-    }
-    else if (al == center_align)
-    {
-      os << "center";
-    }
-    else if (al == right_align)
-    {
-      os << "right";
-    }
-    else os << "???" << std::endl;
-    return os;
-  } //   std::ostream& operator<< (std::ostream& os, align_style al)
+  //std::ostream& operator<< (std::ostream& os, align_style al)
+  //{ //! Outputs: alignment (useful for diagnosis).
+  //  //! Example: 
+  //  //! \code align_style al = left_align;  std::cout << "Align is " << al << std::endl; \endcode
+  //  //! Outputs: Align is left align 
+  //  if (al == left_align)
+  //  {
+  //    os << "left align";
+  //  }
+  //  else if (al == center_align)
+  //  {
+  //    os << "center";
+  //  }
+  //  else if (al == right_align)
+  //  {
+  //    os << "right";
+  //  }
+  //  else os << "???" << std::endl;
+  //  return os;
+  //} //   std::ostream& operator<< (std::ostream& os, align_style al)
 
 class text_parent
 { /*! \class boost::svg::text_parent
@@ -886,7 +884,7 @@ public:
   
   void write(std::ostream& os)
   { //! Output SVG XML for a tspan_element
-    os << "<tspan";
+    os << "\t" "<tspan";
     write_attributes(os); // id & clip_path
     style_info_.write(os); // fill, stroke, width...
 
@@ -948,7 +946,7 @@ public:
     { // Use estimated text length to expand or compress to the this SVG length.
       os << " textLength=\"" << text_length_ << "\"";
     }
-    os << ">" << text_ << "</tspan>";  // The actual text string.
+    os << ">" << text_ << "</tspan>" "\n";  // The actual text string.
   } //   void write(std::ostream& os)
 
   }; // class tspan_element
@@ -1239,7 +1237,7 @@ public:
     }
     os << ">" ;
     generate_text(os); 
-    os << "</text>" "\n";
+    os << "\t" "</text>" "\n";
     // Example: <text x="67.5" y="462" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">my_text!</text>
   } // void write(std::ostream& os)
 }; // class text_element_
@@ -1308,14 +1306,14 @@ public:
 
   struct m_path: public path_point
   { /*! \struct boost::svg::m_path
-      \brief move to coordinates (x, y)
+      \brief Move to coordinates (x, y)
      \details See 8.3.2 The "moveto" commands.
      */
     double x; //!< End of move SVG X coordinate.
     double y; //!< End of move SVG Y coordinate.
 
     void write(std::ostream& os)
-    { //! write moveto X and Y coordinates to stream, for example: "M52.8571,180 "
+    { //! Write moveto X and Y coordinates to stream, for example: "M52.8571,180 "
       if(relative)
       {
         os << "m";
@@ -1362,6 +1360,7 @@ public:
     */
     double x; //!< End of line SVG X coordinate.
     double y; //!< End of line SVG Y coordinate.
+
     void write(std::ostream& os)
     { //! Write line to SVG command.
       if(relative)
@@ -1372,7 +1371,7 @@ public:
       { // Absolute.
         os << "L";
       }
-      os << x << "," << y << " ";
+      os << x << "," << y << " " "\n";
     }
 
     l_path(double x, double y, bool relative = false)
@@ -1757,7 +1756,7 @@ public:
       if (path.begin() != path.end() )
       { // Is some path info (trying to avoid useless <path d=""/>"
         // TODO or would this omit useful style & attributes?
-        os << "<path d=\"";
+        os << "\t" "<path d=\"";
         for(ptr_vector<path_point>::iterator i = path.begin(); i != path.end(); ++i)
         {
           (*i).write(os); // M1,2
@@ -1774,7 +1773,7 @@ public:
         {
           os << " fill=\"none\"";
         }
-        os<<"/>"; // closing to match <path d=
+        os<<"/>" "\n"; // closing to match <path d=
       }
     } // void write(std::ostream& os)
   }; // class path_element
@@ -1810,7 +1809,7 @@ public:
   }; // struct poly_path_point
 
   std::ostream& operator<< (std::ostream& os, const poly_path_point& p)
-  { //! Output may be useful for Boost.Test.
+  { //! Output may be useful for diagnosis and Boost.Test.
     //! Usage:  poly_path_point p0(100, 200);
     //! cout << p0 << endl;
     //! Outputs: (100, 200)
@@ -1837,7 +1836,6 @@ public:
     //using boost::ptr_vector;
     ptr_vector<poly_path_point> poly_points; //!< All the x, y coordinate pairs,
     //!< push_backed by calls of p_path(x, y).
-  public:
     bool fill; //!< polygon to have fill color.
 
     polygon_element(const polygon_element& rhs)
@@ -1955,7 +1953,7 @@ public:
             points="850,75  958,137.5 958,262.5 850,325 742,262.6 742,137.5" />
          \endverbatim
        */
-      os << "<polygon points=\"";
+      os << "\t" "<polygon points=\"";
       for(ptr_vector<poly_path_point>::iterator i = poly_points.begin(); i != poly_points.end(); ++i)
       {
         (*i).write(os); //  x, y coordinates as " 1,2"
@@ -1967,11 +1965,11 @@ public:
       {
         os << " fill = \"none\"";
       }
-      os<<"/>";
+      os<<"/>" "\n";
     } // void write(std::ostream& os)
 
     std::ostream& operator<< (std::ostream& os)
-    { /*! Output polygon info. (May be useful for Boost.Test.
+    { /*! Output polygon info. (May be useful for diagnosis and Boost.Test).
          using os << "(" << p.x << ", " << p.y  << ")" ;
          Usage:  polygon_element p(1, 2, 3, 4, 5, 6);
            my_polygon.operator << (cout);
@@ -1988,7 +1986,7 @@ public:
   }; // class polygon_element
 
   std::ostream& operator<< (std::ostream& os, polygon_element& p)
-  { /*! Output all poly_path_ points (May be useful for Boost.Test).
+  { /*! Output all poly_path_ points (May be useful for Boost.Test and diagnosis).
         ptr_vector<poly_path_point> poly_points; All the x, y coordinate pairs,
         Example: \code polygon_element p(1, 2, 3, 4, 5, 6);
         std::cout << p << std::endl;
@@ -2071,7 +2069,7 @@ public:
           Example: <polyline points=" 100,100 200,100 300,200 400,400"/>
           \endverbatim
       */
-      os << "<polyline points=\"";
+      os << "\t" "<polyline points=\"";
       for(ptr_vector<poly_path_point>::iterator i = poly_points.begin(); i!= poly_points.end(); ++i)
       {
         (*i).write(os); //  x, y coordinates as " 1,2"
@@ -2079,14 +2077,14 @@ public:
       os << "\"";
       write_attributes(os);
       style_info_.write(os);
-      os<<"/>";
+      os<<"/>" "\n";
     } // void write(std::ostream& os)
 
   }; // class polyline_element
 
   std::ostream& operator<< (std::ostream& os, polyline_element& p)
   { /*! 
-     Output polyline info (useful for Boost.Test).
+     Output polyline info (useful for Boost.Test and diagnosis).
       \verbatim
          Example: <polyline points=" 100,100  200,100  300,200  400,400"/>
          ptr_vector<poly_path_point> poly_points; // All the x, y coordinate pairs.
@@ -2158,7 +2156,7 @@ public:
             Avoid useless output like: <g id="legendBackground"></g>
           \endverbatim
         */
-        os << "<g"; // Do NOT need space if convention is to start following item with space.
+        os << "\n" "<g"; // Do NOT need space if convention is to start following item with space or tab or newline.
         write_attributes(os); // id="background" (or clip_path)
         style_info_.write(os); // stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
         os << ">" 
@@ -2166,11 +2164,10 @@ public:
         for(unsigned int i = 0; i < children.size(); ++i)
         {
           children[i].write(os);  // Using each element's version of write function.
+          // Using tab to indent also makes easy to read.
         }
-        os << "</g>"  // Assumes newline after previous element like <rect ... />
+        os << "</g>"  ; // Assumes newline after previous element like <rect ... />
        // os << "\n</g>"  // Assumes NO newline after previous element like <rect ... />
-
-          << std::endl;
       }
     } // void write(std::ostream& rhs)
 

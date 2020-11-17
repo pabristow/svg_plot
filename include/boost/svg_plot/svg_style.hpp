@@ -88,32 +88,32 @@ enum rotate_style
   backdown = 135, //!< slope down backwards.
   upsidedown = 180 //!< upside down!  (== -180)
 };
-
-std::ostream& operator<< (std::ostream& os, rotate_style & rot)
-{ //! Outputs: rotation style as words and degrees from horizontal (useful for diagnosis).
-  //! Example: 
-  //! \code align_style al = left_align;
-  //!   std::cout << "Align is " << al << std::endl;
-  //!    std::cout << "rotation = " << r << std::endl;
-  //! \endcode
-  // Outputs: \verbatim rot is uphill (-45) \endverbatim
-  if (rot == 0) { os << "horizontal (0)"; }
-  else if (rot == -30) { os << "slopeup (-30)"; }
-  else if (rot == -45) { os << "uphill (-45)"; }
-  else if (rot == -60) { os << "steepup (-60)"; }
-  else if (rot == -90) { os << "upward (-90)"; }
-  else if (rot == -135) { os << "backup (-135)"; }
-  else if (rot == -180) { os << "leftward (-180)"; }
-  else if (rot == 360) { os << "rightward (360)"; }
-  else if (rot == 30) { os << "slopedownhill (30)"; }
-  else if (rot == 45) { os << "downhill (45)"; }
-  else if (rot == 60) { os << "steepdown (60)"; }
-  else if (rot == 90) { os << "downward (90)"; }
-  else if (rot == 135) { os << "backdown (135)"; }
-  else if (rot == 180) { os << "upsidedown (180)"; }
-  ;
-  return os;
-  } // std::ostream& operator<< (std::ostream & os, rotate_style & rot)
+//
+//std::ostream& operator<< (std::ostream& os, rotate_style & rot, align_style)
+//{ //! Outputs: rotation style as words and degrees from horizontal (useful for diagnosis).
+//  //! Example: 
+//  //! \code align_style al = left_align;
+//  //!   std::cout << "Align is " << al << std::endl;
+//  //!    std::cout << "rotation = " << r << std::endl;
+//  //! \endcode
+//  // Outputs: \verbatim rot is uphill (-45) \endverbatim
+//  if (rot == 0) { os << "horizontal (0)"; }
+//  else if (rot == -30) { os << "slopeup (-30)"; }
+//  else if (rot == -45) { os << "uphill (-45)"; }
+//  else if (rot == -60) { os << "steepup (-60)"; }
+//  else if (rot == -90) { os << "upward (-90)"; }
+//  else if (rot == -135) { os << "backup (-135)"; }
+//  else if (rot == -180) { os << "leftward (-180)"; }
+//  else if (rot == 360) { os << "rightward (360)"; }
+//  else if (rot == 30) { os << "slopedownhill (30)"; }
+//  else if (rot == 45) { os << "downhill (45)"; }
+//  else if (rot == 60) { os << "steepdown (60)"; }
+//  else if (rot == 90) { os << "downward (90)"; }
+//  else if (rot == 135) { os << "backdown (135)"; }
+//  else if (rot == 180) { os << "upsidedown (180)"; }
+//  ;
+//  return os;
+//  } // std::ostream& operator<< (std::ostream & os, rotate_style & rot)
 
 //! The place for ticks value labels on the axis.
 enum place
@@ -125,7 +125,8 @@ enum place
   top_side = +1,
 };
 
-//! Ugly hack to remove unwanted sign and leading zero(s) in exponent in floating-point decimal digit values.
+//! Ugly hack to remove unwanted sign and leading zero(s) in exponent in floating-point decimal digit values
+//! to reduce their length.
 const std::string strip_e0s(std::string s);
 
 // Estimate length of string in SVG units when appears.
@@ -159,7 +160,7 @@ class svg_style
   // Used for diagnostic output of all values of style and state of switches.
 
   // Accesses only by set and get member functions below.
-  // Private data member variables names end with _,
+  // data member variables names end with _,
   // to permit use of names for set & get member functions.
   svg_color stroke_; //!< Color of SVG stroke (line or outline).
   svg_color fill_; //!< Color of SVG fill.
@@ -214,7 +215,7 @@ public:
   fill_(blank), //! No fill color.
   width_(0), //! No width specified.
   stroke_on_(false), fill_on_(false), width_on_(false) //! All switches off.
-  { // Default constructor initialises all private data.
+  { // Default constructor initialises all data.
   }
 
   // Member Functions definitions.
@@ -450,7 +451,7 @@ text_style::text_style( //!< Constructor to allow all text style parameters (fon
   stretch_(stretch),
   decoration_(decoration),
   text_length_(text_length)
-  { // text_style default constructor, defines defaults for all private members.
+  { // text_style default constructor, defines defaults for all members.
   }
 
 //! text_style Copy constructor.
@@ -824,7 +825,7 @@ public:
     prefix_(""),
     separator_(","),
     suffix_("")
-    { //! Default constructor initialises all private data.
+    { //! Default constructor initialises all data.
     }
 
     //!< Constructor Data point value label style (provides default color and font).
@@ -1147,7 +1148,7 @@ public:
   plot_line_style::plot_line_style(const svg_color& col, const svg_color& fill_col, double width, bool line_on, bool bezier_on)
     :
     stroke_color_(col), area_fill_(fill_col), width_(width), line_on_(line_on), bezier_on_(bezier_on)
-    { // Provides defaults for all private data.
+    { // Provides defaults for all data.
     }
 
 // Member Functions.
@@ -1317,7 +1318,7 @@ public:
     label_units_on_(label_units_on), // default is to include units after axis label.
     axis_line_on_(axis_lines_on),
     axis_(axis) // -1 means not calculated yet.
-  { // Initialize all private data.
+  { // Initialize all data.
     if(max_ <= min_)
     { // max_ <= min_.
       throw std::runtime_error("Axis range: max <= min!");
@@ -1463,8 +1464,8 @@ public:
     double major_interval = 2., //!< Interval between major ticks.
     unsigned int num_minor_ticks = 4) //!< Number of minor ticks between major ticks.
     : // Constructor.
-    // Initialize all private data.
-    // Other data can be changed by set functions.
+    // Initialize all data.
+    // can be changed by set functions.
     dim_(d), // 1 or 2 D
     min_(min),
     max_(max),
@@ -1675,7 +1676,7 @@ box_style::box_style(
   margin_(margin),
   border_on_(border_on),
   fill_on_(fill_on)
-  { // Initializes all private member data with defaults.
+  { // Initializes all member data with defaults.
   }
 
 // Member Functions definitions.
@@ -1789,7 +1790,7 @@ public:
 histogram_style::histogram_style(histogram_option opt)
 :
 histogram_option_(opt)
-{ //! Constructor providing defaults for all private data.
+{ //! Constructor providing defaults for all data.
   //! Line width and area-fill are taken from the plot_line_style style.
 }
 
@@ -1835,7 +1836,7 @@ public:
 bar_style::bar_style(const svg_color& col, const svg_color& acol, double width, bar_option opt)
 :
 color_(col), area_fill_(acol), width_(width),  bar_option_(opt)
-{ // Defaults for all private data.
+{ // Defaults for all data.
 }
 
 // Member Functions Definitions.

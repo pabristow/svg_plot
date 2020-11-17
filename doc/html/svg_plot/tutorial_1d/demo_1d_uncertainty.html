@@ -30,7 +30,7 @@
 <p>
         First we need a few includes to use Boost.Plot:
       </p>
-<pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">quan</span><span class="special">/</span><span class="identifier">unc</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">quan</span><span class="special">/</span><span class="identifier">unc</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>  <span class="comment">// Handles information uncertainty.</span>
 
 <span class="comment">// using boost::quan::unc; // Holds value and uncertainty formation.</span>
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">detail</span><span class="special">/</span><span class="identifier">functors</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
@@ -58,7 +58,7 @@
       </p>
 <pre class="programlisting"><span class="identifier">setUncDefaults</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">);</span>
 <span class="keyword">typedef</span> <span class="identifier">unc</span><span class="special">&lt;</span><span class="keyword">false</span><span class="special">&gt;</span> <span class="identifier">uncun</span><span class="special">;</span> <span class="comment">// Uncertain Uncorrelated (the normal case).</span>
-<span class="keyword">float</span> <span class="identifier">NaN</span> <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">numeric_limits</span><span class="special">&lt;</span><span class="keyword">float</span><span class="special">&gt;::</span><span class="identifier">quiet_NaN</span><span class="special">();</span>
+<span class="keyword">constexpr</span> <span class="keyword">float</span> <span class="identifier">NaN</span> <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">numeric_limits</span><span class="special">&lt;</span><span class="keyword">float</span><span class="special">&gt;::</span><span class="identifier">quiet_NaN</span><span class="special">();</span>
 <span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span><span class="identifier">uncun</span><span class="special">&gt;</span> <span class="identifier">A_times</span><span class="special">;</span>
 <span class="identifier">A_times</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">unc</span><span class="special">&lt;</span><span class="keyword">false</span><span class="special">&gt;(</span><span class="number">3.1</span><span class="special">,</span> <span class="number">0.02F</span><span class="special">,</span> <span class="number">8</span><span class="special">));</span>
 <span class="identifier">A_times</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">uncun</span><span class="special">(</span><span class="number">4.2</span><span class="special">,</span> <span class="number">0.01F</span><span class="special">,</span> <span class="number">14</span><span class="special">,</span> <span class="number">0U</span><span class="special">));</span>
@@ -104,7 +104,7 @@
 <span class="special">*</span> <span class="special">.</span><span class="identifier">background_border_color</span><span class="special">(</span><span class="identifier">blue</span><span class="special">)</span> <span class="identifier">sets</span> <span class="identifier">just</span> <span class="identifier">one</span> <span class="identifier">of</span> <span class="identifier">the</span> <span class="identifier">very</span> <span class="identifier">many</span> <span class="identifier">other</span> <span class="identifier">options</span><span class="special">.</span>
 </pre>
 <pre class="programlisting">    <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">autoscale_check_limits</span><span class="special">(</span><span class="keyword">false</span><span class="special">);</span> <span class="comment">// Default is true.</span>
-    <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">autoscale_plusminus</span><span class="special">(</span><span class="number">2</span><span class="special">);</span> <span class="comment">// default is 3.</span>
+    <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">autoscale_plusminus</span><span class="special">(</span><span class="number">2</span><span class="special">);</span> <span class="comment">// default is 3 standard deviations.</span>
     <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">confidence</span><span class="special">(</span><span class="number">0.01</span><span class="special">);</span>  <span class="comment">// Change alpha from default 0.05 == 95% to 0.01 == 99%.</span>
 
     <span class="identifier">my_plot</span>
@@ -117,33 +117,45 @@
     <span class="comment">//.x_ticks_on_window_or_axis(0) // now the default.</span>
     <span class="special">.</span><span class="identifier">legend_on</span><span class="special">(</span><span class="keyword">false</span><span class="special">)</span>
     <span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"A, B and C Times"</span><span class="special">)</span>
-    <span class="special">.</span><span class="identifier">x_range</span><span class="special">(</span><span class="number">0</span><span class="special">,</span> <span class="number">10</span><span class="special">)</span>
+    <span class="special">.</span><span class="identifier">x_range</span><span class="special">(</span><span class="number">0</span><span class="special">,</span> <span class="number">10</span><span class="special">)</span> <span class="comment">// but over-ridden by .x_autoscale(B_times) below:</span>
+    <span class="special">.</span><span class="identifier">x_autoscale</span><span class="special">(</span><span class="identifier">B_times</span><span class="special">)</span> <span class="comment">// Use the data-point values in series B_times to autoscale the X-axis.</span>
+        <span class="comment">// Note that this might not be ideal scaling for A_times and/or C_times.</span>
     <span class="special">.</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"times (sec)"</span><span class="special">)</span>
     <span class="special">.</span><span class="identifier">x_values_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>
 <span class="comment">//   .x_values_precision(0) // Automatic number of digits of precision.</span>
-    <span class="special">.</span><span class="identifier">x_values_precision</span><span class="special">(</span><span class="number">2</span><span class="special">)</span> <span class="comment">// User chosen precision.</span>
-    <span class="special">.</span><span class="identifier">x_values_rotation</span><span class="special">(</span><span class="identifier">slopeup</span><span class="special">)</span>
+    <span class="special">.</span><span class="identifier">x_values_precision</span><span class="special">(</span><span class="number">2</span><span class="special">)</span> <span class="comment">// User-chosen std::ios precision decimal digits, for example "1.23".</span>
+    <span class="comment">//.x_values_rotation(steepup) // steeper - but need more image and plot window vertical height for all data point info.</span>
+    <span class="special">.</span><span class="identifier">x_values_rotation</span><span class="special">(</span><span class="identifier">slopeup</span><span class="special">)</span> <span class="comment">// value at x= 7.8 overflows both plot window and image.</span>
+      <span class="comment">// so would need to change .x_range </span>
     <span class="special">.</span><span class="identifier">x_plusminus_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>
     <span class="special">.</span><span class="identifier">x_plusminus_color</span><span class="special">(</span><span class="identifier">blue</span><span class="special">)</span>
-    <span class="special">.</span><span class="identifier">x_addlimits_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>
-    <span class="special">.</span><span class="identifier">x_addlimits_color</span><span class="special">(</span><span class="identifier">purple</span><span class="special">)</span>
-    <span class="special">.</span><span class="identifier">x_df_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>
-    <span class="special">.</span><span class="identifier">x_df_color</span><span class="special">(</span><span class="identifier">green</span><span class="special">)</span>
-    <span class="special">.</span><span class="identifier">x_autoscale</span><span class="special">(</span><span class="identifier">B_times</span><span class="special">)</span> <span class="comment">// Note that this might not be right scaling for A_times and/or C_times.</span>
+    <span class="special">.</span><span class="identifier">x_addlimits_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span> <span class="comment">// Show plus/minus +/- confidence limits for data-point value labels.</span>
+    <span class="special">.</span><span class="identifier">x_addlimits_color</span><span class="special">(</span><span class="identifier">purple</span><span class="special">)</span>  <span class="comment">// Show +/- in darkgreen, for example: "+/- 0.03".</span>
+    <span class="special">.</span><span class="identifier">x_df_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span> <span class="comment">// Show degrees of freedom (usually observations -1) for data-points.</span>
+    <span class="special">.</span><span class="identifier">x_df_color</span><span class="special">(</span><span class="identifier">green</span><span class="special">)</span>  <span class="comment">// Show degrees of freedom in green, for examples: "11").</span>
     <span class="special">;</span>
 </pre>
 <p>
-        Then we add our data series, and add optional data series titles (very helpful
-        if we want them to show on the legend).
+        Then we add our data-series, and add optional data-series titles, "A_times"
+        "B_times" ... (very helpful if we want them to show on the legend).
       </p>
 <p>
-        The A_times mark data points with a red border circle with a green fill,
-        The B_times use a blue vertical line, while C_times use an ellipse whose
-        width (x radius) is from the uncertainty, 1st standard deviation shows as
-        ellipse in magenta, and 2nd as yellow. All the data points are also labeled
-        with their value, and uncertainty and degrees of freedom if known.
+        All the data points are also labeled with their value, and uncertainty (+/-)
+        and degrees of freedom if known. The A_times mark data points with a red
+        border circle with a green fill, The B_times use a blue vertical line, while
+        C_times use an ellipse whose width (x radius) is from the uncertainty, 1st
+        standard deviation shows as ellipse in magenta, and 2nd as yellow.
       </p>
-<pre class="programlisting"><span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">A_times</span><span class="special">,</span> <span class="string">"A"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">circlet</span><span class="special">).</span><span class="identifier">size</span><span class="special">(</span><span class="number">10</span><span class="special">).</span><span class="identifier">stroke_color</span><span class="special">(</span><span class="identifier">red</span><span class="special">).</span><span class="identifier">fill_color</span><span class="special">(</span><span class="identifier">green</span><span class="special">);</span>
+<p>
+        Or one can explicitly set some (brighter) colors for the uncertainty ellipses,
+        or none to omit.
+      </p>
+<pre class="programlisting"><span class="comment">//my_plot</span>
+<span class="comment">//  .one_sd_color(yellow) // Color of ellipse for one standard deviation (about 66% probability).</span>
+<span class="comment">//  .two_sd_color(green) // Color of ellipse for two standard deviation (~95%).</span>
+<span class="comment">//  .three_sd_color(red); // Color of ellipse for two standard deviation (~99%).</span>
+
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">A_times</span><span class="special">,</span> <span class="string">"A"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">circlet</span><span class="special">).</span><span class="identifier">size</span><span class="special">(</span><span class="number">10</span><span class="special">).</span><span class="identifier">stroke_color</span><span class="special">(</span><span class="identifier">red</span><span class="special">).</span><span class="identifier">fill_color</span><span class="special">(</span><span class="identifier">green</span><span class="special">);</span>
 <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">B_times</span><span class="special">,</span> <span class="string">"B"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">vertical_line</span><span class="special">).</span><span class="identifier">stroke_color</span><span class="special">(</span><span class="identifier">blue</span><span class="special">);</span>
 <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">C_times</span><span class="special">,</span> <span class="string">"C"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">unc_ellipse</span><span class="special">).</span><span class="identifier">fill_color</span><span class="special">(</span><span class="identifier">lightyellow</span><span class="special">).</span><span class="identifier">stroke_color</span><span class="special">(</span><span class="identifier">magenta</span><span class="special">);</span>
 </pre>

@@ -119,6 +119,9 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "license_distribution " << plot.license_distribution() << std::endl;
   os << "license_attribution " << plot.license_attribution() << std::endl;
   os << "license_commercialuse " << plot.license_commercialuse() << std::endl;
+  os << "one_sd_color " << plot.one_sd_color() << std::endl;
+  os << "two_sd_color " << plot.two_sd_color() << std::endl;
+  os << "three_sd_color " << plot.three_sd_color() << std::endl;
   os << "plot_background_color " << plot.plot_background_color() << std::endl;
   os << "plot_border_color " << plot.plot_border_color() << std::endl;
   os << "plot_border_width " << plot.plot_border_width() << std::endl;
@@ -142,7 +145,6 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "title_font_weight " << plot.title_font_weight() << std::endl;
   os << "title_style " << plot.title_style_ << std::endl;
   os << "title_text_length " << plot.title_text_length() << std::endl;
-
   os << "x_values_on "  << plot.x_values_on() << std::endl;
   os << "x_values_font_size "  << plot.x_values_font_size() << std::endl;
   os << "x_values_font_family "  << plot.x_values_font_family() << std::endl;
@@ -156,7 +158,6 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "y_values_color " << plot.y_values_color() << std::endl;
   os << "y_values_font_family() " << plot.y_values_font_family() << std::endl;
   os << "y_values_font_size() " << plot.y_values_font_size() << std::endl;
-
   os << "x_max " << plot.x_max() << std::endl;
   os << "x_min " << plot.x_min() << std::endl;
   os << "x_autoscale " << plot.x_autoscale() << std::endl;
@@ -254,7 +255,6 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "y_plusminus_color " << plot.y_plusminus_color() << std::endl;
   os << "x_addlimits_on " << plot.x_addlimits_on() << std::endl;
   os << "x_addlimits_color " << plot.x_addlimits_color() << std::endl;
-  //
   os << "y_df_on " << plot.y_df_on() << std::endl;
   os << "y_df_color " << plot.y_df_color() << std::endl;
   os << "y_prefix \"" << plot.y_prefix()  << '"' << std::endl;
@@ -262,7 +262,6 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "y_suffix \"" << plot.y_suffix()  << '"' << std::endl;
   os << "confidence alpha " << plot.confidence() << std::endl;
   os << "data lines width " << plot.data_lines_width() << std::endl;
-
   // Infinite, NaN and out of plot window markers.
   os << "NaN limit points stroke color " << plot.nan_limit_color() << std::endl;
   os << "NaN limit points fill color " << plot.nan_limit_fill_color() << std::endl;
@@ -273,8 +272,6 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "-infinity limit points stroke color " << plot.minus_inf_limit_color() << std::endl;
   os << "-infinity limit points fill color " << plot.minus_inf_limit_fill_color() << std::endl;
   os << "-infinity limit points size " << plot.minus_inf_limit_size() << std::endl;
-
-
   os.flags(iostate); // Restore saved format flags.
   os.precision(precision);  // Restore precision.
 } // void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)

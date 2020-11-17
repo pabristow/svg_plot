@@ -13,5 +13,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
 <!-- File demo_svg_tspan.svg --> 
-	<text x="100" y="100" text-anchor="middle" transform="rotate(uphill 100 100)" font-size="12" font-family="Lucida Sans Unicode">This <tspan fill="rgb(255,192,203)" dx="10" dy="20" font-size="40" font-family="Arial" font-weight="bold">text</tspan><tspan dx="50" dy="50" font-size="20" font-family="serif" font-style="bold">text2</tspan></text>
+	<text x="100" y="100" text-anchor="middle" transform="rotate(-45 100 100)" font-size="12" font-family="Lucida Sans Unicode">This 	<tspan fill="rgb(255,192,203)" dx="10" dy="20" font-size="40" font-family="Arial" font-weight="bold">text</tspan>
+	<tspan dx="50" dy="50" font-size="20" font-family="serif" font-style="bold">text2</tspan>
+	</text>
 </svg>

@@ -2228,7 +2228,7 @@ my_plot.background_color(ghostwhite) // Whole image.
               }
               g_element& g_ptr_vy = image_.g(detail::PLOT_Y_POINT_VALUES).add_g_element();
               if (y_values_on_)
-              { // show the value of the Y data point too.
+              { // Show the value of the Y data point too.
                 draw_plot_point_value(x, y, g_ptr_vy, y_values_style_,serieses_[i].point_style_, uy);
               }
               if (xy_values_on_)

@@ -219,6 +219,10 @@ void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
   os << "license_distribution " << plot.license_distribution() << std::endl;
   os << "license_attribution " << plot.license_attribution() << std::endl;
   os << "license_commercial_use " << plot.license_commercialuse() << std::endl;
+  os << "one_sd_color " << plot.one_sd_color() << std::endl;
+  os << "two_sd_color " << plot.two_sd_color() << std::endl;
+  os << "three_sd_color " << plot.three_sd_color() << std::endl;
+  os << "confidence alpha " << plot.confidence() << std::endl;
   os << "plot_background_color " << plot.plot_background_color() << std::endl;
   os << "plot_border_color " << plot.plot_border_color() << std::endl;
   os << "plot_border_width " << plot.plot_border_width() << std::endl;
@@ -314,7 +318,6 @@ void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
   os << "x_axis_position " << plot.x_axis_position() << std::endl;
   os << "x_autoscale " << plot.x_autoscale() << std::endl;
   os << "x_autoscale_check_limits " << plot.autoscale_check_limits() << std::endl;
-  os << "confidence alpha " << plot.confidence() << std::endl;
   os << "data lines width " << plot.data_lines_width() << std::endl;
   // Infinite, NaN and out of plot window markers.
   os << "NaN limit points stroke color " << plot.nan_limit_color() << std::endl;

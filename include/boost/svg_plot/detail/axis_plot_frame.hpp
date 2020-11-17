@@ -206,7 +206,6 @@ namespace boost
         public:
           // Set & get member function Declarations:
 
-
           // Note that Doxygen needs the comments here with the declarations,
           // because comments with the definitions seem to be ignored.
 
@@ -2289,11 +2288,11 @@ namespace boost
             case egg:
               // No need for x or y - half width to center on point.
               g_ptr.ellipse(x, y, half_height, point_size * 1.); // Tall thin egg!
-              // of use UNicode ? 2B2D horixontal or 2B2F vertical.
+              // of use Unicode ? 2B2D horixontal or 2B2F vertical.
               break;
 
             case unc_ellipse:
-              { // std_dev horizontal (and, for 2D, vertical) ellipses for one, two and three standard deviations.
+              { // std_dev horizontal (and, for 2D, vertical) ellipses for one, two and three 'standard deviations'.
                 double xu = ux.value(); //
                 if (ux.std_dev() > 0)
                 { // std_dev is meaningful.
@@ -2319,13 +2318,14 @@ namespace boost
                   y_radius = 1.;
                 }
                 //image_.g(PLOT_DATA_UNC).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
-                // color set in svg_1d_plot         data at present.
+                // color set in svg_1d_plot data at present.
+                // Also be set using my_plot.one_sd_color(lightblue),  .two_sd_color(blue), three_sd_color(violet)
                 g_element* gu3_ptr = &(derived().image_.g(PLOT_DATA_UNC3));
                 g_element* gu2_ptr = &(derived().image_.g(PLOT_DATA_UNC2));
                 g_element* gu1_ptr = &(derived().image_.g(PLOT_DATA_UNC1));
                 gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard deviation.
-                gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard deviation..
-                gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard deviation..
+                gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard deviation.
+                gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard deviation.
                 g_ptr.circle(x, y, 1); // Show x and y values at center using stroke and fill color of data-point marker.
               }
               break;
@@ -5491,6 +5491,7 @@ namespace boost
           derived().image_.g(detail::PLOT_DATA_UNC1).style().fill_on(true);
           derived().image_.g(detail::PLOT_DATA_UNC1).style().fill_color(col);
           derived().image_.g(detail::PLOT_DATA_UNC1).style().stroke_color(blank);
+          derived().image_.g(detail::PLOT_DATA_UNC1).style().stroke_on(true);
           return derived();
         }
 
@@ -5506,7 +5507,8 @@ namespace boost
           derived().image_.g(detail::PLOT_DATA_UNC2).style().fill_on(true);
           derived().image_.g(detail::PLOT_DATA_UNC2).style().fill_color(col);
           derived().image_.g(detail::PLOT_DATA_UNC2).style().stroke_color(blank);
-          return derived();
+          derived().image_.g(detail::PLOT_DATA_UNC2).style().stroke_on(true);
+         return derived();
         }
 
        template <class Derived>
@@ -5521,7 +5523,8 @@ namespace boost
           derived().image_.g(detail::PLOT_DATA_UNC3).style().fill_on(true);
           derived().image_.g(detail::PLOT_DATA_UNC3).style().fill_color(col);
           derived().image_.g(detail::PLOT_DATA_UNC3).style().stroke_color(blank);
-          return derived();
+          derived().image_.g(detail::PLOT_DATA_UNC3).style().stroke_on(true);
+         return derived();
         }
 
        template <class Derived>

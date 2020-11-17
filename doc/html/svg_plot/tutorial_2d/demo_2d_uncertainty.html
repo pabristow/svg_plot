@@ -130,8 +130,8 @@ Echo the values input:
         could risk the outer edges spilling over the borders by reducing autoscale_plusminus,
         for example, to 1.5, down to zero.
       </p>
-<pre class="programlisting"><span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">autoscale_plusminus</span><span class="special">(</span><span class="number">1.5</span><span class="special">);</span> <span class="comment">// default is 3.</span>
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">confidence</span><span class="special">(</span><span class="number">0.01</span><span class="special">);</span>  <span class="comment">// Change from default 0.05 to 0.01 for 99% confidence.</span>
+<pre class="programlisting"><span class="comment">//my_plot.autoscale_plusminus(1.5); // default is 3.</span>
+<span class="comment">// my_plot.confidence(0.01);  // Change from default 0.05 to 0.01 for 99% confidence.</span>
 </pre>
 <p>
         Use data set <code class="computeroutput"><span class="identifier">data</span></code> to autoscale
@@ -151,44 +151,39 @@ Echo the values input:
    <span class="comment">// Note: a few padding spaces are used to get Y values to lie more nearly under X values.</span>
    <span class="comment">// This is only necessary when label are not horizontal.</span>
   <span class="special">.</span><span class="identifier">x_values_rotation</span><span class="special">(</span><span class="identifier">slopeup</span><span class="special">)</span>
-  <span class="special">.</span><span class="identifier">x_values_font_size</span><span class="special">(</span><span class="number">16</span><span class="special">)</span>
-  <span class="special">.</span><span class="identifier">x_plusminus_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>
-  <span class="special">.</span><span class="identifier">x_plusminus_color</span><span class="special">(</span><span class="identifier">cyan</span><span class="special">)</span>
-
-  <span class="special">.</span><span class="identifier">x_addlimits_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>
-  <span class="special">.</span><span class="identifier">x_addlimits_color</span><span class="special">(</span><span class="identifier">purple</span><span class="special">)</span>
-
-  <span class="special">.</span><span class="identifier">x_df_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>
-  <span class="special">.</span><span class="identifier">x_df_color</span><span class="special">(</span><span class="identifier">magenta</span><span class="special">)</span>
+  <span class="special">.</span><span class="identifier">x_values_font_size</span><span class="special">(</span><span class="number">16</span><span class="special">)</span> <span class="comment">// Bigger than default.</span>
   <span class="special">.</span><span class="identifier">x_values_font_family</span><span class="special">(</span><span class="string">"Times New Roman"</span><span class="special">)</span>
 
   <span class="special">.</span><span class="identifier">y_label</span><span class="special">(</span><span class="string">"distance (km)"</span><span class="special">)</span>
   <span class="special">.</span><span class="identifier">y_range</span><span class="special">(-</span><span class="number">10.</span><span class="special">,</span> <span class="special">+</span><span class="number">10.</span><span class="special">)</span>
   <span class="special">.</span><span class="identifier">y_values_rotation</span><span class="special">(</span><span class="identifier">uphill</span><span class="special">)</span>
-  <span class="special">.</span><span class="identifier">y_values_font_family</span><span class="special">(</span><span class="string">"Arial"</span><span class="special">)</span> <span class="comment">// Different from X just to show effect.</span>
-  <span class="special">.</span><span class="identifier">y_plusminus_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>
-  <span class="special">.</span><span class="identifier">y_plusminus_color</span><span class="special">(</span><span class="identifier">red</span><span class="special">)</span>
+  <span class="special">.</span><span class="identifier">y_values_font_family</span><span class="special">(</span><span class="string">"Arial"</span><span class="special">)</span> <span class="comment">// Different from X-values font just to show effect.</span>
 
-  <span class="special">.</span><span class="identifier">y_addlimits_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>
-  <span class="special">.</span><span class="identifier">y_addlimits_color</span><span class="special">(</span><span class="identifier">darkgreen</span><span class="special">)</span>
+  <span class="special">.</span><span class="identifier">y_plusminus_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span> <span class="comment">// Show plus/minus +/- uncertainty with data-point value labels, for example "2.1 +/- 0.001"</span>
+  <span class="special">.</span><span class="identifier">y_plusminus_color</span><span class="special">(</span><span class="identifier">red</span><span class="special">)</span> <span class="comment">// Show plus/minus +/- uncertainty in red.</span>
 
-  <span class="special">.</span><span class="identifier">y_df_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>
-  <span class="special">.</span><span class="identifier">y_df_color</span><span class="special">(</span><span class="identifier">green</span><span class="special">)</span>
+  <span class="special">.</span><span class="identifier">y_addlimits_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>  <span class="comment">// Show plus/minus +/- confidence limits for data-point value labels.</span>
+  <span class="special">.</span><span class="identifier">y_addlimits_color</span><span class="special">(</span><span class="identifier">darkgreen</span><span class="special">)</span> <span class="comment">// Show +/- in darkgreen, for example: "+/- 0.03".</span>
+
+  <span class="special">.</span><span class="identifier">y_df_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span> <span class="comment">// Show degrees of freedom (usually observations -1) for data-points.</span>
+  <span class="special">.</span><span class="identifier">y_df_color</span><span class="special">(</span><span class="identifier">green</span><span class="special">)</span> <span class="comment">// Show degrees of freedom in green, for examples: "11").</span>
 </pre>
 <p>
         The default uncertainty ellipse colors (that apply to both X and Y axes)
         can be changed thus:
       </p>
-<pre class="programlisting">  <span class="special">.</span><span class="identifier">one_sd_color</span><span class="special">(</span><span class="identifier">lightblue</span><span class="special">)</span>
-  <span class="special">.</span><span class="identifier">two_sd_color</span><span class="special">(</span><span class="identifier">svg_color</span><span class="special">(</span><span class="number">200</span><span class="special">,</span> <span class="number">230</span><span class="special">,</span> <span class="number">255</span><span class="special">))</span>
-  <span class="special">.</span><span class="identifier">three_sd_color</span><span class="special">(</span><span class="identifier">svg_color</span><span class="special">(</span><span class="number">230</span><span class="special">,</span> <span class="number">240</span><span class="special">,</span> <span class="number">255</span><span class="special">))</span>
- <span class="special">;</span> <span class="comment">// my_plot</span>
+<pre class="programlisting">    <span class="special">.</span><span class="identifier">one_sd_color</span><span class="special">(</span><span class="identifier">lightblue</span><span class="special">)</span> <span class="comment">// Color of ellipse for one standard deviation (about 66% probability).</span>
+    <span class="special">.</span><span class="identifier">two_sd_color</span><span class="special">(</span><span class="identifier">svg_color</span><span class="special">(</span><span class="number">200</span><span class="special">,</span> <span class="number">230</span><span class="special">,</span> <span class="number">255</span><span class="special">))</span> <span class="comment">// Color of ellipse for two standard deviation (~95%).</span>
+    <span class="special">.</span><span class="identifier">three_sd_color</span><span class="special">(</span><span class="identifier">svg_color</span><span class="special">(</span><span class="number">230</span><span class="special">,</span> <span class="number">240</span><span class="special">,</span> <span class="number">255</span><span class="special">))</span> <span class="comment">// Color of ellipse for two standard deviation (~99%).</span>
+   <span class="special">;</span> <span class="comment">// my_plot</span>
 
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">data1</span><span class="special">,</span> <span class="string">"data1"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">unc_ellipse</span><span class="special">);</span>
+<span class="comment">//  my_plot.plot(data1, "data1").shape(unc_ellipse).fill_color(lightyellow).stroke_color(magenta);</span>
+  <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">data1</span><span class="special">,</span> <span class="string">"data1"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">unc_ellipse</span><span class="special">).</span><span class="identifier">fill_color</span><span class="special">(</span><span class="identifier">blue</span><span class="special">).</span><span class="identifier">stroke_color</span><span class="special">(</span><span class="identifier">magenta</span><span class="special">);</span>
+  <span class="comment">// TODO the uncertainty ellipses are now lost :-(</span>
 
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./demo_2d_uncertainty"</span><span class="special">);</span>
+  <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./demo_2d_uncertainty"</span><span class="special">);</span>
 
-<span class="identifier">show_2d_plot_settings</span><span class="special">(</span><span class="identifier">my_plot</span><span class="special">);</span>
+  <span class="identifier">show_2d_plot_settings</span><span class="special">(</span><span class="identifier">my_plot</span><span class="special">);</span>
 </pre>
 <p>
         The resulting plot is

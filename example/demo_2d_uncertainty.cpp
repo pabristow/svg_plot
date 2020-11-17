@@ -152,8 +152,8 @@ Echo the values input:
   you could risk the outer edges spilling over the borders
   by reducing autoscale_plusminus, for example, to 1.5, down to zero.
   */
-  my_plot.autoscale_plusminus(1.5); // default is 3.
-  my_plot.confidence(0.01);  // Change from default 0.05 to 0.01 for 99% confidence.
+  //my_plot.autoscale_plusminus(1.5); // default is 3.
+  // my_plot.confidence(0.01);  // Change from default 0.05 to 0.01 for 99% confidence.
 
   /*`Use data set `data` to autoscale (you can use a different data set to scale from the one you chose to plot).
   */
@@ -171,39 +171,34 @@ Echo the values input:
      // Note: a few padding spaces are used to get Y values to lie more nearly under X values.
      // This is only necessary when label are not horizontal.
     .x_values_rotation(slopeup)
-    .x_values_font_size(16)
-    .x_plusminus_on(true)
-    .x_plusminus_color(cyan)
-
-    .x_addlimits_on(true)
-    .x_addlimits_color(purple)
-
-    .x_df_on(true)
-    .x_df_color(magenta)
+    .x_values_font_size(16) // Bigger than default.
     .x_values_font_family("Times New Roman")
 
     .y_label("distance (km)")
     .y_range(-10., +10.)
     .y_values_rotation(uphill)
-    .y_values_font_family("Arial") // Different from X just to show effect.
-    .y_plusminus_on(true)
-    .y_plusminus_color(red)
+    .y_values_font_family("Arial") // Different from X-values font just to show effect.
 
-    .y_addlimits_on(true)
-    .y_addlimits_color(darkgreen)
+    .y_plusminus_on(true) // Show plus/minus +/- uncertainty with data-point value labels, for example "2.1 +/- 0.001"
+    .y_plusminus_color(red) // Show plus/minus +/- uncertainty in red.
 
-    .y_df_on(true)
-    .y_df_color(green)
+    .y_addlimits_on(true)  // Show plus/minus +/- confidence limits for data-point value labels.
+    .y_addlimits_color(darkgreen) // Show +/- in darkgreen, for example: "+/- 0.03".
+
+    .y_df_on(true) // Show degrees of freedom (usually observations -1) for data-points.
+    .y_df_color(green) // Show degrees of freedom in green, for examples: "11").
 
   /*`The default uncertainty ellipse colors (that apply to both X and Y axes)
   can be changed thus:
   */
-    .one_sd_color(lightblue)
-    .two_sd_color(svg_color(200, 230, 255))
-    .three_sd_color(svg_color(230, 240, 255))
+    .one_sd_color(lightblue) // Color of ellipse for one standard deviation (about 66% probability).
+    .two_sd_color(svg_color(200, 230, 255)) // Color of ellipse for two standard deviation (~95%).
+    .three_sd_color(svg_color(230, 240, 255)) // Color of ellipse for two standard deviation (~99%).
    ; // my_plot
 
-  my_plot.plot(data1, "data1").shape(unc_ellipse);
+//  my_plot.plot(data1, "data1").shape(unc_ellipse).fill_color(lightyellow).stroke_color(magenta);
+  my_plot.plot(data1, "data1").shape(unc_ellipse).fill_color(blue).stroke_color(magenta);
+  // TODO the uncertainty ellipses are now lost :-(
 
   my_plot.write("./demo_2d_uncertainty");
 
