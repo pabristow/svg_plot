@@ -7,7 +7,7 @@
 */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2008
+// Copyright Paul A. Bristow 2008, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -15,39 +15,51 @@
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/svg_plot/svg.hpp>
-using namespace boost::svg;
+//using namespace boost::svg;
+#include <boost/cstdlib.hpp> // 
 
 #include <iostream>
-using std::cout;
-using std::endl;
-using std::boolalpha;
-
+//using std::cout;
+//using std::endl;
+//using std::boolalpha;
+//
 int main()
 {
+  using namespace boost::svg;
+  try
+  {
     svg doc;
-
     doc.size(400, 400);
 
+    // Simple text_element.
     text_element& t = doc.text(100, 100, "This ", no_style, align_style::center_align, uphill);
-    tspan_element ts = t.tspan("text").dx(10.).dy(20.).font_size(40).font_family("Arial").font_weight("bold").fill_color(pink);
-    cout << "dx " << ts.dx() << endl;
-    cout << "dy " << ts.dy() << endl;
-    cout << "tspan text is " << ts.text() << endl;
-    cout << "font is " << ts.font_size() << endl;
-    cout << "font family " << ts.font_family() << endl;
-    cout << "font weight is " << ts.font_weight() << endl;
-    cout << "fill color " << ts.fill_color() << endl; // expect pink == rgb(255,192,203) but get blank!
-    cout << "fill on " << boolalpha << ts.fill_on() << endl;
+    // Default font style, but uphill.
 
-    //<text x="100" y="100" text-anchor="middle" transform = "rotate(-45 100 100 )" font-size="20">
-    //  This
-    //  <tspan fill="rgb(255,192,203)" dx="10" dy="20" font-size="40" font-family="Arial" font-weight="bold">
-    //    text
-    //  </tspan>
-    //</text>
+    // Now output a tspan element large pink "pink" moved over a bit.
+    tspan_element ts = t.tspan("text").dx(10.).dy(20.)
+      .font_size(40).font_family("Arial").font_weight("bold")
+      .fill_color(pink).stroke_color(purple); // tspan_element should set fill_on and stroke_on == true.
+  //    .fill_color(pink).fill_on(true).stroke_color(purple).stroke_on(true);
+  // Not finding right fill_on(bool is) or stroke_on(bool)function.
+    std::cout<< "dx " << ts.dx() << std::endl;
+    std::cout<< "dy " << ts.dy() << std::endl;
+    std::cout<< "tspan text is " << ts.text() << std::endl;
+    std::cout<< "font size is " << ts.font_size() << std::endl;
+    std::cout<< "font family " << ts.font_family() << std::endl;
+    std::cout<< "font weight is " << ts.font_weight() << std::endl;
+    std::cout<< "fill color " << ts.fill_color() << std::endl; // expect pink == rgb(255,192,203)
+    std::cout<< "fill on " << std::boolalpha << ts.fill_on() << std::endl;
+    std::cout << "ts = " << ts << std::endl; // Show the state.
+    // ts = tspan(0, 0, 10, 20, 0, 0, relative, relative, text_style(40, "Arial", "", "bold", "", ""))
 
-    // shows expected This text with position and color as expected,
-    // BUT doesn't echo fill color????
+    //<!--File demo_svg_tspan.svg-->
+    //  <text x = "100" y = "100" text-anchor = "middle" transform = "rotate(-45 100 100)"
+    //    font-size = "12" font-family = "Lucida Sans Unicode">This 	<tspan fill = "rgb(255,192,203)" dx = "10" dy = "20" font - size = "40" font - family = "Arial" font - weight = "bold">text< / tspan>
+    //   <tspan dx = "50" dy = "50" font-size = "20" font-family = "serif" font-style = "bold">text2</tspan>
+    //  < / text>
+    //  < / svg>
+
+    // Shows pink fill and stroke purple as expected.
 
     // These lines below have no effect on the output svg tspan!
     //ts.text("green 30 Arial");
@@ -73,13 +85,29 @@ int main()
     // NO tspan text for  "green 30 Arial"
 
     text_style my_ts;
-    my_ts.font_family("serif").font_style("bold").font_size(20);
-    tspan_element ts2 = t.tspan("text2", my_ts).dx(50).dy(50); // Use constructor to set text_style.
+    my_ts.font_family("serif").font_style("bold").font_size(20); // Set some font styling.
+    std::cout << "text_style my_ts = " << my_ts << std::endl;
+    // text_style my_ts = text_style(20, "serif", "bold", "", "", "")
+
+    tspan_element ts2 = t.tspan("text2", my_ts).dx(50).dy(50); // Use constructor to use my_ts text_style.
+    std::cout << "ts2 = " << ts2 << std::endl; 
+    // ts2 = tspan(0, 0, 50, 50, 0, 0, relative, relative, text_style(20, "serif", "bold", "", "", ""))
     ts2.textstyle(my_ts); // Use set function to set text_style.
-    text_style tst2 = ts2.textstyle(); // Use get function.
+    std::cout << "ts2 = " << ts2 << std::endl;
+    // ts2 = tspan(0, 0, 50, 50, 0, 0, relative, relative, text_style(20, "serif", "bold", "", "", ""))
+    text_style tst2 = ts2.textstyle(); // Use get function to read the tspan text_style.
+    std::cout << "tst2 = " << tst2 << std::endl; // text_style(20, "serif", "bold", "", "", "")
+
     doc.write("demo_svg_tspan.svg");
 
-    return 0;
+    return boost::exit_success;
+  }
+catch (const std::exception& e)
+{
+  std::cout<<
+    "\n""Message from thrown exception was:\n   " << e.what() << std::endl;
+  return boost::exit_failure;
+}
 
 } // int main()
 

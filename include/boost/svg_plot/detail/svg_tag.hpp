@@ -860,7 +860,7 @@ public:
   }
 
   bool fill_on()
-  { //! Get true if to use fill color for tspan element.
+  { //! Get true if to use stroke color for tspan element.
     return style_info_.fill_on();
   }
 
@@ -952,15 +952,17 @@ public:
   }; // class tspan_element
 
 std::ostream& operator<< (std::ostream& os, const tspan_element& t)
-{ //! Diagnostic output of tspan coordinates and dimensions etc
+{ //! Diagnostic output of tspan coordinates and dimensions etc.
   //! Example:   std::cout << r << std::endl;
   //! Outputs:  
+  //! \verbatim ts = tspan(0, 0, 10, 20, 0, 0, false, false, text_style(40, "Arial", "", "bold", "", "")) \endverbatim
   os << std::boolalpha << "tspan("
     << t.x_ << ", " << t.y_ 
     << ", " << t.dx_ << ", " << t.dy_
     << ", " << t.rotate_ << ", " << t.text_length_ 
-    << ", " << t.use_x_ << ", " << t.use_y_
-    << ", " << t.style_
+    << ", " << (t.use_x_ ? "absolute" : "relative")
+    << ", " << (t.use_y_ ? "absolute" : "relative") // 
+    << ", " << t.style_  // text_style(40, "Arial", "", "bold", "", "")
     << ")";
   return os;
 } // std::ostream& operator<<

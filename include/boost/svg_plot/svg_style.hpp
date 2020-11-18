@@ -236,15 +236,15 @@ public:
     return width_;
   }
 
+  svg_style& svg_style::fill_on(bool is)
+  { //! Set true if SVG fill is wanted.
+    fill_on_ = is;
+    return *this; //! \returns svg_style& to make chainable.
+  }
+
   bool svg_style::fill_on() const
   { //! \return true if fill wanted.
     return fill_on_;
-  }
-
-  svg_style& svg_style::fill_on(bool is)
-  { //! Set fill is wanted.
-    fill_on_ = is;
-    return *this; //! \returns svg_style& to make chainable.
   }
 
   bool svg_style::stroke_on() const
@@ -280,9 +280,11 @@ public:
   svg_style& svg_style::fill_color(const svg_color& col)
   { //! Set fill color (and set fill on true, unless color is blank).
     fill_ = col;
-    fill_on_ = ! is_blank(col); // If blank fill is off or "none".
+    fill_on_ = ! is_blank(col); // If blank fill is true or "none".
     return *this; //! \return svg_style& to make chainable.
   }
+
+
 
   svg_style& svg_style::stroke_width(double width)
   { //! Set stroke width (and set width on).
