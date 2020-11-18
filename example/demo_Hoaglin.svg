@@ -135,7 +135,7 @@ M64.6,60.2 L66.6,60.2
 	<rect x="172" y="136" width="30" height="65.6"/>
 </g>
 <g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
-	<line x1="173" y1="154" x2="202" y2="154"/>
+	<line x1="172" y1="154" x2="202" y2="154"/>
 </g>
 <g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
 	<rect x="232" y="127" width="30" height="55"/>

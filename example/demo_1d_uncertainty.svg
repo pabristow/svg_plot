@@ -55,13 +55,13 @@ M560,160 L560,162
 " fill="none"/>
 </g>
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
-	<path d="M21,160 L21,165 
-M114,160 L114,165 
-M207,160 L207,165 
-M300,160 L300,165 
-M393,160 L393,165 
-M486,160 L486,165 
-M579,160 L579,165 
+	<path d="M21,160 L21,164 
+M114,160 L114,164 
+M207,160 L207,164 
+M300,160 L300,164 
+M393,160 L393,164 
+M486,160 L486,164 
+M579,160 L579,164 
 " fill="none"/>
 </g>
 <g id="xTicksValues">
@@ -74,7 +74,7 @@ M579,160 L579,165
 	<text x="579" y="178" text-anchor="middle" font-size="10" font-family="Verdana">8	</text>
 </g>
 <g id="xLabel">
-	<text x="300" y="289" text-anchor="middle" font-size="10" font-family="Verdana">times (sec)	</text>
+	<text x="300" y="288" text-anchor="middle" font-size="10" font-family="Verdana">times (sec)	</text>
 </g>
 <g id="plotUnc3" stroke="rgb(250,250,210)" fill="rgb(250,250,210)" stroke-width="1">
 	<ellipse cx="76.8" cy="154" rx="27.9" ry="9"/>

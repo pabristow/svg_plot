@@ -29,7 +29,7 @@ xmlns ="http://www.w3.org/2000/svg"
 	<line x1="81" y1="284" x2="81" y2="57"/>
 </g>
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1">
-	<path d="M285,284 L285,289 
+	<path d="M284,284 L284,289 
 " fill="none"/>
 </g>
 <g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
@@ -78,7 +78,7 @@ M79,63.5 L81,63.5
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
 <g id="valueLabels" fill="rgb(0,0,0)">
-	<text x="285" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">NIST heat flows	</text>
+	<text x="284" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">NIST heat flows	</text>
 	<text x="70" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.18	</text>
 	<text x="70" y="254" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.2	</text>
 	<text x="70" y="221" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.23	</text>
@@ -91,12 +91,12 @@ M79,63.5 L81,63.5
 	<text x="30.2" y="170" text-anchor="middle" transform="rotate(-90 30.2 170)" font-size="14" font-family="Lucida Sans Unicode">	</text>
 </g>
 <g id="xLabel" fill="rgb(0,0,0)">
-	<text x="285" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">	</text>
+	<text x="284" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">	</text>
 </g>
 <g id="boxAxis" stroke="rgb(0,0,0)">
 
 <g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
-	<line x1="285" y1="243" x2="285" y2="108"/>
+	<line x1="284" y1="243" x2="284" y2="108"/>
 </g></g>
 <g id="Median" stroke="rgb(255,0,0)" stroke-width="2">
 
@@ -119,9 +119,9 @@ M79,63.5 L81,63.5
 <g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
 
 <g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
-	<text x="285" y="257" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="285" y="87" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="285" y="97.3" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
+	<text x="284" y="257" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
+	<text x="284" y="87" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
+	<text x="284" y="97.3" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g></g>
 <g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)">
 </g>
