@@ -545,33 +545,33 @@ namespace svg
     }
   }; // class ellipse_element
 
-  enum align_style
+  enum class align_style
   { //! \enum align_style Represents a single block of text, with font & alignment.
     left_align, //!< Align text to left.
     right_align, //!< Align text to right.
     center_align //!< Center align text.
   };
 
-  //std::ostream& operator<< (std::ostream& os, align_style al)
-  //{ //! Outputs: alignment (useful for diagnosis).
-  //  //! Example: 
-  //  //! \code align_style al = left_align;  std::cout << "Align is " << al << std::endl; \endcode
-  //  //! Outputs: Align is left align 
-  //  if (al == left_align)
-  //  {
-  //    os << "left align";
-  //  }
-  //  else if (al == center_align)
-  //  {
-  //    os << "center";
-  //  }
-  //  else if (al == right_align)
-  //  {
-  //    os << "right";
-  //  }
-  //  else os << "???" << std::endl;
-  //  return os;
-  //} //   std::ostream& operator<< (std::ostream& os, align_style al)
+  std::ostream& operator<< (std::ostream& os, align_style al)
+  { //! Outputs: alignment (useful for diagnosis).
+    //! Example: 
+    //! \code align_style al = align_style::left_align;  std::cout << "Align is " << al << std::endl; \endcode
+    //! Outputs: Align is left 
+    if (al == align_style::left_align)
+    {
+      os << "left";
+    }
+    else if (al == align_style::center_align)
+    {
+      os << "center";
+    }
+    else if (al == align_style::right_align)
+    {
+      os << "right";
+    }
+    else os << "???" << std::endl;
+    return os;
+  } //   std::ostream& operator<< (std::ostream& os, align_style al)
 
 class text_parent
 { /*! \class boost::svg::text_parent
@@ -1130,7 +1130,7 @@ public:
     //!< One must increase Y to allow for the height (font size) of the character.
     const std::string text = "", //!< Text string to output (may include Unicode string like "&#x221A;" for square root symbol.
     text_style ts = no_style, //!< Text font style,default left to SVG defaults.
-    align_style align = left_align, //!< Alighment of text, left, center or right, default left_align.
+    align_style align = align_style ::left_align, //!< Alighment of text, left, center or right, default left_align.
     rotate_style rotate = horizontal) //!< orientation of text, default horizontal.
     : // Constructor.
     x_(x), y_(y), // location.
@@ -1181,15 +1181,15 @@ public:
     std::string anchor;
     switch(align_)
     {
-    case left_align:
+    case align_style::left_align :
       // anchor = "start"; // This is the initial == default.
       // so should be possible to reduce file size this by:
       anchor = "";
       break;
-    case right_align:
+    case align_style::right_align :
       anchor = "end";
       break;
-    case center_align:
+    case align_style::center_align :
       anchor = "middle";
       break;
     default:
@@ -2217,7 +2217,7 @@ public:
     text_element& text(double x = 0., double y = 0., // Location.
     const std::string& text = "", // Text string to display.
     const text_style& style = no_style, // Default to use SVG implementation's defaults for font family, size.
-    const align_style& align = left_align,
+    const align_style& align = align_style::left_align,
     const rotate_style& rotate = horizontal)
     { //! Add a new text element.
       //! \return A reference to the new child node just created.

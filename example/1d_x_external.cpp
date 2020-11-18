@@ -1,16 +1,13 @@
 /*! \file 1d_x_external.cpp
 
-  \brief Simple 1D plot from two vectors of doubles .
-
-  \author Jacob Voytko
-
-  \date 2007
+  \brief Simple 1D plot from two vectors of containers of type vector<double>.
 */
-
 // Copyright Jacob Voytko 2007
 
-// Distributed under the Boost Software License, Version 1.0.
-// For more information, see http://www.boost.org
+// Use, modification and distribution are subject to the
+// Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt
+// or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/svg_plot/svg_1d_plot.hpp>
 #include <vector>
@@ -56,5 +53,6 @@ int main()
     my_plot.write("./1d_x_external.svg");
   return 0;
 } // int main()
+
 
 

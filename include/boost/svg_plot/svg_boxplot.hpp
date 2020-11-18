@@ -18,11 +18,10 @@
   \sa The Bagplot: A Bivariate Boxplot
   Peter J. Rousseeuw, Ida Ruts and John W. Tukey
   The American Statistician, Vol. 53, No. 4 (Nov., 1999), pp. 382-387
-
-  \author Jacob Voytko & Paul A. Bristow
  */
 
 // file svg_boxplot.hpp
+
 // Copyright Jacob Voytko 2007
 // Copyright Paul A. Bristow 2008, 2009, 2013, 2020
 
@@ -46,6 +45,7 @@
 #include  <boost/svg_plot/quantile.hpp>
 
 #include <boost/quan/unc.hpp> // Values with uncertainty.
+// using boost::quan::unc;
 
 #include <vector>
 #include <string>
@@ -151,7 +151,7 @@ namespace svg
       ext_outlier_(extos), //  blue, blank, 25, cone),
       values_style_(vs),
       series_style_(ss), // for series_info to control font etc of box labels.
-      series_info_(0, 0, title, series_style_, center_align, horizontal),
+      series_info_(0, 0, title, series_style_, align_style::center_align, horizontal),
       quartile_definition_(q_def), // Default is H&F recommendation.
       text_margin_(2.) // for axis label text, as a multiplier of the font size.
     { // Default Constructor sorts a copy of @c std::vector copy and used for fast lookup of quartile values.
@@ -770,12 +770,12 @@ public:
   :
   title_style_(18, default_font, "", "", "", ""),
   value_style_(10, default_font, "", "", "", ""), // Data values
-  title_info_(0, 0, "", title_style_, center_align, horizontal),
+  title_info_(0, 0, "", title_style_, align_style::center_align, horizontal),
   title_on_(true),
-  x_label_info_(0, 0, "", x_axis_label_style_ ,center_align, horizontal),
-  x_units_info_(0, 0, "", x_value_label_style_, center_align, horizontal),
-  y_label_info_(0, 0, "", y_axis_label_style_, center_align, upward),
-  y_units_info_(0, 0, "", y_axis_label_style_, center_align, upward),
+  x_label_info_(0, 0, "", x_axis_label_style_ , align_style::center_align, horizontal),
+  x_units_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
+  y_label_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward),
+  y_units_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward),
   x_axis_(X, -10., +10., black, 1, 0, true, false, true),
   y_axis_(Y,   0.,  +1., black, 1, 0, true, false, true),
   x_axis_label_style_(14, default_font, "", ""),
@@ -1384,7 +1384,7 @@ public:
 
       double x = 0; // Where to start writing from, at end of left or right tick, if any.
       // = 0 is only to avoid unitialised warning.
-      align_style alignment = center_align;
+      align_style alignment = align_style::center_align;
       // Adjustments to provide space from end of tick before or after writing label.
       if (y_ticks_.label_rotation_ == horizontal)
       {  // Just shift up to center value digits on tick.
@@ -1392,13 +1392,13 @@ public:
         { // labels to left, so start a little to left of x_left.
           y += y_value_label_style_.font_size() * 0.2;
           x = x_left - y_value_label_style_.font_size() * 0.5;
-          alignment = right_align;
+          alignment = align_style::right_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
          y += y_value_label_style_.font_size() * 0.2;
          x = x_right + y_value_label_style_.font_size() * 0.5;
-          alignment = left_align;
+          alignment = align_style::left_align;
         }
       }
       else if (y_ticks_.label_rotation_ == upsidedown)
@@ -1407,13 +1407,13 @@ public:
         { // labels to left, so start a little to left of x_left.
           y -= y_value_label_style_.font_size() * 0.1;
           x = x_left - y_value_label_style_.font_size() * 0.5;
-          alignment = left_align;
+          alignment = align_style::left_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
           y -= y_value_label_style_.font_size() * 0.1;
           x = x_right + y_value_label_style_.font_size() * 0.5;
-          alignment = right_align;
+          alignment = align_style::right_align;
         }
       }
       else if (y_ticks_.label_rotation_ == uphill)
@@ -1423,13 +1423,13 @@ public:
           y -= y_value_label_style_.font_size() * 0.2;
           x = x_left - y_value_label_style_.font_size() * 0.2;
           // Seems to need a bit more space for right than left if rotated.
-          alignment = right_align;
+          alignment = align_style::right_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
           y += y_value_label_style_.font_size() * 0.2;
           x = x_right + y_value_label_style_.font_size() * 0.7;
-          alignment = left_align;
+          alignment = align_style::left_align;
         }
       }
       else if (y_ticks_.label_rotation_ == downhill)
@@ -1439,13 +1439,13 @@ public:
           y += y_value_label_style_.font_size() * 0.3;
           x = x_left - y_value_label_style_.font_size() * 0.7;
           // Seems to need a bit more space for right than left if rotated.
-          alignment = right_align;
+          alignment = align_style::right_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
           y -= y_value_label_style_.font_size() * 0.3;
           x = x_right + y_value_label_style_.font_size() * 0.1;
-          alignment = left_align;
+          alignment = align_style::left_align;
         }
       }
       else if (y_ticks_.label_rotation_ == upward)
@@ -1455,12 +1455,12 @@ public:
         { // labels to left, so start a little to left of x_left.
           x = x_left - y_value_label_style_.font_size() * 0.7;
           // Seems to need a bit more space for right than left if rotated.
-          alignment = center_align;
+          alignment = align_style::center_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
           x = x_right + y_value_label_style_.font_size() * 1.5;
-          alignment = center_align;
+          alignment = align_style::center_align;
         }
       }
       else if (y_ticks_.label_rotation_ == downward)
@@ -1470,12 +1470,12 @@ public:
         { // labels to left, so start a little to left of x_left.
           x = x_left - y_value_label_style_.font_size() * 1.2;
           // Seems to need a bit more space for right than left if rotated.
-          alignment = center_align;
+          alignment = align_style::center_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
           x = x_right + y_value_label_style_.font_size() * 0.7;
-          alignment = center_align;
+          alignment = align_style::center_align;
         }
       }
       else
@@ -1618,7 +1618,7 @@ public:
       y, // Down from plot window.
       label,
       x_label_info_.textstyle(),
-      center_align, horizontal)
+      align_style::center_align, horizontal)
       );
   } // void draw_x_axis_label()
 
@@ -1653,7 +1653,7 @@ public:
       (plot_bottom_ + plot_top_) / 2., // center on the plot window.
       label, // "Y-Axis" for example.
       y_axis_label_style_,
-      center_align, // One might want it to left or right_align?
+      align_style::center_align, // One might want it to left or right_align?
       upward)); // Y label must be drawn vertically.
 
   } // draw_y_axis_label

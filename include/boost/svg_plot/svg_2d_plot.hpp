@@ -681,19 +681,19 @@ my_plot.background_color(ghostwhite) // Whole image.
         y_value_label_style_(12, default_font, "", "", "", "", 0), // Y-axis tick labels.
         point_symbols_style_(12, "Lucida Sans Unicode", "", "", "", "", 0), // Used for data point marking.
         // Font is to try to ensure that all Unicode symbols are available.
-        title_info_(0, 0, "", title_style_, center_align, horizontal),
-        x_label_info_(0, 0, "", x_axis_label_style_, center_align, horizontal),
-        x_units_info_(0, 0, "", x_value_label_style_, center_align, horizontal),
-        x_value_label_info_(0, 0, "", x_value_label_style_, center_align, horizontal),
+        title_info_(0, 0, "", title_style_, align_style::center_align, horizontal),
+        x_label_info_(0, 0, "", x_axis_label_style_, align_style::center_align, horizontal),
+        x_units_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
+        x_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
         x_axis_(X, -10., +10., black, 1, 0, true, false, true),
         y_axis_(Y, -10., +10., black, 1, 0, true, false, true),
         // Might fill in all values, but there are rather many for ticks_labels_style,
         // And this would separate any changes in styles defaults from plot default.  TODO?
         x_ticks_(X, x_value_label_style_),// so for other defaults see ticks_labels_style.
         y_ticks_(Y, y_value_label_style_),
-        y_label_info_(0, 0, "", y_axis_label_style_, center_align, upward),
-        y_units_info_(0, 0, "", y_axis_label_style_, center_align, upward),
-        y_value_label_info_(0, 0, "", y_value_label_style_, center_align, upward), //
+        y_label_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward),
+        y_units_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward),
+        y_value_label_info_(0, 0, "", y_value_label_style_, align_style::center_align, upward), //
 
         // Should allow a 'fraction font space' below the text for any descenders.
         // so real height including any descenders is font_height * 1.25,
@@ -713,8 +713,8 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         plot_window_border_(lightslategray, svg_color(255, 255, 255), 2, 3, true, false),
         legend_box_(yellow, white, 1, 1, true, true),
-        legend_title_(0, 0, "", legend_title_style_, center_align, horizontal),
-        legend_text_(0, 0, "", legend_text_style_, center_align, horizontal),
+        legend_title_(0, 0, "", legend_title_style_, align_style::center_align, horizontal),
+        legend_text_(0, 0, "", legend_text_style_, align_style::center_align, horizontal),
         legend_width_(0), // width of legend box (pixels) //
         legend_height_(0), // height of legend box (pixels)
         legend_left_(-1), legend_right_(-1), legend_top_(-1), legend_bottom_(-1), // Default top left of plot window.
@@ -1550,7 +1550,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           y, // center on the plot window.
           label, // "Y-Axis" for example.
           y_axis_label_style_, // font and size
-          center_align, // One might want it to left or right_align?
+            align_style::center_align, // One might want it to left or right_align?
           upward) // Y label must be drawn vertically.
           );
       } // draw_y_axis_label
@@ -1637,7 +1637,7 @@ my_plot.background_color(ghostwhite) // Whole image.
 
           double x = 0; // Where to start writing from, at end of left or right tick, if any.
           // = 0 is only to avoid unitialised warning.
-          align_style alignment = center_align;
+          align_style alignment = align_style::center_align;
           // Adjustments to provide space from end of tick before or after writing label.
           if (y_ticks_.label_rotation_ == horizontal)
           {  // Just shift up to center value digits on tick.
@@ -1645,13 +1645,13 @@ my_plot.background_color(ghostwhite) // Whole image.
             { // labels to left, so start a little to left of x_left.
               y += y_value_label_style_.font_size() * 0.2;
               x = x_left - y_value_label_style_.font_size() * 0.5;
-              alignment = right_align;
+              alignment = align_style::right_align;
             }
             else if(y_ticks_.major_value_labels_side_ > 0)
             { // labels to right, so start a little to right of x_right.
              y += y_value_label_style_.font_size() * 0.2;
              x = x_right + y_value_label_style_.font_size() * 0.5;
-              alignment = left_align;
+              alignment = align_style::left_align;
             }
           }
           else if (y_ticks_.label_rotation_ == upsidedown)
@@ -1660,13 +1660,13 @@ my_plot.background_color(ghostwhite) // Whole image.
             { // labels to left, so start a little to left of x_left.
               y -= y_value_label_style_.font_size() * 0.1;
               x = x_left - y_value_label_style_.font_size() * 0.5;
-              alignment = left_align;
+              alignment = align_style::left_align;
             }
             else if(y_ticks_.major_value_labels_side_ > 0)
             { // labels to right, so start a little to right of x_right.
               y -= y_value_label_style_.font_size() * 0.1;
               x = x_right + y_value_label_style_.font_size() * 0.5;
-              alignment = right_align;
+              alignment = align_style::right_align;
             }
           }
           else if (y_ticks_.label_rotation_ == uphill)
@@ -1676,13 +1676,13 @@ my_plot.background_color(ghostwhite) // Whole image.
               y -= y_value_label_style_.font_size() * 0.2;
               x = x_left - y_value_label_style_.font_size() * 0.2;
               // Seems to need a bit more space for right than left if rotated.
-              alignment = right_align;
+              alignment = align_style::right_align;
             }
             else if(y_ticks_.major_value_labels_side_ > 0)
             { // labels to right, so start a little to right of x_right.
               y += y_value_label_style_.font_size() * 0.2;
               x = x_right + y_value_label_style_.font_size() * 0.7;
-              alignment = left_align;
+              alignment = align_style::left_align;
             }
           }
           else if (y_ticks_.label_rotation_ == slopeup)
@@ -1692,13 +1692,13 @@ my_plot.background_color(ghostwhite) // Whole image.
               y -= y_value_label_style_.font_size() * 0.2;
               x = x_left - y_value_label_style_.font_size() * 0.2;
               // Seems to need a bit more space for right than left if rotated.
-              alignment = right_align;
+              alignment = align_style::right_align;
             }
             else if(y_ticks_.major_value_labels_side_ > 0)
             { // labels to right, so start a little to right of x_right.
               y += y_value_label_style_.font_size() * 0.2;
               x = x_right + y_value_label_style_.font_size() * 0.7;
-              alignment = left_align;
+              alignment = align_style::left_align;
             }
           }
           else if (y_ticks_.label_rotation_ == downhill)
@@ -1708,13 +1708,13 @@ my_plot.background_color(ghostwhite) // Whole image.
               y += y_value_label_style_.font_size() * 0.3;
               x = x_left - y_value_label_style_.font_size() * 0.7;
               // Seems to need a bit more space for right than left if rotated.
-              alignment = right_align;
+              alignment = align_style::right_align;
             }
             else if(y_ticks_.major_value_labels_side_ > 0)
             { // labels to right, so start a little to right of x_right.
               y -= y_value_label_style_.font_size() * 0.3;
               x = x_right + y_value_label_style_.font_size() * 0.1;
-              alignment = left_align;
+              alignment = align_style::left_align;
             }
           }
           else if (y_ticks_.label_rotation_ == slopedownhill)
@@ -1724,13 +1724,13 @@ my_plot.background_color(ghostwhite) // Whole image.
               y += y_value_label_style_.font_size() * 0.3;
               x = x_left - y_value_label_style_.font_size() * 0.7;
               // Seems to need a bit more space for right than left if rotated.
-              alignment = right_align;
+              alignment = align_style::right_align;
             }
             else if(y_ticks_.major_value_labels_side_ > 0)
             { // labels to right, so start a little to right of x_right.
               y -= y_value_label_style_.font_size() * 0.3;
               x = x_right + y_value_label_style_.font_size() * 0.1;
-              alignment = left_align;
+              alignment = align_style::left_align;
             }
           }
           else if (y_ticks_.label_rotation_ == steepdown)
@@ -1740,13 +1740,13 @@ my_plot.background_color(ghostwhite) // Whole image.
               y += y_value_label_style_.font_size() * 0.3;
               x = x_left - y_value_label_style_.font_size() * 0.5;
               // Seems to need a bit more space for right than left if rotated.
-              alignment = right_align;
+              alignment = align_style::right_align;
             }
             else if(y_ticks_.major_value_labels_side_ > 0)
             { // labels to right, so start a little to right of x_right.
               y -= y_value_label_style_.font_size() * 0.3;
               x = x_right + y_value_label_style_.font_size() * 0.1;
-              alignment = left_align;
+              alignment = align_style::left_align;
             }
           }
 
@@ -1757,12 +1757,12 @@ my_plot.background_color(ghostwhite) // Whole image.
             { // labels to left, so start a little to left of x_left.
               x = x_left - y_value_label_style_.font_size() * 0.7;
               // Seems to need a bit more space for right than left if rotated.
-              alignment = center_align;
+              alignment = align_style::center_align;
             }
             else if(y_ticks_.major_value_labels_side_ > 0)
             { // labels to right, so start a little to right of x_right.
               x = x_right + y_value_label_style_.font_size() * 1.5;
-              alignment = center_align;
+              alignment = align_style::center_align;
             }
           }
           else if (y_ticks_.label_rotation_ == steepup)
@@ -1772,12 +1772,12 @@ my_plot.background_color(ghostwhite) // Whole image.
             { // labels to left, so start a little to left of x_left.
               x = x_left - y_value_label_style_.font_size() * 0.5;
               // Seems to need a bit more space for right than left if rotated.
-              alignment = center_align;
+              alignment = align_style::center_align;
             }
             else if(y_ticks_.major_value_labels_side_ > 0)
             { // labels to right, so start a little to right of x_right.
               x = x_right + y_value_label_style_.font_size() * 1.5;
-              alignment = center_align;
+              alignment = align_style::center_align;
             }
           }
           else if (y_ticks_.label_rotation_ == downward)
@@ -1787,12 +1787,12 @@ my_plot.background_color(ghostwhite) // Whole image.
             { // labels to left, so start a little to left of x_left.
               x = x_left - y_value_label_style_.font_size() * 1.2;
               // Seems to need a bit more space for right than left if rotated.
-              alignment = center_align;
+              alignment = align_style::center_align;
             }
             else if(y_ticks_.major_value_labels_side_ > 0)
             { // labels to right, so start a little to right of x_right.
               x = x_right + y_value_label_style_.font_size() * 0.7;
-              alignment = center_align;
+              alignment = align_style::center_align;
             }
           }
           else

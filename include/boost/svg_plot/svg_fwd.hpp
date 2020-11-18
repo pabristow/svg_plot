@@ -94,8 +94,7 @@ svg& ellipse(double rx, double ry, double cx, double cy);
 svg& text(double x, double y, const std::string& text, int text_size,
 const std::string& font,
 const std::string& style, const std::string& weight,
-const std::string& stretch, const std::string& decoration,
-align_style align,  int rotate);
+const std::string& stretch, const std::string& decoration, align_style align,  int rotate);
 
 // Write image out to ostream and file:
 svg& write(std::ostream& s_out);
@@ -127,7 +126,7 @@ svg_style& style();
 void id(const std::string& id);
 std::string id( );
 void clip_id(const std::string& id);
-enum align_style; // left_align, right_align, center_align
+enum class align_style; // left_align, right_align, center_align
 enum rotate_style; // Rotation in degrees from horizontal.
 //    horizontal = 0, // normal left to right.
 //    upward = -90, // vertical writing up.

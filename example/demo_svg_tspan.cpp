@@ -4,23 +4,15 @@
     Shows the use of SVG tspan command to control text layout.
     tspen is needed to continue text
     changing color, position(next line effect), superscript or subscript.
-  \author Jacob Voytko \& Paul A. Bristow
-
-  \date 2007
 */
 
-// Copyright Jacob Voytko 2008
+// Copyright Jacob Voytko 2007
 // Copyright Paul A. Bristow 2008
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
 // (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifdef _MSC_VER
-#  pragma warning (disable : 4512) // assignment operator could not be generated.
-#endif
 
 #include <boost/svg_plot/svg.hpp>
 using namespace boost::svg;
@@ -36,7 +28,7 @@ int main()
 
     doc.size(400, 400);
 
-    text_element& t = doc.text(100, 100, "This ", no_style, center_align, uphill);
+    text_element& t = doc.text(100, 100, "This ", no_style, align_style::center_align, uphill);
     tspan_element ts = t.tspan("text").dx(10.).dy(20.).font_size(40).font_family("Arial").font_weight("bold").fill_color(pink);
     cout << "dx " << ts.dx() << endl;
     cout << "dy " << ts.dy() << endl;

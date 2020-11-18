@@ -26,8 +26,8 @@
 //! (and some others only needed for this example).
 */
 
-#include <boost/quan/meas.hpp>
-#include <boost/quan/unc.hpp>
+#include <boost/quan/meas.hpp> // measurement class
+#include <boost/quan/unc.hpp> // uncertain class
 
 #include <boost/svg_plot/svg_boxplot.hpp>
   using boost::svg::svg_boxplot;
@@ -68,7 +68,7 @@ void scale_axis(double min_value, double max_value, // input
                double* axis_min_value,  double* axis_max_value, double* axis_tick_increment, // updated.
                bool origin, double tight, int min_ticks, int steps); 
 
-double tol100eps = 1000 * numeric_limits<double>::epsilon(); // Suitable tight value.
+constexpr double tol100eps = 1000 * numeric_limits<double>::epsilon(); // Suitable tight value.
 
 int main()
 {

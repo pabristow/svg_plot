@@ -20,17 +20,16 @@
 
 // Need completion to all colors, not just one!
 
-#ifdef _MSC_VER_
-#  pragam warning (disable : 4512) //  assignment operator could not be generated.
-#endif
-
 #include <boost/svg_plot/svg.hpp>
 // using boost::svg::rect;
 
 #include <boost/svg_plot/svg_1d_plot.hpp>
 using namespace boost::svg;
 
+#include <boost/svg_plot/svg_color.hpp>
+
 #include <boost/svg_plot/svg_fwd.hpp>
+
  using namespace boost::svg;
   // Is most convenient because otherwise all the colors used must be specified thus
   using boost::svg::blue;
@@ -40,12 +39,14 @@ using namespace boost::svg;
   // ... which may get tedious!
 
 #include <iostream>
-  using std::cout;
-  using std::endl;
-  using std::boolalpha;
+  //using std::cout;
+  //using std::endl;
+  //using std::boolalpha;
 
 int main()
 {
+
+
   svg my_svg;
   my_svg.x_size(300);
   my_svg.y_size(200);
@@ -54,9 +55,9 @@ int main()
 
   my_svg.add_g_element(); // Add first (zeroth) new element,
   g_element& g0 = my_svg.g(0); // so index is zero.
-  cout << "my_svg.document_size() = number of g_elements = " << my_svg.document_size() << endl;
+  std::cout << "my_svg.document_size() = number of g_elements = " << my_svg.document_size() << std::endl;
   g0.id("group element 0");
-  cout << "group element " << g0.id() << endl;
+  std::cout << "group element " << g0.id() << std::endl;
 
   g0.push_back(new rect_element(0, 0, my_svg.x_size(),  my_svg.y_size() ) ); // border to all image.
 
@@ -71,18 +72,40 @@ int main()
   g_element& g1 = my_svg.g(1); // so index is now one.
 
   g1.id("group element 1");
-  cout << "my_svg.document_size() = number of g_elements = " << my_svg.document_size() << endl;
+  std::cout << "my_svg.document_size() = number of g_elements = " << my_svg.document_size() << std::endl;
   g1.id("group element 0");
-  cout << "group element " << g0.id() << endl;
+  std::cout << "group element " << g0.id() << std::endl;
 
   g1.style().fill_color(black); 
   g1.style().fill_on(false); 
   g1.style().stroke_color(red);
+  g1.style().fill_color(color_array[90]); 
+
 
   text_style big_font;
   big_font.font_size(30);
-  g1.push_back(new text_element(100, 50, "my color", big_font, center_align)); // SVG name of color to the right.
- 
+  //g1.push_back(new text_element(100, 50, "my color", big_font)); // SVG name of color to the default alignment center.
+  g1.push_back(new text_element(100, 50, "my color", big_font, align_style::center_align)); // SVG name of color to the right.
+
+  using boost::svg::color_array;
+
+  std::cout << "Standard colors (" << color_array.size() << ")" << std::endl;
+  for (int i = 0; i < color_array.size(); i++)
+  {
+    g1.style().fill_color(black);
+    g1.style().fill_on(false);
+    g1.style().stroke_color(red);
+    g1.style().stroke_on(true);
+    // Need to move to location and the style includihn color.
+    // Use tspan?
+
+    g1.push_back(new text_element(100, 50, "my color", big_font, align_style::right_align)); // SVG name of color to the right.
+  }
+
+
+  std::cout << "my_svg.document_size() = number of g_elements = " << my_svg.document_size() << std::endl;
+
+
   // The need to repeat down the page for all the colors.  TODO
   // Need a 'reverse lookup' of the enum colors as "azure" :-((
 

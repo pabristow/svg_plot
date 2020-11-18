@@ -83,7 +83,7 @@ You can use either plain char space or Unicode spaces like \&#x00A0;
   
 /*`and you can change the alignment and rotation using enums align_style and rotate_style.
 */
-  my_plot.draw_note(350, 70, "My 2nd Note", slopeup, right_align, black, my_note_style);
+  my_plot.draw_note(350, 70, "My 2nd Note", slopeup, align_style::right_align, black, my_note_style);
 
 /*`To change the color to red (and text style, alignment and rotation too, just for fun:)
 */
@@ -91,8 +91,8 @@ You can use either plain char space or Unicode spaces like \&#x00A0;
 
   std::cout << "my_red_note_style " << my_red_note_style << std::endl;
   // my_red_note_style text_style(16, "arial", "bold", "italic", "", "")
-  my_plot.draw_note(350, 170, "Red upsidedown Note",  upsidedown, left_align, red, my_red_note_style);
-  my_plot.draw_note(300, 210, "Blue steepup Note", steepup, center_align, blue);
+  my_plot.draw_note(350, 170, "Red upsidedown Note",  upsidedown, align_style::left_align, red, my_red_note_style);
+  my_plot.draw_note(300, 210, "Blue steepup Note", steepup, align_style::center_align, blue);
 
   my_plot.write("./demo_annotation");
 

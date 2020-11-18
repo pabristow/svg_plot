@@ -671,13 +671,13 @@ void svg_1d_plot::update_image()
     plus_limit_point_style_(red, white, 20, cone_point_up, ""), // Colors and size for outside window markers.
     minus_limit_point_style_(blue, white, 20, cone_point_down, ""), // Colors and size for outside window markers.
 
-    title_info_(0, 0, "", title_style_, center_align, horizontal),
+    title_info_(0, 0, "", title_style_, align_style::center_align, horizontal),
     //title_info_(0, 0, "Plot of data", title_style_, center_align, horizontal), when text concatenation solved?
     //x_label_info_(0, 0, "X Axis", x_axis_label_style_, center_align, horizontal),
     //x_units_info_(0, 0, " (units)", x_value_label_style_, center_align, horizontal),
-    x_label_info_(0, 0, "", x_axis_label_style_, center_align, horizontal), // Null strings for now.
-    x_value_label_info_(0, 0, "", x_value_label_style_, center_align, horizontal), // X-axis tick value label, for example: "1.2" or "1.2e1".
-    x_units_info_(0, 0, "", x_value_label_style_, center_align, horizontal),
+    x_label_info_(0, 0, "", x_axis_label_style_, align_style::center_align, horizontal), // Null strings for now.
+    x_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal), // X-axis tick value label, for example: "1.2" or "1.2e1".
+    x_units_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
     x_axis_(X, -10., +10., black, 1, 0, true, false, true),
     y_axis_(Y, 0., +1., black, 1, 0, false, false, false), // Not used for 1D.
 
@@ -695,7 +695,7 @@ void svg_1d_plot::update_image()
     image_border_(yellow, white, 1, 10, true, true), // margin should be about axis label font size.
     plot_window_border_(lightgoldenrodyellow, svg_color(255, 255, 255), 1, 3, true, false),
     legend_box_(yellow, white, 1, 1, true, true),
-    legend_title_(0, 0, "", legend_text_style_, center_align, horizontal),
+    legend_title_(0, 0, "", legend_text_style_, align_style::center_align, horizontal),
     legend_width_(200), // width of legend-box (pixels) // TODO isn't this calculated?
     legend_height_(0), // height of legend-box (pixels)
     legend_left_(-1), legend_right_(-1),legend_top_(-1),legend_bottom_(-1), // Default top left of plot window.
