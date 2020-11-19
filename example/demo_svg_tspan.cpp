@@ -30,6 +30,20 @@ int main()
   {
     svg doc;
     doc.size(400, 400);
+    std::cout << "doc.document_size() = " <<  doc.document_size() << std::endl;
+
+    doc.add_g_element(); // Add first (zeroth) new element to the document,
+    g_element& g0 = doc.g(0); // so index is zero.
+    std::cout << "my_svg.document_size() = number of g_elements = " << doc.document_size() << std::endl; // == 1
+    doc.g(0).push_back(new rect_element(0, 0, doc.x_size(), doc.y_size())); // border to image.
+    g0.id("group element 0"); // Add an ID to this group.
+    std::cout << "g0.id() " << g0.id() << std::endl; // echo it.
+    g0.style().stroke_on(true); // stroke on true
+    g0.style().stroke_color(yellow); // 
+    g0.style().stroke_width(5);
+    std::cout << "width = " << g0.style().stroke_width() << std::endl;
+    g0.style().fill_on(true); // stroke on true
+    g0.style().fill_color(azure); // 
 
     // Simple text_element.
     text_element& t = doc.text(100, 100, "This ", no_style, align_style::center_align, uphill);
@@ -89,7 +103,7 @@ int main()
     std::cout << "text_style my_ts = " << my_ts << std::endl;
     // text_style my_ts = text_style(20, "serif", "bold", "", "", "")
 
-    tspan_element ts2 = t.tspan("text2", my_ts).dx(50).dy(50); // Use constructor to use my_ts text_style.
+    tspan_element ts2 = t.tspan("text_2", my_ts).dx(50).dy(50); // Use constructor to use my_ts text_style.
     std::cout << "ts2 = " << ts2 << std::endl; 
     // ts2 = tspan(0, 0, 50, 50, 0, 0, relative, relative, text_style(20, "serif", "bold", "", "", ""))
     ts2.textstyle(my_ts); // Use set function to set text_style.
@@ -97,6 +111,12 @@ int main()
     // ts2 = tspan(0, 0, 50, 50, 0, 0, relative, relative, text_style(20, "serif", "bold", "", "", ""))
     text_style tst2 = ts2.textstyle(); // Use get function to read the tspan text_style.
     std::cout << "tst2 = " << tst2 << std::endl; // text_style(20, "serif", "bold", "", "", "")
+
+   // .fill_color(pink).stroke_color(purple);
+
+    tspan_element ts3 = t.tspan("text_3", my_ts).dx(70).dy(70).fill_color(pink).stroke_color(purple); ; // Use constructor to use my_ts text_style.
+    std::cout << "ts3 = " << ts3 << std::endl;
+    // ts3 = tspan(0, 0, 70, 70, 0, 0, relative, relative, text_style(20, "serif", "bold", "", "", ""))
 
     doc.write("demo_svg_tspan.svg");
 
