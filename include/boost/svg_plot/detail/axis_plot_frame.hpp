@@ -2258,23 +2258,16 @@ namespace boost
     //  point_style.symbols_style_.stroke_color(point_style.stroke_color_); // no color only font-size
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-      std::cout << "point style() = "<< point_style.style() << std::endl;
+      std::cout << "legend point style() = "<< point_style.style() << std::endl;
       // Example: point style() = text_style(10, "Lucida Sans Unicode", "", "", "", "")  size is correct here now.
-#endif // BOOST_SVG_POINT_DIAGNOSTICS
       // Whatever shape, text or line, want to use the point_style colors.
-
-      std::cout << "point_style.stroke_color_ = " << point_style.stroke_color_ << std::endl;
-      std::cout << "point_style.fill_color_ = " << point_style.fill_color_ << std::endl;
-      // These appear to be correct.
-      //g_ptr.style().stroke_color(point_style.stroke_color_);  // has no effect
-      //g_ptr.style().fill_color(point_style.fill_color_);
-
-   //   but 
+      std::cout << "legend point_style.stroke_color_ = " << point_style.stroke_color_ << std::endl;
+      std::cout << "legend point_style.fill_color_ = " << point_style.fill_color_ << std::endl;
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-      std::cout << "data-point-marker g_ptr.style() = " << g_ptr.style() << std::endl;
+      std::cout << "legend  data-point-marker g_ptr.style() = " << g_ptr.style() << std::endl;
       // plot point marker g_ptr.style() = svg_style(RGB(255,0,0), RGB(0,128,0), 0, stroke_on, fill_on, no width)
-
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
       switch(point_style.shape_) // Chosen from enum point_shape none, round, square, point, egg ...
       {
@@ -2332,11 +2325,11 @@ namespace boost
           //image_.g(PLOT_DATA_UNC).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
           // color set in svg_1d_plot data at present.
           // Also be set by user calling my_plot.one_sd_color(lightblue),  .two_sd_color(blue), .three_sd_color(violet)
-          g_element* gu3_ptr = &(derived().image_.g(PLOT_DATA_UNC3));
-          g_element* gu2_ptr = &(derived().image_.g(PLOT_DATA_UNC2));
           g_element* gu1_ptr = &(derived().image_.g(PLOT_DATA_UNC1));
           gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard deviation.
+          g_element* gu2_ptr = &(derived().image_.g(PLOT_DATA_UNC2));
           gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard deviation.
+          g_element* gu3_ptr = &(derived().image_.g(PLOT_DATA_UNC3));
           gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard deviation.
           g_ptr.circle(x, y, 1); // Show x and y values at center using stroke and fill color of data-point marker.
         }
@@ -2344,9 +2337,9 @@ namespace boost
 
         // Offset from center is not an issue with vertical or horizontal ticks.
         // But is needed for text and Unicode symbols.
-        //point_size / 4. puts bottom tip on the X-axis,
-        //point_size / 2. put center on the X-axis.
-        //x, y, center on the X-axis - probably what is needed for 2-D plots.
+        // point_size / 4. puts bottom tip on the X-axis,
+        // point_size / 2. put center on the X-axis.
+        // x, y, center on the X-axis - probably what is needed for 2-D plots.
 
       case vertical_tick: // Especially neat for 1-D points.
         g_ptr.line(x, y, x , y - point_size); // A tick up from axis.
@@ -2374,12 +2367,11 @@ namespace boost
         // Geometric shapes http://www.unicode.org/charts/PDF/Unicode-3.2/U32-25A0.pdf
         // Misc symbols http://www.unicode.org/charts/PDF/U2600.pdf
         // The Unicode value in decimal 9830 or hex x2666 must be prefixed with & and terminated with ;
-        // @b Example: &x2666; for diamond in xml
+        // @b Example: &#x2666; for diamond in xml
         // and then enveloped with "" to convert to a std::string, for example: "&#x2666;" for diamond.
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "Unicode symbol font_size " << point_style.symbols_style_.font_size()
           << ", at SVG x = " << x << ", y = " << y + half_height<< std::endl;
-        // 
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
         break;
 
@@ -2388,15 +2380,22 @@ namespace boost
         // square point_style.style() = text_style(14, "Lucida Sans Unicode", "", "", "", "")
         std::cout << "square gptr.style() = " << g_ptr.style() << std::endl;
         // square gptr.style() = svg_style(RGB(0,0,0), RGB(255,255,0), 0, stroke_on, fill_on, no width) 
-        // stroke black and fill yellow  (fill not used).
+        // stroke black and fill yellow  (fill color not used for this Unicode symbol).
+        // There are ones with explicit color like emoji U+1F7E5
+        // https://emojipedia.org/large-red-square/ but only approved in 2019, so too new?
+
         // std::cout << "square point_style.symbols_style_ = " << point_style.symbols_style_ << std::endl;
         // square point_style.symbols_style_ = text_style(14, "Lucida Sans Unicode", "", "", "", "")
+
         g_ptr.text(x, y + third_height, "&#x25A1;", point_style.symbols_style_, align_style::center_align, horizontal);
         // 25A1 white center square - but need fill version or fill doesn't show?
+        // Might be better to go back to using rect for square.
         break;
 
       case circlet: // 25CB WHITE CIRCLE or 25EF large white circle 25CF black circle
-        // 25CB WHITE CIRCLE not best Unicode circle - the fill is only the circle, not the white center.
+        // 25CB WHITE CIRCLE not best Unicode circle - the fill is only the circle, NOT the white center.
+        // there are some explicitly colored circles like 'LARGE BLUE CIRCLE' &#x1f535;  
+        // https://www.alt-codes.net/circle-symbols for half black, half-circle, large circle, quadrants
 
         // g_ptr.text(x, y + third_height, "&#x25CF;", point_style.symbols_style_, center_align, horizontal);
         point_style.symbols("&#x25CF;");
