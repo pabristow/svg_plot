@@ -62,6 +62,7 @@ enum plot_doc_structure
   PLOT_LIMIT_POINTS, //! 'At limit' infite or NaN data point markers.
   PLOT_LEGEND_BACKGROUND, //! Legend box.
   PLOT_LEGEND_POINTS, //! Legend data series point markers, circle, cross...
+  PLOT_LEGEND_LINES, //! Legend data-series point lines.
   PLOT_LEGEND_TEXT, //! Legend text describing each data series.
   PLOT_TITLE, //! Title of the whole plot.
   PLOT_X_POINT_VALUES, //! X Data point value labels.
@@ -71,7 +72,7 @@ enum plot_doc_structure
   SVG_PLOT_DOC_CHILDREN //! Last enum value used as count of children = size of document_ids_ = 31.
 };
 
-std::string document_ids_[31]= //!< Strings used describe and identify SVG layers in .svg files (matching enum plot_doc_structure).
+std::string document_ids_[32]= //!< Strings used describe and identify SVG layers in .svg files (matching enum plot_doc_structure).
 { // Care: must match enum plot_doc_structure.
     "imageBackground", // the whole svg image.
     "plotBackground", // the smaller plot window (if used).
@@ -88,15 +89,16 @@ std::string document_ids_[31]= //!< Strings used describe and identify SVG layer
     "xTicksValues", //! X-axis tick values labels, for example 10, 20, 30 ...
     "yTicksValues", //! Y-axis tick values labels, for example 1, 2, 3 ...
     "yLabel",
-    "xLabel",   // axis text labels "length (cm)"
+    "xLabel",   // axis text labels, for example: "length (cm)"
     "plotLines", // normal data point markers.
-    "plotUnc3",   // Uncertainty zone of 3 sd from data points.
-    "plotUnc2",   // Uncertainty zone of 2 sd from data points.
-    "plotUnc1",   // Uncertainty zone of 2 sd from data points.
-    "plotPoints", // normal data point markers.
-    "limitPoints",  // at limit or NaN data point markers.
+    "plotUnc3",   // Uncertainty zone of 3 standard deviation from data points.
+    "plotUnc2",   // Uncertainty zone of 2 standard deviation from data points.
+    "plotUnc1",   // Uncertainty zone of 1 standard deviation from data points.
+    "plotPoints", // Normal data point markers.
+    "limitPoints",  // 'At limit' or NaN data point markers.
     "legendBackground", // legend box.
-    "legendPoints", // data series point markers, circle, cross...
+    "legendPoints", // data-series point markers, circle, cross...
+    "legendLines", // data-series lines.
     "legendText", // text describing each data series.
     "title",  // of the whole plot.
     "plotXValues", // Data point X value labels.

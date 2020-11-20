@@ -1988,7 +1988,7 @@ namespace boost
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
       // Assume legend box position has already been sized by function size_legend_box,
-      // and positioned by function place_legend_box.
+      // and positioned computed by function place_legend_box.
       double legend_x_start = derived().legend_left_; // Saved legend box location.
       double legend_width = derived().legend_width_;
       double legend_y_start = derived().legend_top_;
@@ -2063,7 +2063,7 @@ namespace boost
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
         derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_title_));
-        // This uses the default legend_title font_size
+        // This uses the default legend_title font_size?
 
         legend_y_pos += derived().vertical_title_spacing_ /3; // Leave a fraction space below legend title.
       } // is_header aka is_title
@@ -2095,33 +2095,27 @@ namespace boost
         legend_x_pos += derived().horizontal_marker_spacing_;  // Center of point-marker symbol.
         legend_y_pos += derived().vertical_line_spacing_ ; // == Size of biggest point-marker or description text font.
 
-        g_inner_ptr = &(g_ptr->add_g_element());  // All new nested g_element.
-        // Use both stroke & fill colors and size from the data-point-marker's style.
-        // Applies to both shapes AND lines.
-      //  g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.font_size_);
-        g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_);
-        g_inner_ptr->style().fill_color(derived().serieses_[i].point_style_.fill_color_);
+      //  g_inner_ptr = &(g_ptr->add_g_element());  // All new nested g_element.
+      // Use both stroke & fill colors and size from the data-point-marker's style.
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "g_inner_ptr.style() = " << g_inner_ptr->style() << std::endl;
        // Outputs: g_inner_ptr.style() = svg_style(RGB(255,255,255), RGB(0,128,0), 2, fill_on, stroke_on, width_on)
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
-
-    std::cout << "g_inner_ptr.style() " << g_inner_ptr->style() << std::endl;
-    // Outputs: g_inner_ptr.style() svg_style(RGB(0,0,0), RGB(255,255,255), 0, stroke_on, fill_on, no width)
-    // stroke black, fill white
-
-    // Use point stroke color instead.
-      g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_); // 
-      std::cout << " point_style set to = " << derived().serieses_[i].point_style_.stroke_color_  << std::endl;
-
- //   std::cout << "g_inner_ptr.style().font_size() " << g_inner_ptr->style().font_size() << std::endl; // not member of style
- //   std::cout << "g_inner_ptr.style().stroke_color() " << g_inner_ptr->style().stroke_color_ << std::endl;
- //   std::cout << "g_inner_ptr.style().fill_color() " << g_inner_ptr->style().fill_color_ << std::endl;
+          // Select legend-points group
+        g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Prepare to write data-point-marker, line and description-text into legend-box.
+        g_element* g_inner_ptr = g_ptr;
+        // Use point stroke color instead.
+        g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_); // 
+        g_inner_ptr->style().fill_color(derived().serieses_[i].point_style_.fill_color_); // 
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS   
+        std::cout << "point_style set to = " << derived().serieses_[i].point_style_.stroke_color_
+          << "and " << derived().serieses_[i].point_style_.fill_color_ << std::endl; // 
+#endif //BOOST_SVG_POINT_DIAGNOSTICS   
         plot_point_style& point_style = derived().serieses_[i].point_style_;
-        std::cout << " point_style = derived().serieses_[i].point_style_ = " << point_style << std::endl;
-// point_style  = plot_point_style(1, RGB(255,0,0), RGB(0,128,0), 30, , text_style(14, "Lucida Sans Unicode", "", "", "", ""), 0, 0)
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+ #ifdef BOOST_SVG_POINT_DIAGNOSTICS
+       std::cout << " point_style = derived().serieses_[i].point_style_ = " << point_style << std::endl;
+       // point_style  = plot_point_style(1, RGB(255,0,0), RGB(0,128,0), 30, , text_style(14, "Lucida Sans Unicode", "", "", "", ""), 0, 0)
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
 
         if(point_style.shape_ != none)
@@ -2138,7 +2132,7 @@ namespace boost
           // Show a SVG plot data-point-marker like star, circlet ...
           draw_plot_point(
             legend_x_pos,
-            legend_y_pos - point_style.size_ / 5, // Move up a bit of a data-point-marker font-size to align with text.
+            legend_y_pos - point_style.size_ / 5, // Move up a fifth of a data-point-marker font-size to align with text.
             *g_inner_ptr, 
             point_style, 
             unc<false>(), unc<false>());  // X and Y positions.
@@ -2150,26 +2144,39 @@ namespace boost
           }
         } // A marker shape for this series.
         else
-        { // Other data-series have a point marker (but not this one).
+        { // Other data-series have a point marker (but not this data-series).
           if (derived().is_a_point_marker_ == true)
           {
-            legend_x_pos += derived().horizontal_marker_spacing_ * 1.5;  // Leave a space where marker would be? 
+            legend_x_pos += derived().horizontal_marker_spacing_ * 1.5;  // Leave a space where data-point marker would be.
           }
         } // is a point_style.shape_
 
+        // Draw any line-markers in legend for this data-series.
         // Line markers are only really useful for 2-D lines and curves showing functions.
-        if (derived().serieses_[i].line_style_.line_on_ == true) // Line joining points option is true,
+        if ((derived().serieses_[i].line_style_.line_on_ == true) // Line joining points option is true,
+           || (derived().serieses_[i].line_style_.bezier_on_ == true)) 
         { // so need to draw a short line to show color for line joining points for that data-series.
           // derived().legend_lines_ = true; // Some line is drawn for at least one data-series.
           // Better - this should be set during the legend box sizing?
+          // Select legend-lines group.
+          g_ptr = &(derived().image_.g(PLOT_LEGEND_LINES)); 
+          g_element* g_inner_ptr = g_ptr;
+          // Set colors for legend line.
+          g_inner_ptr->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_); // 
+          //g_inner_ptr->style().fill_color(derived().serieses_[i].line_style_.fill_color_); // NO fill color for lines.
 
          if (derived().serieses_[i].line_style_.line_on_ || derived().serieses_[i].line_style_.bezier_on_)
           { // Use stroke color from line style.
-            g_inner_ptr->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_);
-            std::cout << "line color set to " << derived().serieses_[i].line_style_.stroke_color_ << std::endl;
+           g_inner_ptr->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_); // 
+           std::cout << "line_style color set to = " << derived().serieses_[i].line_style_.stroke_color_ << std::endl;
           }
+
           g_inner_ptr->style().stroke_width(derived().serieses_[i].line_style_.width_);
-          std::cout << "line g_inner_ptr->style().stroke_color() " << g_inner_ptr->style().stroke_color() << std::endl;
+          std::cout << "line g_inner_ptr->style().stroke_width set to " << g_inner_ptr->style().stroke_width() << std::endl;
+          std::cout << "line g_inner_ptr->style() set to " << g_inner_ptr->style() << std::endl;
+          // line_style color set to = RGB(0, 0, 255) blue
+           // line g_inner_ptr->style().stroke_width set to 2
+           // line g_inner_ptr->style() set to svg_style(RGB(0, 0, 255), blank, 2, stroke_on, no fill, width_on)
           g_inner_ptr->push_back(new line_element( // Draw horizontal lines with appropriate color.
             legend_x_pos,
             legend_y_pos,
@@ -2177,17 +2184,15 @@ namespace boost
             legend_y_pos));
           legend_x_pos += derived().horizontal_line_spacing_; // Advance by short line distance
           legend_x_pos += derived().horizontal_title_spacing_; // & a space.
-        } // legend line to draw
+        } // legend line-marker to draw.
         else
-        { // Might need a horizontal space if any other series have a line (but this series does not).
+        { // Might need a horizontal space if any other data-series have a line (but this data-series does not).
           if (derived().is_a_data_series_line_ == true)
           {
             legend_x_pos += derived().horizontal_line_spacing_; // Total is short line
             legend_x_pos += derived().horizontal_title_spacing_; // & a space.
           }
-        } // line_on == true
-
-      //  g_element* g_inner_ptr = g_ptr;
+        } // line_on == true || bezier_on
 
         // Legend text for each data-series added to the plot.
         if (derived().is_a_data_series_text_)
@@ -2195,8 +2200,7 @@ namespace boost
           double series_string_SVG_length = string_svg_length(derived().serieses_[i].title_, derived().legend_text_style_);
           derived().legend_text_style_.text_length(series_string_SVG_length); // Force to use estimated SVG length.
 
-          g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT));
-
+          g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Select group for legend data-series text.
           g_inner_ptr->push_back(new text_element(
             legend_x_pos, // Allow space for the marker.
             legend_y_pos,
