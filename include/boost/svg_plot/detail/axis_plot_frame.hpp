@@ -2104,7 +2104,8 @@ namespace boost
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
           // Select legend-points group
         g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Prepare to write data-point-marker, line and description-text into legend-box.
-        g_element* g_inner_ptr = g_ptr;
+        g_element* g_inner_ptr = &(g_ptr->add_g_element());
+
         // Use point stroke color instead.
         g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_); // 
         g_inner_ptr->style().fill_color(derived().serieses_[i].point_style_.fill_color_); // 
@@ -2160,7 +2161,7 @@ namespace boost
           // Better - this should be set during the legend box sizing?
           // Select legend-lines group.
           g_ptr = &(derived().image_.g(PLOT_LEGEND_LINES)); 
-          g_element* g_inner_ptr = g_ptr;
+          g_element* g_inner_ptr = &(g_ptr->add_g_element()); // nested group for each data-series line.
           // Set colors for legend line.
           g_inner_ptr->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_); // 
           //g_inner_ptr->style().fill_color(derived().serieses_[i].line_style_.fill_color_); // NO fill color for lines.
