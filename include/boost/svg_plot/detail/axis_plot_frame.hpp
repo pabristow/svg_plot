@@ -2069,7 +2069,7 @@ namespace boost
 
         legend_y_pos += derived().vertical_title_spacing_ /3; // Leave a fraction space below legend title.
       } // is_header aka is_title
-
+      // Select legend-points group
       g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Prepare to write data-point-marker, line and description-text into legend-box.
       g_element* g_inner_ptr = g_ptr;
       //g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Write legend-title text into legend box.
@@ -2095,10 +2095,9 @@ namespace boost
         }
         legend_x_pos += derived().horizontal_title_spacing_; // space before point-marker and/or line & text.
         legend_x_pos += derived().horizontal_marker_spacing_;  // Center of point-marker symbol.
-
         legend_y_pos += derived().vertical_line_spacing_ ; // == Size of biggest point-marker or description text font.
 
-        g_inner_ptr = &(g_ptr->add_g_element());
+        g_inner_ptr = &(g_ptr->add_g_element());  // All new nested g_element.
         // Use both stroke & fill colors and size from the data-point-marker's style.
         // Applies to both shapes AND lines.
       //  g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.font_size_);
@@ -2107,17 +2106,19 @@ namespace boost
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "g_inner_ptr.style() = " << g_inner_ptr->style() << std::endl;
-       // Outputs g_inner_ptr.style() = svg_style(RGB(255,255,255), RGB(0,128,0), 2, fill_on, stroke_on, width_on)
+       // Outputs: g_inner_ptr.style() = svg_style(RGB(255,255,255), RGB(0,128,0), 2, fill_on, stroke_on, width_on)
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
 
-    //std::cout << "g_inner_ptr.style().stroke_color() " << g_inner_ptr->style() << std::endl;
-    //std::cout << "g_inner_ptr.style().font_size() " << g_inner_ptr->style().font_size() << std::endl;
-    //std::cout << "g_inner_ptr.style().stroke_color() " << g_inner_ptr->style().stroke_color_ << std::endl;
-    //std::cout << "g_inner_ptr.style().fill_color() " << g_inner_ptr->style().fill_color_ << std::endl;
+    std::cout << "g_inner_ptr.style() " << g_inner_ptr->style() << std::endl;
+    // Outputs: g_inner_ptr.style() svg_style(RGB(0,0,0), RGB(255,255,255), 0, stroke_on, fill_on, no width)
+    // stroke black, fill white
+ //   std::cout << "g_inner_ptr.style().font_size() " << g_inner_ptr->style().font_size() << std::endl; // not member of style
+ //   std::cout << "g_inner_ptr.style().stroke_color() " << g_inner_ptr->style().stroke_color_ << std::endl;
+ //   std::cout << "g_inner_ptr.style().fill_color() " << g_inner_ptr->style().fill_color_ << std::endl;
         plot_point_style& point_style = derived().serieses_[i].point_style_;
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << " point_style = derived().serieses_[i].point_style_ = " << point_style << std::endl;
 // point_style  = plot_point_style(1, RGB(255,0,0), RGB(0,128,0), 30, , text_style(14, "Lucida Sans Unicode", "", "", "", ""), 0, 0)
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
 
         if(point_style.shape_ != none)
@@ -2135,11 +2136,10 @@ namespace boost
           draw_plot_point(
             legend_x_pos,
             legend_y_pos - point_style.size_ / 5, // Move up a bit of a data-point-marker font-size to align with text.
-            *g_inner_ptr,
-            point_style,
+            *g_inner_ptr, 
+            point_style, 
             unc<false>(), unc<false>());  // X and Y positions.
-            // was derived().serieses_[i].point_style_, unc(0.), unc(0.));
-          legend_x_pos += derived().horizontal_marker_spacing_ * 1.5; // Trailing space after data-point-marker. ? 
+          legend_x_pos += derived().horizontal_marker_spacing_ * 1.5; // Trailing space after data-point-marker.
 
           if (was_unc_ellipse)
           { // Restore from using egg (or the data-points won't use the unc_ellipse!)
@@ -2206,278 +2206,291 @@ namespace boost
       legend_y_pos += derived().vertical_marker_spacing_; // Fraction of biggest font, ready for next line.
     } // void draw_legend()
 
-
-          template <class Derived>
-          void axis_plot_frame<Derived>::draw_plot_point(double x, double y, // X and Y values (in SVG coordinates).
-            g_element& g_ptr,
-            plot_point_style& point_style,
-            unc<false> ux, unc<false> uy) // Default unc ux = 0. and uy = 0. ?  Meas?
-          { /*! Draw a plot data-point marker shape or symbol
-              whose size and stroke and fill colors are specified in plot_point_style style,
-              possibly including uncertainty ellipses showing multiples of standard deviation.
-            */
-            /*
-              For 1-D plots, the points do not *need* to be centered on the X-axis,
-              and putting them just above, or sitting on, the X-axis is much clearer.
-              For 2-D plots, the symbol center should, of course, be centered exactly on x, y.
-              circle and ellipse are naturally centered on the point.
-              for rectangle x and y half_height offset centers square on the point.
-              But symbols are in a rectangular box and the offset is different for x & y
-              even assuming that the symbol is centered in the rectangle.
-              the vertical and horizontal ticks are deliberately offset above the axes.
-              TODO Not sure this is fully resolved.
-            */
-            double point_size = point_style.size_;
-            double half_height = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
-            double half_width = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point x-coordinates.
-            double third_height = point_size / 3.3; // Offset y vertical by third of the symbol size to try to centre symbol on the point y-coordinates.
-
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
-            std::cout << "point_style.size_ = "<< point_style.size_ 
-              << ", y offset half_height = " << half_height
-              << ", y offset third_height = " << third_height
-              << std::endl; 
-            // Picks up font size shape(diamond).size(20) correctly here.
-            // point_style.size_ = 30, y offset half_height = 15, y offset third_height = 9.09091
-#endif // BOOST_SVG_POINT_DIAGNOSTICS
-            point_style.symbols_style_.font_size(point_style.size_); // Sets data-point-marker font-size.
-
-            //  Want this text_styling, for example:
-            //point_style.symbols_style_.font_family("arial");
-            //point_style.symbols_style_.font_weight("bold");
-            //point_style.symbols_style_.font_decoration("underline");
-            //point_style.symbols_style_.font_stretch("wider");
-            //point_style.symbols_style_.font_style("italic");
-            // and these colors:
-          //  point_style.symbols_style_.fill_color(point_style.fill_color_); //
-          //  point_style.symbols_style_.stroke_color(point_style.stroke_color_); // no color only font-size
+    template <class Derived>
+    void axis_plot_frame<Derived>::draw_plot_point(double x, double y, // X and Y values (in SVG coordinates).
+      g_element& g_ptr,
+      plot_point_style& point_style,
+      unc<false> ux, unc<false> uy) // Default unc ux = 0. and uy = 0. ?  Meas?
+    { /*! Draw a plot data-point marker shape or symbol
+        whose size and stroke and fill colors are specified in plot_point_style style,
+        possibly including uncertainty ellipses showing multiples of standard deviation.
+      */
+      /*
+        For 1-D plots, the points do not *need* to be centered on the X-axis,
+        and putting them just above, or sitting on, the X-axis is much clearer.
+        For 2-D plots, the symbol center should, of course, be centered exactly on x, y.
+        circle and ellipse are naturally centered on the point.
+        for rectangle x and y half_height offset centers square on the point.
+        But symbols are in a rectangular box and the offset is different for x & y
+        even assuming that the symbol is centered in the rectangle.
+        the vertical and horizontal ticks are deliberately offset above the axes.
+        TODO Not sure this is fully resolved.
+      */
+      double point_size = point_style.size_;
+      double half_height = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
+      double half_width = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point x-coordinates.
+      double third_height = point_size / 3.3; // Offset y vertical by third of the symbol size to try to centre symbol on the point y-coordinates.
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-            std::cout << "point style() = "<< point_style.style() << std::endl;
-            // Example: point style() = text_style(10, "Lucida Sans Unicode", "", "", "", "")  size is correct here now.
+      std::cout << "point_style.size_ = "<< point_style.size_ 
+        << ", y offset half_height = " << half_height
+        << ", y offset third_height = " << third_height
+        << std::endl; 
+      // Picks up font size shape(diamond).size(20) correctly here.
+      // point_style.size_ = 30, y offset half_height = 15, y offset third_height = 9.09091
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-            // Whatever shape, text or line, want to use the point style colors.
-            g_ptr.style().stroke_color(point_style.stroke_color_);
-            g_ptr.style().fill_color(point_style.fill_color_);
+      point_style.symbols_style_.font_size(point_style.size_); // Sets data-point-marker font-size.
+
+      //  Want this text_styling, for example:
+      //point_style.symbols_style_.font_family("arial");
+      //point_style.symbols_style_.font_weight("bold");
+      //point_style.symbols_style_.font_decoration("underline");
+      //point_style.symbols_style_.font_stretch("wider");
+      //point_style.symbols_style_.font_style("italic");
+      // and these colors:
+    //  point_style.symbols_style_.fill_color(point_style.fill_color_); //
+    //  point_style.symbols_style_.stroke_color(point_style.stroke_color_); // no color only font-size
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-            std::cout << "data-point-marker g_ptr.style() = " << g_ptr.style() << std::endl;
-           // plot point marker g_ptr.style() = svg_style(RGB(255,0,0), RGB(0,128,0), 0, stroke_on, fill_on, no width)
-
+      std::cout << "point style() = "<< point_style.style() << std::endl;
+      // Example: point style() = text_style(10, "Lucida Sans Unicode", "", "", "", "")  size is correct here now.
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-            switch(point_style.shape_) // Chosen from enum point_shape none, round, square, point, egg ...
-            {
-            case none:
-              break; // Nothing to display.
+      // Whatever shape, text or line, want to use the point_style colors.
 
-            // Shapes using SVG line, circle or eclipse functions.
+      std::cout << "point_style.stroke_color_ = " << point_style.stroke_color_ << std::endl;
+      std::cout << "point_style.fill_color_ = " << point_style.fill_color_ << std::endl;
+      // These appear to be correct.
+      //g_ptr.style().stroke_color(point_style.stroke_color_);  // has no effect
+      //g_ptr.style().fill_color(point_style.fill_color_);
 
-            // Now a Unicode, see below.
-            //case circlet: // Use SVG circle function.
-            //  g_ptr.circle(x, y, half_height);
-            //  break;
-
-            case point:
-              g_ptr.circle(x, y, 1.); // Fixed size 1 pixel round.
-              break;
-
-            //case square: // Now using Unicode symbol.
-            //  g_ptr.rect(x - half_width, y - half_height, point_size, point_size);
-            //  break;
-
-            case egg:
-              // No need for x or y - half width to center on point.
-              g_ptr.ellipse(x, y, half_height, point_size * 1.); // Tall thin egg!
-              // of use Unicode ? 2B2D horixontal or 2B2F vertical.
-              break;
-
-            case unc_ellipse:
-              { // std_dev horizontal (and, for 2D, vertical) ellipses for one, two and three 'standard deviations'.
-                double xu = ux.value(); //
-                if (ux.std_dev() > 0)
-                { // std_dev is meaningful.
-                  xu +=  ux.std_dev();
-                }
-                transform_x(xu); // To SVG coordinates.
-                double x_radius = std::abs<double>(xu - x);
-                if (x_radius <= 0.)
-                { // Make sure something is visible.
-                  x_radius = 1.; // Or size?
-                }
-
-                double yu = uy.value();
-                if (uy.std_dev() > 0)
-                { // std_dev is meaningful.
-                   yu += uy.std_dev();
-                }
-
-                transform_y(yu);
-                double y_radius = std::abs<double>(yu - y);
-                if (y_radius <= 0.)
-                { // Make sure something is visible.
-                  y_radius = 1.;
-                }
-                //image_.g(PLOT_DATA_UNC).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
-                // color set in svg_1d_plot data at present.
-                // Also be set using my_plot.one_sd_color(lightblue),  .two_sd_color(blue), three_sd_color(violet)
-                g_element* gu3_ptr = &(derived().image_.g(PLOT_DATA_UNC3));
-                g_element* gu2_ptr = &(derived().image_.g(PLOT_DATA_UNC2));
-                g_element* gu1_ptr = &(derived().image_.g(PLOT_DATA_UNC1));
-                gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard deviation.
-                gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard deviation.
-                gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard deviation.
-                g_ptr.circle(x, y, 1); // Show x and y values at center using stroke and fill color of data-point marker.
-              }
-              break;
-
-             // Offset from center is not an issue with vertical or horizontal ticks.
-             // But is needed for text and Unicode symbols.
-             //point_size / 4. puts bottom tip on the X-axis,
-             //point_size / 2. put center on the X-axis.
-             //x, y, center on the X-axis - probably what is needed for 2-D plots.
-
-            case vertical_tick: // Especially neat for 1-D points.
-              g_ptr.line(x, y, x , y - point_size); // A tick up from axis.
-              break;
-            case vertical_line:
-              g_ptr.line(x, y + point_size, x , y - point_size); // Line up & down from axis.
-              break;
-            case horizontal_tick:
-              // horizontal_tick is pretty useless for 1-D because the horizontal line is on the X-axis.
-              g_ptr.line(x, y, x + point_size, y ); // tick right from axis.
-              break;
-            case horizontal_line:
-              g_ptr.line(x, y - point_size, x + point_size, y ); // Line left & right from axis.
-              // horizontal_line is pretty useless for 1-D because the horizontal line is on the X-axis.
-              break;
-
-            //  Shapes as symbols using SVG text function, (NOT using SVG line, circle or eclipse).
-            case symbol: // Unicode symbol.  see https://unicode-search.net/ for search
-              g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), align_style::center_align, horizontal); // symbol(s), size and center.
-
-              // Unicode symbols that work on most browsers are listed at
-              // boost\math\libs\math\doc\sf_and_dist\html4_symbols.qbk,
-              // http://www.htmlhelp.com/reference/html40/entities/symbols.html
-              // and  http://www.alanwood.net/demos/ent4_frame.html
-              // Geometric shapes http://www.unicode.org/charts/PDF/Unicode-3.2/U32-25A0.pdf
-              // Misc symbols http://www.unicode.org/charts/PDF/U2600.pdf
-              // The Unicode value in decimal 9830 or hex x2666 must be prefixed with & and terminated with ;
-              // @b Example: &x2666; for diamond in xml
-              // and then enveloped with "" to convert to a std::string, for example: "&#x2666;" for diamond.
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
-              std::cout << "Unicode symbol font_size " << point_style.symbols_style_.font_size()
-                << ", at SVG x = " << x << ", y = " << y + half_height<< std::endl;
-              // 
-#endif // BOOST_SVG_POINT_DIAGNOSTICS
-              break;
-
-            case square:
-              g_ptr.text(x, y + third_height, "&#x25A1;", point_style.symbols_style_, align_style::center_align, horizontal);
-              // 25A1 white center square - need fill version?
-              break;
-
-            case circlet: // 25CB WHITE CIRCLE or 25EF large white circle 25CF black circle
-              // 25CB WHITE CIRCLE not best Unicode circle - the fill is only the circle, not the white center.
-
-             // g_ptr.text(x, y + third_height, "&#x25CF;", point_style.symbols_style_, center_align, horizontal);
-              point_style.symbols("&#x25CF;");
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
-              std::cout << "point_style.symbols_style_ = " << point_style.symbols_style_ << std::endl;
-#endif // BOOST_SVG_POINT_DIAGNOSTICS
-              g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), align_style::center_align, horizontal);
-              // symbol(s), size and center.
-
-              break;
-            case diamond:
-              g_ptr.text(x, y + third_height, "&#x2666;", point_style.symbols_style_, align_style::center_align, horizontal);
+   //   but 
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-            std::cout << "sty.symbols_style_ " << point_style.symbols_style_ << std::endl;
+      std::cout << "data-point-marker g_ptr.style() = " << g_ptr.style() << std::endl;
+      // plot point marker g_ptr.style() = svg_style(RGB(255,0,0), RGB(0,128,0), 0, stroke_on, fill_on, no width)
+
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+      switch(point_style.shape_) // Chosen from enum point_shape none, round, square, point, egg ...
+      {
+      case none:
+        break; // Nothing to display.
+
+      // Shapes using SVG line, circle or eclipse functions.
+
+      // Now a Unicode, see below. Previously was:
+      //case circlet: // Use SVG circle function.
+      //  g_ptr.circle(x, y, half_height);
+      //  break;
+
+      case point:
+        g_ptr.circle(x, y, 1.); // Fixed size 1 pixel round.
+        // Could also be a Unicode symbol?
+        break;
+
+      //case square: // Now using Unicode symbol, previously was:
+      //  g_ptr.rect(x - half_width, y - half_height, point_size, point_size);
+      //  break;
+
+      case egg:
+        // No need for x or y - half width to center on point.
+        g_ptr.ellipse(x, y, half_height, point_size * 1.); // Tall thin egg!
+        // or use Unicode symbol, perhaps 2B2D horixontal or 2B2F vertical ellipses.
+        break;
+
+      case unc_ellipse:  // Showing uncertainty, if known.
+        { // std_dev horizontal (and, for 2D, vertical) ellipses for one, two and three 'standard deviations'.
+          double xu = ux.value(); //
+          if (ux.std_dev() > 0)
+          { // std_dev is meaningful.
+            xu +=  ux.std_dev();
+          }
+          transform_x(xu); // To SVG coordinates.
+          double x_radius = std::abs<double>(xu - x);
+          if (x_radius <= 0.)
+          { // Make sure something is visible.
+            x_radius = 1.; // Or size?
+          }
+
+          double yu = uy.value();
+          if (uy.std_dev() > 0)
+          { // std_dev is meaningful.
+              yu += uy.std_dev();
+          }
+
+          transform_y(yu);
+          double y_radius = std::abs<double>(yu - y);
+          if (y_radius <= 0.)
+          { // Make sure something is visible.
+            y_radius = 1.;
+          }
+          //image_.g(PLOT_DATA_UNC).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
+          // color set in svg_1d_plot data at present.
+          // Also be set by user calling my_plot.one_sd_color(lightblue),  .two_sd_color(blue), .three_sd_color(violet)
+          g_element* gu3_ptr = &(derived().image_.g(PLOT_DATA_UNC3));
+          g_element* gu2_ptr = &(derived().image_.g(PLOT_DATA_UNC2));
+          g_element* gu1_ptr = &(derived().image_.g(PLOT_DATA_UNC1));
+          gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard deviation.
+          gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard deviation.
+          gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard deviation.
+          g_ptr.circle(x, y, 1); // Show x and y values at center using stroke and fill color of data-point marker.
+        }
+        break;
+
+        // Offset from center is not an issue with vertical or horizontal ticks.
+        // But is needed for text and Unicode symbols.
+        //point_size / 4. puts bottom tip on the X-axis,
+        //point_size / 2. put center on the X-axis.
+        //x, y, center on the X-axis - probably what is needed for 2-D plots.
+
+      case vertical_tick: // Especially neat for 1-D points.
+        g_ptr.line(x, y, x , y - point_size); // A tick up from axis.
+        break;
+      case vertical_line:
+        g_ptr.line(x, y + point_size, x , y - point_size); // Line up & down from axis.
+        break;
+      case horizontal_tick:
+        // horizontal_tick is pretty useless for 1-D because the horizontal line is on the X-axis.
+        g_ptr.line(x, y, x + point_size, y ); // tick right from axis.
+        break;
+      case horizontal_line:
+        g_ptr.line(x, y - point_size, x + point_size, y ); // Line left & right from axis.
+        // horizontal_line is pretty useless for 1-D because the horizontal line is on the X-axis.
+        break;
+
+      //  Shapes as symbols using SVG text function, (NOT using SVG line, circle or eclipse).
+      case symbol: // Unicode symbol.  see https://unicode-search.net/ for search
+        g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), align_style::center_align, horizontal); // symbol(s), size and center.
+        std::cout << "symbol point_style.style() = " << point_style.style() << std::endl;
+        // Unicode symbols that work on most browsers are listed at
+        // boost\math\libs\math\doc\sf_and_dist\html4_symbols.qbk,
+        // http://www.htmlhelp.com/reference/html40/entities/symbols.html
+        // and  http://www.alanwood.net/demos/ent4_frame.html
+        // Geometric shapes http://www.unicode.org/charts/PDF/Unicode-3.2/U32-25A0.pdf
+        // Misc symbols http://www.unicode.org/charts/PDF/U2600.pdf
+        // The Unicode value in decimal 9830 or hex x2666 must be prefixed with & and terminated with ;
+        // @b Example: &x2666; for diamond in xml
+        // and then enveloped with "" to convert to a std::string, for example: "&#x2666;" for diamond.
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+        std::cout << "Unicode symbol font_size " << point_style.symbols_style_.font_size()
+          << ", at SVG x = " << x << ", y = " << y + half_height<< std::endl;
+        // 
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+        break;
+
+      case square:
+       // std::cout << "square point_style.style() = " << point_style.style() << std::endl;
+        // square point_style.style() = text_style(14, "Lucida Sans Unicode", "", "", "", "")
+        std::cout << "square gptr.style() = " << g_ptr.style() << std::endl;
+        // square gptr.style() = svg_style(RGB(0,0,0), RGB(255,255,0), 0, stroke_on, fill_on, no width) 
+        // stroke black and fill yellow  (fill not used).
+        // std::cout << "square point_style.symbols_style_ = " << point_style.symbols_style_ << std::endl;
+        // square point_style.symbols_style_ = text_style(14, "Lucida Sans Unicode", "", "", "", "")
+        g_ptr.text(x, y + third_height, "&#x25A1;", point_style.symbols_style_, align_style::center_align, horizontal);
+        // 25A1 white center square - but need fill version or fill doesn't show?
+        break;
+
+      case circlet: // 25CB WHITE CIRCLE or 25EF large white circle 25CF black circle
+        // 25CB WHITE CIRCLE not best Unicode circle - the fill is only the circle, not the white center.
+
+        // g_ptr.text(x, y + third_height, "&#x25CF;", point_style.symbols_style_, center_align, horizontal);
+        point_style.symbols("&#x25CF;");
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+        std::cout << "point_style.symbols_style_ = " << point_style.symbols_style_ << std::endl;
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
+        g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), align_style::center_align, horizontal);
+        // symbol(s), size and center.
+
+        break;
+      case diamond:
+        g_ptr.text(x, y + third_height, "&#x2666;", point_style.symbols_style_, align_style::center_align, horizontal);
+
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+      std::cout << "sty.symbols_style_ " << point_style.symbols_style_ << std::endl;
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-              std::cout << "Diamond style font size " << point_style.symbols_style_.font_size() << std::endl;
+        std::cout << "Diamond style font size " << point_style.symbols_style_.font_size() << std::endl;
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-              // diamond, spades, clubs & hearts fill with expected fill_color.
-              break;
-            case asterisk: // https://unicode-search.net/unicode-namesearch.pl?term=ASTERISK for options
-              // Several options but ASTERISK OPERATOR #2217
-              // U+FE61 SMALL ASTERISK centers OK but is small.
-              // 2732 is open center asterisk.
-              // 273C is open center TEARDROP-SPOKED ASTERISK
-              g_ptr.text(x, y + third_height, "&#x273C;", point_style.symbols_style_, align_style::center_align, horizontal);
-              // asterisk is black filled.
-              // .
-              break;
-            case lozenge:
-              g_ptr.text(x, y + third_height, "&#x25CA;", point_style.symbols_style_, align_style::center_align, horizontal);
-              // size / 3 to get tip of lozenge just on the X-axis.
-              // lozenge seems not to fill?
-              break;
-            case club:
-              g_ptr.text(x, y + third_height, "&#x2663;", point_style.symbols_style_, align_style::center_align, horizontal);
-              // x, y, puts club just on the X-axis.
-              break;
-            case spade:
-              g_ptr.text(x, y + third_height, "&#x2660;", point_style.symbols_style_, align_style::center_align, horizontal);
-              //
-              break;
-            case heart:
-              g_ptr.text(x, y + third_height , "&#x2665;", point_style.symbols_style_, align_style::center_align, horizontal);
-              break;
-            case outside_window: // Pointing down triangle used only to show data-points that are outside plot window.
-              {
-                bool fill = (point_style.fill_color() != blank);
-                g_ptr.triangle(x - half_height, y - point_size, x + half_height, y - point_size, x, y, fill);
-                // Last point puts the bottom tip of the triangle on the X-axis (so may not be suitable for 2-D).
-              }
-              break;
-             // Triangles and cones.
-             // https://unicode.org/charts/PDF/U25A0.pdf Geometric Shapes
-              // There are large and small, and filled black or white centre.
-             // Could use black center &#x25BE for pointing down triangle,
-             // or &#x25B4 for small black center up-pointing triangle
-             // or &#x25BE for white center small down triangle.
-             // or &#x25BA for white center point right triangle.
-            case cone: // Synonym for cone_point_up
-            case cone_point_up: // pointing-up triangle, white centre.
-              g_ptr.text(x, y + third_height, "&#x25BD;", point_style.symbols_style_, align_style::center_align, horizontal);
-              // https://unicode.org/charts/PDF/U25A0.pdf
-              break;
+        // diamond, spades, clubs & hearts fill with expected fill_color.
+        break;
+      case asterisk: // https://unicode-search.net/unicode-namesearch.pl?term=ASTERISK for options
+        // Several options but ASTERISK OPERATOR #2217
+        // U+FE61 SMALL ASTERISK centers OK but is small.
+        // 2732 is open center asterisk.
+        // 273C is open center TEARDROP-SPOKED ASTERISK
+        g_ptr.text(x, y + third_height, "&#x273C;", point_style.symbols_style_, align_style::center_align, horizontal);
+        // asterisk is black filled.
+        // .
+        break;
+      case lozenge:
+        g_ptr.text(x, y + third_height, "&#x25CA;", point_style.symbols_style_, align_style::center_align, horizontal);
+        // size / 3 to get tip of lozenge just on the X-axis.
+        // lozenge seems not to fill?
+        break;
+      case club:
+        g_ptr.text(x, y + third_height, "&#x2663;", point_style.symbols_style_, align_style::center_align, horizontal);
+        // x, y, puts club just on the X-axis.
+        break;
+      case spade:
+        g_ptr.text(x, y + third_height, "&#x2660;", point_style.symbols_style_, align_style::center_align, horizontal);
+        //
+        break;
+      case heart:
+        g_ptr.text(x, y + third_height , "&#x2665;", point_style.symbols_style_, align_style::center_align, horizontal);
+        break;
+      case outside_window: // Pointing down triangle used only to show data-points that are outside plot window.
+        {
+          bool fill = (point_style.fill_color() != blank);
+          g_ptr.triangle(x - half_height, y - point_size, x + half_height, y - point_size, x, y, fill);
+          // Last point puts the bottom tip of the triangle on the X-axis (so may not be suitable for 2-D).
+        }
+        break;
+        // Triangles and cones.
+        // https://unicode.org/charts/PDF/U25A0.pdf Geometric Shapes
+        // There are large and small, and filled black or white centre.
+        // Could use black center &#x25BE for pointing down triangle,
+        // or &#x25B4 for small black center up-pointing triangle
+        // or &#x25BE for white center small down triangle.
+        // or &#x25BA for white center point right triangle.
+      case cone: // Synonym for cone_point_up
+      case cone_point_up: // pointing-up triangle, white centre.
+        g_ptr.text(x, y + third_height, "&#x25BD;", point_style.symbols_style_, align_style::center_align, horizontal);
+        // https://unicode.org/charts/PDF/U25A0.pdf
+        break;
 
-            case cone_point_down: // pointing-down triangle, white centre.
-               g_ptr.text(x, y + third_height, "&#x25BF;", point_style.symbols_style_, align_style::center_align, horizontal);
-               // https://unicode.org/charts/PDF/U25A0.pdf
-               break;
+      case cone_point_down: // pointing-down triangle, white centre.
+          g_ptr.text(x, y + third_height, "&#x25BF;", point_style.symbols_style_, align_style::center_align, horizontal);
+          // https://unicode.org/charts/PDF/U25A0.pdf
+          break;
 
-            case cone_point_right: // small pointing-right triangle, white centre (or 25b7 for bigger one).
-               g_ptr.text(x, y + third_height, "&#x25B9;", point_style.symbols_style_, align_style::center_align, horizontal);
-               // <text x="489" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9</text>
-               break;
+      case cone_point_right: // small pointing-right triangle, white centre (or 25b7 for bigger one).
+          g_ptr.text(x, y + third_height, "&#x25B9;", point_style.symbols_style_, align_style::center_align, horizontal);
+          // <text x="489" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9</text>
+          break;
 
-            case cone_point_left: // small pointing-left triangle, white centre.
-               g_ptr.text(x, y + third_height, "&#x25C3;", point_style.symbols_style_, align_style::center_align, horizontal);
-               // https://unicode.org/charts/PDF/U25A0.pdf  Or larger triangle 25C1
-               break;
+      case cone_point_left: // small pointing-left triangle, white centre.
+          g_ptr.text(x, y + third_height, "&#x25C3;", point_style.symbols_style_, align_style::center_align, horizontal);
+          // https://unicode.org/charts/PDF/U25A0.pdf  Or larger triangle 25C1
+          break;
 
-            case triangle: // Pointing-up triangle, white centre.
-               g_ptr.text(x, y  + third_height, "&#x25B4;", point_style.symbols_style_, align_style::center_align, horizontal);
-                 // Also could use &#x25BC for pointing down triangle, or &#x25B4 for small up-pointing triangle.
-                 // https://unicode.org/charts/PDF/U25A0.pdf
-               break;
-             case star:
-               g_ptr.text(x, y  + third_height, "&#x2605;", point_style.symbols_style_, align_style::center_align, horizontal);
-               break;
+      case triangle: // Pointing-up triangle, white centre.
+          g_ptr.text(x, y  + third_height, "&#x25B4;", point_style.symbols_style_, align_style::center_align, horizontal);
+            // Also could use &#x25BC for pointing down triangle, or &#x25B4 for small up-pointing triangle.
+            // https://unicode.org/charts/PDF/U25A0.pdf
+          break;
+        case star:
+          g_ptr.text(x, y  + third_height, "&#x2605;", point_style.symbols_style_, align_style::center_align, horizontal);
+          break;
 
-            case cross: // Not X. Size is full font size for other options see https://unicode-search.net/unicode-namesearch.pl?term=CROSS
-              //g_ptr.line(x, y + point_size, x , y - point_size); // line up & down from axis,
-              //g_ptr.line(x, y - point_size, x + point_size, y ); // & line left & right from axis.
-              // Cross is pretty useless for 1-D because the horizontal line is on the X-axis.
-             // g_ptr.text(x, y  + third_height, "&#x274C;", point_style.symbols_style_, center_align, horizontal);
-              // Offset of third_height to try to center symbol on both the X and Y axes.
-              g_ptr.text(x, y  + third_height, "&#x272F;", point_style.symbols_style_, align_style::center_align, horizontal);
-              break;
-            }
-          } // void draw_plot_point
+      case cross: // Not X. Size is full font size for other options see https://unicode-search.net/unicode-namesearch.pl?term=CROSS
+        //g_ptr.line(x, y + point_size, x , y - point_size); // line up & down from axis,
+        //g_ptr.line(x, y - point_size, x + point_size, y ); // & line left & right from axis.
+        // Cross is pretty useless for 1-D because the horizontal line is on the X-axis.
+        // g_ptr.text(x, y  + third_height, "&#x274C;", point_style.symbols_style_, center_align, horizontal);
+        // Offset of third_height to try to center symbol on both the X and Y axes.
+        g_ptr.text(x, y  + third_height, "&#x272F;", point_style.symbols_style_, align_style::center_align, horizontal);
+        break;
+      }
+    } // void draw_plot_point
 
           template <class Derived>
           void axis_plot_frame<Derived>::draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, Meas uvalue)

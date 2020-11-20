@@ -111,12 +111,13 @@ int main()
     // ts2 = tspan(0, 0, 50, 50, 0, 0, relative, relative, text_style(20, "serif", "bold", "", "", ""))
     text_style tst2 = ts2.textstyle(); // Use get function to read the tspan text_style.
     std::cout << "tst2 = " << tst2 << std::endl; // text_style(20, "serif", "bold", "", "", "")
-
-   // .fill_color(pink).stroke_color(purple);
+    // 	<tspan dx="50" dy="50" font-size="20" font-family="serif" font-style="bold">text_2</tspan>
 
     tspan_element ts3 = t.tspan("text_3", my_ts).dx(70).dy(70).fill_color(pink).stroke_color(purple); ; // Use constructor to use my_ts text_style.
     std::cout << "ts3 = " << ts3 << std::endl;
     // ts3 = tspan(0, 0, 70, 70, 0, 0, relative, relative, text_style(20, "serif", "bold", "", "", ""))
+    // <tspan stroke="rgb(128,0,128)" fill="rgb(255,192,203)" dx="70" dy="70" font-size="20" font-family="serif" font-style="bold">text_3</tspan>
+
 
     doc.write("demo_svg_tspan.svg");
 
