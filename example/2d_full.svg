@@ -174,16 +174,16 @@ M101,463 L101,477
 	<text x="540" y="144" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
 <g stroke="rgb(255,255,0)" fill="rgb(255,255,255)">
-	<text x="101" y="449" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="150" y="441" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="199" y="434" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="248" y="426" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="296" y="418" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="345" y="411" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="394" y="403" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="442" y="395" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="491" y="388" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="540" y="380" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
+	<text x="101" y="449" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="150" y="441" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="199" y="434" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="248" y="426" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="296" y="418" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="345" y="411" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="394" y="403" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="442" y="395" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="491" y="388" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="540" y="380" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 </g></g>
 <g id="legendBackground" stroke="rgb(102,102,84)" fill="rgb(207,202,167)" stroke-width="1">
 	<rect x="595" y="58.8" width="91.3" height="69"/>
@@ -197,7 +197,7 @@ M101,463 L101,477
 	<text x="612" y="96.2" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
 <g stroke="rgb(255,255,0)" fill="rgb(255,255,255)">
-	<text x="612" y="109" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
+	<text x="612" y="109" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 </g></g>
 <g id="legendText">
 	<text x="621" y="80" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="43.2">Sqrt(x)	</text>

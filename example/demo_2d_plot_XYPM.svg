@@ -245,16 +245,16 @@ M53.5,255 L53.5,265
 	<text x="375" y="108" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,0)">
-	<text x="202" y="450" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="227" y="408" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="251" y="365" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="276" y="323" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="301" y="280" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="326" y="238" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="350" y="196" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="375" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="400" y="111" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="425" y="68.4" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
+	<text x="202" y="450" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="227" y="408" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="251" y="365" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="276" y="323" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="301" y="280" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="326" y="238" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="350" y="196" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="375" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="400" y="111" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="425" y="68.4" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 </g></g>
 <g id="limitPoints" stroke="rgb(119,136,153)" fill="rgb(250,235,215)">
 	<polygon points=" 48.5,245 58.5,245 53.5,255"/>
@@ -280,7 +280,7 @@ M53.5,255 L53.5,265
 	<text x="572" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,0)">
-	<text x="572" y="122" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
+	<text x="572" y="122" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 </g></g>
 <g id="legendLines">
 

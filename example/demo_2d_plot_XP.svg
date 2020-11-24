@@ -208,10 +208,10 @@ M548,255 L548,265
 	<text x="191" y="108" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,0)">
-	<text x="140" y="196" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="191" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="242" y="111" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="293" y="68.4" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
+	<text x="140" y="196" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="191" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="242" y="111" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="293" y="68.4" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 </g></g>
 <g id="limitPoints" stroke="rgb(119,136,153)" fill="rgb(250,235,215)">
 	<polygon points=" 84.5,245 94.5,245 89.5,255"/>
@@ -237,7 +237,7 @@ M548,255 L548,265
 	<text x="572" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,0)">
-	<text x="572" y="122" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
+	<text x="572" y="122" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 </g></g>
 <g id="legendLines">
 

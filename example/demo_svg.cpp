@@ -286,7 +286,7 @@ int main()
   //std::cout <<  cos(pi/6) << std::endl; // == cos(30) == 0.86602540378442139;
 
   array<const poly_path_point, 6> hexup =
-  { // Regular point up hexagon!
+  { // Regular point-up hexagon!
     poly_path_point(0, -1),
     poly_path_point(0.86602540378442139, -0.5),
     poly_path_point(0.86602540378442139, +0.5),

@@ -2104,11 +2104,11 @@ namespace boost
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
           // Select legend-points group
         g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Prepare to write data-point-marker, line and description-text into legend-box.
-        g_element* g_inner_ptr = &(g_ptr->add_g_element());
+        g_element* g_legends_points = &(g_ptr->add_g_element());
 
         // Use point stroke color instead.
-        g_inner_ptr->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_); // 
-        g_inner_ptr->style().fill_color(derived().serieses_[i].point_style_.fill_color_); // 
+        g_legends_points->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_); // 
+        g_legends_points->style().fill_color(derived().serieses_[i].point_style_.fill_color_); // 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS   
         std::cout << "point_style set to = " << derived().serieses_[i].point_style_.stroke_color_
           << "and " << derived().serieses_[i].point_style_.fill_color_ << std::endl; // 
@@ -2134,7 +2134,7 @@ namespace boost
           draw_plot_point(
             legend_x_pos,
             legend_y_pos - point_style.size_ / 5, // Move up a fifth of a data-point-marker font-size to align with text.
-            *g_inner_ptr, 
+            *g_legends_points,
             point_style, 
             unc<false>(), unc<false>());  // X and Y positions.
           legend_x_pos += derived().horizontal_marker_spacing_ * 1.5; // Trailing space after data-point-marker.
@@ -2161,28 +2161,28 @@ namespace boost
           // Better - this should be set during the legend box sizing?
           // Select legend-lines group.
           g_ptr = &(derived().image_.g(PLOT_LEGEND_LINES)); 
-          g_element* g_inner_ptr = &(g_ptr->add_g_element()); // nested group for each data-series line.
+          g_element* g_legend_lines = &(g_ptr->add_g_element()); // nested group for each data-series line.
           // Set colors for legend line.
-          g_inner_ptr->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_); // 
+          g_legend_lines->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_); // 
           //g_inner_ptr->style().fill_color(derived().serieses_[i].line_style_.fill_color_); // NO fill color for lines.
 
          if (derived().serieses_[i].line_style_.line_on_ || derived().serieses_[i].line_style_.bezier_on_)
           { // Use stroke color from line style.
-           g_inner_ptr->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_); // 
+           g_legend_lines->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_); // 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
            std::cout << "line_style color set to = " << derived().serieses_[i].line_style_.stroke_color_ << std::endl;
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
           }
 
-          g_inner_ptr->style().stroke_width(derived().serieses_[i].line_style_.width_);
+         g_legend_lines->style().stroke_width(derived().serieses_[i].line_style_.width_);
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-          std::cout << "line g_inner_ptr->style().stroke_width set to " << g_inner_ptr->style().stroke_width() << std::endl;
-          std::cout << "line g_inner_ptr->style() set to " << g_inner_ptr->style() << std::endl;
+          std::cout << "line g_legend_lines->style().stroke_width set to " << g_legend_lines->style().stroke_width() << std::endl;
+          std::cout << "line g_legend_lines->style() set to " << g_legend_lines->style() << std::endl;
           // line_style color set to = RGB(0, 0, 255) blue
-           // line g_inner_ptr->style().stroke_width set to 2
-           // line g_inner_ptr->style() set to svg_style(RGB(0, 0, 255), blank, 2, stroke_on, no fill, width_on)
+           // line g_legend_lines->style().stroke_width set to 2
+           // line g_legend_lines->style() set to svg_style(RGB(0, 0, 255), blank, 2, stroke_on, no fill, width_on)
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
-          g_inner_ptr->push_back(new line_element( // Draw horizontal lines with appropriate color.
+          g_legend_lines->push_back(new line_element( // Draw horizontal lines with appropriate color.
             legend_x_pos,
             legend_y_pos,
             legend_x_pos + derived().horizontal_line_spacing_, // Line sample is one char long/wide.
@@ -2205,8 +2205,8 @@ namespace boost
           double series_string_SVG_length = string_svg_length(derived().serieses_[i].title_, derived().legend_text_style_);
           derived().legend_text_style_.text_length(series_string_SVG_length); // Force to use estimated SVG length.
 
-          g_inner_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Select group for legend data-series text.
-          g_inner_ptr->push_back(new text_element(
+          g_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Select group for legend data-series text.
+          g_ptr->push_back(new text_element(
             legend_x_pos, // Allow space for the marker.
             legend_y_pos,
             derived().serieses_[i].title_, // Text for this data-series.
@@ -2290,11 +2290,6 @@ namespace boost
         g_ptr.circle(x, y, 1.); // Fixed size 1 pixel round.
         // Could also be a Unicode symbol?
         break;
-
-      //case square: // Now using Unicode symbol, previously was:
-      // But using Unicode square sumbols does not seem to allow control of fill color, only stroke color.
-      //  g_ptr.rect(x - half_width, y - half_height, point_size, point_size);
-      //  break;
 
       case egg:
         // No need for x or y - half width to center on point.
@@ -2383,24 +2378,30 @@ namespace boost
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
         break;
 
+
+      //case square: // Now using Unicode symbol, previously was:
+      // But using Unicode square sumbols does not seem to allow control of fill color, only stroke color.
+      //  g_ptr.rect(x - half_width, y - half_height, point_size, point_size);
+      //  break;
+
       case square:
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
        // std::cout << "square point_style.style() = " << point_style.style() << std::endl;
         // square point_style.style() = text_style(14, "Lucida Sans Unicode", "", "", "", "")
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "square gptr.style() = " << g_ptr.style() << std::endl;
         // square gptr.style() = svg_style(RGB(0,0,0), RGB(255,255,0), 0, stroke_on, fill_on, no width) 
         // stroke black and fill yellow  (fill color not used for this x25A1 Unicode symbol).
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-        // There are ones with explicit color like emoji U+1F7E5
+        // There are also ones with explicit color like emoji U+1F7E5
         // https://emojipedia.org/large-red-square/ but only approved in 2019, so too new?
 
         // std::cout << "square point_style.symbols_style_ = " << point_style.symbols_style_ << std::endl;
         // square point_style.symbols_style_ = text_style(14, "Lucida Sans Unicode", "", "", "", "")
 
-        g_ptr.text(x, y + third_height, "&#x25A1;", point_style.symbols_style_, align_style::center_align, horizontal);
-        // 25A1 white center square - but need fill version or fill doesn't show?
-        // Might be better to go back to using rect for square.
-        // Other possible ssymbols 20DE  renclosing square
+        g_ptr.text(x, y + third_height, "&#x25A0;", point_style.symbols_style_, align_style::center_align, horizontal);
+        // https://unicode.org/charts/PDF/U25A0.pdf Geometric Shapes
+        // 25A1 white-center square - but fill always white.
+        // Other possible symbols 20DE  enclosing square (white center) but larger than 25A0.
         break;
 
       case circlet: // 25CB WHITE CIRCLE or 25EF large white circle 25CF black circle

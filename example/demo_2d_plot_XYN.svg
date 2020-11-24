@@ -149,10 +149,10 @@ M53.5,43 L53.5,53
 <g id="plotPoints" clip-path="url(#plot_window)">
 
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,0)">
-	<text x="383" y="424" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="438" y="330" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="493" y="236" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="548" y="141" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
+	<text x="383" y="424" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="438" y="330" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="493" y="236" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="548" y="141" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 </g></g>
 <g id="limitPoints" stroke="rgb(119,136,153)" fill="rgb(250,235,215)">
 	<polygon points=" 48.5,33 58.5,33 53.5,43"/>
@@ -178,7 +178,7 @@ M53.5,43 L53.5,53
 	<text x="572" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,0)">
-	<text x="572" y="122" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
+	<text x="572" y="122" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 </g></g>
 <g id="legendLines">
 

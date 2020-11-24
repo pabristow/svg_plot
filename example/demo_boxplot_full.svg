@@ -156,10 +156,10 @@ M64.6,284 L66.6,284
 	<text x="172" y="192" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25BD;	</text>
 </g>
 <g clip-path="url(#plot_window)" stroke="rgb(255,0,0)" fill="rgb(255,255,0)">
-	<text x="277" y="159" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="277" y="172" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="277" y="182" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="277" y="191" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A1;	</text>
+	<text x="277" y="159" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="277" y="172" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="277" y="182" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="277" y="191" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 </g></g>
 <g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)">
 

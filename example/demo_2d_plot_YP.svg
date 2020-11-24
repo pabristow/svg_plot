@@ -160,10 +160,10 @@ M98.5,449 L98.5,459
 	<text x="233" y="180" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,0)">
-	<text x="188" y="363" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="233" y="273" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="278" y="183" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
-	<text x="323" y="92.4" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
+	<text x="188" y="363" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="233" y="273" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="278" y="183" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+	<text x="323" y="92.4" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 </g></g>
 <g id="limitPoints" stroke="rgb(119,136,153)" fill="rgb(250,235,215)">
 	<polygon points=" 48.5,439 58.5,439 53.5,449"/>
@@ -189,7 +189,7 @@ M98.5,449 L98.5,459
 	<text x="572" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,0)">
-	<text x="572" y="122" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
+	<text x="572" y="122" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 </g></g>
 <g id="legendLines">
 
