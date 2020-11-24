@@ -2114,7 +2114,7 @@ namespace boost
           << "and " << derived().serieses_[i].point_style_.fill_color_ << std::endl; // 
 #endif //BOOST_SVG_POINT_DIAGNOSTICS   
         plot_point_style& point_style = derived().serieses_[i].point_style_;
- #ifdef BOOST_SVG_POINT_DIAGNOSTICS
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
        std::cout << " point_style = derived().serieses_[i].point_style_ = " << point_style << std::endl;
        // point_style  = plot_point_style(1, RGB(255,0,0), RGB(0,128,0), 30, , text_style(14, "Lucida Sans Unicode", "", "", "", ""), 0, 0)
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
@@ -2169,15 +2169,19 @@ namespace boost
          if (derived().serieses_[i].line_style_.line_on_ || derived().serieses_[i].line_style_.bezier_on_)
           { // Use stroke color from line style.
            g_inner_ptr->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_); // 
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
            std::cout << "line_style color set to = " << derived().serieses_[i].line_style_.stroke_color_ << std::endl;
+#endif //BOOST_SVG_POINT_DIAGNOSTICS
           }
 
           g_inner_ptr->style().stroke_width(derived().serieses_[i].line_style_.width_);
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
           std::cout << "line g_inner_ptr->style().stroke_width set to " << g_inner_ptr->style().stroke_width() << std::endl;
           std::cout << "line g_inner_ptr->style() set to " << g_inner_ptr->style() << std::endl;
           // line_style color set to = RGB(0, 0, 255) blue
            // line g_inner_ptr->style().stroke_width set to 2
            // line g_inner_ptr->style() set to svg_style(RGB(0, 0, 255), blank, 2, stroke_on, no fill, width_on)
+#endif //BOOST_SVG_POINT_DIAGNOSTICS
           g_inner_ptr->push_back(new line_element( // Draw horizontal lines with appropriate color.
             legend_x_pos,
             legend_y_pos,
@@ -2288,6 +2292,7 @@ namespace boost
         break;
 
       //case square: // Now using Unicode symbol, previously was:
+      // But using Unicode square sumbols does not seem to allow control of fill color, only stroke color.
       //  g_ptr.rect(x - half_width, y - half_height, point_size, point_size);
       //  break;
 
@@ -2360,7 +2365,9 @@ namespace boost
       //  Shapes as symbols using SVG text function, (NOT using SVG line, circle or eclipse).
       case symbol: // Unicode symbol.  see https://unicode-search.net/ for search
         g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), align_style::center_align, horizontal); // symbol(s), size and center.
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "symbol point_style.style() = " << point_style.style() << std::endl;
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
         // Unicode symbols that work on most browsers are listed at
         // boost\math\libs\math\doc\sf_and_dist\html4_symbols.qbk,
         // http://www.htmlhelp.com/reference/html40/entities/symbols.html
@@ -2379,9 +2386,11 @@ namespace boost
       case square:
        // std::cout << "square point_style.style() = " << point_style.style() << std::endl;
         // square point_style.style() = text_style(14, "Lucida Sans Unicode", "", "", "", "")
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "square gptr.style() = " << g_ptr.style() << std::endl;
         // square gptr.style() = svg_style(RGB(0,0,0), RGB(255,255,0), 0, stroke_on, fill_on, no width) 
-        // stroke black and fill yellow  (fill color not used for this Unicode symbol).
+        // stroke black and fill yellow  (fill color not used for this x25A1 Unicode symbol).
+#endif // BOOST_SVG_POINT_DIAGNOSTICS
         // There are ones with explicit color like emoji U+1F7E5
         // https://emojipedia.org/large-red-square/ but only approved in 2019, so too new?
 
@@ -2391,6 +2400,7 @@ namespace boost
         g_ptr.text(x, y + third_height, "&#x25A1;", point_style.symbols_style_, align_style::center_align, horizontal);
         // 25A1 white center square - but need fill version or fill doesn't show?
         // Might be better to go back to using rect for square.
+        // Other possible ssymbols 20DE  renclosing square
         break;
 
       case circlet: // 25CB WHITE CIRCLE or 25EF large white circle 25CF black circle

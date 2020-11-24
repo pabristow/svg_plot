@@ -180,10 +180,15 @@ M548,449 L548,459
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,0)">
 	<text x="572" y="122" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A1;	</text>
 </g></g>
+<g id="legendLines">
+
+<g stroke="rgb(0,0,0)" stroke-width="2">
+	<line x1="581" y1="105" x2="587" y2="105"/>
+</g></g>
 <g id="legendText">
 	<text x="620" y="70.7" text-anchor="middle" font-size="16" font-family="Lucida Sans Unicode" font-weight="normal" textLength="104">Unicode &#x3A9;&#x3A6;	</text>
 	<text x="581" y="91.3" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="43.2">Sqrt(x)	</text>
-	<text x="581" y="105" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="48">-2 + x^2	</text>
+	<text x="597" y="105" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="48">-2 + x^2	</text>
 	<text x="581" y="119" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="42">-1 + 2x	</text>
 </g>
 <g id="title" fill="rgb(255,0,0)">

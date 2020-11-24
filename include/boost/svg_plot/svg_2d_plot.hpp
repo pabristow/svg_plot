@@ -128,6 +128,7 @@ namespace boost
       svg_2d_plot_series& fill_color(const svg_color& col_);
       svg_2d_plot_series& stroke_color(const svg_color& col_);
       svg_2d_plot_series& shape(point_shape shape_);
+      svg_2d_plot_series& plot_point(plot_point_style);
       svg_2d_plot_series& point_font_family(const std::string family_);
       svg_2d_plot_series& point_font_weight(const std::string weight_);
       svg_2d_plot_series& point_font_decoration(const std::string decoration_);
@@ -145,6 +146,7 @@ namespace boost
       svg_2d_plot_series& bar_color(const svg_color& col);
       svg_2d_plot_series& bar_area_fill(const svg_color& col);
       svg_2d_plot_series& histogram(histogram_option opt_);
+
       const std::string point_font_family();
       const std::string point_font_weight();
       const std::string point_font_decoration();
@@ -153,7 +155,7 @@ namespace boost
 
       // Declarations of Get functions for the plot series.
       plot_line_style line_style();
-      plot_point_style point_style();
+      plot_point_style point_style();  // Plot point marker.
       double line_width();
       bool bezier_on();
       bool line_on();
@@ -243,6 +245,13 @@ namespace boost
   { //! Set Data series point marker size.
     //! Example @c .shape(square).size(5)
     point_style_.size_ = size_;
+    return *this;
+  }
+
+  svg_2d_plot_series& svg_2d_plot_series::plot_point(plot_point_style marker)
+  { //! Set Data series point marker size.
+    //! Example @c 
+    point_style_ = marker;
     return *this;
   }
 

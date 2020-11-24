@@ -1087,17 +1087,19 @@ public:
 // End class plot_point_style function *Definitions* separated.
 
   std::ostream& operator<< (std::ostream& os, plot_point_style p)
-{  //! Output description of data value plot point marker(s).
+{  //! Output description of data-value plot point marker(s).
+    //! \param os @c std::ostream for output.
+    //! \param p Data plot point marker colors, size, shape, symbol(s), style and location.
   os << "plot_point_style("
-     << p.shape_ << ", "
+     << p.shape_ << ", " // Shape enum value.
      << p.stroke_color_ << ", "
      << p.fill_color_ << ", "
      << p.size_ << ", "
-     << p.symbols_ << ", "
-     << p.symbols_style_ << ", "
+     << "\"" << p.symbols_ << "\", "  // Unicode symbol code as string, for example: "&#x2666;" 
+     << p.symbols_style_ << ", "  // 
      << p.show_x_value_ << ", "
      << p.show_y_value_
-//     << ", symbols style: " << p.symbols_style_  // TODO check this works and alter example.
+     << ", symbols_style: " << p.symbols_style_ 
      << ")";
 /*! \details Example: plot_point_style p;  std::cout << p << std::endl;
    Outputs: 
@@ -1111,7 +1113,16 @@ public:
    symbols = "" - not using one.
    symbols_style_  is a text_style but size is not same as symbol?
    0, 0 x and y values are not shown.
-*/
+
+   Example of marker using a Unicode symbol:
+   \code 
+     plot_point_style my_diamond(red, green, 20, symbol, "&#x2666;");
+      std::cout << "my_diamond is " << my_diamond << std::endl;
+   \endcode
+   Outputs:
+   \code my_diamond is plot_point_style(25, RGB(255,0,0), RGB(0,128,0), 20, "&#x2666;", text_style(20, "Lucida Sans Unicode", "", "", "", ""), 0, 0)
+   \endcode
+   */
 return os;
 } // std::ostream& operator<<
 
