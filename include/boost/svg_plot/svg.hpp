@@ -333,7 +333,7 @@ protected:
   // Not sure this is the best place for this?
 
 private:
-//! \cond DETAIL // Dxygen document this section only if DETAIL defined.
+//! \cond DETAIL // Doxygen document this section only if DETAIL defined.
   void write_header(std::ostream& s_out)
   { //! Output the DTD SVG 1.1 header into the SVG g_element document.
     s_out << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
@@ -845,8 +845,6 @@ public:
     return document.polygon(x, y, f);
   }
 
-  //JVTODO: Replace with STL container template version.
-
   polygon_element& polygon(std::vector<poly_path_point>& v, bool f = true)
   { //! push_back a complete many-sided polygon to the document with vertices specified as a vector of path_points.
     return document.polygon(v, f);
@@ -912,6 +910,7 @@ public:
   { //! from array of g_elements, indexed by group type, PLOT_BACKGROUND, PLOT_WINDOW_BACKGROUND, ... SVG_PLOT_DOC_CHILDREN,
     return document.g(i); //! \return reference to the ith group element.
   }
+}; // class svg
 
   // ----------------------------------------------------------------------------------------
   // Load stylesheet - to provide some defaults like font size, type but not yet implemented. 
@@ -942,7 +941,6 @@ public:
   //    css += tmp;
   //  }
   //} // svg& load_stylesheet
-}; // class svg
 
 } // namespace svg
 } // namespace boost

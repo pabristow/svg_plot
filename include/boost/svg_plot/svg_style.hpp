@@ -172,7 +172,7 @@ class svg_style
 
 public:
   // Constructors declarations:
-  svg_style();
+  svg_style(); // Default style.
   svg_style(const svg_color& stroke, const svg_color& fill, unsigned int width);
 
   // Set svg_style member functions to set fill color and stroke color & width , and switches.
@@ -283,8 +283,6 @@ public:
     fill_on_ = ! is_blank(col); // If blank fill is true or "none".
     return *this; //! \return svg_style& to make chainable.
   }
-
-
 
   svg_style& svg_style::stroke_width(double width)
   { //! Set stroke width (and set width on).

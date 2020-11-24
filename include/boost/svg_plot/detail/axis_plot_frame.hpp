@@ -1157,17 +1157,28 @@ namespace boost
           }
           // Draw the X ticks value-labels, "1", "2" "3" ...
           // Want this:
-          // <g id="xTicksValues">   text-anchor = "middle" font-size = "12" font-family = "Lucida Sans Unicode"
+          // <g id="xTicksValues">  text-anchor = "middle" font-size = "12" font-family = "Lucida Sans Unicode"
           //  <text x = "74.5" y = "390" >0 </text >
           //  <text x = "133" y = "390" >2 </text >...
           if (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0)
           { // External to plot window style bottom or top.
             // Always want all values including "0", if labeling external to plot window.
             // x_ticks_.ticks_on_window_or_on_axis_ == true != 0
-            derived().image_.g(detail::PLOT_X_TICKS_VALUES).text(
+            g_element* g_ptr = &(derived().image_.g(detail::PLOT_X_TICKS_VALUES));
+            // /! svg g \return reference g_ement& to the ith (PLOT_X_TICKS_VALUES) group element.
+            g_element* g_inner_ptr = g_ptr;
+            g_element* g_x_axis_values = &(g_ptr->add_g_element()); // OK
+
+        //    g_x_axis_values->style().stroke_color(derived().style().stroke_color_); //  wrong
+         //   g_x_axis_values->style().fill_color(derived().serieses_[i].point_style_.fill_color_); // 
+
+ //           derived().image_.g(detail::PLOT_X_TICKS_VALUES).text(
+            g_element& gg = derived().image_.g(detail::PLOT_X_TICKS_VALUES);
+
+            gg.text(
               x,
               y,
-              tick_value_label.str(),
+              tick_value_label.str(), 
               derived().x_value_label_info_.textstyle(), // font, size etc
               alignment, derived().x_ticks_.label_rotation_);
           }
@@ -2014,7 +2025,7 @@ namespace boost
         .stroke_on(derived().legend_box_.border_on())
         ;
 
-      // Draw border box round legend with background.
+      // Draw border-box round legend with background.
       g_ptr->push_back(new rect_element(legend_x_start, legend_y_start, legend_width, legend_height));
       // Placed Legend box: left = 554, right = 682.4, width = 120, top = 48, bottom = 358, height = 310,
       // Plot window box: left = 26, right = 545.6, top = 48, bottom = 471
