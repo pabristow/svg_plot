@@ -2436,7 +2436,6 @@ namespace boost
         // 273C is open center TEARDROP-SPOKED ASTERISK
         g_ptr.text(x, y + third_height, "&#x273C;", point_style.symbols_style_, align_style::center_align, horizontal);
         // asterisk is black filled.
-        // .
         break;
       case lozenge:
         g_ptr.text(x, y + third_height, "&#x25CA;", point_style.symbols_style_, align_style::center_align, horizontal);

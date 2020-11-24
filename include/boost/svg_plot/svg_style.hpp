@@ -740,7 +740,7 @@ class value_style
      Used in draw_plot_point_values (note plural - not used in singular draw_plot_point_value)
      where X value_style is used to provide the prefix and separator, and Y value_style to provide the suffix.
      Prefix, separator and suffix are ignored when X or Y are shown separately using draw_plot_point_value.
-     "4.5+- 0.01 (3) Second #2, 2012-Mar-13 13:01:00"
+     "4.5 +- 0.01 (3) Second #2, 2012-Mar-13 13:01:00"
   */
 public:
   rotate_style value_label_rotation_; //!< Direction point value labels written.
@@ -909,10 +909,11 @@ enum point_shape
     Default letter "X".\n
     Other examples: "&#x3A9;"= greek omega, "&#x2721;" = Star of David hexagram
     &#2720 Maltese cross & other dingbats, like &#x25BABlack right-pointing pointer\n
-    See also http://en.wikipedia.org/wiki/List_of_Unicode_characters#Basic_Latin geometric shapes
+    \sa http://en.wikipedia.org/wiki/List_of_Unicode_characters#Basic_Latin geometric shapes
     that may be a better way to make these symbols: &#25A0 black square ...to &#25FF
-    But unclear how many browsers implement these properly.
-    http://jrgraphix.net/r/Unicode/25A0-25FF  http://unicode.org/charts/ https://unicode.org/charts/PDF/U25A0.pdf
+    Most browsers now implement most of these properly.
+    http://jrgraphix.net/r/Unicode/25A0-25FF
+    http://unicode.org/charts/ https://unicode.org/charts/PDF/U25A0.pdf
   \endverbatim
   */
 }; // enum point_shape
@@ -975,21 +976,21 @@ public:
 
 // Constructor.
   plot_point_style::plot_point_style( //!< Constructor sets defaults for data members.
-    const svg_color& stroke,  //!< Color of circumference of shape.
-    const svg_color& fill, //!< Fill color of the centre of the shape.
-    int size, //!< Diameter of circle, height of square, font_size  ...
+    const svg_color& stroke,  //!< Color of circumference or outline of shape.
+    const svg_color& fill, //!< Fill color of the centre of the shape (if possible for symbol).
+    int size, //!< Diameter of circle, height of square, font_size of Unicode symbol  ...
     // Also symbols_style_.font_size(i); // Also set Font size, in case using a symbol as marker.
-    point_shape shape, //!< shape: round, square, point...
-    const std::string& symbols) //!< Unicode symbol(s) (letters, digits, squiggles etc).
+    point_shape shape, //!< shape: round, square, point... or symbol if Unicode symbol(s) to be used.
+    const std::string& symbols) //!< Unicode symbol(s) (letters, digits, symbols, emojis etc).
   :
     stroke_color_(stroke), 
     fill_color_(fill), 
     size_(size),
     shape_(shape),
-    symbols_(symbols),
+    symbols_(symbols), // Unicode
     show_x_value_(false), show_y_value_(false)
   { // May be best to have a fixed-width font for symbols?
-    // But there are always problems centering a symbol at the right point.
+    // But there are always problems centering a symbol at @b exactly the right point.
     symbols_style_.font_family("Lucida Sans Unicode");
     symbols_style_.font_size(size); // Default size = 5
   }
@@ -1019,57 +1020,61 @@ public:
   }
 
   int plot_point_style::size()
-  { //! \return size of shape or symbol used to mark data value plot point(s).
+  { //! \return Size of shape or symbol used to mark data value plot point(s).
     return size_;
   }
 
   plot_point_style& plot_point_style::fill_color(const svg_color& f)
-  { //! Set fill color of shape or symbol used to mark data value plot point(s).
-    //! See also stroke_color
-    //! .fill_color(red).stroke_color(black)
+  { //! Set Fill color of shape or symbol used to mark data value plot point(s).
+    //! See also stroke_color @c .fill_color(red).stroke_color(black)
     fill_color_ = f;
     return *this;
     //! \return plot_point_style& to make chainable.
   }
 
   svg_color& plot_point_style::fill_color()
-  { //! \return  fill color of shape or symbol used to mark data value plot point(s).
+  { //! \return Fill color of shape or symbol used to mark data value plot point(s).
     return fill_color_;
   }
 
   plot_point_style& plot_point_style::stroke_color(const svg_color& f)
-  { //! Set stroke color of shape or symbol used to mark data value plot point(s).
-    //! @c .stroke_color(black).fill_color(red)
+  { //! Set stroke color of shape or symbol used to mark data-value plot-point(s).
+    //! Example: @c .stroke_color(blue).fill_color(red)
     stroke_color_ = f;
     return *this; //! \return plot_point_style& to make chainable.
   }
 
   svg_color& plot_point_style::stroke_color()
-  { //! \return  stroke color of shape or symbol used to mark data value plot point(s).
+  { //! \return Stroke color of shape or symbol used to mark data-value plot-point(s).
     return stroke_color_;
   }
 
   plot_point_style& plot_point_style::shape(point_shape s)
-  { //! Set shape used to mark data value plot point(s).
+  { //! Set shape used to mark data-value plot-point(s).
     //! Example: @c .shape(circlet).size(10).stroke_color(green).fill_color(red)
+    //! If \code shape == symbol \endcode, then a Unicode symbol set in @c symbols is used.
+    //! Example: 
     shape_ = s;
     return *this; //! \return plot_point_style& to make chainable.
   }
 
   point_shape plot_point_style::shape()
-  { // Get shape used to mark data value plot point(s)
-    //! \return @c shape used to mark data value plot point(s).
+  { // Get shape used to mark data-value plot-point(s)
+    //! \return @c shape used to mark data-value plot-point(s).
     return shape_;
   }
 
   plot_point_style& plot_point_style::symbols(const std::string s)
-  { //! Override default symbol "X" - only effective if .shape(symbol) used.
+  { //! Override default symbol "x" with a Unicode symbol like square with fill, or emoji like smiley. 
+    //! \warning Only effective if @c .shape(symbol) is also used)!
+    //! 
     symbols_ = s;
     return *this; //! \return plot_point_style& to make chainable.
   }
 
   std::string& plot_point_style::symbols()
-  { //! \return plot data point marking symbol (only effective if .shape(symbol) used).
+  { //! \return Plot data-point marking Unicode symbol.
+    //! \warning Only effective if @c .shape(symbol) is also used)!
     return symbols_;
   }
 
@@ -1080,16 +1085,16 @@ public:
   }
 
   text_style& plot_point_style::style() const
-  { //! \return text_style& To allow control of symbol font, size, decoration etc.
+  { //! \return text_style& Control of symbol font, size, decoration etc.
     return const_cast<text_style&>(symbols_style_);
   }
 
 // End class plot_point_style function *Definitions* separated.
 
   std::ostream& operator<< (std::ostream& os, plot_point_style p)
-{  //! Output description of data-value plot point marker(s).
-    //! \param os @c std::ostream for output.
-    //! \param p Data plot point marker colors, size, shape, symbol(s), style and location.
+{  //! Output description of data-value plot point marker(s) to @c std::ostream.
+   //! \param os @c std::ostream for output.
+   //! \param p Data plot point marker colors, size, shape, symbol(s), style and location.
   os << "plot_point_style("
      << p.shape_ << ", " // Shape enum value.
      << p.stroke_color_ << ", "
