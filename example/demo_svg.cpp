@@ -115,16 +115,16 @@ int main()
 
   // Default background color is black, rgb(0,0,0)
   // Draw background. detail::PLOT_BACKGROUND == 0
-  // my_svg.g(0).push_back(new rect_element(0, 0, my_svg.x_size(),  my_svg.y_size() ) );
+  // my_svg.gs(0).push_back(new rect_element(0, 0, my_svg.x_size(),  my_svg.y_size() ) );
   // background 
 
   my_svg.add_g_element(); // Add first (zeroth) new element to the document,
 
   std::cout << "After one add_g_element my_svg.document_size() = " << my_svg.document_size() << std::endl;
 
-  g_element& g0 = my_svg.g(0); // so index is zero.
+  g_element& g0 = my_svg.gs(0); // so index is zero.
   std::cout << "my_svg.document_size() = number of g_elements = " << my_svg.document_size() << std::endl; // == 1
-  my_svg.g(0).push_back(new rect_element(0, 0, my_svg.x_size(), my_svg.y_size())); // border to image.
+  my_svg.gs(0).push_back(new rect_element(0, 0, my_svg.x_size(), my_svg.y_size())); // border to image.
   g0.id("group element 0"); // Add an ID to this group.
   std::cout << "g0.id() " << g0.id() << std::endl; // echo it.
 
@@ -177,7 +177,7 @@ int main()
 
   path_element my_path;
   my_path.M(1, 2).L(3, 4).L(5, 6).z();
-  //path_element& my_path2 = my_svg.g(0).path();
+  //path_element& my_path2 = my_svg.gs(0).path();
   //path_element& my_path0 = g0.path();
   // my_path.M(1, 2).L(3, 6).L(5, 4).z(); // <path d="M1,2 L3,4 L5,6 Z " />
   //path_element& path = g0.path(); // OK
@@ -310,7 +310,7 @@ int main()
   std::cout << "my_svg.document_size() " << my_svg.document_size() << std::endl; // 8
 
   // Adding a 2nd new group element.
-  g_element& g1 = my_svg.g(1); // so its index is now one.
+  g_element& g1 = my_svg.gs(1); // so its index is now one.
 
   g1.id("element 1"); // Add an ID
   std::cout << "g1.id()  " << g1.id() << std::endl; // Outputs: element 1

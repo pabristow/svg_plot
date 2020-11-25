@@ -54,7 +54,7 @@ int main()
   svg& rect(double x1, double y1, double width, double height);
 
   my_svg.add_g_element(); // Add first (zeroth) new element,
-  g_element& g0 = my_svg.g(0); // so index is zero.
+  g_element& g0 = my_svg.gs(0); // so index is zero.
   std::cout << "my_svg.document_size() = number of g_elements = " << my_svg.document_size() << std::endl;
   g0.id("group element 0");
   std::cout << "group element " << g0.id() << std::endl;
@@ -69,7 +69,7 @@ int main()
   //g0.text(50, 50, "my color", no_style, right_align); // SVG name of color to the right.
 
   my_svg.add_g_element(); 
-  g_element& g1 = my_svg.g(1); // so index is now one.
+  g_element& g1 = my_svg.gs(1); // so index is now one.
 
   g1.id("group element 1");
   std::cout << "my_svg.document_size() = number of g_elements = " << my_svg.document_size() << std::endl;

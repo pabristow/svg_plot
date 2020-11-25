@@ -33,9 +33,9 @@ int main()
     std::cout << "doc.document_size() = " <<  doc.document_size() << std::endl;
 
     doc.add_g_element(); // Add first (zeroth) new element to the document,
-    g_element& g0 = doc.g(0); // so index is zero.
+    g_element& g0 = doc.gs(0); // so index is zero.
     std::cout << "my_svg.document_size() = number of g_elements = " << doc.document_size() << std::endl; // == 1
-    doc.g(0).push_back(new rect_element(0, 0, doc.x_size(), doc.y_size())); // border to image.
+    doc.gs(0).push_back(new rect_element(0, 0, doc.x_size(), doc.y_size())); // border to image.
     g0.id("group element 0"); // Add an ID to this group.
     std::cout << "g0.id() " << g0.id() << std::endl; // echo it.
     g0.style().stroke_on(true); // stroke on true

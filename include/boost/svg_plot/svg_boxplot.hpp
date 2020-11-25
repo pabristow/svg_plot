@@ -851,44 +851,44 @@ public:
    // document ids for use in <g id = "PLOT_TITLE".../>
     for(int i = 0; i < boxplot::BOXPLOT_DOC_CHILDREN; ++i)
     { // Order determines the painting order.
-      image_.g(i).id(boxplot::document_ids_[i]);
+      image_.gs(i).id(boxplot::document_ids_[i]);
     }
 
     // Set boxplot color defaults.
-    image_.g(boxplot::PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
-    image_.g(boxplot::PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);
-    image_.g(boxplot::PLOT_BACKGROUND).style().stroke_width(image_border_.border_width_); //
+    image_.gs(boxplot::PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
+    image_.gs(boxplot::PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);
+    image_.gs(boxplot::PLOT_BACKGROUND).style().stroke_width(image_border_.border_width_); //
 
-    image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color(plot_window_border_.fill_);
-    image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.border_width_).stroke_color(plot_window_border_.stroke_);
-    image_.g(boxplot::X_AXIS).style().stroke_color(black).stroke_width(x_axis_.width());
-    image_.g(boxplot::Y_AXIS).style().stroke_color(black).stroke_width(y_axis_.width());
+    image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color(plot_window_border_.fill_);
+    image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.border_width_).stroke_color(plot_window_border_.stroke_);
+    image_.gs(boxplot::X_AXIS).style().stroke_color(black).stroke_width(x_axis_.width());
+    image_.gs(boxplot::Y_AXIS).style().stroke_color(black).stroke_width(y_axis_.width());
 
     // Ticks & grids.
     if(x_ticks_.use_up_ticks() || x_ticks_.use_down_ticks())
     {
-      image_.g(boxplot::X_TICKS).style().stroke_width(x_ticks_.minor_tick_width_).stroke_color(black);
+      image_.gs(boxplot::X_TICKS).style().stroke_width(x_ticks_.minor_tick_width_).stroke_color(black);
     }
     if(y_ticks_.left_ticks_on_ || y_ticks_.right_ticks_on_)
     {
-      image_.g(boxplot::Y_MAJOR_TICKS).style().stroke_width(y_ticks_.major_tick_width_).stroke_color(black);
-      image_.g(boxplot::Y_MINOR_TICKS).style().stroke_width(y_ticks_.minor_tick_width_).stroke_color(black);
-      image_.g(boxplot::Y_MAJOR_GRID).style().stroke_width(y_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255));
-      image_.g(boxplot::Y_MINOR_GRID).style().stroke_width(y_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
+      image_.gs(boxplot::Y_MAJOR_TICKS).style().stroke_width(y_ticks_.major_tick_width_).stroke_color(black);
+      image_.gs(boxplot::Y_MINOR_TICKS).style().stroke_width(y_ticks_.minor_tick_width_).stroke_color(black);
+      image_.gs(boxplot::Y_MAJOR_GRID).style().stroke_width(y_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255));
+      image_.gs(boxplot::Y_MINOR_GRID).style().stroke_width(y_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
     }
 
-    image_.g(boxplot::X_LABEL).style().fill_color(black); // for text only specify fill_color (NOT stroke color).
-    image_.g(boxplot::Y_LABEL).style().fill_color(black);
-    image_.g(boxplot::VALUE_LABELS).style().fill_color(black);
-    image_.g(boxplot::PLOT_TITLE).style().fill_color(black);
+    image_.gs(boxplot::X_LABEL).style().fill_color(black); // for text only specify fill_color (NOT stroke color).
+    image_.gs(boxplot::Y_LABEL).style().fill_color(black);
+    image_.gs(boxplot::VALUE_LABELS).style().fill_color(black);
+    image_.gs(boxplot::PLOT_TITLE).style().fill_color(black);
 
-    image_.g(boxplot::WHISKER).style().stroke_color(black);
-    image_.g(boxplot::BOX_AXIS).style().stroke_color(black);
-    image_.g(boxplot::BOX).style().stroke_color(black).fill_color(ghostwhite);
-    image_.g(boxplot::MEDIAN).style().stroke_color(red).stroke_width(2);
-    image_.g(boxplot::EXTREME_OUTLIERS).style().stroke_color(purple).fill_color(white);
-    image_.g(boxplot::MILD_OUTLIERS).style().stroke_color(pink).fill_color(black);
-    image_.g(boxplot::DATA_VALUE_LABELS).style().fill_color(black).stroke_on(false);
+    image_.gs(boxplot::WHISKER).style().stroke_color(black);
+    image_.gs(boxplot::BOX_AXIS).style().stroke_color(black);
+    image_.gs(boxplot::BOX).style().stroke_color(black).fill_color(ghostwhite);
+    image_.gs(boxplot::MEDIAN).style().stroke_color(red).stroke_width(2);
+    image_.gs(boxplot::EXTREME_OUTLIERS).style().stroke_color(purple).fill_color(white);
+    image_.gs(boxplot::MILD_OUTLIERS).style().stroke_color(pink).fill_color(black);
+    image_.gs(boxplot::DATA_VALUE_LABELS).style().fill_color(black).stroke_on(false);
 
   } // boxplot constructor.
 
@@ -1185,7 +1185,7 @@ public:
     //}
     if (plot_window_on_)
     { // Draw plot window rectangle with border and/or background.
-      image_.g(detail::PLOT_WINDOW_BACKGROUND).push_back(
+      image_.gs(detail::PLOT_WINDOW_BACKGROUND).push_back(
         new rect_element(plot_left_, plot_top_, (plot_right_ - plot_left_), plot_bottom_ - plot_top_));
     }
   } //  void calculate_plot_window()
@@ -1202,7 +1202,7 @@ public:
     */
     double y = title_info_.textstyle().font_size() * text_margin_; // Leave a linespace above.
     title_info_.y(y); // Vertical position.
-    image_.g(boxplot::PLOT_TITLE).push_back(new text_element(title_info_));
+    image_.gs(boxplot::PLOT_TITLE).push_back(new text_element(title_info_));
   } // void draw_title()
 
   void draw_x_axis()
@@ -1211,21 +1211,21 @@ public:
     { // Want a X-axis line.
       if (x_axis_position_ == top)
       { // horizontal line at top of plot window.
-         image_.g(boxplot::X_AXIS).line(plot_left_, plot_top_, plot_right_, plot_top_);
+         image_.gs(boxplot::X_AXIS).line(plot_left_, plot_top_, plot_right_, plot_top_);
       }
       else if (x_axis_position_ == bottom)
       {// horizontal line at bottom of plot window.
-         image_.g(boxplot::X_AXIS).line(plot_left_, plot_bottom_, plot_right_, plot_bottom_);
+         image_.gs(boxplot::X_AXIS).line(plot_left_, plot_bottom_, plot_right_, plot_bottom_);
       }
       else
       { // horizontal line at y = 0
         double y(0.);
         transform_y(y);
         //x_axis_. = y;
-         image_.g(boxplot::X_AXIS).line(plot_left_, y, plot_right_, y);
+         image_.gs(boxplot::X_AXIS).line(plot_left_, y, plot_right_, y);
       }
     }
-    path_element& major_tick_path = image_.g(boxplot::X_TICKS).path();
+    path_element& major_tick_path = image_.gs(boxplot::X_TICKS).path();
     for(size_t i = 0; i < series.size(); ++i)
     { // Draw a ticks for each series, evenly spaced along X axis.
       draw_x_major_tick(
@@ -1241,18 +1241,18 @@ public:
     { // Want a vertical Y-axis line, for boxplot only ever left or right.
       if (y_axis_position_ == left)
       { // Vertical line at left of plot window.
-         image_.g(boxplot::Y_AXIS).line(plot_left_, plot_bottom_, plot_left_, plot_top_);
+         image_.gs(boxplot::Y_AXIS).line(plot_left_, plot_bottom_, plot_left_, plot_top_);
       }
       else if (y_axis_position_ == right)
       {// Vertical line at right of plot window.
-         image_.g(boxplot::Y_AXIS).line(plot_right_, plot_bottom_, plot_right_, plot_top_);
+         image_.gs(boxplot::Y_AXIS).line(plot_right_, plot_bottom_, plot_right_, plot_top_);
       }
     }
 
-    path_element& minor_tick_path = image_.g(boxplot::Y_MINOR_TICKS).path();
-    path_element& major_tick_path = image_.g(boxplot::Y_MAJOR_TICKS).path();
-    path_element& major_grid_path = image_.g(boxplot::Y_MAJOR_GRID).path();
-    path_element& minor_grid_path = image_.g(boxplot::Y_MINOR_GRID).path();
+    path_element& minor_tick_path = image_.gs(boxplot::Y_MINOR_TICKS).path();
+    path_element& major_tick_path = image_.gs(boxplot::Y_MAJOR_TICKS).path();
+    path_element& major_grid_path = image_.gs(boxplot::Y_MAJOR_GRID).path();
+    path_element& minor_grid_path = image_.gs(boxplot::Y_MINOR_GRID).path();
 
     // y_minor_jump is the interval between minor ticks.
     double y_minor_jump = y_ticks_.major_interval_ / ((double)(y_ticks_.num_minor_ticks_ + 1.) );
@@ -1302,7 +1302,7 @@ public:
       series_info.x(x_left); // Horizontal position.
       double y = y_bottom + series_info.textstyle().font_size() * (text_margin_ * 0.7); // Leave a linespace above.
       series_info.y(y); // Vertical position.
-      image_.g(boxplot::VALUE_LABELS).push_back(new text_element(series_info));
+      image_.gs(boxplot::VALUE_LABELS).push_back(new text_element(series_info));
     }
   } // void draw_x_major_tick
 
@@ -1494,7 +1494,7 @@ public:
       { // External to plot window style left or right.
         // Always want all values including "0", if labeling external to plot window.
         // y_ticks_.ticks_on_window_or_on_axis_ == true != 0
-        image_.g(boxplot::VALUE_LABELS).text(
+        image_.gs(boxplot::VALUE_LABELS).text(
           x,
           y,
           label.str(), y_value_label_style_, alignment, y_ticks_.label_rotation_);
@@ -1503,7 +1503,7 @@ public:
       { // ! y_ticks_.y_ticks_on_plot_window_ == 0 'Internal' - value labels either side of vertical Y-axis.
         if ((value != 0) && y_axis_.axis_line_on_)
         { // Avoid a zero ON the Y-axis if it would be cut through by any horizontal X-axis line.
-          image_.g(boxplot::VALUE_LABELS).text(
+          image_.gs(boxplot::VALUE_LABELS).text(
             x,
             y,
             label.str(),
@@ -1589,7 +1589,7 @@ public:
   void draw_x_axis_label()
   { //! Draw an axis label (and optional units) for example "length (km)".
     // X-label color is set in constructor thus:
-    // image_.g(detail::PLOT_X_LABEL).style().stroke_color(black);
+    // image_.gs(detail::PLOT_X_LABEL).style().stroke_color(black);
     // and changed using x_label_color(color);
 
     std::string label = x_label_info_.text(); // x_axis_ label, and optional units.
@@ -1612,7 +1612,7 @@ public:
       }
     }
 
-    image_.g(boxplot::X_LABEL).push_back(new text_element(
+    image_.gs(boxplot::X_LABEL).push_back(new text_element(
       ( // x position relative to the x-axis which is middle of plot window.
       plot_right_ + plot_left_) / 2,  // x coordinate - middle.
       y, // Down from plot window.
@@ -1625,7 +1625,7 @@ public:
   void draw_y_axis_label()
   { //! Draw vertical y_axis label, and optional y units.
     // Y-label color is set in constructor thus:
-    // image_.g(boxplot::Y_LABEL).style().fill_color(black);
+    // image_.gs(boxplot::Y_LABEL).style().fill_color(black);
     // and changed using y_label_color(color);
 
     std::string label = y_label_info_.text();
@@ -1648,7 +1648,7 @@ public:
       }
     }
 
-    image_.g(boxplot::Y_LABEL).push_back(new
+    image_.gs(boxplot::Y_LABEL).push_back(new
       text_element(x,
       (plot_bottom_ + plot_top_) / 2., // center on the plot window.
       label, // "Y-Axis" for example.
@@ -1662,7 +1662,7 @@ public:
   double x, double width,
   const svg_style& box_styl)
   { //! Draw the box border and any fill color.
-    g_element& g_ptr = image_.g(boxplot::MEDIAN).add_g_element();
+    g_element& g_ptr = image_.gs(boxplot::MEDIAN).add_g_element();
 
     g_ptr.style().stroke_color(box_styl.stroke_color())
       .stroke_width(box_styl.stroke_width())
@@ -1680,7 +1680,7 @@ public:
     //! and optionally the median value.
     double median_y = median;
     transform_y(median_y); // SVG coordinate of median line.
-    g_element& g_ptr = image_.g(boxplot::MEDIAN).add_g_element();
+    g_element& g_ptr = image_.gs(boxplot::MEDIAN).add_g_element();
     g_ptr.style().stroke_color(median_style.stroke_color())
       .stroke_width(median_style.stroke_width());
 
@@ -1689,7 +1689,7 @@ public:
     //  void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, double value)
     if (median_values_on_)
     { // Show the value of the median too.
-      g_element& g_ptr_median = image_.g(boxplot::DATA_VALUE_LABELS).add_g_element();
+      g_element& g_ptr_median = image_.gs(boxplot::DATA_VALUE_LABELS).add_g_element();
       draw_plot_point_value(x_offset + half_width, median_y, g_ptr_median, const_cast<value_style&>(values_style), mild_outlier_, median);
       // Share the mild_outlier point style?
       g_ptr_median.clip_id(plot_window_clip_);
@@ -1704,7 +1704,7 @@ public:
     const svg_style& axis_whisker)
   { //! Draw the whiskers for the boxplot.
     // Set up document structure for whiskers:
-    g_element& g_whisk_ptr = image_.g(boxplot::WHISKER).add_g_element();
+    g_element& g_whisk_ptr = image_.gs(boxplot::WHISKER).add_g_element();
 
     // Set colors for min and max whiskers.
     g_whisk_ptr.add_g_element().style()
@@ -1718,7 +1718,7 @@ public:
       .stroke_width(max_whisker.stroke_width());
 
     // Set axis structure and colors.
-    g_element& g_axis_ptr = image_.g(boxplot::BOX_AXIS).add_g_element();
+    g_element& g_axis_ptr = image_.gs(boxplot::BOX_AXIS).add_g_element();
 
     g_axis_ptr.style()
       .stroke_color(axis_whisker.stroke_color())
@@ -1729,8 +1729,8 @@ public:
     transform_y(max);
 
     double half_length = length / 2.;
-    g_whisk_ptr.g(0).line(x - half_length, min, x + half_length, min);
-    g_whisk_ptr.g(1).line(x - half_length, max, x + half_length, max);
+    g_whisk_ptr.gs(0).line(x - half_length, min, x + half_length, min);
+    g_whisk_ptr.gs(1).line(x - half_length, max, x + half_length, max);
     g_axis_ptr.line(x, min, x, max);
 
     // Clip elements.
@@ -1744,7 +1744,7 @@ public:
     const value_style& values_style)
   { //! Draw any outliers, both mild and extreme.
     // Draw marker points for any mild and/or extreme outliers.
-    g_element& g_mild_ptr = image_.g(boxplot::MILD_OUTLIERS).add_g_element();
+    g_element& g_mild_ptr = image_.gs(boxplot::MILD_OUTLIERS).add_g_element();
     g_mild_ptr.style().fill_color(mild_style.fill_color_)
       .stroke_color(mild_style.stroke_color_);
 
@@ -1764,12 +1764,12 @@ public:
         draw_plot_point(x, y, g_mild_ptr, const_cast<plot_point_style&>(mild_style), unc<false>(0), unc<false>(0)); // Kludge!
         if (outlier_values_on_)
         { // Show the value of the data point too.
-          draw_plot_point_value(x, y, image_.g(boxplot::DATA_VALUE_LABELS).add_g_element(), const_cast<value_style&>(values_style), mild_outlier_, value);
+          draw_plot_point_value(x, y, image_.gs(boxplot::DATA_VALUE_LABELS).add_g_element(), const_cast<value_style&>(values_style), mild_outlier_, value);
         }
         // Label the (outlier) data point with a name here?
       } // In window OK.
     }
-    g_element& g_ext_ptr = image_.g(boxplot::EXTREME_OUTLIERS).add_g_element();
+    g_element& g_ext_ptr = image_.gs(boxplot::EXTREME_OUTLIERS).add_g_element();
     g_ext_ptr.style().fill_color(extreme_style.fill_color_)
       .stroke_color(extreme_style.stroke_color_);
 
@@ -1783,7 +1783,7 @@ public:
         draw_plot_point(x, y, g_ext_ptr, const_cast<plot_point_style&>(extreme_style), 0, 0); // Kludge!
         if (extreme_outlier_values_on_) // This isn't a series setting - but might be.
         { // Show the value of the data point too.
-          draw_plot_point_value(x, y, image_.g(boxplot::DATA_VALUE_LABELS).add_g_element(), const_cast<value_style&>(values_style), ext_outlier_, value);
+          draw_plot_point_value(x, y, image_.gs(boxplot::DATA_VALUE_LABELS).add_g_element(), const_cast<value_style&>(values_style), ext_outlier_, value);
         }
       } // in window.
     }
@@ -1822,7 +1822,7 @@ public:
     clear_all();
 
     // Draw image background & border, if any.
-    image_.g(boxplot::PLOT_BACKGROUND).push_back(
+    image_.gs(boxplot::PLOT_BACKGROUND).push_back(
       new rect_element(0, 0, image_.x_size(), image_.y_size()) );
 
     draw_title();
@@ -2199,52 +2199,52 @@ public:
 
   svg_boxplot& svg_boxplot::y_major_tick_color(const svg_color& col)
   { //! Set Y major ticks color.
-    image_.g(boxplot::Y_MAJOR_TICKS).style().stroke_color(col);
+    image_.gs(boxplot::Y_MAJOR_TICKS).style().stroke_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::x_tick_color(const svg_color& col)
   { //! \return Y major ticks color.
-    image_.g(boxplot::X_TICKS).style().stroke_color(col);
+    image_.gs(boxplot::X_TICKS).style().stroke_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::y_minor_tick_color(const svg_color& col)
   {  //! Set Y minor ticks color.
-    image_.g(detail::PLOT_Y_MINOR_TICKS).style().stroke_color(col);
+    image_.gs(detail::PLOT_Y_MINOR_TICKS).style().stroke_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::title_color(const svg_color& col)
   { //! Set boxplot title color.
-    image_.g(boxplot::PLOT_TITLE).style().stroke_color(col);
+    image_.gs(boxplot::PLOT_TITLE).style().stroke_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::background_color(const svg_color& col)
   { //! Set SVG image background color.
     // "imageBackground"
-    image_.g(boxplot::PLOT_BACKGROUND).style().fill_color(col);
+    image_.gs(boxplot::PLOT_BACKGROUND).style().fill_color(col);
     return *this;
   }
 
   svg_boxplot& svg_boxplot::background_border_color(const svg_color& col)
   { //! Set SVG image background border color.
-    image_.g(boxplot::PLOT_BACKGROUND).style().stroke_color(col);
+    image_.gs(boxplot::PLOT_BACKGROUND).style().stroke_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::plot_background_color(const svg_color& col)
   { //! Set plot window background color.
     // Plot Window "plotBackground"
-    image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color(col);
+    image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::plot_border_color(const svg_color& col)
   { //! Set plot window border color.
     // Plot window "plotBackground"
-    image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_color(col);
+    image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
@@ -2301,7 +2301,7 @@ public:
 
   svg_boxplot& svg_boxplot::y_label_color(const svg_color& col)
   { //! Set font color for Y axis label.
-    image_.g(boxplot::Y_LABEL).style().fill_color(col);
+    image_.gs(boxplot::Y_LABEL).style().fill_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
@@ -2363,7 +2363,7 @@ public:
 
   svg_boxplot& svg_boxplot::x_label_color(const svg_color& col)
   { //! Set the font color for the X axis label.
-    image_.g(boxplot::X_LABEL).style().fill_color(col);
+    image_.gs(boxplot::X_LABEL).style().fill_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
@@ -2402,19 +2402,19 @@ public:
 
   svg_boxplot& svg_boxplot::x_tick_width(unsigned int width)
   { //! Set the width of major ticks on the X axis.
-    image_.g(boxplot::X_TICKS).style().stroke_width(width);
+    image_.gs(boxplot::X_TICKS).style().stroke_width(width);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::y_major_tick_width(unsigned int width)
   { //! Set the width of major ticks on the Y axis.
-    image_.g(boxplot::Y_MAJOR_TICKS).style().stroke_width(width);
+    image_.gs(boxplot::Y_MAJOR_TICKS).style().stroke_width(width);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::y_minor_tick_width(unsigned int width)
   { //! Set the width of minor ticks on the Y axis.
-    image_.g(boxplot::Y_MINOR_TICKS).style().stroke_width(width);
+    image_.gs(boxplot::Y_MINOR_TICKS).style().stroke_width(width);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
@@ -2445,37 +2445,37 @@ public:
 
   svg_color svg_boxplot::title_color()
   { //! \return color of the title.
-    return image_.g(boxplot::PLOT_TITLE).style().fill_color();
+    return image_.gs(boxplot::PLOT_TITLE).style().fill_color();
   }
 
   svg_color svg_boxplot::background_color()
   { //! \return Color of the background for the SVG image.
-    return image_.g(boxplot::PLOT_BACKGROUND).style().fill_color();
+    return image_.gs(boxplot::PLOT_BACKGROUND).style().fill_color();
   }
 
   svg_color svg_boxplot::background_border_color()
   { //! \return Color of the border of the background for the SVG image.
-    return image_.g(boxplot::PLOT_BACKGROUND).style().stroke_color();
+    return image_.gs(boxplot::PLOT_BACKGROUND).style().stroke_color();
   }
 
   svg_color svg_boxplot::plot_background_color()
   { //! \return Color of the background for the plot.
-    return image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color();
+    return image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color();
   }
 
   svg_color svg_boxplot::plot_border_color()
   { //! \return Color of the border of the background for the plot.
-    return image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_color();
+    return image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_color();
   }
 
   svg_color svg_boxplot::x_label_color()
   { //! \return Color of the X axis label.
-    return image_.g(boxplot::X_LABEL).style().fill_color();
+    return image_.gs(boxplot::X_LABEL).style().fill_color();
   }
 
   svg_color svg_boxplot::x_tick_color()
   { //! \return Color of ticks on the X axis.
-    return image_.g(boxplot::X_TICKS).style().stroke_color();
+    return image_.gs(boxplot::X_TICKS).style().stroke_color();
   }
 
   double svg_boxplot::x_tick_length()
@@ -2485,7 +2485,7 @@ public:
 
   double svg_boxplot::x_major_tick_width()
   { //! \return Width of major ticks on the X axis.
-    return image_.g(boxplot::X_TICKS).style().stroke_width();
+    return image_.gs(boxplot::X_TICKS).style().stroke_width();
   }
 
   std::string svg_boxplot::x_label_text()

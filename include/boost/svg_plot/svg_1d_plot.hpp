@@ -528,7 +528,7 @@ void svg_1d_plot::update_image()
   clear_all(); // Removes all elements that will show up in a subsequent draw.
 
   // Draw plot background.
-  image_.g(detail::PLOT_BACKGROUND).push_back(
+  image_.gs(detail::PLOT_BACKGROUND).push_back(
     new rect_element(0, 0, image_.x_size(),  image_.y_size()));
 
   calculate_plot_window();
@@ -559,7 +559,7 @@ void svg_1d_plot::update_image()
 
   for(unsigned int i = 0; i < serieses_.size(); ++i)
   { // Plot the normal data points for each of the i data-series.
-    g_element& g_ptr = image_.g(detail::PLOT_DATA_POINTS).add_g_element();
+    g_element& g_ptr = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
     // Set the color for all the data-series markers.
     g_ptr.style().stroke_color(serieses_[i].point_style_.stroke_color_);
     g_ptr.style().fill_color(serieses_[i].point_style_.fill_color_);
@@ -580,7 +580,7 @@ void svg_1d_plot::update_image()
         // (y uncertainty is zero).
         if (x_values_on_)
         { // Show the value (& perhaps uncertainty) of the data point too.
-          g_element& g_ptr_v = image_.g(detail::PLOT_X_POINT_VALUES).add_g_element();
+          g_element& g_ptr_v = image_.gs(detail::PLOT_X_POINT_VALUES).add_g_element();
           draw_plot_point_value(x, y, g_ptr_v, x_values_style_, serieses_[i].point_style_, ux);
           // TODO Might separate X and Y colors?
         }
@@ -594,7 +594,7 @@ void svg_1d_plot::update_image()
   // Draw all the not-normal +/-infinity, NaN, or at_limit points.
   for(unsigned int i = 0; i < serieses_.size(); ++i)
   {
-    g_element& g_ptr = image_.g(detail::PLOT_LIMIT_POINTS);  // Limit points layer.
+    g_element& g_ptr = image_.gs(detail::PLOT_LIMIT_POINTS);  // Limit points layer.
 
     // do I need something like this?
     //g_ptr.style().stroke_color(serieses_[i].point_style_.stroke_color_);
@@ -759,16 +759,16 @@ void svg_1d_plot::update_image()
   set_ids();
 
   // Set other SVG color, stroke & width defaults for various child PLOT nodes.
-  image_.g(PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);
-  image_.g(PLOT_BACKGROUND).style().stroke_width(image_border_.border_width_); //
-  image_.g(PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
-  image_.g(PLOT_WINDOW_BACKGROUND).style().fill_color(plot_window_border_.fill_);
-  image_.g(PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.border_width_).stroke_color(plot_window_border_.stroke_);
-  image_.g(PLOT_LIMIT_POINTS).style().stroke_color(lightslategray).fill_color(antiquewhite);
-  image_.g(PLOT_X_AXIS).style().stroke_color(black).stroke_width(x_axis_.width());
-  image_.g(PLOT_DATA_UNC3).style().stroke_color(lightgoldenrodyellow).fill_color(lightgoldenrodyellow).stroke_width(1);
-  image_.g(PLOT_DATA_UNC2).style().stroke_color(peachpuff).fill_color(peachpuff).stroke_width(1);
-  image_.g(PLOT_DATA_UNC1).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
+  image_.gs(PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);
+  image_.gs(PLOT_BACKGROUND).style().stroke_width(image_border_.border_width_); //
+  image_.gs(PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
+  image_.gs(PLOT_WINDOW_BACKGROUND).style().fill_color(plot_window_border_.fill_);
+  image_.gs(PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.border_width_).stroke_color(plot_window_border_.stroke_);
+  image_.gs(PLOT_LIMIT_POINTS).style().stroke_color(lightslategray).fill_color(antiquewhite);
+  image_.gs(PLOT_X_AXIS).style().stroke_color(black).stroke_width(x_axis_.width());
+  image_.gs(PLOT_DATA_UNC3).style().stroke_color(lightgoldenrodyellow).fill_color(lightgoldenrodyellow).stroke_width(1);
+  image_.gs(PLOT_DATA_UNC2).style().stroke_color(peachpuff).fill_color(peachpuff).stroke_width(1);
+  image_.gs(PLOT_DATA_UNC1).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
 
   // Note that widths are stored in member data *and* copied here.
   // Not sure if this is wise but ...
@@ -780,14 +780,14 @@ void svg_1d_plot::update_image()
 
   if(x_ticks_.use_up_ticks() || x_ticks_.use_down_ticks())
   {
-    image_.g(PLOT_X_MAJOR_TICKS).style().stroke_width(x_ticks_.major_tick_width_).stroke_color(black);
-    image_.g(PLOT_X_MINOR_TICKS).style().stroke_width(x_ticks_.minor_tick_width_).stroke_color(black);
+    image_.gs(PLOT_X_MAJOR_TICKS).style().stroke_width(x_ticks_.major_tick_width_).stroke_color(black);
+    image_.gs(PLOT_X_MINOR_TICKS).style().stroke_width(x_ticks_.minor_tick_width_).stroke_color(black);
   }
   // Grids.
   // Default color & width for grid, used or not.
-  image_.g(PLOT_X_MAJOR_GRID).style().stroke_width(x_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255));
-  image_.g(PLOT_X_MINOR_GRID).style().stroke_width(x_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
-  //image_.g(PLOT_DATA_LINES).style().stroke_width(2); // default width.
+  image_.gs(PLOT_X_MAJOR_GRID).style().stroke_width(x_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255));
+  image_.gs(PLOT_X_MINOR_GRID).style().stroke_width(x_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
+  //image_.gs(PLOT_DATA_LINES).style().stroke_width(2); // default width.
   // Alter with, for example: plot.data_lines_width(4);
 
   legend_place_ = (plot_window_on_) ? outside_right : inside; // Defaults.
@@ -962,7 +962,7 @@ void svg_1d_plot::calculate_plot_window()
   } // plot_window_on_
   if(plot_window_on_ == true)
   { // Draw plot window border as a rectangular box.
-    image_.g(detail::PLOT_WINDOW_BACKGROUND).push_back(
+    image_.gs(detail::PLOT_WINDOW_BACKGROUND).push_back(
       new rect_element(plot_left_, plot_top_, (plot_right_ - plot_left_), plot_bottom_ - plot_top_));
   } // plot_window_on_
 } //  void calculate_plot_window()
@@ -994,7 +994,7 @@ void svg_1d_plot::draw_axes()
       y1 = plot_top_;
       y2 = plot_bottom_;
     }
-    image_.g(detail::PLOT_X_AXIS).line(x, y1, x, y2); // Draw vertical Y-axis line.
+    image_.gs(detail::PLOT_X_AXIS).line(x, y1, x, y2); // Draw vertical Y-axis line.
   }
   else
   { // Won't fit into window.  Throw or warning message?
@@ -1006,7 +1006,7 @@ void svg_1d_plot::set_ids()
 { //! Document ids for use in identifying group elements, for example: <g id = "PLOT_TITLE".../g>
   for(int i = 0; i < detail::SVG_PLOT_DOC_CHILDREN; ++i)
   {
-    svg_1d_plot::image_.g(i).id(detail::document_ids_[i]);
+    svg_1d_plot::image_.gs(i).id(detail::document_ids_[i]);
   }
 } //  void set_ids()
 
