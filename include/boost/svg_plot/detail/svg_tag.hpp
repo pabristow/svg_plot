@@ -1173,8 +1173,8 @@ public:
 
    //! Output SVG @c text_element, style & attributes to a @c std::ostream.
    // Changing back to OLD convention on spaces:
-   // NO trailing space, but *start* each item with a space.
-   // For debug, may be convenient to start with newline and tab to indent.
+   // NO trailing space, but *start* each item with a tab and end with newline.
+   // 
    // Should now use easier to read SVG XML layout.
    // Example: \verbatim os << " <text x=\"" << x_ << "\" y=\"" << y_ << "\""; \endverbatim
   void write(std::ostream& os)

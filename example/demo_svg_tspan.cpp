@@ -50,19 +50,21 @@ int main()
     g0.style().fill_on(true); // stroke on true
     g0.style().fill_color(azure); // 
 
+    const text_style serif_style(10, "serif");
     // Simple text_element.
   //  text_element& t = doc.text(100, 100, "This ", no_style, align_style::center_align, uphill);
     // Default font style, but uphill.
-    text_element& t = doc.text(100, 100, "List ", default_style, align_style::center_align, horizontal);
+    text_element& t = doc.text(100, 100, "Text_0", serif_style, align_style::center_align, horizontal);
+    // Add more text using tspan, hoping to avoid output of font etc info, but still output.
    // tspan_element ts;
      //ts = t.tspan("text_1").x(100.).dy(20.);
      //ts = t.tspan("text_2").x(100.).dy(40.);
      //ts = t.tspan("text_3").x(100.).dy(60.);
 
-     for (int i = 0; i < 10; i++)
+     for (int i = 1; i <= 10; i++)
      {
        std::string no = boost::lexical_cast<std::string>(i);
-       tspan_element ts = t.tspan("text_"+no).x(100.).dy(20.);
+       tspan_element ts = t.tspan("text_" + no).x(100.).dy(20.);
      }
 
 

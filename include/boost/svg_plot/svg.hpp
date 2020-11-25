@@ -289,8 +289,8 @@ class svg;
 // svg& circle(double x, double y, unsigned int radius = 5)
 // svg& ellipse(double rx, double ry, double cx, double cy)
 
-// write image out to ostream and file:
-// svg& write(std::ostream& s_out)
+// write SVG image out to @c std::ostream or to file:
+// svg& write(std::ostream&)
 // svg& write(const std::string& file)
 
 // Possibles for license strings:
