@@ -1165,22 +1165,30 @@ namespace boost
             // Always want all values including "0", if labeling external to plot window.
             // x_ticks_.ticks_on_window_or_on_axis_ == true != 0
             g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES));
-            // /! svg g \return reference g_ement& to the ith (PLOT_X_TICKS_VALUES) group element.
+            // /! svg g \return reference g_element& to the ith (PLOT_X_TICKS_VALUES) group element.
             g_element* g_inner_ptr = g_ptr;
             g_element* g_x_axis_values = &(g_ptr->add_g_element()); // OK
 
-        //    g_x_axis_values->style().stroke_color(derived().style().stroke_color_); //  wrong
+            g_x_axis_values->style().stroke_color(red); // OK
+            g_x_axis_values->style().stroke_color(blue); // OK
+         //   g_x_axis_values->style().stroke_color(derived().style().stroke_color_); //  wrong
          //   g_x_axis_values->style().fill_color(derived().serieses_[i].point_style_.fill_color_); // 
 
  //           derived().image_.gs(detail::PLOT_X_TICKS_VALUES).text(
-            g_element& gg = derived().image_.gs(detail::PLOT_X_TICKS_VALUES);
+      //      g_element& gg = derived().image_.gs(detail::PLOT_X_TICKS_VALUES);  // OK
 
-            gg.text(
+            // g_x_axis_values.text( fails error C2228: left of '.text' must have class/struct/union
+            // derived().image_.gs(detail::PLOT_X_TICKS_VALUES)
+            //   derived().image_.g_x_axis_values   error C2039: 'g_x_axis_values': is not a member of 'boost::svg::svg'
+           //  derived().image_.g_x_axis_values(0)   error C2039: 'g_x_axis_values': is not a member of 'boost::svg::svg'
+              derived().image_.gs(detail::PLOT_X_TICKS_VALUES) // is boost::svg::svg in svg image_; in svg_2d_plot or 1d or boxplot
+              .text(
               x,
               y,
               tick_value_label.str(), 
               derived().x_value_label_info_.textstyle(), // font, size etc
-              alignment, derived().x_ticks_.label_rotation_);
+              alignment,
+              derived().x_ticks_.label_rotation_);
           }
           else
           {

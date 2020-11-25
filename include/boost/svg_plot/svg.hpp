@@ -312,7 +312,10 @@ protected:
   unsigned int y_size_; //!< SVG image Y-axis size (in SVG units (default pixels).
 
   g_element document_; //!< To hold all group elements of the svg document.
+  // Function gs accesses ith g_element child nodes in tree.
+
   std::vector<clip_path_element> clip_paths; //!< Points on clip path (used for plot window).
+
   // Document metadata:
   std::string title_document_; //!< SVG document title (appears in the SVG file header as \verbatim <title> ... </title> \endverbatim).
   std::string image_desc_; //!< SVG image description (appears in the SVG file header as \verbatim <desc> ... </desc> \endverbatim).
@@ -902,13 +905,13 @@ public:
 
   g_element& add_g_element()
   { //! Add information about a group element to the document.
-    //! Increments the size of the array of g_elements, returned by g_element.size().
-    return document_.add_g_element(); //! \return reference to the added group element @c add_g_element.
+    //! Increments the size of the array @c children of child nodes @c svg_elements, size returned by @c g_element.size().
+    return document_.add_g_element(); //! \return Reference to the added group element @c add_g_element.
   }
 
   g_element& gs(int i)
   { //! from array of g_elements, indexed by group type, PLOT_BACKGROUND, PLOT_WINDOW_BACKGROUND, ... SVG_PLOT_DOC_CHILDREN,
-    return document_.gs(i); //! \return reference to the ith group element.
+    return document_.gs(i); //! \return Reference to the ith group element.
   }
 }; // class svg
 

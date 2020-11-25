@@ -2125,8 +2125,8 @@ public:
   public: // Simplest, private has little benefit.
 
     ptr_vector<svg_element> children; /*!< Children of this group element node,
-      containg graphics elements like text, rect, circle, line, polyline...
-    */
+      containg graphics elements like text, rect, circle, line, polyline... */
+
     std::string clip_name;  //!< Name of clip path.
     bool clip_on; //!< @c true if to clip anything outside the clip path.
 
@@ -2135,7 +2135,7 @@ public:
     }
 
     svg_element& operator[](unsigned int i)
-    { //! \return child svg_element node.
+    { //! \return Child @c svg_element ith node.
       return children[i];
     }
 
@@ -2176,13 +2176,13 @@ public:
     g_element& gs(int i)
     { //! i is index of children nodes (first is zero).
       //! Example:   \code g_element& g1 = my_svg.gs(1); // index is one. \endcode
-      return *(static_cast<g_element*>(&children[i])); // \return reference to child node g_element.
+      return *(static_cast<g_element*>(&children[i])); // \return reference to this child node @c g_element.
     }
 
     g_element& add_g_element()
     { //! Add a new group element.
       //! \return Reference to the new child node just created.
-      //! Example: \code   g_element& g0 = my_svg.add_g_element(); // Add first (zeroth) new element to the document. \endcode
+      //! Example: \code  g_element& g0 = my_svg.add_g_element(); // Add first (zeroth) new element to the document. \endcode
       children.push_back(new g_element());
       return *(static_cast<g_element*>(&children[children.size()-1]));
     }

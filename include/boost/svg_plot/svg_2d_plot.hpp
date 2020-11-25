@@ -509,8 +509,8 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       text_style title_style_; //!< Style for plot title.
       text_style legend_text_style_; //!< Style for legend-text.
       text_style legend_title_style_; //!< Style for legend-title.
-      text_style x_axis_label_style_; //!< Style for tick labels on X-axis.
-      text_style x_value_label_style_; //!< Style for data point value labels on X-axis.
+      text_style x_axis_label_style_; //!< Style for tick labels on X-axis (Example: length, time...).
+      text_style x_value_label_style_; //!< Style for data-point value-labels on X-axis. (Example"1, "1.5", "2")
       text_style y_axis_label_style_; //!< Style for tick labels on Y-axis.
       text_style y_value_label_style_;//!< Style for data point value labels on Y-axis.
       text_style point_symbols_style_; //!< Style used for symbol marking a data point.
@@ -808,7 +808,7 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         using namespace boost::svg::detail; // Avoid need for prefix detail::
 
-        // Build the document tree by adding all children of the root node.
+        // Build the SVG document tree by adding all children of the root node.
         for(int i = 0; i < SVG_PLOT_DOC_CHILDREN; ++i)
         {
           image_.add_g_element();

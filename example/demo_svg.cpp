@@ -46,6 +46,7 @@
 // using boost::array;
 
 using namespace boost::svg;
+// Is most convenient because otherwise all the colors and others used must be fully specified.
 
 void symb(boost::array<const poly_path_point, 6> shape, const poly_path_point position, const poly_path_point size, g_element& g)
 {
@@ -63,7 +64,7 @@ void symb(boost::array<const poly_path_point, 6> shape, const poly_path_point po
   std::cout << std::endl;
   // Can't return ref to shape because goes out of scope :-(
   g.push_back(new polygon_element(shaped, true));
-  return; // reference to g_element just added.
+  return; //< reference to @c g_element just added.
 } // vector<poly_path_point>& symb
 
 int main()
@@ -71,7 +72,6 @@ int main()
   try
   {
 
-  // Is most convenient because otherwise all the colors used must be specified thus:
   using boost::svg::black;
   using boost::svg::white;
   using boost::svg::red;
@@ -98,7 +98,7 @@ int main()
 
   boost::svg::text_element t;
   t.textstyle().font_family("arial");
-  std::cout << t.textstyle().font_family() << std::endl; // Echos "arial".
+  std::cout << "t.textstyle().font_family() is " << t.textstyle().font_family() << std::endl; // Echos "arial".
 
   // Exercise a few document metadata items.
   my_svg.document_title("Demo SVG document title");
@@ -124,7 +124,10 @@ int main()
 
   g_element& g0 = my_svg.gs(0); // so index is zero.
   std::cout << "my_svg.document_size() = number of g_elements = " << my_svg.document_size() << std::endl; // == 1
+
   my_svg.gs(0).push_back(new rect_element(0, 0, my_svg.x_size(), my_svg.y_size())); // border to image.
+  my_svg.gs(0).push_back(new text_element(my_svg.x_size()/ 2, my_svg.y_size()/4 )); // title?
+
   g0.id("group element 0"); // Add an ID to this group.
   std::cout << "g0.id() " << g0.id() << std::endl; // echo it.
 
@@ -282,10 +285,10 @@ int main()
   // Hexagon
 
   //std::cout.precision(17);
-  //double pi = 3.14159265359;
+  //double pi = 3.14159265359;  // No long enough for double but float would do fine!
   //std::cout <<  cos(pi/6) << std::endl; // == cos(30) == 0.86602540378442139;
 
-  array<const poly_path_point, 6> hexup =
+ const array<const poly_path_point, 6> hexup =
   { // Regular point-up hexagon!
     poly_path_point(0, -1),
     poly_path_point(0.86602540378442139, -0.5),
@@ -304,7 +307,7 @@ int main()
   //g0.push_back(new polygon_element(hex, true) );
 
   {
-    symb(hexup, poly_path_point(75., 450.), poly_path_point(10., 10.), g0); // OK construct from array of consts
+    symb(hexup, poly_path_point(75., 450.), poly_path_point(10., 10.), g0); // OK construct from array of consts.
   }
 
   std::cout << "my_svg.document_size() " << my_svg.document_size() << std::endl; // 8
@@ -312,7 +315,7 @@ int main()
   // Adding a 2nd new group element.
   g_element& g1 = my_svg.gs(1); // so its index is now one.
 
-  g1.id("element 1"); // Add an ID
+  g1.id("element 1"); // Add an ID.
   std::cout << "g1.id()  " << g1.id() << std::endl; // Outputs: element 1
   std::cout << "my_svg.document_size() " << my_svg.document_size() << std::endl; // 8 ???
 
