@@ -311,7 +311,7 @@ protected:
   unsigned int x_size_; //!< SVG image X-axis size (in SVG units (default pixels).
   unsigned int y_size_; //!< SVG image Y-axis size (in SVG units (default pixels).
 
-  g_element document; //!< To hold all group elements of the svg document.
+  g_element document_; //!< To hold all group elements of the svg document.
   std::vector<clip_path_element> clip_paths; //!< Points on clip path (used for plot window).
   // Document metadata:
   std::string title_document_; //!< SVG document title (appears in the SVG file header as \verbatim <title> ... </title> \endverbatim).
@@ -402,9 +402,9 @@ private:
       clip_paths[(unsigned int)i].write(s_out);
     }
     // Write all visual group elements.
-    for(size_t i = 0; i < document.size(); ++i)
+    for(size_t i = 0; i < document_.size(); ++i)
     { // plot_background, grids, axes ... title
-      document[(unsigned int)i].write(s_out);
+      document_[(unsigned int)i].write(s_out);
     }
   } // write_document
 //! \endcond // DETAIL
@@ -468,7 +468,7 @@ public:
 
   unsigned int document_size()
   { //! \return How many group elements groups have been added to the document.
-    return static_cast<unsigned int>(document.size());
+    return static_cast<unsigned int>(document_.size());
   }
 
   void coord_precision(int digits)
@@ -794,32 +794,32 @@ public:
   line_element& line(double x1, double y1, double x2, double y2)
   { //! Add (push_back) information about a line to the document.
     //! 'line' element defines a line segment that starts at one point (x1, y1) and ends at another (x2, y2).
-    return document.line(x1, y1, x2, y2);
+    return document_.line(x1, y1, x2, y2);
   }
 
   rect_element& rect(double x1, double y1, double x2, double y2)
   { //! push_back information about a rectangle to the document.
     //! 'Rect' element defines a rect segment with one point (x1, y1) and opposite vertex is (x2, y2).
-    return document.rect(x1, y1, x2, y2);
+    return document_.rect(x1, y1, x2, y2);
   }
 
   circle_element& circle(double x, double y, unsigned int radius = 5)
   { //! push_back information about a circle to the document.
     //! 'circle' element defines a circle centered at (x1, y1) and its radius.
-    return document.circle(x, y, radius);
+    return document_.circle(x, y, radius);
   }
 
   ellipse_element& ellipse(double rx, double ry, double cx, double cy)
   { //! push_back information about a ellipse to the document.
     //! 'ellipse' element defines a ellipse centered at point (x1, y1) and its two radii.
-    return document.ellipse(rx, ry, cx, cy);
+    return document_.ellipse(rx, ry, cx, cy);
   }
 
   text_element& text(double x, double y, const std::string& text,
     const text_style& style, // font size, font family etc., and any text_length estimate.
     align_style align, rotate_style rotate)
   { //! push_back information about text to the document, with location, style (font size, family etc and text_length), alignment & rotation.
-    return document.text(x, y, text, style, align, rotate); // see svg_tag.hpp 2137 for definition.
+    return document_.text(x, y, text, style, align, rotate); // see svg_tag.hpp 2137 for definition.
   }
   /*  text_length  SVG XML textLength = "<length>"
   The author's (this program svg_plot) computation of the total sum of all of 
@@ -842,56 +842,56 @@ public:
   // Polygon for shapes with many vertices.
   polygon_element& polygon(double x, double y, bool f = true) // 1st point only, add others later with .P(x, y).
   { //! push_back info about 1st point of a polygon shape (add others later with .P(x, y)).
-    return document.polygon(x, y, f);
+    return document_.polygon(x, y, f);
   }
 
   polygon_element& polygon(std::vector<poly_path_point>& v, bool f = true)
-  { //! push_back a complete many-sided polygon to the document with vertices specified as a vector of path_points.
-    return document.polygon(v, f);
+  { //! push_back a complete many-sided polygon to the document_ with vertices specified as a vector of path_points.
+    return document_.polygon(v, f);
   }
 
   // Specific polygon shapes: triangle, rhombus, pentagon & hexagon. (not in SVG standard but convenient).
   polygon_element& triangle(double x1, double y1, double x2, double y2, double x3, double y3, bool f = true)
   { //! push_back a complete triangle to the document.
-    return document.polygon(x1, y1, f).P(x2, y2).P(x3, y3);
+    return document_.polygon(x1, y1, f).P(x2, y2).P(x3, y3);
   }
 
   polygon_element& rhombus(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, bool f = true)
   { //! push_back the four coordinate of a complete rhombus to the document.
-    return document.polygon(x1, y1, f).P(x2, y2).P(x3, y3).P(x4, y4);
+    return document_.polygon(x1, y1, f).P(x2, y2).P(x3, y3).P(x4, y4);
   }
 
   polygon_element& pentagon(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, double x5, double y5, bool f = true)
   { //! push_back the five coordinates complete pentagon to the document.
-    return document.polygon(x1, y1, f).P(x2, y2).P(x3, y3).P(x4, y4).P(x5, y5);
+    return document_.polygon(x1, y1, f).P(x2, y2).P(x3, y3).P(x4, y4).P(x5, y5);
   }
 
   polygon_element& hexagon(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, double x5, double y5, double x6, double y6, bool f = true)
   { //! push_back the coordinate of the points of a complete hexagon to the document.
-    return document.polygon(x1, y1, f).P(x2, y2).P(x3, y3).P(x4, y4).P(x5, y5).P(x6, y6);
+    return document_.polygon(x1, y1, f).P(x2, y2).P(x3, y3).P(x4, y4).P(x5, y5).P(x6, y6);
   }
 
   polyline_element& polyline(double x, double y)
   { //! push_back info about the 1st point of a polyline (add others later with .P(x, y)).
 
-    return document.polyline(x, y);
+    return document_.polyline(x, y);
   }
 
   polyline_element& polyline(double x1, double y1, double x2, double y2)
   { //! push_back info about the 1st & 2nd point of a polyline (add others later with .P(x, y)).
-    return document.polyline(x1, y1).P(x2, y2);
+    return document_.polyline(x1, y1).P(x2, y2);
   }
 
   polyline_element& polyline(std::vector<poly_path_point>& v)
   { //! push_back a complete many-sided polygon to the document, from a vector of path_points.
-    return document.polyline(v);
+    return document_.polyline(v);
   }
 
   // Add information about path, clip_path to the document.
 
   path_element& path()
   { //! Construct an empty path, ready for additions with chainable functions M., L., ...
-    return document.path(); //! \return reference to @c path_element.
+    return document_.path(); //! \return reference to @c path_element.
   }
 
   clip_path_element& clip_path(const rect_element& rect, const std::string& id)
@@ -903,12 +903,12 @@ public:
   g_element& add_g_element()
   { //! Add information about a group element to the document.
     //! Increments the size of the array of g_elements, returned by g_element.size().
-    return document.add_g_element(); //! \return reference to the added group element @c add_g_element.
+    return document_.add_g_element(); //! \return reference to the added group element @c add_g_element.
   }
 
   g_element& g(int i)
   { //! from array of g_elements, indexed by group type, PLOT_BACKGROUND, PLOT_WINDOW_BACKGROUND, ... SVG_PLOT_DOC_CHILDREN,
-    return document.g(i); //! \return reference to the ith group element.
+    return document_.g(i); //! \return reference to the ith group element.
   }
 }; // class svg
 
