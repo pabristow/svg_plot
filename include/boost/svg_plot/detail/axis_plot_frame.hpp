@@ -741,61 +741,61 @@ namespace boost
       template <class Derived>
       void axis_plot_frame<Derived>::clear_background()
       { //!< Clear the whole image background layer of the SVG plot.
-        derived().image_.g(PLOT_BACKGROUND).clear();
+        derived().image_.gs(PLOT_BACKGROUND).clear();
       }
 
       template <class Derived>
       void axis_plot_frame<Derived>::clear_title()
       { //!< Clear the plot title layer of the SVG plot.
-        derived().image_.g(PLOT_TITLE).clear();
+        derived().image_.gs(PLOT_TITLE).clear();
       }
 
       template <class Derived>
       void axis_plot_frame<Derived>::clear_points()
       {  //!< Clear the data-points layer of the SVG plot.
-        derived().image_.g(PLOT_DATA_POINTS).clear();
+        derived().image_.gs(PLOT_DATA_POINTS).clear();
       }
 
       template <class Derived>
       void axis_plot_frame<Derived>::clear_plot_background()
       { //!< Clear the plot area background layer of the SVG plot.
-        derived().image_.g(PLOT_WINDOW_BACKGROUND).clear();
+        derived().image_.gs(PLOT_WINDOW_BACKGROUND).clear();
       }
 
       template <class Derived>
       void axis_plot_frame<Derived>::clear_legend()
       { //!< Clear the legend layer of the SVG plot.
-        derived().image_.g(PLOT_LEGEND_BACKGROUND).clear();
-        derived().image_.g(PLOT_LEGEND_POINTS).clear();
-        derived().image_.g(PLOT_LEGEND_TEXT).clear();
+        derived().image_.gs(PLOT_LEGEND_BACKGROUND).clear();
+        derived().image_.gs(PLOT_LEGEND_POINTS).clear();
+        derived().image_.gs(PLOT_LEGEND_TEXT).clear();
       }
 
       template <class Derived>
       void axis_plot_frame<Derived>::clear_x_axis()
       { //!< Clear the X axis layer of the SVG plot.
-        derived().image_.g(PLOT_X_AXIS).clear();
-        derived().image_.g(PLOT_X_MINOR_TICKS).clear();
-        derived().image_.g(PLOT_X_MAJOR_TICKS).clear();
-        derived().image_.g(PLOT_X_LABEL).clear();
-        derived().image_.g(PLOT_X_TICKS_VALUES).clear();
+        derived().image_.gs(PLOT_X_AXIS).clear();
+        derived().image_.gs(PLOT_X_MINOR_TICKS).clear();
+        derived().image_.gs(PLOT_X_MAJOR_TICKS).clear();
+        derived().image_.gs(PLOT_X_LABEL).clear();
+        derived().image_.gs(PLOT_X_TICKS_VALUES).clear();
       }
 
       template <class Derived>
       void axis_plot_frame<Derived>::clear_y_axis()
       { //!< Clear the Y axis layer of the SVG plot.
-        derived().image_.g(PLOT_Y_AXIS).clear();
-        derived().image_.g(PLOT_Y_MINOR_TICKS).clear();
-        derived().image_.g(PLOT_Y_MAJOR_TICKS).clear();
-        derived().image_.g(PLOT_Y_LABEL).clear();
+        derived().image_.gs(PLOT_Y_AXIS).clear();
+        derived().image_.gs(PLOT_Y_MINOR_TICKS).clear();
+        derived().image_.gs(PLOT_Y_MAJOR_TICKS).clear();
+        derived().image_.gs(PLOT_Y_LABEL).clear();
       }
 
       template <class Derived>
       void axis_plot_frame<Derived>::clear_grids()
       { //!< Clear the  grids layer of the SVG plot.
-        derived().image_.g(PLOT_X_MAJOR_GRID).clear();
-        derived().image_.g(PLOT_X_MINOR_GRID).clear();
-        derived().image_.g(PLOT_Y_MAJOR_GRID).clear();
-        derived().image_.g(PLOT_Y_MINOR_GRID).clear();
+        derived().image_.gs(PLOT_X_MAJOR_GRID).clear();
+        derived().image_.gs(PLOT_X_MINOR_GRID).clear();
+        derived().image_.gs(PLOT_Y_MAJOR_GRID).clear();
+        derived().image_.gs(PLOT_Y_MINOR_GRID).clear();
       }
 
       template <class Derived>
@@ -1164,7 +1164,7 @@ namespace boost
           { // External to plot window style bottom or top.
             // Always want all values including "0", if labeling external to plot window.
             // x_ticks_.ticks_on_window_or_on_axis_ == true != 0
-            g_element* g_ptr = &(derived().image_.g(detail::PLOT_X_TICKS_VALUES));
+            g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES));
             // /! svg g \return reference g_ement& to the ith (PLOT_X_TICKS_VALUES) group element.
             g_element* g_inner_ptr = g_ptr;
             g_element* g_x_axis_values = &(g_ptr->add_g_element()); // OK
@@ -1172,8 +1172,8 @@ namespace boost
         //    g_x_axis_values->style().stroke_color(derived().style().stroke_color_); //  wrong
          //   g_x_axis_values->style().fill_color(derived().serieses_[i].point_style_.fill_color_); // 
 
- //           derived().image_.g(detail::PLOT_X_TICKS_VALUES).text(
-            g_element& gg = derived().image_.g(detail::PLOT_X_TICKS_VALUES);
+ //           derived().image_.gs(detail::PLOT_X_TICKS_VALUES).text(
+            g_element& gg = derived().image_.gs(detail::PLOT_X_TICKS_VALUES);
 
             gg.text(
               x,
@@ -1186,7 +1186,7 @@ namespace boost
           {
             if ((value != 0) && derived().x_axis_.axis_line_on_)
             { // Avoid a "0" below the X-axis if it would be cut through by any internal vertical Y-axis line.
-              derived().image_.g(detail::PLOT_X_TICKS_VALUES).text(
+              derived().image_.gs(detail::PLOT_X_TICKS_VALUES).text(
                 x,
                 y,
                 tick_value_label.str(), 
@@ -1230,23 +1230,23 @@ namespace boost
               }
             }
             double y = derived().x_axis_.axis_; // y = 0, (provided y range includes zero).
-            derived().image_.g(PLOT_X_AXIS).line(xleft, y, xright, y);
+            derived().image_.gs(PLOT_X_AXIS).line(xleft, y, xright, y);
             if (derived().x_ticks_.ticks_on_window_or_on_axis_ < 0) // bottom
             { // Draw a vertical line holding the ticks on the top of plot window.
-              derived().image_.g(PLOT_X_AXIS).line(xleft, derived().plot_bottom_, xright, derived().plot_bottom_);
+              derived().image_.gs(PLOT_X_AXIS).line(xleft, derived().plot_bottom_, xright, derived().plot_bottom_);
             }
             else if (derived().x_ticks_.ticks_on_window_or_on_axis_ > 0)  // top
             {// Draw a vertical line holding the ticks on the bottom of plot window.
-              derived().image_.g(PLOT_X_AXIS).line(xleft, derived().plot_top_, xright, derived().plot_top_);
+              derived().image_.gs(PLOT_X_AXIS).line(xleft, derived().plot_top_, xright, derived().plot_top_);
             }
           }
           else if (derived().x_axis_position_ == top)
           {
-            derived().image_.g(PLOT_X_AXIS).line(xleft, derived().plot_top_, xright, derived().plot_top_);
+            derived().image_.gs(PLOT_X_AXIS).line(xleft, derived().plot_top_, xright, derived().plot_top_);
           }
           else if (derived().x_axis_position_ == bottom)
           {
-            derived().image_.g(PLOT_X_AXIS).line(xleft, derived().plot_bottom_, xright, derived().plot_bottom_);
+            derived().image_.gs(PLOT_X_AXIS).line(xleft, derived().plot_bottom_, xright, derived().plot_bottom_);
           }
           else
           { // warn that things have gone wrong?
@@ -1254,10 +1254,10 @@ namespace boost
         } // x_axis_.axis_line_on_
 
         // Access the paths for the ticks & grids, ready for additions.
-        path_element& minor_tick_path = derived().image_.g(PLOT_X_MINOR_TICKS).path();
-        path_element& major_tick_path = derived().image_.g(PLOT_X_MAJOR_TICKS).path();
-        path_element& minor_grid_path = derived().image_.g(PLOT_X_MINOR_GRID).path();
-        path_element& major_grid_path = derived().image_.g(PLOT_X_MAJOR_GRID).path();
+        path_element& minor_tick_path = derived().image_.gs(PLOT_X_MINOR_TICKS).path();
+        path_element& major_tick_path = derived().image_.gs(PLOT_X_MAJOR_TICKS).path();
+        path_element& minor_grid_path = derived().image_.gs(PLOT_X_MINOR_GRID).path();
+        path_element& major_grid_path = derived().image_.gs(PLOT_X_MAJOR_GRID).path();
 
         // x_minor_jump is the interval between minor ticks.
         double x_minor_jump = derived().x_ticks_.major_interval_ /
@@ -1318,7 +1318,7 @@ namespace boost
       { //! Draw the X-axis label text (for example, length),
         //! and append any optional units (for example, km).
         // X-label color default is set in constructor thus:
-        // image_.g(detail::PLOT_X_LABEL).style().stroke_color(black);
+        // image_.gs(detail::PLOT_X_LABEL).style().stroke_color(black);
         // and changed using x_label_color(color);
         // Similarly for font family and size etc (must be same for both label and units).
 
@@ -1422,7 +1422,7 @@ namespace boost
           y += derived().x_label_info_.textstyle().font_size() * 1.7;
         }
 
-        derived().image_.g(PLOT_X_LABEL).push_back(new text_element(
+        derived().image_.gs(PLOT_X_LABEL).push_back(new text_element(
           ( // x position relative to the x-axis which is middle of plot window.
             derived().plot_right_ + derived().plot_left_) / 2,  // x coordinate - middle.
           y, // Down from plot window.
@@ -1577,7 +1577,7 @@ namespace boost
         double y = derived().title_info_.textstyle().font_size() * 1.5; // Leave bigger margin space above - looks just right.
         // Should allow a 'half line space' above and below the label text.
         derived().title_info_.y(y);
-        derived().image_.g(PLOT_TITLE).push_back(new text_element(derived().title_info_));
+        derived().image_.gs(PLOT_TITLE).push_back(new text_element(derived().title_info_));
       } // void draw_title()
 
   //! Size_legend_box Calculate how big the legend box needs to be to hold
@@ -2015,10 +2015,10 @@ namespace boost
       // Plot window box: left = 26, right = 554, top = 48, bottom = 471
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
       // Select the legend layer.
-      g_element* g_ptr = &(derived().image_.g(PLOT_LEGEND_BACKGROUND));
+      g_element* g_ptr = &(derived().image_.gs(PLOT_LEGEND_BACKGROUND));
 
       // Set legend and background style.
-      derived().image_.g(detail::PLOT_LEGEND_BACKGROUND)
+      derived().image_.gs(detail::PLOT_LEGEND_BACKGROUND)
         .style().fill_color(derived().legend_box_.fill()) //
         .stroke_color(derived().legend_box_.stroke())
         .stroke_width(derived().legend_box_.width())
@@ -2073,14 +2073,14 @@ namespace boost
         // derived().legend_title_.textstyle() = text_style(8, "Lucida Sans Unicode", "", "normal", "", """, 193.6)
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
-        derived().image_.g(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_title_));
+        derived().image_.gs(PLOT_LEGEND_TEXT).push_back(new text_element(derived().legend_title_));
         // This uses the default legend_title font_size?
 
         legend_y_pos += derived().vertical_title_spacing_ /3; // Leave a fraction space below legend title.
       } // is_header aka is_title
 
       // Select legend-points group
-      g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Prepare to write data-point-marker, line and description-text into legend-box.
+      g_ptr = &(derived().image_.gs(PLOT_LEGEND_POINTS)); // Prepare to write data-point-marker, line and description-text into legend-box.
       g_element* g_inner_ptr = g_ptr;
 
       // Show any data-point-marker, any line, & any text info for each of the data-series.
@@ -2114,7 +2114,7 @@ namespace boost
        // Outputs: g_inner_ptr.style() = svg_style(RGB(255,255,255), RGB(0,128,0), 2, fill_on, stroke_on, width_on)
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
           // Select legend-points group
-        g_ptr = &(derived().image_.g(PLOT_LEGEND_POINTS)); // Prepare to write data-point-marker, line and description-text into legend-box.
+        g_ptr = &(derived().image_.gs(PLOT_LEGEND_POINTS)); // Prepare to write data-point-marker, line and description-text into legend-box.
         g_element* g_legends_points = &(g_ptr->add_g_element());
 
         // Use point stroke color instead.
@@ -2171,7 +2171,7 @@ namespace boost
           // derived().legend_lines_ = true; // Some line is drawn for at least one data-series.
           // Better - this should be set during the legend box sizing?
           // Select legend-lines group.
-          g_ptr = &(derived().image_.g(PLOT_LEGEND_LINES)); 
+          g_ptr = &(derived().image_.gs(PLOT_LEGEND_LINES)); 
           g_element* g_legend_lines = &(g_ptr->add_g_element()); // nested group for each data-series line.
           // Set colors for legend line.
           g_legend_lines->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_); // 
@@ -2216,7 +2216,7 @@ namespace boost
           double series_string_SVG_length = string_svg_length(derived().serieses_[i].title_, derived().legend_text_style_);
           derived().legend_text_style_.text_length(series_string_SVG_length); // Force to use estimated SVG length.
 
-          g_ptr = &(derived().image_.g(PLOT_LEGEND_TEXT)); // Select group for legend data-series text.
+          g_ptr = &(derived().image_.gs(PLOT_LEGEND_TEXT)); // Select group for legend data-series text.
           g_ptr->push_back(new text_element(
             legend_x_pos, // Allow space for the marker.
             legend_y_pos,
@@ -2334,14 +2334,14 @@ namespace boost
           { // Make sure something is visible.
             y_radius = 1.;
           }
-          //image_.g(PLOT_DATA_UNC).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
+          //image_.gs(PLOT_DATA_UNC).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
           // color set in svg_1d_plot data at present.
           // Also be set by user calling my_plot.one_sd_color(lightblue),  .two_sd_color(blue), .three_sd_color(violet)
-          g_element* gu1_ptr = &(derived().image_.g(PLOT_DATA_UNC1));
+          g_element* gu1_ptr = &(derived().image_.gs(PLOT_DATA_UNC1));
           gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard deviation.
-          g_element* gu2_ptr = &(derived().image_.g(PLOT_DATA_UNC2));
+          g_element* gu2_ptr = &(derived().image_.gs(PLOT_DATA_UNC2));
           gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard deviation.
-          g_element* gu3_ptr = &(derived().image_.g(PLOT_DATA_UNC3));
+          g_element* gu3_ptr = &(derived().image_.gs(PLOT_DATA_UNC3));
           gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard deviation.
           g_ptr.circle(x, y, 1); // Show x and y values at center using stroke and fill color of data-point marker.
         }
@@ -3204,20 +3204,20 @@ namespace boost
           template <class Derived>
           svg_color axis_plot_frame<Derived>::background_color()
           { //! \return  plot background color.
-            return derived().image_.g(PLOT_BACKGROUND).style().fill_color();
+            return derived().image_.gs(PLOT_BACKGROUND).style().fill_color();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::background_color(const svg_color& col)
           { //! Set plot background color.
-            derived().image_.g(PLOT_BACKGROUND).style().fill_color(col);
+            derived().image_.gs(PLOT_BACKGROUND).style().fill_color(col);
             return derived();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::background_border_color(const svg_color& col)
           { //! Set plot background border color.
-            derived().image_.g(PLOT_BACKGROUND).style().stroke_color(col);
+            derived().image_.gs(PLOT_BACKGROUND).style().stroke_color(col);
             /*!
               background_border_color, for example:
               \verbatim svg_2d_plot my_plot(my_data, "My Data").background_border_color(red).background_color(azure);
@@ -3229,21 +3229,21 @@ namespace boost
           template <class Derived>
           svg_color axis_plot_frame<Derived>::background_border_color()
           { //! \return  plot background border color.
-            return derived().image_.g(PLOT_BACKGROUND).style().stroke_color();
+            return derived().image_.gs(PLOT_BACKGROUND).style().stroke_color();
           }
 
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::background_border_width(double w)
           { //! Set plot background border width.
-            derived().image_.g(PLOT_BACKGROUND).style().stroke_width(w);
+            derived().image_.gs(PLOT_BACKGROUND).style().stroke_width(w);
             return derived();
           }
 
           template <class Derived>
           double axis_plot_frame<Derived>::background_border_width()
           { //! \return  plot background border width.
-            return derived().image_.g(PLOT_BACKGROUND).style().stroke_width();
+            return derived().image_.gs(PLOT_BACKGROUND).style().stroke_width();
           }
 
           template <class Derived>
@@ -3458,7 +3458,7 @@ namespace boost
             // effectively concatenates with any existing title.
             // So clear the existing string first but doesn't work,
             // so need to clear the whole g_element.
-            //derived().image_.g(PLOT_TITLE).clear();
+            //derived().image_.gs(PLOT_TITLE).clear();
             derived().title_info_.text(title);
             derived().title_on_ = true; // Assume display wanted, if bother to set title.
             return derived(); // Make chainable.
@@ -3857,7 +3857,7 @@ namespace boost
             derived().plot_window_on_ = cmd;
             if(cmd)
             { // Set plot window.
-              derived().image_.g(detail::PLOT_WINDOW_BACKGROUND).style()
+              derived().image_.gs(detail::PLOT_WINDOW_BACKGROUND).style()
                 .fill_color(derived().plot_window_border_.fill_) // background color and
                 .stroke_color(derived().plot_window_border_.stroke_); // border color.
             }
@@ -3875,27 +3875,27 @@ namespace boost
           Derived& axis_plot_frame<Derived>::plot_border_color(const svg_color& col)
           { //! Set the color for the plot window background. Example: @c .plot_border_color(lightgoldenrodyellow)
             derived().plot_window_border_.stroke_ = col;
-            derived().image_.g(detail::PLOT_WINDOW_BACKGROUND).style().stroke_color(col);
+            derived().image_.gs(detail::PLOT_WINDOW_BACKGROUND).style().stroke_color(col);
             return derived();
           }
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::plot_border_color()
           { //! \return  the color for the plot window background.
-            return derived().image_.g(detail::PLOT_WINDOW_BACKGROUND).style().stroke_color();
+            return derived().image_.gs(detail::PLOT_WINDOW_BACKGROUND).style().stroke_color();
           }
 
           template <class Derived>
           double axis_plot_frame<Derived>::plot_border_width()
           { //! \return  the width for the plot window border (svg units, default pixels).
-            return derived().image_.g(detail::PLOT_WINDOW_BACKGROUND).style().stroke_width();
+            return derived().image_.gs(detail::PLOT_WINDOW_BACKGROUND).style().stroke_width();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::plot_border_width(double w)
           { //! Set the width for the plot window border (svg units, default pixels).
             derived().plot_window_border_.border_width_ = w;
-            derived().image_.g(detail::PLOT_WINDOW_BACKGROUND).style().stroke_width(w);
+            derived().image_.gs(detail::PLOT_WINDOW_BACKGROUND).style().stroke_width(w);
             return derived();
           }
 
@@ -4103,8 +4103,8 @@ namespace boost
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_axis_label_color(const svg_color& col)
           { //! Set X axis label color.
-            derived().image_.g(detail::PLOT_X_LABEL).style().fill_color(col);
-            //derived().image_.g(detail::PLOT_X_LABEL).style().stroke_color(col);
+            derived().image_.gs(detail::PLOT_X_LABEL).style().fill_color(col);
+            //derived().image_.gs(detail::PLOT_X_LABEL).style().stroke_color(col);
             // Setting the stroke color produces fuzzy characters :-(
             // Set BOTH stroke and fill to the same color?
            return derived();
@@ -4114,7 +4114,7 @@ namespace boost
           svg_color axis_plot_frame<Derived>::x_axis_label_color()
           { //! \return  X axis label color.
             // But only return the fill color.
-            return derived().image_.g(detail::PLOT_X_LABEL).style().fill_color();
+            return derived().image_.gs(detail::PLOT_X_LABEL).style().fill_color();
           }
 
           // X-axis tick label style.
@@ -4122,8 +4122,8 @@ namespace boost
           Derived& axis_plot_frame<Derived>::x_ticks_values_color(const svg_color& col)
           { //! Set X axis tick value label color.
             // Set BOTH stroke and fill to the same color.
-            derived().image_.g(detail::PLOT_X_TICKS_VALUES).style().fill_color(col);
-            //derived().image_.g(detail::PLOT_X_TICK_VALUE_LABELS).style().stroke_color(col);
+            derived().image_.gs(detail::PLOT_X_TICKS_VALUES).style().fill_color(col);
+            //derived().image_.gs(detail::PLOT_X_TICK_VALUE_LABELS).style().stroke_color(col);
             // Setting the stroke color produces fuzzy characters :-(
             //derived().x_ticks_.color_ = col;
             return derived();
@@ -4133,7 +4133,7 @@ namespace boost
           svg_color axis_plot_frame<Derived>::x_ticks_values_color()
           { //! \return  X-axis ticks value label color.
             // But only return the fill color.
-            return derived().image_.g(detail::PLOT_X_TICKS_VALUES).style().fill_color();
+            return derived().image_.gs(detail::PLOT_X_TICKS_VALUES).style().fill_color();
             //return x_ticks_.color_ ;
           }
 
@@ -4357,8 +4357,8 @@ namespace boost
             // Function title_color could set both fill (middle) and stroke (outside),
             // but just setting fill if simplest,
             // but does not allow separate inside & outside colors.
-            derived().image_.g(PLOT_TITLE).style().fill_color(col);
-            //derived().image_.g(PLOT_TITLE).style().stroke_color(col);
+            derived().image_.gs(PLOT_TITLE).style().fill_color(col);
+            //derived().image_.gs(PLOT_TITLE).style().stroke_color(col);
             return derived();
           }
 
@@ -4366,8 +4366,8 @@ namespace boost
           svg_color axis_plot_frame<Derived>::title_color()
           { //! \return the color of any title of the plot.
             // Function title_color could get either fill and stroke,
-            // return derived().image_.g(PLOT_TITLE).style().stroke_color();
-            return derived().image_.g(PLOT_TITLE).style().fill_color();
+            // return derived().image_.gs(PLOT_TITLE).style().stroke_color();
+            return derived().image_.gs(PLOT_TITLE).style().fill_color();
           }
 
           //Derived& title_font_width(double width)
@@ -4375,32 +4375,32 @@ namespace boost
           // width of text is effectively the boldness.
           //  // Not useful with current browsers, setting this may cause lower quality graphic fonts
           //  // perhaps because the font is created using graphics rather than a built-in font.
-          //  derived().image_.g(PLOT_TITLE).style().stroke_width(width);
+          //  derived().image_.gs(PLOT_TITLE).style().stroke_width(width);
           //  return derived();
           //}
 
          //Derived& legend_font_width(double width)
           //{ //! \return  the width of the font for the title of the plot.
             // width of text is effectively the boldness.
-          //  derived().image_.g(PLOT_LEGEND_TEXT).style().stroke_width(width);
+          //  derived().image_.gs(PLOT_LEGEND_TEXT).style().stroke_width(width);
           //  return derived();
           //}
 
           //double legend_font_width()
           //{ // Set the width of the font for the title of the legend.
           // Probably not useful at present (se above).
-          //  return derived().image_.g(PLOT_LEGEND_TEXT).style().stroke_width();
+          //  return derived().image_.gs(PLOT_LEGEND_TEXT).style().stroke_width();
           //}
           //double legend_font_width()
           //{ //! \return  the width of the font for the title of the legend.
-          //  return derived().image_.g(PLOT_TITLE).style().stroke_width();
+          //  return derived().image_.gs(PLOT_TITLE).style().stroke_width();
           //}
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_color(const svg_color& col)
           { //! Set the color of the title of the legend.
-            // derived().image_.g(PLOT_LEGEND_TEXT).style().stroke_color(col);
-            derived().image_.g(PLOT_LEGEND_TEXT).style().fill_color(col);
+            // derived().image_.gs(PLOT_LEGEND_TEXT).style().stroke_color(col);
+            derived().image_.gs(PLOT_LEGEND_TEXT).style().fill_color(col);
             return derived();
           }
 
@@ -4409,22 +4409,22 @@ namespace boost
           { //! \return  the color of the title of the legend.
             // Function legend_color sets only stroke, assuming that 'filled' text is not being used.
             // (It produces much lower quality fonts on some browsers).
-            return derived().image_.g(PLOT_LEGEND_TEXT).style().fill_color();
-            // return derived().image_.g(PLOT_LEGEND_TEXT).style().stroke_color();
+            return derived().image_.gs(PLOT_LEGEND_TEXT).style().fill_color();
+            // return derived().image_.gs(PLOT_LEGEND_TEXT).style().stroke_color();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_background_color(const svg_color& col)
           { //! Set the background fill color of the legend box.//
             derived().legend_box_.fill(col);
-            derived().image_.g(PLOT_LEGEND_BACKGROUND).style().fill_color(col);
+            derived().image_.gs(PLOT_LEGEND_BACKGROUND).style().fill_color(col);
             return derived();
           }
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::legend_background_color()
           { //! \return  the background fill color of the legend box.
-            return derived().image_.g(PLOT_LEGEND_BACKGROUND).style().fill_color();
+            return derived().image_.gs(PLOT_LEGEND_BACKGROUND).style().fill_color();
           }
 
           template <class Derived>
@@ -4437,7 +4437,7 @@ namespace boost
           Derived& axis_plot_frame<Derived>::legend_border_color(const svg_color& col)
           { //! Set the border stroke color of the legend box.
             derived().legend_box_.stroke(col);
-            derived().image_.g(PLOT_LEGEND_BACKGROUND).style().stroke_color(col);
+            derived().image_.gs(PLOT_LEGEND_BACKGROUND).style().stroke_color(col);
             return derived();
           }
 
@@ -4445,7 +4445,7 @@ namespace boost
           svg_color axis_plot_frame<Derived>::legend_border_color()
           { //! \return  the border stroke color of the legend box.
             return  derived().legend_box_.stroke();
-            // return derived().image_.g(PLOT_LEGEND_BACKGROUND).style().stroke_color();
+            // return derived().image_.gs(PLOT_LEGEND_BACKGROUND).style().stroke_color();
           }
 
           template <class Derived>
@@ -4480,14 +4480,14 @@ namespace boost
           template <class Derived>
           Derived& axis_plot_frame<Derived>::plot_background_color(const svg_color& col)
           { //! Set the fill color of the plot window background.
-            derived().image_.g(PLOT_WINDOW_BACKGROUND).style().fill_color(col);
+            derived().image_.gs(PLOT_WINDOW_BACKGROUND).style().fill_color(col);
             return derived();
           }
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::plot_background_color()
           { //! \return Fill color of the plot window background.
-            return derived().image_.g(PLOT_WINDOW_BACKGROUND).style().fill_color();
+            return derived().image_.gs(PLOT_WINDOW_BACKGROUND).style().fill_color();
           }
 
           template <class Derived>
@@ -4510,41 +4510,41 @@ namespace boost
           Derived& axis_plot_frame<Derived>::x_axis_color(const svg_color& col)
           { //! Set the color of the X-axis line.
             // Note only stroke color is set.
-            derived().image_.g(PLOT_X_AXIS).style().stroke_color(col);
+            derived().image_.gs(PLOT_X_AXIS).style().stroke_color(col);
             return derived();
           }
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::x_axis_color()
           { //! \return  the color of the X-axis line.
-            return derived().image_.g(PLOT_X_AXIS).style().stroke_color();
+            return derived().image_.gs(PLOT_X_AXIS).style().stroke_color();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::y_axis_color(const svg_color& col)
           { //! Set the color of the Y-axis line.
-            derived().image_.g(PLOT_Y_AXIS).style().stroke_color(col);
+            derived().image_.gs(PLOT_Y_AXIS).style().stroke_color(col);
             return derived();
           }
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::y_axis_color()
           { //! \return  The color of the Y-axis line.
-            return derived().image_.g(PLOT_Y_AXIS).style().stroke_color();
+            return derived().image_.gs(PLOT_Y_AXIS).style().stroke_color();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_label_color(const svg_color& col)
           { //! Set the color of X-axis label (including any units).
-            derived().image_.g(PLOT_X_LABEL).style().fill_color(col);
-            derived().image_.g(PLOT_X_LABEL).style().stroke_color(col);
+            derived().image_.gs(PLOT_X_LABEL).style().fill_color(col);
+            derived().image_.gs(PLOT_X_LABEL).style().stroke_color(col);
             return derived();
           }
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::x_label_color()
           { //! \return  the color of X-axis label (including any units).
-            return derived().image_.g(PLOT_X_LABEL).style().fill_color();
+            return derived().image_.gs(PLOT_X_LABEL).style().fill_color();
           }
 
           template <class Derived>
@@ -4552,132 +4552,132 @@ namespace boost
           { //! Set the width (boldness) of X-axis label (including any units).
             //! (not recommended until browsers implement better).
             // width of text is effectively the boldness.
-            derived().image_.g(PLOT_X_LABEL).style().stroke_width(width);
+            derived().image_.gs(PLOT_X_LABEL).style().stroke_width(width);
             return derived();
           }
 
           template <class Derived>
           double axis_plot_frame<Derived>::x_label_width()
           { //! \return  The width (boldness) of X-axis label (including any units).
-            return derived().image_.g(PLOT_X_LABEL).style().stroke_width();
+            return derived().image_.gs(PLOT_X_LABEL).style().stroke_width();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::y_label_color(const svg_color& col)
           { //! Set the color of Y-axis label (including any units).
-            derived().image_.g(PLOT_Y_LABEL).style().fill_color(col);
-            derived().image_.g(PLOT_Y_LABEL).style().stroke_color(col);
+            derived().image_.gs(PLOT_Y_LABEL).style().fill_color(col);
+            derived().image_.gs(PLOT_Y_LABEL).style().stroke_color(col);
             return derived();
           }
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::y_label_color()
           { //! \return  the color of Y-axis label (including any units).
-            return derived().image_.g(PLOT_Y_LABEL).style().fill_color();
+            return derived().image_.gs(PLOT_Y_LABEL).style().fill_color();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_major_tick_color(const svg_color& col)
           { //! Set the color of X-axis major ticks.
-            derived().image_.g(PLOT_X_MAJOR_TICKS).style().stroke_color(col);
+            derived().image_.gs(PLOT_X_MAJOR_TICKS).style().stroke_color(col);
             return derived();
           }
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::x_major_tick_color()
           { //! \return  the color of X-axis major ticks.
-            return derived().image_.g(PLOT_X_MAJOR_TICKS).style().stroke_color();
+            return derived().image_.gs(PLOT_X_MAJOR_TICKS).style().stroke_color();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_minor_tick_color(const svg_color& col)
           { //! Set the color of X-axis minor ticks.
-            derived().image_.g(PLOT_X_MINOR_TICKS).style().stroke_color(col);
+            derived().image_.gs(PLOT_X_MINOR_TICKS).style().stroke_color(col);
             return derived();
           }
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::x_minor_tick_color()
           { //! \return  the color of X-axis minor ticks.
-            return derived().image_.g(PLOT_X_MINOR_TICKS).style().stroke_color();
+            return derived().image_.gs(PLOT_X_MINOR_TICKS).style().stroke_color();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_major_grid_color(const svg_color& col)
           { //! Set the color of X-axis major grid lines.
-            derived().image_.g(PLOT_X_MAJOR_GRID).style().stroke_color(col);
+            derived().image_.gs(PLOT_X_MAJOR_GRID).style().stroke_color(col);
             return derived();
           }
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::x_major_grid_color()
           { //! \return  the color of X-axis major grid lines.
-            return derived().image_.g(PLOT_X_MAJOR_GRID).style().stroke_color();
+            return derived().image_.gs(PLOT_X_MAJOR_GRID).style().stroke_color();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_major_grid_width(double w)
           { //! Set the width of X-axis major grid lines.
-            derived().image_.g(PLOT_X_MAJOR_GRID).style().stroke_width(w);
+            derived().image_.gs(PLOT_X_MAJOR_GRID).style().stroke_width(w);
             return derived();
           }
 
           template <class Derived>
           double axis_plot_frame<Derived>::x_major_grid_width()
           { //! \return  the color of X-axis major grid lines.
-            return derived().image_.g(PLOT_X_MAJOR_GRID).style().stroke_width();
+            return derived().image_.gs(PLOT_X_MAJOR_GRID).style().stroke_width();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_minor_grid_color(const svg_color& col)
           { //! Set the color of X-axis minor grid lines.
-            derived().image_.g(PLOT_X_MINOR_GRID).style().stroke_color(col);
+            derived().image_.gs(PLOT_X_MINOR_GRID).style().stroke_color(col);
             return derived();
           }
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::x_minor_grid_color()
           { //! \return  the color of X-axis minor grid lines.
-            return derived().image_.g(PLOT_X_MINOR_GRID).style().stroke_color();
+            return derived().image_.gs(PLOT_X_MINOR_GRID).style().stroke_color();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_minor_grid_width(double w)
           { //! Set the width of X-axis minor grid lines.
-            derived().image_.g(PLOT_X_MINOR_GRID).style().stroke_width(w);
+            derived().image_.gs(PLOT_X_MINOR_GRID).style().stroke_width(w);
             return derived();
           }
 
           template <class Derived>
           double axis_plot_frame<Derived>::x_minor_grid_width()
           { //! \return  the width of X-axis minor grid lines.
-            return derived().image_.g(PLOT_X_MINOR_GRID).style().stroke_width();
+            return derived().image_.gs(PLOT_X_MINOR_GRID).style().stroke_width();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_axis_width(double width)
           { //! Set the width of X-axis lines.
-            derived().image_.g(PLOT_X_AXIS).style().stroke_width(width);
+            derived().image_.gs(PLOT_X_AXIS).style().stroke_width(width);
             return derived();
           }
 
           template <class Derived>
           double axis_plot_frame<Derived>::x_axis_width()
           { //! \return  the width of X-axis lines.
-            return derived().image_.g(PLOT_X_AXIS).style().stroke_width();
+            return derived().image_.gs(PLOT_X_AXIS).style().stroke_width();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::data_lines_width(double width)
           { //! Set the width of lines joining data-points.
-            derived().image_.g(PLOT_DATA_LINES).style().stroke_width(width);
+            derived().image_.gs(PLOT_DATA_LINES).style().stroke_width(width);
             return derived();
           }
 
           template <class Derived>
           double axis_plot_frame<Derived>::data_lines_width()
           { //! \return  the width of lines joining data-points.
-            return derived().image_.g(PLOT_DATA_LINES).style().stroke_width();
+            return derived().image_.gs(PLOT_DATA_LINES).style().stroke_width();
           }
 
           template <class Derived>
@@ -4806,8 +4806,8 @@ namespace boost
             // but just setting fill is simplest,
             // but does not allow separate inside & outside colors.
             // Might be better to set in x_values_style
-            derived().image_.g(PLOT_X_POINT_VALUES).style().fill_color(col);
-            //derived().image_.g(PLOT_X_POINT_VALUES).style().stroke_color(col);
+            derived().image_.gs(PLOT_X_POINT_VALUES).style().fill_color(col);
+            //derived().image_.gs(PLOT_X_POINT_VALUES).style().stroke_color(col);
             return derived();
           }
 
@@ -4815,8 +4815,8 @@ namespace boost
           svg_color axis_plot_frame<Derived>::x_values_color()
           { //! \return  the color of data-point X values near data-points markers.
             // Function could get either fill and stroke,
-            // return derived().image_.g(PLOT_X_POINT_VALUES).style().stroke_color();
-            return derived().image_.g(PLOT_X_POINT_VALUES).style().fill_color();
+            // return derived().image_.gs(PLOT_X_POINT_VALUES).style().stroke_color();
+            return derived().image_.gs(PLOT_X_POINT_VALUES).style().fill_color();
           }
 
           template <class Derived>
@@ -5078,14 +5078,14 @@ namespace boost
           Derived& axis_plot_frame<Derived>::x_major_tick_width(double width)
           { //! Set width of X major ticks.
             derived().x_ticks_.major_tick_width_ = width; // Redundant?
-            derived().image_.g(PLOT_X_MAJOR_TICKS).style().stroke_width(width);
+            derived().image_.gs(PLOT_X_MAJOR_TICKS).style().stroke_width(width);
             return derived();
           }
 
           template <class Derived>
           double axis_plot_frame<Derived>::x_major_tick_width()
           {//! \return  width of X major ticks.
-            return derived().image_.g(PLOT_X_MAJOR_TICKS).style().stroke_width();
+            return derived().image_.gs(PLOT_X_MAJOR_TICKS).style().stroke_width();
           }
 
           template <class Derived>
@@ -5105,7 +5105,7 @@ namespace boost
           Derived& axis_plot_frame<Derived>::x_minor_tick_width(double width)
           { //! Set width of X minor ticks.
             derived().x_ticks_.minor_tick_width_ = width;
-            derived().image_.g(PLOT_X_MINOR_TICKS).style().stroke_width(width);
+            derived().image_.gs(PLOT_X_MINOR_TICKS).style().stroke_width(width);
             return derived();
           }
 
@@ -5113,7 +5113,7 @@ namespace boost
           double axis_plot_frame<Derived>::x_minor_tick_width()
           { //! \return  width of X minor ticks.
             // return derived().x_minor_tick_width_; // should be the same but store in stroke_width is definitive.
-            return derived().image_.g(PLOT_X_MINOR_TICKS).style().stroke_width();
+            return derived().image_.gs(PLOT_X_MINOR_TICKS).style().stroke_width();
           }
 
           template <class Derived>
@@ -5522,55 +5522,55 @@ namespace boost
         template <class Derived>
         svg_color axis_plot_frame<Derived>::nan_limit_fill_color()
         { //! \return  the color for the 'at limit' point fill color.
-          return derived().image_.g(detail::PLOT_LIMIT_POINTS).style().fill_color();
+          return derived().image_.gs(detail::PLOT_LIMIT_POINTS).style().fill_color();
         }
 
         template <class Derived>
         Derived& axis_plot_frame<Derived>::one_sd_color(const svg_color& col)
         { //! Set the color for the one standard deviation (~67% confidence) ellipse fill.
-          derived().image_.g(detail::PLOT_DATA_UNC1).style().fill_on(true);
-          derived().image_.g(detail::PLOT_DATA_UNC1).style().fill_color(col);
-          derived().image_.g(detail::PLOT_DATA_UNC1).style().stroke_color(blank);
-          derived().image_.g(detail::PLOT_DATA_UNC1).style().stroke_on(true);
+          derived().image_.gs(detail::PLOT_DATA_UNC1).style().fill_on(true);
+          derived().image_.gs(detail::PLOT_DATA_UNC1).style().fill_color(col);
+          derived().image_.gs(detail::PLOT_DATA_UNC1).style().stroke_color(blank);
+          derived().image_.gs(detail::PLOT_DATA_UNC1).style().stroke_on(true);
           return derived();
         }
 
        template <class Derived>
        svg_color axis_plot_frame<Derived>::one_sd_color()
        { //! \return Color for the one standard deviation (~67% confidence) ellipse fill.
-         return derived().image_.g(detail::PLOT_DATA_UNC1).style().fill_color();
+         return derived().image_.gs(detail::PLOT_DATA_UNC1).style().fill_color();
        }
 
         template <class Derived>
         Derived& axis_plot_frame<Derived>::two_sd_color(const svg_color& col)
         { //! Set the color for two standard deviation (~95% confidence) ellipse fill.
-          derived().image_.g(detail::PLOT_DATA_UNC2).style().fill_on(true);
-          derived().image_.g(detail::PLOT_DATA_UNC2).style().fill_color(col);
-          derived().image_.g(detail::PLOT_DATA_UNC2).style().stroke_color(blank);
-          derived().image_.g(detail::PLOT_DATA_UNC2).style().stroke_on(true);
+          derived().image_.gs(detail::PLOT_DATA_UNC2).style().fill_on(true);
+          derived().image_.gs(detail::PLOT_DATA_UNC2).style().fill_color(col);
+          derived().image_.gs(detail::PLOT_DATA_UNC2).style().stroke_color(blank);
+          derived().image_.gs(detail::PLOT_DATA_UNC2).style().stroke_on(true);
          return derived();
         }
 
        template <class Derived>
        svg_color axis_plot_frame<Derived>::two_sd_color()
        { //! \return Color for two standard deviation (~95% confidence) ellipse fill.
-         return derived().image_.g(detail::PLOT_DATA_UNC2).style().fill_color();
+         return derived().image_.gs(detail::PLOT_DATA_UNC2).style().fill_color();
        }
 
         template <class Derived>
         Derived& axis_plot_frame<Derived>::three_sd_color(const svg_color& col)
         { //! Set the color for three standard deviation (~99% confidence) ellipse fill.
-          derived().image_.g(detail::PLOT_DATA_UNC3).style().fill_on(true);
-          derived().image_.g(detail::PLOT_DATA_UNC3).style().fill_color(col);
-          derived().image_.g(detail::PLOT_DATA_UNC3).style().stroke_color(blank);
-          derived().image_.g(detail::PLOT_DATA_UNC3).style().stroke_on(true);
+          derived().image_.gs(detail::PLOT_DATA_UNC3).style().fill_on(true);
+          derived().image_.gs(detail::PLOT_DATA_UNC3).style().fill_color(col);
+          derived().image_.gs(detail::PLOT_DATA_UNC3).style().stroke_color(blank);
+          derived().image_.gs(detail::PLOT_DATA_UNC3).style().stroke_on(true);
          return derived();
         }
 
        template <class Derived>
        svg_color axis_plot_frame<Derived>::three_sd_color()
        { //! \return Color for three standard deviation (~99% confidence) ellipse fill.
-         return derived().image_.g(detail::PLOT_DATA_UNC3).style().fill_color();
+         return derived().image_.gs(detail::PLOT_DATA_UNC3).style().fill_color();
        }
 
         template <class Derived>

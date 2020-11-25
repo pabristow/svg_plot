@@ -2173,9 +2173,9 @@ public:
       }
     } // void write(std::ostream& rhs)
 
-    g_element& g(int i)
+    g_element& gs(int i)
     { //! i is index of children nodes (first is zero).
-      //! Example:   \code g_element& g1 = my_svg.g(1); // index is one. \endcode
+      //! Example:   \code g_element& g1 = my_svg.gs(1); // index is one. \endcode
       return *(static_cast<g_element*>(&children[i])); // \return reference to child node g_element.
     }
 

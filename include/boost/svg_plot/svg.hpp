@@ -906,9 +906,9 @@ public:
     return document_.add_g_element(); //! \return reference to the added group element @c add_g_element.
   }
 
-  g_element& g(int i)
+  g_element& gs(int i)
   { //! from array of g_elements, indexed by group type, PLOT_BACKGROUND, PLOT_WINDOW_BACKGROUND, ... SVG_PLOT_DOC_CHILDREN,
-    return document_.g(i); //! \return reference to the ith group element.
+    return document_.gs(i); //! \return reference to the ith group element.
   }
 }; // class svg
 

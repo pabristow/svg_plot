@@ -817,20 +817,20 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         // Set other SVG color, stroke & width defaults for various child PLOT nodes.
 
-        image_.g(PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
-        image_.g(PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);
-        image_.g(PLOT_BACKGROUND).style().stroke_width(image_border_.border_width_); //
-        image_.g(PLOT_WINDOW_BACKGROUND).style().fill_color(plot_window_border_.fill_);
-        image_.g(PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.border_width_).stroke_color(plot_window_border_.stroke_);
-        image_.g(PLOT_LIMIT_POINTS).style().stroke_color(lightslategray).fill_color(antiquewhite);
-        image_.g(PLOT_X_AXIS).style().stroke_color(black).stroke_width(x_axis_.width());
-        image_.g(PLOT_Y_AXIS).style().stroke_color(black).stroke_width(y_axis_.width());
+        image_.gs(PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
+        image_.gs(PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);
+        image_.gs(PLOT_BACKGROUND).style().stroke_width(image_border_.border_width_); //
+        image_.gs(PLOT_WINDOW_BACKGROUND).style().fill_color(plot_window_border_.fill_);
+        image_.gs(PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.border_width_).stroke_color(plot_window_border_.stroke_);
+        image_.gs(PLOT_LIMIT_POINTS).style().stroke_color(lightslategray).fill_color(antiquewhite);
+        image_.gs(PLOT_X_AXIS).style().stroke_color(black).stroke_width(x_axis_.width());
+        image_.gs(PLOT_Y_AXIS).style().stroke_color(black).stroke_width(y_axis_.width());
 
-        image_.g(PLOT_DATA_UNC3).style().stroke_color(blank).fill_color(lightgoldenrodyellow).stroke_width(1);
-        image_.g(PLOT_DATA_UNC2).style().stroke_color(peachpuff).fill_color(peachpuff).stroke_width(1);
-        image_.g(PLOT_DATA_UNC1).style().stroke_color(pink).fill_color(pink).stroke_width(1);
+        image_.gs(PLOT_DATA_UNC3).style().stroke_color(blank).fill_color(lightgoldenrodyellow).stroke_width(1);
+        image_.gs(PLOT_DATA_UNC2).style().stroke_color(peachpuff).fill_color(peachpuff).stroke_width(1);
+        image_.gs(PLOT_DATA_UNC1).style().stroke_color(pink).fill_color(pink).stroke_width(1);
 
-        //image_.g(detail::PLOT_NOTES).style().fill_color(black);
+        //image_.gs(detail::PLOT_NOTES).style().fill_color(black);
 
         // Note that widths are stored in member data *and* copied here.
         // Not sure if this is wise but ...
@@ -838,22 +838,22 @@ my_plot.background_color(ghostwhite) // Whole image.
         // Ticks
         if(x_ticks_.use_up_ticks() || x_ticks_.use_down_ticks())
         {
-          image_.g(PLOT_X_MAJOR_TICKS).style().stroke_width(x_ticks_.major_tick_width_).stroke_color(black);
-          image_.g(PLOT_X_MINOR_TICKS).style().stroke_width(x_ticks_.minor_tick_width_).stroke_color(black);
+          image_.gs(PLOT_X_MAJOR_TICKS).style().stroke_width(x_ticks_.major_tick_width_).stroke_color(black);
+          image_.gs(PLOT_X_MINOR_TICKS).style().stroke_width(x_ticks_.minor_tick_width_).stroke_color(black);
         }
         if(y_ticks_.left_ticks_on_ || y_ticks_.right_ticks_on_)
         {
-          image_.g(PLOT_Y_MAJOR_TICKS).style().stroke_width(y_ticks_.major_tick_width_).stroke_color(black);
-          image_.g(PLOT_Y_MINOR_TICKS).style().stroke_width(y_ticks_.minor_tick_width_).stroke_color(black);
+          image_.gs(PLOT_Y_MAJOR_TICKS).style().stroke_width(y_ticks_.major_tick_width_).stroke_color(black);
+          image_.gs(PLOT_Y_MINOR_TICKS).style().stroke_width(y_ticks_.minor_tick_width_).stroke_color(black);
         }
         // Grids.
         // Default stroke color & stroke_width for grid, used or not.
         // Might avoid empty grid stuff if this was only done if grid used?  TODO
-        image_.g(PLOT_X_MAJOR_GRID).style().stroke_width(x_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255)); // #C8DCFF - Hex Color
-        image_.g(PLOT_X_MINOR_GRID).style().stroke_width(x_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
-        image_.g(PLOT_Y_MAJOR_GRID).style().stroke_width(y_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255));
-        image_.g(PLOT_Y_MINOR_GRID).style().stroke_width(y_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
-        image_.g(PLOT_DATA_LINES).style().stroke_width(2); // Default grid width.
+        image_.gs(PLOT_X_MAJOR_GRID).style().stroke_width(x_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255)); // #C8DCFF - Hex Color
+        image_.gs(PLOT_X_MINOR_GRID).style().stroke_width(x_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
+        image_.gs(PLOT_Y_MAJOR_GRID).style().stroke_width(y_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255));
+        image_.gs(PLOT_Y_MINOR_GRID).style().stroke_width(y_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
+        image_.gs(PLOT_DATA_LINES).style().stroke_width(2); // Default grid width.
         // Alter with plot.data_lines_width(4);
 
         legend_place_ = (plot_window_on_) ? outside_right : inside; // Defaults.
@@ -902,7 +902,7 @@ my_plot.background_color(ghostwhite) // Whole image.
       { //! document ids for use in <g id = "PLOT_TITLE".../>
         for(int i = 0; i < detail::SVG_PLOT_DOC_CHILDREN; ++i)
         { // Order determines the painting order.
-          image_.g(i).id(detail::document_ids_[i]);
+          image_.gs(i).id(detail::document_ids_[i]);
         }
       } //  void set_ids()
 
@@ -1308,7 +1308,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         }
         if (plot_window_on_)
         { // Draw plot window rectangle with border and/or background.
-          image_.g(detail::PLOT_WINDOW_BACKGROUND).push_back(
+          image_.gs(detail::PLOT_WINDOW_BACKGROUND).push_back(
             new rect_element(plot_left_, plot_top_, (plot_right_ - plot_left_), plot_bottom_ - plot_top_));
         }
 #ifdef BOOST_SVG_WINDOW_DIAGNOSTICS
@@ -1345,24 +1345,24 @@ my_plot.background_color(ghostwhite) // Whole image.
                 }
               }
             }
-            image_.g(detail::PLOT_Y_AXIS).line(x, ytop, x, ybottom);
+            image_.gs(detail::PLOT_Y_AXIS).line(x, ytop, x, ybottom);
             // <g id="yAxis" stroke="rgb(0,0,0)"><line x1="70.5" y1="53" x2="70.5" y2="357"/>
             if (y_ticks_.ticks_on_window_or_on_axis_ < 0) //(y_axis_position_ == left)
             { // Draw vertical line holding the ticks on the left of plot window.
-              image_.g(detail::PLOT_Y_AXIS).line(plot_left_, plot_top_, plot_left_, plot_bottom_);
+              image_.gs(detail::PLOT_Y_AXIS).line(plot_left_, plot_top_, plot_left_, plot_bottom_);
             }
             else
             {// Draw vertical line holding the ticks on the right of plot window.
-              image_.g(detail::PLOT_Y_AXIS).line(plot_right_, plot_top_, plot_right_, plot_bottom_);
+              image_.gs(detail::PLOT_Y_AXIS).line(plot_right_, plot_top_, plot_right_, plot_bottom_);
             }
           }
           else if (y_axis_position_ == left)
           { // Draw on the left of plot window.
-            image_.g(detail::PLOT_Y_AXIS).line(plot_left_, plot_top_, plot_left_, plot_bottom_);
+            image_.gs(detail::PLOT_Y_AXIS).line(plot_left_, plot_top_, plot_left_, plot_bottom_);
           }
           else if (y_axis_position_ == right)
           {// Draw on the right of plot window.
-            image_.g(detail::PLOT_Y_AXIS).line(plot_left_, plot_top_, plot_right_, plot_bottom_);
+            image_.gs(detail::PLOT_Y_AXIS).line(plot_left_, plot_top_, plot_right_, plot_bottom_);
           }
           else
           { // ??? Warn that things have gone wrong?
@@ -1373,10 +1373,10 @@ my_plot.background_color(ghostwhite) // Whole image.
         }
 
         // Access the paths for the ticks & grids, ready for additions.
-        path_element& minor_tick_path = image_.g(detail::PLOT_Y_MINOR_TICKS).path();
-        path_element& major_tick_path = image_.g(detail::PLOT_Y_MAJOR_TICKS).path();
-        path_element& minor_grid_path = image_.g(detail::PLOT_Y_MINOR_GRID).path();
-        path_element& major_grid_path = image_.g(detail::PLOT_Y_MAJOR_GRID).path();
+        path_element& minor_tick_path = image_.gs(detail::PLOT_Y_MINOR_TICKS).path();
+        path_element& major_tick_path = image_.gs(detail::PLOT_Y_MAJOR_TICKS).path();
+        path_element& minor_grid_path = image_.gs(detail::PLOT_Y_MINOR_GRID).path();
+        path_element& major_grid_path = image_.gs(detail::PLOT_Y_MAJOR_GRID).path();
 
         // y_minor_jump is the interval between minor ticks.
         double y_minor_jump = y_ticks_.major_interval_ / ((double)(y_ticks_.num_minor_ticks_ + 1.) );
@@ -1441,7 +1441,7 @@ my_plot.background_color(ghostwhite) // Whole image.
       void draw_y_axis_label()
       { //! Draw a vertical Y-axis label, and optional y units.
         // Y-label color is set in constructor thus:
-        // image_.g(detail::PLOT_Y_LABEL).style().stroke_color(black);
+        // image_.gs(detail::PLOT_Y_LABEL).style().stroke_color(black);
         // and changed using y_label_color(color);
         // Similarly for font family and size.
 
@@ -1554,7 +1554,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         }
         // Glyph is at bottom left of western characters.
 
-        image_.g(detail::PLOT_Y_LABEL).push_back(new
+        image_.gs(detail::PLOT_Y_LABEL).push_back(new
           text_element(x, // distance from left side of image.
           y, // center on the plot window.
           label, // "Y-Axis" for example.
@@ -1822,7 +1822,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           { // External to plot window style left or right.
             // Always want all values including "0", if labeling external to plot window.
             // y_ticks_.ticks_on_window_or_on_axis_ == true != 0
-            image_.g(detail::PLOT_Y_TICKS_VALUES).text(
+            image_.gs(detail::PLOT_Y_TICKS_VALUES).text(
               x,
               y,
               label.str(),
@@ -1833,7 +1833,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           { // ! y_ticks_.y_ticks_on_plot_window_ == 0 'Internal' - value labels either side of vertical Y-axis.
             if ((value != 0) && y_axis_.axis_line_on_)
             { // Avoid a zero ON the Y-axis if it would be cut through by any horizontal X-axis line.
-              image_.g(detail::PLOT_Y_TICKS_VALUES).text(
+              image_.gs(detail::PLOT_Y_TICKS_VALUES).text(
                 x,
                 y,
                 label.str(), // "1.23"
@@ -1941,7 +1941,7 @@ my_plot.background_color(ghostwhite) // Whole image.
       //! Area fill with color if specified.
       void draw_straight_lines(const svg_2d_plot_series& series)
       {
-        g_element& g_ptr = image_.g(detail::PLOT_DATA_LINES).add_g_element();
+        g_element& g_ptr = image_.gs(detail::PLOT_DATA_LINES).add_g_element();
         g_ptr.clip_id(plot_window_clip_);
         g_ptr.style().stroke_color(series.line_style_.stroke_color_);
         g_ptr.style().fill_color(series.line_style_.area_fill_); // Now set in path below too.
@@ -2089,7 +2089,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         //! At present it is assumed that all data points lie within the plot window.
         //! If this is not true, then strange and unpredictable curves will be produced!
 
-        g_element& g_ptr = image_.g(detail::PLOT_DATA_LINES).add_g_element();
+        g_element& g_ptr = image_.gs(detail::PLOT_DATA_LINES).add_g_element();
         g_ptr.clip_id(plot_window_clip_);
         g_ptr.style().stroke_color(series.line_style_.stroke_color_);
         g_ptr.style().stroke_width(series.line_style_.width_);
@@ -2201,7 +2201,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         double y(0.);
         for(unsigned int i = 0; i < serieses_.size(); ++i)
         {
-          g_element& g_ptr = image_.g(detail::PLOT_DATA_POINTS).add_g_element();
+          g_element& g_ptr = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
 
           g_ptr.style()
             .fill_color(serieses_[i].point_style_.fill_color_)
@@ -2228,14 +2228,14 @@ my_plot.background_color(ghostwhite) // Whole image.
               plotted++;
               draw_plot_point(x, y, g_ptr, serieses_[i].point_style_, ux, uy); // Add the unc ux and uy to allow access to uncertainty.
               // TODO might refactor so that only pass ux, and uy.
-              g_element& g_ptr_vx = image_.g(detail::PLOT_X_POINT_VALUES).add_g_element();
+              g_element& g_ptr_vx = image_.gs(detail::PLOT_X_POINT_VALUES).add_g_element();
               if (x_values_on_)
               { // Show the value of the X data point too.
                 // void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, double value)
 
                 draw_plot_point_value(x, y, g_ptr_vx, x_values_style_, serieses_[i].point_style_, ux);
               }
-              g_element& g_ptr_vy = image_.g(detail::PLOT_Y_POINT_VALUES).add_g_element();
+              g_element& g_ptr_vy = image_.gs(detail::PLOT_Y_POINT_VALUES).add_g_element();
               if (y_values_on_)
               { // Show the value of the Y data point too.
                 draw_plot_point_value(x, y, g_ptr_vy, y_values_style_,serieses_[i].point_style_, uy);
@@ -2265,7 +2265,7 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         for(unsigned int i = 0; i < serieses_.size(); ++i)
         {
-          g_element& g_ptr = image_.g(detail::PLOT_LIMIT_POINTS);
+          g_element& g_ptr = image_.gs(detail::PLOT_LIMIT_POINTS);
           size_t limit_point_in_window_count = 0;
           size_t limit_point_edge_window_count = 0;
           size_t inf_count = 0;
@@ -2341,8 +2341,8 @@ my_plot.background_color(ghostwhite) // Whole image.
               // else is inside plot window, so draw a limit point marker.
               // draw_plot_point(x, y, g_ptr, plot_point_style(lightgray, whitesmoke, s, outside_window)); // default.
             }
-            serieses_[i].limit_point_style_.stroke_color_ = image_.g(detail::PLOT_LIMIT_POINTS).style().stroke_color();
-            serieses_[i].limit_point_style_.fill_color_ = image_.g(detail::PLOT_LIMIT_POINTS).style().fill_color();
+            serieses_[i].limit_point_style_.stroke_color_ = image_.gs(detail::PLOT_LIMIT_POINTS).style().stroke_color();
+            serieses_[i].limit_point_style_.fill_color_ = image_.gs(detail::PLOT_LIMIT_POINTS).style().fill_color();
             // This is a kludge.  limit_point_style_ should probably be common to all data series.
 
             if((x > plot_left_) && (x < plot_right_) && (y > plot_top_) && (y < plot_bottom_))
@@ -2366,7 +2366,7 @@ my_plot.background_color(ghostwhite) // Whole image.
 
       void draw_bars()
       { //! Draw normal bar chart for 'good' non-limit points.
-        g_element& g_ptr = image_.g(detail::PLOT_DATA_POINTS).add_g_element(); // Moved up out of loop.
+        g_element& g_ptr = image_.gs(detail::PLOT_DATA_POINTS).add_g_element(); // Moved up out of loop.
         double x(0.);
         double y(0.); // Cartesian coord y = 0.
         double x0(0.); // Y-axis line.
@@ -2458,7 +2458,7 @@ my_plot.background_color(ghostwhite) // Whole image.
          Using the y values for the bins implies changing the Y axes labeling and scaling too.
         */
 
-        g_element& g_ptr = image_.g(detail::PLOT_DATA_POINTS).add_g_element(); // Moved up out of loop.
+        g_element& g_ptr = image_.gs(detail::PLOT_DATA_POINTS).add_g_element(); // Moved up out of loop.
         for(unsigned int i = 0; i < serieses_.size(); ++i)
         { // for each data series.
           if (serieses_[i].histogram_style_.histogram_option_ == no_histogram)
@@ -2529,7 +2529,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         // SVG paint rules are that later 'painting' writes over previous painting, so the order of drawing is important.
 
         // Draw image background (perhaps with border and/or fill color).
-        image_.g(detail::PLOT_BACKGROUND).push_back(
+        image_.gs(detail::PLOT_BACKGROUND).push_back(
           new rect_element(0, 0, image_.x_size(),  image_.y_size()));
 
         calculate_plot_window();
@@ -2546,7 +2546,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           plot_window_clip_);
         // <clipPath id="plot_window"><rect x="35" y="38" width="309" height="322"/></clipPath>
 
-        image_.g(detail::PLOT_DATA_POINTS).clip_id(plot_window_clip_);
+        image_.gs(detail::PLOT_DATA_POINTS).clip_id(plot_window_clip_);
 
         // Draw axes, labels & legend, as required.
         draw_x_axis(); // Must do X-axis first.
@@ -2820,13 +2820,13 @@ my_plot.background_color(ghostwhite) // Whole image.
 
       svg_2d_plot& svg_2d_plot::y_axis_width(double width)
       { //! Set width of Y-axis line.
-        image_.g(detail::PLOT_Y_AXIS).style().stroke_width(width);
+        image_.gs(detail::PLOT_Y_AXIS).style().stroke_width(width);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       double svg_2d_plot::y_axis_width()
       {//! \return Width of Y-axis line.
-        return image_.g(detail::PLOT_Y_AXIS).style().stroke_width();
+        return image_.gs(detail::PLOT_Y_AXIS).style().stroke_width();
       }
 
       svg_2d_plot& svg_2d_plot::y_value_precision(int digits)
@@ -2879,26 +2879,26 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
 
       svg_2d_plot& svg_2d_plot::y_axis_color(const svg_color& col)
       { //! Set Y-axis linecolor. (set only stroke color).
-        image_.g(detail::PLOT_Y_AXIS).style().stroke_color(col);
+        image_.gs(detail::PLOT_Y_AXIS).style().stroke_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       svg_color svg_2d_plot::y_axis_color()
       { //! \return Ty_axis stroke color.
-        return image_.g(detail::PLOT_Y_AXIS).style().stroke_color();
+        return image_.gs(detail::PLOT_Y_AXIS).style().stroke_color();
       }
 
       svg_2d_plot& svg_2d_plot::y_axis_label_color(const svg_color& col)
       { //! Set y_axis stroke color.  (svg_color(0, 0, 0)), black is default color.)
         //! \note Setting the stroke color may produce fuzzy characters :-(
-        image_.g(detail::PLOT_Y_LABEL).style().fill_color(col);
+        image_.gs(detail::PLOT_Y_LABEL).style().fill_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       svg_color svg_2d_plot::y_axis_label_color()
       { //! \return Y-axis label stroke color.
         //  y_label_info_.style().stroke_color();
-        return image_.g(detail::PLOT_Y_LABEL).style().fill_color();
+        return image_.gs(detail::PLOT_Y_LABEL).style().fill_color();
       }
 
       svg_2d_plot& svg_2d_plot::y_label_units_on(bool b)
@@ -2915,7 +2915,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
 
       svg_2d_plot& svg_2d_plot::y_axis_value_color(const svg_color& col)
       { //! Set color of Y-axis @b value labels.  (svg_color(0, 0, 0)), black is default color.)
-        image_.g(detail::PLOT_Y_TICKS_VALUES).style().stroke_color(col);
+        image_.gs(detail::PLOT_Y_TICKS_VALUES).style().stroke_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
@@ -2923,63 +2923,63 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       { //! \return Color of Y-axis tick value labels.
         //! (svg_color(0, 0, 0)), black is default color.)
         //! \note Only return the stroke color (not the fill_color).
-        return image_.g(detail::PLOT_Y_TICKS_VALUES).style().stroke_color();
+        return image_.gs(detail::PLOT_Y_TICKS_VALUES).style().stroke_color();
       }
 
       svg_2d_plot& svg_2d_plot::y_label_width(double width)
       { //! Set width of Y-axis value labels.
-        image_.g(detail::PLOT_Y_LABEL).style().stroke_width(width);
+        image_.gs(detail::PLOT_Y_LABEL).style().stroke_width(width);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       double svg_2d_plot::y_label_width()
       { //! \return Width of Y-axis value labels.
-        return image_.g(detail::PLOT_Y_LABEL).style().stroke_width();
+        return image_.gs(detail::PLOT_Y_LABEL).style().stroke_width();
       }
 
       svg_2d_plot& svg_2d_plot::y_major_grid_color(const svg_color& col)
       { //! Set color of Y major grid lines. (svg_color(200, 220, 255)), greyblue is default color.)
         //! Example: my_plot.y_major_grid_color(lightblue)
-        image_.g(detail::PLOT_Y_MAJOR_GRID).style().stroke_color(col);
+        image_.gs(detail::PLOT_Y_MAJOR_GRID).style().stroke_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       const svg_color svg_2d_plot::y_major_grid_color()
       { //! \return Stroke Color of Y major grid lines. (svg_color(200, 220, 255)), greyblue is default color.)
-        return image_.g(detail::PLOT_Y_MAJOR_GRID).style().stroke_color();
+        return image_.gs(detail::PLOT_Y_MAJOR_GRID).style().stroke_color();
       }
 
       svg_2d_plot& svg_2d_plot::y_minor_grid_color(const svg_color& col)
       { //! Set stroke color of Y minor grid lines. (svg_color(200, 220, 255)), greyblue is default color.)
-        image_.g(detail::PLOT_Y_MINOR_GRID).style().stroke_color(col);
+        image_.gs(detail::PLOT_Y_MINOR_GRID).style().stroke_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       const svg_color svg_2d_plot::y_minor_grid_color()
       { //! \return Color of Y minor grid lines.(svg_color(200, 220, 255)), greyblue is default color.)
-        return image_.g(detail::PLOT_Y_MINOR_GRID).style().stroke_color();
+        return image_.gs(detail::PLOT_Y_MINOR_GRID).style().stroke_color();
       }
 
       svg_2d_plot& svg_2d_plot::y_major_tick_color(const svg_color& col)
       { //! Set color of Y major tick lines. (svg_color(0, 0, 0)), black is default color.)
-        image_.g(detail::PLOT_Y_MAJOR_TICKS).style().stroke_color(col);
+        image_.gs(detail::PLOT_Y_MAJOR_TICKS).style().stroke_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       const svg_color svg_2d_plot::y_major_tick_color()
       { //! \return Color of Y major tick lines. (svg_color(0, 0, 0)), black is default color.)
-        return image_.g(detail::PLOT_Y_MAJOR_TICKS).style().stroke_color();
+        return image_.gs(detail::PLOT_Y_MAJOR_TICKS).style().stroke_color();
       }
 
       svg_2d_plot& svg_2d_plot::y_minor_tick_color(const svg_color& col)
       {  //! Set color of Y minor tick lines. (svg_color(0, 0, 0)), black is default color.)
-        image_.g(detail::PLOT_Y_MINOR_TICKS).style().stroke_color(col);
+        image_.gs(detail::PLOT_Y_MINOR_TICKS).style().stroke_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       const svg_color svg_2d_plot::y_minor_tick_color()
       { //! \return Color of Y minor tick lines. (svg_color(0, 0, 0)), black is default color.)
-        return image_.g(detail::PLOT_Y_MINOR_TICKS).style().stroke_color();
+        return image_.gs(detail::PLOT_Y_MINOR_TICKS).style().stroke_color();
       }
 
       const std::string svg_2d_plot::y_axis_position()
@@ -3316,7 +3316,7 @@ my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
       svg_2d_plot& svg_2d_plot::y_major_tick_width(double width)
       { //! Set width of major ticks on Y-axis.
         y_ticks_.major_tick_width_ = width;
-        image_.g(detail::PLOT_Y_MAJOR_TICKS).style().stroke_width(width);
+        image_.gs(detail::PLOT_Y_MAJOR_TICKS).style().stroke_width(width);
         return *this; //! \return reference to svg_2d_plot to make chainable.
       }
 
@@ -3328,7 +3328,7 @@ my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
       svg_2d_plot& svg_2d_plot::y_minor_tick_width(double width)
       { //! Set width of minor ticks on Y-axis.
         y_ticks_.minor_tick_width_ = width;
-        image_.g(detail::PLOT_Y_MINOR_TICKS).style().stroke_width(width);
+        image_.gs(detail::PLOT_Y_MINOR_TICKS).style().stroke_width(width);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
@@ -3424,7 +3424,7 @@ my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
       svg_2d_plot& svg_2d_plot::y_minor_grid_width(double width)
       { //! Set width of minor grid lines.
         y_ticks_.minor_grid_width_ = width;
-        image_.g(detail::PLOT_Y_MINOR_GRID).style().stroke_width(width);
+        image_.gs(detail::PLOT_Y_MINOR_GRID).style().stroke_width(width);
         return *this; //! \return reference to svg_2d_plot to make chainable.
       }
 
@@ -3436,7 +3436,7 @@ my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
       svg_2d_plot& svg_2d_plot::y_major_grid_width(double width)
       { //! Set width of major grid lines.
         y_ticks_.major_grid_width_ = width;
-        image_.g(detail::PLOT_Y_MAJOR_GRID).style().stroke_width(width);
+        image_.gs(detail::PLOT_Y_MAJOR_GRID).style().stroke_width(width);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
@@ -3506,16 +3506,16 @@ my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
         // but just setting fill if simplest,
         // but does not allow separate inside & outside colors.
         y_ticks_.values_color_ = col;
-        image_.g(detail::PLOT_Y_TICKS_VALUES).style().fill_color(col);
+        image_.gs(detail::PLOT_Y_TICKS_VALUES).style().fill_color(col);
         // Setting stroke seems to produce fuzzy letters.
-        //svg_2d_plot().image_.g(PLOT_Y_POINT_VALUES).style().stroke_color(col);
+        //svg_2d_plot().image_.gs(PLOT_Y_POINT_VALUES).style().stroke_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       svg_color svg_2d_plot::y_ticks_values_color()
       { //! \return color for Y-axis ticks values.
         // Function could greturn either fill and stroke,
-        // image_.g(detail::PLOT_Y_TICKS_VALUES).style().fill_color();
+        // image_.gs(detail::PLOT_Y_TICKS_VALUES).style().fill_color();
         return y_ticks_.values_color_;
       }
 
@@ -3613,16 +3613,16 @@ my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
         // Function could set both fill (middle) and stroke (outside),
         // but just setting fill if simplest,
         // but does not allow separate inside & outside colors.
-        image_.g(detail::PLOT_Y_POINT_VALUES).style().fill_color(col);
-        //svg_2d_plot().image_.g(PLOT_Y_POINT_VALUES).style().stroke_color(col);
+        image_.gs(detail::PLOT_Y_POINT_VALUES).style().fill_color(col);
+        //svg_2d_plot().image_.gs(PLOT_Y_POINT_VALUES).style().stroke_color(col);
         return *this; //! \return reference to svg_2d_plot to make chainable.
       }
 
       svg_color svg_2d_plot::y_values_color()
       { //! \return Color for Y-axis values.
         // Function could get either fill and stroke color,
-        // return svg_2d_plot().image_.g(PLOT_Y_POINT_VALUES).style().stroke_color();
-        return image_.g(detail::PLOT_Y_POINT_VALUES).style().fill_color();
+        // return svg_2d_plot().image_.gs(PLOT_Y_POINT_VALUES).style().stroke_color();
+        return image_.gs(detail::PLOT_Y_POINT_VALUES).style().fill_color();
       }
 
       svg_2d_plot& svg_2d_plot::y_values_rotation(rotate_style rotate)
