@@ -61,10 +61,10 @@ int main()
      //ts = t.tspan("text_2").x(100.).dy(40.);
      //ts = t.tspan("text_3").x(100.).dy(60.);
 
-     for (int i = 1; i <= 10; i++)
+     for (int i = 1; i <= 8; i++)
      {
        std::string no = boost::lexical_cast<std::string>(i);
-       tspan_element ts = t.tspan("text_" + no).x(100.).dy(20.);
+       tspan_element ts = t.tspan("text_" + no, not_a_style).x(100.).dy(20.);
      }
 
 

@@ -643,11 +643,12 @@ public:
   text_style style_; //!< font variants.
 
   tspan_element(const std::string& text, //!< Text string to display.
-    const text_style& style = no_style) //!< text style (font).
+    const text_style& style = not_a_style) //!< Default text style (font).
   :
     use_x_(false), use_y_(false), 
     text_parent(text), style_(style),
-    x_(0), y_(0), dx_(0), dy_(0), rotate_(0),
+    x_(0), y_(0), dx_(0), dy_(0), // X & Y coordinates, relative and absolute.
+    rotate_(0),
     text_length_(0) // If text_length_ > 0 then compress or expand to this specified length.
   { //! Construct tspan element (with all defaults except text string).
   }
@@ -883,7 +884,7 @@ public:
   }
   
   void write(std::ostream& os)
-  { //! Output SVG XML for a tspan_element
+  { //! Output SVG XML for a tspan_element.
     os << "\t" "<tspan";
     write_attributes(os); // id & clip_path
     style_info_.write(os); // fill, stroke, width...
@@ -916,35 +917,38 @@ public:
     // https://www.w3.org/TR/SVG11/text.html#FontPropertiesUsedBySVG
     // 10.10 Font selection properties
 
-   if (style_.font_size() != 0)
-    {
-      os << " font-size=\"" << style_.font_size() << "\"";
-    }
-    if (style_.font_family() != "")
-    { // Examples: Arial, Times New Roman.
-      os << " font-family=\"" << style_.font_family() << "\"";
-    }
-    if (style_.font_style().size() != 0)
-    { // Examples: 	normal | italic | oblique | inherit
-      os << " font-style=\"" << style_.font_style() << "\"";
-    }
-    if (style_.font_weight().size() != 0)
-    { // Examples: normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 |
-      os << " font-weight=\"" << style_.font_weight() << "\"";
-    }
-    if (style_.font_stretch().size() != 0)
-    { // Examples: normal | wider | narrower | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded 
-      os << " font-stretch=\"" << style_.font_stretch() << "\"";
-    }
-    // 10.12 Text decoration https://www.w3.org/TR/SVG11/text.html#TextDecorationProperties  
-    if (style_.font_decoration().size() != 0)
-    { 
-      // none | [ underline || overline || line-through || blink ] | inherit
-      os << " text-decoration=\"" << style_.font_decoration() << "\"";
-    }
-    if(text_length_ > 0)
-    { // Use estimated text length to expand or compress to the this SVG length.
-      os << " textLength=\"" << text_length_ << "\"";
+    if (style_ != not_a_style)
+    { // Want to output (repeat) style info.
+      if (style_.font_size() != 0)
+      {
+        os << " font-size=\"" << style_.font_size() << "\"";
+      }
+      if (style_.font_family() != "")
+      { // Examples: Arial, Times New Roman.
+        os << " font-family=\"" << style_.font_family() << "\"";
+      }
+      if (style_.font_style().size() != 0)
+      { // Examples: 	normal | italic | oblique | inherit
+        os << " font-style=\"" << style_.font_style() << "\"";
+      }
+      if (style_.font_weight().size() != 0)
+      { // Examples: normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 |
+        os << " font-weight=\"" << style_.font_weight() << "\"";
+      }
+      if (style_.font_stretch().size() != 0)
+      { // Examples: normal | wider | narrower | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded 
+        os << " font-stretch=\"" << style_.font_stretch() << "\"";
+      }
+      // 10.12 Text decoration https://www.w3.org/TR/SVG11/text.html#TextDecorationProperties  
+      if (style_.font_decoration().size() != 0)
+      {
+        // none | [ underline || overline || line-through || blink ] | inherit
+        os << " text-decoration=\"" << style_.font_decoration() << "\"";
+      }
+      if (text_length_ > 0)
+      { // Use estimated text length to expand or compress to the this SVG length.
+        os << " textLength=\"" << text_length_ << "\"";
+      }
     }
     os << ">" << text_ << "</tspan>" "\n";  // The actual text string.
   } //   void write(std::ostream& os)
@@ -1104,12 +1108,12 @@ public:
   }
 
   void text(const std::string& t)
-  { //! push_back tspan text string to write.
+  { //! push_back tspan text-string to write.
     data_.push_back(new text_element_text(t));
   }
 
   tspan_element& tspan(const std::string& t)
-  { //! Add text span element (default text_style).
+  { //! Add text span element (current style text_style).
     //! data_ in member of text_parent.
     data_.push_back(new tspan_element(t, style_));
     return *(static_cast<tspan_element*>(&data_[data_.size()-1]));
@@ -1180,6 +1184,7 @@ public:
   void write(std::ostream& os)
   {
     os << "\t<text x=\"" << x_ << "\" y=\"" << y_ << "\"";
+    // ??? Test 
     std::string anchor;
     switch(align_)
     {
@@ -1209,34 +1214,38 @@ public:
         << x_ << " "
         << y_ << ")\"";
     }
-    if (style_.font_size() != 0)
-    {
-      os << " font-size=\"" << style_.font_size() << "\"";
-    }
-    if (style_.font_family() != "")
-    { // Example: Arial, Verdana, Times New Roman ...
-      os << " font-family=\"" << style_.font_family() << "\"";
-    }
-    if (style_.font_style().size() != 0)
-    { // Example: italic.
-      os << " font-style=\"" << style_.font_style() << "\"";
-    }
-    if (style_.font_weight().size() != 0)
-    { // Example: bold.
-    os << " font-weight=\"" << style_.font_weight() << "\"";
-    }
-    if (style_.font_stretch().size() != 0)
-    {
-    os << " font-stretch=\"" << style_.font_stretch() << "\"";
-    }
-    if (style_.font_decoration().size() != 0)
-    {
-    os << " text-decoration=\"" << style_.font_decoration() << "\"";
-    }
-    if (style_.text_length() > 0)
-    {
-      os << " textLength=\"" << style_.text_length() << "\"";
-    }
+    //if (style_.font_size() > 0 )
+    //{ // 
+      if (style_.font_size() > 0)
+      { // Example output: font-size="10" 
+        os << " font-size=\"" << style_.font_size() << "\"";
+      }
+      if (style_.font_family() != "")
+      { // Example: Arial, Verdana, Times New Roman ...
+        // Example output: font-family="serif"
+        os << " font-family=\"" << style_.font_family() << "\"";
+      }
+      if (style_.font_style().size() != 0)
+      { // Example: italic.
+        os << " font-style=\"" << style_.font_style() << "\"";
+      }
+      if (style_.font_weight().size() != 0)
+      { // Example: bold.
+      os << " font-weight=\"" << style_.font_weight() << "\"";
+      }
+      if (style_.font_stretch().size() != 0)
+      {
+      os << " font-stretch=\"" << style_.font_stretch() << "\"";
+      }
+      if (style_.font_decoration().size() != 0)
+      {
+      os << " text-decoration=\"" << style_.font_decoration() << "\"";
+      }
+      if (style_.text_length() > 0)
+      {
+        os << " textLength=\"" << style_.text_length() << "\"";
+      }
+ //   }
     os << ">" ;
     generate_text(os); 
     os << "\t" "</text>" "\n";
