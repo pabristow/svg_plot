@@ -1013,13 +1013,13 @@ class text_element : public svg_element
 public:
   double x_; //!< Left edge of character.
   double y_; //!< Bottom of Roman capital character.
-  ptr_vector<text_parent> data_; //!< Stores all of the containing data.
+  ptr_vector<text_parent> data_; //!< Stores all of the containing text string data.
   text_style style_; //!< font variants.
   align_style align_; //!< Alignment: left_align, right_align, center_align.
   rotate_style rotate_; //!< Rotation: horizontal, upward, downward, upsidedown.
 
   void generate_text(std::ostream& os)
-  {
+  { // Output SVG 
     for(ptr_vector<text_parent>::iterator i = data_.begin(); i != data_.end(); ++i)
     {
       (*i).write(os);
@@ -2177,8 +2177,8 @@ public:
           children[i].write(os);  // Using each element's version of write function.
           // Using tab to indent also makes easy to read.
         }
-        os << "</g>"  ; // Assumes newline after previous element like <rect ... />
-       // os << "\n</g>"  // Assumes NO newline after previous element like <rect ... />
+        os << "</g>" "\n"  ; // 
+
       }
     } // void write(std::ostream& rhs)
 

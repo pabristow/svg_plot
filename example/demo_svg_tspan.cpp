@@ -39,10 +39,24 @@ int main()
     g_element& g0 = doc.gs(0); // so index of g_elements is zero.
     BOOST_ASSERT_MSG((g == g0), "first added g_element must be [0]!");
     std::cout << "my_svg.document_size() = number of g_elements = " << doc.document_size() << std::endl; // == 1
-
-    doc.gs(0).push_back(new rect_element(0, 0, doc.x_size(), doc.y_size())); // border to image.
+    
     g0.id("group element 0"); // Add an ID to this group.
-    std::cout << "g0.id() " << g0.id() << std::endl; // echo it.
+    std::cout << "g0.id() " << g0.id() << std::endl; // and echo ID assigned.
+    
+ //   doc.gs(0).push_back(new rect_element(0, 0, doc.x_size(), doc.y_size())); // border to image.
+    g0.push_back(new rect_element(0, 0, doc.x_size(), doc.y_size()));
+
+    // Push causes output of a group and style info
+    // <g id="group element 0" stroke="rgb(255,255,0)" fill="rgb(240,255,255)" stroke-width="5">
+    //   <rect x="0" y="0" width="400" height="400" />  // Border in yellow.
+    // </ g>
+
+    // Not using push_back outputs just the rect coordinates and size.
+    rect_element& r = doc.rect(10, 20, 30, 40); // 	<rect x="10" y="20" width="30" height="40"/>  is black - default color
+    g0.rect(100, 200, 300, 400); // is yellow
+
+
+    // Set some SVG style color and width info.
     g0.style().stroke_on(true); // stroke on true
     g0.style().stroke_color(yellow); // 
     g0.style().stroke_width(5);
@@ -66,6 +80,8 @@ int main()
        std::string no = boost::lexical_cast<std::string>(i);
        tspan_element ts = t.tspan("text_" + no, not_a_style).x(100.).dy(20.);
      }
+
+     g0.text(300, 300, "Text g0", no_style); // Uses g0 style - yellow and wide so illegible!
 
 
 
