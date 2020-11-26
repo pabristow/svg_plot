@@ -18,32 +18,41 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="0" y="0" width="500" height="350"/>
 </g>
+
 <g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="48.5" y="39.5" width="426" height="274"/>
 </g>
+
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 	<path d="M50.5,176 L472,176 
 M50.5,176 L472,176 
 " fill="none"/>
 </g>
+
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="261" y1="39.5" x2="261" y2="327"/>
 	<line x1="48.5" y1="39.5" x2="48.5" y2="313"/>
 </g>
+
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="43.5" y1="176" x2="474" y2="176"/>
 	<line x1="43.5" y1="313" x2="474" y2="313"/>
 </g>
+
 <g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M46.5,176 L48.5,176 
 " fill="none"/>
 </g>
+
 <g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M271,313 L271,320 
 M282,313 L282,320 
@@ -79,11 +88,13 @@ M68.8,313 L68.8,320
 M48.5,313 L48.5,320 
 " fill="none"/>
 </g>
+
 <g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M43.5,176 L48.5,176 
 M43.5,176 L48.5,176 
 " fill="none"/>
 </g>
+
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M261,313 L261,327 
 M302,313 L302,327 
@@ -99,6 +110,7 @@ M99.2,313 L99.2,327
 M58.6,313 L58.6,327 
 " fill="none"/>
 </g>
+
 <g id="xTicksValues">
 	<text x="261" y="305" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0	</text>
 	<text x="302" y="305" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2	</text>
@@ -113,16 +125,20 @@ M58.6,313 L58.6,327
 	<text x="99.2" y="305" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-8	</text>
 	<text x="58.6" y="305" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-10	</text>
 </g>
+
 <g id="yTicksValues">
 	<text x="54.5" y="179" font-size="12" font-family="Lucida Sans Unicode">0	</text>
 	<text x="54.5" y="179" font-size="12" font-family="Lucida Sans Unicode">0	</text>
 </g>
+
 <g id="yLabel">
 	<text x="29.7" y="176" text-anchor="middle" transform="rotate(-90 29.7 176)" font-size="14" font-family="Lucida Sans Unicode">F(x)	</text>
 </g>
+
 <g id="xLabel">
 	<text x="261" y="344" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">X Axis Units	</text>
 </g>
+
 <g id="plotPoints" clip-path="url(#plot_window)">
 
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,255)">
@@ -164,14 +180,20 @@ M58.6,313 L58.6,327
 	<text x="444" y="164" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 	<text x="454" y="165" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 	<text x="464" y="165" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-</g></g>
+</g>
+</g>
+
 <g id="limitPoints" stroke="rgb(119,136,153)" fill="rgb(250,235,215)">
 	<polygon points=" 256,29.5 266,29.5 261,39.5"/>
 </g>
+
 <g id="title">
 	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode" font-weight="normal">Plot of 1 / x	</text>
 </g>
+
 <g id="plotXValues">
 </g>
+
 <g id="plotYValues">
-</g></svg>
+</g>
+</svg>

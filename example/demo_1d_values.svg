@@ -17,17 +17,22 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="0" y="0" width="500" height="350"/>
 </g>
+
 <g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="21" y="42.5" width="458" height="279"/>
 </g>
+
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="174" y1="42.5" x2="174" y2="322"/>
 	<line x1="21" y1="184" x2="479" y2="184"/>
 </g>
+
 <g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M186,184 L186,186 
 M198,184 L198,186 
@@ -61,6 +66,7 @@ M39.3,184 L39.3,186
 M27.1,184 L27.1,186 
 " fill="none"/>
 </g>
+
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M174,184 L174,190 
 M235,184 L235,190 
@@ -73,6 +79,7 @@ M113,184 L113,190
 M51.5,184 L51.5,190 
 " fill="none"/>
 </g>
+
 <g id="xTicksValues">
 	<text x="235" y="202" text-anchor="middle" font-size="10" font-family="Verdana">2	</text>
 	<text x="296" y="202" text-anchor="middle" font-size="10" font-family="Verdana">4	</text>
@@ -82,9 +89,11 @@ M51.5,184 L51.5,190
 	<text x="113" y="202" text-anchor="middle" font-size="10" font-family="Verdana">-2	</text>
 	<text x="51.5" y="202" text-anchor="middle" font-size="10" font-family="Verdana">-4	</text>
 </g>
+
 <g id="xLabel">
 	<text x="250" y="338" text-anchor="middle" font-size="10" font-family="Verdana">length (m)	</text>
 </g>
+
 <g id="plotPoints">
 
 <g stroke="rgb(0,0,0)">
@@ -94,33 +103,43 @@ M51.5,184 L51.5,190
 	<text x="174" y="181" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 	<text x="339" y="181" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 	<text x="374" y="181" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-</g></g>
+</g>
+</g>
+
 <g id="title">
 	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">Default 1D Values Demo	</text>
 </g>
+
 <g id="plotXValues" fill="rgb(255,0,0)">
 
 <g>
 	<text x="129" y="176" transform="rotate(-60 129 176)" font-size="14" font-family="Times New Roman">[ x = -1.60	<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
 	</text>
 </g>
+
 <g>
 	<text x="239" y="176" transform="rotate(-60 239 176)" font-size="14" font-family="Times New Roman">[ x = +2.00	<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
 	</text>
 </g>
+
 <g>
 	<text x="308" y="176" transform="rotate(-60 308 176)" font-size="14" font-family="Times New Roman">[ x = +4.26	<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
 	</text>
 </g>
+
 <g>
 	<text x="178" y="176" transform="rotate(-60 178 176)" font-size="14" font-family="Times New Roman">[ x = +3.34e-3	<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
 	</text>
 </g>
+
 <g>
 	<text x="343" y="176" transform="rotate(-60 343 176)" font-size="14" font-family="Times New Roman">[ x = +5.40	<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
 	</text>
 </g>
+
 <g>
 	<text x="378" y="176" transform="rotate(-60 378 176)" font-size="14" font-family="Times New Roman">[ x = +6.56	<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
 	</text>
-</g></g></svg>
+</g>
+</g>
+</svg>

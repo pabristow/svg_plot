@@ -18,9 +18,11 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(248,248,255)" stroke-width="2">
 	<rect x="0" y="0" width="700" height="500"/>
 </g>
+
 <g id="plotBackground" stroke="rgb(0,128,0)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="53.5" y="43" width="495" height="424"/>
 </g>
+
 <g id="yMinorGrid" stroke="rgb(240,240,255)" stroke-width="1">
 	<path d="M54.5,58.7 L547,58.7 
 M54.5,90.1 L547,90.1 
@@ -40,6 +42,7 @@ M54.5,467 L547,467
 M54.5,467 L547,467 
 " fill="none"/>
 </g>
+
 <g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="2">
 	<path d="M54.5,90.1 L547,90.1 
 M54.5,184 L547,184 
@@ -48,6 +51,7 @@ M54.5,373 L547,373
 M54.5,467 L547,467 
 " fill="none"/>
 </g>
+
 <g id="xMinorGrid" stroke="rgb(240,240,255)" stroke-width="0.5">
 	<path d="M128,44 L128,466 
 M158,44 L158,466 
@@ -62,6 +66,7 @@ M518,44 L518,466
 M68.5,44 L68.5,466 
 " fill="none"/>
 </g>
+
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 	<path d="M98.5,43 L98.5,467 
 M188,43 L188,467 
@@ -72,13 +77,16 @@ M548,43 L548,467
 M98.5,43 L98.5,467 
 " fill="none"/>
 </g>
+
 <g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="98.5" y1="43" x2="98.5" y2="467"/>
 	<line x1="548" y1="43" x2="548" y2="467"/>
 </g>
+
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="53.5" y1="43" x2="548" y2="43"/>
 </g>
+
 <g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M93.5,58.7 L98.5,58.7 
 M93.5,90.1 L98.5,90.1 
@@ -98,6 +106,7 @@ M93.5,467 L98.5,467
 M93.5,467 L98.5,467 
 " fill="none"/>
 </g>
+
 <g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M128,43 L128,48 
 M158,43 L158,48 
@@ -112,6 +121,7 @@ M518,43 L518,48
 M68.5,43 L68.5,48 
 " fill="none"/>
 </g>
+
 <g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M88.5,90.1 L98.5,90.1 
 M88.5,184 L98.5,184 
@@ -120,6 +130,7 @@ M88.5,373 L98.5,373
 M88.5,467 L98.5,467 
 " fill="none"/>
 </g>
+
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M98.5,43 L98.5,53 
 M188,43 L188,53 
@@ -130,6 +141,7 @@ M548,43 L548,53
 M98.5,43 L98.5,53 
 " fill="none"/>
 </g>
+
 <g id="xTicksValues">
 	<text x="98.5" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0.00	</text>
 	<text x="188" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2.00	</text>
@@ -139,6 +151,7 @@ M98.5,43 L98.5,53
 	<text x="548" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">1.00e1	</text>
 	<text x="98.5" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0.00	</text>
 </g>
+
 <g id="yTicksValues">
 	<text x="82.5" y="92.5" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-2.0	</text>
 	<text x="82.5" y="187" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-4.0	</text>
@@ -146,22 +159,29 @@ M98.5,43 L98.5,53
 	<text x="82.5" y="375" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-8.0	</text>
 	<text x="82.5" y="469" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-10.0	</text>
 </g>
+
 <g id="yLabel">
 	<text x="19" y="255" text-anchor="middle" transform="rotate(-90 19 255)" font-size="14" font-family="Lucida Sans Unicode">Y-axis	</text>
 </g>
+
 <g id="xLabel">
 	<text x="301" y="487" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">X-axis	</text>
 </g>
+
 <g id="plotLines" stroke-width="2">
 
 <g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M-351,-4.62e+03 S-315,-3.9e+03 -306,-3.73e+03 S-270,-3.08e+03 -261,-2.93e+03 S-225,-2.35e+03 -216,-2.22e+03 S-180,-1.72e+03 -171,-1.61e+03 S-135,-1.18e+03 -126,-1.09e+03 S-90.4,-739 -81.5,-664 S-45.5,-390 -36.5,-334 S-0.48,-136 8.52,-98.3 S44.5,24.2 53.5,43 S89.5,90.1 98.5,90.1 S134,61.8 143,43 S179,-60.6 188,-98.3 S224,-277 233,-334 S269,-588 278,-664 S314,-993 323,-1.09e+03 S359,-1.49e+03 368,-1.61e+03 S404,-2.09e+03 413,-2.22e+03 S449,-2.77e+03 458,-2.93e+03 S494,-3.56e+03 503,-3.73e+03 S548,-4.71e+03 548,-4.62e+03 " fill="none"/>
-</g></g>
+</g>
+</g>
+
 <g id="plotPoints" clip-path="url(#plot_window)">
 
 <g stroke="rgb(0,0,0)" fill="rgb(255,165,0)">
 	<text x="98.5" y="91.6" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-</g></g>
+</g>
+</g>
+
 <g id="limitPoints" stroke="rgb(119,136,153)" fill="rgb(250,235,215)">
 	<polygon points=" 48.5,33 58.5,33 53.5,43"/>
 	<polygon points=" 48.5,33 58.5,33 53.5,43"/>
@@ -174,35 +194,47 @@ M98.5,43 L98.5,53
 	<polygon points=" 48.5,33 58.5,33 53.5,43"/>
 	<polygon points=" 48.5,33 58.5,33 53.5,43"/>
 </g>
+
 <g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,224)" stroke-width="1">
 	<rect x="554" y="43" width="132" height="90.7"/>
 </g>
+
 <g id="legendPoints">
 
 <g stroke="rgb(0,0,0)" fill="rgb(255,0,0)">
 	<text x="572" y="93.6" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
+
 <g stroke="rgb(0,0,0)" fill="rgb(255,165,0)">
 	<text x="572" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
+
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,0)">
 	<text x="572" y="122" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-</g></g>
+</g>
+</g>
+
 <g id="legendLines">
 
 <g stroke="rgb(0,0,0)" stroke-width="2">
 	<line x1="581" y1="105" x2="587" y2="105"/>
-</g></g>
+</g>
+</g>
+
 <g id="legendText">
 	<text x="620" y="70.7" text-anchor="middle" font-size="16" font-family="Lucida Sans Unicode" font-weight="normal" textLength="104">Unicode &#x3A9;&#x3A6;	</text>
 	<text x="581" y="91.3" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="43.2">Sqrt(x)	</text>
 	<text x="597" y="105" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="48">-2 + x^2	</text>
 	<text x="581" y="119" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="42">-1 + 2x	</text>
 </g>
+
 <g id="title" fill="rgb(255,0,0)">
 	<text x="350" y="30" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode" font-weight="normal">Plot of Mathematical Functions YN	</text>
 </g>
+
 <g id="plotXValues">
 </g>
+
 <g id="plotYValues">
-</g></svg>
+</g>
+</svg>

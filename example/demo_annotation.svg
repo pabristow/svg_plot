@@ -18,25 +18,33 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="0" y="0" width="400" height="300"/>
 </g>
+
 <g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="52.6" y="8" width="321" height="261"/>
 </g>
+
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="213" y1="8" x2="213" y2="274"/>
 	<line x1="52.6" y1="8" x2="52.6" y2="269"/>
 </g>
+
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="47.6" y1="138" x2="374" y2="138"/>
 	<line x1="47.6" y1="269" x2="374" y2="269"/>
 </g>
+
 <g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M50.6,133 L52.6,133 
 M50.6,128 L52.6,128 
@@ -87,6 +95,7 @@ M50.6,264 L52.6,264
 M50.6,269 L52.6,269 
 " fill="none"/>
 </g>
+
 <g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M220,269 L220,271 
 M226,269 L226,271 
@@ -130,6 +139,7 @@ M65.5,269 L65.5,271
 M59,269 L59,271 
 " fill="none"/>
 </g>
+
 <g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M47.6,138 L52.6,138 
 M47.6,112 L52.6,112 
@@ -145,6 +155,7 @@ M47.6,243 L52.6,243
 M47.6,269 L52.6,269 
 " fill="none"/>
 </g>
+
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M213,269 L213,274 
 M245,269 L245,274 
@@ -160,6 +171,7 @@ M84.7,269 L84.7,274
 M52.6,269 L52.6,274 
 " fill="none"/>
 </g>
+
 <g id="xTicksValues">
 	<text x="213" y="290" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0	</text>
 	<text x="245" y="290" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2	</text>
@@ -174,6 +186,7 @@ M52.6,269 L52.6,274
 	<text x="84.7" y="290" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-8	</text>
 	<text x="52.6" y="290" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-10	</text>
 </g>
+
 <g id="yTicksValues">
 	<text x="41.6" y="141" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0	</text>
 	<text x="41.6" y="115" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">2	</text>
@@ -188,44 +201,59 @@ M52.6,269 L52.6,274
 	<text x="41.6" y="245" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-8	</text>
 	<text x="41.6" y="271" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-10	</text>
 </g>
+
 <g id="yLabel">
 	<text x="14.9" y="138" text-anchor="middle" transform="rotate(-90 14.9 138)" font-size="14" font-family="Lucida Sans Unicode">	</text>
 </g>
+
 <g id="xLabel">
 	<text x="213" y="302" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">	</text>
 </g>
+
 <g id="plotPoints" clip-path="url(#plot_window)">
 
 <g stroke="rgb(0,0,0)" fill="rgb(255,0,0)">
 	<text x="217" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 	<text x="231" y="101" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 	<text x="282" y="102" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-</g></g>
+</g>
+</g>
+
 <g id="title">
 	<text x="200" y="27" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode" font-weight="normal">	</text>
 </g>
+
 <g id="plotXValues">
 </g>
+
 <g id="plotYValues">
 </g>
+
 <g fill="rgb(0,0,0)">
 	<text x="150" y="200" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">My 1st (default) Note	</text>
 </g>
+
 <g fill="rgb(0,0,0)">
 	<text x="40" y="10" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">top left (0, 0)	</text>
 </g>
+
 <g fill="rgb(0,0,0)">
 	<text x="390" y="290" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">bottom right(380, 280)	</text>
 </g>
+
 <g fill="rgb(0,0,0)">
 	<text x="150" y="100" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">Greek Unicode &#x3A9;&#x3A6;&#x221A;&#x00A0;&#x221E;&#x3B6; &#x00B1;	</text>
 </g>
+
 <g fill="rgb(0,0,0)">
 	<text x="350" y="70" text-anchor="end" transform="rotate(-30 350 70)" font-size="16" font-family="verdana" font-style="bold" font-weight="italic">My 2nd Note	</text>
 </g>
+
 <g fill="rgb(255,0,0)">
 	<text x="350" y="170" transform="rotate(180 350 170)" font-size="16" font-family="arial" font-style="bold" font-weight="italic">Red upsidedown Note	</text>
 </g>
+
 <g fill="rgb(0,0,255)">
 	<text x="300" y="210" text-anchor="middle" transform="rotate(-60 300 210)" font-size="12" font-family="Lucida Sans Unicode">Blue steepup Note	</text>
-</g></svg>
+</g>
+</svg>

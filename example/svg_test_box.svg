@@ -19,20 +19,25 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="0" y="0" width="500" height="350"/>
 </g>
+
 <g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="59.4" y="57" width="429" height="227"/>
 </g>
+
 <g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="59.4" y1="284" x2="488" y2="284"/>
 </g>
+
 <g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="59.4" y1="284" x2="59.4" y2="57"/>
 </g>
+
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M202,284 L202,289 
 M345,284 L345,289 
 " fill="none"/>
 </g>
+
 <g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M54.4,284 L59.4,284 
 M54.4,246 L59.4,246 
@@ -43,6 +48,7 @@ M54.4,94.8 L59.4,94.8
 M54.4,57 L59.4,57 
 " fill="none"/>
 </g>
+
 <g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M57.4,276 L59.4,276 
 M57.4,268 L59.4,268 
@@ -70,10 +76,13 @@ M57.4,72.1 L59.4,72.1
 M57.4,64.6 L59.4,64.6 
 " fill="none"/>
 </g>
+
 <g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="valueLabels" fill="rgb(0,0,0)">
 	<text x="202" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[50 / x]	</text>
 	<text x="345" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[40 + 25 * sin(50x)]	</text>
@@ -85,34 +94,45 @@ M57.4,64.6 L59.4,64.6
 	<text x="48.4" y="97.2" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">60	</text>
 	<text x="48.4" y="59.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">70	</text>
 </g>
+
 <g id="yLabel" fill="rgb(0,0,0)">
 	<text x="30.2" y="170" text-anchor="middle" transform="rotate(-90 30.2 170)" font-size="14" font-family="Lucida Sans Unicode">	</text>
 </g>
+
 <g id="xLabel" fill="rgb(0,0,0)">
 	<text x="274" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">	</text>
 </g>
+
 <g id="boxAxis" stroke="rgb(0,0,0)">
 
 <g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="202" y1="315" x2="202" y2="274"/>
 </g>
+
 <g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="345" y1="265" x2="345" y2="77.7"/>
-</g></g>
+</g>
+</g>
+
 <g id="Median" stroke="rgb(255,0,0)" stroke-width="2">
 
 <g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
 	<rect x="187" y="297" width="30" height="16.3"/>
 </g>
+
 <g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
 	<line x1="188" y1="309" x2="217" y2="309"/>
 </g>
+
 <g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
 	<rect x="330" y="99" width="30" height="125"/>
 </g>
+
 <g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
 	<line x1="331" y1="183" x2="360" y2="183"/>
-</g></g>
+</g>
+</g>
+
 <g id="whisker" stroke="rgb(0,0,0)">
 
 <g clip-path="url(#plot_window)">
@@ -120,28 +140,40 @@ M57.4,64.6 L59.4,64.6
 <g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="187" y1="315" x2="217" y2="315"/>
 </g>
+
 <g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="187" y1="274" x2="217" y2="274"/>
-</g></g>
+</g>
+</g>
+
 <g clip-path="url(#plot_window)">
 
 <g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="330" y1="265" x2="360" y2="265"/>
 </g>
+
 <g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="330" y1="77.7" x2="360" y2="77.7"/>
-</g></g></g>
+</g>
+</g>
+</g>
+
 <g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
 
 <g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
 	<text x="202" y="260" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-</g></g>
+</g>
+</g>
+
 <g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)">
 
 <g clip-path="url(#plot_window)" stroke="rgb(255,0,0)">
 	<text x="202" y="134" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;	</text>
 	<text x="202" y="228" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-</g></g>
+</g>
+</g>
+
 <g id="title" fill="rgb(0,0,0)">
 	<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode">	</text>
-</g></svg>
+</g>
+</svg>

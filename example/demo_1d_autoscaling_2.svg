@@ -17,17 +17,22 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="0" y="0" width="500" height="200"/>
 </g>
+
 <g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="21" y="11" width="458" height="173"/>
 </g>
+
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="21" y1="11" x2="21" y2="184"/>
 	<line x1="21" y1="100" x2="479" y2="100"/>
 </g>
+
 <g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M26.7,100 L26.7,102 
 M32.5,100 L32.5,102 
@@ -95,6 +100,7 @@ M468,100 L468,102
 M473,100 L473,102 
 " fill="none"/>
 </g>
+
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M21,100 L21,105 
 M49.6,100 L49.6,105 
@@ -116,6 +122,7 @@ M479,100 L479,105
 M21,100 L21,105 
 " fill="none"/>
 </g>
+
 <g id="xTicksValues">
 	<text x="49.6" y="118" text-anchor="middle" font-size="10" font-family="Verdana">0.5	</text>
 	<text x="78.2" y="118" text-anchor="middle" font-size="10" font-family="Verdana">1	</text>
@@ -134,9 +141,11 @@ M21,100 L21,105
 	<text x="450" y="118" text-anchor="middle" font-size="10" font-family="Verdana">7.5	</text>
 	<text x="479" y="118" text-anchor="middle" font-size="10" font-family="Verdana">8	</text>
 </g>
+
 <g id="xLabel">
 	<text x="250" y="201" text-anchor="middle" font-size="10" font-family="Verdana">	</text>
 </g>
+
 <g id="plotPoints">
 
 <g stroke="rgb(0,0,0)">
@@ -146,7 +155,10 @@ M21,100 L21,105
 	<line x1="342" y1="99.5" x2="342" y2="89.5"/>
 	<line x1="405" y1="99.5" x2="405" y2="89.5"/>
 	<line x1="468" y1="99.5" x2="468" y2="89.5"/>
-</g></g>
+</g>
+</g>
+
 <g id="title">
 	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">	</text>
-</g></svg>
+</g>
+</svg>

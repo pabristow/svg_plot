@@ -18,25 +18,33 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(67,111,69)" stroke-width="2">
 	<rect x="0" y="0" width="700" height="500"/>
 </g>
+
 <g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(136,188,126)" stroke-width="2">
 	<rect x="52.6" y="58.8" width="536" height="404"/>
 </g>
+
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="101" y1="58.8" x2="101" y2="477"/>
 	<line x1="52.6" y1="58.8" x2="52.6" y2="463"/>
 </g>
+
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="47.6" y1="444" x2="589" y2="444"/>
 	<line x1="47.6" y1="463" x2="589" y2="463"/>
 </g>
+
 <g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M50.6,434 L52.6,434 
 M50.6,424 L52.6,424 
@@ -73,6 +81,7 @@ M50.6,453 L52.6,453
 M50.6,463 L52.6,463 
 " fill="none"/>
 </g>
+
 <g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M126,463 L126,470 
 M150,463 L150,470 
@@ -93,6 +102,7 @@ M77,463 L77,470
 M52.6,463 L52.6,470 
 " fill="none"/>
 </g>
+
 <g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M47.6,444 L52.6,444 
 M47.6,405 L52.6,405 
@@ -108,6 +118,7 @@ M47.6,58.8 L52.6,58.8
 M47.6,444 L52.6,444 
 " fill="none"/>
 </g>
+
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M101,463 L101,477 
 M199,463 L199,477 
@@ -118,6 +129,7 @@ M589,463 L589,477
 M101,463 L101,477 
 " fill="none"/>
 </g>
+
 <g id="xTicksValues">
 	<text x="101" y="455" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0	</text>
 	<text x="199" y="455" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2	</text>
@@ -127,6 +139,7 @@ M101,463 L101,477
 	<text x="589" y="455" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">10	</text>
 	<text x="101" y="455" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0	</text>
 </g>
+
 <g id="yTicksValues">
 	<text x="41.6" y="446" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0	</text>
 	<text x="41.6" y="408" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">10	</text>
@@ -141,12 +154,15 @@ M101,463 L101,477
 	<text x="41.6" y="61.1" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">100	</text>
 	<text x="41.6" y="446" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0	</text>
 </g>
+
 <g id="yLabel">
 	<text x="14.9" y="261" text-anchor="middle" transform="rotate(-90 14.9 261)" font-size="14" font-family="Lucida Sans Unicode">	</text>
 </g>
+
 <g id="xLabel">
 	<text x="321" y="494" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">X Axis Units	</text>
 </g>
+
 <g id="plotPoints" clip-path="url(#plot_window)">
 
 <g stroke="rgb(255,0,0)" fill="rgb(255,255,255)">
@@ -161,6 +177,7 @@ M101,463 L101,477
 	<text x="491" y="437" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 	<text x="540" y="436" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
+
 <g stroke="rgb(255,165,0)" fill="rgb(255,255,255)">
 	<text x="101" y="456" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 	<text x="150" y="452" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
@@ -173,6 +190,7 @@ M101,463 L101,477
 	<text x="491" y="209" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 	<text x="540" y="144" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
+
 <g stroke="rgb(255,255,0)" fill="rgb(255,255,255)">
 	<text x="101" y="449" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 	<text x="150" y="441" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
@@ -184,30 +202,41 @@ M101,463 L101,477
 	<text x="442" y="395" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 	<text x="491" y="388" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
 	<text x="540" y="380" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-</g></g>
+</g>
+</g>
+
 <g id="legendBackground" stroke="rgb(102,102,84)" fill="rgb(207,202,167)" stroke-width="1">
 	<rect x="595" y="58.8" width="91.3" height="69"/>
 </g>
+
 <g id="legendPoints">
 
 <g stroke="rgb(255,0,0)" fill="rgb(255,255,255)">
 	<text x="612" y="82.2" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
+
 <g stroke="rgb(255,165,0)" fill="rgb(255,255,255)">
 	<text x="612" y="96.2" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
+
 <g stroke="rgb(255,255,0)" fill="rgb(255,255,255)">
 	<text x="612" y="109" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-</g></g>
+</g>
+</g>
+
 <g id="legendText">
 	<text x="621" y="80" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="43.2">Sqrt(x)	</text>
 	<text x="621" y="94" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="48">-2 + x^2	</text>
 	<text x="621" y="108" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="42">-1 + 2x	</text>
 </g>
+
 <g id="title" fill="rgb(255,255,255)">
 	<text x="350" y="43.5" text-anchor="middle" font-size="29" font-family="Lucida Sans Unicode" font-weight="normal">Plot of Mathematical Functions	</text>
 </g>
+
 <g id="plotXValues">
 </g>
+
 <g id="plotYValues">
-</g></svg>
+</g>
+</svg>

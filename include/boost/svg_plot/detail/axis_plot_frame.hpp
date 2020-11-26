@@ -1165,16 +1165,15 @@ namespace boost
             // Always want all values including "0", if labeling external to plot window.
             // x_ticks_.ticks_on_window_or_on_axis_ == true != 0
            g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK
-
        //     g_element& g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // NOT OK
             // /! svg g \return reference g_element& to the ith (PLOT_X_TICKS_VALUES) group element.
-            g_element* g_inner_ptr = g_ptr;
+         //   g_element* g_inner_ptr = g_ptr;
             //g_element* g_x_axis_values = &(g_ptr->add_g_element()); // OK
       //      g_element* g_x_axis_values = &(g_ptr->add_g_element()); // cannot convert from 'boost::svg::g_element *' to 'boost::svg::g_element &'
-            g_element& g_ticks = (derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK \nd gr.text works OK too.
-            g_element& g_x_axis_values = derived().image_.gs(detail::PLOT_X_TICKS_VALUES).add_g_element();
-            g_x_axis_values.style().stroke_color(red); // OK using  g_element& and has desired effect on x axis value labels too!
-            g_x_axis_values.style().fill_color(blue); // OK using  g_element& 
+ //           g_element& g_ticks = (derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK \nd gr.text works OK too.
+          //  g_element& g_x_axis_values = derived().image_.gs(detail::PLOT_X_TICKS_VALUES).add_g_element();
+          //  g_x_axis_values.style().stroke_color(red); // OK using  g_element& and has desired effect on x axis value labels too!
+         //   g_x_axis_values.style().fill_color(blue); // OK using  g_element& 
          //   g_x_axis_values->style().stroke_color(derived().style().stroke_color_); //  wrong
          //   g_x_axis_values->style().fill_color(derived().serieses_[i].point_style_.fill_color_); // 
 
@@ -1190,9 +1189,9 @@ namespace boost
     //          g_ptr. // C2228: left of '.text' must have class/struct/union 
           //   g_element& gg = derived().image_.gs(detail::PLOT_X_TICKS_VALUES);  // OK
 
-            // gg.text( // OK
              //g_x_axis_values.text( // fails for a g_element* pointer
-             g_x_axis_values.text( // OK and makes X-axis_ticks labels RED!
+           //  g_ptr.text( // fails for pointer, OK for reference
+             g_ptr->text( // OK and makes X-axis_ticks labels RED!
               x,
               y,
               tick_value_label.str(), // "1.0!, "1.5" ...

@@ -18,25 +18,33 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="0" y="0" width="500" height="400"/>
 </g>
+
 <g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="52.6" y="39.5" width="421" height="314"/>
 </g>
+
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="193" y1="39.5" x2="193" y2="359"/>
 	<line x1="52.6" y1="39.5" x2="52.6" y2="354"/>
 </g>
+
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="47.6" y1="197" x2="474" y2="197"/>
 	<line x1="47.6" y1="354" x2="474" y2="354"/>
 </g>
+
 <g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M50.6,190 L52.6,190 
 M50.6,184 L52.6,184 
@@ -87,6 +95,7 @@ M50.6,348 L52.6,348
 M50.6,354 L52.6,354 
 " fill="none"/>
 </g>
+
 <g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M204,354 L204,356 
 M216,354 L216,356 
@@ -120,6 +129,7 @@ M69.5,354 L69.5,356
 M58.2,354 L58.2,356 
 " fill="none"/>
 </g>
+
 <g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M47.6,197 L52.6,197 
 M47.6,165 L52.6,165 
@@ -135,6 +145,7 @@ M47.6,323 L52.6,323
 M47.6,354 L52.6,354 
 " fill="none"/>
 </g>
+
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M193,354 L193,359 
 M249,354 L249,359 
@@ -147,6 +158,7 @@ M137,354 L137,359
 M80.7,354 L80.7,359 
 " fill="none"/>
 </g>
+
 <g id="xTicksValues">
 	<text x="193" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0	</text>
 	<text x="249" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2	</text>
@@ -158,6 +170,7 @@ M80.7,354 L80.7,359
 	<text x="137" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-2	</text>
 	<text x="80.7" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-4	</text>
 </g>
+
 <g id="yTicksValues">
 	<text x="41.6" y="199" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0	</text>
 	<text x="41.6" y="168" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">2	</text>
@@ -172,21 +185,27 @@ M80.7,354 L80.7,359
 	<text x="41.6" y="325" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-8	</text>
 	<text x="41.6" y="356" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-10	</text>
 </g>
+
 <g id="yLabel">
 	<text x="14.9" y="197" text-anchor="middle" transform="rotate(-90 14.9 197)" font-size="14" font-family="Lucida Sans Unicode">	</text>
 </g>
+
 <g id="xLabel">
 	<text x="263" y="387" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">length (m)	</text>
 </g>
+
 <g id="plotPoints" clip-path="url(#plot_window)">
 
 <g stroke="rgb(0,0,0)" fill="rgb(255,255,255)">
 	<text x="253" y="160" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 	<text x="347" y="114" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-</g></g>
+</g>
+</g>
+
 <g id="title">
 	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode" font-weight="normal">Default 2d Values Demo	</text>
 </g>
+
 <g id="plotXValues" fill="rgb(255,0,0)">
 
 <g>
@@ -197,6 +216,7 @@ M80.7,354 L80.7,359
 	<tspan fill="rgb(0,0,0)" font-size="12" font-family="Times New Roman">&#x00A0;(1)</tspan>
 	</text>
 </g>
+
 <g>
 	<text x="352" y="117" font-size="16" font-family="Times New Roman">5.47	<tspan fill="rgb(0,0,0)" font-size="14" font-family="Times New Roman">&#x00A0;(0)</tspan>
 	<tspan fill="rgb(0,0,0)" font-size="16" font-family="Times New Roman"></tspan>
@@ -204,6 +224,9 @@ M80.7,354 L80.7,359
 	<tspan font-size="14" font-family="Arial">5.3861</tspan>
 	<tspan fill="rgb(0,0,0)" font-size="12" font-family="Times New Roman">&#x00A0;(1)</tspan>
 	</text>
-</g></g>
+</g>
+</g>
+
 <g id="plotYValues" fill="rgb(0,0,255)">
-</g></svg>
+</g>
+</svg>

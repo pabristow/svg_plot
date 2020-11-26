@@ -17,17 +17,22 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="imageBackground" stroke="rgb(0,0,255)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="0" y="0" width="500" height="200"/>
 </g>
+
 <g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="21" y="42.5" width="393" height="142"/>
 </g>
+
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="53.7" y1="42.5" x2="53.7" y2="184"/>
 	<line x1="21" y1="116" x2="414" y2="116"/>
 </g>
+
 <g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M66.8,116 L66.8,118 
 M79.9,116 L79.9,118 
@@ -55,6 +60,7 @@ M40.6,116 L40.6,118
 M27.5,116 L27.5,118 
 " fill="none"/>
 </g>
+
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M53.7,116 L53.7,121 
 M119,116 L119,121 
@@ -65,6 +71,7 @@ M381,116 L381,121
 M53.7,116 L53.7,121 
 " fill="none"/>
 </g>
+
 <g id="xTicksValues">
 	<text x="119" y="134" text-anchor="middle" font-size="10" font-family="Verdana">2	</text>
 	<text x="185" y="134" text-anchor="middle" font-size="10" font-family="Verdana">4	</text>
@@ -72,34 +79,45 @@ M53.7,116 L53.7,121
 	<text x="316" y="134" text-anchor="middle" font-size="10" font-family="Verdana">8	</text>
 	<text x="381" y="134" text-anchor="middle" font-size="10" font-family="Verdana">10	</text>
 </g>
+
 <g id="xLabel">
 	<text x="217" y="201" text-anchor="middle" font-size="10" font-family="Verdana">	</text>
 </g>
+
 <g id="plotPoints">
 
 <g stroke="rgb(255,0,0)" fill="rgb(0,128,0)">
 	<text x="155" y="113" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 	<text x="191" y="113" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
+
 <g stroke="rgb(0,0,255)">
 	<line x1="122" y1="115" x2="122" y2="105"/>
 	<line x1="309" y1="115" x2="309" y2="105"/>
-</g></g>
+</g>
+</g>
+
 <g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="420" y="42.5" width="71.2" height="47"/>
 </g>
+
 <g id="legendPoints">
 
 <g stroke="rgb(255,0,0)" fill="rgb(0,128,0)">
 	<text x="433" y="62" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25CF;	</text>
 </g>
+
 <g stroke="rgb(0,0,255)">
 	<line x1="433" y1="77.5" x2="433" y2="67.5"/>
-</g></g>
+</g>
+</g>
+
 <g id="legendText">
 	<text x="440" y="61" font-size="10" font-family="Verdana" textLength="19.2">Dan	</text>
 	<text x="440" y="73.5" font-size="10" font-family="Verdana" textLength="37.2">Elaine	</text>
 </g>
+
 <g id="title">
 	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">Race Times	</text>
-</g></svg>
+</g>
+</svg>

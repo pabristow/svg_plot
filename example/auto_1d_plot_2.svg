@@ -17,16 +17,21 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="0" y="0" width="500" height="200"/>
 </g>
+
 <g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="21" y="11" width="458" height="173"/>
 </g>
+
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="21" y1="100" x2="479" y2="100"/>
 </g>
+
 <g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M31.2,100 L31.2,102 
 M41.4,100 L41.4,102 
@@ -66,6 +71,7 @@ M459,100 L459,102
 M469,100 L469,102 
 " fill="none"/>
 </g>
+
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M21,100 L21,105 
 M71.9,100 L71.9,105 
@@ -79,6 +85,7 @@ M428,100 L428,105
 M479,100 L479,105 
 " fill="none"/>
 </g>
+
 <g id="xTicksValues">
 	<text x="21" y="118" text-anchor="middle" font-size="10" font-family="Verdana">1	</text>
 	<text x="71.9" y="118" text-anchor="middle" font-size="10" font-family="Verdana">1.5	</text>
@@ -91,9 +98,11 @@ M479,100 L479,105
 	<text x="428" y="118" text-anchor="middle" font-size="10" font-family="Verdana">5	</text>
 	<text x="479" y="118" text-anchor="middle" font-size="10" font-family="Verdana">5.5	</text>
 </g>
+
 <g id="xLabel">
 	<text x="250" y="201" text-anchor="middle" font-size="10" font-family="Verdana">	</text>
 </g>
+
 <g id="plotPoints">
 
 <g stroke="rgb(0,0,0)">
@@ -102,26 +111,33 @@ M479,100 L479,105
 	<line x1="255" y1="99.5" x2="255" y2="89.5"/>
 	<line x1="469" y1="99.5" x2="469" y2="89.5"/>
 </g>
+
 <g stroke="rgb(0,0,0)">
 	<line x1="41.4" y1="99.5" x2="41.4" y2="89.5"/>
 	<line x1="153" y1="99.5" x2="153" y2="89.5"/>
 	<line x1="265" y1="99.5" x2="265" y2="89.5"/>
 	<line x1="377" y1="99.5" x2="377" y2="89.5"/>
 </g>
+
 <g stroke="rgb(0,0,0)">
 	<line x1="41.4" y1="99.5" x2="41.4" y2="89.5"/>
 	<line x1="153" y1="99.5" x2="153" y2="89.5"/>
 	<line x1="265" y1="99.5" x2="265" y2="89.5"/>
 	<line x1="377" y1="99.5" x2="377" y2="89.5"/>
 </g>
+
 <g stroke="rgb(0,0,0)">
 	<line x1="31.2" y1="99.5" x2="31.2" y2="89.5"/>
 	<line x1="347" y1="99.5" x2="347" y2="89.5"/>
 	<line x1="255" y1="99.5" x2="255" y2="89.5"/>
-</g></g>
+</g>
+</g>
+
 <g id="limitPoints" stroke="rgb(255,0,0)" fill="rgb(255,255,255)">
 	<text x="484" y="104" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;	</text>
 </g>
+
 <g id="title">
 	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">	</text>
-</g></svg>
+</g>
+</svg>

@@ -53,16 +53,21 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="0" y="0" width="500" height="200"/>
 </g>
+
 <g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="21" y="42.5" width="458" height="129"/>
 </g>
+
 <g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="21" y1="109.5" x2="479" y2="109.5"/>
 </g>
+
 <g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M34.0857,109.5 L34.0857,111.5 
 M47.1714,109.5 L47.1714,111.5 
@@ -94,6 +99,7 @@ M452.829,109.5 L452.829,111.5
 M465.914,109.5 L465.914,111.5 
 " fill="none"/>
 </g>
+
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M21,109.5 L21,114.5 
 M86.4286,109.5 L86.4286,114.5 
@@ -104,6 +110,7 @@ M348.143,109.5 L348.143,114.5
 M413.571,109.5 L413.571,114.5 
 " fill="none"/>
 </g>
+
 <g id="xTicksValues">
 	<text x="21" y="127.5" text-anchor="middle" font-size="10" font-family="Verdana">9.18	</text>
 	<text x="86.4286" y="127.5" text-anchor="middle" font-size="10" font-family="Verdana">9.2	</text>
@@ -113,9 +120,11 @@ M413.571,109.5 L413.571,114.5
 	<text x="348.143" y="127.5" text-anchor="middle" font-size="10" font-family="Verdana">9.3	</text>
 	<text x="413.571" y="127.5" text-anchor="middle" font-size="10" font-family="Verdana">9.33	</text>
 </g>
+
 <g id="xLabel">
 	<text x="250" y="188.5" text-anchor="middle" font-size="10" font-family="Verdana">heat flow	</text>
 </g>
+
 <g id="plotPoints">
 
 <g stroke="rgb(0,0,0)">
@@ -314,7 +323,10 @@ M413.571,109.5 L413.571,114.5
 	<line x1="130.255" y1="109" x2="130.255" y2="99"/>
 	<line x1="280.377" y1="109" x2="280.377" y2="99"/>
 	<line x1="279.511" y1="109" x2="279.511" y2="99"/>
-</g></g>
+</g>
+</g>
+
 <g id="title">
 	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">NIST Heat flow data	</text>
-</g></svg>
+</g>
+</svg>

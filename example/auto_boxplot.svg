@@ -19,19 +19,24 @@ xmlns ="http://www.w3.org/2000/svg"
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="0" y="0" width="500" height="350"/>
 </g>
+
 <g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="52.2" y="57" width="436" height="227"/>
 </g>
+
 <g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="52.2" y1="284" x2="488" y2="284"/>
 </g>
+
 <g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="52.2" y1="284" x2="52.2" y2="57"/>
 </g>
+
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M270,284 L270,289 
 " fill="none"/>
 </g>
+
 <g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M47.2,284 L52.2,284 
 M47.2,258 L52.2,258 
@@ -46,6 +51,7 @@ M47.2,57 L52.2,57
 M47.2,284 L52.2,284 
 " fill="none"/>
 </g>
+
 <g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M50.2,279 L52.2,279 
 M50.2,274 L52.2,274 
@@ -86,10 +92,13 @@ M50.2,62 L52.2,62
 M50.2,284 L52.2,284 
 " fill="none"/>
 </g>
+
 <g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
+
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
+
 <g id="valueLabels" fill="rgb(0,0,0)">
 	<text x="270" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">Auto boxplot	</text>
 	<text x="41.2" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0	</text>
@@ -104,25 +113,33 @@ M50.2,284 L52.2,284
 	<text x="41.2" y="59.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9	</text>
 	<text x="41.2" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0	</text>
 </g>
+
 <g id="yLabel" fill="rgb(0,0,0)">
 	<text x="30.2" y="170" text-anchor="middle" transform="rotate(-90 30.2 170)" font-size="14" font-family="Lucida Sans Unicode">Values	</text>
 </g>
+
 <g id="xLabel" fill="rgb(0,0,0)">
 	<text x="270" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">	</text>
 </g>
+
 <g id="boxAxis" stroke="rgb(0,0,0)">
 
 <g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="270" y1="279" x2="270" y2="69.6"/>
-</g></g>
+</g>
+</g>
+
 <g id="Median" stroke="rgb(255,0,0)" stroke-width="2">
 
 <g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
 	<rect x="255" y="101" width="30" height="90.2"/>
 </g>
+
 <g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
 	<line x1="256" y1="116" x2="285" y2="116"/>
-</g></g>
+</g>
+</g>
+
 <g id="whisker" stroke="rgb(0,0,0)">
 
 <g clip-path="url(#plot_window)">
@@ -130,13 +147,20 @@ M50.2,284 L52.2,284
 <g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="255" y1="279" x2="285" y2="279"/>
 </g>
+
 <g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="255" y1="69.6" x2="285" y2="69.6"/>
-</g></g></g>
+</g>
+</g>
+</g>
+
 <g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
 </g>
+
 <g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)">
 </g>
+
 <g id="title" fill="rgb(0,0,0)">
 	<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode">Auto boxplot	</text>
-</g></svg>
+</g>
+</svg>

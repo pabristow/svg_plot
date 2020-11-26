@@ -51,6 +51,7 @@ xmlns ="http://www.w3.org/2000/svg"
 
 <g id="group element 0" stroke="rgb(255,0,0)" fill="rgb(240,255,255)" stroke-width="5">
 	<rect x="0" y="0" width="500" height="600"/>
+	<text x="250" y="150" font-size="12" font-family="Lucida Sans Unicode">	</text>
 	<line x1="100" y1="50" x2="50" y2="100"/>
 	<rect x="20" y="20" width="50" height="50"/>
 	<polygon points=" 30,40"/>
@@ -61,7 +62,8 @@ xmlns ="http://www.w3.org/2000/svg"
 	<polygon points=" 10,20 70,80 50,60 90,100 30,40 110,120"/>
 	<polygon points=" 350,75 379,161 469,161 397,215 423,301 350,250 277,301 303,215 231,161 321,161"/>
 	<polygon points=" 75,440 83.7,445 83.7,455 75,460 66.3,455 66.3,445"/>
-</g>	<ellipse id="element 1" cx="300" cy="300" rx="50" ry="30"/>
+</g>
+	<ellipse id="element 1" cx="300" cy="300" rx="50" ry="30"/>
 	<polygon points=" 400,20 300,100 450,50" fill = "none"/>
 	<polygon points=" 200,20 350,100 250,100"/>
 	<polygon points=" 10,500 10,550 450,550 300,500"/>
