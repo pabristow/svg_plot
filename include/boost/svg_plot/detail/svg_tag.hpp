@@ -155,7 +155,8 @@ namespace svg
       return style_info_;
     }
 
-    const svg_style& textstyle() const
+    // const version.
+    const svg_style& style() const
     { //! \return Reference to @c const @c svg_style to provide indirect access to colors & width
       //! via style().stroke_color(), fill_color(), width() (const version).
       return style_info_;
@@ -792,16 +793,25 @@ public:
   //text_style& font_style();
   //const text_style& text_style() const;
 
-  // These class tspan functions see not to work as expected??
-  const text_style& textstyle()
-  { //! \return text_style& to permit access to font family, size ...
+  // These class tspan member functions 
+ text_style& text_style()
+  { //! \return  Reference to @c text_style& to permit access to font family, size ...
     return text_style_;
   }
 
-  const text_style& textstyle() const
-  {//! \return text_style& to permit access to font family, size (const version).
-    return text_style_;
+  //Const version name clash?
+  //const text_style& text_style() const
+  //{ //! \return Reference to @c text_style& to permit access to font family, size (const version).
+  //  return text_style_;
+  //}
+
+
+  svg_style& style()
+  { //! \return  Reference to @c svg_style to provide indirect access to colors & width 
+    //! via style().stroke_color(), fill_color(), width() etc.
+    return style_info_;
   }
+
 
   std::string text()
   { //! Get text from a tspan element.
@@ -1175,6 +1185,11 @@ public:
     std::ostringstream os;
     generate_text(os);
     return os.str();
+  }
+
+  text_style text_style()
+  {
+    return text_style_; 
   }
 
    //! Output SVG @c text_element, style & attributes to a @c std::ostream.

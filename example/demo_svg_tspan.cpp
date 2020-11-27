@@ -98,12 +98,14 @@ int main()
     std::cout<< "dx " << ts.dx() << std::endl; // 100
     std::cout<< "dy " << ts.dy() << std::endl; // 20
     std::cout<< "tspan text is " << ts.text() << std::endl; // text_n
+    std::cout << "ts.text_style() is " << ts.text_style() << std::endl; // ts.text_style() is text_style(40, "Arial", "", "bold", "", "")
     std::cout<< "font size is " << ts.font_size() << std::endl; // 40
     std::cout<< "font family " << ts.font_family() << std::endl; // Arial
     std::cout<< "font weight is " << ts.font_weight() << std::endl; // bold
-    std::cout<< "font_decoration is " << ts.text_style_.font_decoration() << std::endl; // 
-    // and inherits from svg_element
-    std::cout<< "style" << ts.style() << std::endl; 
+    std::cout<< "font_decoration is " << ts.text_style_.font_decoration() << std::endl; // ""
+    std::cout<< "font_decoration is " << ts.text_style().font_decoration() << std::endl; // ""
+    // and inherits from svg_element so can read
+    std::cout<< "style is " << ts.style() << std::endl; 
     //  style is svg_style(RGB(0,0,0), blank, 0, no stroke, no fill, no width) 
     std::cout<< "stroke color " << ts.stroke_color() << std::endl; // stroke color RGB(0,0,0) == black
     std::cout<< "stroke on " << std::boolalpha << ts.stroke_on() << std::endl; // false but expect true???
