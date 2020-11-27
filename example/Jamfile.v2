@@ -100,6 +100,7 @@ run demo_2d_autoscaling.cpp ;
 run demo_2d_bars.cpp ; # Demonstrate the bars (& columns or sticks).
 run demo_2d_histogram.cpp ; #  Demonstrate drawing histogram.
 run demo_2d_limits.cpp ; #
+run demo_2d_legend_lines_markers.cpp ; # Demonstration of legend with combinations of markers, styles, lines.
 run demo_2d_lines.cpp ; # Demonstrate fit lines.
 run demo_2d_plot.cpp ; # Demonstration of some 2D plot features.
 run demo_2d_simple.cpp ; # Demonstration of some simple 2D plot features.
