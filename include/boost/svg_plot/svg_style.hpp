@@ -725,7 +725,7 @@ std::ostream& operator<< (std::ostream& os, const text_style& ts)
 
 // End of class text_style function *Definitions* separated.
 
-text_style no_style; //!< Text style that uses all constructor defaults.
+text_style no_text_style; //!< Text style that uses all constructor defaults.
 text_style not_a_style (-1, "","","","","",0); //!< Text style that uses null for all style features (used to signal no style required)..
 
 
@@ -809,7 +809,7 @@ public:
     value_precision_(4), //!< Precision, reduced from default of 6 which is usually too long.
     value_ioflags_(std::ios::dec), //!< Any std::ios::ioflags, for example, hex, fixed, scientific.
     strip_e0s_(true), //!< If true, then unnecessary zeros will be stripped to reduce length.
-    values_text_style_(no_style),  //!< All defaults, black etc.
+    values_text_style_(no_text_style),  //!< All defaults, black etc.
     stroke_color_(black), //!< == black.
     fill_color_(svg_color(0, 0, 0)), //!< no fill.
     plusminus_on_(false), //!< If uncertainty estimate to be appended.
@@ -1476,7 +1476,7 @@ public:
      //! Constructor setting several parameters, but providing default values for all member data.
     ticks_labels_style(
     dim d = X, //!< X or Y axis (-1 if not assigned yet).
-    const text_style& style = no_style, //!< Default text font style.
+    const text_style& style = no_text_style, //!< Default text font style.
     double max = 10.,  //!< Maximum x value (Cartesian units).
     double min = -10., //!< Minimum x value (Cartesian units).
     double major_interval = 2., //!< Interval between major ticks.

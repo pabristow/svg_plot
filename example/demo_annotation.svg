@@ -41,7 +41,7 @@ xmlns ="http://www.w3.org/2000/svg"
 </g>
 
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
-	<line x1="47.6" y1="138" x2="374" y2="138"/>
+	<line x1="47.6" y1="139" x2="374" y2="139"/>
 	<line x1="47.6" y1="269" x2="374" y2="269"/>
 </g>
 
@@ -66,7 +66,7 @@ M50.6,28.9 L52.6,28.9
 M50.6,23.7 L52.6,23.7 
 M50.6,18.4 L52.6,18.4 
 M50.6,13.2 L52.6,13.2 
-M50.6,138 L52.6,138 
+M50.6,139 L52.6,139 
 M50.6,144 L52.6,144 
 M50.6,149 L52.6,149 
 M50.6,154 L52.6,154 
@@ -141,13 +141,13 @@ M59,269 L59,271
 </g>
 
 <g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
-	<path d="M47.6,138 L52.6,138 
+	<path d="M47.6,139 L52.6,139 
 M47.6,112 L52.6,112 
 M47.6,86.3 L52.6,86.3 
 M47.6,60.2 L52.6,60.2 
 M47.6,34.1 L52.6,34.1 
 M47.6,8 L52.6,8 
-M47.6,138 L52.6,138 
+M47.6,139 L52.6,139 
 M47.6,165 L52.6,165 
 M47.6,191 L52.6,191 
 M47.6,217 L52.6,217 
@@ -203,7 +203,7 @@ M52.6,269 L52.6,274
 </g>
 
 <g id="yLabel">
-	<text x="14.9" y="138" text-anchor="middle" transform="rotate(-90 14.9 138)" font-size="14" font-family="Lucida Sans Unicode">	</text>
+	<text x="14.9" y="139" text-anchor="middle" transform="rotate(-90 14.9 139)" font-size="14" font-family="Lucida Sans Unicode">	</text>
 </g>
 
 <g id="xLabel">

@@ -64,7 +64,7 @@ This shows how to add notes to a plot, for example to identify a particular area
   my_plot.draw_note(150, 200, "My 1st (default) Note");
   /*`
   Note that for SVG coordinates, Y increases *down* the page, so Y = 0 is the top and Y = 300 is the bottom.
-  Defaults are provided for size, text style = no_style, center alignment and rotation horizontal.
+  Defaults are provided for size, text style = no_text_style, center alignment and rotation horizontal.
   */
   my_plot.draw_note(40, 10, "top left (0, 0)");
   my_plot.draw_note(my_plot.image_x_size()-10, my_plot.image_y_size()- 10, "bottom right(380, 280)");

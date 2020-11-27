@@ -666,7 +666,7 @@ namespace boost
           int minus_inf_limit_size(); //!<\return The size for the -infinity point.
 
           Derived& draw_note
-            (double x, double y, std::string note, rotate_style rot = horizontal, align_style al = align_style::center_align, const svg_color& = black, text_style& tsty = no_style);
+            (double x, double y, std::string note, rotate_style rot = horizontal, align_style al = align_style::center_align, const svg_color& = black, text_style& tsty = no_text_style);
            /*!< \brief Annotate plot with a  text string (perhaps including Unicode), putting note at SVG Coordinates X, Y.
             \details Defaults color black, rotation horizontal and align = center_align
             Using center_align is recommended as it will ensure that will center correctly
@@ -5591,7 +5591,7 @@ namespace boost
        }
 
         template <class Derived>
-        Derived& axis_plot_frame<Derived>::draw_note(double x, double y, std::string note, rotate_style rot /*= horizontal*/, align_style al/* = center_align*/, const svg_color& col /* black */, text_style& tsty/* = no_style*/)
+        Derived& axis_plot_frame<Derived>::draw_note(double x, double y, std::string note, rotate_style rot /*= horizontal*/, align_style al/* = center_align*/, const svg_color& col /* black */, text_style& tsty/* = no_text_style*/)
         { /*! \brief Annotate plot with a text string (perhaps including Unicode), putting note at SVG Coordinates X, Y.
             \warning SVG origin is at top left of image, the increases down and across. 
 

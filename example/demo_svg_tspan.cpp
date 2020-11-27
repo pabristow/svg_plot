@@ -66,7 +66,7 @@ int main()
 
     const text_style serif_style(10, "serif");
     // Simple text_element.
-  //  text_element& t = doc.text(100, 100, "This ", no_style, align_style::center_align, uphill);
+  //  text_element& t = doc.text(100, 100, "This ", no_text_style, align_style::center_align, uphill);
     // Default font style, but uphill.
     text_element& t = doc.text(100, 100, "Text_0", serif_style, align_style::center_align, horizontal);
     // Add more text using tspan, hoping to avoid output of font etc info, but still output.
@@ -82,7 +82,7 @@ int main()
        tspan_element ts = t.tspan(s, not_a_style).x(100.).dy(20.);
      }
 
-     g0.text(300, 300, "Text g0", no_style); // Uses g0 style (image border) - so yellow and wide and almost illegible!
+     g0.text(300, 300, "Text g0", no_text_style); // Uses g0 style (image border) - so yellow and wide and almost illegible!
 
   //  // Now output a tspan element moved down over a bit.
     tspan_element ts = t.tspan("text_n").dx(100.).dy(20.)

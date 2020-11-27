@@ -28,5 +28,6 @@ xmlns ="http://www.w3.org/2000/svg"
 	<tspan dy="20" x="100">text_6</tspan>
 	<tspan dy="20" x="100">text_7</tspan>
 	<tspan dy="20" x="100">text_8</tspan>
+	<tspan stroke="rgb(128,0,128)" fill="rgb(255,192,203)" dx="100" dy="20" font-size="40" font-family="Arial" font-weight="bold">text_n</tspan>
 	</text>
 </svg>

@@ -764,7 +764,7 @@ class svg_boxplot : public detail::axis_plot_frame<svg_boxplot>
 
 //! \endcond
 public:
- // text_element(double x = 0., double y = 0., const std::string text = "", text_style ts = no_style, align_style align = left_align, rotate_style rotate = horizontal)
+ // text_element(double x = 0., double y = 0., const std::string text = "", text_style ts = no_text_style, align_style align = left_align, rotate_style rotate = horizontal)
 
   svg_boxplot()
   :

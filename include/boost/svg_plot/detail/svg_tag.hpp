@@ -1083,7 +1083,7 @@ public:
   }
 
   // All set functions now return *this to be chainable, for example:
-  // my_text_element.style(no_style).x(999).y(555).alignment(right_align).rotation(vertical);
+  // my_text_element.style(no_text_style).x(999).y(555).alignment(right_align).rotation(vertical);
 
   text_element& x(double x)
   { //! X coordinate of text to write.
@@ -1135,7 +1135,7 @@ public:
     //!< So any text with Y coordinate = 0 shows only the descenders of (roman?) lower case !
     //!< One must increase Y to allow for the height (font size) of the character.
     const std::string text = "", //!< Text string to output (may include Unicode string like "&#x221A;" for square root symbol.
-    text_style ts = no_style, //!< Text font style,default left to SVG defaults.
+    text_style ts = no_text_style, //!< Text font style,default left to SVG defaults.
     align_style align = align_style ::left_align, //!< Alighment of text, left, center or right, default left_align.
     rotate_style rotate = horizontal) //!< orientation of text, default horizontal.
     : // Constructor.
@@ -2229,7 +2229,7 @@ public:
     // svg::text constructor with defaults. 
     text_element& text(double x = 0., double y = 0., // Location.
     const std::string& text = "", // Text string to display.
-    const text_style& style = no_style, // Default to use SVG implementation's defaults for font family, size.
+    const text_style& style = no_text_style, // Default to use SVG implementation's defaults for font family, size.
     const align_style& align = align_style::left_align,
     const rotate_style& rotate = horizontal)
     { //! Add a new text element.

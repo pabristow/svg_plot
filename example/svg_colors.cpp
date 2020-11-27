@@ -66,7 +66,7 @@ int main()
   g0.style().fill_on(true); 
   g0.style().stroke_color(blue);
   g0.push_back(new rect_element(20, 20, 10, 10) ); // border to rectangle.
-  //g0.text(50, 50, "my color", no_style, right_align); // SVG name of color to the right.
+  //g0.text(50, 50, "my color", no_text_style, right_align); // SVG name of color to the right.
 
   my_svg.add_g_element(); 
   g_element& g1 = my_svg.gs(1); // so index is now one.
