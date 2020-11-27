@@ -81,7 +81,7 @@ namespace svg
        \endcode
      */
   public:
-    svg_style style_info_; //!< Colors fill, stroke, width; set and get by function @c style().
+    svg_style svg_style_; //!< Colors fill, stroke, width; set and get by function @c style().
     std::string id_name_; //!< SVG id name, set & get by function id.
     std::string class_name_; //!< SVG class name, set & get by function class id.
     std::string clip_name_; //!< SVG clip path name, set & get by function clip_id.
@@ -121,7 +121,7 @@ namespace svg
                 const std::string& class_name = "",
                 const std::string& clip_name = "")
                 :
-                style_info_(style_info),
+                svg_style_(style_info),
                 id_name_(id_name),
                 class_name_(class_name),
                 clip_name_(clip_name)
@@ -152,14 +152,14 @@ namespace svg
     svg_style& style()
     { //! \return  Reference to @c svg_style to provide indirect access to colors & width 
       //! via style().stroke_color(), fill_color(), width() etc.
-      return style_info_;
+      return svg_style_;
     }
 
     // const version.
     const svg_style& style() const
     { //! \return Reference to @c const @c svg_style to provide indirect access to colors & width
       //! via style().stroke_color(), fill_color(), width() (const version).
-      return style_info_;
+      return svg_style_;
     }
 
     void id(const std::string& id)
@@ -315,7 +315,7 @@ namespace svg
           //<< x2_ << "," << y2_ << " "
           << x3_ << "," << y3_
           <<"\"";
-      if(style_info_.fill_on() == false)
+      if(svg_style_.fill_on() == false)
       {
         os << " fill = \"none\"";
       }
@@ -761,24 +761,24 @@ public:
 
   tspan_element& fill_color(const svg_color& color)
   { //! Set fill color for a tspan element.
-    style_info_.fill_color(color);  // svg_element svg_style style_info
-    style_info_.fill_on(true);
+    svg_style_.fill_color(color);  // svg_element svg_style style_info
+    svg_style_.fill_on(true);
  //   use_style_ = true;
     return *this; //! \return @c tspan_element& to make chainable.
   }
 
   tspan_element& stroke_color(const svg_color& color)
   { //! Set stroke color for a tspan element.
-    style_info_.stroke_color(color);
-    style_info_.stroke_on(true);
+    svg_style_.stroke_color(color);
+    svg_style_.stroke_on(true);
  //   use_style_ = true;
     return *this; //! \return @c tspan_element& to make chainable.
   }
 
   tspan_element& stroke_width(double width)
   { //! Set stroke width for a tspan element.
-    style_info_.stroke_width(width);
-    style_info_.stroke_on(true);
+    svg_style_.stroke_width(width);
+    svg_style_.stroke_on(true);
  //   use_style_ = true;
     return *this; //! \return @c tspan_element& to make chainable.
   }
@@ -817,7 +817,7 @@ public:
   svg_style& style()
   { //! \return  Reference to @c svg_style to provide indirect access to colors & width 
     //! via style().stroke_color(), .fill_color(), .width() etc.
-    return style_info_;
+    return svg_style_;
   }
 
   std::string text()
@@ -875,32 +875,32 @@ public:
 
   svg_color fill_color()
   { //! Get the fill color for tspan element from SVG style svg_element.
-    return style_info_.fill_color();
+    return svg_style_.fill_color();
   }
 
   bool fill_on()
   { //! Get true if to use stroke color for tspan element.
-    return style_info_.fill_on();
+    return svg_style_.fill_on();
   }
 
   svg_color stroke_color()
   { //! Get the stroke color for tspan element from svg_element.
-    return style_info_.stroke_color();
+    return svg_style_.stroke_color();
   }
 
   bool stroke_on()
   { //! Get true if to use stroke color for tspan element.
-    return style_info_.stroke_on();
+    return svg_style_.stroke_on();
   }
 
   bool width_on()
   { //! Get true if to use stroke width for tspan element.
-    return style_info_.width_on();
+    return svg_style_.width_on();
   }
 
   double stroke_width()
   { //! Get stroke width for tspan element.
-    return style_info_.stroke_width();
+    return svg_style_.stroke_width();
   }
 
 
@@ -916,7 +916,7 @@ public:
   { //! Output SVG XML for a tspan_element.
     os << "\t" "<tspan";
     write_attributes(os); // id & clip_path
-    style_info_.write(os); // fill, stroke, width...
+    svg_style_.write(os); // fill, stroke, width...
 
     // All of the conditional writes within tspan_element.
 
@@ -996,7 +996,7 @@ std::ostream& operator<< (std::ostream& os, const tspan_element& t)
     << ", " << (t.use_x_ ? "absolute" : "relative")
     << ", " << (t.use_y_ ? "absolute" : "relative") // 
     << ", " << t.text_style_  // text_style(40, "Arial", "", "bold", "", "")
-    << ", " << t.style_info_ // Inherited from svg_element.  (Why doesn't t.style() work?)
+    << ", " << t.svg_style_ // Inherited from svg_element.  (Why doesn't t.style() work?)
  //   << ", " << t.style() // Inherited from svg_element.  (Why doesn't t.style() work?)
     << ")";
   return os;
@@ -1673,13 +1673,13 @@ public:
 
     path_element& fill_on(bool on_)
     { //! Set area fill, on or off.
-      style_info_.fill_on(on_);
+      svg_style_.fill_on(on_);
       return *this; //! \return path_element& to make chainable.
     }
 
     bool fill_on()
     { //! \return area fill, on or off.
-      return style_info_.fill_on();
+      return svg_style_.fill_on();
     }
     // Note 1: return of path_element& permits chaining calls like
     // my_path.M(3, 3).l(150, 150).l(200, 200)...;
@@ -1812,7 +1812,7 @@ public:
         os << "\"";
 
         write_attributes(os); // id & clip_path.
-        style_info_.write(os); // fill, stroke, width...
+        svg_style_.write(os); // fill, stroke, width...
 
         // line above should write fill = "none" that
         // seems to be needed for reasons unclear.
@@ -2008,7 +2008,7 @@ public:
       }
       os << "\"";
       write_attributes(os);
-      style_info_.write(os);
+      svg_style_.write(os);
       if(!fill)
       {
         os << " fill = \"none\"";
@@ -2124,7 +2124,7 @@ public:
       }
       os << "\"";
       write_attributes(os);
-      style_info_.write(os);
+      svg_style_.write(os);
       os<<"/>" "\n";
     } // void write(std::ostream& os)
 
@@ -2209,7 +2209,7 @@ public:
         */
         os << "\n" "<g"; // Do NOT need space if convention is to start following item with space or tab or newline.
         write_attributes(os); // id="background" (or clip_path)
-        style_info_.write(os); // SVG style info like stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
+        svg_style_.write(os); // SVG style info like stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
         os << ">" 
           "\n"; // Newline after the g_element id and style is easier to read.
         for(unsigned int i = 0; i < children.size(); ++i)
