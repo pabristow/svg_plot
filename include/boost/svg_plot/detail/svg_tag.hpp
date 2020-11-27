@@ -879,30 +879,29 @@ public:
   }
 
   bool fill_on()
-  { //! Get true if to use stroke color for tspan element.
+  { //! Get true if to use stroke color for tspan element from SVG style svg_element.
     return svg_style_.fill_on();
   }
 
   svg_color stroke_color()
-  { //! Get the stroke color for tspan element from svg_element.
+  { //! Get the stroke color for tspan element from SVG style svg_element.
     return svg_style_.stroke_color();
   }
 
   bool stroke_on()
-  { //! Get true if to use stroke color for tspan element.
+  { //! Get true if to use stroke color for tspan element from SVG style svg_element.
     return svg_style_.stroke_on();
   }
 
   bool width_on()
-  { //! Get true if to use stroke width for tspan element.
+  { //! Get true if to use stroke width for tspan element from SVG style svg_element.
     return svg_style_.width_on();
   }
 
   double stroke_width()
-  { //! Get stroke width for tspan element.
+  { //! Get stroke width for tspan element from SVG style svg_element.
     return svg_style_.stroke_width();
   }
-
 
   double text_length()
   { //! Get user's estimated length for a text string.
@@ -947,7 +946,7 @@ public:
     // 10.10 Font selection properties
     // Text_style
     if (text_style_ != not_a_text_style)
-    { // Want to output (repeat) style info.
+    { // Want to output (repeat) text style info.
       if (text_style_.font_size() != 0)
       {
         os << " font-size=\"" << text_style_.font_size() << "\"";
