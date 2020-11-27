@@ -90,12 +90,11 @@ int main()
     tspan_element ts = t.tspan("text_n").dx(100.).dy(20.)
       .font_size(40).font_family("Arial").font_weight("bold")
       .stroke_color(purple).fill_color(pink).stroke_width(2); // tspan_element should set fill_on and stroke_on == true.
-    // Shows in expected place and colors adn width too.
+    // Shows in expected place and colors and width too.
    // Outputs:
    // <	<tspan stroke="rgb(128,0,128)" fill="rgb(255,192,203)" stroke-width="2" 
     //   dx="100" dy="20" font-size="40" font-family="Arial" font-weight="bold">text_n
     // </tspan>
-
 
     std::cout<< "dx " << ts.dx() << std::endl; // 100
     std::cout<< "dy " << ts.dy() << std::endl; // 20
@@ -122,8 +121,10 @@ int main()
 
   //    .fill_color(pink).fill_on(true).stroke_color(purple).stroke_on(true);
 
-    std::cout << "ts = " << ts << std::endl; // Show the state.
-  // ts = tspan(0, 0, 100, 20, 0, 0, relative, relative, text_style(40, "Arial", "", "bold", "", ""))
+    std::cout << "ts = " << ts << std::endl; // Show the full state including inherited svg style.
+  // ts = tspan(0, 0, 100, 20, 0, 0, relative, relative, text_style(40, "Arial", "", "bold", "", ""), 
+    //             svg_style(RGB(0,0,0), blank, 0, no stroke, no fill, no width))
+
 
 
   //  //<!--File demo_svg_tspan.svg-->

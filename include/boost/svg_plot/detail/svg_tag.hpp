@@ -985,7 +985,7 @@ public:
   }; // class tspan_element
 
 std::ostream& operator<< (std::ostream& os, const tspan_element& t)
-{ //! Diagnostic output of tspan coordinates info, and text_style.
+{ //! Diagnostic output of tspan coordinates info, and text_style font info.
   //! Example:   std::cout << r << std::endl;
   //! Outputs:  
   //! \verbatim ts = tspan(0, 0, 10, 20, 0, 0, false, false, text_style(40, "Arial", "", "bold", "", "")) \endverbatim
@@ -996,6 +996,8 @@ std::ostream& operator<< (std::ostream& os, const tspan_element& t)
     << ", " << (t.use_x_ ? "absolute" : "relative")
     << ", " << (t.use_y_ ? "absolute" : "relative") // 
     << ", " << t.text_style_  // text_style(40, "Arial", "", "bold", "", "")
+    << ", " << t.style_info_ // Inherited from svg_element.  (Why doesn't t.style() work?)
+ //   << ", " << t.style() // Inherited from svg_element.  (Why doesn't t.style() work?)
     << ")";
   return os;
 } // std::ostream& operator<<
