@@ -640,13 +640,13 @@ public:
   bool use_x_; //!> If true then use X absolute position.
   bool use_y_; //!> If true then use Y absolute position.
   //bool use_text_length_; //!< If true then use user calculated length rather than SVG (not used).
-  text_style style_; //!< font variants.
+  text_style text_style_; //!< font variants.
 
   tspan_element(const std::string& text, //!< Text string to display.
     const text_style& style = not_a_text_style) //!< Default text style (font).
   :
     use_x_(false), use_y_(false), 
-    text_parent(text), style_(style),
+    text_parent(text), text_style_(style),
     x_(0), y_(0), dx_(0), dy_(0), // X & Y coordinates, relative and absolute.
     rotate_(0),
     text_length_(0) // If text_length_ > 0 then compress or expand to this specified length.
@@ -660,7 +660,7 @@ public:
   //  :
   //  x_(rhs.x_), y_(rhs.y_), dx_(rhs.dx_), dy_(rhs.dy_), rotate_(rhs.rotate_),
   //  text_length_(rhs.text_length_), use_x_(rhs.use_x_), use_y_(rhs.use_y_),
-  //  use_text_length_(rhs.use_text_length_), style_(rhs.style_),
+  //  use_text_length_(rhs.use_text_length_), text_style_(rhs.text_style_),
   //  text_parent(rhs)
   //{ // Copy all parameters
   //}
@@ -725,14 +725,14 @@ public:
 
   tspan_element& font_size(int size)
   { //! font size of 1st single character of text string to use with SVG tspan command.
-    style_.font_size(size);
+    text_style_.font_size(size);
   //  use_style_ = true;
     return *this; //! \return @c tspan_element& to make chainable.
   }
 
   tspan_element& font_family(const std::string& family)
   {//! font family of 1st single character of text string to use with SVG tspan command.
-    style_.font_family(family);
+    text_style_.font_family(family);
   //  use_style_ = true;
     return *this; //! \return @c tspan_element& to make chainable.
   }
@@ -742,7 +742,7 @@ public:
     //! font-style: normal | bold | italic | oblique
     //! Examples: "italic"
     //! http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
-    style_.font_style(style);
+    text_style_.font_style(style);
   //  use_style_ = true;
     return *this; //! \return @c tspan_element& to make chainable.
   }
@@ -753,7 +753,7 @@ public:
     //! Examples: "bold", "normal"
     //! http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
     //! tests conformance.  Only two weights are supported by Firefox, Opera, Inkscape.
-    style_.font_weight(w);
+    text_style_.font_weight(w);
     return *this; //! \return @c tspan_element& to make chainable.
   }
 
@@ -775,7 +775,7 @@ public:
 
   tspan_element& textstyle(const text_style& style)
   { //! Set text style (font) for a @c tspan_element.
-    style_ = style;
+    text_style_ = style;
  //   use_style_ = true;
     return *this; //! \return @c tspan_element& to make chainable.
   }
@@ -794,12 +794,12 @@ public:
   // These class tspan functions see not to work as expected??
   const text_style& textstyle()
   { //! \return text_style& to permit access to font family, size ...
-    return style_;
+    return text_style_;
   }
 
   const text_style& textstyle() const
   {//! \return text_style& to permit access to font family, size (const version).
-    return style_;
+    return text_style_;
   }
 
   std::string text()
@@ -832,27 +832,27 @@ public:
 
   int font_size()
   { //! Get the font size for tspan element (from its text_style).
-    return style_.font_size();
+    return text_style_.font_size();
   }
 
   const std::string& font_family()
   { //! Get the font family for tspan element (from its text_style).
-    return style_.font_family();
+    return text_style_.font_family();
   }
 
   const std::string& font_weight() const
   { //! Get the font weight for tspan element (from its text_style).
-    return style_.font_weight();
+    return text_style_.font_weight();
   }
 
   const std::string&  font_style()
   { //! Get the font style for tspan element (from its text_style).
-    return style_.font_style();
+    return text_style_.font_style();
   }
 
   const std::string&  font_style() const
   { //! Get the font style for tspan element (from its text_style). const version.
-    return style_.font_style();
+    return text_style_.font_style();
   }
 
   svg_color fill_color()
@@ -880,7 +880,7 @@ public:
     //! This length may be used to expand or contract the SVG text to fit into this width,
     //! if text_length_ == 0, then has no effect as is not output by @c write below.
     //! If < 0 would be an error if output like textLength=-1
-    return style_.text_length_;
+    return text_style_.text_length_;
   }
   
   void write(std::ostream& os)
@@ -917,33 +917,33 @@ public:
     // https://www.w3.org/TR/SVG11/text.html#FontPropertiesUsedBySVG
     // 10.10 Font selection properties
     // Text_style
-    if (style_ != not_a_text_style)
+    if (text_style_ != not_a_text_style)
     { // Want to output (repeat) style info.
-      if (style_.font_size() != 0)
+      if (text_style_.font_size() != 0)
       {
-        os << " font-size=\"" << style_.font_size() << "\"";
+        os << " font-size=\"" << text_style_.font_size() << "\"";
       }
-      if (style_.font_family() != "")
+      if (text_style_.font_family() != "")
       { // Examples: Arial, Times New Roman.
-        os << " font-family=\"" << style_.font_family() << "\"";
+        os << " font-family=\"" << text_style_.font_family() << "\"";
       }
-      if (style_.font_style().size() != 0)
+      if (text_style_.font_style().size() != 0)
       { // Examples: 	normal | italic | oblique | inherit
-        os << " font-style=\"" << style_.font_style() << "\"";
+        os << " font-style=\"" << text_style_.font_style() << "\"";
       }
-      if (style_.font_weight().size() != 0)
+      if (text_style_.font_weight().size() != 0)
       { // Examples: normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 |
-        os << " font-weight=\"" << style_.font_weight() << "\"";
+        os << " font-weight=\"" << text_style_.font_weight() << "\"";
       }
-      if (style_.font_stretch().size() != 0)
+      if (text_style_.font_stretch().size() != 0)
       { // Examples: normal | wider | narrower | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded 
-        os << " font-stretch=\"" << style_.font_stretch() << "\"";
+        os << " font-stretch=\"" << text_style_.font_stretch() << "\"";
       }
       // 10.12 Text decoration https://www.w3.org/TR/SVG11/text.html#TextDecorationProperties  
-      if (style_.font_decoration().size() != 0)
+      if (text_style_.font_decoration().size() != 0)
       {
         // none | [ underline || overline || line-through || blink ] | inherit
-        os << " text-decoration=\"" << style_.font_decoration() << "\"";
+        os << " text-decoration=\"" << text_style_.font_decoration() << "\"";
       }
       if (text_length_ > 0)
       { // Use estimated text length to expand or compress to the this SVG length.
@@ -966,7 +966,7 @@ std::ostream& operator<< (std::ostream& os, const tspan_element& t)
     << ", " << t.rotate_ << ", " << t.text_length_ 
     << ", " << (t.use_x_ ? "absolute" : "relative")
     << ", " << (t.use_y_ ? "absolute" : "relative") // 
-    << ", " << t.style_  // text_style(40, "Arial", "", "bold", "", "")
+    << ", " << t.text_style_  // text_style(40, "Arial", "", "bold", "", "")
     << ")";
   return os;
 } // std::ostream& operator<<
@@ -976,7 +976,7 @@ std::ostream& operator<< (std::ostream& os, const tspan_element& t)
 tspan_element::tspan_element(const tspan_element& rhs)
     :
     text_length_(rhs.text_length_), use_x_(rhs.use_x_), use_y_(rhs.use_y_),
-    text_parent(rhs), style_(rhs.style_),
+    text_parent(rhs), text_style_(rhs.text_style_),
     x_(rhs.x_), y_(rhs.y_), dx_(rhs.dx_), dy_(rhs.dy_), rotate_(rhs.rotate_)
   { // Separately defined constructor.
   } // tspan_element::tspan_element
@@ -1014,7 +1014,7 @@ public:
   double x_; //!< Left edge of character.
   double y_; //!< Bottom of Roman capital character.
   ptr_vector<text_parent> data_; //!< Stores all of the containing text string data.
-  text_style style_; //!< font variants.
+  text_style text_style_; //!< font variants.
   align_style align_; //!< Alignment: left_align, right_align, center_align.
   rotate_style rotate_; //!< Rotation: horizontal, upward, downward, upsidedown.
 
@@ -1045,17 +1045,17 @@ public:
 
   text_style& textstyle()
   { //! Get @c text_element textstyle for font size, family, decoration ...
-    return style_;
+    return text_style_;
   }
 
   const text_style& textstyle() const
   { //! Get  @c text_element textstyle for font size, family, decoration ...
-    return style_;
+    return text_style_;
   }
 
   text_element& textstyle(text_style& ts)
   { //! Set  @c text_element text style for font size, family, decoration ...
-    style_ = ts;
+    text_style_ = ts;
     return *this; //! \return text_element& to make chainable.
   }
 
@@ -1115,7 +1115,7 @@ public:
   tspan_element& tspan(const std::string& t)
   { //! Add text span element (current style text_style).
     //! data_ in member of text_parent.
-    data_.push_back(new tspan_element(t, style_));
+    data_.push_back(new tspan_element(t, text_style_));
     return *(static_cast<tspan_element*>(&data_[data_.size()-1]));
   }
 
@@ -1141,8 +1141,8 @@ public:
     : // Constructor.
     x_(x), y_(y), // location.
     data_(ptr_vector<text_parent>()),
-    style_(ts), // Uses copy constructor.
-    //size_(size), font_(font), style_(style), weight_(weight), stretch_(stretch), decoration_(decoration), text_length_(text_length)
+    text_style_(ts), // Uses copy constructor.
+    //size_(size), font_(font), text_style_(style), weight_(weight), stretch_(stretch), decoration_(decoration), text_length_(text_length)
     align_(align),
     rotate_(rotate)
   { //! text_element Default Constructor defines defaults for all private members.
@@ -1151,7 +1151,7 @@ public:
 
   text_element(const text_element& rhs)
   :
-    x_(rhs.x_), y_(rhs.y_), style_(rhs.style_), align_(rhs.align_), rotate_(rhs.rotate_)
+    x_(rhs.x_), y_(rhs.y_), text_style_(rhs.text_style_), align_(rhs.align_), rotate_(rhs.rotate_)
   { //! Copy constructor.
      data_ = (const_cast<text_element&>(rhs)).data_.release();
   }
@@ -1162,7 +1162,7 @@ public:
     y_ = rhs.y_;
     data_.clear(); // Copy data_
     data_.insert(data_.end(), rhs.data_.begin(), rhs.data_.end());
-    style_ = rhs.style_; // font_size, family...
+    text_style_ = rhs.text_style_; // font_size, family...
     align_ = rhs.align_;
     rotate_ = rhs.rotate_;
     return *this; //! \return @c text_element& to make chainable.
@@ -1214,36 +1214,36 @@ public:
         << x_ << " "
         << y_ << ")\"";
     }
-    //if (style_.font_size() > 0 )
+    //if (text_style_.font_size() > 0 )
     //{ // 
-      if (style_.font_size() > 0)
+      if (text_style_.font_size() > 0)
       { // Example output: font-size="10" 
-        os << " font-size=\"" << style_.font_size() << "\"";
+        os << " font-size=\"" << text_style_.font_size() << "\"";
       }
-      if (style_.font_family() != "")
+      if (text_style_.font_family() != "")
       { // Example: Arial, Verdana, Times New Roman ...
         // Example output: font-family="serif"
-        os << " font-family=\"" << style_.font_family() << "\"";
+        os << " font-family=\"" << text_style_.font_family() << "\"";
       }
-      if (style_.font_style().size() != 0)
+      if (text_style_.font_style().size() != 0)
       { // Example: italic.
-        os << " font-style=\"" << style_.font_style() << "\"";
+        os << " font-style=\"" << text_style_.font_style() << "\"";
       }
-      if (style_.font_weight().size() != 0)
+      if (text_style_.font_weight().size() != 0)
       { // Example: bold.
-      os << " font-weight=\"" << style_.font_weight() << "\"";
+      os << " font-weight=\"" << text_style_.font_weight() << "\"";
       }
-      if (style_.font_stretch().size() != 0)
+      if (text_style_.font_stretch().size() != 0)
       {
-      os << " font-stretch=\"" << style_.font_stretch() << "\"";
+      os << " font-stretch=\"" << text_style_.font_stretch() << "\"";
       }
-      if (style_.font_decoration().size() != 0)
+      if (text_style_.font_decoration().size() != 0)
       {
-      os << " text-decoration=\"" << style_.font_decoration() << "\"";
+      os << " text-decoration=\"" << text_style_.font_decoration() << "\"";
       }
-      if (style_.text_length() > 0)
+      if (text_style_.text_length() > 0)
       {
-        os << " textLength=\"" << style_.text_length() << "\"";
+        os << " textLength=\"" << text_style_.text_length() << "\"";
       }
  //   }
     os << ">" ;
@@ -1263,7 +1263,7 @@ public:
     // Outputs:  text_element = text_element(100, 100, text_style(20, "serif", "bold", "", "", ""), center, -45)
       os << "text_element(" << t.x_ << ", " << t.y_
         //<< ", "  << t.data_
-        << ", " << t.style_ 
+        << ", " << t.text_style_ 
         << ", " << t.align_
         << ", " << t.rotate_ << ")" 
         << std::endl;

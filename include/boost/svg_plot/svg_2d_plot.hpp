@@ -133,7 +133,7 @@ namespace boost
       svg_2d_plot_series& point_font_weight(const std::string weight_);
       svg_2d_plot_series& point_font_decoration(const std::string decoration_);
       svg_2d_plot_series& point_font_stretch(const std::string stretch_);
-      svg_2d_plot_series& point_font_style(const std::string style_);
+      svg_2d_plot_series& point_font_style(const std::string text_style_);
 
       svg_2d_plot_series& size(int size_);
       svg_2d_plot_series& line_color(const svg_color& col_);
@@ -283,10 +283,10 @@ svg_2d_plot_series& svg_2d_plot_series::point_font_stretch(const std::string str
     return *this;
   }
 
-svg_2d_plot_series& svg_2d_plot_series::point_font_style(const std::string style_)
+svg_2d_plot_series& svg_2d_plot_series::point_font_style(const std::string text_style_)
   { //! Set Data series point marker font style.
     //! Example @c my_plot.plot(my_data, "my_data").shape("Z").point_font_style("italic")
-    point_style_.symbols_style_.font_style(style_);
+    point_style_.symbols_style_.font_style(text_style_);
     return *this;
   }
 
@@ -408,7 +408,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
   }
   const std::string svg_2d_plot_series::point_font_style()
   { //! \return style of data point marker(s) "bold", "italic" ..
-    return point_style_.symbols_style_.style_;
+    return point_style_.symbols_style_.text_style_;
   }
 
   point_shape svg_2d_plot_series::shape()
