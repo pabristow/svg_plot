@@ -32,7 +32,7 @@ int main()
     text_style default_style;  // Using constructor with all default values.
 
     svg doc;  // Construct a new (empty or default) SVG document.
-    doc.size(400, 400); // Change its (non-default) size.
+    doc.size(500, 400); // Change its (non-default) size.
     std::cout << "doc.document_size() = " <<  doc.document_size() << std::endl;
 
     g_element& g = doc.add_g_element(); // Add first (zeroth) new element to the document array of g_elements gs,
@@ -51,12 +51,14 @@ int main()
     //   <rect x="0" y="0" width="400" height="400" />  // Border in yellow.
     // </ g>
 
+    g0.rect(100, 200, 300, 350); // is yellow bottom right outputs only rect: info.
+    // <rect x="100" y="200" width="300" height="350"/>  (NO style info so uses the group style)
+
     // Not using push_back outputs just the rect coordinates and size.
-    rect_element& r = doc.rect(10, 20, 30, 40); // 	<rect x="10" y="20" width="30" height="40"/>  is black - default color
-    g0.rect(100, 200, 300, 400); // is yellow
+    rect_element& r = doc.rect(10, 20, 30, 40); // 	<rect x="10" y="20" width="30" height="40"/>  is black - default color.
+    // and NOT in group g0 "group element 0"
 
-
-    // Set some SVG style color and width info.
+    // Set some SVG style color and width info in "group_element 0", g0.
     g0.style().stroke_on(true); // stroke on true
     g0.style().stroke_color(yellow); // 
     g0.style().stroke_width(5);
@@ -75,7 +77,7 @@ int main()
      //ts = t.tspan("text_2").x(100.).dy(40.);
      //ts = t.tspan("text_3").x(100.).dy(60.);
 
-     for (int i = 1; i <= 8; i++)
+     for (int i = 1; i <= 4; i++)
      {
        std::string no = boost::lexical_cast<std::string>(i); // Convert 1 to "1" ...
        std::string s = "text_" + no; // "Text_1, ...
@@ -87,20 +89,41 @@ int main()
   //  // Now output a tspan element moved down over a bit.
     tspan_element ts = t.tspan("text_n").dx(100.).dy(20.)
       .font_size(40).font_family("Arial").font_weight("bold")
-      .fill_color(pink).stroke_color(purple); // tspan_element should set fill_on and stroke_on == true.
-   // Outputs: ts = tspan(0, 0, 100, 20, 0, 0, relative, relative, text_style(40, "Arial", "", "bold", "", ""))
+      .stroke_color(purple).fill_color(pink); // tspan_element should set fill_on and stroke_on == true.
+   // Outputs:
+   // <tspan stroke="rgb(128,0,128)" fill="rgb(255,192,203)" dx="100" dy="20"
+   //     font-size="40" font-family="Arial" font-weight="bold">text_n
+   // </tspan>
+
+    std::cout<< "dx " << ts.dx() << std::endl; // 100
+    std::cout<< "dy " << ts.dy() << std::endl; // 20
+    std::cout<< "tspan text is " << ts.text() << std::endl; // text_n
+    std::cout<< "font size is " << ts.font_size() << std::endl; // 40
+    std::cout<< "font family " << ts.font_family() << std::endl; // Arial
+    std::cout<< "font weight is " << ts.font_weight() << std::endl; // bold
+    std::cout<< "font_decoration is " << ts.text_style_.font_decoration() << std::endl; // 
+    // and inherits from svg_element
+    std::cout<< "style" << ts.style() << std::endl; 
+    //  style is svg_style(RGB(0,0,0), blank, 0, no stroke, no fill, no width) 
+    std::cout<< "stroke color " << ts.stroke_color() << std::endl; // stroke color RGB(0,0,0) == black
+    std::cout<< "stroke on " << std::boolalpha << ts.stroke_on() << std::endl; // false but expect true???
+    std::cout<< "fill color " << ts.fill_color() << std::endl; // blank but expect pink == rgb(255,192,203)
+    std::cout<< "fill on " << std::boolalpha << ts.fill_on() << std::endl; // false but expect true from
+    //std::cout<< "width_on is  " << ts.width_on() << std::endl; // won't compile.
+    //std::cout<< "stroke_width is " << ts.stroke_width() << std::endl; // won't compile.
+    std::cout<< "ts.style().width_on() " << ts.style().width_on() << std::endl; // alse
+    std::cout<< "ts.style().stroke_width() " << ts.style().stroke_width() << std::endl; // 0
+    std::cout<< "ts.style().stroke_color() " << ts.style().stroke_color() << std::endl; // ts.style().stroke_color() RGB(0,0,0) 
+    std::cout<< "ts.style().fill_color() " << ts.style().fill_color() << std::endl; // ts.style().fill_color() blank
+
+
+
+
   //    .fill_color(pink).fill_on(true).stroke_color(purple).stroke_on(true);
-  //// Not finding right fill_on(bool is) or stroke_on(bool)function.
-  //  std::cout<< "dx " << ts.dx() << std::endl;
-  //  std::cout<< "dy " << ts.dy() << std::endl;
-  //  std::cout<< "tspan text is " << ts.text() << std::endl;
-  //  std::cout<< "font size is " << ts.font_size() << std::endl;
-  //  std::cout<< "font family " << ts.font_family() << std::endl;
-  //  std::cout<< "font weight is " << ts.font_weight() << std::endl;
-  //  std::cout<< "fill color " << ts.fill_color() << std::endl; // expect pink == rgb(255,192,203)
-  //  std::cout<< "fill on " << std::boolalpha << ts.fill_on() << std::endl;
+
     std::cout << "ts = " << ts << std::endl; // Show the state.
-    // ts = tspan(0, 0, 10, 20, 0, 0, relative, relative, text_style(40, "Arial", "", "bold", "", ""))
+  // ts = tspan(0, 0, 100, 20, 0, 0, relative, relative, text_style(40, "Arial", "", "bold", "", ""))
+
 
   //  //<!--File demo_svg_tspan.svg-->
   //  //  <text x = "100" y = "100" text-anchor = "middle" transform = "rotate(-45 100 100)"

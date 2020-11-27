@@ -81,7 +81,7 @@ namespace svg
        \endcode
      */
   public:
-    svg_style style_info_; //!< Colors fill, stroke, width; set and get by function style.
+    svg_style style_info_; //!< Colors fill, stroke, width; set and get by function @c style().
     std::string id_name_; //!< SVG id name, set & get by function id.
     std::string class_name_; //!< SVG class name, set & get by function class id.
     std::string clip_name_; //!< SVG clip path name, set & get by function clip_id.
@@ -582,10 +582,11 @@ class text_parent
     std::string text_; //!< Actual text string for SVG text.
     virtual ~text_parent() {}
     virtual void write(std::ostream& /* os */)
-    { //! write functions output SVG commands.
+    { //! @c write functions output SVG commands to @c ostream.
     }
     text_parent(const std::string& text): text_(text)
     { //! Construct from string text.
+      //! Used by text_element and tspan_element to store tex to be output.
     }
     text_parent(const text_parent& rhs): text_(rhs.text_)
     { //! Copy constructor.
@@ -1128,7 +1129,7 @@ public:
   }
 
   text_element(
-    //!< Constructor
+    //!< Constructor, setting all data elements.
     //! X & Y-Coordinates of 1st character EM box, see
     //!< \sa http://www.w3.org/TR/SVG/text.html#TextElement 10.2
     double x = 0., //!< X = Left edge.
@@ -1136,7 +1137,7 @@ public:
     //!< So any text with Y coordinate = 0 shows only the descenders of (roman?) lower case !
     //!< One must increase Y to allow for the height (font size) of the character.
     const std::string text = "", //!< Text string to output (may include Unicode string like "&#x221A;" for square root symbol.
-    text_style ts = no_text_style, //!< Text font textstyle,default left to SVG defaults.
+    text_style ts = no_text_style, //!< Text font text style, default left to SVG defaults.
     align_style align = align_style ::left_align, //!< Alighment of text, left, center or right, default left_align.
     rotate_style rotate = horizontal) //!< orientation of text, default horizontal.
     : // Constructor.
@@ -1146,7 +1147,7 @@ public:
     //size_(size), font_(font), text_style_(textstyle), weight_(weight), stretch_(stretch), decoration_(decoration), text_length_(text_length)
     align_(align),
     rotate_(rotate)
-  { //! text_element Default Constructor defines defaults for all private members.
+  { //! text_element Default Constructor defines defaults for all class members.
     data_.push_back(new text_element_text(text)); // Adds new text string.
   }
 
