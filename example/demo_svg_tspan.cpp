@@ -111,14 +111,12 @@ int main()
     std::cout<< "stroke on " << std::boolalpha << ts.stroke_on() << std::endl; // false but expect true???
     std::cout<< "fill color " << ts.fill_color() << std::endl; // blank but expect pink == rgb(255,192,203)
     std::cout<< "fill on " << std::boolalpha << ts.fill_on() << std::endl; // false but expect true from
-    //std::cout<< "width_on is  " << ts.width_on() << std::endl; // won't compile.
-    //std::cout<< "stroke_width is " << ts.stroke_width() << std::endl; // won't compile.
-    std::cout<< "ts.style().width_on() " << ts.style().width_on() << std::endl; // alse
+    std::cout<< "width_on is  " << ts.width_on() << std::endl; // false
+    std::cout<< "stroke_width is " << ts.stroke_width() << std::endl; // 0
+    std::cout<< "ts.style().width_on() " << ts.style().width_on() << std::endl; // false
     std::cout<< "ts.style().stroke_width() " << ts.style().stroke_width() << std::endl; // 0
     std::cout<< "ts.style().stroke_color() " << ts.style().stroke_color() << std::endl; // ts.style().stroke_color() RGB(0,0,0) 
     std::cout<< "ts.style().fill_color() " << ts.style().fill_color() << std::endl; // ts.style().fill_color() blank
-
-
 
 
   //    .fill_color(pink).fill_on(true).stroke_color(purple).stroke_on(true);

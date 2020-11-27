@@ -799,19 +799,17 @@ public:
     return text_style_;
   }
 
-  //Const version name clash?
+  //Const version won't compile - name clash?
   //const text_style& text_style() const
   //{ //! \return Reference to @c text_style& to permit access to font family, size (const version).
   //  return text_style_;
   //}
 
-
   svg_style& style()
   { //! \return  Reference to @c svg_style to provide indirect access to colors & width 
-    //! via style().stroke_color(), fill_color(), width() etc.
+    //! via style().stroke_color(), .fill_color(), .width() etc.
     return style_info_;
   }
-
 
   std::string text()
   { //! Get text from a tspan element.
@@ -867,7 +865,7 @@ public:
   }
 
   svg_color fill_color()
-  { //! Get the fill color for tspan element from svg_element.
+  { //! Get the fill color for tspan element from SVG style svg_element.
     return style_info_.fill_color();
   }
 
@@ -885,6 +883,17 @@ public:
   { //! Get true if to use stroke color for tspan element.
     return style_info_.stroke_on();
   }
+
+  bool width_on()
+  { //! Get true if to use stroke width for tspan element.
+    return style_info_.width_on();
+  }
+
+  double stroke_width()
+  { //! Get stroke width for tspan element.
+    return style_info_.stroke_width();
+  }
+
 
   double text_length()
   { //! Get user's estimated length for a text string.
