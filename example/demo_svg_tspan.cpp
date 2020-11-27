@@ -79,7 +79,7 @@ int main()
      {
        std::string no = boost::lexical_cast<std::string>(i); // Convert 1 to "1" ...
        std::string s = "text_" + no; // "Text_1, ...
-       tspan_element ts = t.tspan(s, not_a_style).x(100.).dy(20.);
+       tspan_element ts = t.tspan(s, not_a_text_style).x(100.).dy(20.);
      }
 
      g0.text(300, 300, "Text g0", no_text_style); // Uses g0 style (image border) - so yellow and wide and almost illegible!

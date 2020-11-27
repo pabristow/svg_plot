@@ -726,7 +726,7 @@ std::ostream& operator<< (std::ostream& os, const text_style& ts)
 // End of class text_style function *Definitions* separated.
 
 text_style no_text_style; //!< Text style that uses all constructor defaults.
-text_style not_a_style (-1, "","","","","",0); //!< Text style that uses null for all style features (used to signal no style required)..
+text_style not_a_text_style (-1, "","","","","",0); //!< Text style that uses null for all text style features (used to signal no SVG style required)..
 
 
 class value_style

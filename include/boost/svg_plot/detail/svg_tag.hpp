@@ -643,7 +643,7 @@ public:
   text_style style_; //!< font variants.
 
   tspan_element(const std::string& text, //!< Text string to display.
-    const text_style& style = not_a_style) //!< Default text style (font).
+    const text_style& style = not_a_text_style) //!< Default text style (font).
   :
     use_x_(false), use_y_(false), 
     text_parent(text), style_(style),
@@ -917,7 +917,7 @@ public:
     // https://www.w3.org/TR/SVG11/text.html#FontPropertiesUsedBySVG
     // 10.10 Font selection properties
     // Text_style
-    if (style_ != not_a_style)
+    if (style_ != not_a_text_style)
     { // Want to output (repeat) style info.
       if (style_.font_size() != 0)
       {
