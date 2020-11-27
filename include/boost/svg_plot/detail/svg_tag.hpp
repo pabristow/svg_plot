@@ -775,6 +775,15 @@ public:
     return *this; //! \return @c tspan_element& to make chainable.
   }
 
+  tspan_element& stroke_width(double width)
+  { //! Set stroke width for a tspan element.
+    style_info_.stroke_width(width);
+    style_info_.stroke_on(true);
+ //   use_style_ = true;
+    return *this; //! \return @c tspan_element& to make chainable.
+  }
+
+
   tspan_element& textstyle(const text_style& textstyle)
   { //! Set text style (font) for a @c tspan_element.
     text_style_ = textstyle;

@@ -89,11 +89,13 @@ int main()
   //  // Now output a tspan element moved down over a bit.
     tspan_element ts = t.tspan("text_n").dx(100.).dy(20.)
       .font_size(40).font_family("Arial").font_weight("bold")
-      .stroke_color(purple).fill_color(pink); // tspan_element should set fill_on and stroke_on == true.
+      .stroke_color(purple).fill_color(pink).stroke_width(2); // tspan_element should set fill_on and stroke_on == true.
+    // Shows in expected place and colors adn width too.
    // Outputs:
-   // <tspan stroke="rgb(128,0,128)" fill="rgb(255,192,203)" dx="100" dy="20"
-   //     font-size="40" font-family="Arial" font-weight="bold">text_n
-   // </tspan>
+   // <	<tspan stroke="rgb(128,0,128)" fill="rgb(255,192,203)" stroke-width="2" 
+    //   dx="100" dy="20" font-size="40" font-family="Arial" font-weight="bold">text_n
+    // </tspan>
+
 
     std::cout<< "dx " << ts.dx() << std::endl; // 100
     std::cout<< "dy " << ts.dy() << std::endl; // 20
@@ -117,7 +119,6 @@ int main()
     std::cout<< "ts.style().stroke_width() " << ts.style().stroke_width() << std::endl; // 0
     std::cout<< "ts.style().stroke_color() " << ts.style().stroke_color() << std::endl; // ts.style().stroke_color() RGB(0,0,0) 
     std::cout<< "ts.style().fill_color() " << ts.style().fill_color() << std::endl; // ts.style().fill_color() blank
-
 
   //    .fill_color(pink).fill_on(true).stroke_color(purple).stroke_on(true);
 
