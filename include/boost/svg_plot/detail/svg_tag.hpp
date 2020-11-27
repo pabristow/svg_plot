@@ -662,7 +662,7 @@ public:
   //  text_length_(rhs.text_length_), use_x_(rhs.use_x_), use_y_(rhs.use_y_),
   //  use_text_length_(rhs.use_text_length_), style_(rhs.style_),
   //  text_parent(rhs)
-  //{
+  //{ // Copy all parameters
   //}
 
   // All setters (all chainable).
@@ -699,35 +699,35 @@ public:
   { //!< Note implementation so far only rotates the 1st character in string.
     //!< text_element rotation rotates the whole text string, so it *much* more useful.
     rotate_ = rotation;
-    return *this; //! \return tspan_element& to make chainable.
+    return *this; //! \return @c tspan_element& to make chainable.
   }
 
   tspan_element& x(double x)
   { //! Absolute X position of a 1st single character of text string to use with SVG tspan command.
     x_ = x;
     use_x_ = true;
-    return *this; //! \return tspan_element& to make chainable.
+    return *this; //! \return @c tspan_element& to make chainable.
   }
 
   tspan_element& y(double y)
   {//! Absolute Y position of a 1st single character of text string to use with SVG tspan command.
     y_ = y;
     use_y_ = true;
-    return *this; //! \return tspan_element& to make chainable.
+    return *this; //! \return @c tspan_element& to make chainable.
   }
 
   tspan_element& text_length(double text_length)
   { //! Set user estimate of text length (see http://www.w3.org/TR/SVG/text.html#TSpanElement TSPAN SVG Specification).
     text_length_ = text_length;
    // use_text_length_ = true;
-    return *this; //! \return tspan_element& to make chainable.
+    return *this; //! \return @c tspan_element& to make chainable.
   }
 
   tspan_element& font_size(int size)
   { //! font size of 1st single character of text string to use with SVG tspan command.
     style_.font_size(size);
   //  use_style_ = true;
-    return *this; //! \return tspan_element& to make chainable.
+    return *this; //! \return @c tspan_element& to make chainable.
   }
 
   tspan_element& font_family(const std::string& family)
@@ -916,7 +916,7 @@ public:
     }
     // https://www.w3.org/TR/SVG11/text.html#FontPropertiesUsedBySVG
     // 10.10 Font selection properties
-
+    // Text_style
     if (style_ != not_a_style)
     { // Want to output (repeat) style info.
       if (style_.font_size() != 0)
@@ -956,7 +956,7 @@ public:
   }; // class tspan_element
 
 std::ostream& operator<< (std::ostream& os, const tspan_element& t)
-{ //! Diagnostic output of tspan coordinates and dimensions etc.
+{ //! Diagnostic output of tspan coordinates info, and text_style.
   //! Example:   std::cout << r << std::endl;
   //! Outputs:  
   //! \verbatim ts = tspan(0, 0, 10, 20, 0, 0, false, false, text_style(40, "Arial", "", "bold", "", "")) \endverbatim
@@ -2128,7 +2128,9 @@ public:
 
       For example, an image background rectangle with border and fill:
       \verbatim 
-         <g id="background" fill="rgb(255,255,255)"><rect width="500" height="350"/></g>
+         <g id="background" fill="rgb(255,255,255)">  
+           <rect width="500" height="350"/>
+         </g>
       \endverbatim
    */
   public: // Simplest, private has little benefit.
@@ -2137,7 +2139,8 @@ public:
       containg graphics elements like text, rect, circle, line, polyline... */
 
     std::string clip_name;  //!< Name of clip path.
-    bool clip_on; //!< @c true if to clip anything outside the clip path.
+    bool clip_on; //!< @c true if to clip anything outside the clip path, often the plot window
+   //!< so that data-point markers do not overlap axis tick values on the outside of the window.
 
     g_element() : clip_on(false)
     { //! Construct g_element (with no clipping).
@@ -2149,7 +2152,7 @@ public:
     }
 
     size_t size()
-    { //! \return Number of child nodes.
+    { //! \return Number of child (leaf) nodes.
       return children.size();
     }
 
@@ -2162,14 +2165,14 @@ public:
       */
 
       if (children.size() > 0)
-      { /*! Skip if no child leafs.
+      { /*! Do not output anything if no child leafs to avoid useless output like: 
           \verbatim
-            Avoid useless output like: <g id="legendBackground"></g>
+           <g id="legendBackground"> </g>
           \endverbatim
         */
         os << "\n" "<g"; // Do NOT need space if convention is to start following item with space or tab or newline.
         write_attributes(os); // id="background" (or clip_path)
-        style_info_.write(os); // stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
+        style_info_.write(os); // SVG style info like stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
         os << ">" 
           "\n"; // Newline after the g_element id and style is easier to read.
         for(unsigned int i = 0; i < children.size(); ++i)
@@ -2178,7 +2181,6 @@ public:
           // Using tab to indent also makes easy to read.
         }
         os << "</g>" "\n"  ; // 
-
       }
     } // void write(std::ostream& rhs)
 

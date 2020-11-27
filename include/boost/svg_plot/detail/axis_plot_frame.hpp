@@ -2207,8 +2207,8 @@ namespace boost
           std::cout << "line g_legend_lines->style().stroke_width set to " << g_legend_lines->style().stroke_width() << std::endl;
           std::cout << "line g_legend_lines->style() set to " << g_legend_lines->style() << std::endl;
           // line_style color set to = RGB(0, 0, 255) blue
-           // line g_legend_lines->style().stroke_width set to 2
-           // line g_legend_lines->style() set to svg_style(RGB(0, 0, 255), blank, 2, stroke_on, no fill, width_on)
+          // line g_legend_lines->style().stroke_width set to 2
+          // line g_legend_lines->style() set to svg_style(RGB(0, 0, 255), blank, 2, stroke_on, no fill, width_on)
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
           g_legend_lines->push_back(new line_element( // Draw horizontal lines with appropriate color.
             legend_x_pos,

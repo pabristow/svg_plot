@@ -77,19 +77,19 @@ int main()
 
      for (int i = 1; i <= 8; i++)
      {
-       std::string no = boost::lexical_cast<std::string>(i);
-       tspan_element ts = t.tspan("text_" + no, not_a_style).x(100.).dy(20.);
+       std::string no = boost::lexical_cast<std::string>(i); // Convert 1 to "1" ...
+       std::string s = "text_" + no; // "Text_1, ...
+       tspan_element ts = t.tspan(s, not_a_style).x(100.).dy(20.);
      }
 
-     g0.text(300, 300, "Text g0", no_style); // Uses g0 style - yellow and wide so illegible!
-
-
+     g0.text(300, 300, "Text g0", no_style); // Uses g0 style (image border) - so yellow and wide and almost illegible!
 
   //  // Now output a tspan element moved down over a bit.
-  //  tspan_element ts = t.tspan("text_1").dx(100.).dy(120.)
-  //    .font_size(40).font_family("Arial").font_weight("bold")
-  //    .fill_color(pink).stroke_color(purple); // tspan_element should set fill_on and stroke_on == true.
-  ////    .fill_color(pink).fill_on(true).stroke_color(purple).stroke_on(true);
+    tspan_element ts = t.tspan("text_n").dx(100.).dy(20.)
+      .font_size(40).font_family("Arial").font_weight("bold")
+      .fill_color(pink).stroke_color(purple); // tspan_element should set fill_on and stroke_on == true.
+   // Outputs: ts = tspan(0, 0, 100, 20, 0, 0, relative, relative, text_style(40, "Arial", "", "bold", "", ""))
+  //    .fill_color(pink).fill_on(true).stroke_color(purple).stroke_on(true);
   //// Not finding right fill_on(bool is) or stroke_on(bool)function.
   //  std::cout<< "dx " << ts.dx() << std::endl;
   //  std::cout<< "dy " << ts.dy() << std::endl;
@@ -99,8 +99,8 @@ int main()
   //  std::cout<< "font weight is " << ts.font_weight() << std::endl;
   //  std::cout<< "fill color " << ts.fill_color() << std::endl; // expect pink == rgb(255,192,203)
   //  std::cout<< "fill on " << std::boolalpha << ts.fill_on() << std::endl;
-  //  std::cout << "ts = " << ts << std::endl; // Show the state.
-  //  // ts = tspan(0, 0, 10, 20, 0, 0, relative, relative, text_style(40, "Arial", "", "bold", "", ""))
+    std::cout << "ts = " << ts << std::endl; // Show the state.
+    // ts = tspan(0, 0, 10, 20, 0, 0, relative, relative, text_style(40, "Arial", "", "bold", "", ""))
 
   //  //<!--File demo_svg_tspan.svg-->
   //  //  <text x = "100" y = "100" text-anchor = "middle" transform = "rotate(-45 100 100)"
