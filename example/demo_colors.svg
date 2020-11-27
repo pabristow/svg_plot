@@ -52,11 +52,11 @@ M365,110 L365,112
 </g>
 
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
-	<path d="M21,110 L21,115 
-M122,110 L122,115 
-M223,110 L223,115 
-M325,110 L325,115 
-M21,110 L21,115 
+	<path d="M21,110 L21,114 
+M122,110 L122,114 
+M223,110 L223,114 
+M325,110 L325,114 
+M21,110 L21,114 
 " fill="none"/>
 </g>
 
@@ -67,7 +67,7 @@ M21,110 L21,115
 </g>
 
 <g id="xLabel" stroke="rgb(255,0,255)" fill="rgb(255,0,255)">
-	<text x="198" y="189" text-anchor="middle" font-size="10" font-family="Verdana">axis	</text>
+	<text x="198" y="188" text-anchor="middle" font-size="10" font-family="Verdana">axis	</text>
 </g>
 
 <g id="plotPoints">

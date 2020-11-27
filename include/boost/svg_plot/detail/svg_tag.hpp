@@ -155,7 +155,7 @@ namespace svg
       return style_info_;
     }
 
-    const svg_style& style() const
+    const svg_style& textstyle() const
     { //! \return Reference to @c const @c svg_style to provide indirect access to colors & width
       //! via style().stroke_color(), fill_color(), width() (const version).
       return style_info_;
@@ -643,10 +643,10 @@ public:
   text_style text_style_; //!< font variants.
 
   tspan_element(const std::string& text, //!< Text string to display.
-    const text_style& style = not_a_text_style) //!< Default text style (font).
+    const text_style& textstyle = not_a_text_style) //!< Default text textstyle (font).
   :
     use_x_(false), use_y_(false), 
-    text_parent(text), text_style_(style),
+    text_parent(text), text_style_(textstyle),
     x_(0), y_(0), dx_(0), dy_(0), // X & Y coordinates, relative and absolute.
     rotate_(0),
     text_length_(0) // If text_length_ > 0 then compress or expand to this specified length.
@@ -666,8 +666,8 @@ public:
   //}
 
   // All setters (all chainable).
-  //tspan_element(const std::string& text, const text_style& style);
-  //tspan_element(const tspan_element&); // Default style.
+  //tspan_element(const std::string& text, const text_style& textstyle);
+  //tspan_element(const tspan_element&); // Default textstyle.
   //tspan_element& text(const std::string& text);
   //tspan_element& dx(double dx);
   //tspan_element& dy(double dy);
@@ -675,7 +675,7 @@ public:
   //tspan_element& x(double x);
   //tspan_element& y(double y);
   //tspan_element& text_length(double text_length);
-  //tspan_element& text_style(const text_style& style)
+  //tspan_element& text_style(const text_style& textstyle)
 
   tspan_element& text(const std::string& text)
   { //! Set text string to use with SVG tspan command.
@@ -737,12 +737,12 @@ public:
     return *this; //! \return @c tspan_element& to make chainable.
   }
 
-  tspan_element& font_style(const std::string& style)
+  tspan_element& font_style(const std::string& textstyle)
   { //! font style of 1st single character of text string to use with SVG tspan command.
     //! font-style: normal | bold | italic | oblique
     //! Examples: "italic"
     //! http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
-    text_style_.font_style(style);
+    text_style_.font_style(textstyle);
   //  use_style_ = true;
     return *this; //! \return @c tspan_element& to make chainable.
   }
@@ -773,9 +773,9 @@ public:
     return *this; //! \return @c tspan_element& to make chainable.
   }
 
-  tspan_element& textstyle(const text_style& style)
+  tspan_element& textstyle(const text_style& textstyle)
   { //! Set text style (font) for a @c tspan_element.
-    text_style_ = style;
+    text_style_ = textstyle;
  //   use_style_ = true;
     return *this; //! \return @c tspan_element& to make chainable.
   }
@@ -929,7 +929,7 @@ public:
       }
       if (text_style_.font_style().size() != 0)
       { // Examples: 	normal | italic | oblique | inherit
-        os << " font-style=\"" << text_style_.font_style() << "\"";
+        os << " font-textstyle=\"" << text_style_.font_style() << "\"";
       }
       if (text_style_.font_weight().size() != 0)
       { // Examples: normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 |
@@ -1036,8 +1036,8 @@ public:
   // text_element(const text_element& rhs);
 
   // Get member functions.
-  // text_style& style();
-  // const text_style& style() const;
+  // text_style& textstyle();
+  // const text_style& textstyle() const;
   // align_style alignment();
   // rotate_style rotation() const;
   // double x() const;
@@ -1054,7 +1054,7 @@ public:
   }
 
   text_element& textstyle(text_style& ts)
-  { //! Set  @c text_element text style for font size, family, decoration ...
+  { //! Set  @c text_element text textstyle for font size, family, decoration ...
     text_style_ = ts;
     return *this; //! \return text_element& to make chainable.
   }
@@ -1083,7 +1083,7 @@ public:
   }
 
   // All set functions now return *this to be chainable, for example:
-  // my_text_element.style(no_text_style).x(999).y(555).alignment(right_align).rotation(vertical);
+  // my_text_element.textstyle(no_text_style).x(999).y(555).alignment(right_align).rotation(vertical);
 
   text_element& x(double x)
   { //! X coordinate of text to write.
@@ -1113,16 +1113,17 @@ public:
   }
 
   tspan_element& tspan(const std::string& t)
-  { //! Add text span element (current style text_style).
+  { //! Add text span element (using current text_style text_style_).
     //! data_ in member of text_parent.
     data_.push_back(new tspan_element(t, text_style_));
     return *(static_cast<tspan_element*>(&data_[data_.size()-1]));
   }
 
-  tspan_element& tspan(const std::string& t, const text_style& style)
-  { //! Add text span element (with specified text style).
+  // 
+  tspan_element& tspan(const std::string& t, const text_style& textstyle)
+  { //! Add text span element (with specified text_style textstyle).
     //! data_ in member of text_parent.
-    data_.push_back(new tspan_element(t, style));
+    data_.push_back(new tspan_element(t, textstyle));
     return *(static_cast<tspan_element*>(&data_[data_.size()-1]));
   }
 
@@ -1135,14 +1136,14 @@ public:
     //!< So any text with Y coordinate = 0 shows only the descenders of (roman?) lower case !
     //!< One must increase Y to allow for the height (font size) of the character.
     const std::string text = "", //!< Text string to output (may include Unicode string like "&#x221A;" for square root symbol.
-    text_style ts = no_text_style, //!< Text font style,default left to SVG defaults.
+    text_style ts = no_text_style, //!< Text font textstyle,default left to SVG defaults.
     align_style align = align_style ::left_align, //!< Alighment of text, left, center or right, default left_align.
     rotate_style rotate = horizontal) //!< orientation of text, default horizontal.
     : // Constructor.
     x_(x), y_(y), // location.
     data_(ptr_vector<text_parent>()),
     text_style_(ts), // Uses copy constructor.
-    //size_(size), font_(font), text_style_(style), weight_(weight), stretch_(stretch), decoration_(decoration), text_length_(text_length)
+    //size_(size), font_(font), text_style_(textstyle), weight_(weight), stretch_(stretch), decoration_(decoration), text_length_(text_length)
     align_(align),
     rotate_(rotate)
   { //! text_element Default Constructor defines defaults for all private members.
@@ -1227,7 +1228,7 @@ public:
       }
       if (text_style_.font_style().size() != 0)
       { // Example: italic.
-        os << " font-style=\"" << text_style_.font_style() << "\"";
+        os << " font-textstyle=\"" << text_style_.font_style() << "\"";
       }
       if (text_style_.font_weight().size() != 0)
       { // Example: bold.
@@ -1254,7 +1255,7 @@ public:
 }; // class text_element_
 
   std::ostream& operator<< (std::ostream& os, text_element& t)
-  { //! Outputs: text & style (useful for diagnosis).
+  { //! Outputs: text & textstyle (useful for diagnosis).
     //! Example: 
     //! \code
     //!   text_element& t = my_doc.text(100, 100, "My Text", my_text_style, center_align, uphill);
@@ -2229,12 +2230,12 @@ public:
     // svg::text constructor with defaults. 
     text_element& text(double x = 0., double y = 0., // Location.
     const std::string& text = "", // Text string to display.
-    const text_style& style = no_text_style, // Default to use SVG implementation's defaults for font family, size.
+    const text_style& textstyle = no_text_style, // Default to use SVG implementation's defaults for font family, size.
     const align_style& align = align_style::left_align,
     const rotate_style& rotate = horizontal)
     { //! Add a new text element.
-      //! \return A reference to the new child node just created.
-      children.push_back(new text_element(x, y, text, style, align, rotate));
+      //! \return A reference to the new child (leaf) node just created.
+      children.push_back(new text_element(x, y, text, textstyle, align, rotate));
       return *(static_cast<text_element*>(&children[children.size()-1]));
     }
 

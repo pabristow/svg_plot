@@ -62,13 +62,13 @@ M27.5,110 L27.5,112
 </g>
 
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
-	<path d="M53.7,110 L53.7,115 
-M119,110 L119,115 
-M185,110 L185,115 
-M250,110 L250,115 
-M316,110 L316,115 
-M381,110 L381,115 
-M53.7,110 L53.7,115 
+	<path d="M53.7,110 L53.7,114 
+M119,110 L119,114 
+M185,110 L185,114 
+M250,110 L250,114 
+M316,110 L316,114 
+M381,110 L381,114 
+M53.7,110 L53.7,114 
 " fill="none"/>
 </g>
 
@@ -81,7 +81,7 @@ M53.7,110 L53.7,115
 </g>
 
 <g id="xLabel">
-	<text x="217" y="189" text-anchor="middle" font-size="10" font-family="Verdana">time (sec)	</text>
+	<text x="217" y="188" text-anchor="middle" font-size="10" font-family="Verdana">time (sec)	</text>
 </g>
 
 <g id="plotPoints">
