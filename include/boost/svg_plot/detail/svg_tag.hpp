@@ -116,12 +116,12 @@ namespace svg
       */
     } // void write_attributes(std::ostream& os)
 
-    svg_element(const svg_style& style_info,
+    svg_element(const svg_style& style,
                 const std::string& id_name = "",
                 const std::string& class_name = "",
                 const std::string& clip_name = "")
                 :
-                svg_style_(style_info),
+                svg_style_(style),
                 id_name_(id_name),
                 class_name_(class_name),
                 clip_name_(clip_name)
@@ -183,7 +183,7 @@ namespace svg
    }
 
     std::string id()
-    { //! \return  The unique name for an element, for example id() ="plotBackground".
+    { //! \return  The unique name for an element, for example: \verbatim id() ="plotBackground" \endverbatim
       return id_name_;
     }
 
@@ -2176,7 +2176,7 @@ public:
 
     std::string clip_name;  //!< Name of clip path.
     bool clip_on; //!< @c true if to clip anything outside the clip path, often the plot window
-   //!< so that data-point markers do not overlap axis tick values on the outside of the window.
+   //!< so that data-point markers do not overlap axes tick-values on the inside of the window.
 
     g_element() : clip_on(false)
     { //! Construct g_element (with no clipping).
@@ -2207,7 +2207,7 @@ public:
           \endverbatim
         */
         os << "\n" "<g"; // Do NOT need space if convention is to start following item with space or tab or newline.
-        write_attributes(os); // id="background" (or clip_path)
+        write_attributes(os); // id="background" (or clip_path).
         svg_style_.write(os); // SVG style info like stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
         os << ">" 
           "\n"; // Newline after the g_element id and style is easier to read.

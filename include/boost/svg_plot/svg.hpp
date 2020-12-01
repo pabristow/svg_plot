@@ -335,7 +335,6 @@ protected:
   int coord_precision_; //!< Number of decimal digits precision for output of X and Y coordinates to SVG XML.
   // Not sure this is the best place for this?
 
-private:
 //! \cond DETAIL // Doxygen document this section only if DETAIL defined.
   void write_header(std::ostream& s_out)
   { //! Output the DTD SVG 1.1 header into the SVG g_element document.
@@ -496,10 +495,10 @@ public:
     return coord_precision_;
   }
 
-  /*! \brief Write whole .svg 'file' contents to file.
+  /*! \brief Write whole .svg 'file' contents to SVG file.
 
-  \details @c svg.write() also has two flavors, a file and an ostream.
-  The file version opens an ostream, and calls the stream version.
+  \details @c svg.write() also has two flavors, a file and an @c std::ostream.
+  The file version opens an @c std::ofstream, and calls the stream version.
 
   The stream version first clears all unnecessary data from the graph,
   builds the document tree, and then calls the write function for the root
@@ -722,7 +721,7 @@ public:
 
   // -------------------------------------------------------
   // Writes the information about the image to the document.
-  // TODO: allow other unit identifiers.
+  // TODO: allow other unit identifiers other than default pixel, abbreviation "px".
   // -------------------------------------------------------
   void size(unsigned int x, unsigned int y)
   { //! Set both X and Y image size (SVG units, default pixels).

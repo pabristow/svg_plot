@@ -312,13 +312,17 @@ public:
    }
 
   std::ostream& operator<< (std::ostream& os, const svg_style& s)
-  {  /*! Output a string description of a svg_style.
+  {  /*! Output a @c std::string description of a @c svg_style.
          Usage: svg_style my_svg_style; std::cout << my_svg_style << std::endl;
-         Outputs, for example:
+         Outputs for default not_a_style, for example:
          \code
            svg_style(RGB(0,0,0), RGB(0,0,0), 0, no fill, no stroke, no width)
-           svg_style(RGB(255,255,255), RGB(0,128,0), 2, fill_on, stroke_on, width_on)
          \endcode
+         or a style that has been set to black with a green fill
+         \code
+           svg_style(RGB(255,0,0), RGB(0,128,0), 2, fill_on, stroke_on, width_on)
+         \endcode
+
      */
       os << "svg_style("
          << s.stroke_ << ", "
