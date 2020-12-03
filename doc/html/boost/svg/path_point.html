@@ -34,39 +34,39 @@
 </span>
 <span class="keyword">struct</span> <a class="link" href="path_point.html" title="Struct path_point">path_point</a> <span class="special">{</span>
   <span class="comment">// <a class="link" href="path_point.html#boost.svg.path_pointconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="path_point.html#id554601-bb"><span class="identifier">path_point</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_point.html#id554644-bb"><span class="special">~</span><span class="identifier">path_point</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_point.html#id536125-bb"><span class="identifier">path_point</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_point.html#id536161-bb"><span class="special">~</span><span class="identifier">path_point</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="path_point.html#id554591-bb">public member functions</a></span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="path_point.html#id554609-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span> <span class="special">=</span> <span class="number">0</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="path_point.html#id536095-bb">public member functions</a></span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="path_point.html#id536096-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span> <span class="special">=</span> <span class="number">0</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="keyword">bool</span> <span class="identifier">relative</span><span class="special">;</span>  <span class="comment">// If true relative else absolute. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1212129"></a><h2>Description</h2>
+<a name="id1210522"></a><h2>Description</h2>
 <p>Paths represent the outline of a shape which can be filled, stroked, used as a clipping path, or any combination of the three. </p>
 <div class="refsect2">
-<a name="id1212146"></a><h3>
+<a name="id1210523"></a><h3>
 <a name="boost.svg.path_pointconstruct-copy-destruct"></a><code class="computeroutput">path_point</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a name="id554601-bb"></a><span class="identifier">path_point</span><span class="special">(</span><span class="keyword">bool</span> relative<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id536125-bb"></a><span class="identifier">path_point</span><span class="special">(</span><span class="keyword">bool</span> relative<span class="special">)</span><span class="special">;</span></pre>
 <p>&lt; Constructor defines all member variables. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id554644-bb"></a><span class="special">~</span><span class="identifier">path_point</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id536161-bb"></a><span class="special">~</span><span class="identifier">path_point</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Destructor. </p>
 </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1212207"></a><h3>
-<a name="id554591-bb"></a><code class="computeroutput">path_point</code> public member functions</h3>
+<a name="id1210613"></a><h3>
+<a name="id536095-bb"></a><code class="computeroutput">path_point</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id554609-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span> <span class="special">=</span> <span class="number">0</span><span class="special">;</span></pre>write functions output SVG commands like "M1.2, 3.4", </li></ol></div>
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id536096-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span> <span class="special">=</span> <span class="number">0</span><span class="special">;</span></pre>write functions output SVG commands like "M1.2, 3.4", </li></ol></div>
 </div>
 </div>
 </div>

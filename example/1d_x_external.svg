@@ -117,19 +117,19 @@ M53.7,172 L53.7,177
 </g>
 
 <g id="xLabel">
-	<text x="217" y="200" text-anchor="middle" font-size="10" font-family="Verdana">	</text>
+	<text x="217" y="201" text-anchor="middle" font-size="10" font-family="Verdana">	</text>
 </g>
 
 <g id="plotPoints">
 
 <g stroke="rgb(0,0,255)">
-	<line x1="155" y1="109" x2="155" y2="99.2"/>
-	<line x1="191" y1="109" x2="191" y2="99.2"/>
+	<line x1="155" y1="109" x2="155" y2="99.3"/>
+	<line x1="191" y1="109" x2="191" y2="99.3"/>
 </g>
 
 <g stroke="rgb(255,165,0)">
-	<line x1="122" y1="109" x2="122" y2="99.2"/>
-	<line x1="309" y1="109" x2="309" y2="99.2"/>
+	<line x1="122" y1="109" x2="122" y2="99.3"/>
+	<line x1="309" y1="109" x2="309" y2="99.3"/>
 </g>
 </g>
 

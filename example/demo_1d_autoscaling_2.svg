@@ -104,7 +104,7 @@ M473,100 L473,102
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M21,100 L21,105 
 M49.6,100 L49.6,105 
-M78.2,100 L78.2,105 
+M78.3,100 L78.3,105 
 M107,100 L107,105 
 M136,100 L136,105 
 M164,100 L164,105 
@@ -114,7 +114,7 @@ M250,100 L250,105
 M279,100 L279,105 
 M307,100 L307,105 
 M336,100 L336,105 
-M364,100 L364,105 
+M365,100 L365,105 
 M393,100 L393,105 
 M422,100 L422,105 
 M450,100 L450,105 
@@ -125,7 +125,7 @@ M21,100 L21,105
 
 <g id="xTicksValues">
 	<text x="49.6" y="118" text-anchor="middle" font-size="10" font-family="Verdana">0.5	</text>
-	<text x="78.2" y="118" text-anchor="middle" font-size="10" font-family="Verdana">1	</text>
+	<text x="78.3" y="118" text-anchor="middle" font-size="10" font-family="Verdana">1	</text>
 	<text x="107" y="118" text-anchor="middle" font-size="10" font-family="Verdana">1.5	</text>
 	<text x="136" y="118" text-anchor="middle" font-size="10" font-family="Verdana">2	</text>
 	<text x="164" y="118" text-anchor="middle" font-size="10" font-family="Verdana">2.5	</text>
@@ -135,7 +135,7 @@ M21,100 L21,105
 	<text x="279" y="118" text-anchor="middle" font-size="10" font-family="Verdana">4.5	</text>
 	<text x="307" y="118" text-anchor="middle" font-size="10" font-family="Verdana">5	</text>
 	<text x="336" y="118" text-anchor="middle" font-size="10" font-family="Verdana">5.5	</text>
-	<text x="364" y="118" text-anchor="middle" font-size="10" font-family="Verdana">6	</text>
+	<text x="365" y="118" text-anchor="middle" font-size="10" font-family="Verdana">6	</text>
 	<text x="393" y="118" text-anchor="middle" font-size="10" font-family="Verdana">6.5	</text>
 	<text x="422" y="118" text-anchor="middle" font-size="10" font-family="Verdana">7	</text>
 	<text x="450" y="118" text-anchor="middle" font-size="10" font-family="Verdana">7.5	</text>

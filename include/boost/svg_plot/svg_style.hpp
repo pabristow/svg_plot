@@ -364,7 +364,7 @@ public:
  /*! \class boost::svg::text_style
      \brief Font size, font family, font weight, font style, stretch & decoration, and text_length.
      \details
-     text font family (for example: "Lucida Sans Unicode", "arial" ...).
+     text font-family (for example: "Lucida Sans Unicode", "arial", Times New Roman" ...).
      Available fonts depend on the program rendering the SVG XML, usually a browser.
      The default font (usually "Lucida Sans Unicode") is used
      if a renderer (in a browser or a converter to PDF like RenderX)
@@ -379,6 +379,8 @@ public:
 
      http://www.fileformat.info/info/unicode/font/index.htm provdes a fuller listing of support by many fonts;
      those awarded 4 or 5 stars are probably most useful.
+
+     https://www.w3.org/TR/css-fonts-3/#font-stretch-prop 
      */
 
 class text_style
@@ -423,8 +425,8 @@ public:
   // text_style Getters.
   int font_size() const;
   const std::string& font_family() const;
-  const std::string& font_style() const;
   const std::string& font_weight() const;
+  const std::string& font_style() const;
   const std::string& font_stretch() const;
   const std::string& font_decoration() const;
   double text_length() const;
@@ -439,13 +441,21 @@ public:
 
 // class text_style function *Definitions*.
 
+//  3.7.Shorthand font property: the font property https://www.w3.org/TR/css-fonts-3/#propdef-font 
+// The ‘font’ property is, except as described below, a shorthand property for setting
+// ‘font-style’, ‘font-variant’, ‘font-weight’, ‘font-stretch’, ‘font-size’, ‘line-height’, ‘font-family’
+// at the same place in the stylesheet.
+
 text_style::text_style( //!< Constructor to allow all text style parameters (font size, family, bold...) to be set.
-  int size, //!< Font size.
+  int size, //!< Font size.   ( \sa https://www.w3.org/TR/css-fonts-3/#propdef-font-size).
+  // https://www.w3.org/TR/css-fonts-3/#propdef-font-size-adjust  not implemented)
   const std::string& font, //!< Default for browser is sans with Firefox & IE but serif with Opera.
-  const std::string& weight, //!< font weight "normal"
-  const std::string& style, //!< font-style: normal
-  const std::string& stretch, //!< font-stretch: normal
-  const std::string& decoration, //!< No decoration.
+  const std::string& weight, //!< font weight "normal" | "bold" | "light" (\sa https://www.w3.org/TR/css-fonts-3/#propdef-font-weight) 
+  const std::string& stretch, //!< font-stretch: normal | condensed | expanded (\sa https://www.w3.org/TR/css-fonts-3/#font-stretch-prop)
+  const std::string& style, //!< font-style: normal | italic | oblique (\sa https://www.w3.org/TR/css-fonts-3/#propdef-font-style) 
+  const std::string& decoration, //!< Default is No decoration.  underline | overline | strike-through (or moe than one)
+  // text-decoration="line-through" "underline" "overline" 
+  // \sa https://www.w3.org/TR/SVG/text.html#TextDecorationProperties
   double text_length)
   : // Constructor.
   font_size_(size),

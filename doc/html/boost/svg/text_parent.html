@@ -35,42 +35,42 @@
 <span class="keyword">class</span> <a class="link" href="text_parent.html" title="Class text_parent">text_parent</a> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="text_parent.html#boost.svg.text_parentconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="text_parent.html#id558657-bb"><span class="identifier">text_parent</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="text_parent.html#id558654-bb"><span class="identifier">text_parent</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_parent.html" title="Class text_parent">text_parent</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="text_parent.html#id558620-bb"><span class="special">~</span><span class="identifier">text_parent</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="text_parent.html#id539539-bb"><span class="identifier">text_parent</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="text_parent.html#id539554-bb"><span class="identifier">text_parent</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_parent.html" title="Class text_parent">text_parent</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="text_parent.html#id537390-bb"><span class="special">~</span><span class="identifier">text_parent</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="text_parent.html#id558614-bb">public member functions</a></span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="text_parent.html#id558599-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="text_parent.html#id539542-bb">public member functions</a></span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="text_parent.html#id539538-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">text_</span><span class="special">;</span>  <span class="comment">// Actual text string for SVG text. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1235020"></a><h2>Description</h2>
+<a name="id1232454"></a><h2>Description</h2>
 <p>This allows an array of both types to be stored in <code class="computeroutput"><a class="link" href="text_element.html" title="Class text_element">text_element</a></code>. </p>
 <div class="refsect2">
-<a name="id1235054"></a><h3>
+<a name="id1232486"></a><h3>
 <a name="boost.svg.text_parentconstruct-copy-destruct"></a><code class="computeroutput">text_parent</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a name="id558657-bb"></a><span class="identifier">text_parent</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> text<span class="special">)</span><span class="special">;</span></pre>
-<p>Construct from string text. </p>
+<pre class="literallayout"><a name="id539539-bb"></a><span class="identifier">text_parent</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> text<span class="special">)</span><span class="special">;</span></pre>
+<p>Construct from string text. Used by <code class="computeroutput"><a class="link" href="text_element.html" title="Class text_element">text_element</a></code> and <code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a></code> to store tex to be output. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id558654-bb"></a><span class="identifier">text_parent</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_parent.html" title="Class text_parent">text_parent</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id539554-bb"></a><span class="identifier">text_parent</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_parent.html" title="Class text_parent">text_parent</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
 <p>Copy constructor. </p>
 </li>
-<li class="listitem"><pre class="literallayout"><a name="id558620-bb"></a><span class="special">~</span><span class="identifier">text_parent</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><a name="id537390-bb"></a><span class="special">~</span><span class="identifier">text_parent</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1235164"></a><h3>
-<a name="id558614-bb"></a><code class="computeroutput">text_parent</code> public member functions</h3>
+<a name="id1232609"></a><h3>
+<a name="id539542-bb"></a><code class="computeroutput">text_parent</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id558599-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>
-<p>write functions output SVG commands. </p>
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id539538-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>
+<p><code class="computeroutput">write</code> functions output SVG commands to <code class="computeroutput">ostream</code>. </p>
 </li></ol></div>
 </div>
 </div>

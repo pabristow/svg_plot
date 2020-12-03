@@ -78,18 +78,18 @@ M30.2,110 L30.2,112
 </g>
 
 <g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
-	<path d="M250,110 L250,114 
-M296,110 L296,114 
-M342,110 L342,114 
-M387,110 L387,114 
-M433,110 L433,114 
-M479,110 L479,114 
-M250,110 L250,114 
-M204,110 L204,114 
-M158,110 L158,114 
-M113,110 L113,114 
-M66.8,110 L66.8,114 
-M21,110 L21,114 
+	<path d="M250,110 L250,115 
+M296,110 L296,115 
+M342,110 L342,115 
+M387,110 L387,115 
+M433,110 L433,115 
+M479,110 L479,115 
+M250,110 L250,115 
+M204,110 L204,115 
+M158,110 L158,115 
+M113,110 L113,115 
+M66.8,110 L66.8,115 
+M21,110 L21,115 
 " fill="none"/>
 </g>
 
@@ -107,7 +107,7 @@ M21,110 L21,114
 </g>
 
 <g id="xLabel">
-	<text x="250" y="188" text-anchor="middle" font-size="10" font-family="Verdana">X values as doubles	</text>
+	<text x="250" y="189" text-anchor="middle" font-size="10" font-family="Verdana">X values as doubles	</text>
 </g>
 
 <g id="plotPoints">
