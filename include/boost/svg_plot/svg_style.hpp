@@ -392,7 +392,7 @@ class text_style
   int font_size_; //!< Font size (SVG units, default pixels).
   std::string font_family_; //!< Font family, examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode".
   std::string weight_; //!< Font weight examples: "bold", "normal".
-  std::string text_style_; //!< Font style, examples: normal | bold | italic | oblique.
+  std::string font_style_; //!< Font style, examples: normal | bold | italic | oblique.
   std::string stretch_; //!< Font stretch, examples: normal | wider | narrower. (Not supported by all browsers).
   std::string decoration_; //!< Font decoration, examples: "underline" | "overline" | "line-through".
   double text_length_; //!< Estimate of SVG length of text used to force compress or expand into exactly this width.
@@ -451,7 +451,7 @@ text_style::text_style( //!< Constructor to allow all text style parameters (fon
   font_size_(size),
   font_family_(font),
   weight_(weight),
-  text_style_(style),
+  font_style_(style),
   stretch_(stretch),
   decoration_(decoration),
   text_length_(text_length)
@@ -464,7 +464,7 @@ text_style::text_style(const text_style& rhs)
   font_size_(rhs.font_size_),
   font_family_(rhs.font_family_),
   weight_(rhs.weight_),
-  text_style_(rhs.text_style_),
+  font_style_(rhs.font_style_),
   stretch_(rhs.stretch_),
   decoration_(rhs.decoration_),
   text_length_(rhs.text_length_)
@@ -476,7 +476,7 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
   font_size_ = rhs.font_size_;
   font_family_ = rhs.font_family_;
   weight_ = rhs.weight_;
-  text_style_ = rhs.text_style_;
+  font_style_ = rhs.font_style_;
   stretch_ = rhs.stretch_;
   decoration_ = rhs.decoration_;
   text_length_ = rhs.text_length_;
@@ -527,7 +527,7 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
        See also browser conformance tests:\n
        http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
     */
-    text_style_ = s;
+    font_style_ = s;
     return *this; //! \return reference to text_style to make chainable.
   }
 
@@ -536,7 +536,7 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
     /*! font-style: normal | bold | italic | oblique.
     Example: "normal" is default.
     */
-    return text_style_;
+    return font_style_;
   }
 
    text_style& text_style::font_weight(const std::string& s)
@@ -650,7 +650,7 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
      (ts.font_size_ == font_size_)  // NOT const as may be changed during sizing.
      && (ts.font_family_ == font_family_)
      && (ts.stretch_ == stretch_)
-     && (ts.text_style_ == text_style_)
+     && (ts.font_style_ == font_style_)
      && (ts.weight_ == weight_)
      && (ts.decoration_ == decoration_)
      && (ts.text_length_ == text_length_) // NOT const as may be changed during sizing.
@@ -664,7 +664,7 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
      (ts.font_size_ != font_size_)
      || (ts.font_family_ != font_family_)
      || (ts.stretch_ != stretch_)
-     || (ts.text_style_ != text_style_)
+     || (ts.font_style_ != font_style_)
      || (ts.weight_ != weight_)
      || (ts.decoration_ != decoration_)
      || (ts.text_length_ != text_length_)
@@ -681,7 +681,7 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
      return (lhs.font_size_ == rhs.font_size_)
        && (lhs.font_family() == rhs.font_family())
        && (lhs.stretch_ ==  rhs.stretch_)
-       && (lhs.text_style_ ==  rhs.text_style_)
+       && (lhs.font_style_ ==  rhs.font_style_)
        && (lhs.weight_ ==  rhs.weight_)
        && (lhs.decoration_ ==  rhs.decoration_)
        && (lhs.text_length_ == rhs.text_length_);
@@ -694,19 +694,19 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
       return (lhs.font_size_ != rhs.font_size_)
        && (lhs.font_family() != rhs.font_family())
        && (lhs.stretch_ !=  rhs.stretch_)
-       && (lhs.text_style_ !=  rhs.text_style_)
+       && (lhs.font_style_ !=  rhs.font_style_)
        && (lhs.weight_ !=  rhs.weight_)
        && (lhs.decoration_ !=  rhs.decoration_)
        && (lhs.text_length_ != rhs.text_length_);
   } //   bool operator!= (const text_style& lhs, const text_style& rhs)
 
 std::ostream& operator<< (std::ostream& os, const text_style& ts)
-{ //! Output a text style as a text string (mainly useful for diagnostic use).
+{ //! Output a text_style as a text string (mainly useful for diagnostic use).
   // Example: 
   os << "text_style("
     << ts.font_size_ << ", \""
     << ts.font_family_ << "\", \""
-    << ts.text_style_ << "\", \"" // italic
+    << ts.font_style_ << "\", \"" // italic
     << ts.weight_ // bold
     // Options enabled if implemented by rendering programs.
     << "\", \""
@@ -730,7 +730,8 @@ std::ostream& operator<< (std::ostream& os, const text_style& ts)
 // End of class text_style function *Definitions* separated.
 
 text_style no_text_style; //!< Text style that uses all constructor defaults.
-text_style not_a_text_style (-1, "","","","","",0); //!< Text style that uses null for all text style features (used to signal no SVG style required)..
+text_style not_a_text_style (-1, "","","","","",0); //!< Text style that uses null for all text style features 
+// (used to signal no writing to output of SVG style required).
 
 
 class value_style

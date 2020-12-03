@@ -408,7 +408,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
   }
   const std::string svg_2d_plot_series::point_font_style()
   { //! \return style of data point marker(s) "bold", "italic" ..
-    return point_style_.symbols_style_.text_style_;
+    return point_style_.symbols_style_.font_style_;
   }
 
   point_shape svg_2d_plot_series::shape()
