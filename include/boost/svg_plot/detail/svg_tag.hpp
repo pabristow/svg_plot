@@ -325,7 +325,7 @@ namespace svg
 
   class rect_element : public svg_element
   { /*! \class boost::svg::rect_element
-        \brief Rectangle from top left coordinate, width and height.
+        \brief Rectangle from top left X and Y coordinates, width and height.
         \details
          Represents a single rectangle.
          http://www.w3.org/TR/SVG/shapes.html#RectElement
@@ -2221,7 +2221,7 @@ public:
     } // void write(std::ostream& rhs)
 
     g_element& gs(int i)
-    { //! i is index of children nodes (first is zero).
+    { //! i is index of children g_element nodes (first is zero).
       //! Example:   \code g_element& g1 = my_svg.gs(1); // index is one. \endcode
       return *(static_cast<g_element*>(&children[i])); // \return reference to this child node @c g_element.
     }
@@ -2235,28 +2235,28 @@ public:
     }
 
     line_element& line(double x1, double y1, double x2, double y2)
-    { //! Add a new line element.
+    { //! Add a new line child element.
       //! \return A reference to the new child node just created.
       children.push_back(new line_element(x1, y1, x2, y2));
       return *(static_cast<line_element*>(&children[children.size()-1]));
     }
 
     rect_element& rect(double x1, double y1, double x2, double y2)
-    { //! Add a new rect element.
+    { //! Add a new rect child element.
       //! \return A reference to the new child node just created.
       children.push_back(new rect_element(x1, y1, x2, y2));
       return *(static_cast<rect_element*>(&children[children.size()-1]));
     }
 
     circle_element& circle(double x, double y, double radius = 5.)
-    { //! Add a new circle element.
+    { //! Add a new circle child element.
       //! \return A reference to the new child node just created.
       children.push_back(new circle_element(x, y, radius));
       return *(static_cast<circle_element*>(&children[children.size()-1]));
     }
 
     ellipse_element& ellipse(double rx, double ry, double cx, double cy)
-    { //! Add a new ellipse element.
+    { //! Add a new ellipse child element.
       //! \return A reference to the new child node just created.
       children.push_back(new ellipse_element(rx, ry, cx, cy));
       return *(static_cast<ellipse_element*>(&children[children.size()-1]));
