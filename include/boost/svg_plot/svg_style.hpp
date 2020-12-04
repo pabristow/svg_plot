@@ -75,7 +75,7 @@ class bar_style;  // Style of bars.
 //! \enum rotate_style Rotation of text (in degrees clockwise from horizontal).
 enum rotate_style
 {
-  // Might include more steps for others too.
+  // Might include more steps to describe other angles too?
   horizontal = 0, //!< normal horizontal left to right, centered.
   slopeup = -30, //!< slope up.
   uphill = -45, //!< 45 steep up.

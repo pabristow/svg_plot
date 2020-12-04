@@ -496,7 +496,7 @@ namespace svg
     double cy_; //!< coordinate y, default 0.
     double rx_; //!< radius x, default 4 pixels.
     double ry_; //!< radius y, default 8 pixels.
-    double rotate_; //! rotation in degrees from horizontal (default 0.).
+    double rotate_; //! rotation in degrees from horizontal (default 0).
     // Only hacked in - should be in attributes?
     ellipse_element(double cx, //!< coordinate X of center of ellipse.
       double cy, //!< coordinate Y  of center of ellipse.
@@ -551,6 +551,7 @@ namespace svg
 
   enum class align_style
   { //! \enum align_style Represents a single block of text, with font & alignment.
+    no_align = 0,
     left_align, //!< Align text to left.
     right_align, //!< Align text to right.
     center_align //!< Center align text.
@@ -573,7 +574,7 @@ namespace svg
     {
       os << "right";
     }
-    else os << "???" << std::endl;
+    else os << "align ???" << std::endl;
     return os;
   } //   std::ostream& operator<< (std::ostream& os, align_style al)
 
@@ -1104,7 +1105,7 @@ public:
   }
 
   text_element& rotation(rotate_style rot)
-  { //! Degrees: horizontal  = 0, upward = -90, downward, upsidedown
+  { //! Degrees: horizontal  = 0, upward = -90, downward, upsidedown etc.
     //! Generates: transform = "rotate(-45 100 100 )"
     rotate_ = rot;
     return *this; //! \return text_element& to make chainable.
@@ -2178,6 +2179,8 @@ public:
     std::string clip_name;  //!< Name of clip path.
     bool clip_on; //!< @c true if to clip anything outside the clip path, often the plot window
    //!< so that data-point markers do not overlap axes tick-values on the inside of the window.
+    align_style  alignment_;
+    int rotate_;
 
     g_element() : clip_on(false)
     { //! Construct g_element (with no clipping).
@@ -2202,7 +2205,7 @@ public:
       */
 
       if (children.size() > 0)
-      { /*! Do not output anything if no child leafs to avoid useless output like: 
+      { /*! Do not output anything if no child leafs to avoid useless output. Example:
           \verbatim
            <g id="legendBackground"> </g>
           \endverbatim
@@ -2211,8 +2214,33 @@ public:
         write_attributes(os); // id="background" (or clip_path).
         svg_style_.write(os); // Output SVG style info like stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
         text_style_.write(os); // Output SVG text style info like font-size, font-family...
-        //alignment
-         // rotation
+       // alignment_.write(os) // in effect
+        // 
+        if (alignment_ != align_style::no_align)
+        {
+          if (alignment_ == align_style::left_align)
+          {
+            os << "left";
+          }
+          else if (alignment_ == align_style::center_align)
+          {
+            os << "center";
+          }
+          else if (alignment_ == align_style::right_align)
+          {
+            os << "right";
+          }
+      }
+          // rotation 
+        //if (rotate_ != 0)
+        //{ // Only show rotation info if not normal horizontal writing.
+        //  os << " transform=\"rotate("
+        //    << rotate_ << " "
+        //    << x_ << " "
+        //    << y_ << ")\"";
+        //}
+
+
         os << ">" 
           "\n"; // Newline after the g_element id and style is easier to read.
         for(unsigned int i = 0; i < children.size(); ++i)
