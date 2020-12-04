@@ -678,14 +678,14 @@ my_plot.background_color(ghostwhite) // Whole image.
         :
         // See documentation for default settings rationale.
         // text_styles: //  Font size, font family, font weight, font style, font stretch & font decoration, text_length.
-        title_style_(18, default_font, "normal", "", "", "", 0),  // // 3rd parameter weight might be bold?
-        legend_title_style_(10, default_font, "normal", "", "", "", 0), // 6rd parameter decoration might be underline?
-        legend_text_style_(10, default_font, "normal", "", "", "", 0), //
-        x_axis_label_style_(12, default_font, "", "","", "", 0),
-        x_value_label_style_(12, default_font, "", "","", "", 0), // X-axis tick labels.
+        title_style_(18, default_font_family, "normal", "", "", "", 0),  // // 3rd parameter weight might be bold?
+        legend_title_style_(10, default_font_family, "normal", "", "", "", 0), // 6rd parameter decoration might be underline?
+        legend_text_style_(10, default_font_family, "normal", "", "", "", 0), //
+        x_axis_label_style_(12, default_font_family, "", "","", "", 0),
+        x_value_label_style_(12, default_font_family, "", "","", "", 0), // X-axis tick labels.
         // Separate X and Y to allow axes to have different styles.
-        y_axis_label_style_(14, default_font, "", "", "", "", 0),
-        y_value_label_style_(12, default_font, "", "", "", "", 0), // Y-axis tick labels.
+        y_axis_label_style_(14, default_font_family, "", "", "", "", 0),
+        y_value_label_style_(12, default_font_family, "", "", "", "", 0), // Y-axis tick labels.
         point_symbols_style_(12, "Lucida Sans Unicode", "", "", "", "", 0), // Used for data point marking.
         // Font is to try to ensure that all Unicode symbols are available.
         title_info_(0, 0, "", title_style_, align_style::center_align, horizontal),

@@ -57,7 +57,7 @@ namespace svg
    has the best chance of ['symbols] being rendered corrrectly.
    Used for title, legend, axes ... unless overridden by an explicit font specification.
   */
-  const static char* default_font("Lucida Sans Unicode"); // TODO make sure used throughout.
+  const static char* default_font_family("Lucida Sans Unicode"); // TODO make sure used throughout.
     // should be default_font_family
 
 // Forward declarations of classes in svg_style.hpp
@@ -405,7 +405,7 @@ class text_style
 public:
   text_style( //! Constructor.
     int font_size = 12, //!< Default font size (12 pixels).  NOT const because it might be changed during sizing.
-    const std::string& font = default_font, //!< Examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"...
+    const std::string& font = default_font_family, //!< Examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"...
     const std::string& weight = "", //!< Font weight examples: "bold", "normal".
     const std::string& style = "", //!< Font style examples: normal | bold | italic | oblique.
     const std::string& stretch = "", //!< Font stretch examples: normal | wider | narrower ...

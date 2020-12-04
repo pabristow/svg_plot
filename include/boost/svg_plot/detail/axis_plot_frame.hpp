@@ -407,7 +407,7 @@ namespace boost
            int x_value_font_size(); //!<\return  X tick value label font size (svg units, default pixels).
           Derived& x_label_font_family(const std::string& family); /*!< Set X-tick value-label font-family.
            Available fonts depend on the program rendering the SVG XML, usually a browser.
-          The default font (usually "default_font") is used if a render program does not provide the font specified.
+          The default font (usually "default_font_family") is used if a render program does not provide the font specified.
           These are probably usable:
           \code
             "arial", "impact", "courier", "lucida console",  "Lucida sans unicode", "verdana", "calibri", "century",
@@ -427,7 +427,7 @@ namespace boost
 
           Derived& x_ticks_values_font_family(const std::string& family); /*!< Set X ticks value label font family.
             Available fonts depend on the program rendering the SVG XML, usually a browser.
-            The default font (usually "default_font") is used if a render program does not provide the font specified.
+            The default font (usually "default_font_family") is used if a render program does not provide the font specified.
              These are probably usable:
              \code
  "arial", "impact", "courier", "lucida console",  "Lucida sans unicode", "verdana", "calibri", "century",

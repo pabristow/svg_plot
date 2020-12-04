@@ -1253,39 +1253,42 @@ public:
         << x_ << " "
         << y_ << ")\"";
     }
-    //  Might share this code to output font info of text_style with g_element write(os)?
-    if (text_style_.font_size() > 0)
-    { // Example output: font-size="10" 
-      os << " font-size=\"" << text_style_.font_size() << "\"";
-    }
-    if (text_style_.font_family() != "")
-    { // Example: Arial, Verdana, Times New Roman ...
-      // Example output: font-family="serif"
-      os << " font-family=\"" << text_style_.font_family() << "\"";
-    }
-    if (text_style_.font_style().size() != 0)
-    { // Example: italic.
-      os << " font-textstyle=\"" << text_style_.font_style() << "\"";
-    }
-    if (text_style_.font_weight().size() != 0)
-    { // Example: bold.
-    os << " font-weight=\"" << text_style_.font_weight() << "\"";
-    }
-    if (text_style_.font_stretch().size() != 0)
+    if (text_style_ != not_a_text_style)
     {
-    os << " font-stretch=\"" << text_style_.font_stretch() << "\"";
-    }
-    if (text_style_.font_decoration().size() != 0)
-    {
-    os << " text-decoration=\"" << text_style_.font_decoration() << "\"";
-    }
-    if (text_style_.text_length() > 0)
-    {
-      os << " textLength=\"" << text_style_.text_length() << "\"";
+      //  Might share this code to output font info of text_style with g_element write(os)?
+      if (text_style_.font_size() > 0)
+      { // Example output: font-size="10" 
+        os << " font-size=\"" << text_style_.font_size() << "\"";
+      }
+      if (text_style_.font_family() != "")
+      { // Example: Arial, Verdana, Times New Roman ...
+        // Example output: font-family="serif"
+        os << " font-family=\"" << text_style_.font_family() << "\"";
+      }
+      if (text_style_.font_style().size() != 0)
+      { // Example: italic.
+        os << " font-textstyle=\"" << text_style_.font_style() << "\"";
+      }
+      if (text_style_.font_weight().size() != 0)
+      { // Example: bold.
+        os << " font-weight=\"" << text_style_.font_weight() << "\"";
+      }
+      if (text_style_.font_stretch().size() != 0)
+      {
+        os << " font-stretch=\"" << text_style_.font_stretch() << "\"";
+      }
+      if (text_style_.font_decoration().size() != 0)
+      {
+        os << " text-decoration=\"" << text_style_.font_decoration() << "\"";
+      }
+      if (text_style_.text_length() > 0)
+      {
+        os << " textLength=\"" << text_style_.text_length() << "\"";
+      }
     }
     os << ">" ;
     generate_text(os); 
-    os << "\t" "</text>" "\n";
+    os << " </text>" "\n";  // Was leading space (after the actual text_string).
     // Example: <text x="67.5" y="462" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">my_text!</text>
   } // void write(std::ostream& os)
 }; // class text_element_

@@ -77,7 +77,7 @@ int main()
   std::cout << zz.size() << std::endl;
   std::cout << zz(1e-308) << std::endl;
 
-  double v = (std::numeric_limits<double>::min)();
+  constexpr double v = (std::numeric_limits<double>::min)();
   if (zz(v))
   {
     std::cout << v << " is tiny." << std::endl;

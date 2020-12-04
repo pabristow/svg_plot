@@ -768,8 +768,8 @@ public:
 
   svg_boxplot()
   :
-  title_style_(18, default_font, "", "", "", ""),
-  value_style_(10, default_font, "", "", "", ""), // Data values
+  title_style_(18, default_font_family, "", "", "", ""),
+  value_style_(10, default_font_family, "", "", "", ""), // Data values
   title_info_(0, 0, "", title_style_, align_style::center_align, horizontal),
   title_on_(true),
   x_label_info_(0, 0, "", x_axis_label_style_ , align_style::center_align, horizontal),
@@ -778,10 +778,10 @@ public:
   y_units_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward),
   x_axis_(X, -10., +10., black, 1, 0, true, false, true),
   y_axis_(Y,   0.,  +1., black, 1, 0, true, false, true),
-  x_axis_label_style_(14, default_font, "", ""),
-  x_value_label_style_(12, default_font, "", ""),
-  y_axis_label_style_(14, default_font, "", ""),
-  y_value_label_style_(12, default_font, "", ""),
+  x_axis_label_style_(14, default_font_family, "", ""),
+  x_value_label_style_(12, default_font_family, "", ""),
+  y_axis_label_style_(14, default_font_family, "", ""),
+  y_value_label_style_(12, default_font_family, "", ""),
   point_symbols_style_(12, "Lucida Sans Unicode"), // Used for data point marking to try to get in right place.
   // try to center accurately on the point's value.
   values_style_(rightward, 3, std::ios::dec, true, value_style_, black, black, false, false),
