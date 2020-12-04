@@ -17,18 +17,18 @@ xmlns ="http://www.w3.org/2000/svg"
 <clipPath id="plot_window">	<rect x="71.1" y="44" width="602" height="400"/>
 </clipPath>
 
-<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(245,245,245)" stroke-width="2">
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(245,245,245)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 	<rect x="0" y="0" width="700" height="500"/>
 </g>
 
-<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(248,248,255)" stroke-width="2">
+<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(248,248,255)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 	<rect x="70.1" y="43" width="604" height="402"/>
 </g>
 
-<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5" font-size="12" font-family="Lucida Sans Unicode">
 </g>
 
-<g id="yMajorGrid" stroke="rgb(0,255,255)" stroke-width="1">
+<g id="yMajorGrid" stroke="rgb(0,255,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M72.1,244 L672,244 
 M72.1,177 L672,177 
 M72.1,110 L672,110 
@@ -40,10 +40,10 @@ M72.1,445 L672,445
 " fill="none"/>
 </g>
 
-<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5" font-size="12" font-family="Lucida Sans Unicode">
 </g>
 
-<g id="xMajorGrid" stroke="rgb(0,255,255)" stroke-width="1">
+<g id="xMajorGrid" stroke="rgb(0,255,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M125,43 L125,445 
 M235,43 L235,445 
 M345,43 L345,445 
@@ -54,20 +54,20 @@ M125,43 L125,445
 " fill="none"/>
 </g>
 
-<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1">
+<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="125" y1="43" x2="125" y2="459"/>
 	<line x1="70.1" y1="43" x2="70.1" y2="445"/>
 </g>
 
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="65.1" y1="244" x2="674" y2="244"/>
 	<line x1="65.1" y1="445" x2="674" y2="445"/>
 </g>
 
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M68.1,233 L70.1,233 
 M68.1,222 L70.1,222 
-M68.1,211 L70.1,211 
+M68.1,210 L70.1,210 
 M68.1,199 L70.1,199 
 M68.1,188 L70.1,188 
 M68.1,166 L70.1,166 
@@ -89,7 +89,7 @@ M68.1,300 L70.1,300
 M68.1,311 L70.1,311 
 M68.1,322 L70.1,322 
 M68.1,333 L70.1,333 
-M68.1,345 L70.1,345 
+M68.1,344 L70.1,344 
 M68.1,356 L70.1,356 
 M68.1,367 L70.1,367 
 M68.1,378 L70.1,378 
@@ -103,7 +103,7 @@ M68.1,445 L70.1,445
 " fill="none"/>
 </g>
 
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M152,445 L152,452 
 M180,445 L180,452 
 M207,445 L207,452 
@@ -124,7 +124,7 @@ M70.1,445 L70.1,452
 " fill="none"/>
 </g>
 
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M65.1,244 L70.1,244 
 M65.1,177 L70.1,177 
 M65.1,110 L70.1,110 
@@ -136,7 +136,7 @@ M65.1,445 L70.1,445
 " fill="none"/>
 </g>
 
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M125,445 L125,459 
 M235,445 L235,459 
 M345,445 L345,459 
@@ -147,46 +147,46 @@ M125,445 L125,459
 " fill="none"/>
 </g>
 
-<g id="xTicksValues">
-	<text x="125" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0	</text>
-	<text x="235" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2	</text>
-	<text x="345" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4	</text>
-	<text x="454" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6	</text>
-	<text x="564" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8	</text>
-	<text x="674" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">10	</text>
-	<text x="125" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0	</text>
+<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="125" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
+	<text x="235" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2 </text>
+	<text x="345" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4 </text>
+	<text x="454" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6 </text>
+	<text x="564" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8 </text>
+	<text x="674" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">10 </text>
+	<text x="125" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
 </g>
 
-<g id="yTicksValues">
-	<text x="59.1" y="246" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0	</text>
-	<text x="59.1" y="179" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">25	</text>
-	<text x="59.1" y="112" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">50	</text>
-	<text x="59.1" y="45.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">75	</text>
-	<text x="59.1" y="246" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0	</text>
-	<text x="59.1" y="313" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-25	</text>
-	<text x="59.1" y="380" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-50	</text>
-	<text x="59.1" y="447" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-75	</text>
-	<text x="59.1" y="246" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0	</text>
-	<text x="59.1" y="179" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">25	</text>
-	<text x="59.1" y="112" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">50	</text>
-	<text x="59.1" y="45.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">75	</text>
-	<text x="59.1" y="246" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0	</text>
-	<text x="59.1" y="313" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-25	</text>
-	<text x="59.1" y="380" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-50	</text>
-	<text x="59.1" y="447" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-75	</text>
+<g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="59.1" y="246" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0 </text>
+	<text x="59.1" y="179" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">25 </text>
+	<text x="59.1" y="112" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">50 </text>
+	<text x="59.1" y="45.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">75 </text>
+	<text x="59.1" y="246" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0 </text>
+	<text x="59.1" y="313" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-25 </text>
+	<text x="59.1" y="380" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-50 </text>
+	<text x="59.1" y="447" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-75 </text>
+	<text x="59.1" y="246" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0 </text>
+	<text x="59.1" y="179" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">25 </text>
+	<text x="59.1" y="112" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">50 </text>
+	<text x="59.1" y="45.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">75 </text>
+	<text x="59.1" y="246" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0 </text>
+	<text x="59.1" y="313" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-25 </text>
+	<text x="59.1" y="380" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-50 </text>
+	<text x="59.1" y="447" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">-75 </text>
 </g>
 
-<g id="yLabel">
-	<text x="32.4" y="244" text-anchor="middle" transform="rotate(-90 32.4 244)" font-size="14" font-family="Lucida Sans Unicode">50 * f(x)	</text>
+<g id="yLabel" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="32.4" y="244" text-anchor="middle" transform="rotate(-90 32.4 244)" font-size="14" font-family="Lucida Sans Unicode">50 * f(x) </text>
 </g>
 
-<g id="xLabel">
-	<text x="372" y="488" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">x	</text>
+<g id="xLabel" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="372" y="488" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">x </text>
 </g>
 
-<g id="plotLines" stroke-width="2">
+<g id="plotLines" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(255,0,0)" stroke-width="2">
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(255,0,0)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M125,244 L125,244 
 L125,244 
 L147,193 
@@ -218,7 +218,7 @@ L664,244
 Z" fill="rgb(255,0,0)"/>
 </g>
 
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(0,0,255)" stroke-width="2">
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(0,0,255)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M125,244 L125,110 
 L125,110 
 L147,120 
@@ -250,7 +250,7 @@ L664,244
 Z" fill="rgb(0,0,255)"/>
 </g>
 
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="2">
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M125,244 L125,244 
 L147,188 
 L168,110 
@@ -271,7 +271,7 @@ L664,188
 " fill="none"/>
 </g>
 
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(255,0,0)" stroke-width="2">
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(255,0,0)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M125,244 L125,244 
 L125,244 
 L147,193 
@@ -303,7 +303,7 @@ L664,244
 Z" fill="rgb(255,0,0)"/>
 </g>
 
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(0,0,255)" stroke-width="2">
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(0,0,255)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M125,244 L125,110 
 L125,110 
 L147,120 
@@ -335,7 +335,7 @@ L664,244
 Z" fill="rgb(0,0,255)"/>
 </g>
 
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="2">
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M125,244 L125,244 
 L147,188 
 L168,110 
@@ -356,7 +356,7 @@ L664,188
 " fill="none"/>
 </g>
 
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(0,128,0)" stroke-width="2">
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" fill="rgb(0,128,0)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M125,244 L125,244 
 L125,244 
 L147,193 
@@ -389,123 +389,123 @@ Z" fill="rgb(0,128,0)"/>
 </g>
 </g>
 
-<g id="plotPoints" clip-path="url(#plot_window)">
+<g id="plotPoints" clip-path="url(#plot_window)" font-size="12" font-family="Lucida Sans Unicode">
 
-<g stroke="rgb(0,0,0)" fill="rgb(255,255,255)">
-	<text x="125" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="147" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="168" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="190" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="211" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="233" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="254" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="276" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="297" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="319" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="341" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="362" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="384" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="405" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="427" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="448" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="470" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="492" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="513" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="535" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="556" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="578" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="599" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="621" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="642" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="664" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF;	</text>
+<g stroke="rgb(0,0,0)" fill="rgb(255,255,255)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="125" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="147" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="168" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="190" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="211" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="233" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="254" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="276" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="297" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="319" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="341" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="362" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="384" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="405" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="427" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="448" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="470" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="492" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="513" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="535" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="556" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="578" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="599" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="621" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="642" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="664" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25CF; </text>
 </g>
 
-<g stroke="rgb(0,0,0)" fill="rgb(255,255,255)">
-	<text x="125" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="147" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="168" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="190" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="211" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="233" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="254" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="276" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="297" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="319" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="341" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="362" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="384" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="405" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="427" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="448" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="470" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="492" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="513" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="535" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="556" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="578" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="599" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="621" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="642" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="664" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+<g stroke="rgb(0,0,0)" fill="rgb(255,255,255)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="125" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="147" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="168" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="190" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="211" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="233" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="254" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="276" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="297" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="319" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="341" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="362" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="384" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="405" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="427" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="448" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="470" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="492" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="513" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="535" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="556" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="578" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="599" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="621" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="642" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="664" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
 </g>
 
-<g stroke="rgb(0,0,0)" fill="rgb(255,255,255)">
-	<text x="125" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="147" y="193" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="168" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="254" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="276" y="304" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="297" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="319" y="193" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="341" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="427" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="448" y="304" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="470" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="492" y="193" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="513" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="599" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="621" y="304" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="642" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="664" y="193" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD;	</text>
+<g stroke="rgb(0,0,0)" fill="rgb(255,255,255)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="125" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="147" y="193" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="168" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="254" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="276" y="304" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="297" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="319" y="193" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="341" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="427" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="448" y="304" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="470" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="492" y="193" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="513" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="599" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="621" y="304" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="642" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="664" y="193" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25BD; </text>
 </g>
 
-<g stroke="rgb(0,0,0)" fill="rgb(255,0,0)">
-	<text x="125" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="147" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="168" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="190" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="211" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="233" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="254" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="276" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="297" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="319" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="341" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="362" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="384" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="405" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="427" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="448" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="470" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="492" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="513" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="535" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="556" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="578" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="599" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="621" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="642" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
-	<text x="664" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0;	</text>
+<g stroke="rgb(0,0,0)" fill="rgb(255,0,0)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="125" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="147" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="168" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="190" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="211" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="233" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="254" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="276" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="297" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="319" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="341" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="362" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="384" y="382" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="405" y="372" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="427" y="343" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="448" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="470" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="492" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="513" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="535" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="556" y="114" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="578" y="124" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="599" y="153" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="621" y="197" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="642" y="248" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
+	<text x="664" y="300" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">&#x25A0; </text>
 </g>
 </g>
 
-<g id="title" fill="rgb(255,0,0)">
-	<text x="350" y="30" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode" font-weight="normal">sin overwriting cos and tan	</text>
+<g id="title" fill="rgb(255,0,0)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="350" y="30" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode" font-weight="normal">sin overwriting cos and tan </text>
 </g>
 
-<g id="plotXValues">
+<g id="plotXValues" font-size="12" font-family="Lucida Sans Unicode">
 </g>
 
-<g id="plotYValues">
+<g id="plotYValues" font-size="12" font-family="Lucida Sans Unicode">
 </g>
 </svg>

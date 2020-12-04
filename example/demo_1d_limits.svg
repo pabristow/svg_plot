@@ -14,26 +14,26 @@ xmlns ="http://www.w3.org/2000/svg"
 
 <!-- File demo_1d_limits.svg --> 
 
-<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<rect x="0" y="0" width="500" height="200"/>
 </g>
 
-<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<rect x="21" y="42.5" width="458" height="129"/>
 </g>
 
-<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5" font-size="12" font-family="Lucida Sans Unicode">
 </g>
 
-<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 </g>
 
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="250" y1="42.5" x2="250" y2="172"/>
 	<line x1="21" y1="110" x2="479" y2="110"/>
 </g>
 
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M268,110 L268,112 
 M287,110 L287,112 
 M305,110 L305,112 
@@ -57,63 +57,63 @@ M30.2,110 L30.2,112
 " fill="none"/>
 </g>
 
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
-	<path d="M250,110 L250,115 
-M342,110 L342,115 
-M433,110 L433,115 
-M250,110 L250,115 
-M158,110 L158,115 
-M66.8,110 L66.8,115 
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
+	<path d="M250,110 L250,114 
+M342,110 L342,114 
+M433,110 L433,114 
+M250,110 L250,114 
+M158,110 L158,114 
+M66.8,110 L66.8,114 
 " fill="none"/>
 </g>
 
-<g id="xTicksValues">
-	<text x="342" y="128" text-anchor="middle" font-size="10" font-family="Verdana">2	</text>
-	<text x="433" y="128" text-anchor="middle" font-size="10" font-family="Verdana">4	</text>
-	<text x="158" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-2	</text>
-	<text x="66.8" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-4	</text>
+<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="342" y="128" text-anchor="middle" font-size="10" font-family="Verdana">2 </text>
+	<text x="433" y="128" text-anchor="middle" font-size="10" font-family="Verdana">4 </text>
+	<text x="158" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-2 </text>
+	<text x="66.8" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-4 </text>
 </g>
 
-<g id="xLabel">
-	<text x="250" y="189" text-anchor="middle" font-size="10" font-family="Verdana">length (m)	</text>
+<g id="xLabel" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="250" y="188" text-anchor="middle" font-size="10" font-family="Verdana">length (m) </text>
 </g>
 
-<g id="plotPoints">
+<g id="plotPoints" font-size="12" font-family="Lucida Sans Unicode">
 
-<g stroke="rgb(0,0,0)">
-	<text x="177" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="342" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="445" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="66.8" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
+<g stroke="rgb(0,0,0)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="177" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="342" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="445" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="66.8" y="106" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF; </text>
 </g>
 </g>
 
-<g id="limitPoints" stroke="rgb(0,128,0)" fill="rgb(255,255,255)">
-	<text x="484" y="113" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;	</text>
-	<text x="16" y="113" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25C3;	</text>
-	<text x="250" y="116" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">&#x25BF;	</text>
+<g id="limitPoints" stroke="rgb(0,128,0)" fill="rgb(255,255,255)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="484" y="113" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9; </text>
+	<text x="16" y="113" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25C3; </text>
+	<text x="250" y="116" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">&#x25BF; </text>
 </g>
 
-<g id="title">
-	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">Default 1D NaN and infinities Demo	</text>
+<g id="title" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">Default 1D NaN and infinities Demo </text>
 </g>
 
-<g id="plotXValues">
+<g id="plotXValues" font-size="12" font-family="Lucida Sans Unicode">
 
-<g>
-	<text x="177" y="94" text-anchor="middle" font-size="10" font-family="Verdana">-1.6	</text>
+<g font-size="12" font-family="Lucida Sans Unicode">
+	<text x="177" y="94" text-anchor="middle" font-size="10" font-family="Verdana">-1.6 </text>
 </g>
 
-<g>
-	<text x="342" y="94" text-anchor="middle" font-size="10" font-family="Verdana">2	</text>
+<g font-size="12" font-family="Lucida Sans Unicode">
+	<text x="342" y="94" text-anchor="middle" font-size="10" font-family="Verdana">2 </text>
 </g>
 
-<g>
-	<text x="445" y="94" text-anchor="middle" font-size="10" font-family="Verdana">4.26	</text>
+<g font-size="12" font-family="Lucida Sans Unicode">
+	<text x="445" y="94" text-anchor="middle" font-size="10" font-family="Verdana">4.26 </text>
 </g>
 
-<g>
-	<text x="66.8" y="94" text-anchor="middle" font-size="10" font-family="Verdana">-4	</text>
+<g font-size="12" font-family="Lucida Sans Unicode">
+	<text x="66.8" y="94" text-anchor="middle" font-size="10" font-family="Verdana">-4 </text>
 </g>
 </g>
 </svg>

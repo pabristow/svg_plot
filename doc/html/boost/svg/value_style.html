@@ -35,8 +35,8 @@
 <span class="keyword">class</span> <a class="link" href="value_style.html" title="Class value_style">value_style</a> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="value_style.html#boost.svg.value_styleconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="value_style.html#id630174-bb"><span class="identifier">value_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="value_style.html#id630211-bb"><span class="identifier">value_style</span></a><span class="special">(</span><span class="identifier">rotate_style</span><span class="special">,</span> <span class="keyword">int</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ios_base</span><span class="special">::</span><span class="identifier">fmtflags</span><span class="special">,</span> <span class="keyword">bool</span><span class="special">,</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a><span class="special">,</span> 
+  <a class="link" href="value_style.html#id630857-bb"><span class="identifier">value_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="value_style.html#id630861-bb"><span class="identifier">value_style</span></a><span class="special">(</span><span class="identifier">rotate_style</span><span class="special">,</span> <span class="keyword">int</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ios_base</span><span class="special">::</span><span class="identifier">fmtflags</span><span class="special">,</span> <span class="keyword">bool</span><span class="special">,</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a><span class="special">,</span> 
               <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">bool</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">,</span> 
               <span class="keyword">bool</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">bool</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">bool</span><span class="special">,</span> 
               <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">bool</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">bool</span><span class="special">,</span> 
@@ -67,23 +67,23 @@
   <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="identifier">values_text_style_</span><span class="special">;</span>  <span class="comment">// Font etc used for data point value marking. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1491606"></a><h2>Description</h2>
+<a name="id1494664"></a><h2>Description</h2>
 <p>For example, to output: 5.123 +- 0.01 (19). Uncertainty and degrees of freedom estimate. Prefix, separator and suffix allow X and Y values to be together on one line, for example<br>
  [1.23+- 0.01 (3), 4.56 +-0.2 (10)]<br>
  Used in draw_plot_point_values (note plural - not used in singular draw_plot_point_value) where X <a class="link" href="value_style.html" title="Class value_style">value_style</a> is used to provide the prefix and separator, and Y <a class="link" href="value_style.html" title="Class value_style">value_style</a> to provide the suffix. Prefix, separator and suffix are ignored when X or Y are shown separately using draw_plot_point_value. "4.5 +- 0.01 (3) Second #2, 2012-Mar-13 13:01:00" </p>
 <div class="refsect2">
-<a name="id1491640"></a><h3>
+<a name="id1494659"></a><h3>
 <a name="boost.svg.value_styleconstruct-copy-destruct"></a><code class="computeroutput">value_style</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a name="id630174-bb"></a><span class="identifier">value_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>Default style for a data point value label. <p>&lt; Constructor Data point value label style (provides default color and font).</p>
+<pre class="literallayout"><a name="id630857-bb"></a><span class="identifier">value_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>Default style for a data point value label. <p>&lt; Constructor Data point value label style (provides default color and font).</p>
 <p>Constructor Data point value label style (provides default color and font). </p>
 <p>Default constructor initialises all data. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id630211-bb"></a><span class="identifier">value_style</span><span class="special">(</span><span class="identifier">rotate_style</span> r<span class="special">,</span> <span class="keyword">int</span> p<span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ios_base</span><span class="special">::</span><span class="identifier">fmtflags</span> f<span class="special">,</span> <span class="keyword">bool</span> s<span class="special">,</span> 
+<pre class="literallayout"><a name="id630861-bb"></a><span class="identifier">value_style</span><span class="special">(</span><span class="identifier">rotate_style</span> r<span class="special">,</span> <span class="keyword">int</span> p<span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ios_base</span><span class="special">::</span><span class="identifier">fmtflags</span> f<span class="special">,</span> <span class="keyword">bool</span> s<span class="special">,</span> 
             <a class="link" href="text_style.html" title="Class text_style">text_style</a> ts<span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> scol<span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> fcol<span class="special">,</span> 
             <span class="keyword">bool</span> pm<span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> plusminus_color<span class="special">,</span> <span class="keyword">bool</span> lim<span class="special">,</span> 
             <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> addlimits_color<span class="special">,</span> <span class="keyword">bool</span> df<span class="special">,</span> 
@@ -96,7 +96,7 @@
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1492025"></a><h3>
+<a name="id1495050"></a><h3>
 <a name="boost.svg.value_stylepublic-data-members"></a><code class="computeroutput">value_style</code> 
         public
        public data members</h3>

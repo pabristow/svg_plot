@@ -14,26 +14,26 @@ xmlns ="http://www.w3.org/2000/svg"
 
 <!-- File demo_colors.svg --> 
 
-<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<rect x="0" y="0" width="500" height="200"/>
 </g>
 
-<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<rect x="21" y="42.5" width="354" height="129"/>
 </g>
 
-<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5" font-size="12" font-family="Lucida Sans Unicode">
 </g>
 
-<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 </g>
 
-<g id="xAxis" stroke="rgb(0,0,255)" stroke-width="1">
+<g id="xAxis" stroke="rgb(0,0,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="21" y1="42.5" x2="21" y2="172"/>
 	<line x1="21" y1="110" x2="375" y2="110"/>
 </g>
 
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M41.2,110 L41.2,112 
 M61.5,110 L61.5,112 
 M81.7,110 L81.7,112 
@@ -51,51 +51,51 @@ M365,110 L365,112
 " fill="none"/>
 </g>
 
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
-	<path d="M21,110 L21,115 
-M122,110 L122,115 
-M223,110 L223,115 
-M325,110 L325,115 
-M21,110 L21,115 
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
+	<path d="M21,110 L21,114 
+M122,110 L122,114 
+M223,110 L223,114 
+M325,110 L325,114 
+M21,110 L21,114 
 " fill="none"/>
 </g>
 
-<g id="xTicksValues">
-	<text x="122" y="128" text-anchor="middle" font-size="10" font-family="Verdana">2	</text>
-	<text x="223" y="128" text-anchor="middle" font-size="10" font-family="Verdana">4	</text>
-	<text x="325" y="128" text-anchor="middle" font-size="10" font-family="Verdana">6	</text>
+<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="122" y="128" text-anchor="middle" font-size="10" font-family="Verdana">2 </text>
+	<text x="223" y="128" text-anchor="middle" font-size="10" font-family="Verdana">4 </text>
+	<text x="325" y="128" text-anchor="middle" font-size="10" font-family="Verdana">6 </text>
 </g>
 
-<g id="xLabel" stroke="rgb(255,0,255)" fill="rgb(255,0,255)">
-	<text x="198" y="189" text-anchor="middle" font-size="10" font-family="Verdana">axis	</text>
+<g id="xLabel" stroke="rgb(255,0,255)" fill="rgb(255,0,255)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="198" y="188" text-anchor="middle" font-size="10" font-family="Verdana">axis </text>
 </g>
 
-<g id="plotPoints">
+<g id="plotPoints" font-size="12" font-family="Lucida Sans Unicode">
 
-<g stroke="rgb(0,0,0)">
+<g stroke="rgb(0,0,0)" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="71.6" y1="109" x2="71.6" y2="99"/>
 	<line x1="122" y1="109" x2="122" y2="99"/>
 	<line x1="173" y1="109" x2="173" y2="99"/>
 </g>
 </g>
 
-<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
+<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<rect x="381" y="42.5" width="110" height="49.5"/>
 </g>
 
-<g id="legendPoints">
+<g id="legendPoints" font-size="12" font-family="Lucida Sans Unicode">
 
-<g stroke="rgb(0,0,0)">
+<g stroke="rgb(0,0,0)" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="395" y1="85" x2="395" y2="75"/>
 </g>
 </g>
 
-<g id="legendText">
-	<text x="436" y="63.5" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode" textLength="87.8">Legend title	</text>
-	<text x="401" y="81" font-size="10" font-family="Verdana" textLength="44.4">My Data	</text>
+<g id="legendText" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="436" y="63.5" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode" textLength="87.8">Legend title </text>
+	<text x="401" y="81" font-size="10" font-family="Verdana" textLength="44.4">My Data </text>
 </g>
 
-<g id="title">
-	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">Demo SVG colors	</text>
+<g id="title" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">Demo SVG colors </text>
 </g>
 </svg>

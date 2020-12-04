@@ -16,29 +16,29 @@ xmlns ="http://www.w3.org/2000/svg"
 <clipPath id="plot_window">	<rect x="76.6" y="52" width="411" height="232"/>
 </clipPath>
 
-<g id="imageBackground" stroke="rgb(0,0,0)" fill="rgb(67,111,69)" stroke-width="2">
+<g id="imageBackground" stroke="rgb(0,0,0)" fill="rgb(67,111,69)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 	<rect x="0" y="0" width="500" height="350"/>
 </g>
 
-<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(136,188,126)" stroke-width="1">
+<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(136,188,126)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<rect x="81.6" y="57" width="406" height="227"/>
 </g>
 
-<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1">
+<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="81.6" y1="284" x2="488" y2="284"/>
 </g>
 
-<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1">
+<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="81.6" y1="284" x2="81.6" y2="57"/>
 </g>
 
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M217,284 L217,289 
 M353,284 L353,289 
 " fill="none"/>
 </g>
 
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M76.6,284 L81.6,284 
 M76.6,238 L81.6,238 
 M76.6,193 L81.6,193 
@@ -49,7 +49,7 @@ M76.6,284 L81.6,284
 " fill="none"/>
 </g>
 
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M61.6,275 L81.6,275 
 M61.6,265 L81.6,265 
 M61.6,256 L81.6,256 
@@ -74,108 +74,108 @@ M61.6,284 L81.6,284
 " fill="none"/>
 </g>
 
-<g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1">
+<g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 </g>
 
-<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5" font-size="12" font-family="Lucida Sans Unicode">
 </g>
 
-<g id="valueLabels" fill="rgb(0,0,0)">
-	<text x="217" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[50 / x]	</text>
-	<text x="353" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[40 + 25 * sin(x * 50)]	</text>
-	<text x="70.6" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0	</text>
-	<text x="70.6" y="241" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">20	</text>
-	<text x="70.6" y="195" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">40	</text>
-	<text x="70.6" y="150" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">60	</text>
-	<text x="70.6" y="105" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">80	</text>
-	<text x="70.6" y="59.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">100	</text>
-	<text x="70.6" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0	</text>
+<g id="valueLabels" fill="rgb(0,0,0)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="217" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[50 / x] </text>
+	<text x="353" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[40 + 25 * sin(x * 50)] </text>
+	<text x="70.6" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0 </text>
+	<text x="70.6" y="241" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">20 </text>
+	<text x="70.6" y="195" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">40 </text>
+	<text x="70.6" y="150" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">60 </text>
+	<text x="70.6" y="105" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">80 </text>
+	<text x="70.6" y="59.4" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">100 </text>
+	<text x="70.6" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0 </text>
 </g>
 
-<g id="yLabel" fill="rgb(255,255,255)">
-	<text x="30.2" y="170" text-anchor="middle" transform="rotate(-90 30.2 170)" font-size="14" font-family="Lucida Sans Unicode">Population Size	</text>
+<g id="yLabel" fill="rgb(255,255,255)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="30.2" y="170" text-anchor="middle" transform="rotate(-90 30.2 170)" font-size="14" font-family="Lucida Sans Unicode">Population Size </text>
 </g>
 
-<g id="xLabel" fill="rgb(255,255,255)">
-	<text x="285" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">Functions	</text>
+<g id="xLabel" fill="rgb(255,255,255)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="285" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">Functions </text>
 </g>
 
-<g id="boxAxis" stroke="rgb(0,0,0)">
+<g id="boxAxis" stroke="rgb(0,0,0)" font-size="12" font-family="Lucida Sans Unicode">
 
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="217" y1="272" x2="217" y2="196"/>
 </g>
 
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="353" y1="250" x2="353" y2="136"/>
 </g>
 </g>
 
-<g id="Median" stroke="rgb(255,0,0)" stroke-width="2">
+<g id="Median" stroke="rgb(255,0,0)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
 
-<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
+<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<rect x="202" y="239" width="30" height="29.6"/>
 </g>
 
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="203" y1="261" x2="232" y2="261"/>
 </g>
 
-<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
+<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<rect x="338" y="154" width="30" height="79.2"/>
 </g>
 
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
+<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="338" y1="195" x2="367" y2="195"/>
 </g>
 </g>
 
-<g id="whisker" stroke="rgb(0,0,0)">
+<g id="whisker" stroke="rgb(0,0,0)" font-size="12" font-family="Lucida Sans Unicode">
 
-<g clip-path="url(#plot_window)">
+<g clip-path="url(#plot_window)" font-size="12" font-family="Lucida Sans Unicode">
 
-<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
+<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="202" y1="272" x2="232" y2="272"/>
 </g>
 
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
+<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="202" y1="196" x2="232" y2="196"/>
 </g>
 </g>
 
-<g clip-path="url(#plot_window)">
+<g clip-path="url(#plot_window)" font-size="12" font-family="Lucida Sans Unicode">
 
-<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
+<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="338" y1="250" x2="368" y2="250"/>
 </g>
 
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
+<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<line x1="338" y1="136" x2="368" y2="136"/>
 </g>
 </g>
 </g>
 
-<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
+<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)" font-size="12" font-family="Lucida Sans Unicode">
 
-<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
-	<text x="217" y="159" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="217" y="172" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="217" y="182" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
-	<text x="217" y="191" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;	</text>
+<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="217" y="159" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="217" y="172" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="217" y="182" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF; </text>
+	<text x="217" y="191" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF; </text>
 </g>
 </g>
 
-<g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)">
+<g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)" font-size="12" font-family="Lucida Sans Unicode">
 
-<g clip-path="url(#plot_window)" stroke="rgb(255,0,0)">
-	<text x="217" y="58.5" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="217" y="96.3" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="217" y="123" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;	</text>
-	<text x="217" y="143" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;	</text>
+<g clip-path="url(#plot_window)" stroke="rgb(255,0,0)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="217" y="58.5" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="217" y="96.3" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="217" y="123" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD; </text>
+	<text x="217" y="143" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD; </text>
 </g>
 </g>
 
-<g id="title" stroke="rgb(255,255,255)" fill="rgb(0,0,0)">
-	<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode">Boxplots of Common Functions	</text>
+<g id="title" stroke="rgb(255,255,255)" fill="rgb(0,0,0)" font-size="12" font-family="Lucida Sans Unicode">
+	<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode">Boxplots of Common Functions </text>
 </g>
 </svg>
