@@ -1,15 +1,11 @@
 /*!
   \file
   \brief Styles for SVG specifying font, sizes, shape, color etc for text, values, lines, axes etc.
-  \details  SVG style information is fill, stroke, width, line & bezier curve.
-   This module provides struct plot_point_style & struct plot_line_style
-   and class svg_style holding the styles.
-   See http://www.w3.org/TR/SVG11/styling.html
+  \details SVG style information is fill, stroke, width, line & bezier curve.
 
-   #define BOOST_SVG_STYLE_DIAGNOSTICS for diagnostic output.
-
-  \author Jacob Voytko and Paul A. Bristow
-
+   This module provides \code struct plot_point_style & struct plot_line_style \endcode
+   and class @c svg_style holding the styles.
+   \sa http://www.w3.org/TR/SVG11/styling.html
 */
 
 // svg_style.hpp
@@ -24,8 +20,11 @@
 #ifndef BOOST_SVG_SVG_STYLE_HPP
 #define BOOST_SVG_SVG_STYLE_HPP
 
+//#define BOOST_SVG_STYLE_DIAGNOSTICS for diagnostic output.
+
 #include "svg_color.hpp"
 // using boost::svg_color
+#include "svg_style.hpp" // For not_a_text_style etc
 #include "detail/svg_style_detail.hpp" // For enum plot_doc_structure.
 
 #include <iostream>
@@ -39,9 +38,12 @@ namespace boost
 {
 namespace svg
 {
-  typedef double fp_type;  //!< \typedef fp_type Allows switch between using double or float to hold many floating-point items as either @c double or @c float.
+  typedef double fp_type; 
+  //!< Allows a switch between using @c double or @c float to hold
+  //!< many floating-point plotable data values as either @c double or @c float.
   //!< (32-bit has sufficient precision for data plots, so using @c float might be faster and/or take less space,
-  //!< but with a small range of @c (std::numeric_limits<>::max)() to (std::numeric_limits<>::min)(), about 10^38 compared to 64-bit 10^308)
+  //!< but with a smaller range of @c (std::numeric_limits<>::max)() to @c (std::numeric_limits<>::min)(), 
+  //! about 10^38 compared to 64-bit 10^308).
 
   static const fp_type aspect_ratio = 0.6;  //!< aspect_ratio is a guess at average height to width of font (0.55 to 0.7?).
   //!< used to estimate the svg length of a title or header string from the font size (height and width of EM - capital M).
@@ -56,6 +58,7 @@ namespace svg
    Used for title, legend, axes ... unless overridden by an explicit font specification.
   */
   const static char* default_font("Lucida Sans Unicode"); // TODO make sure used throughout.
+    // should be default_font_family
 
 // Forward declarations of classes in svg_style.hpp
 class svg_style; // Holds the basic stroke, fill colors and width, and their switches.
@@ -115,7 +118,7 @@ enum rotate_style
 //  return os;
 //  } // std::ostream& operator<< (std::ostream & os, rotate_style & rot)
 
-//! The place for ticks value labels on the axis.
+//! The place for ticks value-labels on the axis.
 enum place
 {
   left_side = -1,
@@ -139,9 +142,9 @@ double string_svg_length(const std::string& s, const text_style& style);
  (Firefox especially) when only stroke is specified.
  fill is interpreted as black, and the font outline is fuzzy and bolder.
 \verbatim
-   <g id="title" stroke="rgb(255,0,0)"> .. is red border and black fill.
+   <g id="title" stroke="rgb(255,0,0)"> ... is red border and black fill.
    (because created as a graphic not a builtin font?)
-   <g id="title" fill="rgb(255,0,0)"> .. is red sharp font.
+   <g id="title" fill="rgb(255,0,0)"> ... is red sharp font.
    <g id="title" stroke="rgb(255,0,0)" fill="rgb(255,0,0)"> red and red fill also fuzzy.
    So for text, only specific the fill unless a different outline is really wanted.
    Defaults for text provide a built-in glyph, for example for title:
@@ -159,9 +162,8 @@ class svg_style
   friend std::ostream& operator<< (std::ostream&, const svg_style&);
   // Used for diagnostic output of all values of style and state of switches.
 
-  // Accesses only by set and get member functions below.
-  // data member variables names end with _,
-  // to permit use of names for set & get member functions.
+  // Access by set and get member functions below.
+  // Data member variables names end with _ to permit use of names for set & get member functions.
   svg_color stroke_; //!< Color of SVG stroke (line or outline).
   svg_color fill_; //!< Color of SVG fill.
   double width_; //!< Width of line.  Only valid if > 0 & width_on_ == true
@@ -357,7 +359,7 @@ public:
     }
    /*! \details Example output: \<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"\>
    */
- } // void write
+ } // void svg_style::write(std::ostream& os)
 
   // End of svg_style definitions. /////////////////////////////////////////////
 
@@ -367,14 +369,14 @@ public:
      text font-family (for example: "Lucida Sans Unicode", "arial", Times New Roman" ...).
      Available fonts depend on the program rendering the SVG XML, usually a browser.
      The default font (usually "Lucida Sans Unicode") is used
-     if a renderer (in a browser or a converter to PDF like RenderX)
+     if a renderer (in a browser or a converter-to-PDF like RenderX)
      does not provide the font specified.
      A Unicode font has a better chance of providing Unicode symbols, for example, specified as @c \&\#x221E;.
      Symbols are used to show data points and most shapes use Unicode.
      These fonts are probably usable:
      \code
-     "arial", "impact", "courier", "lucida console",  "Lucida Sans Unicode", "Verdana", "calibri", "century",
-     "lucida calligraphy", "tahoma", "vivaldi", "informal roman", "lucida handwriting", "lucida bright", "helvetica"
+       "arial", "impact", "courier", "lucida console",  "Lucida Sans Unicode", "Verdana", "calibri", "century",
+       "lucida calligraphy", "tahoma", "vivaldi", "informal roman", "lucida handwriting", "lucida bright", "helvetica"
      \endcode
 
      http://www.fileformat.info/info/unicode/font/index.htm provdes a fuller listing of support by many fonts;
@@ -437,13 +439,15 @@ public:
   // bool operator==(const text_style& lhs, const text_style& rhs);
   text_style& operator=(const text_style& rhs);
 
+  void write(std::ostream&);
+
 }; //   class text_style
 
 // class text_style function *Definitions*.
 
 //  3.7.Shorthand font property: the font property https://www.w3.org/TR/css-fonts-3/#propdef-font 
-// The ‘font’ property is, except as described below, a shorthand property for setting
-// ‘font-style’, ‘font-variant’, ‘font-weight’, ‘font-stretch’, ‘font-size’, ‘line-height’, ‘font-family’
+// The font property is, except as described below, a shorthand property for setting
+// font-style, font-variant, font-weight, font-stretch, font-size, line-height, font-family
 // at the same place in the stylesheet.
 
 text_style::text_style( //!< Constructor to allow all text style parameters (font size, family, bold...) to be set.
@@ -737,10 +741,43 @@ std::ostream& operator<< (std::ostream& os, const text_style& ts)
   return os; // Make chainable.
 } // std::ostream& operator<<
 
+void text_style::write(std::ostream& os) 
+{
+  if (font_size_ > 0)
+  {
+    os << " font-size=\"" << font_size_ << "\"";
+  }
+  if (font_family_ != "")
+  {// Example: Arial, Verdana, Times New Roman ... 
+    // \verbatim Example output: font-family="serif" \endverbatim
+    os << " font-family=\"" << font_family_ << "\"";
+  }
+  if (font_style_.size() != 0)  // or != ""
+  { // Example: italic, bold .
+    os << " font-textstyle=\"" << font_style_ << "\"";
+  }
+  if (weight_.size() != 0)
+  { // Example: bold.
+    os << " font-weight=\"" << weight_ << "\"";
+  }
+  if (stretch_.size() != 0)
+  {
+    os << " font-stretch=\"" << stretch_ << "\"";
+  }
+  if (decoration_.size() != 0)
+  {
+    os << " text-decoration=\"" << decoration_ << "\"";
+  }
+  if (text_length() > 0)
+  {
+    os << " textLength=\"" << text_length_ << "\"";
+  }
+} //   void svg_style::write(std::ostream& os)
+
 // End of class text_style function *Definitions* separated.
 
 text_style no_text_style; //!< Text style that uses all constructor defaults.
-text_style not_a_text_style (-1, "","","","","",0); //!< Text style that uses null for all text style features 
+static const text_style not_a_text_style (-1, "","","","","",0); //!< Text style that uses null for all text style features 
 // (used to signal no writing to output of SVG style required).
 
 

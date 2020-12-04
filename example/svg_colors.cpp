@@ -9,7 +9,6 @@
     http://www.w3.org/TR/SVG/types.html#ColorKeywords
 
   \author Paul A. Bristow
-  \date 2007
 */
 
 // Copyright Paul A. Bristow 2007

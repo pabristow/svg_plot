@@ -60,7 +60,6 @@ namespace boost
 {
   namespace svg
   {
-//! \endcond
 
     // Forward declarations.
 //! \cond DETAIL
@@ -143,9 +142,9 @@ namespace boost
       svg_2d_plot_series& bezier_on(bool on_);
       svg_2d_plot_series& bar_opt(bar_option);
       svg_2d_plot_series& bar_width(double wid_);
-      svg_2d_plot_series& bar_color(const svg_color& col);
-      svg_2d_plot_series& bar_area_fill(const svg_color& col);
-      svg_2d_plot_series& histogram(histogram_option opt_);
+      svg_2d_plot_series& bar_color(const svg_color&);
+      svg_2d_plot_series& bar_area_fill(const svg_color&);
+      svg_2d_plot_series& histogram(histogram_option);
 
       const std::string point_font_family();
       const std::string point_font_weight();
@@ -328,7 +327,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
   svg_2d_plot_series& svg_2d_plot_series::bar_opt(bar_option opt_)
   { //! Set bar options.
     bar_style_.bar_option_ = opt_;
-    return *this;  //! \return Reference to svg_2d_plot_series to make chainable.
+    return *this;  //! \return Reference to @c svg_2d_plot_series to make chainable.
   }
 
   svg_2d_plot_series& svg_2d_plot_series::bar_width(double wid_)
@@ -479,7 +478,6 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
      friend class svg_2d_plot_series;
      friend class detail::axis_plot_frame<svg_2d_plot>;
      // axis_plot_frame.hpp contains functions common to 1-D and 2-D.
-   // private: // Doesn't help?
   public:
 
   //! \cond DETAIL
@@ -892,7 +890,6 @@ my_plot.background_color(ghostwhite) // Whole image.
         }
       } // svg_2d_plot() default constructor.
 
-    //private:
     public: // Temporary for gil experiments.
 
       // svg_2d_plot Implementation Member Functions.

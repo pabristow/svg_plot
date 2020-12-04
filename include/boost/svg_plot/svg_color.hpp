@@ -246,8 +246,9 @@ namespace svg
       os << "blank";
     }
     /*! \details Usage: svg_color my_color(127, 255, 212); cout << "my_color " << my_color << endl;
-         Outputs: my_color RGB(127,255,212)       cout << "magenta " << svg_color(magenta) << endl;
-         but caution! \code std::cout << magenta << endl; endcode
+         Outputs: my_color RGB(127,255,212)       std::cout << "magenta " << svg_color(magenta) << std::endl;
+         but caution!
+         \code std::cout << magenta << std::endl; \endcode
          outputs int value 85 because magenta is an enum boost::svg::svg_color_constant !
      */
     return os;

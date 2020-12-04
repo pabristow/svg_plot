@@ -11,7 +11,7 @@
 /*!
   \mainpage Scalable Vector Graphic (SVG) Plot Package
 
-  \section intro_sec Introduction
+  \section intro_section Introduction
 
   Humans have a fantastic capacity for visual understanding, and merely looking
   at data organized in one, two, or three dimensions allows us to see relations

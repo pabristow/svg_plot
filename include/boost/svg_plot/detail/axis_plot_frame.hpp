@@ -191,7 +191,7 @@ namespace boost
 
 //! \endcond
 
-  public: // Could be private but benefits unclear?
+  public: 
           Derived& derived()
           { //! Uses Curiously Recurring Template Pattern to allow 1D and 2D to reuse common code.
             //! See http://en.wikipedia.org/wiki/Curiously_Recurring_Template_Pattern .
@@ -302,7 +302,7 @@ namespace boost
           text_style& title_style(); //!<  \return All style info for the title, font, famil, size ... (SVG units, default pixels).
 
           Derived& title_font_size(int i); //!<  Sets the font size for the title (SVG units, default pixels).
-          int title_font_size(); //!<  return Font size for the title (SVG units, default pixels). Example: /code std::cout << my_plot.title_font_size() ... \endcode
+          int title_font_size(); //!<  return Font size for the title (SVG units, default pixels). Example: \code std::cout << my_plot.title_font_size() ... \endcode
           Derived& title_font_family(const std::string& family); //!<  Set the font family for the title (for example: .title_font_family("Lucida Sans Unicode");
           const std::string& title_font_family(); //!<  \return Font family for the title.
           Derived& title_font_style(const std::string& style);  //!<  Set the font style for the title (default normal).
@@ -405,7 +405,7 @@ namespace boost
           int x_label_font_size(); //!<\return  X axis label font size (svg units, default pixels).
           Derived& x_value_font_size(int i); //!<Set X tick value label font size (svg units, default pixels).
            int x_value_font_size(); //!<\return  X tick value label font size (svg units, default pixels).
-          Derived& x_label_font_family(const std::string& family); /*!< Set X tick value label font family.
+          Derived& x_label_font_family(const std::string& family); /*!< Set X-tick value-label font-family.
            Available fonts depend on the program rendering the SVG XML, usually a browser.
           The default font (usually "default_font") is used if a render program does not provide the font specified.
           These are probably usable:

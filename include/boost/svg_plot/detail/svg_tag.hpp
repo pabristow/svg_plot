@@ -82,6 +82,7 @@ namespace svg
      */
   public:
     svg_style svg_style_; //!< Colors fill, stroke, width; set and get by function @c style().
+    text_style text_style_;  //!< font, font-size and font features bold. underline...
     std::string id_name_; //!< SVG id name, set & get by function id.
     std::string class_name_; //!< SVG class name, set & get by function class id.
     std::string clip_name_; //!< SVG clip path name, set & get by function clip_id.
@@ -119,9 +120,12 @@ namespace svg
     svg_element(const svg_style& style,
                 const std::string& id_name = "",
                 const std::string& class_name = "",
-                const std::string& clip_name = "")
+                const std::string& clip_name = "",
+                const text_style& text_style = not_a_text_style
+               )
                 :
                 svg_style_(style),
+                text_style_(text_style),
                 id_name_(id_name),
                 class_name_(class_name),
                 clip_name_(clip_name)
@@ -234,7 +238,7 @@ namespace svg
 
     line_element(double x1, double y1, double x2,  double y2)
       :   x1_(x1), x2_(x2),  y1_(y1), y2_(y2)
-    { //! Constructor assigning all line_element private data.
+    { //! Constructor assigning all line_element data.
     }
 
     line_element(double x1, double y1,
@@ -339,11 +343,10 @@ namespace svg
     double width_; //!< x_ + width_ is top right.
     double height_; //!< y_ + height_ is bottom left.
     //!< x_ + width_ and y_ + height_ is bottom right.
-  public:
 
     rect_element(double x, double y, double w, double h)
       : x_(x), y_(y), width_(w), height_(h)
-    { //! Constructor defines all private data (no defaults).
+    { //! Constructor defines all data (no defaults).
     }
 
     rect_element(double x, double y, double w, double h,
@@ -355,7 +358,7 @@ namespace svg
       :
         svg_element(style_info, id_name, class_name, clip_name),
         x_(x), y_(y), width_(w), height_(h)
-    { //! Constructor defines all private data (inherites info from svg_element).
+    { //! Constructor defines all data (inherites info from svg_element).
     }
 
     double x() const
@@ -443,7 +446,7 @@ namespace svg
       double y, //!< coordinate Y of center of ellipse.
       double radius = 5) //!< radius of ellipse.
       : x_(x), y_(y), radius_(radius)
-    { //! Constructor defines all private data (default radius only).
+    { //! Constructor defines all  data (default radius only).
     }
 
     circle_element(double x, double y, double radius,
@@ -455,7 +458,7 @@ namespace svg
       :
         x_(x), y_(y),
         svg_element(style_info, id_name, class_name, clip_name), radius_(radius)
-    { //! Constructor defines all private data.
+    { //! Constructor defines all  data.
     }
 
     void write(std::ostream& os)
@@ -500,7 +503,7 @@ namespace svg
       double rx = 4, //!< X radius default.
       double ry = 8) //!< Y radius default.
       : cx_(cx), cy_(cy), rx_(rx), ry_(ry), rotate_(0.)
-    { //!< Constructor defines all private data (with default radii).
+    { //!< Constructor defines all  data (with default radii).
     }
 
     ellipse_element(double cx, //!< coordinate X of center of ellipse.
@@ -514,7 +517,7 @@ namespace svg
       :
         svg_element(style_info, id_name, class_name, clip_name),
           cx_(cx), cy_(cy), rx_(rx), ry_(ry), rotate_(0.)
-    { //!< Constructor sets ellipse and its style (defaults define all private data).
+    { //!< Constructor sets ellipse and its style (defaults define all data).
     }
     ellipse_element(
         double cx, //!< coordinate X of center of ellipse.
@@ -1211,7 +1214,8 @@ public:
     return text_style_; 
   }
 
-   //! Output SVG @c text_element, style & attributes to a @c std::ostream.
+   //! class text_element write(std::ostream&)
+   //! Output SVG @c text_element, text_style & attributes to a @c std::ostream.
    // Changing back to OLD convention on spaces:
    // NO trailing space, but *start* each item with a tab and end with newline.
    // 
@@ -1220,13 +1224,12 @@ public:
   void write(std::ostream& os)
   {
     os << "\t<text x=\"" << x_ << "\" y=\"" << y_ << "\"";
-    // ??? Test 
     std::string anchor;
     switch(align_)
     {
     case align_style::left_align :
-      // anchor = "start"; // This is the initial == default.
-      // so should be possible to reduce file size this by:
+      // anchor = "start"; // This is the initial == default,
+      // so should be possible to reduce file size of this by:
       anchor = "";
       break;
     case align_style::right_align :
@@ -1250,38 +1253,36 @@ public:
         << x_ << " "
         << y_ << ")\"";
     }
-    //if (text_style_.font_size() > 0 )
-    //{ // 
-      if (text_style_.font_size() > 0)
-      { // Example output: font-size="10" 
-        os << " font-size=\"" << text_style_.font_size() << "\"";
-      }
-      if (text_style_.font_family() != "")
-      { // Example: Arial, Verdana, Times New Roman ...
-        // Example output: font-family="serif"
-        os << " font-family=\"" << text_style_.font_family() << "\"";
-      }
-      if (text_style_.font_style().size() != 0)
-      { // Example: italic.
-        os << " font-textstyle=\"" << text_style_.font_style() << "\"";
-      }
-      if (text_style_.font_weight().size() != 0)
-      { // Example: bold.
-      os << " font-weight=\"" << text_style_.font_weight() << "\"";
-      }
-      if (text_style_.font_stretch().size() != 0)
-      {
-      os << " font-stretch=\"" << text_style_.font_stretch() << "\"";
-      }
-      if (text_style_.font_decoration().size() != 0)
-      {
-      os << " text-decoration=\"" << text_style_.font_decoration() << "\"";
-      }
-      if (text_style_.text_length() > 0)
-      {
-        os << " textLength=\"" << text_style_.text_length() << "\"";
-      }
- //   }
+    //  Might share this code to output font info of text_style with g_element write(os)?
+    if (text_style_.font_size() > 0)
+    { // Example output: font-size="10" 
+      os << " font-size=\"" << text_style_.font_size() << "\"";
+    }
+    if (text_style_.font_family() != "")
+    { // Example: Arial, Verdana, Times New Roman ...
+      // Example output: font-family="serif"
+      os << " font-family=\"" << text_style_.font_family() << "\"";
+    }
+    if (text_style_.font_style().size() != 0)
+    { // Example: italic.
+      os << " font-textstyle=\"" << text_style_.font_style() << "\"";
+    }
+    if (text_style_.font_weight().size() != 0)
+    { // Example: bold.
+    os << " font-weight=\"" << text_style_.font_weight() << "\"";
+    }
+    if (text_style_.font_stretch().size() != 0)
+    {
+    os << " font-stretch=\"" << text_style_.font_stretch() << "\"";
+    }
+    if (text_style_.font_decoration().size() != 0)
+    {
+    os << " text-decoration=\"" << text_style_.font_decoration() << "\"";
+    }
+    if (text_style_.text_length() > 0)
+    {
+      os << " textLength=\"" << text_style_.text_length() << "\"";
+    }
     os << ">" ;
     generate_text(os); 
     os << "\t" "</text>" "\n";
@@ -1313,7 +1314,6 @@ public:
       \details 14.3 Clipping paths http://www.w3.org/TR/SVG/masking.html#ClipPathProperty.
     */
   public: 
-//  private:
     std::string element_id; //!< SVG element id.
     rect_element rect; //!< Clipping rectangle.
 
@@ -1879,7 +1879,6 @@ public:
     friend std::ostream& operator<< (std::ostream&, polygon_element&);
 
   public: //temporary for experimental gil
-//  private:
     //using boost::ptr_vector;
     ptr_vector<poly_path_point> poly_points; //!< All the x, y coordinate pairs,
     //!< push_backed by calls of p_path(x, y).
@@ -2035,9 +2034,10 @@ public:
   std::ostream& operator<< (std::ostream& os, polygon_element& p)
   { /*! Output all poly_path_ points (May be useful for Boost.Test and diagnosis).
         ptr_vector<poly_path_point> poly_points; All the x, y coordinate pairs,
-        Example: \code polygon_element p(1, 2, 3, 4, 5, 6);
-        std::cout << p << std::endl;
-        /endcode
+        Example: \code
+          polygon_element p(1, 2, 3, 4, 5, 6);
+          std::cout << p << std::endl;
+        \endcode
         Outputs: (1, 2)(3, 4)(5, 6)
     */
     for(ptr_vector<poly_path_point>::iterator i = p.poly_points.begin(); i != p.poly_points.end(); ++i)
@@ -2068,7 +2068,6 @@ public:
   friend std::ostream& operator<< (std::ostream&, polyline_element&);
 
    public: 
-// private: // has little advantage?
     ptr_vector<poly_path_point> poly_points; //!< All the (x, y) coordinate pairs,
     // push_back by calls of p_path(x, y).
     //bool fill; // not needed for polyline, unlike polygon.
@@ -2169,8 +2168,7 @@ public:
          </g>
       \endverbatim
    */
-  public: // Simplest, private has little benefit.
-
+  public:
     ptr_vector<svg_element> children; /*!< Children of this group element node,
       containg graphics elements like text, rect, circle, line, polyline... */
 
@@ -2208,7 +2206,8 @@ public:
         */
         os << "\n" "<g"; // Do NOT need space if convention is to start following item with space or tab or newline.
         write_attributes(os); // id="background" (or clip_path).
-        svg_style_.write(os); // SVG style info like stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
+        svg_style_.write(os); // Output SVG style info like stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
+        text_style_.write(os); // Output SVG text style info like font-size, font-family...
         os << ">" 
           "\n"; // Newline after the g_element id and style is easier to read.
         for(unsigned int i = 0; i < children.size(); ++i)
