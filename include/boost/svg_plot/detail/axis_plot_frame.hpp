@@ -1164,7 +1164,7 @@ namespace boost
           { // External to plot window style bottom or top.
             // Always want all values including "0", if labeling external to plot window.
             // x_ticks_.ticks_on_window_or_on_axis_ == true != 0
-           g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK
+         //  g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK
        //     g_element& g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // NOT OK
             // /! svg g \return reference g_element& to the ith (PLOT_X_TICKS_VALUES) group element.
          //   g_element* g_inner_ptr = g_ptr;
@@ -1191,13 +1191,37 @@ namespace boost
 
              //g_x_axis_values.text( // fails for a g_element* pointer
            //  g_ptr.text( // fails for pointer, OK for reference
-             g_ptr->text( // OK and makes X-axis_ticks labels RED!
-              x,
-              y,
-              tick_value_label.str(), // "1.0!, "1.5" ...
-              derived().x_value_label_info_.textstyle(), // font, size etc
-              alignment,
-              derived().x_ticks_.label_rotation_);
+             //g_ptr->text( // OK and makes X-axis_ticks labels RED!
+             // x,
+             // y,
+             // tick_value_label.str(), // "1.0!, "1.5" ...
+             // derived().x_value_label_info_.textstyle(), // font, size etc
+             // alignment,
+             // derived().x_ticks_.label_rotation_);
+           g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK
+           const text_style xticks_text_style(14, "arial", "bold");
+           //std::cout << "text_style xticks_text_style is " << xticks_text_style << std::endl;
+           // text_style xticks_text_style is text_style(20, "lucida sans unicode", "", "bold", "", "")
+        //   g_ptr->text_style_.style(xticks_text_style);
+           //g_ptr->text_style_.font_size(20);
+           //g_ptr->text_style_.font_weight("bold");
+           //g_ptr->text_style_.font_family("arial");
+           g_ptr->text_style_ = xticks_text_style;
+           // and pick up alignment and rotation, if any.
+             // std::cout << " g_ptr->text_style_ is " << g_ptr->text_style_ << std::endl;
+              // Copies all OK.
+              // g_ptr->text_style_ is text_style(20, "ariel", "", "bold", "", "")
+              // Need to add , not_a_text_style to avoid each x-tick value label adding font-family, font-size etc.
+             g_ptr->text(
+               x,
+               y,
+               tick_value_label.str(), // "1.0", "1.5", "2.0" ...
+               not_a_text_style);
+             // These will be repeated on each label if placed here.
+           //  alignment,
+           //  derived().x_ticks_.label_rotation_
+             // Needs to be added to the g_element
+           // TODO text_anchor and rotation
           }
           else
           {

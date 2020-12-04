@@ -2211,6 +2211,8 @@ public:
         write_attributes(os); // id="background" (or clip_path).
         svg_style_.write(os); // Output SVG style info like stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
         text_style_.write(os); // Output SVG text style info like font-size, font-family...
+        //alignment
+         // rotation
         os << ">" 
           "\n"; // Newline after the g_element id and style is easier to read.
         for(unsigned int i = 0; i < children.size(); ++i)
