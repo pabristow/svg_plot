@@ -1225,6 +1225,17 @@ public:
   void write(std::ostream& os)
   {
     os << "\t<text x=\"" << x_ << "\" y=\"" << y_ << "\"";
+
+    //! The text-anchor property is used to align (start-, middle- or end-alignment) a string of pre-formatted text or auto-wrapped text
+    //! where the wrapping area is determined from the inline-size property relative to a given point.
+    //! It is not applicable to other types of auto-wrapped text, see instead text-align.
+    //! For multi-line text, the alignment takes place for each line.
+    //! \sa https://www.w3.org/TR/SVG/text.html#TextAnchoringProperties
+    //! Alignment and justification controls how inline content is distributed \bold within a line box.\endbold
+    //! 
+     //! \sa https://www.w3.org/TR/css-text-3/#text-align-property
+
+   // Anchor output should be *also* in g_element.
     std::string anchor;
     switch(align_)
     {
@@ -1247,6 +1258,7 @@ public:
     {
       os << " text-anchor=\"" << anchor << "\"";
     }
+
     if(rotate_ != 0)
     { // Only show rotation info if not normal horizontal writing.
       os << " transform=\"rotate("
@@ -1254,6 +1266,8 @@ public:
         << x_ << " "
         << y_ << ")\"";
     }
+    // Output any text attributes that are specific to this text string.
+    // (If text_style == not_a_text_style then any attributes are output in g_element.
     if (text_style_ != not_a_text_style)
     {
       //  Might share this code to output font info of text_style with g_element write(os)?
@@ -2179,7 +2193,7 @@ public:
     std::string clip_name;  //!< Name of clip path.
     bool clip_on; //!< @c true if to clip anything outside the clip path, often the plot window
    //!< so that data-point markers do not overlap axes tick-values on the inside of the window.
-    align_style  alignment_;
+    align_style  alignment_;  
     int rotate_;
 
     g_element() : clip_on(false)
@@ -2214,24 +2228,35 @@ public:
         write_attributes(os); // id="background" (or clip_path).
         svg_style_.write(os); // Output SVG style info like stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
         text_style_.write(os); // Output SVG text style info like font-size, font-family...
-       // alignment_.write(os) // in effect
+       // alignment_.write(os) // in effect.
         // 
-        if (alignment_ != align_style::no_align)
+        std::string anchor = ""; 
+
+  //      align_style align_ = align_style::left_align; // OK
+        align_style align_ = alignment_;
+        switch (align_)
         {
-          if (alignment_ == align_style::left_align)
-          {
-            os << "left";
-          }
-          else if (alignment_ == align_style::center_align)
-          {
-            os << "center";
-          }
-          else if (alignment_ == align_style::right_align)
-          {
-            os << "right";
-          }
-      }
-          // rotation 
+        case align_style::left_align:
+          // anchor = "start"; // This is the initial == default,
+          // so should be possible to reduce file size of this by:
+          //anchor = "";
+          break;
+        case align_style::right_align:
+          anchor = "end";
+          break;
+        case align_style::center_align:
+          anchor = "middle";
+          break;
+        default:
+          anchor = "";
+          break;
+        }
+        if (anchor != "")
+        {
+          os << " text-anchor=\"" << anchor << "\"";
+        }
+
+        // rotation applicable to text, rect, ellipse etc, so should be in group.
         //if (rotate_ != 0)
         //{ // Only show rotation info if not normal horizontal writing.
         //  os << " transform=\"rotate("

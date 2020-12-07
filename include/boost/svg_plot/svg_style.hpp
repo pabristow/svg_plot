@@ -401,6 +401,8 @@ class text_style
   std::string decoration_; //!< Font decoration, examples: "underline" | "overline" | "line-through".
   double text_length_; //!< Estimate of SVG length of text used to force compress or expand into exactly this width.
   // Only actually used if text_length_ > 0.
+  int al_;
+
 
 public:
   text_style( //! Constructor.
@@ -439,7 +441,7 @@ public:
   // bool operator==(const text_style& lhs, const text_style& rhs);
   text_style& operator=(const text_style& rhs);
 
-  void write(std::ostream&);
+  void write(std::ostream&); // Output text_element SVG.
 
 }; //   class text_style
 
