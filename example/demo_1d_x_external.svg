@@ -102,14 +102,14 @@ M56.7,42.5 L56.7,47.5
 " fill="none"/>
 </g>
 
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="56.7" y="60.5" text-anchor="middle" font-size="10" font-family="Verdana">0 </text>
-	<text x="128" y="60.5" text-anchor="middle" font-size="10" font-family="Verdana">2 </text>
-	<text x="200" y="60.5" text-anchor="middle" font-size="10" font-family="Verdana">4 </text>
-	<text x="271" y="60.5" text-anchor="middle" font-size="10" font-family="Verdana">6 </text>
-	<text x="342" y="60.5" text-anchor="middle" font-size="10" font-family="Verdana">8 </text>
-	<text x="414" y="60.5" text-anchor="middle" font-size="10" font-family="Verdana">10 </text>
-	<text x="56.7" y="60.5" text-anchor="middle" font-size="10" font-family="Verdana">0 </text>
+<g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold">
+	<text x="56.7" y="60.5">0 </text>
+	<text x="128" y="60.5">2 </text>
+	<text x="200" y="60.5">4 </text>
+	<text x="271" y="60.5">6 </text>
+	<text x="342" y="60.5">8 </text>
+	<text x="414" y="60.5">10 </text>
+	<text x="56.7" y="60.5">0 </text>
 </g>
 
 <g id="xLabel" font-size="12" font-family="Lucida Sans Unicode">

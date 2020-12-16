@@ -26,7 +26,7 @@
 <a name="boost.svg.ticks_labels_style"></a><div class="titlepage"></div>
 <div class="refnamediv">
 <h2><span class="refentrytitle">Class ticks_labels_style</span></h2>
-<p>boost::svg::ticks_labels_style — Style of the X and Y axes ticks, grids and their tick value labels. </p>
+<p>boost::svg::ticks_labels_style — Style of the X and Y axes major and minor ticks, grids and their tick-value-labels. </p>
 </div>
 <h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
 <div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/svg_style_hpp.html" title="Header &lt;boost/svg_plot/svg_style.hpp&gt;">boost/svg_plot/svg_style.hpp</a>&gt;
@@ -35,29 +35,29 @@
 <span class="keyword">class</span> <a class="link" href="ticks_labels_style.html" title="Class ticks_labels_style">ticks_labels_style</a> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="ticks_labels_style.html#boost.svg.ticks_labels_styleconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="ticks_labels_style.html#id630557-bb"><span class="identifier">ticks_labels_style</span></a><span class="special">(</span><span class="identifier">dim</span> <span class="special">=</span> <span class="identifier">X</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">no_text_style</span><span class="special">,</span> 
+  <a class="link" href="ticks_labels_style.html#id637614-bb"><span class="identifier">ticks_labels_style</span></a><span class="special">(</span><span class="identifier">dim</span> <span class="special">=</span> <span class="identifier">X</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">no_text_style</span><span class="special">,</span> 
                      <span class="keyword">double</span> <span class="special">=</span> <span class="number">10</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="special">-</span><span class="number">10</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="number">2</span><span class="special">.</span><span class="special">,</span> 
                      <span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="special">=</span> <span class="number">4</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="ticks_labels_style.html#id630414-bb">public member functions</a></span>
-  <span class="keyword">double</span> <a class="link" href="ticks_labels_style.html#id630378-bb"><span class="identifier">label_length</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="ticks_labels_style.html#id630452-bb"><span class="identifier">longest_label</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">int</span> <a class="link" href="ticks_labels_style.html#id630419-bb"><span class="identifier">major_value_labels_side</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="ticks_labels_style.html" title="Class ticks_labels_style">ticks_labels_style</a> <span class="special">&amp;</span> <a class="link" href="ticks_labels_style.html#id630440-bb"><span class="identifier">major_value_labels_side</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="ticks_labels_style.html#id630485-bb"><span class="identifier">use_down_ticks</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="ticks_labels_style.html" title="Class ticks_labels_style">ticks_labels_style</a> <span class="special">&amp;</span> <a class="link" href="ticks_labels_style.html#id630510-bb"><span class="identifier">use_down_ticks</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="ticks_labels_style.html#id630507-bb"><span class="identifier">use_up_ticks</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="ticks_labels_style.html" title="Class ticks_labels_style">ticks_labels_style</a> <span class="special">&amp;</span> <a class="link" href="ticks_labels_style.html#id630567-bb"><span class="identifier">use_up_ticks</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="ticks_labels_style.html#id637486-bb">public member functions</a></span>
+  <span class="keyword">double</span> <a class="link" href="ticks_labels_style.html#id637487-bb"><span class="identifier">label_length</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="ticks_labels_style.html#id637510-bb"><span class="identifier">longest_label</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">int</span> <a class="link" href="ticks_labels_style.html#id637498-bb"><span class="identifier">major_value_labels_side</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="ticks_labels_style.html" title="Class ticks_labels_style">ticks_labels_style</a> <span class="special">&amp;</span> <a class="link" href="ticks_labels_style.html#id637515-bb"><span class="identifier">major_value_labels_side</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="ticks_labels_style.html#id637533-bb"><span class="identifier">use_down_ticks</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="ticks_labels_style.html" title="Class ticks_labels_style">ticks_labels_style</a> <span class="special">&amp;</span> <a class="link" href="ticks_labels_style.html#id637560-bb"><span class="identifier">use_down_ticks</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="ticks_labels_style.html#id637596-bb"><span class="identifier">use_up_ticks</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="ticks_labels_style.html" title="Class ticks_labels_style">ticks_labels_style</a> <span class="special">&amp;</span> <a class="link" href="ticks_labels_style.html#id637642-bb"><span class="identifier">use_up_ticks</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// public data members</span>
-  <span class="identifier">dim</span> <span class="identifier">dim_</span><span class="special">;</span>  <span class="comment">// X, Y, or None. </span>
+  <span class="comment">// <a class="link" href="ticks_labels_style.html#boost.svg.ticks_labels_stylepublic-data-members">public data members</a></span>
+  <span class="identifier">dim</span> <span class="identifier">dim_</span><span class="special">;</span>  <span class="comment">// Dimension type X, Y, or None. </span>
   <span class="keyword">bool</span> <span class="identifier">down_ticks_on_</span><span class="special">;</span>  <span class="comment">// Draw ticks down from horizontal X-axis line. </span>
   <span class="keyword">double</span> <span class="identifier">label_max_length_</span><span class="special">;</span>  <span class="comment">// width (in SVG units, pixels) of longest value label text on axis. </span>
   <span class="keyword">double</span> <span class="identifier">label_max_space_</span><span class="special">;</span>  <span class="comment">// Space (SVG units, pixels) needed for value label adjusted for rotation. </span>
-  <span class="identifier">rotate_style</span> <span class="identifier">label_rotation_</span><span class="special">;</span>  <span class="comment">// Direction axis value labels written. </span>
+  <span class="identifier">rotate_style</span> <span class="identifier">label_rotation_</span><span class="special">;</span>  <span class="comment">// Rotation direction axis tick-value labels written. Default 0 means horizontal. </span>
   <span class="keyword">bool</span> <span class="identifier">left_ticks_on_</span><span class="special">;</span>  <span class="comment">// Draw ticks left from vertical Y-axis line. </span>
   <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="identifier">major_grid_color_</span><span class="special">;</span>  <span class="comment">// Color of major grid lines. </span>
-  <span class="keyword">bool</span> <span class="identifier">major_grid_on_</span><span class="special">;</span>  <span class="comment">// Draw X grid at major ticks. </span>
+  <span class="keyword">bool</span> <a class="link" href="ticks_labels_style.html#boost.svg.ticks_labels_style.major_grid_on_"><span class="identifier">major_grid_on_</span></a><span class="special">;</span>  <span class="comment">// &lt; This ensures that value labels center on the tick so that "1.1" aligns the decimal point with the tick. Ideally alignment takes rotation into account to get lable as close a possible to the tick. </span>
   <span class="keyword">double</span> <span class="identifier">major_grid_width_</span><span class="special">;</span>  <span class="comment">// Width of major grid lines. </span>
   <span class="keyword">double</span> <span class="identifier">major_interval_</span><span class="special">;</span>  <span class="comment">// Stride or interval between major x ticks (Cartesian units). </span>
   <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="identifier">major_tick_color_</span><span class="special">;</span>  <span class="comment">// Color (stroke) of tick lines. </span>
@@ -69,11 +69,11 @@
   <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="identifier">minor_grid_color_</span><span class="special">;</span>  <span class="comment">// color of minor grid lines. </span>
   <span class="keyword">bool</span> <span class="identifier">minor_grid_on_</span><span class="special">;</span>  <span class="comment">// Draw X grid at minor ticks. </span>
   <span class="keyword">double</span> <span class="identifier">minor_grid_width_</span><span class="special">;</span>  <span class="comment">// Wdith of minor grid lines. </span>
-  <span class="keyword">double</span> <span class="identifier">minor_interval_</span><span class="special">;</span>  <span class="comment">// Interval (Cartesian units) between minor ticks. </span>
+  <span class="keyword">double</span> <span class="identifier">minor_interval_</span><span class="special">;</span>  <span class="comment">// Stride or interval between minor ticks (Cartesian units). </span>
   <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="identifier">minor_tick_color_</span><span class="special">;</span>  <span class="comment">// Color (stroke) of tick lines. </span>
   <span class="keyword">double</span> <span class="identifier">minor_tick_length_</span><span class="special">;</span>  <span class="comment">// Length of minor tick lines. </span>
   <span class="keyword">double</span> <span class="identifier">minor_tick_width_</span><span class="special">;</span>  <span class="comment">// Width of minor tick lines. </span>
-  <span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="identifier">num_minor_ticks_</span><span class="special">;</span>  <span class="comment">// number of minor ticks, eg 4 gives major 0, minor 1,2,3,4, major 5 (All units in svg units, default pixels). </span>
+  <span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="identifier">num_minor_ticks_</span><span class="special">;</span>  <span class="comment">// Number of minor ticks, eg 4 gives major 0, minor 1,2,3,4, major 5 (All units in svg units, default pixels). </span>
   <span class="keyword">bool</span> <span class="identifier">right_ticks_on_</span><span class="special">;</span>  <span class="comment">// Draw ticks right from vertical Y-axis line. </span>
   <span class="keyword">bool</span> <span class="identifier">strip_e0s_</span><span class="special">;</span>  <span class="comment">// If redundant zero, + and e are to be stripped, for example "+1.000e3" to "1e3". </span>
   <span class="keyword">int</span> <span class="identifier">ticks_on_window_or_on_axis_</span><span class="special">;</span>  <span class="comment">// Value labels &amp; ticks on a plot window border (rather than on X or Y-axis). For Y-axis -1 = left, 0 = false = on X-axis, +1 = right. Default -1 to left of plot window. For X-axis -1 = bottom, 0 = false = on Y-axis, +1 = top. Default -1 below bottom of plot window. 0 = false puts the ticks and their labels on the X or Y axis line which may be in the middle of the plot. For 1D the default overrides the constructor default of -1 below, to tick and value label the X-axis. For 2D the default is left at -1, to use bottom and left of plot window to tick and value label X and Y-axis. </span>
@@ -84,33 +84,33 @@
   <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="identifier">values_color_</span><span class="special">;</span>  <span class="comment">// Color of tick values labels. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1492793"></a><h2>Description</h2>
+<a name="id1490659"></a><h2>Description</h2>
 <p>But NOT the X and Y axes lines. These can be either on the axis lines or on the plot window edge(s), (because different styles for x and y are possible). </p>
 <div class="refsect2">
-<a name="id1492812"></a><h3>
+<a name="id1490665"></a><h3>
 <a name="boost.svg.ticks_labels_styleconstruct-copy-destruct"></a><code class="computeroutput">ticks_labels_style</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><a name="id630557-bb"></a><span class="identifier">ticks_labels_style</span><span class="special">(</span><span class="identifier">dim</span> d <span class="special">=</span> <span class="identifier">X</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> style <span class="special">=</span> <span class="identifier">no_text_style</span><span class="special">,</span> 
+<pre class="literallayout"><a name="id637614-bb"></a><span class="identifier">ticks_labels_style</span><span class="special">(</span><span class="identifier">dim</span> d <span class="special">=</span> <span class="identifier">X</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> style <span class="special">=</span> <span class="identifier">no_text_style</span><span class="special">,</span> 
                    <span class="keyword">double</span> max <span class="special">=</span> <span class="number">10</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> min <span class="special">=</span> <span class="special">-</span><span class="number">10</span><span class="special">.</span><span class="special">,</span> 
                    <span class="keyword">double</span> major_interval <span class="special">=</span> <span class="number">2</span><span class="special">.</span><span class="special">,</span> 
                    <span class="keyword">unsigned</span> <span class="keyword">int</span> num_minor_ticks <span class="special">=</span> <span class="number">4</span><span class="special">)</span><span class="special">;</span></pre>Constructor setting several parameters, but providing default values for all member data. </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1492973"></a><h3>
-<a name="id630414-bb"></a><code class="computeroutput">ticks_labels_style</code> public member functions</h3>
+<a name="id1490859"></a><h3>
+<a name="id637486-bb"></a><code class="computeroutput">ticks_labels_style</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id630378-bb"></a><span class="identifier">label_length</span><span class="special">(</span><span class="keyword">double</span> value<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id637487-bb"></a><span class="identifier">label_length</span><span class="special">(</span><span class="keyword">double</span> value<span class="special">)</span><span class="special">;</span></pre>
 <p>Find the length of label (like "1.23E-5") for a value. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id630452-bb"></a><span class="identifier">longest_label</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id637510-bb"></a><span class="identifier">longest_label</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Update label_max_length_ with the longest value label as SVG units (default pixels), return the count of digits etc. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">int</span> <a name="id630419-bb"></a><span class="identifier">major_value_labels_side</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">int</span> <a name="id637498-bb"></a><span class="identifier">major_value_labels_side</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -125,7 +125,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="ticks_labels_style.html" title="Class ticks_labels_style">ticks_labels_style</a> <span class="special">&amp;</span> <a name="id630440-bb"></a><span class="identifier">major_value_labels_side</span><span class="special">(</span><span class="keyword">int</span> is<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="ticks_labels_style.html" title="Class ticks_labels_style">ticks_labels_style</a> <span class="special">&amp;</span> <a name="id637515-bb"></a><span class="identifier">major_value_labels_side</span><span class="special">(</span><span class="keyword">int</span> is<span class="special">)</span><span class="special">;</span></pre>
 <p>Set side for tick value labels: left (&lt;0), none (==0) or right (&gt;0).</p>
 <p>
 </p>
@@ -141,7 +141,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id630485-bb"></a><span class="identifier">use_down_ticks</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id637533-bb"></a><span class="identifier">use_down_ticks</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -156,7 +156,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="ticks_labels_style.html" title="Class ticks_labels_style">ticks_labels_style</a> <span class="special">&amp;</span> <a name="id630510-bb"></a><span class="identifier">use_down_ticks</span><span class="special">(</span><span class="keyword">bool</span> side<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="ticks_labels_style.html" title="Class ticks_labels_style">ticks_labels_style</a> <span class="special">&amp;</span> <a name="id637560-bb"></a><span class="identifier">use_down_ticks</span><span class="special">(</span><span class="keyword">bool</span> side<span class="special">)</span><span class="special">;</span></pre>
 <p>Set true if to draw ticks down from horizontal X-axis line.</p>
 <p>
 </p>
@@ -172,7 +172,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id630507-bb"></a><span class="identifier">use_up_ticks</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id637596-bb"></a><span class="identifier">use_up_ticks</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -187,7 +187,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="ticks_labels_style.html" title="Class ticks_labels_style">ticks_labels_style</a> <span class="special">&amp;</span> <a name="id630567-bb"></a><span class="identifier">use_up_ticks</span><span class="special">(</span><span class="keyword">bool</span> is<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="ticks_labels_style.html" title="Class ticks_labels_style">ticks_labels_style</a> <span class="special">&amp;</span> <a name="id637642-bb"></a><span class="identifier">use_up_ticks</span><span class="special">(</span><span class="keyword">bool</span> is<span class="special">)</span><span class="special">;</span></pre>
 <p>Set true to draw ticks up from horizontal X-axis line.</p>
 <p>
 </p>
@@ -203,6 +203,16 @@
 </table></div>
 </li>
 </ol></div>
+</div>
+<div class="refsect2">
+<a name="id1491248"></a><h3>
+<a name="boost.svg.ticks_labels_stylepublic-data-members"></a><code class="computeroutput">ticks_labels_style</code> 
+        public
+       public data members</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<pre class="literallayout"><span class="keyword">bool</span> <a name="boost.svg.ticks_labels_style.major_grid_on_"></a><span class="identifier">major_grid_on_</span><span class="special">;</span></pre>
+<p>Draw X grid at major ticks. </p>
+</li></ol></div>
 </div>
 </div>
 </div>

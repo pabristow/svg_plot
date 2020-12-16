@@ -1048,7 +1048,7 @@ public:
   double x_; //!< Left edge of character.
   double y_; //!< Bottom of Roman capital character.
   ptr_vector<text_parent> data_; //!< Stores all of the containing text string data.
-  text_style text_style_; //!< font variants.
+  text_style text_style_; //!< font variants, bold, italic ...
   align_style align_; //!< Alignment: left_align, right_align, center_align.
   rotate_style rotate_; //!< Rotation: horizontal, upward, downward, upsidedown.
 
@@ -2231,7 +2231,6 @@ public:
        // alignment_.write(os) // in effect.
         // 
         std::string anchor = ""; 
-
   //      align_style align_ = align_style::left_align; // OK
         align_style align_ = alignment_;
         switch (align_)
@@ -2256,7 +2255,7 @@ public:
           os << " text-anchor=\"" << anchor << "\"";
         }
 
-        // rotation applicable to text, rect, ellipse etc, so should be in group.
+        // rotation is applicable to text, rect, ellipse etc, so should be in group.
         //if (rotate_ != 0)
         //{ // Only show rotation info if not normal horizontal writing.
         //  os << " transform=\"rotate("

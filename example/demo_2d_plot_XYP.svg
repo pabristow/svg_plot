@@ -119,12 +119,12 @@ M548,449 L548,459
 " fill="none"/>
 </g>
 
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="134" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2.00 </text>
-	<text x="238" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4.00 </text>
-	<text x="341" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6.00 </text>
-	<text x="445" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8.00 </text>
-	<text x="548" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">1.00e1 </text>
+<g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold">
+	<text x="134" y="475">2.00 </text>
+	<text x="238" y="475">4.00 </text>
+	<text x="341" y="475">6.00 </text>
+	<text x="445" y="475">8.00 </text>
+	<text x="548" y="475">1.00e1 </text>
 </g>
 
 <g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode">

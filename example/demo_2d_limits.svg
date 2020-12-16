@@ -12,7 +12,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- (See accompanying file LICENSE_1_0.txt --> 
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
-<clipPath id="plot_window">	<rect x="46.4" y="40.5" width="427" height="312"/>
+<clipPath id="plot_window">	<rect x="46.4" y="40.5" width="427" height="313"/>
 </clipPath>
 
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
@@ -20,7 +20,7 @@ xmlns ="http://www.w3.org/2000/svg"
 </g>
 
 <g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
-	<rect x="45.4" y="39.5" width="429" height="314"/>
+	<rect x="45.4" y="39.5" width="429" height="315"/>
 </g>
 
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5" font-size="12" font-family="Lucida Sans Unicode">
@@ -117,13 +117,13 @@ M88.3,354 L88.3,359
 " fill="none"/>
 </g>
 
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="260" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
-	<text x="345" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2 </text>
-	<text x="431" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4 </text>
-	<text x="260" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
-	<text x="174" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-2 </text>
-	<text x="88.3" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-4 </text>
+<g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold">
+	<text x="260" y="375">0 </text>
+	<text x="345" y="375">2 </text>
+	<text x="431" y="375">4 </text>
+	<text x="260" y="375">0 </text>
+	<text x="174" y="375">-2 </text>
+	<text x="88.3" y="375">-4 </text>
 </g>
 
 <g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode">

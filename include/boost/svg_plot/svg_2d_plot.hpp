@@ -569,8 +569,8 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       axis_line_style x_axis_; //!< Style of X-axis.
       axis_line_style y_axis_; //!< Style of Y-axis.
 
-      ticks_labels_style x_ticks_; //!< Style of X-axis tick marks and labels.
-      ticks_labels_style y_ticks_; //!< Style of Y-axis tick marks and labels.
+      ticks_labels_style x_ticks_; //!< Style of X-axis tick marks and value-labels.
+      ticks_labels_style y_ticks_; //!< Style of Y-axis tick marks and value-labels.
 
       bool title_on_; //!< true if to display a title for the whole plot (default @c true).
       bool legend_on_;//!< true if to provide a legend box (default false unless a legend header title is set so that legend_title_.text() != "").
@@ -680,36 +680,36 @@ my_plot.background_color(ghostwhite) // Whole image.
         // text_styles: //  Font size, font family, font weight, font style, font stretch & font decoration, text_length.
         title_style_(18, default_font_family, "normal", "", "", "", 0),  // // 3rd parameter weight might be bold?
         legend_title_style_(10, default_font_family, "normal", "", "", "", 0), // 6rd parameter decoration might be underline?
-        legend_text_style_(10, default_font_family, "normal", "", "", "", 0), //
-        x_axis_label_style_(12, default_font_family, "", "","", "", 0),
-        x_value_label_style_(12, default_font_family, "", "","", "", 0), // X-axis tick labels.
+        legend_text_style_(10, default_font_family, "normal", "", "", "", 0), // Example "Series 1", "Series 2"
+        x_axis_label_style_(12, default_font_family, "", "","", "", 0),  // X-axis label. Example: time(sec).
+        x_value_label_style_(12, default_font_family, "", "","", "", 0), // X-axis tick-value labels style. Example: "1", "1.5", "2" ...
         // Separate X and Y to allow axes to have different styles.
-        y_axis_label_style_(14, default_font_family, "", "", "", "", 0),
-        y_value_label_style_(12, default_font_family, "", "", "", "", 0), // Y-axis tick labels.
+        y_axis_label_style_(14, default_font_family, "", "", "", "", 0), // Y-axis label. Example: length(m).
+        y_value_label_style_(12, default_font_family, "", "", "", "", 0), // Y-axis tick-value labels. Example: "1", "1.5", "2" ...
         point_symbols_style_(12, "Lucida Sans Unicode", "", "", "", "", 0), // Used for data point marking.
-        // Font is to try to ensure that all Unicode symbols are available.
+        // Font is to try to ensure that all Unicode symbols are available (default_font_family might not be Unicode?).
         title_info_(0, 0, "", title_style_, align_style::center_align, horizontal),
-        x_label_info_(0, 0, "", x_axis_label_style_, align_style::center_align, horizontal),
+        x_label_info_(0, 0, "", x_axis_label_style_, align_style::center_align, horizontal), // 
         x_units_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
-        x_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
-        x_axis_(X, -10., +10., black, 1, 0, true, false, true),
-        y_axis_(Y, -10., +10., black, 1, 0, true, false, true),
+        x_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal), 
+        x_axis_(X, -10., +10., black, 1, 0, true, false, true), // Default to 1 and +10 for both axes?  Auto??
+        y_axis_(Y, -10., +10., black, 1, 0, true, false, true), // Default to 1 and +10 for both axes ? Auto ? ?
         // Might fill in all values, but there are rather many for ticks_labels_style,
         // And this would separate any changes in styles defaults from plot default.  TODO?
-        x_ticks_(X, x_value_label_style_),// so for other defaults see ticks_labels_style.
-        y_ticks_(Y, y_value_label_style_),
-        y_label_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward),
-        y_units_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward),
-        y_value_label_info_(0, 0, "", y_value_label_style_, align_style::center_align, upward), //
+        x_ticks_(X, x_value_label_style_), // so for other defaults see ticks_labels_style.
+        y_ticks_(Y, y_value_label_style_), //
+        y_label_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward), // Y-axis label. Example: length.
+        y_units_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward), // Y-axis label. Example: meter.
+        y_value_label_info_(0, 0, "", y_value_label_style_, align_style::center_align, upward), // Tick values.
 
         // Should allow a 'fraction font space' below the text for any descenders.
-        // so real height including any descenders is font_height * 1.25,
+        // so real total height including any descenders is font_height * 1.25,
         // then add 0.25 more for a space.
         text_margin_(1.25), // for title and axis label text, allowing 25% extra for any descenders.
         // as a multiplier of the biggest EM box font size of legend title and any marker symbols,
         // used, for example:
         //   derived().vertical_title_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; 
-        // But does not allow for any space between lines, so may need explicit space.
+        // But does not allow for any space between lines, so may need explicit space too.
 
         image_border_(yellow, white, 2, 3, true, true),
         // margin (parameter 4) needs to be at least the width of the border (parameter 3) to ensure any border color shows.

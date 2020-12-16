@@ -153,14 +153,14 @@ M82.5,369 L82.5,374
 " fill="none"/>
 </g>
 
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="82.5" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
-	<text x="142" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2 </text>
-	<text x="202" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4 </text>
-	<text x="262" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6 </text>
-	<text x="322" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8 </text>
-	<text x="382" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">10 </text>
-	<text x="82.5" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
+<g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold">
+	<text x="82.5" y="390">0 </text>
+	<text x="142" y="390">2 </text>
+	<text x="202" y="390">4 </text>
+	<text x="262" y="390">6 </text>
+	<text x="322" y="390">8 </text>
+	<text x="382" y="390">10 </text>
+	<text x="82.5" y="390">0 </text>
 </g>
 
 <g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode">

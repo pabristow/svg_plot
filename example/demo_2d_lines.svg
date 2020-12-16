@@ -41,7 +41,7 @@ xmlns ="http://www.w3.org/2000/svg"
 </g>
 
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
-	<line x1="47.6" y1="188" x2="374" y2="188"/>
+	<line x1="47.6" y1="189" x2="374" y2="189"/>
 	<line x1="47.6" y1="369" x2="374" y2="369"/>
 </g>
 
@@ -66,7 +66,7 @@ M50.6,36.9 L52.6,36.9
 M50.6,29.7 L52.6,29.7 
 M50.6,22.4 L52.6,22.4 
 M50.6,15.2 L52.6,15.2 
-M50.6,188 L52.6,188 
+M50.6,189 L52.6,189 
 M50.6,196 L52.6,196 
 M50.6,203 L52.6,203 
 M50.6,210 L52.6,210 
@@ -141,13 +141,13 @@ M59,369 L59,371
 </g>
 
 <g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
-	<path d="M47.6,188 L52.6,188 
+	<path d="M47.6,189 L52.6,189 
 M47.6,152 L52.6,152 
 M47.6,116 L52.6,116 
 M47.6,80.2 L52.6,80.2 
 M47.6,44.1 L52.6,44.1 
 M47.6,8 L52.6,8 
-M47.6,188 L52.6,188 
+M47.6,189 L52.6,189 
 M47.6,225 L52.6,225 
 M47.6,261 L52.6,261 
 M47.6,297 L52.6,297 
@@ -172,19 +172,19 @@ M52.6,369 L52.6,374
 " fill="none"/>
 </g>
 
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="213" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
-	<text x="245" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2 </text>
-	<text x="278" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4 </text>
-	<text x="310" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6 </text>
-	<text x="342" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8 </text>
-	<text x="374" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">10 </text>
-	<text x="213" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
-	<text x="181" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-2 </text>
-	<text x="149" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-4 </text>
-	<text x="117" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-6 </text>
-	<text x="84.7" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-8 </text>
-	<text x="52.6" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-10 </text>
+<g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold">
+	<text x="213" y="390">0 </text>
+	<text x="245" y="390">2 </text>
+	<text x="278" y="390">4 </text>
+	<text x="310" y="390">6 </text>
+	<text x="342" y="390">8 </text>
+	<text x="374" y="390">10 </text>
+	<text x="213" y="390">0 </text>
+	<text x="181" y="390">-2 </text>
+	<text x="149" y="390">-4 </text>
+	<text x="117" y="390">-6 </text>
+	<text x="84.7" y="390">-8 </text>
+	<text x="52.6" y="390">-10 </text>
 </g>
 
 <g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode">
@@ -203,7 +203,7 @@ M52.6,369 L52.6,374
 </g>
 
 <g id="yLabel" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="14.9" y="188" text-anchor="middle" transform="rotate(-90 14.9 188)" font-size="14" font-family="Lucida Sans Unicode"> </text>
+	<text x="14.9" y="189" text-anchor="middle" transform="rotate(-90 14.9 189)" font-size="14" font-family="Lucida Sans Unicode"> </text>
 </g>
 
 <g id="xLabel" font-size="12" font-family="Lucida Sans Unicode">

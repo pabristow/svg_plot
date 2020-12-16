@@ -12,9 +12,9 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- (See accompanying file LICENSE_1_0.txt --> 
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
-<clipPath id="plot_window">	<rect x="78.3" y="40.5" width="310" height="312"/>
+<clipPath id="plot_window">	<rect x="78.3" y="40.5" width="310" height="313"/>
 </clipPath>
-<clipPath id="plot_window">	<rect x="78.3" y="40.5" width="310" height="312"/>
+<clipPath id="plot_window">	<rect x="78.3" y="40.5" width="310" height="313"/>
 </clipPath>
 
 <g id="imageBackground" stroke="rgb(0,0,0)" fill="rgb(255,255,255)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
@@ -22,7 +22,7 @@ xmlns ="http://www.w3.org/2000/svg"
 </g>
 
 <g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
-	<rect x="77.3" y="39.5" width="312" height="314"/>
+	<rect x="77.3" y="39.5" width="312" height="315"/>
 </g>
 
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5" font-size="12" font-family="Lucida Sans Unicode">
@@ -109,12 +109,12 @@ M77.3,354 L77.3,359
 " fill="none"/>
 </g>
 
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="77.3" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
-	<text x="175" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">50 </text>
-	<text x="272" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">100 </text>
-	<text x="370" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">150 </text>
-	<text x="77.3" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
+<g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold">
+	<text x="77.3" y="375">0 </text>
+	<text x="175" y="375">50 </text>
+	<text x="272" y="375">100 </text>
+	<text x="370" y="375">150 </text>
+	<text x="77.3" y="375">0 </text>
 </g>
 
 <g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode">

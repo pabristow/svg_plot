@@ -174,19 +174,19 @@ M52.6,369 L52.6,374
 " fill="none"/>
 </g>
 
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="232" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
-	<text x="268" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2 </text>
-	<text x="304" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4 </text>
-	<text x="340" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6 </text>
-	<text x="376" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8 </text>
-	<text x="412" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">10 </text>
-	<text x="232" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
-	<text x="196" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-2 </text>
-	<text x="160" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-4 </text>
-	<text x="124" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-6 </text>
-	<text x="88.5" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-8 </text>
-	<text x="52.6" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-10 </text>
+<g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold">
+	<text x="232" y="390">0 </text>
+	<text x="268" y="390">2 </text>
+	<text x="304" y="390">4 </text>
+	<text x="340" y="390">6 </text>
+	<text x="376" y="390">8 </text>
+	<text x="412" y="390">10 </text>
+	<text x="232" y="390">0 </text>
+	<text x="196" y="390">-2 </text>
+	<text x="160" y="390">-4 </text>
+	<text x="124" y="390">-6 </text>
+	<text x="88.5" y="390">-8 </text>
+	<text x="52.6" y="390">-10 </text>
 </g>
 
 <g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode">

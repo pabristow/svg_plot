@@ -106,30 +106,30 @@ M53.7,172 L53.7,177
 " fill="none"/>
 </g>
 
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="53.7" y="190" text-anchor="middle" font-size="10" font-family="Verdana">0 </text>
-	<text x="119" y="190" text-anchor="middle" font-size="10" font-family="Verdana">2 </text>
-	<text x="185" y="190" text-anchor="middle" font-size="10" font-family="Verdana">4 </text>
-	<text x="250" y="190" text-anchor="middle" font-size="10" font-family="Verdana">6 </text>
-	<text x="316" y="190" text-anchor="middle" font-size="10" font-family="Verdana">8 </text>
-	<text x="381" y="190" text-anchor="middle" font-size="10" font-family="Verdana">10 </text>
-	<text x="53.7" y="190" text-anchor="middle" font-size="10" font-family="Verdana">0 </text>
+<g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold">
+	<text x="53.7" y="190">0 </text>
+	<text x="119" y="190">2 </text>
+	<text x="185" y="190">4 </text>
+	<text x="250" y="190">6 </text>
+	<text x="316" y="190">8 </text>
+	<text x="381" y="190">10 </text>
+	<text x="53.7" y="190">0 </text>
 </g>
 
 <g id="xLabel" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="217" y="200" text-anchor="middle" font-size="10" font-family="Verdana"> </text>
+	<text x="217" y="201" text-anchor="middle" font-size="10" font-family="Verdana"> </text>
 </g>
 
 <g id="plotPoints" font-size="12" font-family="Lucida Sans Unicode">
 
 <g stroke="rgb(0,0,255)" font-size="12" font-family="Lucida Sans Unicode">
-	<line x1="155" y1="109" x2="155" y2="99.2"/>
-	<line x1="191" y1="109" x2="191" y2="99.2"/>
+	<line x1="155" y1="109" x2="155" y2="99.3"/>
+	<line x1="191" y1="109" x2="191" y2="99.3"/>
 </g>
 
 <g stroke="rgb(255,165,0)" font-size="12" font-family="Lucida Sans Unicode">
-	<line x1="122" y1="109" x2="122" y2="99.2"/>
-	<line x1="309" y1="109" x2="309" y2="99.2"/>
+	<line x1="122" y1="109" x2="122" y2="99.3"/>
+	<line x1="309" y1="109" x2="309" y2="99.3"/>
 </g>
 </g>
 

@@ -133,12 +133,12 @@ M53.5,43 L53.5,53
 " fill="none"/>
 </g>
 
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="493" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-2.00 </text>
-	<text x="383" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-4.00 </text>
-	<text x="273" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-6.00 </text>
-	<text x="163" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-8.00 </text>
-	<text x="53.5" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-1.00e1 </text>
+<g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold">
+	<text x="493" y="68.6">-2.00 </text>
+	<text x="383" y="68.6">-4.00 </text>
+	<text x="273" y="68.6">-6.00 </text>
+	<text x="163" y="68.6">-8.00 </text>
+	<text x="53.5" y="68.6">-1.00e1 </text>
 </g>
 
 <g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode">

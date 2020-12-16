@@ -67,7 +67,7 @@ M125,43 L125,445
 <g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1" font-size="12" font-family="Lucida Sans Unicode">
 	<path d="M68.1,233 L70.1,233 
 M68.1,222 L70.1,222 
-M68.1,210 L70.1,210 
+M68.1,211 L70.1,211 
 M68.1,199 L70.1,199 
 M68.1,188 L70.1,188 
 M68.1,166 L70.1,166 
@@ -89,7 +89,7 @@ M68.1,300 L70.1,300
 M68.1,311 L70.1,311 
 M68.1,322 L70.1,322 
 M68.1,333 L70.1,333 
-M68.1,344 L70.1,344 
+M68.1,345 L70.1,345 
 M68.1,356 L70.1,356 
 M68.1,367 L70.1,367 
 M68.1,378 L70.1,378 
@@ -147,14 +147,14 @@ M125,445 L125,459
 " fill="none"/>
 </g>
 
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="125" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
-	<text x="235" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2 </text>
-	<text x="345" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4 </text>
-	<text x="454" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6 </text>
-	<text x="564" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8 </text>
-	<text x="674" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">10 </text>
-	<text x="125" y="475" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
+<g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold">
+	<text x="125" y="475">0 </text>
+	<text x="235" y="475">2 </text>
+	<text x="345" y="475">4 </text>
+	<text x="454" y="475">6 </text>
+	<text x="564" y="475">8 </text>
+	<text x="674" y="475">10 </text>
+	<text x="125" y="475">0 </text>
 </g>
 
 <g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode">

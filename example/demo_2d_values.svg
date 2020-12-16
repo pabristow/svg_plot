@@ -12,7 +12,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- (See accompanying file LICENSE_1_0.txt --> 
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
-<clipPath id="plot_window">	<rect x="53.6" y="40.5" width="419" height="312"/>
+<clipPath id="plot_window">	<rect x="53.6" y="40.5" width="419" height="313"/>
 </clipPath>
 
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
@@ -20,7 +20,7 @@ xmlns ="http://www.w3.org/2000/svg"
 </g>
 
 <g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2" font-size="12" font-family="Lucida Sans Unicode">
-	<rect x="52.6" y="39.5" width="421" height="314"/>
+	<rect x="52.6" y="39.5" width="421" height="315"/>
 </g>
 
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5" font-size="12" font-family="Lucida Sans Unicode">
@@ -159,16 +159,16 @@ M80.7,354 L80.7,359
 " fill="none"/>
 </g>
 
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="193" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
-	<text x="249" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2 </text>
-	<text x="305" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4 </text>
-	<text x="362" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6 </text>
-	<text x="418" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8 </text>
-	<text x="474" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">10 </text>
-	<text x="193" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
-	<text x="137" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-2 </text>
-	<text x="80.7" y="375" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-4 </text>
+<g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold">
+	<text x="193" y="375">0 </text>
+	<text x="249" y="375">2 </text>
+	<text x="305" y="375">4 </text>
+	<text x="362" y="375">6 </text>
+	<text x="418" y="375">8 </text>
+	<text x="474" y="375">10 </text>
+	<text x="193" y="375">0 </text>
+	<text x="137" y="375">-2 </text>
+	<text x="80.7" y="375">-4 </text>
 </g>
 
 <g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode">

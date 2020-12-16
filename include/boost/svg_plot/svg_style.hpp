@@ -401,10 +401,9 @@ class text_style
   std::string decoration_; //!< Font decoration, examples: "underline" | "overline" | "line-through".
   double text_length_; //!< Estimate of SVG length of text used to force compress or expand into exactly this width.
   // Only actually used if text_length_ > 0.
-  int al_;
+ // int al_;  part of text_element
+ // int rot_;
 
-
-public:
   text_style( //! Constructor.
     int font_size = 12, //!< Default font size (12 pixels).  NOT const because it might be changed during sizing.
     const std::string& font = default_font_family, //!< Examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"...
@@ -1301,7 +1300,7 @@ std::ostream& operator<< (std::ostream& os, plot_line_style p)
 // Member Functions.
 
 enum dim
-{ //! \enum dim dimension of plot. (Used so that an axis knows what type it is, or none = N).
+{ //! \enum dim dimension of plot. (Used so that an axis knows what type it is,  X (abscissa) or Y (ordinate), or N (none).
   N = 0, X = 1, Y = 2
 };
 
@@ -1311,7 +1310,7 @@ class axis_line_style
     \details (But NOT the ticks and value labels because different styles for X and Y-axes are possible).
   */
 public:
-  dim dim_; //!< None, X or Y.
+  dim dim_; //!< Dimension type : None, X (abscissa) or Y (ordinate).
   double min_; //!< minimum X value (Cartesian units).
   double max_; //!< maximum Y value (Cartesian units).
   // Note that these duplicate the same named in ticks_labels_style,
@@ -1470,7 +1469,7 @@ public:
 
 class ticks_labels_style
 { /*! \class boost::svg::ticks_labels_style
-   \brief Style of the X and Y axes ticks, grids and their tick value labels.
+   \brief Style of the X and Y axes major and minor ticks, grids and their tick-value-labels.
    \details
    But NOT the X and Y axes lines.
    These can be either on the axis lines or on the plot window edge(s),
@@ -1479,14 +1478,14 @@ class ticks_labels_style
   friend class svg_2d_plot;
 
 public:
-    dim dim_; //!< X, Y, or None.
+    dim dim_; //!< Dimension type X, Y, or None.
     double min_; //!< Minimum x value (Cartesian units).
     double max_; //!< Maximum x value (Cartesian units).
-    double minor_interval_; //!< Interval (Cartesian units) between minor ticks.
+    double minor_interval_; //!< Stride or interval between minor ticks (Cartesian units).
     double major_interval_; //!< Stride or interval between major x ticks (Cartesian units).
       // No set function because x_num_minor_ticks_ used to determine this instead,
       // but one could calculate x_minor_interval_.
-    unsigned int num_minor_ticks_; //!< number of minor ticks, eg 4 gives major 0, minor 1,2,3,4, major 5 (All units in svg units, default pixels).
+    unsigned int num_minor_ticks_; //!< Number of minor ticks, eg 4 gives major 0, minor 1,2,3,4, major 5 (All units in svg units, default pixels).
     svg_color major_tick_color_; //!< Color (stroke) of tick lines.
     double major_tick_width_; //!< Width of major tick lines.
     double major_tick_length_;//!< Length of major tick lines.
@@ -1508,7 +1507,10 @@ public:
     // < 0 means to left (for Y) or down (for X) (default),
     // 0 (false) means no ticks value labels (just ticks),
     // > 0 means to right (for Y) or top(for X).
-    rotate_style label_rotation_; //!< Direction axis value labels written.
+    rotate_style label_rotation_; //!< Rotation direction axis tick-value labels written. Default 0 means horizontal.
+    //align_style label_alignment_; //< Alignment of tick-value-label using text_anchor. Default center_align for X-axis but right_align for Y-axis.
+    //!< This ensures that value labels center on the tick so that "1.1" aligns the decimal point with the tick.
+    //!< Ideally alignment takes rotation into account to get lable as close a possible to the tick. 
     bool major_grid_on_;  //!< Draw X grid at major ticks.
     bool minor_grid_on_; //!< Draw X grid at minor ticks.
     svg_color values_color_; //!< Color of tick values labels.
@@ -1567,6 +1569,7 @@ public:
     // Unused are always false.
     major_value_labels_side_(-1), // Label values side for major ticks left (right or none).
     label_rotation_(horizontal), // Direction axis value labels written.
+      // label_alignment(?)
     major_grid_on_(false),  // Draw grid at major ticks.
     minor_grid_on_(false),// Draw grid at minor ticks.
     values_color_(black),
@@ -1577,8 +1580,7 @@ public:
     // This should give the default 'normal' iosflags with neither fixed, scientific nor showpoint set.
     strip_e0s_(true), // strip superflous zeros and signs.
     label_max_length_(0.), // length (estimated in SVG units) of longest label on axis.
-    label_max_space_(0.), // Space (estimated in SVG units) of longest label on axis
-    // adjusted for rotation.
+    label_max_space_(0.), // Space (estimated in SVG units) of longest label on axis, adjusted for rotation.
     ticks_on_window_or_on_axis_(-1), // Value labels & ticks on the plot window,
     // rather than on X or Y-axis.
     // Default -1 means left or bottom of plot window.

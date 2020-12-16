@@ -212,14 +212,14 @@ M81.1,369 L81.1,374
 " fill="none"/>
 </g>
 
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="81.1" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
-	<text x="138" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2 </text>
-	<text x="195" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4 </text>
-	<text x="252" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6 </text>
-	<text x="309" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8 </text>
-	<text x="366" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">10 </text>
-	<text x="81.1" y="390" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0 </text>
+<g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold">
+	<text x="81.1" y="390">0 </text>
+	<text x="138" y="390">2 </text>
+	<text x="195" y="390">4 </text>
+	<text x="252" y="390">6 </text>
+	<text x="309" y="390">8 </text>
+	<text x="366" y="390">10 </text>
+	<text x="81.1" y="390">0 </text>
 </g>
 
 <g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode">

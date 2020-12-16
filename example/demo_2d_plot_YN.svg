@@ -142,14 +142,14 @@ M98.5,43 L98.5,53
 " fill="none"/>
 </g>
 
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode">
-	<text x="98.5" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0.00 </text>
-	<text x="188" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2.00 </text>
-	<text x="278" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4.00 </text>
-	<text x="368" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6.00 </text>
-	<text x="458" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8.00 </text>
-	<text x="548" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">1.00e1 </text>
-	<text x="98.5" y="68.6" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">0.00 </text>
+<g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold">
+	<text x="98.5" y="68.6">0.00 </text>
+	<text x="188" y="68.6">2.00 </text>
+	<text x="278" y="68.6">4.00 </text>
+	<text x="368" y="68.6">6.00 </text>
+	<text x="458" y="68.6">8.00 </text>
+	<text x="548" y="68.6">1.00e1 </text>
+	<text x="98.5" y="68.6">0.00 </text>
 </g>
 
 <g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode">

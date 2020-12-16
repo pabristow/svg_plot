@@ -1210,17 +1210,25 @@ namespace boost
            // and pick up alignment and rotation, if any.
              // std::cout << " g_ptr->text_style_ is " << g_ptr->text_style_ << std::endl;
               // Copies all OK.
-              // g_ptr->text_style_ is text_style(20, "ariel", "", "bold", "", "")
-              // Need to add , not_a_text_style to avoid each x-tick value label adding font-family, font-size etc.
+              // g_ptr->text_style_ is text_style(20, "arial", "", "bold", "", "")
+              // Need to add not_a_text_style to avoid each x-tick value-label adding font-family, font-size etc.
              g_ptr->text(
                x,
                y,
                tick_value_label.str(), // "1.0", "1.5", "2.0" ...
                not_a_text_style);
-             // These will be repeated on each label if placed here.
+
+            //   x_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal), 
+             align_style a = derived().x_value_label_info_.align_; // align = center OK
+             rotate_style r = derived().x_value_label_info_.rotate_; // rot = 0 OK
+           //  rotate_style r = derived().x_ticks_.label_rotation_; // OK too
+          //   std::cout << "align = " << a << std::endl; // align = center
+          //   std::cout << "rot = " << r << std::endl;
+            // align_style a = derived().x_ticks_.label_alignment_; ??? if we stored alignment in ticks_labels_style  
+             // BUT These will be repeated on each label if placed here.
            //  alignment,
            //  derived().x_ticks_.label_rotation_
-             // Needs to be added to the g_element
+             // So needs to be added to the g_element instead and output only once.
            // TODO text_anchor and rotation
           }
           else
