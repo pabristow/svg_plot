@@ -410,6 +410,7 @@ class text_style
     const std::string& weight = "", //!< Font weight examples: "bold", "normal".
     const std::string& style = "", //!< Font style examples: normal | bold | italic | oblique.
     const std::string& stretch = "", //!< Font stretch examples: normal | wider | narrower ...
+    // ultra-condensed, extra-condensed, condensed, semi-condensed, normal, semi-expanded, expanded, extra-expanded, ultra-expanded
     const std::string& decoration = "", //!< Font decoration examples: "underline" | "overline" | "line-through".
     double text_length = 0); //!< Estimated length of text string. Default zero means do not attempt to compress or expand to fit to length.
 
