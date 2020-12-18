@@ -411,7 +411,7 @@ class text_style
     const std::string& style = "", //!< Font style examples: normal | bold | italic | oblique.
     const std::string& stretch = "", //!< Font stretch examples: normal | wider | narrower ...
     const std::string& decoration = "", //!< Font decoration examples: "underline" | "overline" | "line-through".
-    double text_length = 0); //!< Estimated length of text string.
+    double text_length = 0); //!< Estimated length of text string. Default zero means do not attempt to compress or expand to fit to length.
 
   text_style(const text_style & rhs); // Copy constructor.  NOT const because can be changed during sizing.
 
@@ -451,13 +451,14 @@ class text_style
 // font-style, font-variant, font-weight, font-stretch, font-size, line-height, font-family
 // at the same place in the stylesheet.
 
-text_style::text_style( //!< Constructor to allow all text style parameters (font size, family, bold...) to be set.
+text_style::text_style( //!< Constructor to allow all text style parameters 
+  //! (font size, family, bold, italic, condensed, underline ...) to be set.
   int size, //!< Font size.   ( \sa https://www.w3.org/TR/css-fonts-3/#propdef-font-size).
   // https://www.w3.org/TR/css-fonts-3/#propdef-font-size-adjust  not implemented)
   const std::string& font, //!< Default for browser is sans with Firefox & IE but serif with Opera.
   const std::string& weight, //!< font weight "normal" | "bold" | "light" (\sa https://www.w3.org/TR/css-fonts-3/#propdef-font-weight) 
-  const std::string& stretch, //!< font-stretch: normal | condensed | expanded (\sa https://www.w3.org/TR/css-fonts-3/#font-stretch-prop)
   const std::string& style, //!< font-style: normal | italic | oblique (\sa https://www.w3.org/TR/css-fonts-3/#propdef-font-style) 
+  const std::string& stretch, //!< font-stretch: normal | condensed | expanded (\sa https://www.w3.org/TR/css-fonts-3/#font-stretch-prop)
   const std::string& decoration, //!< Default is No decoration.  underline | overline | strike-through (or moe than one)
   // text-decoration="line-through" "underline" "overline" 
   // \sa https://www.w3.org/TR/SVG/text.html#TextDecorationProperties
@@ -753,16 +754,16 @@ void text_style::write(std::ostream& os)
     // \verbatim Example output: font-family="serif" \endverbatim
     os << " font-family=\"" << font_family_ << "\"";
   }
-  if (font_style_.size() != 0)  // or != ""
-  { // Example: italic, bold .
-    os << " font-textstyle=\"" << font_style_ << "\"";
-  }
   if (weight_.size() != 0)
   { // Example: bold.
     os << " font-weight=\"" << weight_ << "\"";
   }
+  if (font_style_.size() != 0)  // or != ""
+  { // Example: italic.
+    os << " font-style=\"" << font_style_ << "\"";
+  }
   if (stretch_.size() != 0)
-  {
+  { // Example: narrower.
     os << " font-stretch=\"" << stretch_ << "\"";
   }
   if (decoration_.size() != 0)

@@ -950,22 +950,22 @@ public:
     // 10.10 Font selection properties
     // Text_style
     if (text_style_ != not_a_text_style)
-    { // Want to output (repeat) text style info.
+    { // Do want to output (repeat) text_style info.
       if (text_style_.font_size() != 0)
-      {
+      { // 
         os << " font-size=\"" << text_style_.font_size() << "\"";
       }
       if (text_style_.font_family() != "")
       { // Examples: Arial, Times New Roman.
         os << " font-family=\"" << text_style_.font_family() << "\"";
       }
-      if (text_style_.font_style().size() != 0)
-      { // Examples: 	normal | italic | oblique | inherit
-        os << " font-textstyle=\"" << text_style_.font_style() << "\"";
-      }
       if (text_style_.font_weight().size() != 0)
       { // Examples: normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 |
         os << " font-weight=\"" << text_style_.font_weight() << "\"";
+      }
+      if (text_style_.font_style().size() != 0)
+      { // Examples: 	normal | italic | oblique | inherit
+        os << " font-style=\"" << text_style_.font_style() << "\"";
       }
       if (text_style_.font_stretch().size() != 0)
       { // Examples: normal | wider | narrower | ultra-condensed | extra-condensed | condensed | semi-condensed | semi-expanded | expanded | extra-expanded | ultra-expanded 
@@ -1032,7 +1032,6 @@ tspan_element::tspan_element(const tspan_element& rhs)
       param std::string font;  // font-family: "Arial" | "Times New Roman" | "Verdana" | "Lucida Sans Unicode"
       "sans", "serif", "times"
       http://www.w3.org/TR/SVG/text.html#FontFamilyProperty 10.10 Font selection properties\n
-
       std::string style; // font-style: normal | bold | italic | oblique
       std::string weight; // font-weight: normal | bold | bolder | lighter | 100 | 200 .. 900
       std::string stretch; // font-stretch: normal | wider | narrower ...
@@ -1280,13 +1279,13 @@ public:
         // Example output: font-family="serif"
         os << " font-family=\"" << text_style_.font_family() << "\"";
       }
-      if (text_style_.font_style().size() != 0)
-      { // Example: italic.
-        os << " font-textstyle=\"" << text_style_.font_style() << "\"";
-      }
       if (text_style_.font_weight().size() != 0)
       { // Example: bold.
         os << " font-weight=\"" << text_style_.font_weight() << "\"";
+      }
+      if (text_style_.font_style().size() != 0)
+      { // Example: italic.
+        os << " font-style=\"" << text_style_.font_style() << "\"";
       }
       if (text_style_.font_stretch().size() != 0)
       {
