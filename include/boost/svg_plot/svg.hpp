@@ -316,7 +316,7 @@ class svg
   // where macro PLOT_BACKGROUND is index integer value 0 <= index < gs.size().
   // Could better be called parent_group_ ?
 
-  std::vector<clip_path_element> clip_paths; //!< Points on clip path (used for plot window).
+  std::vector<clip_path_element> clip_paths_; //!< Points on clip path (used for plot window).
 
   // Document metadata:
   std::string title_document_; //!< SVG document title (appears in the SVG file header as \verbatim <title> ... </title> \endverbatim).
@@ -336,85 +336,10 @@ class svg
   int coord_precision_; //!< Number of decimal digits precision for output of X and Y coordinates to SVG XML.
   // Not sure this is the best place for this?
 
-//! \cond DETAIL // Doxygen document this section only if DETAIL defined.
-  void write_header(std::ostream& s_out)
-  { //! Output the DTD SVG 1.1 header into the SVG g_element document.
-    s_out << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
-      //<< "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" "
-      //<< "\"http://www.w3.org/graphics/svg/1.1/dtd/svg11.dtd\">"
-      // Doctype removed to avoid the need to reference this file (repeatedly!)
-      // using RenderX to produce pdf with embedded svg.
-      // Might also provide a local copy of the dtd to avoid need to refer to it.
-      << std::endl;
-    // TODO IE6 with Adobe does not recognise this DOCTYPE, but displays OK.
-    // http://jwatt.org/svg/authoring/#namespace-binding recommends NO DOCTYPE!
-    // But does recommend other info - see write()
-    // Inkscape does NOT provide a doctype.
-    // s_out << "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n"
-    //         "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20000303 Stylable//EN\"
-    //         \"http://www.w3.org/TR/2000/03/WD-SVG-20000303/DTD/svg-20000303-stylable.dtd\">\n"
-    // This IS out of date? version 1.0 TR 2000, but the Adobe SVG viewer complains
-    // if it is missing - but ignored.
-    // But Firefox says document does not contain style.
-    // http://www.adobe.com/svg/basics/getstarted.html
-
-    // Inkscape uses encoding=\"UTF-8\" Unicode
-    // (encoding=\"iso-8859-1\" == Latin now obselete)
-
-    // example of style command:
-    // style="font-size:20px;font-weight:bold;text-decoration: line-through;fill:aqua"
-    // font-family:Arial Narrow
-
-    // Inkscape uses: xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
-  }
-
-  void write_css(std::ostream& s_out)
-  { //! Output CSS (Cascading Style Sheet) - (not yet used or implemented).
-    if (css_.size() != 0) // css != ""
-    { // TODO confirm that this isn't useful if css is "".
-      // [CDATA[ ... ]] enclosing the style information
-      // is a standard XML construct for hiding information
-      // necessary since CSS style sheets can include characters,
-      // such as ">", which conflict with XML parsers.
-      s_out << "<defs><style type=\"text/css\"><![CDATA[" << css_
-        << "]]></style></defs>" << std::endl;
-      // CSS inline style can be declared within a style attribute in SVG
-      // by specifying a semicolon-separated list of property declarations,
-      // where each property declaration has the form "name: value".
-      // For example a style: style="fill:red; stroke:blue; stroke-width:3"
-      // class=
-      // Multiple class names must be separated by whitespace.
-
-      // Example: <defs><style type="text/css"><![CDATA[]]>
-      // .axes { fill:none;stroke:#333333;stroke-width:1.6 }
-      // .title{ font-size:20px;font-weight:bold;font-style:italic;fill:magenta }
-      // .legend_title{ font-size:16px;font-weight:bold;fill:darkblue;text-anchor:middle }
-      // .legend_item{ font-size:16px;font-weight:normal;fill:blue }
-      // .x_axis_value{ font-size:12px;font-weight:normal;fill:black }
-      //   </style></defs>
-    }
-  } // void write_css(std::ostream& s_out)
-
-  void write_document(std::ostream& s_out)
-  { //! \brief Output all of the image to the SVG document (Internal function)
-    /*! \details Output all clip paths that define a region of the output device
-      to which paint can be applied.
-     */
-    for(size_t i = 0; i < clip_paths.size(); ++i)
-    {
-      clip_paths[(unsigned int)i].write(s_out);
-    }
-    // Write all visual group elements.
-    for(size_t i = 0; i < document_.size(); ++i)
-    { // plot_background, grids, axes ... title
-      document_[(unsigned int)i].write(s_out);
-    }
-  } // write_document
-//! \endcond // DETAIL
 public:
   svg() //! Define class svg default constructor.
     :
-    document_(), //
+    document_(), // Defautl construct - this should give not_a_text_style.
     x_size_(400), //!< X-axis of the whole SVG image (default 400 SVG units, default pixels).
     y_size_(400), //!< Y-axis of the whole SVG image (default 400 SVG units, default pixels).
     title_document_(""),  //!< This is a SVG document title, not a plot title (@c std::string).
@@ -496,6 +421,82 @@ public:
   { //! \return  Decimal digits precision to be output for X and Y coordinates.
     return coord_precision_;
   }
+
+  //! \cond DETAIL // Doxygen document this section only if DETAIL defined.
+  void write_header(std::ostream& s_out)
+  { //! Output the DTD SVG 1.1 header into the SVG g_element document.
+    s_out << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
+      //<< "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" "
+      //<< "\"http://www.w3.org/graphics/svg/1.1/dtd/svg11.dtd\">"
+      // Doctype removed to avoid the need to reference this file (repeatedly!)
+      // using RenderX to produce pdf with embedded svg.
+      // Might also provide a local copy of the dtd to avoid need to refer to it.
+      << std::endl;
+    // TODO IE6 with Adobe does not recognise this DOCTYPE, but displays OK.
+    // http://jwatt.org/svg/authoring/#namespace-binding recommends NO DOCTYPE!
+    // But does recommend other info - see write()
+    // Inkscape does NOT provide a doctype.
+    // s_out << "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n"
+    //         "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20000303 Stylable//EN\"
+    //         \"http://www.w3.org/TR/2000/03/WD-SVG-20000303/DTD/svg-20000303-stylable.dtd\">\n"
+    // This IS out of date? version 1.0 TR 2000, but the Adobe SVG viewer complains
+    // if it is missing - but ignored.
+    // But Firefox says document does not contain style.
+    // http://www.adobe.com/svg/basics/getstarted.html
+
+    // Inkscape uses encoding=\"UTF-8\" Unicode
+    // (encoding=\"iso-8859-1\" == Latin now obselete)
+
+    // example of style command:
+    // style="font-size:20px;font-weight:bold;text-decoration: line-through;fill:aqua"
+    // font-family:Arial Narrow
+
+    // Inkscape uses: xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+  }
+
+  void write_css(std::ostream& s_out)
+  { //! Output CSS (Cascading Style Sheet) - (not yet used or implemented).
+    if (css_.size() != 0) // css != ""
+    { // TODO confirm that this isn't useful if css is "".
+      // [CDATA[ ... ]] enclosing the style information
+      // is a standard XML construct for hiding information
+      // necessary since CSS style sheets can include characters,
+      // such as ">", which conflict with XML parsers.
+      s_out << "<defs><style type=\"text/css\"><![CDATA[" << css_
+        << "]]></style></defs>" << std::endl;
+      // CSS inline style can be declared within a style attribute in SVG
+      // by specifying a semicolon-separated list of property declarations,
+      // where each property declaration has the form "name: value".
+      // For example a style: style="fill:red; stroke:blue; stroke-width:3"
+      // class=
+      // Multiple class names must be separated by whitespace.
+
+      // Example: <defs><style type="text/css"><![CDATA[]]>
+      // .axes { fill:none;stroke:#333333;stroke-width:1.6 }
+      // .title{ font-size:20px;font-weight:bold;font-style:italic;fill:magenta }
+      // .legend_title{ font-size:16px;font-weight:bold;fill:darkblue;text-anchor:middle }
+      // .legend_item{ font-size:16px;font-weight:normal;fill:blue }
+      // .x_axis_value{ font-size:12px;font-weight:normal;fill:black }
+      //   </style></defs>
+    }
+  } // void write_css(std::ostream& s_out)
+
+  void write_document(std::ostream& s_out)
+  { //! \brief Output all of the image to the SVG document (Internal function)
+    /*! \details Output all clip paths that define a region of the output device
+      to which paint can be applied.
+     */
+    for (size_t i = 0; i < clip_paths_.size(); ++i)
+    {
+      clip_paths_[(unsigned int)i].write(s_out);
+    }
+    // Write all visual group elements.
+    for (size_t i = 0; i < document_.size(); ++i)
+    { // plot_background, grids, axes ... title
+      document_[(unsigned int)i].write(s_out);
+    }
+  } // write_document
+//! \endcond // DETAIL
 
   /*! \brief Write whole .svg 'file' contents to SVG file.
 
@@ -900,8 +901,8 @@ public:
 
   clip_path_element& clip_path(const rect_element& rect, const std::string& id)
   { //! Rectangle outside which 'painting' is 'clipped' so doesn't show.
-    clip_paths.push_back(clip_path_element(id, rect));
-    return clip_paths[clip_paths.size()-1]; //! \return Reference to @c clip_path_element.
+    clip_paths_.push_back(clip_path_element(id, rect));
+    return clip_paths_[clip_paths_.size()-1]; //! \return Reference to @c clip_path_element.
   }
 
   g_element& add_g_element()
