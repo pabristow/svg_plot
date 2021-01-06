@@ -310,11 +310,11 @@ class svg
   unsigned int x_size_; //!< SVG image X-axis size (in SVG units (default pixels).
   unsigned int y_size_; //!< SVG image Y-axis size (in SVG units (default pixels).
 
-  g_element document_; //!< To hold all group elements of the svg document.  Initially zero.
+  g_element document_; //!< Parent g_element to hold all group elements of the svg document.  Initially none.
   // Function gs accesses ith g_element child nodes in tree, for example:
   //  image_.gs(PLOT_BACKGROUND).style().fill_color(red); 
   // where macro PLOT_BACKGROUND is index integer value 0 <= index < gs.size().
-  // Could better be called group_count_ ?
+  // Could better be called parent_group_ ?
 
   std::vector<clip_path_element> clip_paths; //!< Points on clip path (used for plot window).
 
@@ -414,7 +414,7 @@ class svg
 public:
   svg() //! Define class svg default constructor.
     :
-    document_(),
+    document_(), //
     x_size_(400), //!< X-axis of the whole SVG image (default 400 SVG units, default pixels).
     y_size_(400), //!< Y-axis of the whole SVG image (default 400 SVG units, default pixels).
     title_document_(""),  //!< This is a SVG document title, not a plot title (@c std::string).

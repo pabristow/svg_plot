@@ -82,7 +82,7 @@ namespace svg
      */
   public:
     svg_style svg_style_; //!< Colors fill, stroke, width; set and get by function @c style().
-    text_style text_style_;  //!< font, font-size and font features bold. underline...
+    text_style text_style_;  //!< font family, font-size and font features bold, underline...
     std::string id_name_; //!< SVG id name, set & get by function id.
     std::string class_name_; //!< SVG class name, set & get by function class id.
     std::string clip_name_; //!< SVG clip path name, set & get by function clip_id.
@@ -100,7 +100,7 @@ namespace svg
         os << " class=\"" << class_name_ << "\"";
       }
       if(clip_name_.size() != 0)
-      { // Is a clip_name, so output.
+      { // Is a clip_name_, so output.
         os << " clip-path=\"url(#" << clip_name_ << ")\""; // Prefix with space.
         // Might be nicer to suffix with newline - but after the >
       }
@@ -116,6 +116,7 @@ namespace svg
         \endverbatim
       */
     } // void write_attributes(std::ostream& os)
+
 
     svg_element(const svg_style& style,
                 const std::string& id_name = "",
@@ -247,9 +248,9 @@ namespace svg
                  const svg_style& style_info, // No default?
                  const std::string& id_name = "",
                  const std::string& class_name = "",
-                 const std::string& clip_name = "")
+                 const std::string& clip_name_ = "")
                 : x1_(x1), y1_(y1), x2_(x2),y2_(y2),
-                  svg_element(style_info, id_name, class_name, clip_name)
+                  svg_element(style_info, id_name, class_name, clip_name_)
     { //! Constructor assigning all line_elementdata,
       //! and also inherited svg_element data.
     }
@@ -301,9 +302,9 @@ namespace svg
                  const svg_style& style_info,
                  const std::string& id_name="",
                  const std::string& class_name="",
-                 const std::string& clip_name = "")
+                 const std::string& clip_name_ = "")
                 : x1_(x1),x2_(x2),  y1_(y1), y2_(y2), x3_(x3), y3_(y3),
-                  svg_element(style_info, id_name, class_name, clip_name)
+                  svg_element(style_info, id_name, class_name, clip_name_)
     { //!< Quadratic curved line constructor, including svg_element info.
     }
 
@@ -354,9 +355,9 @@ namespace svg
                  const svg_style& style_info,
                  const std::string& id_name,
                  const std::string& class_name,
-                 const std::string& clip_name)
+                 const std::string& clip_name_)
       :
-        svg_element(style_info, id_name, class_name, clip_name),
+        svg_element(style_info, id_name, class_name, clip_name_),
         x_(x), y_(y), width_(w), height_(h)
     { //! Constructor defines all data (inherites info from svg_element).
     }
@@ -453,11 +454,11 @@ namespace svg
                  const svg_style& style_info,
                  const std::string& id_name="",
                  const std::string& class_name="",
-                 const std::string& clip_name=""
+                 const std::string& clip_name_=""
                  )
       :
         x_(x), y_(y),
-        svg_element(style_info, id_name, class_name, clip_name), radius_(radius)
+        svg_element(style_info, id_name, class_name, clip_name_), radius_(radius)
     { //! Constructor defines all  data.
     }
 
@@ -513,9 +514,9 @@ namespace svg
       const svg_style& style_info, //!< style (color and width)
       const std::string& id_name="", //!< ID of group, for example: PLOT_X_TICKS_VALUES.
       const std::string& class_name="", //!< Name of SVG class, for example: "grid_style".
-      const std::string& clip_name="") //!< name of clip path.
+      const std::string& clip_name_="") //!< name of clip path.
       :
-        svg_element(style_info, id_name, class_name, clip_name),
+        svg_element(style_info, id_name, class_name, clip_name_),
           cx_(cx), cy_(cy), rx_(rx), ry_(ry), rotate_(0.)
     { //!< Constructor sets ellipse and its style (defaults define all data).
     }
@@ -525,10 +526,10 @@ namespace svg
         const svg_style& style_info, //!< Style - Colors & widths.
         const std::string& id_name = "",  //!< ID of group, for example: PLOT_X_TICKS_VALUES.
         const std::string& class_name = "", //!< Name of SVG class."grid_style"
-        const std::string& clip_name = "") //!< name of clip path.
+        const std::string& clip_name_ = "") //!< name of clip path.
       : cx_(cx), cy_(cy), rx_(4), ry_(8), // 4 and 8 are the same defaults used above.
 
-        svg_element(style_info, id_name, class_name, clip_name),
+        svg_element(style_info, id_name, class_name, clip_name_),
         rotate_(0.) // Horizontal.
     {  //!< Constructor that also includes style, id, class and clip.
     }
@@ -1681,9 +1682,9 @@ public:
     path_element(const svg_style& style_info,
       const std::string& id_name="",
       const std::string& class_name="",
-      const std::string& clip_name="")
+      const std::string& clip_name_="")
       :
-      svg_element(style_info, id_name, class_name, clip_name)
+      svg_element(style_info, id_name, class_name, clip_name_)
     { //! Construct empty path element.
     }
 
@@ -2193,27 +2194,27 @@ public:
       \endverbatim
    */
   public:
-    ptr_vector<svg_element> children; /*!< Children of this group element node,
-      containg graphics elements like text, rect, circle, line, polyline... */
+    ptr_vector<svg_element> children_; /*!< Children of this group element node,
+      containing graphics elements like text, rect, circle, line, path, polyline, group ... */
 
-    std::string clip_name;  //!< Name of clip path.
-    bool clip_on; //!< @c true if to clip anything outside the clip path, often the plot window,
+    std::string clip_name_;  //!< Name of clip path.
+    bool clip_on_; //!< @c true if to clip anything outside the clip path, often the plot window,
    //!< so that data-point markers do not overlap axes tick-values on the inside of the window.
     align_style  alignment_;  //!< group alignment, left middle or right, or no_align.
-    int rotate_; //!< text rotation, positive degrees 0 <= rotate_ <= 360, or specifically no rotation if < 0.
+    int rotation_; //!< text rotation, positive degrees 0 <= rotation_ <= 360, or specifically no rotation if < 0.
 
-    g_element() : clip_on(false), clip_name(""), alignment_(align_style::no_align), rotate_(rotate_style::horizontal)
+    g_element() : clip_on_(false), clip_name_(""), alignment_(align_style::no_align), rotation_(rotate_style::horizontal)
     { //! Construct g_element (default with no clipping).
     }
 
     svg_element& operator[](unsigned int i)
     { //! \return Child @c svg_element ith node.
-      return children[i];
+      return children_[i];
     }
 
     size_t size()
     { //! \return Number of child (leaf) nodes.
-      return children.size();
+      return children_.size();
     }
 
     void write(std::ostream& os)
@@ -2224,7 +2225,7 @@ public:
         \endverbatim
       */
 
-      if (children.size() > 0)
+      if (children_.size() > 0)
       { /*! Do not output anything if no child leafs to avoid useless output. Example:
           \verbatim
            <g id="legendBackground"> </g>
@@ -2276,9 +2277,9 @@ public:
 
         os << ">" 
           "\n"; // Newline after the g_element id and style is easier to read.
-        for(unsigned int i = 0; i < children.size(); ++i)
+        for(unsigned int i = 0; i < children_.size(); ++i)
         {
-          children[i].write(os);  // Using each element's version of write function.
+          children_[i].write(os);  // Using each element's version of write function.
           // Using tab to indent also makes easy to read.
         }
         os << "</g>" "\n"  ; // 
@@ -2288,43 +2289,43 @@ public:
     g_element& gs(int i)
     { //! i is index of children g_element nodes (first is zero).
       //! Example:   \code g_element& g1 = my_svg.gs(1); // index is one. \endcode
-      return *(static_cast<g_element*>(&children[i])); // \return reference to this child node @c g_element.
+      return *(static_cast<g_element*>(&children_[i])); // \return reference to this child node @c g_element.
     }
 
     g_element& add_g_element()
     { //! Add a new group element.
       //! \return Reference to the new child node just created.
       //! Example: \code  g_element& g0 = my_svg.add_g_element(); // Add first (zeroth) new element to the document. \endcode
-      children.push_back(new g_element());
-      return *(static_cast<g_element*>(&children[children.size()-1]));
+      children_.push_back(new g_element());
+      return *(static_cast<g_element*>(&children_[children_.size()-1]));
     }
 
     line_element& line(double x1, double y1, double x2, double y2)
     { //! Add a new line child element.
       //! \return A reference to the new child node just created.
-      children.push_back(new line_element(x1, y1, x2, y2));
-      return *(static_cast<line_element*>(&children[children.size()-1]));
+      children_.push_back(new line_element(x1, y1, x2, y2));
+      return *(static_cast<line_element*>(&children_[children_.size()-1]));
     }
 
     rect_element& rect(double x1, double y1, double x2, double y2)
     { //! Add a new rect child element.
       //! \return A reference to the new child node just created.
-      children.push_back(new rect_element(x1, y1, x2, y2));
-      return *(static_cast<rect_element*>(&children[children.size()-1]));
+      children_.push_back(new rect_element(x1, y1, x2, y2));
+      return *(static_cast<rect_element*>(&children_[children_.size()-1]));
     }
 
     circle_element& circle(double x, double y, double radius = 5.)
     { //! Add a new circle child element.
       //! \return A reference to the new child node just created.
-      children.push_back(new circle_element(x, y, radius));
-      return *(static_cast<circle_element*>(&children[children.size()-1]));
+      children_.push_back(new circle_element(x, y, radius));
+      return *(static_cast<circle_element*>(&children_[children_.size()-1]));
     }
 
     ellipse_element& ellipse(double rx, double ry, double cx, double cy)
     { //! Add a new ellipse child element.
       //! \return A reference to the new child node just created.
-      children.push_back(new ellipse_element(rx, ry, cx, cy));
-      return *(static_cast<ellipse_element*>(&children[children.size()-1]));
+      children_.push_back(new ellipse_element(rx, ry, cx, cy));
+      return *(static_cast<ellipse_element*>(&children_[children_.size()-1]));
     }
 
     // svg::text constructor with defaults. 
@@ -2335,100 +2336,100 @@ public:
     const rotate_style& rotate = horizontal)
     { //! Add a new text element.
       //! \return A reference to the new child (leaf) node just created.
-      children.push_back(new text_element(x, y, text, textstyle, align, rotate));
-      return *(static_cast<text_element*>(&children[children.size()-1]));
+      children_.push_back(new text_element(x, y, text, textstyle, align, rotate));
+      return *(static_cast<text_element*>(&children_[children_.size()-1]));
     }
 
     // Polygon for shapes with many vertices.
     polygon_element& polygon(double x, double y, bool f = true)
     { //! Add a new polygon element.
       //! \return A reference to the new child node just created.
-      children.push_back(new polygon_element(x, y, f));
-      return *(static_cast<polygon_element*>(&children[children.size()-1]));
+      children_.push_back(new polygon_element(x, y, f));
+      return *(static_cast<polygon_element*>(&children_[children_.size()-1]));
     }
 
     polygon_element& polygon(std::vector<poly_path_point>& v, bool f = true)
     { //! Add a new complete polygon element.
       //! \return A reference to the new child node just created.
       // push_back a complete many-sided polygon to the document.
-      children.push_back(new polygon_element(v, f));
-      return *(static_cast<polygon_element*>(&children[children.size()-1]));
+      children_.push_back(new polygon_element(v, f));
+      return *(static_cast<polygon_element*>(&children_[children_.size()-1]));
     }
 
     polyline_element& polyline(std::vector<poly_path_point>& v)
     {  //! Add a new complete polyline.
        //! \return A reference to the new child node just created.
-      children.push_back(new polyline_element(v));
-      return *(static_cast<polyline_element*>(&children[children.size()-1]));
+      children_.push_back(new polyline_element(v));
+      return *(static_cast<polyline_element*>(&children_[children_.size()-1]));
     }
 
     polyline_element& polyline(double x, double y)
     { //! Add a new polyline element, but 1st point only, add others later with .P(x, y)...
       //! \return A reference to the new child node just created.
-      children.push_back(new polyline_element(x, y));
-      return *(static_cast<polyline_element*>(&children[children.size()-1]));
+      children_.push_back(new polyline_element(x, y));
+      return *(static_cast<polyline_element*>(&children_[children_.size()-1]));
     }
 
     polygon_element& triangle(double x1, double y1, double x2, double y2, double x3, double y3, bool f = true)
     { //! Add a new triangle element.
       //! \return A reference to the new child node just created.
-      children.push_back(new polygon_element(x1, y1, x2, y2, x3, y3, f));
-      return *(static_cast<polygon_element*>(&(children[(unsigned int)(children.size()-1)])));
+      children_.push_back(new polygon_element(x1, y1, x2, y2, x3, y3, f));
+      return *(static_cast<polygon_element*>(&(children_[(unsigned int)(children_.size()-1)])));
     }
 
     polygon_element& rhombus(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, bool f = true)
     { //! Add a new rhombus element.
       //! \return A reference to the new child node just created.
-      children.push_back(new polygon_element(x1, y1, x2, y2, x3, y3, x4, y4, f = true));
-      return *(static_cast<polygon_element*>(&(children[(unsigned int)(children.size()-1)])));
+      children_.push_back(new polygon_element(x1, y1, x2, y2, x3, y3, x4, y4, f = true));
+      return *(static_cast<polygon_element*>(&(children_[(unsigned int)(children_.size()-1)])));
     }
 
     polygon_element& pentagon(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, double x5, double y5, bool f = true)
     { //! Add a new pentagon element.
       //! \return A reference to the new child node just created.
       // push_back a complete pentagon to the document.
-      children.push_back(new polygon_element(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, f));
-      return *(static_cast<polygon_element*>(&(children[(unsigned int)(children.size()-1)])));
+      children_.push_back(new polygon_element(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, f));
+      return *(static_cast<polygon_element*>(&(children_[(unsigned int)(children_.size()-1)])));
     }
 
     polygon_element& hexagon(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, double x5, double y5, double x6, double y6, bool f = true)
     { //! Add a new hexagon element.
       //! \return A reference to the new child node just created.
       // push_back a complete 6-sided star to the document.
-      children.push_back(new polygon_element(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6, f));
-      return *(static_cast<polygon_element*>(&(children[(unsigned int)(children.size()-1)])));
+      children_.push_back(new polygon_element(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6, f));
+      return *(static_cast<polygon_element*>(&(children_[(unsigned int)(children_.size()-1)])));
     }
 
     polygon_element& polygon()
     { //! Add a new polygon element.
       //! \return A reference to the new polygon element just created.
-      children.push_back(new polygon_element()); // Empty polygon,
+      children_.push_back(new polygon_element()); // Empty polygon,
       // to which poly_path_points can be added later using member function P.
-      return *(static_cast<polygon_element*>(&(children[(unsigned int)(children.size()-1)])));
+      return *(static_cast<polygon_element*>(&(children_[(unsigned int)(children_.size()-1)])));
     }
 
     polyline_element& polyline()
     { //! Add a new polyline element.
       //! \return A reference to the new polyline element just created.
-      children.push_back(new polyline_element()); // Empty polyline.
-      return *(static_cast<polyline_element*>(&(children[(unsigned int)(children.size()-1)])));
+      children_.push_back(new polyline_element()); // Empty polyline.
+      return *(static_cast<polyline_element*>(&(children_[(unsigned int)(children_.size()-1)])));
     }
 
     path_element& path()
     { //! Add a new path element.
       //! \return A reference to the new path just created.
-      children.push_back(new path_element()); // Empty path.
-      return *(static_cast<path_element*>(&(children[(unsigned int)(children.size()-1)])));
+      children_.push_back(new path_element()); // Empty path.
+      return *(static_cast<path_element*>(&(children_[(unsigned int)(children_.size()-1)])));
     }
 
     void push_back(svg_element* g)
     { //! Add a new child node g_element.
-      children.push_back(g);
+      children_.push_back(g);
     }
 
     void clear()
     { //! Remove all the child nodes.
-      children.clear();
+      children_.clear();
     }
   }; // class g_element
 
