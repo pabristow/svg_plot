@@ -72,9 +72,10 @@ class box_style; //  Box colors, size and border switches.
 class histogram_style;  // Options for histograms.
 class bar_style;  // Style of bars.
 
-//! \enum rotate_style Rotation of text (in degrees clockwise from horizontal).
+//! \enum rotate_style Rotation of text (in degrees clockwise from horizontal == 0).
 enum rotate_style
 {
+  // Also need a no_rotate, = -1;
   // Might include more steps to describe other angles too?
   horizontal = 0, //!< normal horizontal left to right, centered.
   slopeup = -30, //!< slope up.
@@ -95,9 +96,8 @@ enum rotate_style
 //std::ostream& operator<< (std::ostream& os, rotate_style & rot, align_style)
 //{ //! Outputs: rotation style as words and degrees from horizontal (useful for diagnosis).
 //  //! Example: 
-//  //! \code align_style al = left_align;
-//  //!   std::cout << "Align is " << al << std::endl;
-//  //!    std::cout << "rotation = " << r << std::endl;
+//  //! \code rotate_style rot = horizontal;
+//  //!    std::cout << "rotation = " << rot << std::endl;
 //  //! \endcode
 //  // Outputs: \verbatim rot is uphill (-45) \endverbatim
 //  if (rot == 0) { os << "horizontal (0)"; }
@@ -114,11 +114,12 @@ enum rotate_style
 //  else if (rot == 90) { os << "downward (90)"; }
 //  else if (rot == 135) { os << "backdown (135)"; }
 //  else if (rot == 180) { os << "upsidedown (180)"; }
+//  else if (rot < 0) { os << "no rotate"; }
 //  ;
 //  return os;
 //  } // std::ostream& operator<< (std::ostream & os, rotate_style & rot)
 
-//! The place for ticks value-labels on the axis.
+//! The place for ticks value-labels on the X and/or Y-axes.
 enum place
 {
   left_side = -1,
@@ -452,7 +453,7 @@ class text_style
 // font-style, font-variant, font-weight, font-stretch, font-size, line-height, font-family
 // at the same place in the stylesheet.
 
-text_style::text_style( //!< Constructor to allow all text style parameters 
+text_style::text_style( //!< Constructor to allow all text style font parameters 
   //! (font size, family, bold, italic, condensed, underline ...) to be set.
   int size, //!< Font size.   ( \sa https://www.w3.org/TR/css-fonts-3/#propdef-font-size).
   // https://www.w3.org/TR/css-fonts-3/#propdef-font-size-adjust  not implemented)

@@ -792,7 +792,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         y_include_zero_(false), // If autoscaled, include zero on Y-axis.
         y_min_ticks_(6),  // If autoscaled, set a minimum number of ticks, default 6.
         y_steps_(0),  //!< If autoscaled, set any prescaling to decimal 1, 2, 5, 10 etc, default none.
-        y_tight_(1e-6), //!< margin that point can lie outside top and bottom tick without triggering another interval and tick .
+        y_tight_(1e-6), //!< Margin that point can lie outside top and bottom tick without triggering another axis interval and tick(s).
 
         // Used to transform Cartesian to SVG.
         x_scale_(1.), x_shift_(0.),
@@ -806,14 +806,15 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         using namespace boost::svg::detail; // Avoid need for prefix detail::
 
-        // Build the SVG document tree by adding all children of the root node.
+        // Build the SVG document tree by adding (empty) all children of the root node.
         for(int i = 0; i < SVG_PLOT_DOC_CHILDREN; ++i)
         {
           image_.add_g_element();
         }
         set_ids();
 
-        // Set other SVG color, stroke & width defaults for various child PLOT nodes.
+        // Set other defaults for SVG color, stroke & width for various child PLOT nodes.
+        // macro values index array gs to get individual child g_element nodes.
 
         image_.gs(PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
         image_.gs(PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);

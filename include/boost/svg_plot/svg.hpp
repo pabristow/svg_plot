@@ -307,12 +307,14 @@ class svg
   including metadata like author, copyright and license.
   Finally output the final image as SVG XML to a @c std::stream or file of type .svg (by default).
 */
-protected:
   unsigned int x_size_; //!< SVG image X-axis size (in SVG units (default pixels).
   unsigned int y_size_; //!< SVG image Y-axis size (in SVG units (default pixels).
 
-  g_element document_; //!< To hold all group elements of the svg document.
-  // Function gs accesses ith g_element child nodes in tree.
+  g_element document_; //!< To hold all group elements of the svg document.  Initially zero.
+  // Function gs accesses ith g_element child nodes in tree, for example:
+  //  image_.gs(PLOT_BACKGROUND).style().fill_color(red); 
+  // where macro PLOT_BACKGROUND is index integer value 0 <= index < gs.size().
+  // Could better be called group_count_ ?
 
   std::vector<clip_path_element> clip_paths; //!< Points on clip path (used for plot window).
 
@@ -331,7 +333,6 @@ protected:
   std::string commercialuse_; //!< License requirements for commerical use: "permits", "requires", or "prohibits".
   std::string distribution_; //!< License requirements for distribution: "permits", "requires", or "prohibits".
   std::string derivative_works_; //!< License requirements for derivative: "permits", "requires", or "prohibits".
-
   int coord_precision_; //!< Number of decimal digits precision for output of X and Y coordinates to SVG XML.
   // Not sure this is the best place for this?
 
@@ -413,14 +414,15 @@ protected:
 public:
   svg() //! Define class svg default constructor.
     :
-    x_size_(400), //!< X-axis of the whole SVG image (default SVG units, default pixels).
-    y_size_(400), //!< Y-axis of the whole SVG image (default SVG units, default pixels).
-    title_document_(""),  //!< This is a SVG document title, not a plot title.
-    image_desc_(""), //!< Information about the SVG image, for example, the program that created it.
-    holder_copyright_(""),  //!< Name of copyright holder.
-    date_copyright_(""), //!<  Date of copyright claim.
-    author_(""), //!< Author of image (defaults to the copyright holder).
-    css_(""), //!< Stylesheet filename, if any.
+    document_(),
+    x_size_(400), //!< X-axis of the whole SVG image (default 400 SVG units, default pixels).
+    y_size_(400), //!< Y-axis of the whole SVG image (default 400 SVG units, default pixels).
+    title_document_(""),  //!< This is a SVG document title, not a plot title (@c std::string).
+    image_desc_(""), //!< Information about the SVG image, for example, the program that created it  (@c std::string).
+    holder_copyright_(""),  //!< Name of copyright holder (@c std::string).
+    date_copyright_(""), //!<  Date of copyright claim (@c std::string).
+    author_(""), //!< Author of image (@c std::string) (defaults to the copyright holder) .
+    css_(""), //!< Stylesheet filename, if any. (@c std::string)  Not used at present.
     filename_(""), //!< Name of file to which SVG XML has been written is embedded in the file as an XML comment (if written only to an ostream, filename will not appear in comment).
     is_boost_license_(false), //!< If true, Boost license text is written as comment in SVG XML. (Default is no license). Suggested strings for license permission are "permits", "requires", or "prohibits", or "".
     is_license_(false), //!< If true, license text is written as comment in SVG XML. (Default is no license).

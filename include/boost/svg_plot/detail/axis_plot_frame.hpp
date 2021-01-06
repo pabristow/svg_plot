@@ -26,8 +26,8 @@
 #ifndef BOOST_SVG_AXIS_PLOT_FRAME_HPP
 #define BOOST_SVG_AXIS_PLOT_FRAME_HPP
 
-#include <boost/svg_plot/svg_style.hpp>
 #include <boost/svg_plot/svg.hpp>
+#include <boost/svg_plot/svg_style.hpp>
 #include <boost/svg_plot/detail/svg_tag.hpp>
 #include <boost/svg_plot/detail/numeric_limits_handling.hpp>
 // using boost::math::fpclassify for
@@ -35,7 +35,7 @@
 // template <class T>bool isfinite (T);
 // template <class T>bool isinf (T);
 // template <class T> bool isnan (T);
-#include <boost/svg_plot/detail/auto_axes.hpp>
+#include <boost/svg_plot/detail/auto_axes.hpp>  // Automatic selection of axes ranges.
 #include <boost/quan/unc.hpp>
 // using boost::svg::unc;
 #include <boost/quan/meas.hpp>

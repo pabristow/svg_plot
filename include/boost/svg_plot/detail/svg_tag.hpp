@@ -550,15 +550,15 @@ namespace svg
   }; // class ellipse_element
 
   enum class align_style
-  { //! \enum align_style Represents a single block of text, with font & alignment.
-    no_align = 0,
-    left_align, //!< Align text to left.
-    right_align, //!< Align text to right.
-    center_align //!< Center align text.
+  { //! \enum align_style Represents alignment a single string of chars .
+    no_align = -1,  // Not aligned (so not 
+    left_align, //!< Align text to left. Outputs: \verbatim text-anchor="left" \endverbatim
+    right_align, //!< Align text to right. Outputs: \verbatim text-anchor="right" \endverbatim
+    center_align //!< Center align text. Outputs: \verbatim text-anchor="middle" \endverbatim
   };
 
   std::ostream& operator<< (std::ostream& os, align_style al)
-  { //! Outputs: alignment (useful for diagnosis).
+  { //! Outputs: alignment type (useful for diagnosis).
     //! Example: 
     //! \code align_style al = align_style::left_align;  std::cout << "Align is " << al << std::endl; \endcode
     //! Outputs: Align is left 
@@ -574,7 +574,12 @@ namespace svg
     {
       os << "right";
     }
-    else os << "align ???" << std::endl;
+    else if (al == align_style::no_align)
+    {
+      os << "not aligned";
+    }
+    else os << "??? aligned";
+    os << std::endl;
     return os;
   } //   std::ostream& operator<< (std::ostream& os, align_style al)
 
@@ -1250,7 +1255,7 @@ public:
       anchor = "middle";
       break;
     default:
-      anchor = "";
+      anchor = "";  // 
       break;
     }
     if(anchor != "")
@@ -2179,6 +2184,8 @@ public:
       to index @c std::string @c document_ids_ 
 
       For example, an image background rectangle with border and fill:
+      \code g0.svg_style_.fill_color(red); // Set svg_style color. \endcode
+
       \verbatim 
          <g id="background" fill="rgb(255,255,255)">  
            <rect width="500" height="350"/>
@@ -2190,13 +2197,13 @@ public:
       containg graphics elements like text, rect, circle, line, polyline... */
 
     std::string clip_name;  //!< Name of clip path.
-    bool clip_on; //!< @c true if to clip anything outside the clip path, often the plot window
+    bool clip_on; //!< @c true if to clip anything outside the clip path, often the plot window,
    //!< so that data-point markers do not overlap axes tick-values on the inside of the window.
-    align_style  alignment_;  
-    int rotate_;
+    align_style  alignment_;  //!< group alignment, left middle or right, or no_align.
+    int rotate_; //!< text rotation, positive degrees 0 <= rotate_ <= 360, or specifically no rotation if < 0.
 
-    g_element() : clip_on(false)
-    { //! Construct g_element (with no clipping).
+    g_element() : clip_on(false), clip_name(""), alignment_(align_style::no_align), rotate_(rotate_style::horizontal)
+    { //! Construct g_element (default with no clipping).
     }
 
     svg_element& operator[](unsigned int i)
@@ -2210,9 +2217,9 @@ public:
     }
 
     void write(std::ostream& os)
-    { /*! Output all children (leafs) of a group element.
-        \verbatim
-          Example:
+    { /*! Output all children groups (leafs of tree) of a group element.
+       Example:
+       \verbatim
            <g fill="rgb(255,255,255)" id="background"><rect x="0" y="0" width="500" height="350"/></g>
         \endverbatim
       */
@@ -2226,7 +2233,10 @@ public:
         os << "\n" "<g"; // Do NOT need space if convention is to start following item with space or tab or newline.
         write_attributes(os); // id="background" (or clip_path).
         svg_style_.write(os); // Output SVG style info like stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
-        text_style_.write(os); // Output SVG text style info like font-size, font-family...
+        // Default no_style, so not output.
+        text_style_.write(os); // Output SVG text style info like font-size="12" font-family="Lucida Sans Unicode".
+        // Default not_a_text_style so expect no output.
+
        // alignment_.write(os) // in effect.
         // 
         std::string anchor = ""; 
