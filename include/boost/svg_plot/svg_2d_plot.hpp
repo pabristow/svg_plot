@@ -1816,6 +1816,17 @@ my_plot.background_color(ghostwhite) // Whole image.
           throw std::runtime_error("Y-tick Y value negative!");
         }
 
+        g_element* g_y_ticks = &(derived().image_.gs(detail::PLOT_Y_TICKS_VALUES));
+        const text_style y_ticks_text_style = derived().y_value_label_info_.textstyle(); // font, size, family etc
+        //std::cout << "text_style y_ticks_text_style is " << y_ticks_text_style << std::endl;
+        // text_style y_ticks_text_style is text_style(12, "Lucida Sans Unicode", "", "", "", "")
+        g_y_ticks->text_style_ = y_ticks_text_style;
+        align_style a = derived().x_value_label_info_.align_; // align = center OK
+        g_y_ticks->alignment_ = a;
+        rotate_style r = derived().x_value_label_info_.rotate_; // rot = 0 OK
+        g_y_ticks->rotation_ = r;
+        // <g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="middle">
+
         if(y_ticks_.ticks_on_window_or_on_axis_ != 0)
           { // External to plot window style left or right.
             // Always want all values including "0", if labeling external to plot window.
@@ -1824,20 +1835,23 @@ my_plot.background_color(ghostwhite) // Whole image.
               x,
               y,
               label.str(),
-              y_ticks_.value_label_style_, // text_style - font etc
-              alignment, y_ticks_.label_rotation_);
+              not_a_text_style);
+              //y_ticks_.value_label_style_, // Would add to every label: text_style - font size, family etc.
+              //alignment, y_ticks_.label_rotation_); // and rotation an alignment.
+            // 	<text x="34.4" y="371">0 </text>
           }
           else
           { // ! y_ticks_.y_ticks_on_plot_window_ == 0 'Internal' - value labels either side of vertical Y-axis.
             if ((value != 0) && y_axis_.axis_line_on_)
-            { // Avoid a zero ON the Y-axis if it would be cut through by any horizontal X-axis line.
+            { // Avoid a zero "0" label ON the Y-axis if it would be cut through by any horizontal X-axis line.
               image_.gs(detail::PLOT_Y_TICKS_VALUES).text(
                 x,
                 y,
-                label.str(), // "1.23"
-                y_ticks_.value_label_style_, // text_style - font etc
-                alignment,
-                y_ticks_.label_rotation_);
+                label.str(), // "1.2", "1.4" ... 
+                not_a_text_style);
+                // y_ticks_.value_label_style_, // text_style - font etc
+                //alignment,
+                //y_ticks_.label_rotation_); // 
             }
           } // either on plot window or 'on axis'.
         } // want value label on tick

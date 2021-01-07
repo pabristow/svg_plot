@@ -1513,7 +1513,7 @@ public:
     rotate_style label_rotation_; //!< Rotation direction axis tick-value labels written. Default 0 means horizontal.
     //align_style label_alignment_; //< Alignment of tick-value-label using text_anchor. Default center_align for X-axis but right_align for Y-axis.
     //!< This ensures that value labels center on the tick so that "1.1" aligns the decimal point with the tick.
-    //!< Ideally alignment takes rotation into account to get lable as close a possible to the tick. 
+    //!< Ideally alignment takes rotation into account to get label as close a possible to the tick. 
     bool major_grid_on_;  //!< Draw X grid at major ticks.
     bool minor_grid_on_; //!< Draw X grid at minor ticks.
     svg_color values_color_; //!< Color of tick values labels.
