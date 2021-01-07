@@ -50,7 +50,9 @@
 #include <iostream> // for testing only.
  //using std::cerr;
  //using std::cout;
- //using std::endl;namespace boost
+ //using std::endl;
+
+namespace boost
 {
   namespace svg
   {
@@ -1193,37 +1195,38 @@
              // alignment,
              // derived().x_ticks_.label_rotation_);
            g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK
-           const text_style xticks_text_style(14, "arial", "bold");
+         //  const text_style xticks_text_style(14, "arial", "bold");   // <<<<<<<<<<<< TEMP Need to replace with stored values.
            //std::cout << "text_style xticks_text_style is " << xticks_text_style << std::endl;
            // text_style xticks_text_style is text_style(20, "lucida sans unicode", "", "bold", "", "")
         //   g_ptr->text_style_.style(xticks_text_style);
            //g_ptr->text_style_.font_size(20);
            //g_ptr->text_style_.font_weight("bold");
            //g_ptr->text_style_.font_family("arial");
+           const text_style xticks_text_style = derived().x_value_label_info_.textstyle(); // font, size, family etc
+          // std::cout << "text_style xticks_text_style is " << xticks_text_style << std::endl;
+           // text_style xticks_text_style is text_style(12, "Lucida Sans Unicode", "", "", "", "")
            g_ptr->text_style_ = xticks_text_style;
-           // and pick up alignment and rotation, if any.
              // std::cout << " g_ptr->text_style_ is " << g_ptr->text_style_ << std::endl;
               // Copies all OK.
               // g_ptr->text_style_ is text_style(20, "arial", "", "bold", "", "")
-              // Need to add not_a_text_style to avoid each x-tick value-label adding font-family, font-size etc.
-             g_ptr->text(
-               x,
-               y,
-               tick_value_label.str(), // "1.0", "1.5", "2.0" ...
-               not_a_text_style);
-
+           // and pick up alignment and rotation, if any.
             //   x_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal), 
              align_style a = derived().x_value_label_info_.align_; // align = center OK
              rotate_style r = derived().x_value_label_info_.rotate_; // rot = 0 OK
            //  rotate_style r = derived().x_ticks_.label_rotation_; // OK too
-          //   std::cout << "align = " << a << std::endl; // align = center
+           //  std::cout << "alignment = " << a << std::endl; // align = center
           //   std::cout << "rot = " << r << std::endl;
             // align_style a = derived().x_ticks_.label_alignment_; ??? if we stored alignment in ticks_labels_style  
-             // BUT These will be repeated on each label if placed here.
-           //  alignment,
-           //  derived().x_ticks_.label_rotation_
-             // So needs to be added to the g_element instead and output only once.
-           // TODO text_anchor and rotation
+        //   std::cout << "X-ticks values alignment " << xtick_alignment << std::endl;
+           g_ptr->alignment_ = a;
+           g_ptr->rotation_ = r;
+           // Example:  <g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold" text-anchor="middle">
+             g_ptr->text(
+               x,
+               y,
+               tick_value_label.str(), // Example: "1.0", "1.5", "2.0" ...
+               not_a_text_style);  // Add not_a_text_style to avoid each x-tick value-label adding font-family, font-size etc.
+             // Example: <text x="74.5" y="390">0 </text>
           }
           else
           {
