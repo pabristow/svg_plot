@@ -43,23 +43,17 @@
 #include <limits>
 #include <string>
 // using std::string;
-
-#include <iostream> // for testing only.
- //using std::cerr;
- //using std::cout;
- //using std::endl;
-
 #include <sstream>
 //using std::ostream;
 #include <utility>
 // using std::pair
-
-namespace boost
+#include <iostream> // for testing only.
+ //using std::cerr;
+ //using std::cout;
+ //using std::endl;namespace boost
 {
   namespace svg
   {
-    // JV: G++ can't resolve names in these enums in axis_plot_frame
-    //    when they are in svg_2d_plot.hpp
 
     /*! Number of standard deviations used for text_plusminus text display.\n
       Nominal factor of 2 (strictly 1.96) corresponds to 95% confidence limit.

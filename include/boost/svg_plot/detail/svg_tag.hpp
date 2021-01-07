@@ -117,8 +117,11 @@ namespace svg
       */
     } // void write_attributes(std::ostream& os)
 
+//    static const svg_style not_a_svg_style(svg_style(red, blue, 1); //!< svg style that uses black and stroke and fill off.
+    const svg_style a_svg_style = svg_style(red, blue, 1); //!< svg style that uses black and stroke and fill off.
+//    svg_element(const svg_style& style = svg_style(red, blue, 1),  //  Need a Defaults to black and all off? compiles
 
-    svg_element(const svg_style& style,
+    svg_element(const svg_style& style ,  //  Need a Defaults to black and all off?
                 const std::string& id_name = "",
                 const std::string& class_name = "",
                 const std::string& clip_name = "",
@@ -223,7 +226,7 @@ namespace svg
   // Reminder: Within a literal C string, \"  is needed to output a " ;-)
 
   // -----------------------------------------------------------------
-  // Represents a straight line
+  // Represents a straight line.
   // -----------------------------------------------------------------
   class line_element: public svg_element
   { /*! \class boost::svg::line_element
@@ -251,7 +254,7 @@ namespace svg
                  const std::string& clip_name_ = "")
                 : x1_(x1), y1_(y1), x2_(x2),y2_(y2),
                   svg_element(style_info, id_name, class_name, clip_name_)
-    { //! Constructor assigning all line_elementdata,
+    { //! Constructor assigning all line_element data,
       //! and also inherited svg_element data.
     }
 

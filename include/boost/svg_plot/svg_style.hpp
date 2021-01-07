@@ -405,9 +405,9 @@ class text_style
  // int al_;  part of text_element
  // int rot_;
 
-  text_style( //! Constructor.
-    int font_size = 12, //!< Default font size (12 pixels).  NOT const because it might be changed during sizing.
-    const std::string& font = default_font_family, //!< Examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"...
+  text_style( //! Default Constructor.
+    int font_size = 0, //!< Default font size (12 pixels).  NOT const because it might be changed during sizing.
+    const std::string& font = "", //!< Examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"...
     const std::string& weight = "", //!< Font weight examples: "bold", "normal".
     const std::string& style = "", //!< Font style examples: normal | bold | italic | oblique.
     const std::string& stretch = "", //!< Font stretch examples: normal | wider | narrower ...

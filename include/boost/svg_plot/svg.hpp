@@ -478,6 +478,19 @@ public:
       // .legend_item{ font-size:16px;font-weight:normal;fill:blue }
       // .x_axis_value{ font-size:12px;font-weight:normal;fill:black }
       //   </style></defs>
+
+      // Might output the 
+      // const static char* default_font_family("Lucida Sans Unicode"); 
+      // and a font-size etc?
+      // But SVG element classes have default parameter that override these at present.
+
+      //  <style>
+      // text{
+      //    font-family:Lucida Sans Unicode; 
+      //}
+      //  < / style>
+
+
     }
   } // void write_css(std::ostream& s_out)
 
@@ -631,7 +644,7 @@ public:
                "<dc:rights><cc:Agent><dc:title>" << holder_copyright_ << "</dc:title></cc:Agent></dc:rights>\n"
                "<dc:date>" << date_copyright_ << "</dc:date>\n"
                "<dc:identifier>" << filename_ << "</dc:identifier>\n" // URI for this svg document.
-               "<dc:source>" << "Boost.plot 0.5" << "</dc:source>\n"
+               "<dc:source>" << "Boost.SVG_Plot 2.0" << "</dc:source>\n"
                "<dc:relation>" << "" << "</dc:relation>\n" // URI to a related document, perhaps user source program.
                "<dc:publisher><cc:Agent><dc:title>" << holder_copyright_ << "</dc:title></cc:Agent></dc:publisher>\n"
                // publisher could be different from copyright holder.
@@ -659,7 +672,7 @@ public:
          "</metadata>"
        << std::endl;
     } // is_license
-    write_css(s_out);// stylesheet, if any.
+    write_css(s_out);// Defaults stylesheet, if any.
     write_document(s_out); // write clip paths and all document elements.
     s_out << "</svg>" << std::endl;   // close off svg tag.
   }
