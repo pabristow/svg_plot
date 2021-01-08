@@ -62,12 +62,15 @@ This shows how to add notes to a plot, for example to identify a particular area
   /*`Now add a string note at the SVG coordinates X = 100 and Y =200.
   */
   my_plot.draw_note(150, 200, "My 1st (default) Note");
+
+  text_style mini_note_style(7, "verdana", "italic", "bold"); 
+  // Used for note showing origin at top left and bottom right below.
   /*`
   Note that for SVG coordinates, Y increases *down* the page, so Y = 0 is the top and Y = 300 is the bottom.
   Defaults are provided for size, text style = no_text_style, center alignment and rotation horizontal.
   */
-  my_plot.draw_note(40, 10, "top left (0, 0)");
-  my_plot.draw_note(my_plot.image_x_size()-10, my_plot.image_y_size()- 10, "bottom right(380, 280)");
+  my_plot.draw_note(7, 7, "top left (0, 0)", rotate_style::downward , align_style::left_align, red, mini_note_style);
+  my_plot.draw_note(my_plot.image_x_size()-3, my_plot.image_y_size()-3, "bottom right(400, 300)", rotate_style::horizontal, align_style::right_align, red, mini_note_style);
 
 /*`Using enum center_align is strongly recommended because it will ensure that note will center correctly
 (even if note-string is made much longer because it contains Unicode,
@@ -91,8 +94,8 @@ You can use either plain char space or Unicode spaces like \&#x00A0;
 
   std::cout << "my_red_note_style " << my_red_note_style << std::endl;
   // my_red_note_style text_style(16, "arial", "bold", "italic", "", "")
-  my_plot.draw_note(350, 170, "Red upsidedown Note",  upsidedown, align_style::left_align, red, my_red_note_style);
-  my_plot.draw_note(300, 210, "Blue steepup Note", steepup, align_style::center_align, blue);
+  my_plot.draw_note(350, 170, "Red upsidedown Note",  rotate_style::upsidedown, align_style::left_align, red, my_red_note_style);
+  my_plot.draw_note(300, 210, "Blue steepup Note", rotate_style::steepup, align_style::center_align, blue);
 
   my_plot.write("./demo_annotation");
 
