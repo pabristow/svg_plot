@@ -517,11 +517,11 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       text_element legend_title_; //!< Legend box header or title (if any).
       text_element legend_text_; //!< Legend box series data descriptor text(if any).
       text_element x_label_info_; //!< X-axis label text, for example: "length".
-      text_element x_value_label_info_; //!< X-axis tick value text, for example: "1.2" or "1.2e+001"
+      text_element x_value_label_info_; //!< X-axis tick value label text, for example: "1.2" or "1.2e+001" and anchor and rotation.
       text_element y_label_info_; //!< Y-axis label text, for example: "volume".
       text_element x_units_info_; //!< X-axis units, for example: "mm".
       text_element y_units_info_; //!<  Y-axis units, for example: "min". (2-D only).
-      text_element y_value_label_info_; //!< Y-axis tick value text, for example: "1.2" or "1.2e+001"
+      text_element y_value_label_info_; //!< Y-axis tick value label text, for example: "1.2" or "1.2e+001" and anchor and rotation.
 
       text_style value_style_; //!< Style used for data point value label.
       // +/-Infinity and NaN
@@ -1818,10 +1818,13 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         g_element* g_y_ticks = &(derived().image_.gs(detail::PLOT_Y_TICKS_VALUES));
         const text_style y_ticks_text_style = derived().y_value_label_info_.textstyle(); // font, size, family etc
-        //std::cout << "text_style y_ticks_text_style is " << y_ticks_text_style << std::endl;
+        // std::cout << "text_style y_ticks_text_style is " << y_ticks_text_style << std::endl;
         // text_style y_ticks_text_style is text_style(12, "Lucida Sans Unicode", "", "", "", "")
         g_y_ticks->text_style_ = y_ticks_text_style;
-        align_style a = derived().x_value_label_info_.align_; // align = center OK
+        align_style a = derived().y_value_label_info_.align_; // align = center OK
+        //align_style a = y_ticks_.label_alignment_; // if we stored alignment in ticks_labels_style
+        // y_ticks_.label_alignment_;  Not yet defined?
+
         g_y_ticks->alignment_ = a;
         rotate_style r = derived().x_value_label_info_.rotate_; // rot = 0 OK
         g_y_ticks->rotation_ = r;
@@ -1836,9 +1839,6 @@ my_plot.background_color(ghostwhite) // Whole image.
               y,
               label.str(),
               not_a_text_style);
-              //y_ticks_.value_label_style_, // Would add to every label: text_style - font size, family etc.
-              //alignment, y_ticks_.label_rotation_); // and rotation an alignment.
-            // 	<text x="34.4" y="371">0 </text>
           }
           else
           { // ! y_ticks_.y_ticks_on_plot_window_ == 0 'Internal' - value labels either side of vertical Y-axis.
@@ -1849,9 +1849,6 @@ my_plot.background_color(ghostwhite) // Whole image.
                 y,
                 label.str(), // "1.2", "1.4" ... 
                 not_a_text_style);
-                // y_ticks_.value_label_style_, // text_style - font etc
-                //alignment,
-                //y_ticks_.label_rotation_); // 
             }
           } // either on plot window or 'on axis'.
         } // want value label on tick

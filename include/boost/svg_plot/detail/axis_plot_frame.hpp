@@ -187,7 +187,7 @@ namespace boost
 
 //! \endcond
 
-  public: 
+  public:
           Derived& derived()
           { //! Uses Curiously Recurring Template Pattern to allow 1D and 2D to reuse common code.
             //! See http://en.wikipedia.org/wiki/Curiously_Recurring_Template_Pattern .
@@ -1145,11 +1145,11 @@ namespace boost
           } // rotations
           if (x <= 0)
           { // Sanity checks on ticks value SVG coordinates.
-            throw std::runtime_error("X-tick X value coordinate is wrong!");
+            throw std::runtime_error("X-tick X value coordinate is negative!");
           }
           if (y <= 0)
           {
-            throw std::runtime_error("X-tick Y value coordinate is wrong!");
+            throw std::runtime_error("X-tick Y value coordinate is negative!");
           }
           // Draw the X ticks value-labels, "1", "2" "3" ...
           // Want this:
@@ -1169,9 +1169,9 @@ namespace boost
  //           g_element& g_ticks = (derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK \nd gr.text works OK too.
           //  g_element& g_x_axis_values = derived().image_.gs(detail::PLOT_X_TICKS_VALUES).add_g_element();
           //  g_x_axis_values.style().stroke_color(red); // OK using  g_element& and has desired effect on x axis value labels too!
-         //   g_x_axis_values.style().fill_color(blue); // OK using  g_element& 
+         //   g_x_axis_values.style().fill_color(blue); // OK using  g_element&
          //   g_x_axis_values->style().stroke_color(derived().style().stroke_color_); //  wrong
-         //   g_x_axis_values->style().fill_color(derived().serieses_[i].point_style_.fill_color_); // 
+         //   g_x_axis_values->style().fill_color(derived().serieses_[i].point_style_.fill_color_); //
 
  //           derived().image_.gs(detail::PLOT_X_TICKS_VALUES).text(
 
@@ -1182,7 +1182,7 @@ namespace boost
            //   derived().image_.gs(detail::PLOT_X_TICKS_VALUES) // is boost::svg::svg in svg image_; in svg_2d_plot or 1d or boxplot
 //              derived().image_.gs(detail::PLOT_X_TICKS_VALUES) // is boost::svg::svg in svg image_; in svg_2d_plot or 1d or boxplot
    //          derived().image_.g_ptr  C2039: 'g_ptr': is not a member of 'boost::svg::svg'
-    //          g_ptr. // C2228: left of '.text' must have class/struct/union 
+    //          g_ptr. // C2228: left of '.text' must have class/struct/union
           //   g_element& gg = derived().image_.gs(detail::PLOT_X_TICKS_VALUES);  // OK
 
              //g_x_axis_values.text( // fails for a g_element* pointer
@@ -1195,7 +1195,6 @@ namespace boost
              // alignment,
              // derived().x_ticks_.label_rotation_);
            g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK
-         //  const text_style xticks_text_style(14, "arial", "bold");   // <<<<<<<<<<<< TEMP Need to replace with stored values.
            //std::cout << "text_style xticks_text_style is " << xticks_text_style << std::endl;
            // text_style xticks_text_style is text_style(20, "lucida sans unicode", "", "bold", "", "")
         //   g_ptr->text_style_.style(xticks_text_style);
@@ -1206,18 +1205,16 @@ namespace boost
           // std::cout << "text_style xticks_text_style is " << xticks_text_style << std::endl;
            // text_style xticks_text_style is text_style(12, "Lucida Sans Unicode", "", "", "", "")
            g_ptr->text_style_ = xticks_text_style;
-             // std::cout << " g_ptr->text_style_ is " << g_ptr->text_style_ << std::endl;
-              // Copies all OK.
-              // g_ptr->text_style_ is text_style(20, "arial", "", "bold", "", "")
+           // std::cout << " g_ptr->text_style_ is " << g_ptr->text_style_ << std::endl;
+           // g_ptr->text_style_ is text_style(20, "arial", "", "bold", "", "")
            // and pick up alignment and rotation, if any.
-            //   x_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal), 
+            // x_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
              align_style a = derived().x_value_label_info_.align_; // align = center OK
              rotate_style r = derived().x_value_label_info_.rotate_; // rot = 0 OK
            //  rotate_style r = derived().x_ticks_.label_rotation_; // OK too
            //  std::cout << "alignment = " << a << std::endl; // align = center
           //   std::cout << "rot = " << r << std::endl;
-            // align_style a = derived().x_ticks_.label_alignment_; ??? if we stored alignment in ticks_labels_style  
-        //   std::cout << "X-ticks values alignment " << xtick_alignment << std::endl;
+             std::cout << "X-ticks values alignment " << a << std::endl;
            g_ptr->alignment_ = a;
            g_ptr->rotation_ = r;
            // Example:  <g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold" text-anchor="middle">
@@ -1235,8 +1232,8 @@ namespace boost
               derived().image_.gs(detail::PLOT_X_TICKS_VALUES).text(
                 x,
                 y,
-                tick_value_label.str(), 
-                derived().x_value_label_info_.textstyle(), // font, size etc, 
+                tick_value_label.str(),
+                derived().x_value_label_info_.textstyle(), // font, size etc,
                 // For example: text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode"
                 // But we don't really want to repeat this style info every value label!
                 alignment,
@@ -1647,10 +1644,10 @@ namespace boost
       derived().is_a_point_marker_ = false;  // Assume no data-point marker symbols.
       derived().is_a_data_series_text_ = false;  // Assume no data-series text descriptions.
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
-      std::cout << "Legend-title \"" << derived().legend_title_.text() << "\"\n .legend_title_font_size_ = " 
+      std::cout << "Legend-title \"" << derived().legend_title_.text() << "\"\n .legend_title_font_size_ = "
         << "legend title string = \"" << derived().legend_title_.text() << "\""
         << ", legend title string length (count) = " << derived().legend_title_.text().size()
-        << ", .legend_text_font_size_ = " << derived().legend_text_font_size_ 
+        << ", .legend_text_font_size_ = " << derived().legend_text_font_size_
         << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
@@ -1659,14 +1656,14 @@ namespace boost
       // (See https://www.w3.org/TR/SVG/text.html#GlyphsMetrics for height width ratio).
       // Line marker has small height compared to any font, so ignore any lines in max height calculation.
 
-      derived().biggest_point_marker_font_size_ = derived().legend_text_font_size(); 
+      derived().biggest_point_marker_font_size_ = derived().legend_text_font_size();
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
       // Assume data-series-descriptor text font-size until a bigger data-series point marker symbol is found.
-      std::cout << "Assume text font derived().biggest_point_marker_font_size_ = legend_text_font_size() = " 
+      std::cout << "Assume text font derived().biggest_point_marker_font_size_ = legend_text_font_size() = "
         << derived().biggest_point_marker_font_size_ << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
-      // Get biggest data-point marker-symbol size in any series 
+      // Get biggest data-point marker-symbol size in any series
       // to get minimum vertical spacing between data-series info lines.
       double longest_legend_text = 0; // SVG units
       std::size_t longest_text_chars_count = 0;
@@ -1701,7 +1698,7 @@ namespace boost
         { // Some data-series text-description.
           derived().is_a_data_series_text_ = true; // So will need to allow space for any data-series without text-description.
           double series_string_SVG_length = string_svg_length(derived().serieses_[i].title_, derived().legend_text_style_);
-          // string_svg_length avoids chars as Unicode hex increasing the length wrongly, so each Unicode char counts only as one char. 
+          // string_svg_length avoids chars as Unicode hex increasing the length wrongly, so each Unicode char counts only as one char.
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
           std::cout << " series title #" << i << " \"" << derived().serieses_[i].title_ << "\""
@@ -1726,7 +1723,7 @@ namespace boost
 
       // Compute Y-axis vertical spacing.
       derived().vertical_title_spacing_ = derived().legend_title_font_size_ * derived().text_margin_; // Legend header/title vertical spacing.
-      //   text_margin = 1.25; //!< Add a fraction of font height to allow for any descenders. 
+      //   text_margin = 1.25; //!< Add a fraction of font height to allow for any descenders.
       derived().vertical_text_spacing_ = derived().legend_text_font_size_ * derived().text_margin_; // Legend data_series text vertical spacing.
       // Add a fraction of the largest of the legend text or, if no legend title then the marker_symbol/line/text.
       derived().vertical_marker_spacing_ = derived().biggest_point_marker_font_size_ ; // Suits line spacing of markers, lines and text.
@@ -1766,7 +1763,7 @@ namespace boost
       std::cout << "Legend title string_svg_length = " <<  title_width << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
       title_width += derived().horizontal_title_spacing_;  // Space before first item: point-marker, line or text.
-//      title_width += derived().horizontal_title_spacing_; // 
+//      title_width += derived().horizontal_title_spacing_; //
 
       // Compute width of text line SVG length of text plus any point-markers and/or lines.
       double text_width = longest_legend_text; // Actual char text as SVG units (default pixels).
@@ -1873,7 +1870,7 @@ namespace boost
         derived().legend_height_ += derived().vertical_title_spacing_; // Legend title line
       }
       // Add more height depending on the size number of lines of data-point markers, lines and text.
-      derived().legend_height_ += derived().vertical_line_spacing_ * num_series; // 
+      derived().legend_height_ += derived().vertical_line_spacing_ * num_series; //
 
       //derived().legend_height_ += derived().vertical_marker_spacing_; // a part space after based on the marker line.
       derived().legend_height_ += derived().vertical_title_spacing_; // a part space after based on the legend title font.
@@ -2102,9 +2099,9 @@ namespace boost
 
       double legend_title_svg_length = string_svg_length(derived().legend_title(), derived().legend_title_style_);
      // std::cout << "legend_title_svg_length = " << legend_title_svg_length << " svg units (pixels). "<< std::endl;
-     // derived().legend_title_style_.text_length(legend_title_svg_length * derived().legend_title_font_size_ * aspect_ratio); 
+     // derived().legend_title_style_.text_length(legend_title_svg_length * derived().legend_title_font_size_ * aspect_ratio);
       // Tell legend_title to use estimated length in pixels (to avoid trouble with and hex Unicode symbols).
-      derived().legend_title_style_.text_length(legend_title_svg_length); 
+      derived().legend_title_style_.text_length(legend_title_svg_length);
       if (derived().legend_title_.text() != "") //
       { // Is a legend-title, so draw the centered legend-title text for example: "My Plot Legend".
         derived().legend_title_.x(legend_x_start + legend_width / 2.); // / 2. to center horizontally in legend box.
@@ -2131,16 +2128,16 @@ namespace boost
 
       // Show any data-point-marker, any line, & any text info for each of the data-series.
       for(unsigned int i = 0; i != derived().serieses_.size(); ++i)
-      { 
+      {
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
           std::cout << "data-series #" << i << " point_style = " <<  derived().serieses_[i].point_style_
             << "\n line style = " << derived().serieses_[i].line_style_
-            << "\n point_symbol_style = " <<  derived().serieses_[i].point_style_.symbols_  
-            << "\n point_fill_color = " <<  derived().serieses_[i].point_style_.fill_color_  
-            << "\n point_stroke_color = " <<  derived().serieses_[i].point_style_.stroke_color_ 
-            << "\n point_size = " <<  derived().serieses_[i].point_style_.size_ 
+            << "\n point_symbol_style = " <<  derived().serieses_[i].point_style_.symbols_
+            << "\n point_fill_color = " <<  derived().serieses_[i].point_style_.fill_color_
+            << "\n point_stroke_color = " <<  derived().serieses_[i].point_style_.stroke_color_
+            << "\n point_size = " <<  derived().serieses_[i].point_style_.size_
             << "\n point_style = " <<  derived().serieses_[i].point_style_.style()
-  //          << "\n point_width = " <<  derived().serieses_[i].point_style_.width_ 
+  //          << "\n point_width = " <<  derived().serieses_[i].point_style_.width_
             << std::endl;
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
         double legend_x_pos = legend_x_start + derived().legend_box_.margin();
@@ -2164,12 +2161,12 @@ namespace boost
         g_element* g_legends_points = &(g_ptr->add_g_element());
 
         // Use point stroke color instead.
-        g_legends_points->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_); // 
-        g_legends_points->style().fill_color(derived().serieses_[i].point_style_.fill_color_); // 
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS   
+        g_legends_points->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_); //
+        g_legends_points->style().fill_color(derived().serieses_[i].point_style_.fill_color_); //
+#ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "point_style set to = " << derived().serieses_[i].point_style_.stroke_color_
-          << "and " << derived().serieses_[i].point_style_.fill_color_ << std::endl; // 
-#endif //BOOST_SVG_POINT_DIAGNOSTICS   
+          << "and " << derived().serieses_[i].point_style_.fill_color_ << std::endl; //
+#endif //BOOST_SVG_POINT_DIAGNOSTICS
         plot_point_style& point_style = derived().serieses_[i].point_style_;
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
        std::cout << " point_style = derived().serieses_[i].point_style_ = " << point_style << std::endl;
@@ -2192,7 +2189,7 @@ namespace boost
             legend_x_pos,
             legend_y_pos - point_style.size_ / 5, // Move up a fifth of a data-point-marker font-size to align with text.
             *g_legends_points,
-            point_style, 
+            point_style,
             unc<false>(), unc<false>());  // X and Y positions.
           legend_x_pos += derived().horizontal_marker_spacing_ * 1.5; // Trailing space after data-point-marker.
 
@@ -2212,20 +2209,20 @@ namespace boost
         // Draw any line-markers in legend for this data-series.
         // Line markers are only really useful for 2-D lines and curves showing functions.
         if ((derived().serieses_[i].line_style_.line_on_ == true) // Line joining points option is true,
-           || (derived().serieses_[i].line_style_.bezier_on_ == true)) 
+           || (derived().serieses_[i].line_style_.bezier_on_ == true))
         { // so need to draw a short line to show color for line joining points for that data-series.
           // derived().legend_lines_ = true; // Some line is drawn for at least one data-series.
           // Better - this should be set during the legend box sizing?
           // Select legend-lines group.
-          g_ptr = &(derived().image_.gs(PLOT_LEGEND_LINES)); 
+          g_ptr = &(derived().image_.gs(PLOT_LEGEND_LINES));
           g_element* g_legend_lines = &(g_ptr->add_g_element()); // nested group for each data-series line.
           // Set colors for legend line.
-          g_legend_lines->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_); // 
+          g_legend_lines->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_); //
           //g_inner_ptr->style().fill_color(derived().serieses_[i].line_style_.fill_color_); // NO fill color for lines.
 
          if (derived().serieses_[i].line_style_.line_on_ || derived().serieses_[i].line_style_.bezier_on_)
           { // Use stroke color from line style.
-           g_legend_lines->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_); // 
+           g_legend_lines->style().stroke_color(derived().serieses_[i].line_style_.stroke_color_); //
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
            std::cout << "line_style color set to = " << derived().serieses_[i].line_style_.stroke_color_ << std::endl;
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
@@ -2300,10 +2297,10 @@ namespace boost
       double third_height = point_size / 3.3; // Offset y vertical by third of the symbol size to try to centre symbol on the point y-coordinates.
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-      std::cout << "point_style.size_ = "<< point_style.size_ 
+      std::cout << "point_style.size_ = "<< point_style.size_
         << ", y offset half_height = " << half_height
         << ", y offset third_height = " << third_height
-        << std::endl; 
+        << std::endl;
       // Picks up font size shape(diamond).size(20) correctly here.
       // point_style.size_ = 30, y offset half_height = 15, y offset third_height = 9.09091
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
@@ -2446,7 +2443,7 @@ namespace boost
        // std::cout << "square point_style.style() = " << point_style.style() << std::endl;
         // square point_style.style() = text_style(14, "Lucida Sans Unicode", "", "", "", "")
         std::cout << "square gptr.style() = " << g_ptr.style() << std::endl;
-        // square gptr.style() = svg_style(RGB(0,0,0), RGB(255,255,0), 0, stroke_on, fill_on, no width) 
+        // square gptr.style() = svg_style(RGB(0,0,0), RGB(255,255,0), 0, stroke_on, fill_on, no width)
         // stroke black and fill yellow  (fill color not used for this x25A1 Unicode symbol).
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
         // There are also ones with explicit color like emoji U+1F7E5
@@ -2463,7 +2460,7 @@ namespace boost
 
       case circlet: // 25CB WHITE CIRCLE or 25EF large white circle 25CF black circle
         // 25CB WHITE CIRCLE not best Unicode circle - the fill is only the circle, NOT the white center.
-        // there are some explicitly colored circles like 'LARGE BLUE CIRCLE' &#x1f535;  
+        // there are some explicitly colored circles like 'LARGE BLUE CIRCLE' &#x1f535;
         // https://www.alt-codes.net/circle-symbols for half black, half-circle, large circle, quadrants
 
         // g_ptr.text(x, y + third_height, "&#x25CF;", point_style.symbols_style_, center_align, horizontal);
@@ -3721,7 +3718,7 @@ namespace boost
           { //! \return  the font size for the legend title (svg units, default pixels).
             return derived().legend_title_style_.font_size_;
           }
-   
+
            template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_title_font_weight(const std::string& weight)
           { //! Set the font weight for the legend title.  Example: @c my_plot.legend_title_font_size(10);
@@ -3778,7 +3775,7 @@ namespace boost
             //! potentially making it so elongated with spaces between letters,
             //! or compresses so that the glyphs collide so it becomes unreadable.
             //! Length is SVG unit (pixels) = EM font size * aspect_ratio * char count.
-            //! Normally only used internally.  
+            //! Normally only used internally.
             //! Example: @c .legend_title_text_length(300) // Force text into an arbitrary chosen fixed width (about equal to 80 chars).
             if (length > 0)
             {
@@ -5622,7 +5619,7 @@ namespace boost
         template <class Derived>
         Derived& axis_plot_frame<Derived>::draw_note(double x, double y, std::string note, rotate_style rot /*= horizontal*/, align_style al/* = center_align*/, const svg_color& col /* black */, text_style& tsty/* = no_text_style*/)
         { /*! \brief Annotate plot with a text string (perhaps including Unicode), putting note at SVG Coordinates X, Y.
-            \warning SVG origin is at top left of image, the increases down and across. 
+            \warning SVG origin is at top left of image, the increases down and across.
 
             \details Defaults color black, rotation horizontal and align = center_align
             Using center_align is recommended as it will ensure that will center correctly
