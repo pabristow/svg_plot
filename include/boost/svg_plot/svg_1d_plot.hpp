@@ -189,7 +189,7 @@ public:
   text_element title_info_; //!< Title of whole plot.
   text_element legend_title_; //!< legend-box header or title (if any).
   text_element x_label_info_; //!< X-axis label, Example: "length of widget"
-  text_element x_value_label_info_; //!< X-axis tick value label, for example: "1.2" or "1.2e1"
+  text_element x_ticks_value_label_info_; //!< X-axis tick value label, for example: "1.2" or "1.2e1"
   text_element x_units_info_; //!< For example, to display, "length (meter)"
 
   // No Y-axis info for 1D.
@@ -676,7 +676,7 @@ void svg_1d_plot::update_image()
     //x_label_info_(0, 0, "X Axis", x_axis_label_style_, center_align, horizontal),
     //x_units_info_(0, 0, " (units)", x_value_label_style_, center_align, horizontal),
     x_label_info_(0, 0, "", x_axis_label_style_, align_style::center_align, horizontal), // Null strings for now.
-    x_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal), // X-axis tick value label, for example: "1.2" or "1.2e1".
+    x_ticks_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal), // X-axis tick value label, for example: "1.2" or "1.2e1".
     x_units_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
     x_axis_(X, -10., +10., black, 1, 0, true, false, true),
     y_axis_(Y, 0., +1., black, 1, 0, false, false, false), // Not used for 1D.

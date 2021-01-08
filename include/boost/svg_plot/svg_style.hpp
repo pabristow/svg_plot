@@ -800,6 +800,7 @@ class value_style
   */
 public:
   rotate_style value_label_rotation_; //!< Direction point value labels written.
+  // This is a duplicate of info elsewhere?
   int value_precision_; //!< Decimal digits of precision of value.
   std::ios_base::fmtflags value_ioflags_; //!< Control of scientific, fixed, hex etc.
   bool strip_e0s_; //!< If true, then unnecessary zeros and + sign will be stripped to reduce length.

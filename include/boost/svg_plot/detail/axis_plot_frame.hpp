@@ -1191,7 +1191,7 @@ namespace boost
              // x,
              // y,
              // tick_value_label.str(), // "1.0!, "1.5" ...
-             // derived().x_value_label_info_.textstyle(), // font, size etc
+             // derived().x_ticks_value_label_info_.textstyle(), // font, size etc
              // alignment,
              // derived().x_ticks_.label_rotation_);
            g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK
@@ -1201,20 +1201,19 @@ namespace boost
            //g_ptr->text_style_.font_size(20);
            //g_ptr->text_style_.font_weight("bold");
            //g_ptr->text_style_.font_family("arial");
-           const text_style xticks_text_style = derived().x_value_label_info_.textstyle(); // font, size, family etc
+           const text_style xticks_text_style = derived().x_ticks_value_label_info_.textstyle(); // font, size, family etc
           // std::cout << "text_style xticks_text_style is " << xticks_text_style << std::endl;
            // text_style xticks_text_style is text_style(12, "Lucida Sans Unicode", "", "", "", "")
            g_ptr->text_style_ = xticks_text_style;
            // std::cout << " g_ptr->text_style_ is " << g_ptr->text_style_ << std::endl;
            // g_ptr->text_style_ is text_style(20, "arial", "", "bold", "", "")
            // and pick up alignment and rotation, if any.
-            // x_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
-             align_style a = derived().x_value_label_info_.align_; // align = center OK
-             rotate_style r = derived().x_value_label_info_.rotate_; // rot = 0 OK
+            // x_ticks_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
+             align_style a = derived().x_ticks_value_label_info_.align_; // align = center OK
+             rotate_style r = derived().x_ticks_value_label_info_.rotate_; // rot = 0 OK
            //  rotate_style r = derived().x_ticks_.label_rotation_; // OK too
-           //  std::cout << "alignment = " << a << std::endl; // align = center
-          //   std::cout << "rot = " << r << std::endl;
-             std::cout << "X-ticks values alignment " << a << std::endl;
+          //   std::cout "X-ticks values rotation " <<  << r << std::endl;
+           //  std::cout << "X-ticks values alignment " << a << std::endl;
            g_ptr->alignment_ = a;
            g_ptr->rotation_ = r;
            // Example:  <g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold" text-anchor="middle">
@@ -1233,7 +1232,7 @@ namespace boost
                 x,
                 y,
                 tick_value_label.str(),
-                derived().x_value_label_info_.textstyle(), // font, size etc,
+                derived().x_ticks_value_label_info_.textstyle(), // font, size etc,
                 // For example: text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode"
                 // But we don't really want to repeat this style info every value label!
                 alignment,
@@ -1388,7 +1387,7 @@ namespace boost
               {  // Move down for any downward ticks.
                 y += 1.1 * (std::max)(derived().x_ticks_.major_tick_length_, derived().x_ticks_.minor_tick_length_); // And avoid macro max trap!
                 // and a small space.
-                y += 0.7 * (derived().x_label_info_.textstyle().font_size() + derived().x_value_label_info_.textstyle().font_size()); // best compromise?
+                y += 0.7 * (derived().x_label_info_.textstyle().font_size() + derived().x_ticks_value_label_info_.textstyle().font_size()); // best compromise?
               }
             }
             else if ((derived().x_ticks_.label_rotation_ == steepdown) || (derived().x_ticks_.label_rotation_ == steepup))
@@ -1398,7 +1397,7 @@ namespace boost
               {  // Move down for any downward ticks.
                 y += 1.1 * (std::max)(derived().x_ticks_.major_tick_length_, derived().x_ticks_.minor_tick_length_); // And avoid macro max trap!
                 // and a small space.
-                y += 0.5 * (derived().x_label_info_.textstyle().font_size() + derived().x_value_label_info_.textstyle().font_size()); // best compromise?
+                y += 0.5 * (derived().x_label_info_.textstyle().font_size() + derived().x_ticks_value_label_info_.textstyle().font_size()); // best compromise?
               }
             }
             else if ((derived().x_ticks_.label_rotation_ == uphill) || (derived().x_ticks_.label_rotation_ == downhill))
@@ -1408,7 +1407,7 @@ namespace boost
               {  // Move down for any downward ticks.
                 y += 1.1 * (std::max)(derived().x_ticks_.major_tick_length_, derived().x_ticks_.minor_tick_length_); // And avoid macro max trap!
                 // and a small space.
-                y += 0.7 * (derived().x_label_info_.textstyle().font_size() + derived().x_value_label_info_.textstyle().font_size()); // best compromise?
+                y += 0.7 * (derived().x_label_info_.textstyle().font_size() + derived().x_ticks_value_label_info_.textstyle().font_size()); // best compromise?
               }
             }
             else if ((derived().x_ticks_.label_rotation_ == slopeup) || (derived().x_ticks_.label_rotation_ == slopedownhill))
@@ -1418,14 +1417,14 @@ namespace boost
               {  // Move down for any downward ticks.
                 y += 1.1 * (std::max)(derived().x_ticks_.major_tick_length_, derived().x_ticks_.minor_tick_length_); // And avoid macro max trap!
                 // and a small space.
-                y += 0.5 * (derived().x_label_info_.textstyle().font_size() + derived().x_value_label_info_.textstyle().font_size()); // best compromise?
+                y += 0.5 * (derived().x_label_info_.textstyle().font_size() + derived().x_ticks_value_label_info_.textstyle().font_size()); // best compromise?
               }
             }
             else if (derived().x_ticks_.label_rotation_ == horizontal)
             { // horizontal X ticks value labels (default).
               if (derived().x_ticks_.major_value_labels_side_ < 0)
               { //  Move down to allow space for font size of tick value labels below X-axis.
-                y += derived().x_value_label_info_.textstyle().font_size();
+                y += derived().x_ticks_value_label_info_.textstyle().font_size();
               }
               y += derived().x_label_info_.textstyle().font_size() * 1.3; // Allow for the X-axis label font and space.
               // See also 1.3 factor drawing ticks.
@@ -4213,7 +4212,7 @@ namespace boost
           Derived& axis_plot_frame<Derived>::x_ticks_values_font_size(int size)
           { //! Set X ticks value label font size (svg units, default pixels).
             //derived().x_ticks_.value_label_style_.font_size(i);
-            derived().x_value_label_info_.textstyle().font_size_ = size;
+            derived().x_ticks_value_label_info_.textstyle().font_size_ = size;
             return derived();
           }
 
@@ -4223,14 +4222,14 @@ namespace boost
             // return derived().x_ticks_.value_label_style_.font_size();
             //       return derived().x_value_label_info_style_.font_size();
 
-            return derived().x_value_label_info_.textstyle().font_size_;
+            return derived().x_ticks_value_label_info_.textstyle().font_size_;
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_ticks_values_font_family(const std::string& family)
           { //! Set X ticks value label font family.
             //derived().x_ticks_.value_label_style_.font_family(family); // is effect same as:
-            derived().x_value_label_info_.textstyle().font_family_ = family;
+            derived().x_ticks_value_label_info_.textstyle().font_family_ = family;
             return derived();
           }
 

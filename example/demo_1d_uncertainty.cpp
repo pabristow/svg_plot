@@ -31,7 +31,7 @@
 #include <boost/svg_plot/detail/functors.hpp>
 //  using boost::svg::detail::unc_1d_convert;
 #include <boost/svg_plot/svg_1d_plot.hpp>
-using namespace boost::svg;
+//using namespace boost::svg;
 
 #include <boost/svg_plot/show_1d_settings.hpp>
 //void boost::svg::show_1d_plot_settings(svg_1d_plot&);
@@ -49,6 +49,8 @@ using namespace boost::svg;
 
 int main()
 {
+  using namespace boost::svg;
+
 //[demo_1d_uncertainty_2
 
     /*`STL vector is used as the container for our two data series,

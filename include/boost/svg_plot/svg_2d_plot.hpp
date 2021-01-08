@@ -517,11 +517,11 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       text_element legend_title_; //!< Legend box header or title (if any).
       text_element legend_text_; //!< Legend box series data descriptor text(if any).
       text_element x_label_info_; //!< X-axis label text, for example: "length".
-      text_element x_value_label_info_; //!< X-axis tick value label text, for example: "1.2" or "1.2e+001" and anchor and rotation.
+      text_element x_ticks_value_label_info_; //!< X-axis tick value label text, for example: "1.2" or "1.2e+001" and anchor and rotation.
       text_element y_label_info_; //!< Y-axis label text, for example: "volume".
       text_element x_units_info_; //!< X-axis units, for example: "mm".
       text_element y_units_info_; //!<  Y-axis units, for example: "min". (2-D only).
-      text_element y_value_label_info_; //!< Y-axis tick value label text, for example: "1.2" or "1.2e+001" and anchor and rotation.
+      text_element y_ticks_value_label_info_; //!< Y-axis tick value label text, for example: "1.2" or "1.2e+001" and anchor and rotation.
 
       text_style value_style_; //!< Style used for data point value label.
       // +/-Infinity and NaN
@@ -686,12 +686,12 @@ my_plot.background_color(ghostwhite) // Whole image.
         // Separate X and Y to allow axes to have different styles.
         y_axis_label_style_(14, default_font_family, "", "", "", "", 0), // Y-axis label. Example: length(m).
         y_value_label_style_(12, default_font_family, "", "", "", "", 0), // Y-axis tick-value labels. Example: "1", "1.5", "2" ...
-        point_symbols_style_(12, "Lucida Sans Unicode", "", "", "", "", 0), // Used for data point marking.
+        point_symbols_style_(12, default_font_family, "", "", "", "", 0), // Used for data point marking.
         // Font is to try to ensure that all Unicode symbols are available (default_font_family might not be Unicode?).
         title_info_(0, 0, "", title_style_, align_style::center_align, horizontal),
         x_label_info_(0, 0, "", x_axis_label_style_, align_style::center_align, horizontal), // 
         x_units_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
-        x_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal), 
+        x_ticks_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal), 
         x_axis_(X, -10., +10., black, 1, 0, true, false, true), // Default to 1 and +10 for both axes?  Auto??
         y_axis_(Y, -10., +10., black, 1, 0, true, false, true), // Default to 1 and +10 for both axes ? Auto ? ?
         // Might fill in all values, but there are rather many for ticks_labels_style,
@@ -700,7 +700,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         y_ticks_(Y, y_value_label_style_), //
         y_label_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward), // Y-axis label. Example: length.
         y_units_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward), // Y-axis label. Example: meter.
-        y_value_label_info_(0, 0, "", y_value_label_style_, align_style::center_align, upward), // Tick values.
+        y_ticks_value_label_info_(0, 0, "", y_value_label_style_, align_style::right_align, upward), // Tick value lables.
 
         // Should allow a 'fraction font space' below the text for any descenders.
         // so real total height including any descenders is font_height * 1.25,
@@ -1462,26 +1462,26 @@ my_plot.background_color(ghostwhite) // Whole image.
             { // downward tick value label direction 90 vertical up or down, or 60 steep degrees (might handle 60 separately).
               if (y_ticks_.major_value_labels_side_ < 0) // tick value labels are to left of plot window.
               { // Allow space for tick value labels font size to left of Y-axis or plot window.
-                x -= y_value_label_info_.textstyle().font_size() * 1.3; //
+                x -= y_ticks_value_label_info_.textstyle().font_size() * 1.3; //
               }
               if (y_ticks_.left_ticks_on_ == true)
               {  // Allow for any leftward ticks.
                 x -= 1.1 * (std::max)(y_ticks_.major_tick_length_, y_ticks_.minor_tick_length_);// And avoid macro max trap!
               }
-              x -= 0.7 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size_); // best compromise?
+              x -= 0.7 * (y_label_info_.textstyle().font_size() + y_ticks_value_label_info_.textstyle().font_size_); // best compromise?
 
             }
             else if ((y_ticks_.label_rotation_ == steepdown) || (y_ticks_.label_rotation_ == steepup))
             { // downward tick value label direction 90 vertical up or down, or 60 steep degrees (might handle 60 separately).
               if (y_ticks_.major_value_labels_side_ < 0) // tick value labels are to left of plot window.
               { // Allow space for tick value labels font size to left of Y-axis or plot window.
-                x -= y_value_label_info_.textstyle().font_size() * 1.3; //
+                x -= y_ticks_value_label_info_.textstyle().font_size() * 1.3; //
               }
               if (y_ticks_.left_ticks_on_ == true)
               {  // Allow for any leftward ticks.
                 x -= 1.1 * (std::max)(y_ticks_.major_tick_length_, y_ticks_.minor_tick_length_);// And avoid macro max trap!
               }
-              x -= 0.4 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size_); // best compromise?
+              x -= 0.4 * (y_label_info_.textstyle().font_size() + y_ticks_value_label_info_.textstyle().font_size_); // best compromise?
             }
             else if ((y_ticks_.label_rotation_ == uphill)  || (y_ticks_.label_rotation_ == downhill))
             { // sloping 45 degrees .
@@ -1490,9 +1490,9 @@ my_plot.background_color(ghostwhite) // Whole image.
               {  // Move left for any leftward ticks, and a small space.
                 x -= 1.1 * (std::max)(y_ticks_.major_tick_length_, y_ticks_.minor_tick_length_); // And avoid macro max trap!
                 //x -= 1.2 * y_label_info_.textstyle().font_size() ; // Shift left to suit Y labels.
-                //x -= 1.2 * y_value_label_info_.textstyle().font_size() ; // Shift left to suit Y labels.
-                //x -= 1.2 * (std::min)(y_label_info_.textstyle().font_size(), y_value_label_info_.textstyle().font_size_ ); // better
-                x -= 0.7 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size_); // best compromise?
+                //x -= 1.2 * y_ticks_value_label_info_.textstyle().font_size() ; // Shift left to suit Y labels.
+                //x -= 1.2 * (std::min)(y_label_info_.textstyle().font_size(), y_ticks_value_label_info_.textstyle().font_size_ ); // better
+                x -= 0.7 * (y_label_info_.textstyle().font_size() + y_ticks_value_label_info_.textstyle().font_size_); // best compromise?
              }
             }
             else if ((y_ticks_.label_rotation_ == slopeup) || (y_ticks_.label_rotation_ == slopedownhill))
@@ -1502,9 +1502,9 @@ my_plot.background_color(ghostwhite) // Whole image.
               {  // Move left for any leftward ticks, and a small space.
                 x -= 1.1 * (std::max)(y_ticks_.major_tick_length_, y_ticks_.minor_tick_length_); // And avoid macro max trap!
                 //x -= 1.2 * y_label_info_.textstyle().font_size() ; // Shift left to suit Y labels.
-                //x -= 1.2 * y_value_label_info_.textstyle().font_size() ; // Shift left to suit Y labels.
-                //x -= 1.2 * (std::min)(y_label_info_.textstyle().font_size(), y_value_label_info_.textstyle().font_size_ ); // better
-                x -= 0.7 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size_); // best compromise?
+                //x -= 1.2 * y_ticks_value_label_info_.textstyle().font_size() ; // Shift left to suit Y labels.
+                //x -= 1.2 * (std::min)(y_label_info_.textstyle().font_size(), y_ticks_value_label_info_.textstyle().font_size_ ); // better
+                x -= 0.7 * (y_label_info_.textstyle().font_size() + y_ticks_value_label_info_.textstyle().font_size_); // best compromise?
              }
             }
             else if  (y_ticks_.label_rotation_ == horizontal)
@@ -1515,7 +1515,7 @@ my_plot.background_color(ghostwhite) // Whole image.
               }
               x -= y_ticks_.label_max_space_; // Move left for the longest tick value label. (Might be zero?)
               //x -= y_label_info_.textstyle().font_size() * 1.0; // Shift left to suit Y labels.
-              x -= 0.6 * (y_label_info_.textstyle().font_size() + y_value_label_info_.textstyle().font_size_); // best compromise?
+              x -= 0.6 * (y_label_info_.textstyle().font_size() + y_ticks_value_label_info_.textstyle().font_size_); // best compromise?
             }
             else
             {
@@ -1817,16 +1817,16 @@ my_plot.background_color(ghostwhite) // Whole image.
         }
 
         g_element* g_y_ticks = &(derived().image_.gs(detail::PLOT_Y_TICKS_VALUES));
-        const text_style y_ticks_text_style = derived().y_value_label_info_.textstyle(); // font, size, family etc
+        const text_style y_ticks_text_style = derived().y_ticks_value_label_info_.textstyle(); // font, size, family etc
         // std::cout << "text_style y_ticks_text_style is " << y_ticks_text_style << std::endl;
         // text_style y_ticks_text_style is text_style(12, "Lucida Sans Unicode", "", "", "", "")
         g_y_ticks->text_style_ = y_ticks_text_style;
-        align_style a = derived().y_value_label_info_.align_; // align = center OK
+        align_style a = derived().y_ticks_value_label_info_.align_; // align = center OK
         //align_style a = y_ticks_.label_alignment_; // if we stored alignment in ticks_labels_style
         // y_ticks_.label_alignment_;  Not yet defined?
 
         g_y_ticks->alignment_ = a;
-        rotate_style r = derived().x_value_label_info_.rotate_; // rot = 0 OK
+        rotate_style r = derived().x_ticks_value_label_info_.rotate_; // rot = 0 OK
         g_y_ticks->rotation_ = r;
         // <g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="middle">
 
