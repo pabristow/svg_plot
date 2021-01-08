@@ -657,9 +657,9 @@ class svg_boxplot : public detail::axis_plot_frame<svg_boxplot>
   text_style a_style_; //!< Default text style (font etc).
   text_style title_style_; //!< text style (font) used for plot title.
   text_style x_axis_label_style_; //!< text style (font) used for Y axis label.
-  text_style x_value_label_style_; //!< text style (font) used for X data point value label.
+  text_style x_ticks_value_label_style_; //!< text style (font) used for X data point value label.
   text_style y_axis_label_style_; //!< text style (font) used for Y axis label.
-  text_style y_value_label_style_; //!< text style (font) used for Y data point value label.
+  text_style y_ticks_value_label_style_; //!< text style (font) used for Y data point value label.
   text_style point_symbols_style_; //!< text style (font) used for symbol used for data point marking.
   text_style value_style_; //!< style used for data point value label.
 
@@ -773,21 +773,21 @@ public:
   title_info_(0, 0, "", title_style_, align_style::center_align, horizontal),
   title_on_(true),
   x_label_info_(0, 0, "", x_axis_label_style_ , align_style::center_align, horizontal),
-  x_units_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
+  x_units_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, horizontal),
   y_label_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward),
   y_units_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward),
   x_axis_(X, -10., +10., black, 1, 0, true, false, true),
   y_axis_(Y,   0.,  +1., black, 1, 0, true, false, true),
   x_axis_label_style_(14, default_font_family, "", ""),
-  x_value_label_style_(12, default_font_family, "", ""),
+  x_ticks_value_label_style_(12, default_font_family, "", ""),
   y_axis_label_style_(14, default_font_family, "", ""),
-  y_value_label_style_(12, default_font_family, "", ""),
+  y_ticks_value_label_style_(12, default_font_family, "", ""),
   point_symbols_style_(12, "Lucida Sans Unicode"), // Used for data point marking to try to get in right place.
   // try to center accurately on the point's value.
   values_style_(rightward, 3, std::ios::dec, true, value_style_, black, black, false, false),
 
-  x_ticks_(X, x_value_label_style_),// so for other defaults see ticks_labels_style.
-  y_ticks_(Y, y_value_label_style_),
+  x_ticks_(X, x_ticks_value_label_style_),// so for other defaults see ticks_labels_style.
+  y_ticks_(Y, y_ticks_value_label_style_),
 
   autoscale_check_limits_(true), // Do check all value for limits, infinity, max, min, NaN.
   x_autoscale_(false),
@@ -1024,7 +1024,7 @@ public:
     }
     else if((y_ticks_.label_rotation_ == upward) || (y_ticks_.label_rotation_ == downward))
     { // Only need one char & 1 space width from Y-axis label.
-      y_ticks_.label_max_space_ += 2 * y_value_label_style_.font_size() * wh;
+      y_ticks_.label_max_space_ += 2 * y_ticks_value_label_style_.font_size() * wh;
     }
     else
     { // Assume some slope 45, so diagonally down from tick,
@@ -1059,7 +1059,7 @@ public:
     x_ticks_.label_max_space_ = 0; // Work out the longest value label for X-Axis.
     if (x_ticks_.label_rotation_ == horizontal)
     { // Only 1 char height & 1 space needed if labels are horizontal, regardless of length of string.
-      x_ticks_.label_max_space_ = 2 * x_value_label_style_.font_size() * wh; // 2 SVG chars
+      x_ticks_.label_max_space_ = 2 * x_ticks_value_label_style_.font_size() * wh; // 2 SVG chars
     }
     else if ((x_ticks_.label_rotation_ == upward) || (x_ticks_.label_rotation_ == downward))
     { // Not horizontal so will need more than 2 chars worth.
@@ -1323,7 +1323,7 @@ public:
       {
         if(y_ticks_.major_value_labels_side_ < 0) // left
         { // Start further right to give space for y axis value label.
-          y -= y_value_label_style_.font_size() * text_margin_;
+          y -= y_ticks_value_label_style_.font_size() * text_margin_;
         }
 
         if(y_ticks_.left_ticks_on_ == true)
@@ -1390,14 +1390,14 @@ public:
       {  // Just shift up to center value digits on tick.
         if (y_ticks_.major_value_labels_side_ < 0)
         { // labels to left, so start a little to left of x_left.
-          y += y_value_label_style_.font_size() * 0.2;
-          x = x_left - y_value_label_style_.font_size() * 0.5;
+          y += y_ticks_value_label_style_.font_size() * 0.2;
+          x = x_left - y_ticks_value_label_style_.font_size() * 0.5;
           alignment = align_style::right_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
-         y += y_value_label_style_.font_size() * 0.2;
-         x = x_right + y_value_label_style_.font_size() * 0.5;
+         y += y_ticks_value_label_style_.font_size() * 0.2;
+         x = x_right + y_ticks_value_label_style_.font_size() * 0.5;
           alignment = align_style::left_align;
         }
       }
@@ -1405,14 +1405,14 @@ public:
        {  // Just shift up to center value digits on tick.
         if (y_ticks_.major_value_labels_side_ < 0)
         { // labels to left, so start a little to left of x_left.
-          y -= y_value_label_style_.font_size() * 0.1;
-          x = x_left - y_value_label_style_.font_size() * 0.5;
+          y -= y_ticks_value_label_style_.font_size() * 0.1;
+          x = x_left - y_ticks_value_label_style_.font_size() * 0.5;
           alignment = align_style::left_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
-          y -= y_value_label_style_.font_size() * 0.1;
-          x = x_right + y_value_label_style_.font_size() * 0.5;
+          y -= y_ticks_value_label_style_.font_size() * 0.1;
+          x = x_right + y_ticks_value_label_style_.font_size() * 0.5;
           alignment = align_style::right_align;
         }
       }
@@ -1420,15 +1420,15 @@ public:
       { // Assume some 45 slope, so need about sqrt(2) less space.
         if (y_ticks_.major_value_labels_side_ < 0)
         { // labels to left, so start a little to left of x_left.
-          y -= y_value_label_style_.font_size() * 0.2;
-          x = x_left - y_value_label_style_.font_size() * 0.2;
+          y -= y_ticks_value_label_style_.font_size() * 0.2;
+          x = x_left - y_ticks_value_label_style_.font_size() * 0.2;
           // Seems to need a bit more space for right than left if rotated.
           alignment = align_style::right_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
-          y += y_value_label_style_.font_size() * 0.2;
-          x = x_right + y_value_label_style_.font_size() * 0.7;
+          y += y_ticks_value_label_style_.font_size() * 0.2;
+          x = x_right + y_ticks_value_label_style_.font_size() * 0.7;
           alignment = align_style::left_align;
         }
       }
@@ -1436,45 +1436,45 @@ public:
       { // Assume some 45 slope, so need about sqrt(2) less space.
         if (y_ticks_.major_value_labels_side_ < 0)
         { // labels to left, so start a little to left of x_left.
-          y += y_value_label_style_.font_size() * 0.3;
-          x = x_left - y_value_label_style_.font_size() * 0.7;
+          y += y_ticks_value_label_style_.font_size() * 0.3;
+          x = x_left - y_ticks_value_label_style_.font_size() * 0.7;
           // Seems to need a bit more space for right than left if rotated.
           alignment = align_style::right_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
-          y -= y_value_label_style_.font_size() * 0.3;
-          x = x_right + y_value_label_style_.font_size() * 0.1;
+          y -= y_ticks_value_label_style_.font_size() * 0.3;
+          x = x_right + y_ticks_value_label_style_.font_size() * 0.1;
           alignment = align_style::left_align;
         }
       }
       else if (y_ticks_.label_rotation_ == upward)
       { // Tick value label straight up vertically on Y-axis.
-        y -= y_value_label_style_.font_size() * 0.1;
+        y -= y_ticks_value_label_style_.font_size() * 0.1;
         if (y_ticks_.major_value_labels_side_ < 0)
         { // labels to left, so start a little to left of x_left.
-          x = x_left - y_value_label_style_.font_size() * 0.7;
+          x = x_left - y_ticks_value_label_style_.font_size() * 0.7;
           // Seems to need a bit more space for right than left if rotated.
           alignment = align_style::center_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
-          x = x_right + y_value_label_style_.font_size() * 1.5;
+          x = x_right + y_ticks_value_label_style_.font_size() * 1.5;
           alignment = align_style::center_align;
         }
       }
       else if (y_ticks_.label_rotation_ == downward)
       { // Tick value label straight down vertically on Y-axis.
-        y -= y_value_label_style_.font_size() * 0.1;
+        y -= y_ticks_value_label_style_.font_size() * 0.1;
         if (y_ticks_.major_value_labels_side_ < 0)
         { // labels to left, so start a little to left of x_left.
-          x = x_left - y_value_label_style_.font_size() * 1.2;
+          x = x_left - y_ticks_value_label_style_.font_size() * 1.2;
           // Seems to need a bit more space for right than left if rotated.
           alignment = align_style::center_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
-          x = x_right + y_value_label_style_.font_size() * 0.7;
+          x = x_right + y_ticks_value_label_style_.font_size() * 0.7;
           alignment = align_style::center_align;
         }
       }
@@ -1497,7 +1497,7 @@ public:
         image_.gs(boxplot::VALUE_LABELS).text(
           x,
           y,
-          label.str(), y_value_label_style_, alignment, y_ticks_.label_rotation_);
+          label.str(), y_ticks_value_label_style_, alignment, y_ticks_.label_rotation_);
       }
       else
       { // ! y_ticks_.y_ticks_on_plot_window_ == 0 'Internal' - value labels either side of vertical Y-axis.
@@ -1507,7 +1507,7 @@ public:
             x,
             y,
             label.str(),
-            y_value_label_style_,
+            y_ticks_value_label_style_,
             alignment,
             y_ticks_.label_rotation_);
         }
@@ -1528,8 +1528,8 @@ public:
       {
         if(x_axis_.label_on_)
         {
-          x_left += y_value_label_style_.font_size() * text_margin_;
-          x_right -= y_value_label_style_.font_size() * text_margin_;
+          x_left += y_ticks_value_label_style_.font_size() * text_margin_;
+          x_right -= y_ticks_value_label_style_.font_size() * text_margin_;
         }
       }
       else

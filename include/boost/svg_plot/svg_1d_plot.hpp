@@ -168,8 +168,8 @@ public:
   text_style legend_title_style_; //!< Style for legend title.
   text_style x_axis_label_style_; //!< style of X axis label.
   text_style y_axis_label_style_;  //!< Not used for 1D, but needed by axis_plot_frame.hpp.
-  text_style x_value_label_style_; //!< style of X ticks value label.
-  text_style y_value_label_style_; //!< Not used for 1D, but needed by axis_plot_frame.hpp.
+  text_style x_ticks_value_label_style_; //!< style of X ticks value label.
+  text_style y_ticks_value_label_style_; //!< Not used for 1D, but needed by axis_plot_frame.hpp.
   text_style point_symbols_style_; //!< Used for data point marking.
   text_style value_style_; //!< Used for data point value label.  (should be named value_label_style?)
   // Not finite values.
@@ -660,7 +660,7 @@ void svg_1d_plot::update_image()
     title_style_(18, "Verdana", "", ""),  // last "bold" ?
     legend_text_style_(10, "Verdana", "", ""), // 2nd "italic"?
     x_axis_label_style_(10, "Verdana", "", ""),
-    x_value_label_style_(10, "Verdana", "", ""),
+    x_ticks_value_label_style_(10, "Verdana", "", ""),
     point_symbols_style_(10, "Lucida Sans Unicode"), // Used for data point marking.
     value_style_(10, "Verdana", "", ""), // Used for data point values.
 
@@ -674,15 +674,15 @@ void svg_1d_plot::update_image()
     title_info_(0, 0, "", title_style_, align_style::center_align, horizontal),
     //title_info_(0, 0, "Plot of data", title_style_, center_align, horizontal), when text concatenation solved?
     //x_label_info_(0, 0, "X Axis", x_axis_label_style_, center_align, horizontal),
-    //x_units_info_(0, 0, " (units)", x_value_label_style_, center_align, horizontal),
+    //x_units_info_(0, 0, " (units)", x_ticks_value_label_style_, center_align, horizontal),
     x_label_info_(0, 0, "", x_axis_label_style_, align_style::center_align, horizontal), // Null strings for now.
-    x_ticks_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal), // X-axis tick value label, for example: "1.2" or "1.2e1".
-    x_units_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
+    x_ticks_value_label_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, horizontal), // X-axis tick value label, for example: "1.2" or "1.2e1".
+    x_units_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, horizontal),
     x_axis_(X, -10., +10., black, 1, 0, true, false, true),
     y_axis_(Y, 0., +1., black, 1, 0, false, false, false), // Not used for 1D.
 
     // Might fill in all values, but there are rather many for ticks_labels_style,
-    x_ticks_(X, x_value_label_style_),// so for defaults see ticks_labels_style.
+    x_ticks_(X, x_ticks_value_label_style_),// so for defaults see ticks_labels_style.
 
     // Should allow a 'fraction font space' above and below the text for any descenders.
     // so real height including any descenders is font_height * 1.25
@@ -899,16 +899,16 @@ void svg_1d_plot::calculate_plot_window()
     x_ticks_.label_max_space_ = 0; // Work out the longest tick value label for X-Axis.
     if (x_ticks_.label_rotation_ == horizontal)
     { // Only 1 char height & 1 space needed if labels are horizontal.
-      x_ticks_.label_max_space_ = 2 * x_value_label_style_.font_size() * aspect_ratio; // SVG chars.
+      x_ticks_.label_max_space_ = 2 * x_ticks_value_label_style_.font_size() * aspect_ratio; // SVG chars.
       // Should this be just 2 * font_size
     }
     else if ((x_ticks_.label_rotation_ == upward) || (x_ticks_.label_rotation_ == downward))
     { // ! horizontal so will need more than 2 chars worth.
-        x_ticks_.label_max_space_+= x_ticks_.label_max_length_ * x_value_label_style_.font_size() * aspect_ratio; // SVG chars.
+        x_ticks_.label_max_space_+= x_ticks_.label_max_length_ * x_ticks_value_label_style_.font_size() * aspect_ratio; // SVG chars.
     }
     else
     { // Assume label is sloping, say 45, so * sin(45) = 0.707.
-        x_ticks_.label_max_space_+= x_ticks_.label_max_length_ * x_value_label_style_.font_size() * aspect_ratio * sin45; // SVG 'chars'.
+        x_ticks_.label_max_space_+= x_ticks_.label_max_length_ * x_ticks_value_label_style_.font_size() * aspect_ratio * sin45; // SVG 'chars'.
     }
 
     // Make space for any ticks pointing below the plot window.

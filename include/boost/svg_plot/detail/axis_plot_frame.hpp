@@ -1011,117 +1011,117 @@ namespace boost
           // Adjustments to provide space from end of tick before or after writing label.
           if (derived().x_ticks_.label_rotation_ == upward) // vertical writing up.
           {  // Shift to center value digits and minus sign on tick.
-            x += derived().x_value_label_style_.font_size() * 0.2;
+            x += derived().x_ticks_value_label_style_.font_size() * 0.2;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
             { // labels to bottom, so start a little below y_down.
-              y = y_down + derived().x_value_label_style_.font_size() * 0.6;
+              y = y_down + derived().x_ticks_value_label_style_.font_size() * 0.6;
               alignment = align_style::right_align;
             }
             else if (derived().x_ticks_.major_value_labels_side_ > 0)
             { // labels to top, so start a little above y_up.
-              y = y_up - derived().x_value_label_style_.font_size() * 0.5;
+              y = y_up - derived().x_ticks_value_label_style_.font_size() * 0.5;
               alignment = align_style::left_align;
             }
           }
           else if (derived().x_ticks_.label_rotation_ == downward)
           {  // Should handle other directions too.
-            x -= derived().x_value_label_style_.font_size() * 0.3;
+            x -= derived().x_ticks_value_label_style_.font_size() * 0.3;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
             { // labels to bottom, so start a little below y_down.
-              y = y_down + derived().x_value_label_style_.font_size() * 0.5;
+              y = y_down + derived().x_ticks_value_label_style_.font_size() * 0.5;
               alignment = align_style::left_align;
             }
             else if (derived().x_ticks_.major_value_labels_side_ > 0)
             { // labels to top, so start a little above y_up.
-              y = y_up - derived().x_value_label_style_.font_size() * 0.5;
+              y = y_up - derived().x_ticks_value_label_style_.font_size() * 0.5;
               alignment = align_style::right_align;
             }
           }
           else if (derived().x_ticks_.label_rotation_ == steepup)
           {  // Should handle other directions too.
-            x -= derived().x_value_label_style_.font_size() * 0.3;
+            x -= derived().x_ticks_value_label_style_.font_size() * 0.3;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
             { // labels upward, so start a little below y_down.
-              y = y_down + derived().x_value_label_style_.font_size() * 0.5;
+              y = y_down + derived().x_ticks_value_label_style_.font_size() * 0.5;
               alignment = align_style::left_align;
             }
             else if (derived().x_ticks_.major_value_labels_side_ > 0)
             { // labels to top, so start a little above y_up.
-              y = y_up - derived().x_value_label_style_.font_size() * 0.5;
+              y = y_up - derived().x_ticks_value_label_style_.font_size() * 0.5;
               alignment = align_style::right_align;
             }
           }
           else if (derived().x_ticks_.label_rotation_ == uphill)
           { // Assume some 45 slope, so need about sqrt(2) less space.
-            x += derived().x_value_label_style_.font_size() * 0.5;
+            x += derived().x_ticks_value_label_style_.font_size() * 0.5;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
             { // labels to bottom, so start a little to bottom of y_bottom.
-              y = y_down + derived().x_value_label_style_.font_size() * sin45;
+              y = y_down + derived().x_ticks_value_label_style_.font_size() * sin45;
               // Seems to need a bit more space for top than bottom if rotated.
               alignment = align_style::right_align;
             }
             else if (derived().x_ticks_.major_value_labels_side_ > 0)
             { // labels to top, so start a little to top of y_top.
-              y = y_up - derived().x_value_label_style_.font_size() * 0.3;
+              y = y_up - derived().x_ticks_value_label_style_.font_size() * 0.3;
               alignment = align_style::left_align;
             }
           }
           else if (derived().x_ticks_.label_rotation_ == slopeup)
           { // Assume for 30 degree slope, need about sqrt(2) less space.
-            x += derived().x_value_label_style_.font_size() * 0.5;
+            x += derived().x_ticks_value_label_style_.font_size() * 0.5;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
             { // labels to bottom, so start a little to bottom of y_bottom.
-              y = y_down + derived().x_value_label_style_.font_size() * sin45;
+              y = y_down + derived().x_ticks_value_label_style_.font_size() * sin45;
               // Seems to need a bit more space for top than bottom if rotated.
               alignment = align_style::right_align;
             }
             else if (derived().x_ticks_.major_value_labels_side_ > 0)
             { // labels to top, so start a little to top of y_top.
-              y = y_up - derived().x_value_label_style_.font_size() * 0.2;
+              y = y_up - derived().x_ticks_value_label_style_.font_size() * 0.2;
               alignment = align_style::left_align;
             }
           }
           else if (derived().x_ticks_.label_rotation_ == downhill)
           { // Assume some 45 slope, so need about sqrt(2) less space.
-            x -= derived().x_value_label_style_.font_size() * 0.3;
+            x -= derived().x_ticks_value_label_style_.font_size() * 0.3;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
             { // labels to bottom, so start a little to bottom of y_down.
-              y = y_down + derived().x_value_label_style_.font_size() * 0.7;
+              y = y_down + derived().x_ticks_value_label_style_.font_size() * 0.7;
               // Seems to need a bit more space for top than bottom if rotated.
               alignment = align_style::left_align;
             }
             else if (derived().x_ticks_.major_value_labels_side_ > 0)
             { // labels to top, so start a little to top of y_up.
-              y = y_up - derived().x_value_label_style_.font_size() * 0.3;
+              y = y_up - derived().x_ticks_value_label_style_.font_size() * 0.3;
               alignment = align_style::right_align;
             }
           }
           else if (derived().x_ticks_.label_rotation_ == slopedownhill)
           { // Assume some 30 slope, so need about sqrt(2) less space.
-            x -= derived().x_value_label_style_.font_size() * 0.3;
+            x -= derived().x_ticks_value_label_style_.font_size() * 0.3;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
             { // labels to bottom, so start a little to bottom of y_down.
-              y = y_down + derived().x_value_label_style_.font_size() * 0.7;
+              y = y_down + derived().x_ticks_value_label_style_.font_size() * 0.7;
               // Seems to need a bit more space for top than bottom if rotated.
               alignment = align_style::left_align;
             }
             else if (derived().x_ticks_.major_value_labels_side_ > 0)
             { // labels to top, so start a little to top of y_up.
-              y = y_up - derived().x_value_label_style_.font_size() * 0.3;
+              y = y_up - derived().x_ticks_value_label_style_.font_size() * 0.3;
               alignment = align_style::right_align;
             }
           }
           else if (derived().x_ticks_.label_rotation_ == steepdown)
           {  // Should handle other directions too.
-            x -= derived().x_value_label_style_.font_size() * 0.3;
+            x -= derived().x_ticks_value_label_style_.font_size() * 0.3;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
             { // labels to bottom, so start a little below y_down.
-              y = y_down + derived().x_value_label_style_.font_size() * 0.5;
+              y = y_down + derived().x_ticks_value_label_style_.font_size() * 0.5;
               alignment = align_style::left_align;
             }
             else if (derived().x_ticks_.major_value_labels_side_ > 0)
             { // labels to top, so start a little above y_up.
-              y = y_up - derived().x_value_label_style_.font_size() * 0.5;
+              y = y_up - derived().x_ticks_value_label_style_.font_size() * 0.5;
               alignment = align_style::right_align;
             }
           }
@@ -1129,12 +1129,12 @@ namespace boost
           { // Tick value label on X-axis is normal default horizontal.
             if (derived().x_ticks_.major_value_labels_side_ < 0)
             { // labels to bottom of tick, so start a little below bottom of y_down.
-              y = y_down + derived().x_value_label_style_.font_size() * 1.3; // 1.3 allows 1/3 font space.
+              y = y_down + derived().x_ticks_value_label_style_.font_size() * 1.3; // 1.3 allows 1/3 font space.
               alignment = align_style::center_align; // center on the tick.
             }
             else if (derived().x_ticks_.major_value_labels_side_ > 0)
             { // labels to top, so start a little to top of y_up.
-              y = y_up - derived().x_value_label_style_.font_size() * 0.7;
+              y = y_up - derived().x_ticks_value_label_style_.font_size() * 0.7;
               alignment = align_style::center_align;
             }
           }
@@ -1208,7 +1208,7 @@ namespace boost
            // std::cout << " g_ptr->text_style_ is " << g_ptr->text_style_ << std::endl;
            // g_ptr->text_style_ is text_style(20, "arial", "", "bold", "", "")
            // and pick up alignment and rotation, if any.
-            // x_ticks_value_label_info_(0, 0, "", x_value_label_style_, align_style::center_align, horizontal),
+            // x_ticks_value_label_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, horizontal),
              align_style a = derived().x_ticks_value_label_info_.align_; // align = center OK
              rotate_style r = derived().x_ticks_value_label_info_.rotate_; // rot = 0 OK
            //  rotate_style r = derived().x_ticks_.label_rotation_; // OK too
