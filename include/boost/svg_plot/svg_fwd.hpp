@@ -116,7 +116,7 @@ svg_style& stroke_color(const svg_color& col);
 svg_style& stroke_width(unsigned int width);
 // void svg_style::write(std::ostream& rhs);
 
-// svg_tag.hpp
+// svg_elements.hpp
 
 class svg_element; //svg_element is base class for
   // rect_element, circle_element, line_element, text_element, path_element, clip_path_element, g_element

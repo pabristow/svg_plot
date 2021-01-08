@@ -28,7 +28,7 @@
 
 #include <boost/svg_plot/svg.hpp>
 #include <boost/svg_plot/svg_style.hpp>
-#include <boost/svg_plot/detail/svg_tag.hpp>
+#include <boost/svg_plot/detail/svg_elements.hpp>
 #include <boost/svg_plot/detail/numeric_limits_handling.hpp>
 // using boost::math::fpclassify for
 // boost::math::

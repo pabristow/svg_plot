@@ -176,7 +176,7 @@
 #include <vector>
 
 //#include "stylesheet.hpp" // TODO better to be called svg_stylesheet.hpp?
-#include "detail/svg_tag.hpp" // element class definitions.
+#include "detail/svg_elements.hpp" // element class definitions.
 #include "svg_style.hpp"
 //#include "svg_fwd.hpp" // Could be used to check declarations and definitions match correctly.
 
@@ -837,7 +837,7 @@ public:
     const text_style& style, // font size, font family etc., and any text_length estimate.
     align_style align, rotate_style rotate)
   { //! push_back information about text to the document, with location, style (font size, family etc and text_length), alignment & rotation.
-    return document_.text(x, y, text, style, align, rotate); // see svg_tag.hpp 2137 for definition.
+    return document_.text(x, y, text, style, align, rotate); // see svg_elements.hpp 2137 for definition.
   }
   /*  text_length  SVG XML textLength = "<length>"
   The author's (this program svg_plot) computation of the total sum of all of 

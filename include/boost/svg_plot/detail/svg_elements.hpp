@@ -1,10 +1,10 @@
 /*! \file
    \brief Boost.Plot SVG plot Implementation details.
    \details See svg.hpp etc for user functions.
-      svg_tag.hpp defines all classes that can occur in the SVG parse tree.
+      svg_elements.hpp defines all classes that can occur in the SVG parse tree.
 */
 
-// svg_tag.hpp
+// svg_elements.hpp
 
 // Copyright Jacob Voytko 2007, 2008
 // Copyright Paul A Bristow 2007, 2008, 2009, 2012, 2020
