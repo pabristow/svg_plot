@@ -784,7 +784,7 @@ public:
   y_ticks_value_label_style_(12, default_font_family, "", ""),
   point_symbols_style_(12, "Lucida Sans Unicode"), // Used for data point marking to try to get in right place.
   // try to center accurately on the point's value.
-  values_style_(rightward, 3, std::ios::dec, true, value_style_, black, black, false, false),
+  values_style_(rightward, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, false, false),
 
   x_ticks_(X, x_ticks_value_label_style_),// so for other defaults see ticks_labels_style.
   y_ticks_(Y, y_ticks_value_label_style_),

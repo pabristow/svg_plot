@@ -2731,6 +2731,7 @@ my_plot.background_color(ghostwhite) // Whole image.
       svg_color y_values_color();
        svg_2d_plot& y_values_rotation(rotate_style rotate);
       int y_values_rotation();
+      align_style y_values_alignment();
       svg_2d_plot& y_values_precision(int p);
       int y_values_precision();
       svg_2d_plot& y_values_ioflags(std::ios_base::fmtflags f);
@@ -3645,6 +3646,13 @@ my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
       { //! \return rotation for value labels on Y-axis.
         return y_values_style_.value_label_rotation_;
       }
+
+      align_style svg_2d_plot::y_values_alignment()
+      { //! \return rotation for value labels on Y-axis.
+        return y_values_style_.value_label_alignment_;
+       }
+
+
 
       svg_2d_plot& svg_2d_plot::y_values_precision(int p)
       { //! Set @c iostream precision for data points Y values.

@@ -236,11 +236,7 @@ void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
   os << "title_on " << plot.title_on() << std::endl;
   os << "title \"" << plot.title() << "\""<< std::endl;
   os << "title_color " << plot.title_color() << std::endl;
-
-  align_style a = plot.title_font_alignment();
-  os << "title_font_alignment " << a << std::endl;
-
-//  os << "title_font_alignment " << plot.title_font_alignment() << std::endl;
+  os << "title_font_alignment " << plot.title_font_alignment() << std::endl;
   os << "title_font_decoration " << plot.title_font_decoration() << std::endl;
   os << "title_font_family " << plot.title_font_family() << std::endl;
   os << "title_font_rotation " << plot.title_font_rotation() << std::endl;

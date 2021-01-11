@@ -145,16 +145,16 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "title_font_weight " << plot.title_font_weight() << std::endl;
   os << "title_style " << plot.title_style_ << std::endl;
   os << "title_text_length " << plot.title_text_length() << std::endl;
+  // X value labels.
   os << "x_values_on "  << plot.x_values_on() << std::endl;
   os << "x_values_font_size "  << plot.x_values_font_size() << std::endl;
   os << "x_values_font_family "  << plot.x_values_font_family() << std::endl;
   os << "x_values_precision " << plot.x_values_precision() << std::endl;
   os << "x_values_ioflags " << std::hex << plot.x_values_ioflags() << std::dec << ' ';
   outFmtFlags(plot.x_value_ioflags(), os,  ".\n");
-
-  int rot = plot.x_values_rotation();
-  os << "x_values_rotation "  << rot << std::endl;
-  os << "x_values_alignment "  << plot.x_values_style_.value_label_alignment_ << std::endl;
+  os << "x_values_rotation "  << plot.x_values_rotation() << std::endl;
+  //os << "x_values_alignment "  << plot.x_values_style_.value_label_alignment_ << std::endl;
+  os << "x_values_alignment "  << plot.x_values_alignment() << std::endl;
 
   os << "y_values_precision " << plot.y_values_precision() << std::endl;
   os << "y_values_ioflags " << std::hex << plot.y_values_ioflags() << std::dec << ' ';
@@ -162,6 +162,9 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "y_values_color " << plot.y_values_color() << std::endl;
   os << "y_values_font_family() " << plot.y_values_font_family() << std::endl;
   os << "y_values_font_size() " << plot.y_values_font_size() << std::endl;
+  os << "y_values_rotation "  << plot.y_values_rotation() << std::endl;
+  os << "y_values_alignment "  << plot.y_values_alignment() << std::endl;
+
   os << "x_max " << plot.x_max() << std::endl;
   os << "x_min " << plot.x_min() << std::endl;
   os << "x_autoscale " << plot.x_autoscale() << std::endl;
