@@ -73,8 +73,9 @@ class histogram_style;  // Options for histograms.
 class bar_style;  // Style of bars.
 
 //! \enum rotate_style Rotation of text (in degrees clockwise from horizontal == 0). (but rotation stored an int degrees).
-//! int rotation = static_cast<int>(rotate_style::horizontal) which is really ugly, but typesafe.
-enum class rotate_style
+//! int rotation = static_cast<int>(horizontal) which is really ugly.
+//! (Making an enum class caused major clutter.
+enum rotate_style
 {
   // Also need a no_rotate, = -1;
   horizontal = 0, //!< normal horizontal left to right, centered.
@@ -127,7 +128,7 @@ std::ostream& operator<< (std::ostream& os, const align_style& al)
   return os;
 } //   std::ostream& operator<< (std::ostream& os, align_style al)
 
-std::ostream& operator<< (rotate_style& rot_style, std::ostream& os)
+std::ostream& operator<< (int rot, std::ostream& os)
 { //! Outputs: rotation style as words from horizontal (useful for diagnosis).
   //! Example: 
   //! \code int rot = static_cast<int>(horizontal);
@@ -136,7 +137,6 @@ std::ostream& operator<< (rotate_style& rot_style, std::ostream& os)
   //! 
   //! 
   // Outputs: \verbatim rot is uphill (-45) \endverbatim
-  int rot = static_cast<int>(rot_style);
   if (rot == 0) { os << "horizontal (0)"; }
   else if (rot == -30) { os << "slopeup (-30)"; }
   else if (rot == -45) { os << "uphill (-45)"; }
@@ -155,7 +155,7 @@ std::ostream& operator<< (rotate_style& rot_style, std::ostream& os)
   // else { os << static_cast<int>(rot) << " rotate!"; }  // Should not happen.
   ;
   return os;
-  } // std::ostream& operator<< (std::ostream& os, rotate_style::rotate_style& rot)
+  } // std::ostream& operator<< (std::ostream& os, rotate_style& rot)
 
 //! The place for ticks value-labels on the X and/or Y-axes.
 enum place
@@ -900,7 +900,7 @@ public:
  //!< Constructor Data point value label style (provides default color and font).
  value_style::value_style()
     :
-    value_label_rotation_(static_cast<int>(rotate_style::horizontal)), //!< Label orientation, default horizontal.
+    value_label_rotation_(static_cast<int>(horizontal)), //!< Label orientation, default horizontal.
     value_label_alignment_(align_style::left_align), //!< Alignment (or anchoring), default left, so value label is to the right of the data point marker.
     value_precision_(3), //!< Precision, reduced from default of 6 which is usually too long.
     value_ioflags_(std::ios::dec), //!< Any std::ios::ioflags, for example, hex, fixed, scientific.
@@ -1555,7 +1555,7 @@ public:
     // 0 (false) means no ticks value labels (just ticks),
     // > 0 means to right (for Y) or top(for X).
     int label_rotation_; //!< Rotation direction axis tick-value labels written. Default 0 means horizontal.
-    // assign by static_cast<int>(rotate_style::horizontal)
+    // assign by static_cast<int>(horizontal)
     //align_style label_alignment_; //< Alignment of tick-value-label using text_anchor. Default center_align for X-axis but right_align for Y-axis.
     //!< This ensures that value labels center on the tick so that "1.1" aligns the decimal point with the tick.
     //!< Ideally alignment takes rotation into account to get label as close a possible to the tick. 
@@ -1616,7 +1616,7 @@ public:
     // Simplest to have all of these although only one pair like up or down is used.
     // Unused are always false.
     major_value_labels_side_(-1), // Label values side for major ticks left (right or none).
-    label_rotation_(static_cast<int>(rotate_style::horizontal)), // Direction axis value labels written.
+    label_rotation_(static_cast<int>(horizontal)), // Direction axis value labels written.
       // label_alignment(?)
     major_grid_on_(false),  // Draw grid at major ticks.
     minor_grid_on_(false),// Draw grid at minor ticks.

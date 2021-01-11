@@ -1017,7 +1017,7 @@ namespace boost
           // = 0 is only to avoid unitialised warning.
           align_style alignment = align_style::center_align;
           // Adjustments to provide space from end of tick before or after writing label.
-          if (derived().x_ticks_.label_rotation_ == rotate_style::upward) // vertical writing up.
+          if (derived().x_ticks_.label_rotation_ == upward) // vertical writing up.
           {  // Shift to center value digits and minus sign on tick.
             x += derived().x_ticks_value_label_style_.font_size() * 0.2;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
@@ -1031,7 +1031,7 @@ namespace boost
               alignment = align_style::left_align;
             }
           }
-          else if (derived().x_ticks_.label_rotation_ == rotate_style::downward)
+          else if (derived().x_ticks_.label_rotation_ == downward)
           {  // Should handle other directions too.
             x -= derived().x_ticks_value_label_style_.font_size() * 0.3;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
@@ -1045,7 +1045,7 @@ namespace boost
               alignment = align_style::right_align;
             }
           }
-          else if (derived().x_ticks_.label_rotation_ == rotate_style::steepup)
+          else if (derived().x_ticks_.label_rotation_ == steepup)
           {  // Should handle other directions too.
             x -= derived().x_ticks_value_label_style_.font_size() * 0.3;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
@@ -1059,7 +1059,7 @@ namespace boost
               alignment = align_style::right_align;
             }
           }
-          else if (derived().x_ticks_.label_rotation_ == rotate_style::uphill)
+          else if (derived().x_ticks_.label_rotation_ == uphill)
           { // Assume some 45 slope, so need about sqrt(2) less space.
             x += derived().x_ticks_value_label_style_.font_size() * 0.5;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
@@ -1074,7 +1074,7 @@ namespace boost
               alignment = align_style::left_align;
             }
           }
-          else if (derived().x_ticks_.label_rotation_ == rotate_style::slopeup)
+          else if (derived().x_ticks_.label_rotation_ == slopeup)
           { // Assume for 30 degree slope, need about sqrt(2) less space.
             x += derived().x_ticks_value_label_style_.font_size() * 0.5;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
@@ -1089,7 +1089,7 @@ namespace boost
               alignment = align_style::left_align;
             }
           }
-          else if (derived().x_ticks_.label_rotation_ == rotate_style::downhill)
+          else if (derived().x_ticks_.label_rotation_ == downhill)
           { // Assume some 45 slope, so need about sqrt(2) less space.
             x -= derived().x_ticks_value_label_style_.font_size() * 0.3;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
@@ -1104,7 +1104,7 @@ namespace boost
               alignment = align_style::right_align;
             }
           }
-          else if (derived().x_ticks_.label_rotation_ == rotate_style::slopedownhill)
+          else if (derived().x_ticks_.label_rotation_ == slopedownhill)
           { // Assume some 30 slope, so need about sqrt(2) less space.
             x -= derived().x_ticks_value_label_style_.font_size() * 0.3;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
@@ -1119,7 +1119,7 @@ namespace boost
               alignment = align_style::right_align;
             }
           }
-          else if (derived().x_ticks_.label_rotation_ == rotate_style::steepdown)
+          else if (derived().x_ticks_.label_rotation_ == steepdown)
           {  // Should handle other directions too.
             x -= derived().x_ticks_value_label_style_.font_size() * 0.3;
             if (derived().x_ticks_.major_value_labels_side_ < 0)
@@ -1133,7 +1133,7 @@ namespace boost
               alignment = align_style::right_align;
             }
           }
-          else if (derived().x_ticks_.label_rotation_ == rotate_style::horizontal)
+          else if (derived().x_ticks_.label_rotation_ == horizontal)
           { // Tick value label on X-axis is normal default horizontal.
             if (derived().x_ticks_.major_value_labels_side_ < 0)
             { // labels to bottom of tick, so start a little below bottom of y_down.
@@ -1218,12 +1218,12 @@ namespace boost
            // and pick up alignment and rotation, if any.
             // x_ticks_value_label_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, horizontal),
              align_style a = derived().x_ticks_value_label_info_.align_; // align = center OK
-             rotate_style r = derived().x_ticks_value_label_info_.rotate_; // rot = 0 OK
+             int rot = derived().x_ticks_value_label_info_.rotate_; // rot = 0 OK
            //  rotate_style r = derived().x_ticks_.label_rotation_; // OK too
           //   std::cout "X-ticks values rotation " <<  << r << std::endl;
            //  std::cout << "X-ticks values alignment " << a << std::endl;
            g_ptr->alignment_ = a;
-           g_ptr->rotation_ = r;
+           g_ptr->rotation_ = rot;
            // Example:  <g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold" text-anchor="middle">
              g_ptr->text(
                x,
@@ -1388,7 +1388,7 @@ namespace boost
         { // Ticks value labels below plot window.
           if (derived().x_ticks_.major_value_labels_side_ < 0) // bottom
           { // Shift down to allow for any tick value labels.
-            if ((derived().x_ticks_.label_rotation_ == static_cast<int>(rotate_style::downward)) || (derived().x_ticks_.label_rotation_ == static_cast<int>(rotate_style::upward)))
+            if ((derived().x_ticks_.label_rotation_ == static_cast<int>(downward)) || (derived().x_ticks_.label_rotation_ == static_cast<int>(upward)))
             { // downward tick value label direction 90 up or down.
               y += derived().x_ticks_.label_max_space_;
               if (derived().x_ticks_.down_ticks_on_ == true)
@@ -1398,7 +1398,7 @@ namespace boost
                 y += 0.7 * (derived().x_label_info_.textstyle().font_size() + derived().x_ticks_value_label_info_.textstyle().font_size()); // best compromise?
               }
             }
-            else if ((derived().x_ticks_.label_rotation_ == rotate_style::steepdown) || (derived().x_ticks_.label_rotation_ == rotate_style::steepup))
+            else if ((derived().x_ticks_.label_rotation_ == steepdown) || (derived().x_ticks_.label_rotation_ == steepup))
             { // downward tick value label direction 60 up or down.
               y += derived().x_ticks_.label_max_space_;
               if (derived().x_ticks_.down_ticks_on_ == true)
@@ -1408,7 +1408,7 @@ namespace boost
                 y += 0.5 * (derived().x_label_info_.textstyle().font_size() + derived().x_ticks_value_label_info_.textstyle().font_size()); // best compromise?
               }
             }
-            else if ((derived().x_ticks_.label_rotation_ == rotate_style::uphill) || (derived().x_ticks_.label_rotation_ == rotate_style::downhill))
+            else if ((derived().x_ticks_.label_rotation_ == uphill) || (derived().x_ticks_.label_rotation_ == downhill))
             { // sloping 45 degrees up or down.
               y += derived().x_ticks_.label_max_space_ * sin45; // Move down from end of tick.
               if (derived().x_ticks_.down_ticks_on_ == true)
@@ -1418,7 +1418,7 @@ namespace boost
                 y += 0.7 * (derived().x_label_info_.textstyle().font_size() + derived().x_ticks_value_label_info_.textstyle().font_size()); // best compromise?
               }
             }
-            else if ((derived().x_ticks_.label_rotation_ == rotate_style::slopeup) || (derived().x_ticks_.label_rotation_ == rotate_style::slopedownhill))
+            else if ((derived().x_ticks_.label_rotation_ == slopeup) || (derived().x_ticks_.label_rotation_ == slopedownhill))
             { // sloping 30 degrees.
               y += derived().x_ticks_.label_max_space_ * sin45; // Move down from end of tick.
               if (derived().x_ticks_.down_ticks_on_ == true)
@@ -1428,7 +1428,7 @@ namespace boost
                 y += 0.5 * (derived().x_label_info_.textstyle().font_size() + derived().x_ticks_value_label_info_.textstyle().font_size()); // best compromise?
               }
             }
-            else if (derived().x_ticks_.label_rotation_ == rotate_style::horizontal)
+            else if (derived().x_ticks_.label_rotation_ == horizontal)
             { // horizontal X ticks value labels (default).
               if (derived().x_ticks_.major_value_labels_side_ < 0)
               { //  Move down to allow space for font size of tick value labels below X-axis.
@@ -1478,7 +1478,7 @@ namespace boost
           y, // Down from plot window.
           x_label,
           derived().x_label_info_.textstyle(),
-          align_style::center_align, rotate_style::horizontal)
+          align_style::center_align, horizontal)
         );
       } // void draw_x_axis_label()
 
@@ -2420,7 +2420,7 @@ namespace boost
 
       //  Shapes as symbols using SVG text function, (NOT using SVG line, circle or eclipse).
       case symbol: // Unicode symbol.  see https://unicode-search.net/ for search
-        g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), align_style::center_align, rotate_style::horizontal); // symbol(s), size and center.
+        g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), align_style::center_align, horizontal); // symbol(s), size and center.
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "symbol point_style.style() = " << point_style.style() << std::endl;
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
@@ -2459,7 +2459,7 @@ namespace boost
         // std::cout << "square point_style.symbols_style_ = " << point_style.symbols_style_ << std::endl;
         // square point_style.symbols_style_ = text_style(14, "Lucida Sans Unicode", "", "", "", "")
 
-        g_ptr.text(x, y + third_height, "&#x25A0;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+        g_ptr.text(x, y + third_height, "&#x25A0;", point_style.symbols_style_, align_style::center_align, horizontal);
         // https://unicode.org/charts/PDF/U25A0.pdf Geometric Shapes
         // 25A1 white-center square - but fill always white.
         // Other possible symbols 20DE  enclosing square (white center) but larger than 25A0.
@@ -2475,12 +2475,12 @@ namespace boost
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "point_style.symbols_style_ = " << point_style.symbols_style_ << std::endl;
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-        g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), align_style::center_align, rotate_style::horizontal);
+        g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), align_style::center_align, horizontal);
         // symbol(s), size and center.
 
         break;
       case diamond:
-        g_ptr.text(x, y + third_height, "&#x2666;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+        g_ptr.text(x, y + third_height, "&#x2666;", point_style.symbols_style_, align_style::center_align, horizontal);
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
       std::cout << "sty.symbols_style_ " << point_style.symbols_style_ << std::endl;
@@ -2495,24 +2495,24 @@ namespace boost
         // U+FE61 SMALL ASTERISK centers OK but is small.
         // 2732 is open center asterisk.
         // 273C is open center TEARDROP-SPOKED ASTERISK
-        g_ptr.text(x, y + third_height, "&#x273C;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+        g_ptr.text(x, y + third_height, "&#x273C;", point_style.symbols_style_, align_style::center_align, horizontal);
         // asterisk is black filled.
         break;
       case lozenge:
-        g_ptr.text(x, y + third_height, "&#x25CA;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+        g_ptr.text(x, y + third_height, "&#x25CA;", point_style.symbols_style_, align_style::center_align, horizontal);
         // size / 3 to get tip of lozenge just on the X-axis.
         // lozenge seems not to fill?
         break;
       case club:
-        g_ptr.text(x, y + third_height, "&#x2663;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+        g_ptr.text(x, y + third_height, "&#x2663;", point_style.symbols_style_, align_style::center_align, horizontal);
         // x, y, puts club just on the X-axis.
         break;
       case spade:
-        g_ptr.text(x, y + third_height, "&#x2660;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+        g_ptr.text(x, y + third_height, "&#x2660;", point_style.symbols_style_, align_style::center_align, horizontal);
         //
         break;
       case heart:
-        g_ptr.text(x, y + third_height , "&#x2665;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+        g_ptr.text(x, y + third_height , "&#x2665;", point_style.symbols_style_, align_style::center_align, horizontal);
         break;
       case outside_window: // Pointing down triangle used only to show data-points that are outside plot window.
         {
@@ -2530,32 +2530,32 @@ namespace boost
         // or &#x25BA for white center point right triangle.
       case cone: // Synonym for cone_point_up
       case cone_point_up: // pointing-up triangle, white centre.
-        g_ptr.text(x, y + third_height, "&#x25BD;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+        g_ptr.text(x, y + third_height, "&#x25BD;", point_style.symbols_style_, align_style::center_align, horizontal);
         // https://unicode.org/charts/PDF/U25A0.pdf
         break;
 
       case cone_point_down: // pointing-down triangle, white centre.
-          g_ptr.text(x, y + third_height, "&#x25BF;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+          g_ptr.text(x, y + third_height, "&#x25BF;", point_style.symbols_style_, align_style::center_align, horizontal);
           // https://unicode.org/charts/PDF/U25A0.pdf
           break;
 
       case cone_point_right: // small pointing-right triangle, white centre (or 25b7 for bigger one).
-          g_ptr.text(x, y + third_height, "&#x25B9;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+          g_ptr.text(x, y + third_height, "&#x25B9;", point_style.symbols_style_, align_style::center_align, horizontal);
           // <text x="489" y="109" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9</text>
           break;
 
       case cone_point_left: // small pointing-left triangle, white centre.
-          g_ptr.text(x, y + third_height, "&#x25C3;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+          g_ptr.text(x, y + third_height, "&#x25C3;", point_style.symbols_style_, align_style::center_align, horizontal);
           // https://unicode.org/charts/PDF/U25A0.pdf  Or larger triangle 25C1
           break;
 
       case triangle: // Pointing-up triangle, white centre.
-          g_ptr.text(x, y  + third_height, "&#x25B4;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+          g_ptr.text(x, y  + third_height, "&#x25B4;", point_style.symbols_style_, align_style::center_align, horizontal);
             // Also could use &#x25BC for pointing down triangle, or &#x25B4 for small up-pointing triangle.
             // https://unicode.org/charts/PDF/U25A0.pdf
           break;
         case star:
-          g_ptr.text(x, y  + third_height, "&#x2605;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+          g_ptr.text(x, y  + third_height, "&#x2605;", point_style.symbols_style_, align_style::center_align, horizontal);
           break;
 
       case cross: // Not X. Size is full font size for other options see https://unicode-search.net/unicode-namesearch.pl?term=CROSS
@@ -2564,7 +2564,7 @@ namespace boost
         // Cross is pretty useless for 1-D because the horizontal line is on the X-axis.
         // g_ptr.text(x, y  + third_height, "&#x274C;", point_style.symbols_style_, center_align, horizontal);
         // Offset of third_height to try to center symbol on both the X and Y axes.
-        g_ptr.text(x, y  + third_height, "&#x272F;", point_style.symbols_style_, align_style::center_align, rotate_style::horizontal);
+        g_ptr.text(x, y  + third_height, "&#x272F;", point_style.symbols_style_, align_style::center_align, horizontal);
         break;
       }
     } // void draw_plot_point
@@ -2638,70 +2638,70 @@ namespace boost
             // size of the data marker, less the value label font size.
             // May need to combine these two?
 
-            rotate_style rot = val_style.value_label_rotation_;
+            int rot = val_style.value_label_rotation_;
             // http://www.w3.org/TR/SVG/coords.html#RotationDefined
             // transform="rotate(-45)" == uphill
 
             align_style al; // = center_align;
             switch (rot)
             {
-            case rotate_style::horizontal: // OK
+            case horizontal: // OK
               al = align_style::center_align;
               y -= marker_size * 2;  // Up marker font size;
               // center_align means no x correction.
               break;
-            case rotate_style::leftward: // horizontal but to left of marker.
+            case leftward: // horizontal but to left of marker.
               al = align_style::right_align;
               x -= marker_size * 1.3;  // left
               y += label_size * 0.3;  // down label font size;
-              rot = rotate_style::horizontal;
+              rot = horizontal;
               break;
-            case rotate_style::rightward: // horizontal but to right of marker.
+            case rightward: // horizontal but to right of marker.
               al = align_style::left_align;
               x += marker_size * 1.1;  // right
               y += label_size * 0.3;  // down label font size;
-              rot = rotate_style::horizontal;
+              rot = horizontal;
               break;
-            case rotate_style::upsidedown: // OK but upsidedown so not very useful!
+            case upsidedown: // OK but upsidedown so not very useful!
               al = align_style::center_align;
               y += marker_size;  // Down marker font size;
              break;
-            case rotate_style::slopeup: // -30 - OK
-            case rotate_style::steepup: // -45 - OK
-            case rotate_style::uphill: // -60 - OK
+            case slopeup: // -30 - OK
+            case steepup: // -45 - OK
+            case uphill: // -60 - OK
               al = align_style::left_align;
               x += label_size /3;  // Right third label font size - centers on marker.
               y -= marker_size * 0.6;  // UP marker font size;
               break;
-            case rotate_style::upward: // -90 vertical writing up - OK.
+            case upward: // -90 vertical writing up - OK.
               al = align_style::left_align;
               x += label_size /3;  // Right third label font size - centers on marker.
               y -= marker_size * 0.9;  // Up marker font size;
               break;
-            case rotate_style::backup: // OK
+            case backup: // OK
               al = align_style::right_align;
               x -= marker_size * 1.5;  // Left
               y -= marker_size * 0.8;  // Up
-              rot = rotate_style::downhill;
+              rot = downhill;
               break;
 
-            case rotate_style::slopedownhill: // 30 gentle slope down.
-            case rotate_style::downhill: // 45 down.
-            case rotate_style::steepdown: //  60 steeply down.
+            case slopedownhill: // 30 gentle slope down.
+            case downhill: // 45 down.
+            case steepdown: //  60 steeply down.
              al = align_style::left_align;
               x += marker_size * 0.4;  // Right;
               y += marker_size * 0.9;  // Down
               break;
-            case rotate_style::downward: // OK
+            case downward: // OK
               al = align_style::left_align;
               x -= marker_size;  // Left
               y += marker_size;  // Up
              break;
-            case rotate_style::backdown: // OK
+            case backdown: // OK
               al = align_style::right_align;
               x -= marker_size * 0.5;  // Left
               y += marker_size * 1.5;  // down
-              rot = rotate_style::uphill;
+              rot = uphill;
              break;
             } // switch
             text_element& t = g_ptr.text(x, y, stripped, val_style.values_text_style_, al, rot);  // X or Y value "1.23".
@@ -2865,66 +2865,66 @@ namespace boost
             // Offset of value labels from point must be related mainly to
             // size of the data marker, less the value label font size.
 
-            rotate_style rot = x_sty.value_label_rotation_;
+            int rot = x_sty.value_label_rotation_;
             align_style al; // = center_align;
             switch (rot)
             {
-            case rotate_style::horizontal: // OK
+            case horizontal: // OK
               al = align_style::center_align;
               y -= marker_size * 2;  // Up marker font size;
               // center_align means no x correction.
               break;
-            case rotate_style::leftward: // horizontal but to left of marker. OK
+            case leftward: // horizontal but to left of marker. OK
               al = align_style::right_align;
               x -= marker_size * 1.3;  // left
               y += label_size * 0.3;  // down label font size;
-              rot = rotate_style::horizontal;
+              rot = horizontal;
               break;
-            case rotate_style::rightward: // horizontal but to right of marker.OK
+            case rightward: // horizontal but to right of marker.OK
               al = align_style::left_align;
               x += marker_size * 1.1;  // right
               y += label_size * 0.3;  // down label font size;
-              rot = rotate_style::horizontal;
+              rot = horizontal;
               break;
-            case rotate_style::upsidedown: // OK but upsidedown so not very useful!
+            case upsidedown: // OK but upsidedown so not very useful!
               al = align_style::center_align;
               y += marker_size;  // Down marker font size;
              break;
-            case rotate_style::slopeup: // -30 - OK
-            case rotate_style::steepup: // -45 - OK
-            case rotate_style::uphill: // -60 - OK
+            case slopeup: // -30 - OK
+            case steepup: // -45 - OK
+            case uphill: // -60 - OK
               al = align_style::left_align;
               x += label_size /3;  // Right third label font size - centers on marker.
               y -= marker_size * 0.6;  // UP marker font size;
               break;
-            case rotate_style::upward: // -90 vertical writing up - OK.
+            case upward: // -90 vertical writing up - OK.
               al = align_style::left_align;
               x += label_size /3;  // Right third label font size - centers on marker.
               y -= marker_size * 0.9;  // Up marker font size;
               break;
-            case rotate_style::backup: // OK
+            case backup: // OK
               al = align_style::right_align;
               x -= marker_size * 1.5;  // Left
               y -= marker_size * 0.8;  // Up
-              rot = rotate_style::downhill;
+              rot = downhill;
               break;
-            case rotate_style::slopedownhill: // 30 gentle slope down.
-            case rotate_style::downhill: // 45 down.
-            case rotate_style::steepdown: //  60 steeply down.
+            case slopedownhill: // 30 gentle slope down.
+            case downhill: // 45 down.
+            case steepdown: //  60 steeply down.
               al = align_style::left_align;
               x += marker_size * 0.4;  // Right;
               y += marker_size * 0.9;  // Down
               break;
-            case rotate_style::downward: // OK
+            case downward: // OK
               al = align_style::left_align;
               x -= marker_size;  // Left
               y += marker_size;  // Up
              break;
-            case rotate_style::backdown: // OK
+            case backdown: // OK
               al = align_style::right_align;
               x -= marker_size * 0.5;  // Left
               y += marker_size * 1.5;  // down
-              rot = rotate_style::uphill;
+              rot = uphill;
              break;
             } // switch
 

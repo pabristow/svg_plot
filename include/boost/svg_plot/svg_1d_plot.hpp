@@ -671,13 +671,13 @@ void svg_1d_plot::update_image()
     plus_limit_point_style_(red, white, 20, cone_point_up, ""), // Colors and size for outside window markers.
     minus_limit_point_style_(blue, white, 20, cone_point_down, ""), // Colors and size for outside window markers.
 
-    title_info_(0, 0, "", title_style_, align_style::center_align, static_cast<int>(rotate_style::horizontal)),
+    title_info_(0, 0, "", title_style_, align_style::center_align, static_cast<int>(horizontal)),
     //title_info_(0, 0, "Plot of data", title_style_, center_align, horizontal), when text concatenation solved?
     //x_label_info_(0, 0, "X Axis", x_axis_label_style_, center_align, horizontal),
     //x_units_info_(0, 0, " (units)", x_ticks_value_label_style_, center_align, horizontal),
-    x_label_info_(0, 0, "", x_axis_label_style_, align_style::center_align, static_cast<int>(rotate_style::horizontal)), // Null strings for now.
-    x_ticks_value_label_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, static_cast<int>(rotate_style::horizontal)), // X-axis tick value label, for example: "1.2" or "1.2e1".
-    x_units_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, static_cast<int>(rotate_style::horizontal)),
+    x_label_info_(0, 0, "", x_axis_label_style_, align_style::center_align, static_cast<int>(horizontal)), // Null strings for now.
+    x_ticks_value_label_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, static_cast<int>(horizontal)), // X-axis tick value label, for example: "1.2" or "1.2e1".
+    x_units_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, static_cast<int>(horizontal)),
     x_axis_(X, -10., +10., black, 1, 0, true, false, true),
     y_axis_(Y, 0., +1., black, 1, 0, false, false, false), // Not used for 1D.
 
@@ -695,7 +695,7 @@ void svg_1d_plot::update_image()
     image_border_(yellow, white, 1, 10, true, true), // margin should be about axis label font size.
     plot_window_border_(lightgoldenrodyellow, svg_color(255, 255, 255), 1, 3, true, false),
     legend_box_(yellow, white, 1, 1, true, true),
-    legend_title_(0, 0, "", legend_text_style_, align_style::center_align, static_cast<int>(rotate_style::horizontal)),
+    legend_title_(0, 0, "", legend_text_style_, align_style::center_align, static_cast<int>(horizontal)),
     legend_width_(200), // width of legend-box (pixels) // TODO isn't this calculated?
     legend_height_(0), // height of legend-box (pixels)
     legend_left_(-1), legend_right_(-1),legend_top_(-1),legend_bottom_(-1), // Default top left of plot window.
@@ -721,7 +721,7 @@ void svg_1d_plot::update_image()
     title_on_(true),
     plot_window_on_(true),
     x_values_on_(false), // By default, don't label point values.
-    x_values_style_(static_cast<int>(rotate_style::horizontal), align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, false, false),
+    x_values_style_(static_cast<int>(horizontal), align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, false, false),
     // Confidence interval parameters.
     // (Could provide functions for the user to control these).
     alpha_(0.05), // oss.iword(confidenceIndex) / 1.e6; 95% confidence.
@@ -897,13 +897,13 @@ void svg_1d_plot::calculate_plot_window()
     // Calculate the number of chars of the longest tick value label.
     x_ticks_.longest_label(); // Updates label_max_length_
     x_ticks_.label_max_space_ = 0; // Work out the longest tick value label for X-Axis.
-    if (x_ticks_.label_rotation_ == static_cast<int>(rotate_style::horizontal))
+    if (x_ticks_.label_rotation_ == static_cast<int>(horizontal))
     { // Only 1 char height & 1 space needed if labels are horizontal.
       x_ticks_.label_max_space_ = 2 * x_ticks_value_label_style_.font_size() * aspect_ratio; // SVG chars.
       // Should this be just 2 * font_size
     }
-    else if ((x_ticks_.label_rotation_ == static_cast<int>(rotate_style::upward)) 
-      || (x_ticks_.label_rotation_ == static_cast<int>(rotate_style::downward)))
+    else if ((x_ticks_.label_rotation_ == static_cast<int>(upward)) 
+      || (x_ticks_.label_rotation_ == static_cast<int>(downward)))
     { // ! horizontal so will need more than 2 chars worth.
         x_ticks_.label_max_space_+= x_ticks_.label_max_length_ * x_ticks_value_label_style_.font_size() * aspect_ratio; // SVG chars.
     }

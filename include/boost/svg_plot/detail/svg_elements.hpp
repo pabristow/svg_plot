@@ -1146,7 +1146,7 @@ public:
     const std::string text = "", //!< Text string to output (may include Unicode string like "&#x221A;" for square root symbol.
     text_style ts = no_text_style, //!< Text font text style, default left to SVG defaults.
     align_style align = align_style ::left_align, //!< Alighment of text, left, center or right, default left_align.
-    int rotate = static_cast<int>(rotate_style::horizontal)) //!< orientation of text, default horizontal.
+    int rotate = static_cast<int>(horizontal)) //!< orientation of text, default horizontal.
     : // Constructor.
     x_(x), y_(y), // location.
     data_(ptr_vector<text_parent>()),
@@ -2173,7 +2173,7 @@ public:
     align_style  alignment_;  //!< group alignment, left middle or right, or no_align.
     int rotation_; //!< text rotation, positive degrees 0 <= rotation_ <= 360, or specifically no rotation if < 0.
 
-    g_element() : clip_on_(false), clip_name_(""), alignment_(align_style::no_align), rotation_(static_cast<int>(rotate_style::horizontal))
+    g_element() : clip_on_(false), clip_name_(""), alignment_(align_style::no_align), rotation_(static_cast<int>(horizontal))
     { //! Construct g_element (default with no clipping).
     }
 
@@ -2303,7 +2303,7 @@ public:
     const std::string& text = "", // Text string to display.
     const text_style& textstyle = no_text_style, // Default to use SVG implementation's defaults for font family, size.
     const align_style& align = align_style::left_align,
-    const int rotate = static_cast<int>(rotate_style::horizontal))
+    const int rotate = static_cast<int>(horizontal))
     { //! Add a new text element.
       //! \return A reference to the new child (leaf) node just created.
       children_.push_back(new text_element(x, y, text, textstyle, align, rotate));
