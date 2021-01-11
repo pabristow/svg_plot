@@ -236,7 +236,11 @@ void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
   os << "title_on " << plot.title_on() << std::endl;
   os << "title \"" << plot.title() << "\""<< std::endl;
   os << "title_color " << plot.title_color() << std::endl;
-  os << "title_font_alignment " << plot.title_font_alignment() << std::endl;
+
+  align_style a = plot.title_font_alignment();
+  os << "title_font_alignment " << a << std::endl;
+
+//  os << "title_font_alignment " << plot.title_font_alignment() << std::endl;
   os << "title_font_decoration " << plot.title_font_decoration() << std::endl;
   os << "title_font_family " << plot.title_font_family() << std::endl;
   os << "title_font_rotation " << plot.title_font_rotation() << std::endl;
@@ -290,10 +294,18 @@ void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
   // Not implemented yet.
   //os << "x_label_width " << plot.x_label_width() << std::endl;
   os << "x_major_labels_side " << l_or_r(plot.x_major_labels_side()) << std::endl;
+  // X value labels
   os << "x_values_font_size " << plot.x_values_font_size() << std::endl;
   os << "x_values_color " << plot.x_values_color() << std::endl;
   os << "x_values_precision " << plot.x_values_precision() << std::endl;
-  os << "x_values_ioflags " << plot.x_values_ioflags() << std::endl;
+  os << "x_values_ioflags " << plot.x_values_ioflags() << " ";
+  outFmtFlags(plot.x_value_ioflags(), os, ".\n");
+
+ // os << "x_values_rotation " << plot.x_values_rotation() << std::end;
+  align_style al = plot.x_values_alignment();
+
+ // os << "x_values_alignment " << plot.x_values_alignment() << std::end;
+
   os << "x_major_label_rotation " << plot.x_major_label_rotation() << std::endl;
   os << "x_major_grid_color " << plot.x_major_grid_color() << std::endl;
   os << "x_major_grid_on " << plot.x_major_grid_on() << std::endl;

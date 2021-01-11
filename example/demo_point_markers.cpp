@@ -40,6 +40,8 @@
 #include <limits>
  // using std::numeric_limits;
 
+#include <boost/svg_plot/show_1d_settings.hpp>
+
 //] [demo_point_markers_1]
 
 int main()
@@ -89,11 +91,11 @@ here a blue diamond shape with a size of 10 pixels.
 
     my_1d_plot.x_values_precision(3); // Decimal digits precision for the X-axis value label, for example "1.23".
     // if data point value = 1.23456, then Data value label will be 1.2 with my_1d_plot.x_values_precision(2); 
-    my_1d_plot.x_values_rotation(steepup); // Orientation for the X-axis value labels.
+    my_1d_plot.x_values_rotation(static_cast<int>(rotate_style::steepup)); // Orientation for the X-axis value labels.
     my_1d_plot.x_values_font_size(7); // Font Size for the X-axis value labels.
     // Alignment/anchoring? TODO
 
-    std::cout << "alignment is " << my_1d_plot.x_values_style_.value_label_alignment_  <<std::endl;
+//    std::cout << "alignment is " << my_1d_plot.x_values_style_.value_label_alignment_  <<std::endl;
     std::cout << "rotation is " << my_1d_plot.x_values_style_.value_label_rotation_  <<std::endl;
 
 
@@ -133,6 +135,9 @@ here a blue diamond shape with a size of 10 pixels.
     std::cout << "-infinity limit points size " << my_1d_plot.minus_inf_limit_size() << std::endl;
 
 //] [demo_point_markers_2]
+
+    show_1d_plot_settings(my_1d_plot);
+
   }
   catch(const std::exception& e)
   {

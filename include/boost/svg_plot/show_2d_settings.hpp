@@ -151,6 +151,9 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "x_values_precision " << plot.x_values_precision() << std::endl;
   os << "x_values_ioflags " << std::hex << plot.x_values_ioflags() << std::dec << ' ';
   outFmtFlags(plot.x_value_ioflags(), os,  ".\n");
+  os << "x_values_rotation "  << plot.x_values_style_.value_label_rotation_ << std::end;
+  os << "x_values_alignment "  << plot.x_values_style_.value_label_alignment_ << std::end;
+
   os << "y_values_precision " << plot.y_values_precision() << std::endl;
   os << "y_values_font_size() " << plot.y_value_precision() << std::endl; // duplicate????
   os << "y_values_ioflags " << std::hex << plot.y_values_ioflags() << std::dec << ' ';

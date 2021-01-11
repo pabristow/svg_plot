@@ -1024,7 +1024,7 @@ public:
   ptr_vector<text_parent> data_; //!< Stores all of the containing text string data.
   text_style text_style_; //!< font variants, bold, italic ...
   align_style align_; //!< Alignment: left_align, right_align, center_align.
-  rotate_style rotate_; //!< Rotation: horizontal, upward, downward, upsidedown.
+  int rotate_; //!< Rotation: horizontal, upward, downward, upsidedown...
 
   void generate_text(std::ostream& os)
   { // Output SVG 
@@ -1078,14 +1078,14 @@ public:
     return align_;
   }
 
-  text_element& rotation(rotate_style rot)
+  text_element& rotation(int rot)
   { //! Degrees: horizontal  = 0, upward = -90, downward, upsidedown etc.
     //! Generates: transform = "rotate(-45 100 100 )"
     rotate_ = rot;
     return *this; //! \return text_element& to make chainable.
   }
 
-  rotate_style rotation() const
+  int rotation() const
   { //! \return rotation of text element (degrees).
     return rotate_;
   }
@@ -1146,7 +1146,7 @@ public:
     const std::string text = "", //!< Text string to output (may include Unicode string like "&#x221A;" for square root symbol.
     text_style ts = no_text_style, //!< Text font text style, default left to SVG defaults.
     align_style align = align_style ::left_align, //!< Alighment of text, left, center or right, default left_align.
-    rotate_style rotate = horizontal) //!< orientation of text, default horizontal.
+    int rotate = static_cast<int>(rotate_style::horizontal)) //!< orientation of text, default horizontal.
     : // Constructor.
     x_(x), y_(y), // location.
     data_(ptr_vector<text_parent>()),
@@ -1293,8 +1293,9 @@ public:
       os << "text_element(" << t.x_ << ", " << t.y_
         //<< ", "  << t.data_
         << ", " << t.text_style_ 
-        << ", " << t.align_
-        << ", " << t.rotate_ << ")" 
+   //     << ", " << t.align_
+        << ", " << t.rotate_ 
+        << ")" 
         << std::endl;
       ;
     return os;
@@ -2172,7 +2173,7 @@ public:
     align_style  alignment_;  //!< group alignment, left middle or right, or no_align.
     int rotation_; //!< text rotation, positive degrees 0 <= rotation_ <= 360, or specifically no rotation if < 0.
 
-    g_element() : clip_on_(false), clip_name_(""), alignment_(align_style::no_align), rotation_(rotate_style::horizontal)
+    g_element() : clip_on_(false), clip_name_(""), alignment_(align_style::no_align), rotation_(static_cast<int>(rotate_style::horizontal))
     { //! Construct g_element (default with no clipping).
     }
 
@@ -2302,7 +2303,7 @@ public:
     const std::string& text = "", // Text string to display.
     const text_style& textstyle = no_text_style, // Default to use SVG implementation's defaults for font family, size.
     const align_style& align = align_style::left_align,
-    const rotate_style& rotate = horizontal)
+    const int rotate = static_cast<int>(rotate_style::horizontal))
     { //! Add a new text element.
       //! \return A reference to the new child (leaf) node just created.
       children_.push_back(new text_element(x, y, text, textstyle, align, rotate));

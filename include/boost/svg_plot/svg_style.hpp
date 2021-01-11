@@ -72,11 +72,11 @@ class box_style; //  Box colors, size and border switches.
 class histogram_style;  // Options for histograms.
 class bar_style;  // Style of bars.
 
-//! \enum rotate_style Rotation of text (in degrees clockwise from horizontal == 0).
-enum rotate_style
+//! \enum rotate_style Rotation of text (in degrees clockwise from horizontal == 0). (but rotation stored an int degrees).
+//! int rotation = static_cast<int>(rotate_style::horizontal) which is really ugly, but typesafe.
+enum class rotate_style
 {
   // Also need a no_rotate, = -1;
-  // Might include more steps to describe other angles too?
   horizontal = 0, //!< normal horizontal left to right, centered.
   slopeup = -30, //!< slope up.
   uphill = -45, //!< 45 steep up.
@@ -101,7 +101,7 @@ enum class align_style
   center_align //!< Center align text. Outputs: \verbatim text-anchor="middle" \endverbatim
 };
 
-std::ostream& operator<< (std::ostream& os, align_style al)
+std::ostream& operator<< (std::ostream& os, const align_style& al)
 { //! Outputs: alignment type (useful for diagnosis).
   //! Example: 
   //! \code align_style al = align_style::left_align;  std::cout << "Align is " << al << std::endl; \endcode
@@ -127,14 +127,16 @@ std::ostream& operator<< (std::ostream& os, align_style al)
   return os;
 } //   std::ostream& operator<< (std::ostream& os, align_style al)
 
-
-std::ostream& operator<< (std::ostream& os, rotate_style & rot)
-{ //! Outputs: rotation style as words and degrees from horizontal (useful for diagnosis).
+std::ostream& operator<< (rotate_style& rot_style, std::ostream& os)
+{ //! Outputs: rotation style as words from horizontal (useful for diagnosis).
   //! Example: 
-  //! \code rotate_style rot = horizontal;
+  //! \code int rot = static_cast<int>(horizontal);
   //!    std::cout << "rotation = " << rot << std::endl;
   //! \endcode
+  //! 
+  //! 
   // Outputs: \verbatim rot is uphill (-45) \endverbatim
+  int rot = static_cast<int>(rot_style);
   if (rot == 0) { os << "horizontal (0)"; }
   else if (rot == -30) { os << "slopeup (-30)"; }
   else if (rot == -45) { os << "uphill (-45)"; }
@@ -150,10 +152,10 @@ std::ostream& operator<< (std::ostream& os, rotate_style & rot)
   else if (rot == 135) { os << "backdown (135)"; }
   else if (rot == 180) { os << "upsidedown (180)"; }
   else if (rot < 0) { os << "undefined rotate!"; }
-  else { os << static_cast<int>(rot) << " rotate!"; }
+  // else { os << static_cast<int>(rot) << " rotate!"; }  // Should not happen.
   ;
   return os;
-  } // std::ostream& operator<< (std::ostream & os, rotate_style & rot)
+  } // std::ostream& operator<< (std::ostream& os, rotate_style::rotate_style& rot)
 
 //! The place for ticks value-labels on the X and/or Y-axes.
 enum place
@@ -165,7 +167,7 @@ enum place
   top_side = +1,
 };
 
-//! Ugly hack to remove unwanted sign and leading zero(s) in exponent in floating-point decimal digit values
+//! Remove unwanted sign and leading zero(s) in exponent in floating-point decimal digit values
 //! to reduce their length.
 const std::string strip_e0s(std::string s);
 
@@ -361,12 +363,11 @@ public:
          \code
            svg_style(RGB(255,0,0), RGB(0,128,0), 2, fill_on, stroke_on, width_on)
          \endcode
-
      */
       os << "svg_style("
          << s.stroke_ << ", "
          << s.fill_ << ", "
-         << s.width_ << ", " // italic
+         << s.width_ << ", " // 
          << ((s.stroke_on_) ? "stroke_on, " : "no stroke, ")
          << ((s.fill_on_) ? "fill_on, " : "no fill, ")
          << ((s.width_on_) ? "width_on)" : "no width)");
@@ -834,7 +835,7 @@ class value_style
      "4.5 +- 0.01 (3) Second #2, 2012-Mar-13 13:01:00"
   */
 public:
-  rotate_style value_label_rotation_; //!< Direction point value labels written.
+  int value_label_rotation_; //!< Direction point value labels written.
   align_style value_label_alignment_; //!< Alignment of label with respect to value, left, centered, or right.\n Example: text-anchor="middle"
   // These are a duplicate of info elsewhere?
   int value_precision_; //!< Decimal digits of precision of value, default 3, for example "1.23".
@@ -866,7 +867,7 @@ public:
   value_style(); //!< Default style for a data point value label.
 
   value_style( //!< Set style for a data point value label.
-    rotate_style r, //!< Label orientation or rotation, default horizontal.
+    int r, //!< Label orientation or rotation, default horizontal == 0.
     align_style a,  //!< Alignment of label with respect to value, left, centered, or right.\n Example: text-anchor="middle".
     int p, //!< Precision, reduced from default of 6 which is usually too long.
     std::ios_base::fmtflags f, //!< Any std::ios::ioflags, for example, hex, fixed, scientific.
@@ -899,7 +900,7 @@ public:
  //!< Constructor Data point value label style (provides default color and font).
  value_style::value_style()
     :
-    value_label_rotation_(horizontal), //!< Label orientation, default horizontal.
+    value_label_rotation_(static_cast<int>(rotate_style::horizontal)), //!< Label orientation, default horizontal.
     value_label_alignment_(align_style::left_align), //!< Alignment (or anchoring), default left, so value label is to the right of the data point marker.
     value_precision_(3), //!< Precision, reduced from default of 6 which is usually too long.
     value_ioflags_(std::ios::dec), //!< Any std::ios::ioflags, for example, hex, fixed, scientific.
@@ -927,7 +928,7 @@ public:
 
     //!< Constructor Data point value label style (provides default color and font).
     value_style::value_style(
-      rotate_style r, //!< Label orientation, default horizontal.
+      int r, //!< Label orientation, default horizontal.
       align_style a, //!< Label alignment, default left, so value_label is to right of data-point-marker.
       int p, //!< Reduced from default of 6 which is usually too long, default 3.
       std::ios_base::fmtflags f, //!< Any std::ios::ioflags, for example, hex, fixed, scientific.
@@ -1042,10 +1043,10 @@ public:
   bool show_y_value_; //!< If true, show the Y value like "3.4" near the point. (If both true, then show both X and Y as a pair like "1.2, 3.4".)
 
   //int dist; // from the point to the value.
-  //rotate_style orient_; // Orientation of the value from the point.
+  //int orient_; // Orientation of the value from the point.  == static_cast<int>(rotate_style o)
   //// Note that this needs to alter the text alignment, center, left or right,
   //// to avoid writing over the point marker.
-  //rotate_style rotation_; // Rotation of the value text string itself.
+  //int rotation_; // Rotation of the value text string itself.  == static_cast<int>(rotate_style r)
   //// Note that this also needs to alter the text alignment, center, left or right,
   //// to avoid writing over the point marker.
   //text_style value_style_; // Size, font, color etc of the value.
@@ -1553,7 +1554,8 @@ public:
     // < 0 means to left (for Y) or down (for X) (default),
     // 0 (false) means no ticks value labels (just ticks),
     // > 0 means to right (for Y) or top(for X).
-    rotate_style label_rotation_; //!< Rotation direction axis tick-value labels written. Default 0 means horizontal.
+    int label_rotation_; //!< Rotation direction axis tick-value labels written. Default 0 means horizontal.
+    // assign by static_cast<int>(rotate_style::horizontal)
     //align_style label_alignment_; //< Alignment of tick-value-label using text_anchor. Default center_align for X-axis but right_align for Y-axis.
     //!< This ensures that value labels center on the tick so that "1.1" aligns the decimal point with the tick.
     //!< Ideally alignment takes rotation into account to get label as close a possible to the tick. 
@@ -1614,7 +1616,7 @@ public:
     // Simplest to have all of these although only one pair like up or down is used.
     // Unused are always false.
     major_value_labels_side_(-1), // Label values side for major ticks left (right or none).
-    label_rotation_(horizontal), // Direction axis value labels written.
+    label_rotation_(static_cast<int>(rotate_style::horizontal)), // Direction axis value labels written.
       // label_alignment(?)
     major_grid_on_(false),  // Draw grid at major ticks.
     minor_grid_on_(false),// Draw grid at minor ticks.

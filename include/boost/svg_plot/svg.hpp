@@ -835,7 +835,7 @@ public:
 
   text_element& text(double x, double y, const std::string& text,
     const text_style& style, // font size, font family etc., and any text_length estimate.
-    align_style align, rotate_style rotate)
+    align_style align, int rotate)
   { //! push_back information about text to the document, with location, style (font size, family etc and text_length), alignment & rotation.
     return document_.text(x, y, text, style, align, rotate); // see svg_elements.hpp 2137 for definition.
   }
