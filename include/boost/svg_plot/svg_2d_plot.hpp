@@ -720,8 +720,8 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         plot_window_border_(lightslategray, svg_color(255, 255, 255), 2, 3, true, false),
         legend_box_(yellow, white, 1, 1, true, true),
-        legend_title_(0, 0, "", legend_title_style_, align_style::center_align, horizontal),
-        legend_text_(0, 0, "", legend_text_style_, align_style::center_align, horizontal),
+        legend_title_(0, 0, "", legend_title_style_, align_style::center_align, rotate_style::horizontal),
+        legend_text_(0, 0, "", legend_text_style_, align_style::center_align, rotate_style::horizontal),
         legend_width_(0), // width of legend box (pixels) //
         legend_height_(0), // height of legend box (pixels)
         legend_left_(-1), legend_right_(-1), legend_top_(-1), legend_bottom_(-1), // Default top left of plot window.
@@ -759,8 +759,8 @@ my_plot.background_color(ghostwhite) // Whole image.
         x_values_on_(false), // If X values of data points are shown.
         y_values_on_(false), // If Y values of data points are shown.
         xy_values_on_(false), // If X & Y values of data are shown as a pair.
-        x_values_style_(horizontal, 3, std::ios::dec, true, value_style_, black, black, false, false),
-        y_values_style_(downward, 3, std::ios::dec, true, value_style_, black, black, false, false),
+        x_values_style_(rotate_style::horizontal, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, false, false),
+        y_values_style_(rotate_style::downward, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, false, false),
 
         nan_point_style_(green, white, 20, cone_point_down, ""), // Colors and size for NaN markers.
         plus_inf_point_style_(red, white, 10, cone_point_right, ""), // Colors and size for +infinity markers.
