@@ -27,8 +27,8 @@
 */
 
 #include <boost/svg_plot/svg_1d_plot.hpp>
-  using namespace boost::svg;
-  using boost::svg::svg_1d_plot;
+  //using namespace boost::svg;
+  //using boost::svg::svg_1d_plot;
 
 #include <iostream>
   //using std::cout;
@@ -64,13 +64,16 @@ int main()
   my_data_2.push_back(+4);
   my_data_2.push_back(+6.);
 
+  using namespace boost::svg;
+  using boost::svg::svg_1d_plot;
+
 //[demo_point_markers_2
 
   try
   { // try'n'catch blocks are needed to ensure error messages from any exceptions are shown.
     svg_1d_plot my_1d_plot; // Construct a plot with all the default constructor values.
 
-    my_1d_plot.title("Demo point markers Demo") // Add a string title of the plot.
+    my_1d_plot.title("Demo point markers 1D") // Add a string title of the plot.
       .x_label("length (m)"); // Add a label for the X-axis.
 
 /*`Add the one data series, `my_data` and a description, and how the data points are to be marked,
@@ -88,6 +91,10 @@ here a blue diamond shape with a size of 10 pixels.
     // if data point value = 1.23456, then Data value label will be 1.2 with my_1d_plot.x_values_precision(2); 
     my_1d_plot.x_values_rotation(steepup); // Orientation for the X-axis value labels.
     my_1d_plot.x_values_font_size(7); // Font Size for the X-axis value labels.
+    // Alignment/anchoring? TODO
+
+    std::cout << "alignment is " << my_1d_plot.x_values_style_.value_label_alignment_  <<std::endl;
+    std::cout << "rotation is " << my_1d_plot.x_values_style_.value_label_rotation_  <<std::endl;
 
 
 /*`If the default size and color are not to your taste, set more options, like:

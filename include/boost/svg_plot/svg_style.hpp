@@ -92,32 +92,68 @@ enum rotate_style
   backdown = 135, //!< slope down backwards.
   upsidedown = 180 //!< upside down!  (== -180)
 };
-//
-//std::ostream& operator<< (std::ostream& os, rotate_style & rot, align_style)
-//{ //! Outputs: rotation style as words and degrees from horizontal (useful for diagnosis).
-//  //! Example: 
-//  //! \code rotate_style rot = horizontal;
-//  //!    std::cout << "rotation = " << rot << std::endl;
-//  //! \endcode
-//  // Outputs: \verbatim rot is uphill (-45) \endverbatim
-//  if (rot == 0) { os << "horizontal (0)"; }
-//  else if (rot == -30) { os << "slopeup (-30)"; }
-//  else if (rot == -45) { os << "uphill (-45)"; }
-//  else if (rot == -60) { os << "steepup (-60)"; }
-//  else if (rot == -90) { os << "upward (-90)"; }
-//  else if (rot == -135) { os << "backup (-135)"; }
-//  else if (rot == -180) { os << "leftward (-180)"; }
-//  else if (rot == 360) { os << "rightward (360)"; }
-//  else if (rot == 30) { os << "slopedownhill (30)"; }
-//  else if (rot == 45) { os << "downhill (45)"; }
-//  else if (rot == 60) { os << "steepdown (60)"; }
-//  else if (rot == 90) { os << "downward (90)"; }
-//  else if (rot == 135) { os << "backdown (135)"; }
-//  else if (rot == 180) { os << "upsidedown (180)"; }
-//  else if (rot < 0) { os << "no rotate"; }
-//  ;
-//  return os;
-//  } // std::ostream& operator<< (std::ostream & os, rotate_style & rot)
+
+enum class align_style
+{ //! \enum align_style Represents alignment a single string of chars .
+  no_align = -1,  // Not aligned (so not 
+  left_align, //!< Align text to left. Outputs: \verbatim text-anchor="left" \endverbatim
+  right_align, //!< Align text to right. Outputs: \verbatim text-anchor="right" \endverbatim
+  center_align //!< Center align text. Outputs: \verbatim text-anchor="middle" \endverbatim
+};
+
+std::ostream& operator<< (std::ostream& os, align_style al)
+{ //! Outputs: alignment type (useful for diagnosis).
+  //! Example: 
+  //! \code align_style al = align_style::left_align;  std::cout << "Align is " << al << std::endl; \endcode
+  //! Outputs: Align is left 
+  if (al == align_style::left_align)
+  {
+    os << "left";
+  }
+  else if (al == align_style::center_align)
+  {
+    os << "center";
+  }
+  else if (al == align_style::right_align)
+  {
+    os << "right";
+  }
+  else if (al == align_style::no_align)
+  {
+    os << "not aligned";
+  }
+  else os << "??? aligned";
+  os << std::endl;
+  return os;
+} //   std::ostream& operator<< (std::ostream& os, align_style al)
+
+
+std::ostream& operator<< (std::ostream& os, rotate_style & rot)
+{ //! Outputs: rotation style as words and degrees from horizontal (useful for diagnosis).
+  //! Example: 
+  //! \code rotate_style rot = horizontal;
+  //!    std::cout << "rotation = " << rot << std::endl;
+  //! \endcode
+  // Outputs: \verbatim rot is uphill (-45) \endverbatim
+  if (rot == 0) { os << "horizontal (0)"; }
+  else if (rot == -30) { os << "slopeup (-30)"; }
+  else if (rot == -45) { os << "uphill (-45)"; }
+  else if (rot == -60) { os << "steepup (-60)"; }
+  else if (rot == -90) { os << "upward (-90)"; }
+  else if (rot == -135) { os << "backup (-135)"; }
+  else if (rot == -180) { os << "leftward (-180)"; }
+  else if (rot == 360) { os << "rightward (360)"; }
+  else if (rot == 30) { os << "slopedownhill (30)"; }
+  else if (rot == 45) { os << "downhill (45)"; }
+  else if (rot == 60) { os << "steepdown (60)"; }
+  else if (rot == 90) { os << "downward (90)"; }
+  else if (rot == 135) { os << "backdown (135)"; }
+  else if (rot == 180) { os << "upsidedown (180)"; }
+  else if (rot < 0) { os << "undefined rotate!"; }
+  else { os << static_cast<int>(rot) << " rotate!"; }
+  ;
+  return os;
+  } // std::ostream& operator<< (std::ostream & os, rotate_style & rot)
 
 //! The place for ticks value-labels on the X and/or Y-axes.
 enum place
@@ -784,10 +820,9 @@ text_style no_text_style; //!< Text style that uses all constructor defaults.
 static const text_style not_a_text_style (-1, "","","","","",0); //!< Text style that uses null for all text style features 
 // (used to signal no writing to output of SVG style required).
 
-
 class value_style
 { /*! \class boost::svg::value_style
-     \brief data-series point value label information, text, color, orientation, (uncertainty & df),
+     \brief data-series point value-label information, text, color, orientation, alignment, (uncertainty & df),
      name ID string, order in sequence, time and date.
      \details For example, to output: 5.123 +- 0.01 (19).
      Uncertainty and degrees of freedom estimate.
@@ -800,8 +835,9 @@ class value_style
   */
 public:
   rotate_style value_label_rotation_; //!< Direction point value labels written.
-  // This is a duplicate of info elsewhere?
-  int value_precision_; //!< Decimal digits of precision of value.
+  align_style value_label_alignment_; //!< Alignment of label with respect to value, left, centered, or right.\n Example: text-anchor="middle"
+  // These are a duplicate of info elsewhere?
+  int value_precision_; //!< Decimal digits of precision of value, default 3, for example "1.23".
   std::ios_base::fmtflags value_ioflags_; //!< Control of scientific, fixed, hex etc.
   bool strip_e0s_; //!< If true, then unnecessary zeros and + sign will be stripped to reduce length.
   text_style values_text_style_; //!< Font etc used for data point value marking.
@@ -830,7 +866,8 @@ public:
   value_style(); //!< Default style for a data point value label.
 
   value_style( //!< Set style for a data point value label.
-    rotate_style r, //!< Label orientation, default horizontal.
+    rotate_style r, //!< Label orientation or rotation, default horizontal.
+    align_style a,  //!< Alignment of label with respect to value, left, centered, or right.\n Example: text-anchor="middle".
     int p, //!< Precision, reduced from default of 6 which is usually too long.
     std::ios_base::fmtflags f, //!< Any std::ios::ioflags, for example, hex, fixed, scientific.
     bool s, //!< If true, then unnecessary zeros will be stripped to reduce length.
@@ -863,7 +900,8 @@ public:
  value_style::value_style()
     :
     value_label_rotation_(horizontal), //!< Label orientation, default horizontal.
-    value_precision_(4), //!< Precision, reduced from default of 6 which is usually too long.
+    value_label_alignment_(align_style::left_align), //!< Alignment (or anchoring), default left, so value label is to the right of the data point marker.
+    value_precision_(3), //!< Precision, reduced from default of 6 which is usually too long.
     value_ioflags_(std::ios::dec), //!< Any std::ios::ioflags, for example, hex, fixed, scientific.
     strip_e0s_(true), //!< If true, then unnecessary zeros will be stripped to reduce length.
     values_text_style_(no_text_style),  //!< All defaults, black etc.
@@ -888,8 +926,10 @@ public:
     }
 
     //!< Constructor Data point value label style (provides default color and font).
-    value_style::value_style(rotate_style r, //!< Label orientation, default horizontal.
-      int p, //!< Reduced from default of 6 which is usually too long.
+    value_style::value_style(
+      rotate_style r, //!< Label orientation, default horizontal.
+      align_style a, //!< Label alignment, default left, so value_label is to right of data-point-marker.
+      int p, //!< Reduced from default of 6 which is usually too long, default 3.
       std::ios_base::fmtflags f, //!< Any std::ios::ioflags, for example, hex, fixed, scientific.
       bool s, //!< If true, then unnecessary zeros will be stripped to reduce length.
       text_style ts, //!< All defaults, black etc.
@@ -912,7 +952,9 @@ public:
       std::string sep  = "", //!< separator, for example: ,\&\#x00A0;", // If put ", " the trailing space seems to be ignored, so add Unicode explicit space.
       std::string suf  = "") //!< suffix, for example: "]")
     :
-    value_label_rotation_(r), value_precision_(p), value_ioflags_(f), strip_e0s_(s),
+    value_label_rotation_(r),
+    value_label_alignment_(a),
+    value_precision_(p), value_ioflags_(f), strip_e0s_(s),
     values_text_style_(ts), stroke_color_(scol), fill_color_(fcol),
     plusminus_on_(pm), plusminus_color_(plusminus_color),
     addlimits_on_(lim), addlimits_color_(addlimits_color),

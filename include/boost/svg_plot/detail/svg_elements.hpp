@@ -553,40 +553,6 @@ namespace svg
     }
   }; // class ellipse_element
 
-  enum class align_style
-  { //! \enum align_style Represents alignment a single string of chars .
-    no_align = -1,  // Not aligned (so not 
-    left_align, //!< Align text to left. Outputs: \verbatim text-anchor="left" \endverbatim
-    right_align, //!< Align text to right. Outputs: \verbatim text-anchor="right" \endverbatim
-    center_align //!< Center align text. Outputs: \verbatim text-anchor="middle" \endverbatim
-  };
-
-  std::ostream& operator<< (std::ostream& os, align_style al)
-  { //! Outputs: alignment type (useful for diagnosis).
-    //! Example: 
-    //! \code align_style al = align_style::left_align;  std::cout << "Align is " << al << std::endl; \endcode
-    //! Outputs: Align is left 
-    if (al == align_style::left_align)
-    {
-      os << "left";
-    }
-    else if (al == align_style::center_align)
-    {
-      os << "center";
-    }
-    else if (al == align_style::right_align)
-    {
-      os << "right";
-    }
-    else if (al == align_style::no_align)
-    {
-      os << "not aligned";
-    }
-    else os << "??? aligned";
-    os << std::endl;
-    return os;
-  } //   std::ostream& operator<< (std::ostream& os, align_style al)
-
 class text_parent
 { /*! \class boost::svg::text_parent
     \brief An ancestor to both tspan and strings for the text_element class.

@@ -721,7 +721,7 @@ void svg_1d_plot::update_image()
     title_on_(true),
     plot_window_on_(true),
     x_values_on_(false), // By default, don't label point values.
-    x_values_style_(horizontal, 3, std::ios::dec, true, value_style_, black, black, false, false),
+    x_values_style_(rotate_style::horizontal, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, false, false),
     // Confidence interval parameters.
     // (Could provide functions for the user to control these).
     alpha_(0.05), // oss.iword(confidenceIndex) / 1.e6; 95% confidence.
