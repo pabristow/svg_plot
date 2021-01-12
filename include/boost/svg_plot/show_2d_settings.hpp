@@ -138,7 +138,7 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "title_font_alignment " << plot.title_font_alignment() << std::endl;
   os << "title_font_decoration " << plot.title_font_decoration() << std::endl;
   os << "title_font_family " << plot.title_font_family() << std::endl;
-  os << "title_font_rotation " << plot.title_font_rotation() << std::endl;
+  os << "title_font_rotation " << show_rotation(plot.title_font_rotation()) << std::endl; 
   os << "title_font_size " << plot.title_font_size() << std::endl;
   os << "title_font_stretch " << plot.title_font_stretch() << std::endl;
   os << "title_font_style " << plot.title_font_style() << std::endl;
@@ -152,7 +152,7 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "x_values_precision " << plot.x_values_precision() << std::endl;
   os << "x_values_ioflags " << std::hex << plot.x_values_ioflags() << std::dec << ' ';
   outFmtFlags(plot.x_value_ioflags(), os,  ".\n");
-  os << "x_values_rotation "  << plot.x_values_rotation() << std::endl;
+  os << "x_values_rotation "  << show_rotation(plot.x_values_rotation()) << std::endl;
   //os << "x_values_alignment "  << plot.x_values_style_.value_label_alignment_ << std::endl;
   os << "x_values_alignment "  << plot.x_values_alignment() << std::endl;
 
@@ -162,7 +162,7 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "y_values_color " << plot.y_values_color() << std::endl;
   os << "y_values_font_family() " << plot.y_values_font_family() << std::endl;
   os << "y_values_font_size() " << plot.y_values_font_size() << std::endl;
-  os << "y_values_rotation "  << plot.y_values_rotation() << std::endl;
+  os << "y_values_rotation "  << show_rotation(plot.y_values_rotation()) << std::endl;
   os << "y_values_alignment "  << plot.y_values_alignment() << std::endl;
 
   os << "x_max " << plot.x_max() << std::endl;
@@ -186,7 +186,7 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   //os << "x_label_width " << plot.x_label_width() << std::endl;
   // Not useful at present, so not longer implemented.
   os << "x_major_labels_side " << l_or_r(plot.x_major_labels_side()) << std::endl;
-  os << "x_major_label_rotation " << plot.x_major_label_rotation() << std::endl;
+  os << "x_major_label_rotation " << show_rotation(plot.x_major_label_rotation()) << std::endl;
   os << "x_major_grid_color " << plot.x_major_grid_color() << std::endl;
   os << "x_major_grid_on " << plot.x_major_grid_on() << std::endl;
   os << "x_major_grid_width " << plot.x_major_grid_width() << std::endl;
@@ -238,7 +238,7 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "y_major_grid_width " << plot.y_major_grid_width() << std::endl;
   os << "y_major_interval " << plot.y_major_interval() << std::endl;
   os << "y_major_labels_side " << t_or_b(plot.y_major_labels_side()) << std::endl;
-  os << "y_major_label_rotation " << plot.y_major_label_rotation() << std::endl;
+  os << "y_major_label_rotation " << show_rotation(plot.y_major_label_rotation()) << std::endl; // y_major_label_rotation horizontal (0)
   os << "y_major_tick_color " << plot.y_major_tick_color() << std::endl;
   os << "y_major_tick_length  " << plot.y_major_tick_length() << std::endl;
   os << "y_major_tick_width  " << plot.y_major_tick_width() << std::endl;

@@ -249,6 +249,7 @@ void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
   os << "x_value_precision " << plot.x_value_precision() << std::endl;
   os << "x_value_ioflags " << std::hex << plot.x_value_ioflags() << std::dec << ' ';
   outFmtFlags(plot.x_value_ioflags(), os,  ".\n");
+
   os << "x_plusminus_on " << plot.x_plusminus_on() << std::endl;
   os << "x_plusminus_color " << plot.x_plusminus_color() << std::endl;
   os << "x_addlimits_on " << plot.x_addlimits_on() << std::endl;
@@ -296,13 +297,10 @@ void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
   os << "x_values_precision " << plot.x_values_precision() << std::endl;
   os << "x_values_ioflags " << plot.x_values_ioflags() << " ";
   outFmtFlags(plot.x_value_ioflags(), os, ".\n");
-
- // os << "x_values_rotation " << plot.x_values_rotation() << std::end;
-  align_style al = plot.x_values_alignment();
-
- // os << "x_values_alignment " << plot.x_values_alignment() << std::end;
-
-  os << "x_major_label_rotation " << plot.x_major_label_rotation() << std::endl;
+  os << "x_values_rotation " << show_rotation(plot.x_values_rotation()) << std::endl; // x_values_rotation horizontal (0)
+ // align_style al = plot.x_values_alignment();
+  os << "x_values_alignment " << plot.x_values_alignment() << std::endl;
+  os << "x_major_label_rotation " << show_rotation(plot.x_major_label_rotation()) << std::endl;
   os << "x_major_grid_color " << plot.x_major_grid_color() << std::endl;
   os << "x_major_grid_on " << plot.x_major_grid_on() << std::endl;
   os << "x_major_grid_width " << plot.x_major_grid_width() << std::endl;

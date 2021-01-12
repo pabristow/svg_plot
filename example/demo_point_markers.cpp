@@ -93,11 +93,10 @@ here a blue diamond shape with a size of 10 pixels.
     // if data point value = 1.23456, then Data value label will be 1.2 with my_1d_plot.x_values_precision(2); 
     my_1d_plot.x_values_rotation(static_cast<int>(rotate_style::steepup)); // Orientation for the X-axis value labels.
     my_1d_plot.x_values_font_size(7); // Font Size for the X-axis value labels.
-    // Alignment/anchoring? TODO
 
-//    std::cout << "alignment is " << my_1d_plot.x_values_style_.value_label_alignment_  <<std::endl;
+    std::cout << "alignment is " << my_1d_plot.x_values_style_.value_label_alignment_  <<std::endl;
     std::cout << "rotation is " << my_1d_plot.x_values_style_.value_label_rotation_  <<std::endl;
-
+ //   std::cout << my_1d_plot.x_values_style_.value_label_alignment() << std::endl;
 
 /*`If the default size and color are not to your taste, set more options, like:
 */

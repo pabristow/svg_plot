@@ -128,34 +128,55 @@ std::ostream& operator<< (std::ostream& os, const align_style& al)
   return os;
 } //   std::ostream& operator<< (std::ostream& os, align_style al)
 
-std::ostream& operator<< (int rot, std::ostream& os)
-{ //! Outputs: rotation style as words from horizontal (useful for diagnosis).
-  //! Example: 
-  //! \code int rot = static_cast<int>(horizontal);
-  //!    std::cout << "rotation = " << rot << std::endl;
-  //! \endcode
-  //! 
-  //! 
-  // Outputs: \verbatim rot is uphill (-45) \endverbatim
-  if (rot == 0) { os << "horizontal (0)"; }
-  else if (rot == -30) { os << "slopeup (-30)"; }
-  else if (rot == -45) { os << "uphill (-45)"; }
-  else if (rot == -60) { os << "steepup (-60)"; }
-  else if (rot == -90) { os << "upward (-90)"; }
-  else if (rot == -135) { os << "backup (-135)"; }
-  else if (rot == -180) { os << "leftward (-180)"; }
-  else if (rot == 360) { os << "rightward (360)"; }
-  else if (rot == 30) { os << "slopedownhill (30)"; }
-  else if (rot == 45) { os << "downhill (45)"; }
-  else if (rot == 60) { os << "steepdown (60)"; }
-  else if (rot == 90) { os << "downward (90)"; }
-  else if (rot == 135) { os << "backdown (135)"; }
-  else if (rot == 180) { os << "upsidedown (180)"; }
-  else if (rot < 0) { os << "undefined rotate!"; }
-  // else { os << static_cast<int>(rot) << " rotate!"; }  // Should not happen.
-  ;
-  return os;
-  } // std::ostream& operator<< (std::ostream& os, rotate_style& rot)
+
+std::string show_rotation(int rot)
+{ //  Outputs: rotation style as words from horizontal(useful for diagnosis).
+  if (rot == 0) {return "horizontal (0)"; }
+  else if (rot == -30) { return  "slopeup (-30)"; }
+  else if (rot == -45) { return  "uphill (-45)"; }
+  else if (rot == -60) { return  "steepup (-60)"; }
+  else if (rot == -90) { return  "upward (-90)"; }
+  else if (rot == -135) { return  "backup (-135)"; }
+  else if (rot == -180) { return  "leftward (-180)"; }
+  else if (rot == 360) { return  "rightward (360)"; }
+  else if (rot == 30) { return  "slopedownhill (30)"; }
+  else if (rot == 45) { return  "downhill (45)"; }
+  else if (rot == 60) { return  "steepdown (60)"; }
+  else if (rot == 90) { return  "downward (90)"; }
+  else if (rot == 135) { return  "backdown (135)"; }
+  else if (rot == 180) { return  "upsidedown (180)"; }
+  else if (rot < 0) { return  "undefined rotate!"; }
+  return "";
+} // 
+
+//std::ostream& operator<< (std::ostream& os, rotate_style rot)
+//{ //! Outputs: rotation style as words from horizontal (useful for diagnosis).
+//  //! Example: 
+//  //! \code int rot = static_cast<int>(horizontal);
+//  //!    std::cout << "rotation = " << rot << std::endl;
+//  //! \endcode
+//  //! 
+//  //! 
+//  // Outputs: \verbatim rot is uphill (-45) \endverbatim
+//  if (rot == 0) { os << "horizontal (0)"; }
+//  else if (rot == -30) { os << "slopeup (-30)"; }
+//  else if (rot == -45) { os << "uphill (-45)"; }
+//  else if (rot == -60) { os << "steepup (-60)"; }
+//  else if (rot == -90) { os << "upward (-90)"; }
+//  else if (rot == -135) { os << "backup (-135)"; }
+//  else if (rot == -180) { os << "leftward (-180)"; }
+//  else if (rot == 360) { os << "rightward (360)"; }
+//  else if (rot == 30) { os << "slopedownhill (30)"; }
+//  else if (rot == 45) { os << "downhill (45)"; }
+//  else if (rot == 60) { os << "steepdown (60)"; }
+//  else if (rot == 90) { os << "downward (90)"; }
+//  else if (rot == 135) { os << "backdown (135)"; }
+//  else if (rot == 180) { os << "upsidedown (180)"; }
+//  else if (rot < 0) { os << "undefined rotate!"; }
+//  // else { os << static_cast<int>(rot) << "?? rotate!"; }  // Should not happen.
+//  ;
+//  return os;
+//  } // std::ostream& operator<< (std::ostream& os, int rot)
 
 //! The place for ticks value-labels on the X and/or Y-axes.
 enum place
