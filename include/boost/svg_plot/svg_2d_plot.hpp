@@ -1437,7 +1437,7 @@ my_plot.background_color(ghostwhite) // Whole image.
       } // draw_y_axis
 
       void draw_y_axis_label()
-      { //! Draw a vertical Y-axis label, and optional y units.
+      { //! Draw a vertical Y-axis label, and optional y units. For example: "time (s)"
         // Y-label color is set in constructor thus:
         // image_.gs(detail::PLOT_Y_LABEL).style().stroke_color(black);
         // and changed using y_label_color(color);
@@ -3171,13 +3171,10 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       /*! \brief Set prefix, separator and suffix for Y-axis.\n @b Example:
-
-
-
-\code
-my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
-\endcode
-       \note If you want a space, you must use a @b Unicode space.
+        \code
+          my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
+        \endcode
+       \note If you want a space, you must use a @b Unicode space \&#x00A0;.
       */
       svg_2d_plot& svg_2d_plot::y_decor(const std::string& pre, const std::string& sep, const std::string& suf)
       {

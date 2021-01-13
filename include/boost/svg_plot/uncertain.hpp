@@ -17,7 +17,7 @@
   \author Paul A. Bristow
   \date Mar 2009
 */
-// Copyright Paul A. Bristow 2009, 2011, 2012
+// Copyright Paul A. Bristow 2009, 2011, 2012, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.

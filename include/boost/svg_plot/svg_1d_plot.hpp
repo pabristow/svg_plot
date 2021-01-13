@@ -51,7 +51,7 @@ namespace svg
 {
   // Forward declarations.
 //! \cond DETAIL
-  const std::string strip_e0s(std::string s); // Strip unnecessary zeros and e and sign - to minimize value label length.
+  const std::string strip_e0s(std::string s); // Strip unnecessary zeros and e and sign - to minimize value-label length.
 //! \endcond
   class svg_1d_plot;   // 1D Plot (that may include one or more data-series).
 
@@ -168,7 +168,7 @@ public:
   text_style legend_title_style_; //!< Style for legend title.
   text_style x_axis_label_style_; //!< style of X axis label.
   text_style y_axis_label_style_;  //!< Not used for 1D, but needed by axis_plot_frame.hpp.
-  text_style x_ticks_value_label_style_; //!< style of X ticks value label.
+  text_style x_ticks_value_label_style_; //!< style of X-ticks value-label.
   text_style y_ticks_value_label_style_; //!< Not used for 1D, but needed by axis_plot_frame.hpp.
   text_style point_symbols_style_; //!< Used for data point marking.
   text_style value_style_; //!< Used for data point value label.  (should be named value_label_style?)
@@ -181,16 +181,16 @@ public:
   plot_point_style minus_limit_point_style_; //!< Default is cone pointing down for 2D, or NaN or point left or right for 1D.
 
   value_style x_values_style_; //!< Used for data point value marking.
-  int x_value_label_rotation_; //!< Direction point value labels written (in 45 degree sets).
+  int x_value_label_rotation_; //!< Direction point value labels is written (degree). Default horizonal (0).
   int x_value_precision_; //!< Decimal digits precision for X-axis value labels. (if == 2, 1.2, 6 == 1.23456...)
-  std::ios_base::fmtflags x_value_ioflags_; //!< std::iosflags used for Y value labels (default std::ios::dec).
+  std::ios_base::fmtflags x_value_ioflags_; //!< std::iosflags used for Y-axis value-labels (default std::ios::dec).
 
   // text_elements hold position & alignment, and indirectly via text_style, font_family, font_size, bold, italic...
   text_element title_info_; //!< Title of whole plot.
-  text_element legend_title_; //!< legend-box header or title (if any).
+  text_element legend_title_; //!< Title of legend-box header or title (if any).
   text_element x_label_info_; //!< X-axis label, Example: "length of widget"
-  text_element x_ticks_value_label_info_; //!< X-axis tick value label, for example: "1.2" or "1.2e1"
-  text_element x_units_info_; //!< For example, to display, "length (meter)"
+  text_element x_units_info_; //!< X-axis units. For example, to display, "length (meter)".
+  text_element x_ticks_value_label_info_; //!< X-axis tick-value-labels, for example: "1.2", "1.4" or "1.2e6".
 
   // No Y-axis info for 1D.
 
@@ -303,10 +303,10 @@ public:
 public:
 // Function Declarations.
   svg_1d_plot(); // Constructor of a 1-D plot.
-  void set_ids(); // Set the XML ids for various layers of the plot.
+  void set_ids(); // Set the SVG XML ids for various layers of the plot.
   void calculate_plot_window(); // Calculate the position of the plot window.
   void calculate_transform(); // Calculate transform form Euclidian to SVG coordinate.
-  void draw_axes(); // Draw the X axis (and, for 2-D, also the Y axis) of the plot.
+  void draw_axes(); // Draw the X-axis (and, for 2-D, also the Y-axis) of the plot.
   void update_image(); /* Calls functions to add all plot information to the image, including
   plot window, axes, ticks, labels, grids, legend, and finally all the data-series.*/
 //! \endcond
@@ -661,8 +661,8 @@ void svg_1d_plot::update_image()
     legend_text_style_(10, "Verdana", "", ""), // 2nd "italic"?
     x_axis_label_style_(10, "Verdana", "", ""),
     x_ticks_value_label_style_(10, "Verdana", "", ""),
-    point_symbols_style_(10, "Lucida Sans Unicode"), // Used for data point marking.
-    value_style_(10, "Verdana", "", ""), // Used for data point values.
+    point_symbols_style_(10, "Lucida Sans Unicode"), // Used for data-point marking.
+    value_style_(10, "Verdana", "", ""), // Used for data-point value-labels.
 
     nan_point_style_(green, white, 20, cone_point_down, ""), // Colors and size for NaN markers.
     plus_inf_point_style_(red, white, 10, cone_point_right, ""), // Colors and size for +infinity markers.
@@ -671,13 +671,13 @@ void svg_1d_plot::update_image()
     plus_limit_point_style_(red, white, 20, cone_point_up, ""), // Colors and size for outside window markers.
     minus_limit_point_style_(blue, white, 20, cone_point_down, ""), // Colors and size for outside window markers.
 
-    title_info_(0, 0, "", title_style_, align_style::center_align, static_cast<int>(horizontal)),
+    title_info_(0, 0, "", title_style_, align_style::center_align, horizontal),
     //title_info_(0, 0, "Plot of data", title_style_, center_align, horizontal), when text concatenation solved?
     //x_label_info_(0, 0, "X Axis", x_axis_label_style_, center_align, horizontal),
     //x_units_info_(0, 0, " (units)", x_ticks_value_label_style_, center_align, horizontal),
-    x_label_info_(0, 0, "", x_axis_label_style_, align_style::center_align, static_cast<int>(horizontal)), // Null strings for now.
-    x_ticks_value_label_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, static_cast<int>(horizontal)), // X-axis tick value label, for example: "1.2" or "1.2e1".
-    x_units_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, static_cast<int>(horizontal)),
+    x_label_info_(0, 0, "", x_axis_label_style_, align_style::center_align, horizontal), // Null strings for now.
+    x_ticks_value_label_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, horizontal), // X-axis tick value label, for example: "1.2" or "1.2e1".
+    x_units_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, horizontal),
     x_axis_(X, -10., +10., black, 1, 0, true, false, true),
     y_axis_(Y, 0., +1., black, 1, 0, false, false, false), // Not used for 1D.
 
@@ -801,7 +801,6 @@ void svg_1d_plot::update_image()
   // This will place the labels just under the horizontal X-axis line,
   // rather than below the plot window border.
   // This over-rides the default in class ticks_labels_style.
-  //
 
   if (title_info_.text() == "")
   { // Avoid leaving unnecessary space etc for a title.

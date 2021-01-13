@@ -1,13 +1,11 @@
  /*!  \file
   \brief SVG Plot functions common to 1D, 2D and Boxplots.
   \details Functions are derived from base class @c axis_plot_frame.
-  \details
 
+  \details
   #define BOOST_SVG_LEGEND_DIAGNOSTICS for diagnostics of plot legend.
   #define BOOST_SVG_TITLE_DIAGNOSTICS for diagnostics of plot title.
   #define BOOST_SVG_POINT_DIAGNOSTICS for diagnostics of data-point markers.
-
-  \author Jacob Voytko and Paul A. Bristow
 */
 
 // Copyright Jacob Voytko 2007
@@ -57,7 +55,7 @@ namespace boost
   namespace svg
   {
 
-    /*! Number of standard deviations used for text_plusminus text display.\n
+    /*! Number of standard-deviations used for text_plusminus text display.\n
       Nominal factor of 2 (strictly 1.96) corresponds to 95% confidence limit.
     */
     static const double text_plusminus = 2.;
@@ -68,9 +66,9 @@ namespace boost
 
     // x_axis_position_ and y_axis_position_ use x_axis_intersect & y_axis_intersect
     enum x_axis_intersect
-    { //! \enum x_axis_intersect If and how the X axes intersects Y axis.
+    { //! \enum x_axis_intersect If and how the X axes intersects Y-axis.
       bottom = -1, //!< X-axis free below bottom of end of Y-axis (case of all Y definitely < 0).
-      x_intersects_y = 0, //!< x_intersects_y when Y values include zero, so X intersects the Y axis.
+      x_intersects_y = 0, //!< x_intersects_y when Y values include zero, so X intersects the Y-axis.
       top = +1 //!< X-axis free above top of X-axis (case of all Y definitely > 0).
       };
 
@@ -179,7 +177,7 @@ namespace boost
          void clear_legend(); //!< Clear the legend layer of the SVG plot.
          void clear_background(); //!< Clear the whole image background layer of the SVG plot.
          void clear_x_axis(); //!< Clear the X axis layer of the SVG plot.
-         void clear_y_axis(); //! Clear the Y axis layer of the SVG plot.
+         void clear_y_axis(); //! Clear the Y-axis layer of the SVG plot.
          void clear_title(); //!< Clear the plot title layer of the SVG plot.
          void clear_points(); //!< Clear the data-points layer of the SVG plot.
          void clear_plot_background(); //!< Clear the plot area background layer of the SVG plot.
@@ -377,14 +375,14 @@ namespace boost
           double image_border_width(); //!<\return  the svg image border width (svg units, default pixels).
           Derived& plot_window_x(double min_x, double max_x);//!< Set the minimum and maximum (cartesian data units) for the plot window X axis.
             //! This is normally calculated from other plot values.
-          Derived& plot_window_y(double min_y, double max_y);//!< Set the minimum and maximum (cartesian data units) for the plot window Y axis.
+          Derived& plot_window_y(double min_y, double max_y);//!< Set the minimum and maximum (cartesian data units) for the plot window Y-axis.
             //! This is normally calculated from other plot values.
           std::pair<double, double> plot_window_x(); //!<\return  both the left and right (X axis) of the plot window.
           double plot_window_x_left(); //!<\return  left of the plot window.
           double plot_window_x_right(); //!<\return  right of the plot window.
           double plot_window_y_top(); //!<\return  top of the plot window.
           double plot_window_y_bottom(); //!<\return  top of the plot window.
-          std::pair<double, double> plot_window_y(); //!<\return  both the top and bottom (Y axis) of the plot window.
+          std::pair<double, double> plot_window_y(); //!<\return  both the top and bottom (Y-axis) of the plot window.
           double x_minor_interval(); //!<\return  interval between X minor ticks.
           double y_minor_interval(); //!<\return  interval between Y minor ticks.
           Derived& x_ticks_up_on(bool cmd); //!<Set true if X major ticks should mark upwards.
@@ -421,7 +419,7 @@ namespace boost
           Derived& x_ticks_values_ioflags(std::ios_base::fmtflags f); //!<Set iostream format flags of data-point X values near data-points markers.
           std::ios_base::fmtflags x_ticks_values_ioflags(); //!<\return  iostream format flags of data-point X values near data-points markers.
 
-          Derived& x_ticks_values_font_family(const std::string& family); /*!< Set X ticks value label font family.
+          Derived& x_ticks_values_font_family(const std::string& family); /*!< Set X-ticks value label font family.
             Available fonts depend on the program rendering the SVG XML, usually a browser.
             The default font (usually "default_font_family") is used if a render program does not provide the font specified.
              These are probably usable:
@@ -430,15 +428,15 @@ namespace boost
  "lucida calligraphy", "tahoma", "vivaldi", "informal roman", "lucida handwriting", "lucida bright", "helvetica"
              \endcode
            */
-          const std::string& x_ticks_values_font_family(); //!<\return  X ticks value label font family.
-          Derived& x_ticks_values_font_size(int i); //!<Set X ticks value label font size (svg units, default pixels).
-          int x_ticks_values_font_size(); //!<Set X ticks value label font size (svg units, default pixels).
+          const std::string& x_ticks_values_font_family(); //!<\return  X-ticks value label font family.
+          Derived& x_ticks_values_font_size(int i); //!<Set X-ticks value label font size (svg units, default pixels).
+          int x_ticks_values_font_size(); //!<Set X-ticks value label font size (svg units, default pixels).
 
           Derived& x_ticks_on_window_or_axis(int side);
-            /*!<  Set position of X ticks on window or axis.
-              \param side -1 X ticks on bottom of plot window,
-                       0 X ticks on X-axis horizontal line,
-                       +1 X ticks top of plot window.
+            /*!<  Set position of X-ticks on window or axis.
+              \param side -1 X-ticks on bottom of plot window,
+                       0 X-ticks on X-axis horizontal line,
+                       +1 X-ticks top of plot window.
             */
           int x_ticks_on_window_or_axis(); //!<\return true if X axis ticks wanted on the window (rather than on axis).\n
             //!<-1 bottom of plot window, 0 on horiztonal X axis , +1 top of plot window.
@@ -446,16 +444,16 @@ namespace boost
             //!<\see x_label_units which also sets true.
           bool x_label_units_on(); //!<Set true if want X axis label to include units (as well as label like "length").
           Derived& x_major_labels_side(int side); /*!< Position of labels for X major ticks on horizontal X axis line.
-               \param side > 0 X tick value labels to left of Y axis line (default), 0 (false) no major X tick value labels on Y axis, 0 X tick labels to right of Y axis line.
+               \param side > 0 X tick value labels to left of Y-axis line (default), 0 (false) no major X tick value labels on Y-axis, 0 X tick labels to right of Y-axis line.
             */
-          int x_major_labels_side(); //!<\return the side for X ticks major value labels.
-          Derived& x_major_label_rotation(rotate_style rot); /*!< Set rotation for X ticks major value-labels (words). (Default horizontal).
+          int x_major_labels_side(); //!<\return the side for X-ticks major value labels.
+          Derived& x_major_label_rotation(rotate_style rot); /*!< Set rotation for X-ticks major value-labels (words). (Default horizontal).
                \see rotate_style
             */
-          Derived& x_major_label_rotation(int rot); /*!< Set rotation for X ticks major value-labels (degrees). (Default 0).
+          Derived& x_major_label_rotation(int rot); /*!< Set rotation for X-ticks major value-labels (degrees). (Default 0).
                \see rotate_style
             */
-          int x_major_label_rotation(); /*!< \return rotation for X ticks major value labels (degrees).
+          int x_major_label_rotation(); /*!< \return rotation for X-ticks major value labels (degrees).
                 \sa rotate_style
              */
           Derived& title_on(bool cmd); //!<If set true, show a title for the plot. Note: is set true by setting a title.
@@ -465,7 +463,7 @@ namespace boost
           Derived& x_minor_grid_on(bool is); //!<If set true, will include a minor X-axis grid.
           bool x_minor_grid_on();   //!<\return true if will include a major X-axis grid.
           Derived& axes_on(bool is); //!< Set @c true if to draw \b both x and y axes (note plural axes).
-          bool axes_on(); //!< \return @c true if to draw \b both x and y axis on.
+          bool axes_on(); //!< \return @c true if to draw \b both x and Y-axis on.
           Derived& x_axis_on(bool is); //!<If set true, draw a horizontal X-axis line.
           bool x_axis_on(); //!<\return true if will draw a horizontal X-axis line.
           Derived& y_axis_on(bool is); //!<If set true, draw a vertical Y-axis line.
@@ -606,8 +604,8 @@ namespace boost
 
           //!<autoscale set & get parameters,
           //!<Note: all these *MUST* preceed x_autoscale(data) call.
-          Derived& autoscale_plusminus(double); //!< Set how many std_dev or standard deviations to allow for ellipses when autoscaling.
-          double autoscale_plusminus(); //!< \return How many std_dev or standard deviations allowed for ellipses when autoscaling.
+          Derived& autoscale_plusminus(double); //!< Set how many std_dev or standard-deviations to allow for ellipses when autoscaling.
+          double autoscale_plusminus(); //!< \return How many std_dev or standard-deviations allowed for ellipses when autoscaling.
 
           Derived& confidence(double); //!<Set confidence alpha for display of confidence intervals (default 0.05 for 95%).
           double confidence(); //!<\return Confidence alpha for display of confidence intervals (default 0.05 for 95%).
@@ -691,12 +689,12 @@ namespace boost
               \details For example, -10, -10, +10, +10, Default color black.
           */
 
-          Derived& one_sd_color(const svg_color&); //!<Set the color for the one standard deviation (~67% confidence) ellipse fill.
-          svg_color one_sd_color(); //!<\return Color for the one standard deviation (~67% confidence) ellipse fill.
-          Derived& two_sd_color(const svg_color&); //!<Set the color for two standard deviation (~95% confidence) ellipse fill.
-          svg_color two_sd_color(); //!<\return Color for two standard deviation (~95% confidence) ellipse fill.
-          Derived& three_sd_color(const svg_color&); //!<Set the color for three standard deviation (~99% confidence) ellipse fill.
-          svg_color three_sd_color(); //!<\return Color for three standard deviation (~99% confidence) ellipse fill.
+          Derived& one_sd_color(const svg_color&); //!<Set the color for the one standard-deviation (~67% confidence) ellipse fill.
+          svg_color one_sd_color(); //!<\return Color for the one standard-deviation (~67% confidence) ellipse fill.
+          Derived& two_sd_color(const svg_color&); //!<Set the color for two standard-deviation (~95% confidence) ellipse fill.
+          svg_color two_sd_color(); //!<\return Color for two standard-deviation (~95% confidence) ellipse fill.
+          Derived& three_sd_color(const svg_color&); //!<Set the color for three standard-deviation (~99% confidence) ellipse fill.
+          svg_color three_sd_color(); //!<\return Color for three standard-deviation (~99% confidence) ellipse fill.
 
           // Image info (& identical const version).
 
@@ -786,7 +784,7 @@ namespace boost
 
       template <class Derived>
       void axis_plot_frame<Derived>::clear_y_axis()
-      { //!< Clear the Y axis layer of the SVG plot.
+      { //!< Clear the Y-axis layer of the SVG plot.
         derived().image_.gs(PLOT_Y_AXIS).clear();
         derived().image_.gs(PLOT_Y_MINOR_TICKS).clear();
         derived().image_.gs(PLOT_Y_MAJOR_TICKS).clear();
@@ -949,7 +947,7 @@ namespace boost
           }
           //if((y_down <= derived().plot_bottom_) && (y_up >= derived().plot_top_) && (x >= derived().plot_left_) && (x <= derived().plot_right_))
           //{ // Make sure that we are drawing inside the allowed window.
-          grid_path.M(x, y_up).L(x, y_down); // Vertical grid line.
+          grid_path.M(x, y_up).L(x, y_down); // Vertical grid-line.
         //}
         } // use_x_major_grid
 
@@ -1159,7 +1157,7 @@ namespace boost
           {
             throw std::runtime_error("X-tick Y value coordinate is negative!");
           }
-          // Draw the X ticks value-labels, "1", "2" "3" ...
+          // Draw the X-ticks value-labels, "1", "2" "3" ...
           // Want this:
           // <g id="xTicksValues">  text-anchor = "middle" font-size = "12" font-family = "Lucida Sans Unicode"
           //  <text x = "74.5" y = "390" >0 </text >
@@ -1257,7 +1255,7 @@ namespace boost
 
       template <class Derived>
       void axis_plot_frame<Derived>::draw_x_axis()
-      { //! Draw horizontal X-axis line & plot window line to hold, and ticks and grids.
+      { //! Draw horizontal X-axis line & plot window line to hold, and ticks (with tick value-labels) and grids.
         if (derived().x_axis_.axis_line_on_)
         { // Want a horizontal X-axis line drawn.
           double xleft = derived().plot_left_;
@@ -1366,16 +1364,16 @@ namespace boost
       template <class Derived>
       void axis_plot_frame<Derived>::draw_x_axis_label()
       { //! Draw the X-axis label text (for example, length),
-        //! and append any optional units (for example, km).
+        //! and append any optional units (for example, km) usually in brackets.
         // X-label color default is set in constructor thus:
         // image_.gs(detail::PLOT_X_LABEL).style().stroke_color(black);
         // and changed using x_label_color(color);
-        // Similarly for font family and size etc (must be same for both label and units).
+        // Similarly for font-family and size etc (must be same for both label and units).
 
-        std::string x_label = derived().x_label_info_.text(); // x_axis_ label, and optional units.
+        std::string x_label = derived().x_label_info_.text(); // X-axis label, and optional units.
         if (derived().x_axis_.label_units_on_ && (derived().x_units_info_.text() != ""))
         { // Append the units, if any, user providing brackets () if required.
-          x_label += derived().x_units_info_.text(); // for example: "time (sec)".
+          x_label += derived().x_units_info_.text(); // For example: "time (sec)".
         }
 
         double y = derived().plot_bottom_;
@@ -1429,7 +1427,7 @@ namespace boost
               }
             }
             else if (derived().x_ticks_.label_rotation_ == horizontal)
-            { // horizontal X ticks value labels (default).
+            { // horizontal X-ticks value labels (default).
               if (derived().x_ticks_.major_value_labels_side_ < 0)
               { //  Move down to allow space for font size of tick value labels below X-axis.
                 y += derived().x_ticks_value_label_info_.textstyle().font_size();
@@ -2285,7 +2283,7 @@ namespace boost
       unc<false> ux, unc<false> uy) // Default unc ux = 0. and uy = 0. ?  Meas?
     { /*! Draw a plot data-point marker shape or symbol
         whose size and stroke and fill colors are specified in plot_point_style style,
-        possibly including uncertainty ellipses showing multiples of standard deviation.
+        possibly including uncertainty ellipses showing multiples of standard-deviation.
       */
       /*
         For 1-D plots, the points do not *need* to be centered on the X-axis,
@@ -2359,7 +2357,7 @@ namespace boost
         break;
 
       case unc_ellipse:  // Showing uncertainty, if known.
-        { // std_dev horizontal (and, for 2D, vertical) ellipses for one, two and three 'standard deviations'.
+        { // std_dev horizontal (and, for 2D, vertical) ellipses for one, two and three 'standard-deviations'.
           double xu = ux.value(); //
           if (ux.std_dev() > 0)
           { // std_dev is meaningful.
@@ -2388,11 +2386,11 @@ namespace boost
           // color set in svg_1d_plot data at present.
           // Also be set by user calling my_plot.one_sd_color(lightblue),  .two_sd_color(blue), .three_sd_color(violet)
           g_element* gu1_ptr = &(derived().image_.gs(PLOT_DATA_UNC1));
-          gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard deviation.
+          gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard-deviation.
           g_element* gu2_ptr = &(derived().image_.gs(PLOT_DATA_UNC2));
-          gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard deviation.
+          gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard-deviation.
           g_element* gu3_ptr = &(derived().image_.gs(PLOT_DATA_UNC3));
-          gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard deviation.
+          gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard-deviation.
           g_ptr.circle(x, y, 1); // Show x and y values at center using stroke and fill color of data-point marker.
         }
         break;
@@ -2573,11 +2571,11 @@ namespace boost
           void axis_plot_frame<Derived>::draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, Meas uvalue)
           { /*!
           void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, unc<false> uvalue)
-             Write one data-point (X or Y) value as a string, for example "1.23e-2",
-             near the data-point marker.
+             Write one data-point (X or Y) value as a string, for example "1.23e-2", near the data-point marker.
+             (See draw_plot_point_values below for plotting both X and Y information).
              Unnecessary e, +, \& leading exponent zeros may optionally be stripped,
              and the position and rotation controlled.
-             std_dev estimate, typically standard deviation
+             std_dev estimate, typically standard-deviation
              (approximately half conventional 95% confidence "plus or minus")
              may be optionally be appended.
              Degrees of freedom estimate (number of replicates) may optionally be appended.
@@ -2586,7 +2584,7 @@ namespace boost
              The precision and format (scientific, fixed), and color and font type and size can be controlled too.
              */
             double value = uvalue.value(); // Most likely value or mean.
-            double sd = uvalue.std_dev(); // Standard deviation for value.
+            double sd = uvalue.std_dev(); // standard-deviation for value.
             double df = uvalue.deg_free(); // Degrees of freedom estimate for value.
             unsigned short int types = uvalue.types();  //  unctypes_
             distribution_type distrib;
@@ -2640,7 +2638,7 @@ namespace boost
 
             int rot = val_style.value_label_rotation_;
             // http://www.w3.org/TR/SVG/coords.html#RotationDefined
-            // transform="rotate(-45)" == uphill
+            // Example: transform="rotate(-45)" == uphill
 
             align_style al; // = center_align;
             switch (rot)
@@ -2727,8 +2725,8 @@ namespace boost
             if ((val_style.plusminus_on_ == true) // text_plusminus uncertainty is wanted,
                 && (sd > 0.) // and std_dev is a valid std_dev estimate.
               )
-            {  // std_dev estimate usually expressed 67% confidence interval + or - standard deviation.
-              sd *= derived().text_plusminus_; // typically + or - standard deviation.
+            {  // std_dev estimate usually expressed 67% confidence interval + or - standard-deviation.
+              sd *= derived().text_plusminus_; // typically + or - standard-deviation.
               label_u = sv(sd, val_style, true); // stripped.
               t.tspan(pm_symbol).fill_color(val_style.plusminus_color_);
               t.tspan(label_u).fill_color(val_style.plusminus_color_).font_size(udf_font);
@@ -2786,7 +2784,6 @@ namespace boost
               label_order << " #" << order;
               t.tspan(label_order.str()).fill_color(val_style.order_color_).font_size(udf_font);
             }
-
             if (val_style.suffix_ != "")
             { // Add a suffix like "]" or " sec]".
               t.tspan(val_style.suffix_);
@@ -2812,25 +2809,29 @@ namespace boost
 
          template <class Derived>
          void axis_plot_frame<Derived>::draw_plot_point_values(double x, double y, g_element& x_g_ptr, g_element& y_g_ptr, const value_style& x_sty, const value_style& y_sty, Meas uncx, unc<false> uncy)
-          { /*! \brief Write the \b pair of data-points X and Y values as a string.
+          { /*! \brief Write the \b pair of data-points @b both X @b and Y values as a string.
                \details
                The x parameter also carries the measurement information for the pair,
                and so is a @c Meas, not just an @c unc<false> as is the Y parameter.
                If a separator starting with newline,
-               then both on the same line, for example "1.23, 3.45", or "[5.6, 7.8]
+               then show both on the same line, for example "1.23, 3.45", or "[5.6, 7.8]
                X value_style is used to provide the prefix and separator, and Y value_style to provide the suffix.
                For example,
                */
             /*!
-              \verbatim x_style prefix("[ X=", and separator ",&#x00A0;Y= ", " and Y value_style = "]" will produce a value label like "[X=-1.23, Y=4.56]"\endverbatim
+              \verbatim x_style prefix("[ X=", and separator ",&#x00A0;Y= ", " and Y value_style = "]" 
+                 will produce a value label like "[X=-1.23, Y=4.56]"
+              \endverbatim
 
               \note You need to use a Unicode space for get space for all browsers.
               For a long a string you may need to make the total image size bigger,
               and to orient the value labels with care.
-              draw_plot_point_values is only when both X and Y pairs are wanted.
+              \note draw_plot_point_values is only when both X and Y pairs are wanted.
+              See @c draw_plot_point_value for plotting just one X OR Y value label.
            */
             // Avoid a warning about using &#x00A0; within Doxygen comment.
             // And there is something funny about verbatim commands, hence odd layout.
+
             using std::string;
             using std::stringstream;
             double vx = uncx.value();
@@ -2937,11 +2938,10 @@ namespace boost
             // (even if it may not always work right yet ;-)
             // Tasteless colors and font changes are purely proof of concept!
 
-            int fx = static_cast<int>(x_sty.values_text_style_.font_size() * reducer);
-
+            int fx = static_cast<int>(x_sty.values_text_style_.font_size() * reducer);  // Make font about a tenth smaller.
             // Make std_dev and df a bit smaller to distinguish from value by default (but make configurable).
-            // Write X value (and optional std_dev and df).
-            std::string label_xdf; // X degrees of freedom as string.
+            // Write X value-label (and optional std_dev and df).
+            std::string label_xdf; // X degrees of freedom as string, for example "(42)".
 
             text_element& t = x_g_ptr.text(x, y, label_xv, x_sty.values_text_style_, al, rot);
             // Optionally, show std_dev as 95% confidence plus minus:  2.1 +-0.012
@@ -2951,14 +2951,14 @@ namespace boost
             // Spaces seem to get lost, so use \&x00A0 as an explicit space glyph.
             // Layout seems to vary with font - Times New Roman leaves no space after.
             if ((x_sty.plusminus_on_ == true) && (ux > 0.) )
-            {  // std_dev estimate usually 67% confidence interval + or - standard deviation.
-              ux *= derived().text_plusminus_; // typically  + or - standard deviation.
+            {  // std_dev estimate usually 67% confidence interval + or - standard-deviation.
+              ux *= derived().text_plusminus_; // typically  + or - standard-deviation.
               std::string label_xu; // X std_dev as string.
               label_xu = sv(ux, x_sty, true);
               //t.tspan(pm_symbol).fill_color(darkcyan);
               // Should this be stroke_color?
               t.tspan(pm_symbol).fill_color(x_sty.plusminus_color_);
-              t.tspan(label_xu).fill_color(x_sty.plusminus_color_).font_size(fx); // .font_weight("bold")
+              t.tspan(label_xu).fill_color(x_sty.plusminus_color_).font_size(fx); // perhaps .font_weight("bold")
             }
             if (x_sty.addlimits_on_ == true)
             { // Want confidence interval appended, for example: <1.23, 1.45>
@@ -2982,7 +2982,7 @@ namespace boost
               t.tspan(label_limits).fill_color(x_sty.addlimits_color_).font_size(fx);
             }
 
-            if ((x_sty.df_on_ == true)  // Is wanted.
+            if ((x_sty.df_on_ == true)  // degrees of freedom is wanted.
                  &&
                  (dfx != (std::numeric_limits<unsigned short int>::max)()) // and deg_free is defined OK.
                )
@@ -2995,9 +2995,14 @@ namespace boost
               label_xdf = label.str();
               t.tspan(label_xdf).fill_color(x_sty.df_color_).font_size(fx);
             }
+            // X values Suffix (usually units, for example: "(km)").
+            if (x_sty.suffix_ != "")
+            { // Want a suffix.
+              t.tspan(x_sty.suffix_).fill_color(y_sty.fill_color_).font_size(x_sty.values_text_style_.font_size());
+            }
 
-            int fy = static_cast<int>(y_sty.values_text_style_.font_size() * reducer);
-            // If a newline is 1st char in separator, put values on the next line below the marker,
+            int fy = static_cast<int>(y_sty.values_text_style_.font_size() * reducer);  // Make font about a tenth smaller?
+           // If a newline is 1st char in separator, put Y value-labels on the next line below the marker,
             // else all on one line.
             bool sameline = (x_sty.separator_[0] != '\n');
             if (sameline)
@@ -3013,9 +3018,9 @@ namespace boost
                    (y_sty.plusminus_on_) // +/- is wanted.
                    && (uy > 0.) // Is valid std_dev estimate.
                  )
-              { // std_dev estimate (usually 95% confidence interval + or - standard deviation).
+              { // std_dev estimate (usually 95% confidence interval + or - standard-deviation).
                 // Precision of std_dev is usually less than value,
-                uy *= derived().text_plusminus_; // Typically + or - standard deviation.
+                uy *= derived().text_plusminus_; // Typically + or - standard-deviation.
                 std::string label_yu;
                 label_yu = "&#x00A0;" + sv(uy, y_sty, true);
                 t.tspan(pm_symbol).font_family("arial").font_size(fy).fill_color(green);
@@ -3061,22 +3066,23 @@ namespace boost
               }
             } //
             else
-            { // Move ready to put Y value on 'newline' below point marker.
+            { // Splitting X and Y info onto two lines, so move ready to put Y value-label on 'newline' below point marker.
               // Problem here if orientation is changed? - Yes - doesn't line up :-(
-              //x_sty.separator_.substr(1); to ignore the \n newline indicator.
+              // x_sty.separator_.substr(1); to ignore the leading \n newline indicator to split onto two lines.
               t.tspan(x_sty.separator_.substr(1)).fill_color(x_sty.fill_color_).font_size(x_sty.values_text_style_.font_size());
               if (y_sty.prefix_ != "")
               { //
                 label_yv = y_sty.prefix_ + label_yv;
               }
-              double dy = y_sty.values_text_style_.font_size() * 1.2; // was 2.2 "newline"
               // Need to start a new text_element here because tspan rotation doesn't apply to whole string?
+              // Use the mean of x and Y font size to determine the isze of the 'newline'.
+              double dy = 0.5 * (y_sty.values_text_style_.font_size() + x_sty.values_text_style_.font_size()) * 1.2 ; // 
               text_element& ty = y_g_ptr.text(x, y + dy, label_yv, y_sty.values_text_style_, al, rot);
 
               if ((y_sty.plusminus_on_ == true) // Is wanted.
                   && (uy > 0.) // And is a valid std_dev estimate.
                   )
-              {  // std_dev estimate usually 95% confidence interval + or - 2 standard deviation.
+              {  // std_dev estimate usually 95% confidence interval + or - 2 standard-deviation.
                  // Precision of std_dev is usually less than value,
                 std::string label_yu = "&#x00A0;" + sv(uy, y_sty, true);
                 ty.tspan(pm_symbol).font_family("arial").font_size(fy).fill_color(y_sty.plusminus_color_); // +/- sumbol.
@@ -3106,7 +3112,7 @@ namespace boost
                 ty.tspan(label_limits).fill_color(y_sty.addlimits_color_).font_size(fy);
               }
 
-              if ((y_sty.df_on_ == true)  // Is wanted.
+              if ((y_sty.df_on_ == true)  // degrees of freedome is wanted.
                     && (dfy != (std::numeric_limits<unsigned short int>::max)()) // and deg_free is defined OK.
                     )
               { // degrees of freedom or number of values -1 used for this estimate.
@@ -3149,11 +3155,11 @@ namespace boost
               label_order << " #" << order;
               t.tspan(label_order.str()).fill_color(x_sty.order_color_).font_size(udf_font);
             }
-
-            if (x_sty.suffix_ != "")
-            { // Add a suffix like "]" or " sec]".
-              t.tspan(y_sty.suffix_);
-            }
+            // Unclear why would want this? But I thought it was a good idea long ago???
+            //if (x_sty.suffix_ != "")
+            //{ // Add a suffix like "]" or " sec]".
+            //  t.tspan(y_sty.suffix_);
+            //}
         } // void draw_plot_point_values(double x, double y, g_element& g_ptr, double value)
 
         // Member functions definitions.
@@ -3995,7 +4001,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::plot_window_y(double min_y, double max_y)
-          { //! Set the minimum and maximum (cartesian data units) for the plot window Y axis.
+          { //! Set the minimum and maximum (cartesian data units) for the plot window Y-axis.
             //! This is normally calculated from other plot values.
 
             if(max_y <= min_y)
@@ -4047,7 +4053,7 @@ namespace boost
 
           template <class Derived>
           std::pair<double, double> axis_plot_frame<Derived>::plot_window_y()
-          { //! \return  both the top and bottom (Y axis) of the plot window.
+          { //! \return  both the top and bottom (Y-axis) of the plot window.
             std::pair<double, double> r;
             r.first = derived().plot_top_;
             r.second = derived().plot_bottom_;
@@ -4218,7 +4224,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_ticks_values_font_size(int size)
-          { //! Set X ticks value label font size (svg units, default pixels).
+          { //! Set X-ticks value label font size (svg units, default pixels).
             //derived().x_ticks_.value_label_style_.font_size(i);
             derived().x_ticks_value_label_info_.textstyle().font_size_ = size;
             return derived();
@@ -4226,7 +4232,7 @@ namespace boost
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_ticks_values_font_size()
-          { //! \return  X ticks value label font size (svg units, default pixels).
+          { //! \return  X-ticks value label font size (svg units, default pixels).
             // return derived().x_ticks_.value_label_style_.font_size();
             //       return derived().x_value_label_info_style_.font_size();
 
@@ -4235,7 +4241,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_ticks_values_font_family(const std::string& family)
-          { //! Set X ticks value label font family.
+          { //! Set X-ticks value label font family.
             //derived().x_ticks_.value_label_style_.font_family(family); // is effect same as:
             derived().x_ticks_value_label_info_.textstyle().font_family_ = family;
             return derived();
@@ -4243,13 +4249,13 @@ namespace boost
 
           template <class Derived>
           const std::string& axis_plot_frame<Derived>::x_ticks_values_font_family()
-          { //! \return  X ticks value label font family.
+          { //! \return  X-ticks value label font family.
             return derived().x_ticks_.value_label_style_.font_family();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_ticks_on_window_or_axis(int cmd)
-          { /*!  Set  X ticks on window or axis
+          { /*!  Set  X-ticks on window or axis
               \arg cmd -1 bottom of plot window,
               \arg cmd 0 on X axis.
               \arg cmd +1 top of plot window.
@@ -4293,13 +4299,13 @@ namespace boost
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_major_labels_side()
-          { //! \return The side for X ticks major value labels (see `enum boost::svg::side`).
+          { //! \return The side for X-ticks major value labels (see `enum boost::svg::side`).
             return derived().x_ticks_.major_value_labels_side_;
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_major_label_rotation(rotate_style rot)
-          { /*! Set rotation for X ticks major value labels. (Default horizontal).
+          { /*! Set rotation for X-ticks major value labels. (Default horizontal).
                \see rotate_style
             */
             derived().x_ticks_.label_rotation_ = static_cast<int>(rot);
@@ -4308,7 +4314,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_major_label_rotation(int rot)
-          { /*! Set rotation for X ticks major value labels. (Default horizontal == 0.
+          { /*! Set rotation for X-ticks major value labels. (Default horizontal == 0.
                \see rotate_style
             */
             derived().x_ticks_.label_rotation_ = rot;
@@ -4317,7 +4323,7 @@ namespace boost
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_major_label_rotation()
-          { /*! \return rotation for X ticks major value labels in degrees.
+          { /*! \return rotation for X-ticks major value labels in degrees.
                 \see rotate_style
              */
             return derived().x_ticks_.label_rotation_;
@@ -4373,7 +4379,7 @@ namespace boost
 
           template <class Derived>
           bool axis_plot_frame<Derived>::axes_on()
-          { //! \return true if \b both x and y axis on.
+          { //! \return true if \b both x and Y-axis on.
             return derived().x_axis_.axis_line_on_ && derived().y_axis_.axis_line_on_;
           }
 
@@ -4392,7 +4398,7 @@ namespace boost
           }
 
           /////////////////////////////////////////////////////////////////////////////////////
-          // Y axis settings.
+          // Y-axis settings.
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::y_axis_on(bool is)
@@ -4558,7 +4564,7 @@ namespace boost
             case top:
               return "x_axis_position top (all Y values < 0)"; break;
             case x_intersects_y:
-              return "x_axis_position intersects Y axis (Y range includes zero)"; break;
+              return "x_axis_position intersects Y-axis (Y range includes zero)"; break;
             case bottom:
               return "x_axis_position bottom (all Y values > 0)"; break;
             default:
@@ -5104,8 +5110,8 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_decor(const std::string& pre, const std::string& sep, const std::string& suf)
-          { /*! Set prefix, separator and suffix for x_style
-            \note if you want a space, you must use a Unicode space "\&#x00A0;",
+          { /*! Set prefix, separator and suffix for x_value_style.
+            \note If you want a space, you must use a Unicode space "\&#x00A0;",
             for example, ",\&#x00A0;" rather than just ", ".
             */
             derived().x_values_style_.prefix_ = pre;
@@ -5352,7 +5358,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::autoscale_plusminus(double pm)
-          { //! Set how many std_dev or standard deviation to allow for ellipse when autoscaling.
+          { //! Set how many std_dev or standard-deviation to allow for ellipse when autoscaling.
             //! Default is 3 for 99% confidence.
             derived().autoscale_plusminus_ = pm;
             return derived();
@@ -5360,7 +5366,7 @@ namespace boost
 
           template <class Derived>
           double axis_plot_frame<Derived>::autoscale_plusminus()
-          { //! \return  how many std_dev or standard deviation to allow for ellipse when autoscaling.
+          { //! \return  how many std_dev or standard-deviation to allow for ellipse when autoscaling.
             //! Default is 3 for 99% confidence.
             return derived().autoscale_plusminus_;
           }
@@ -5600,7 +5606,7 @@ namespace boost
 
         template <class Derived>
         Derived& axis_plot_frame<Derived>::one_sd_color(const svg_color& col)
-        { //! Set the color for the one standard deviation (~67% confidence) ellipse fill.
+        { //! Set the color for the one standard-deviation (~67% confidence) ellipse fill.
           derived().image_.gs(detail::PLOT_DATA_UNC1).style().fill_on(true);
           derived().image_.gs(detail::PLOT_DATA_UNC1).style().fill_color(col);
           derived().image_.gs(detail::PLOT_DATA_UNC1).style().stroke_color(blank);
@@ -5610,13 +5616,13 @@ namespace boost
 
        template <class Derived>
        svg_color axis_plot_frame<Derived>::one_sd_color()
-       { //! \return Color for the one standard deviation (~67% confidence) ellipse fill.
+       { //! \return Color for the one standard-deviation (~67% confidence) ellipse fill.
          return derived().image_.gs(detail::PLOT_DATA_UNC1).style().fill_color();
        }
 
         template <class Derived>
         Derived& axis_plot_frame<Derived>::two_sd_color(const svg_color& col)
-        { //! Set the color for two standard deviation (~95% confidence) ellipse fill.
+        { //! Set the color for two standard-deviation (~95% confidence) ellipse fill.
           derived().image_.gs(detail::PLOT_DATA_UNC2).style().fill_on(true);
           derived().image_.gs(detail::PLOT_DATA_UNC2).style().fill_color(col);
           derived().image_.gs(detail::PLOT_DATA_UNC2).style().stroke_color(blank);
@@ -5626,13 +5632,13 @@ namespace boost
 
        template <class Derived>
        svg_color axis_plot_frame<Derived>::two_sd_color()
-       { //! \return Color for two standard deviation (~95% confidence) ellipse fill.
+       { //! \return Color for two standard-deviation (~95% confidence) ellipse fill.
          return derived().image_.gs(detail::PLOT_DATA_UNC2).style().fill_color();
        }
 
         template <class Derived>
         Derived& axis_plot_frame<Derived>::three_sd_color(const svg_color& col)
-        { //! Set the color for three standard deviation (~99% confidence) ellipse fill.
+        { //! Set the color for three standard-deviation (~99% confidence) ellipse fill.
           derived().image_.gs(detail::PLOT_DATA_UNC3).style().fill_on(true);
           derived().image_.gs(detail::PLOT_DATA_UNC3).style().fill_color(col);
           derived().image_.gs(detail::PLOT_DATA_UNC3).style().stroke_color(blank);
@@ -5642,7 +5648,7 @@ namespace boost
 
        template <class Derived>
        svg_color axis_plot_frame<Derived>::three_sd_color()
-       { //! \return Color for three standard deviation (~99% confidence) ellipse fill.
+       { //! \return Color for three standard-deviation (~99% confidence) ellipse fill.
          return derived().image_.gs(detail::PLOT_DATA_UNC3).style().fill_color();
        }
 

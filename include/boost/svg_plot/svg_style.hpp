@@ -124,13 +124,15 @@ std::ostream& operator<< (std::ostream& os, const align_style& al)
     os << "not aligned";
   }
   else os << "??? aligned";
-  os << std::endl;
+  // os << std::endl; // User should provide any suffix.
   return os;
 } //   std::ostream& operator<< (std::ostream& os, align_style al)
 
-
+//! Outputs: rotation style as words from horizontal(useful for diagnosis).
+//! Example:  \code std::cout << "x_values_rotation " << show_rotation(plot.x_values_rotation()) << std::endl; \endcode
+//! Outputs: \verbatim rotation is steepup (-60) \endverbatim
 std::string show_rotation(int rot)
-{ //  Outputs: rotation style as words from horizontal(useful for diagnosis).
+{ 
   if (rot == 0) {return "horizontal (0)"; }
   else if (rot == -30) { return  "slopeup (-30)"; }
   else if (rot == -45) { return  "uphill (-45)"; }

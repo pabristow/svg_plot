@@ -1,12 +1,10 @@
 /*! \file demo_2d_uncertainty.cpp
     \brief Demonstration of some 2D plot features.
     \details including showing values with uncertainty information as 'plus minus' and degrees of freedom estimates.
-    \author Jacob Voytko and Paul A. Bristow
-    \date Mar 2009, 2012
 */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2007, 2008, 2009
+// Copyright Paul A. Bristow 2007, 2008, 2009, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -19,21 +17,13 @@
 // Caution: this file contains Quickbook markup as well as code
 // and comments: don't change any of the special comment markups!
 
-#ifdef _MSC_VER
-#  pragma warning (disable : 4800) // forcing value to bool 'true' or 'false' (performance warning)
-#  pragma warning (disable : 4180) // qualifier applied to function type has no meaning; ignored
-#  pragma warning (disable : 4503) // decorated name length exceeded, name was truncated
-#  pragma warning (disable : 4512) // assignment operator could not be generated
-#  pragma warning (disable : 4100) // unreferenced formal parameter
-#endif
-
 //[demo_2d_uncertainty_1
 
 /*`First we need some includes to use Boost.Plot and C++ Standard Library:
 */
 
 #include <boost/svg_plot/svg_2d_plot.hpp>
-using namespace boost::svg;
+// using namespace boost::svg;
 
 #include <boost/svg_plot/show_2d_settings.hpp> // Only needed for showing which settings in use.
 //using boost::svg::show_2d_plot_settings;
@@ -51,29 +41,29 @@ using namespace boost::svg;
 //#include <functional>
 
 #include <map>
-  using std::map;
-  using std::multimap;
+  //using std::map;
+  //using std::multimap;
 
 #include <utility>
-  using std::pair;
-  using std::make_pair;
+  //using std::pair;
+  //using std::make_pair;
 
 #include <vector>
-   using std::vector;
+//  using std::vector;
 
 #include <cmath>
-   using std::sqrt;
+//   using std::sqrt;
 
 #include <iostream>
-   using std::cout;
-   using std::endl;
-   using std::scientific;
-   using std::hex;
-   using std::ios;
-   using std::boolalpha;
+   //using std::cout;
+   //using std::endl;
+   //using std::scientific;
+   //using std::hex;
+   //using std::ios;
+   //using std::boolalpha;
 
 #include <iterator>
-   using std::ostream_iterator;
+//   using std::ostream_iterator;
 //] [/demo_2d_uncertainty_1]
 
   enum side
@@ -89,7 +79,18 @@ int main()
 {
   using std::pair;
   using std::make_pair;
+  using std::vector;
+  using std::map;
+  using std::multimap;
+  using std::cout;
+  using std::endl;
+  using std::scientific;
+  using std::hex;
+  using std::ios;
+  using std::boolalpha;
+  using std::sqrt;
 
+  using namespace boost::svg;
   using boost::svg::detail::operator<<;
 
   setUncDefaults(std::cout);
@@ -107,17 +108,18 @@ the order of data values is important.
   typedef unc<false> uncun; // Uncertain Uncorrelated (the normal case).
 
   using boost::svg::detail::operator<<;
+  using std::ostream_iterator;
 
   // Check pair for double.
-  pair<double, double> double_pair; // double X and Y
+  pair<double, double> double_pair; // double X and Y pair.
   double_pair = make_pair(double(-2.234), double(-8.76));
-  cout << "make_pair(double(-2.234), double(-8.76)) = " << double_pair << endl;
+  std::cout << "make_pair(double(-2.234), double(-8.76)) = " << double_pair << std::endl;
 
-  uncun u1(1.23, 0.56F, 7); // For an X value.
-  cout << "u1 = " << u1 << endl; // u1 = 1.23+-0.056 (7)
+  uncun u1(1.23, 0.56F, 7); // For an X value. 
+  std::cout << "u1 = " << u1 << std::endl; // u1 = 1.23+-0.056 (7)
   uncun u2(3.45, 0.67F, 9); // For a Y value.
   pair<uncun, uncun > mp1 = make_pair(u1, u2); // XY pair of values.
-  cout << mp1 << endl; // 1.23+-0.056 (7), 2.345+-0.067 (9)
+  std::cout << mp1 << std::endl; // 1.23+-0.056 (7), 2.345+-0.067 (9)
 
   map<uncun, uncun > data1; // Container for XY pair of points.
   data1.insert(mp1); // u1, u2 = 1.23+-0.056 (7), 2.345+-0.067 (9)
@@ -133,11 +135,12 @@ and the other parts of uncun will be undefined!
 
 Echo the values input:
   */
-  cout << data1.size() << " XY data pairs:" << endl;
-  std::copy(data1.begin(), data1.end(), ostream_iterator<pair<uncun, uncun > >(cout, "\n"));
-  cout << endl;
+  std::cout << data1.size() << " XY data pairs:" << std::endl;
+  std::copy(data1.begin(), data1.end(), ostream_iterator<pair<uncun, uncun> >(std::cout, "\n"));
+  std::cout << std::endl;
 
-  svg_2d_plot my_plot;
+  svg_2d_plot my_plot;  // Construct an empty plot.
+
   /*`If you can be confident that the data set(s) only contains normal, valid data,
   so none are 'at limits' - too big or too small to be meaningful, infinite or NaN (NotANumber),
   then these checks can be skipped (for speed).
@@ -155,29 +158,37 @@ Echo the values input:
   //my_plot.autoscale_plusminus(1.5); // default is 3.
   // my_plot.confidence(0.01);  // Change from default 0.05 to 0.01 for 99% confidence.
 
-  /*`Use data set `data` to autoscale (you can use a different data set to scale from the one you chose to plot).
+  /*`Use data set `data` to autoscale. (You can use a different data set to scale from the one you chose to plot).
   */
   my_plot.xy_autoscale(data1);
 
   my_plot
+    // X values settings:
     .x_label("times (sec)")
     .x_range(-3, +10)
-    .xy_values_on(true) // Show X and Y values next to each point.
+    .x_values_on(true) // Show X values next to each point.
 
-     //! \note Essential use of Unicode space in all strings - ANSI space has no effect!
-    //.x_decor("", ",&#x00A0;") // Keep all on one line using separator NOT starting with a newline.
-    .x_decor("","\n") // Split onto two lines because X separator does start with newline.
-    .y_decor("&#x00A0;&#x00A0;&#x00A0;", "&#x00A0;time =", "&#x00A0;sec")
-     // Note: a few padding spaces are used to get Y values to lie more nearly under X values.
-     // This is only necessary when label are not horizontal.
-    .x_values_rotation(slopeup)
-    .x_values_font_size(16) // Bigger than default.
-    .x_values_font_family("Times New Roman")
+     //! \note Essential use of Unicode space &#x00A0; in all strings - ANSI space has no effect!
+  //  .x_decor("d ", ", ", "km") // Keep all on one line using a separator NOT starting with a newline.
+       .x_decor("d ", "\n_", "km") // Split X and Y onto two lines because X separator *does* start with newline.
+    .x_values_rotation(uphill)
+    .x_values_font_size(10) // Bigger than default.
+    .x_values_font_family("Times New Roman") // Serif font to show difference from sans serif ued for Y value-labels.
 
+    // Y values settings:
     .y_label("distance (km)")
     .y_range(-10., +10.)
+    .y_values_on(true) // Show Y values next to each point.
     .y_values_rotation(uphill)
-    .y_values_font_family("Arial") // Different from X-values font just to show effect.
+    .y_values_font_family("Arial") // Sans serif different from X-values font just to show effect.
+    .y_values_font_size(8) // Smaller than default.
+    .y_decor("&#x00A0;&#x00A0;&#x00A0;", "&#x00A0;time =", "&#x00A0;sec")
+//    .y_decor("&#x00A0;&#x00A0; time = ", "&#x00A0;", "&#x00A0;sec")
+     // Note: a few padding spaces are used to get Y-value labels to lie more nearly under X-value labels.
+     // This is only necessary when value-labels are not horizontal.
+    // y_prefix "&#x00A0;&#x00A0;&#x00A0;"   3 spaces.
+    // y_separator "&#x00A0;time ="  space before word time.
+    // y_suffix "&#x00A0;sec" space before word sec.
 
     .y_plusminus_on(true) // Show plus/minus +/- uncertainty with data-point value labels, for example "2.1 +/- 0.001"
     .y_plusminus_color(red) // Show plus/minus +/- uncertainty in red.
@@ -187,6 +198,9 @@ Echo the values input:
 
     .y_df_on(true) // Show degrees of freedom (usually observations -1) for data-points.
     .y_df_color(green) // Show degrees of freedom in green, for examples: "11").
+
+    .xy_values_on(true) // Show both X and Y values next to each point.
+
 
   /*`The default uncertainty ellipse colors (that apply to both X and Y axes)
   can be changed thus:
