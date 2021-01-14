@@ -26,13 +26,12 @@
 /*`First we need a few includes to use Boost.Plot:
 */
 #include <boost/quan/unc.hpp>  // Handles information uncertainty.
-
-// using boost::quan::unc; // Holds value and uncertainty formation.
+// using boost::quan::unc; // Holds value and uncertainty information.
 #include <boost/svg_plot/detail/functors.hpp>
 //  using boost::svg::detail::unc_1d_convert;
 #include <boost/svg_plot/svg_1d_plot.hpp>
 //using namespace boost::svg;
-
+// If list of settings required:
 #include <boost/svg_plot/show_1d_settings.hpp>
 //void boost::svg::show_1d_plot_settings(svg_1d_plot&);
 
@@ -60,32 +59,33 @@ int main()
     setUncDefaults(std::cout);
     typedef unc<false> uncun; // Uncertain Uncorrelated (the normal case).
     constexpr float NaN = std::numeric_limits<float>::quiet_NaN();
-    std::vector<uncun> A_times;
-    A_times.push_back(unc<false>(3.1, 0.02F, 8));
-    A_times.push_back(uncun(4.2, 0.01F, 14, 0U));
 
-    short unsigned int t = UNC_KNOWN | UNC_EXPLICIT| DEG_FREE_EXACT | DEG_FREE_KNOWN;
+    std::vector<uncun> A_times;
+    A_times.push_back(unc<false>(3.1, 0.02F, 8));  // Not using a typedef uncun.
+    A_times.push_back(uncun(4.2, 0.01F, 14, 0U));  // Using a typedef uncun.
 
     std::vector<unc<false> > B_times;
-    B_times.push_back(uncun(2.1, 0.001F, 30, t)); // Value, uncertainty, degrees of freedom and type known.
-    // (But use of type is not yet implemented.)
+    short unsigned int t = UNC_KNOWN | UNC_EXPLICIT| DEG_FREE_EXACT | DEG_FREE_KNOWN;   // An uncertain type. (But use of uncertain type is not yet implemented.)
+
+    B_times.push_back(uncun(2.1, 0.001F, 30, t)); // Value (2.1), uncertainty (0.001F), degrees of freedom (30) and uncertain type (t) known.
     B_times.push_back(unc<>(5.1, 0.025F, 20, 0U)); // Value, uncertainty, and degrees of freedom known - the usual case.
     B_times.push_back(uncun(7.8, 0.0025F, 1, 0U)); // Value and uncertainty known, but not degrees of freedom.
     B_times.push_back(uncun(3.4, 0.03F, 1, 0U)); // Value and uncertainty known, but not degrees of freedom.
     //B_times.push_back(uncun(6.9, 0.0F, 0, 0U)); // Only value known - no information available about uncertainty but treated as exact.
     B_times.push_back(uncun(5.9, NaN, 1, 0U)); // Only value known - uncertainty explicit NaN meaning no information available about uncertainty.
     // So in both cases show all possibly significant digits (usually 15).
-    // This is  ugly on a graph, so best to be explicit about uncertainty.
+    // This is ugly on a graph, so best to be explicit about uncertainty.
 
     std::vector<unc<false> > C_times;
     C_times.push_back(uncun(2.6, 0.1F, 5, 0U));
     C_times.push_back(uncun(5.4, 0.2F, 11, 0U));
 
     /*`Echo the values input: */
-    std::copy(A_times.begin(), A_times.end(), std::ostream_iterator<uncun>(std::cout, " "));
+    std::copy(A_times.begin(), A_times.end(), std::ostream_iterator<uncun>(std::cout, " ")); // 3.10 4.200
     std::cout << std::endl;
-    std::copy(B_times.begin(), B_times.end(), std::ostream_iterator<uncun>(std::cout, " "));
+    std::copy(B_times.begin(), B_times.end(), std::ostream_iterator<uncun>(std::cout, " ")); // 2.1000 5.10 7.800 3.40 5.900
     std::cout << std::endl;
+
     /*`The constructor initializes a new 1D plot, called `my_plot`,
     and also sets all the very many defaults for axes, width, colors, etc.
     */
@@ -119,11 +119,11 @@ int main()
 //   .x_values_precision(0) // Automatic number of digits of precision.
     .x_values_precision(2) // User-chosen std::ios precision decimal digits, for example "1.23".
     //.x_values_rotation(steepup) // steeper - but need more image and plot window vertical height for all data point info.
-    .x_values_rotation(slopeup) // value at x= 7.8 overflows both plot window and image.
-      // so would need to change .x_range 
+    .x_values_rotation(slopeup) // value at x = 7.8 overflows both plot window and image.
+      // so might need to change .x_range or slope to avoid this. 
     .x_plusminus_on(true)
     .x_plusminus_color(blue)
-    .x_addlimits_on(true) // Show plus/minus +/- confidence limits for data-point value labels.
+    .x_addlimits_on(true) // Show plus/minus +/- confidence limits/interval for data-point value labels.
     .x_addlimits_color(purple)  // Show +/- in darkgreen, for example: "+/- 0.03".
     .x_df_on(true) // Show degrees of freedom (usually observations -1) for data-points.
     .x_df_color(green)  // Show degrees of freedom in green, for examples: "11").

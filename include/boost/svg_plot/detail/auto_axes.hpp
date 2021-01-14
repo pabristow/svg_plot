@@ -635,7 +635,7 @@ void scale_axis(
     typename C::const_iterator pos = container.begin();
     if (pos == container.end())
     {
-      throw std::runtime_error("Autoscale could not find any values to scale axes!");
+      throw std::runtime_error("SVG_plot Autoscale could not find any values to scale axes!");
     }
     double y = value_of(pos->second);
     double yu = unc_of(pos->second) * autoscale_plusminus;
@@ -655,7 +655,8 @@ void scale_axis(
       }
       pos++;
     }
-    std::cout << "No limits checks: x_min = " << x_min
+    std::cout << "SVG_plot Autoscale warning (No limits checks):"
+                 "x_min = " << x_min
             << ", x_max = " << x_max
             << ", y_min = " << y_min
             << ", y_max = " << y_max << std::endl;

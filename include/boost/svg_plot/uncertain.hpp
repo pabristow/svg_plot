@@ -35,6 +35,7 @@
 #endif
 
 #include <boost/svg_plot/detail/pair.hpp>
+// using std::pair;
 
 #include <iostream>
 //using std::ostream;
@@ -122,12 +123,12 @@ public:
   void types(short unsigned); //!< Set other information about the value.
 
  private:
-  // Note that this class should fit into 128 bytes, same as two 64 bit doubles,
+  // Note that this class should fit into 128 bytes, same as two 64-bit doubles,
   // so it only doubles the memory required.
   double value_; //!< Most likely value, typically the mean.
   float uncertainty_; //!< Estimate of uncertainty, typically one standard deviation.
   //! Negative values mean that uncertainty is not defined.
-  //!
+
   short unsigned deg_free_;  /*!< Degrees of freedom, usually = number of observations -1;
   so for 2 observations, 1 degree of freedom.
   Range from 0 (1 observation) to 65534 = (std::numeric_limits<unsigned short int>::max)() - 1\n
@@ -137,7 +138,7 @@ public:
   but this must be converted, even if a marginal amount of information is lost.
   */
   short unsigned types_; //!< Reserved for other information about the value.
-  // (Hopefully, this only uses up the bits that would otherwise be padding).
+  // (Hopefully, this only uses up the bits that would otherwise be padding.)
 };
 
 
@@ -149,8 +150,6 @@ value_(v), uncertainty_(u), deg_free_(df), types_(ty)
 { //! Constructor allowing an unc to be constructed from just value providing defaults for all other parameters.
   //! Note the defaults so that unspecified variables have 'undefined' status.
 }
-
-
 
 template <bool correlated>
 bool unc<correlated>::operator<(const unc& u) const
@@ -233,7 +232,7 @@ void unc<correlated>::types(short unsigned  t)
 template <bool correlated>
 std::ostream& operator<< (std::ostream& os, const unc<correlated>& u)
 { /*! \brief Output a single value with (if defined) uncertainty and degrees of freedom (and type).
-     For example: "1.23 +/- 0.01 (13)".\n
+     For example: "1.23 +/-0.01 (13)".\n
      /details Note that the uncertainty is input and stored as one standard deviation,
      but output multiplied for a user configurable 'confidence factor' plusminus,
      default two for about 95% confidence (but could also be one for 67% or 3 for 99% confidence).
@@ -242,8 +241,10 @@ std::ostream& operator<< (std::ostream& os, const unc<correlated>& u)
   if (u.uncertainty_ > 0.F)
   { // Uncertainty is defined, so output it.
     //! Note that the plus or minus can be output using several methods.
-    os << '\361'
-    /*! \details 256 character 8-bit codepage plusminus symbol octal 361, or
+    //! Unicode https://en.wikipedia.org/wiki/Plus%E2%80%93minus_sign plus-minus sign/symbol &#x00B1.
+    //! Is neatest 
+    /*! \details 256 character 8-bit codepage plusminus symbol octal 361, or Unicode plusminus glyph hex B1
+      os << '\361' 
       os << char(241)
       decimal 241 or
       os << char(0xF1)
@@ -253,7 +254,8 @@ std::ostream& operator<< (std::ostream& os, const unc<correlated>& u)
       os << " +or-" << u.uncertainty_;
       Plain ANSI 7 bit code chars.
     */
-      << u.uncertainty_ * plusminus; // Typically two standard deviation.
+    os << char(0xB1)
+       << u.uncertainty_ * plusminus; // Typically two standard-deviation.
   };
   if (u.deg_free_ != (std::numeric_limits<unsigned short int>::max)())
   { // Degrees of freedom is defined, so output it.

@@ -1,6 +1,6 @@
 /*! \file demo_2d_uncertainty.cpp
     \brief Demonstration of some 2D plot features.
-    \details including showing values with uncertainty information as 'plus minus' and degrees of freedom estimates.
+    \details including showing values with uncertainty information as 'plus minus', confidence intervals and degrees of freedom estimates.
 */
 
 // Copyright Jacob Voytko 2007
@@ -19,7 +19,7 @@
 
 //[demo_2d_uncertainty_1
 
-/*`First we need some includes to use Boost.Plot and C++ Standard Library:
+/*`First we need some includes to use Boost.SVG_Plot, and C++ Standard Library:
 */
 
 #include <boost/svg_plot/svg_2d_plot.hpp>
@@ -38,6 +38,7 @@
 #include <boost/quan/meas.hpp>
 
 //#include <algorithm>
+//  using std::copy;
 //#include <functional>
 
 #include <map>
@@ -61,9 +62,13 @@
    //using std::hex;
    //using std::ios;
    //using std::boolalpha;
+#include <iomanip>
+// Using std::setw;
+// using std::setprecision;
 
 #include <iterator>
 //   using std::ostream_iterator;
+
 //] [/demo_2d_uncertainty_1]
 
   enum side
@@ -110,22 +115,28 @@ the order of data values is important.
   using boost::svg::detail::operator<<;
   using std::ostream_iterator;
 
-  // Check pair for double.
+  // Create pair for double.
   pair<double, double> double_pair; // double X and Y pair.
-  double_pair = make_pair(double(-2.234), double(-8.76));
+  double_pair = make_pair(double(-2.234), double(-8.76)); // Construct and then echo
+  std::cout << double_pair.first << ", " << double_pair.second << std::endl; //  make_pair(double(-2.234), double(-8.76)) = -2.234, -8.76
+  // But it is more convenient to use a specialization of operator<< for std::pair to show both:
   std::cout << "make_pair(double(-2.234), double(-8.76)) = " << double_pair << std::endl;
 
-  uncun u1(1.23, 0.56F, 7); // For an X value. 
-  std::cout << "u1 = " << u1 << std::endl; // u1 = 1.23+-0.056 (7)
-  uncun u2(3.45, 0.67F, 9); // For a Y value.
-  pair<uncun, uncun > mp1 = make_pair(u1, u2); // XY pair of values.
+  // Or use an uncertain type uncun that holds explicit uncertainty information.
+  uncun u1(1.23, 0.56F, 7); // For an X-value. 
+  std::cout << scientific << plusminus << addlimits << adddegfree << std::setw(20)  << std::left
+    << "u1 = " << u1 << std::endl; // u1 = 1.23+-0.056 (7)   -1u1 = 1.2 +/-0.56 <0.8200, 1.6400> (7)
+  uncun u2(3.45, 0.67F, 9); // For a Y-value.
+  std::cout << "u2 = " << u2 << std::endl; // 
+
+  pair<uncun, uncun > mp1 = make_pair(u1, u2); // XY pair of uncertain values.
+  // Echo both X and Y-values and add all the uncertainty information, standard deviation and degrees of freedom :
   std::cout << mp1 << std::endl; // 1.23+-0.056 (7), 2.345+-0.067 (9)
 
-  map<uncun, uncun > data1; // Container for XY pair of points.
+  map<uncun, uncun > data1; // Container for XY pair of data point values.
   data1.insert(mp1); // u1, u2 = 1.23+-0.056 (7), 2.345+-0.067 (9)
   data1.insert(make_pair(uncun(4.1, 0.4F, 7), uncun(3.1, 0.3F, 18))); //
   data1.insert(make_pair(uncun(-2.234, 0.03F, 7), uncun(-8.76, 0.9F, 9)));
-
  /*
 `Make very sure you don't forget either uncun(...) like this
 `data1.insert(make_pair((-2.234, 0.12F, 7),(-8.76, 0.56F, 9)));`
@@ -133,7 +144,7 @@ because, by the bizarre operation of the comma operator, the result will be an i
 So you will astonished to find that the values will be the *pair of degrees of freedom, (7, 9)*
 and the other parts of uncun will be undefined!
 
-Echo the values input:
+Echo the values input, correctly rounded using the uncertainy and degrees of freedom:
   */
   std::cout << data1.size() << " XY data pairs:" << std::endl;
   std::copy(data1.begin(), data1.end(), ostream_iterator<pair<uncun, uncun> >(std::cout, "\n"));
@@ -160,13 +171,13 @@ Echo the values input:
 
   /*`Use data set `data` to autoscale. (You can use a different data set to scale from the one you chose to plot).
   */
-  my_plot.xy_autoscale(data1);
+  //my_plot.xy_autoscale(data1);
 
   my_plot
     // X values settings:
     .x_label("times (sec)")
     .x_range(-3, +10)
-    .x_values_on(true) // Show X values next to each point.
+    .x_values_on(true) // Show X-values next to each point.
 
      //! \note Essential use of Unicode space &#x00A0; in all strings - ANSI space has no effect!
   //  .x_decor("d ", ", ", "km") // Keep all on one line using a separator NOT starting with a newline.
@@ -199,8 +210,9 @@ Echo the values input:
     .y_df_on(true) // Show degrees of freedom (usually observations -1) for data-points.
     .y_df_color(green) // Show degrees of freedom in green, for examples: "11").
 
-    .xy_values_on(true) // Show both X and Y values next to each point.
+     .xy_values_on(true) // Show both X-values and Y-values next to each point.
 
+     .xy_autoscale(data1)
 
   /*`The default uncertainty ellipse colors (that apply to both X and Y axes)
   can be changed thus:
@@ -212,7 +224,7 @@ Echo the values input:
 
 //  my_plot.plot(data1, "data1").shape(unc_ellipse).fill_color(lightyellow).stroke_color(magenta);
   my_plot.plot(data1, "data1").shape(unc_ellipse).fill_color(blue).stroke_color(magenta);
-  // TODO the uncertainty ellipses are now lost :-(
+  // TODO the uncertainty ellipses are now not showing anything useful for 2D but OK for 1D??? :-(
 
   my_plot.write("./demo_2d_uncertainty");
 
