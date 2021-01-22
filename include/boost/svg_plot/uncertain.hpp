@@ -235,7 +235,7 @@ std::ostream& operator<< (std::ostream& os, const unc<correlated>& u)
      For example: "1.23 +/-0.01 (13)".\n
      /details Note that the uncertainty is input and stored as one standard deviation,
      but output multiplied for a user configurable 'confidence factor' plusminus,
-     default two for about 95% confidence (but could also be one for 67% or 3 for 99% confidence).
+     default two (1.96) for about 95% confidence (but could also be one for 67% or 3 for 99% confidence).
   */
   os << u.value_;
   if (u.uncertainty_ > 0.F)

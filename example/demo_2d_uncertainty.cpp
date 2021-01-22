@@ -37,7 +37,7 @@
 
 #include <boost/quan/meas.hpp>
 
-//#include <algorithm>
+#include <algorithm>
 //  using std::copy;
 //#include <functional>
 
@@ -115,28 +115,34 @@ the order of data values is important.
   using boost::svg::detail::operator<<;
   using std::ostream_iterator;
 
-  // Create pair for double.
+  // Create pair for fundamental type double that is implicitly exact with no uncertainty information.
   pair<double, double> double_pair; // double X and Y pair.
-  double_pair = make_pair(double(-2.234), double(-8.76)); // Construct and then echo
+  double_pair = make_pair(double(-2.234), double(-8.76)); // Construct and then echo the data values thus:
   std::cout << double_pair.first << ", " << double_pair.second << std::endl; //  make_pair(double(-2.234), double(-8.76)) = -2.234, -8.76
-  // But it is more convenient to use a specialization of operator<< for std::pair to show both:
-  std::cout << "make_pair(double(-2.234), double(-8.76)) = " << double_pair << std::endl;
+  // But it is more convenient to use a specialization of operator<< for `std::pair` to show both:
+  std::cout << "make_pair(double(-2.234), double(-8.76)) = " << double_pair << std::endl; 
+  // make_pair(double(-2.234), double(-8.76)) = -2.234, -8.76 
 
-  // Or use an uncertain type uncun that holds explicit uncertainty information.
-  uncun u1(1.23, 0.56F, 7); // For an X-value. 
+  // Or, more informatively, use an uncertain type `uncun` that holds explicit uncertainty information 
+  // (standard-deviation, degrees of freedom and so can compute confidence internals).
+
+  uncun ux(1.23, 0.56F, 7); // For an X-value. 
+  // Using the  `operator<<` provided we can output all the details of the uncertain value.
   std::cout << scientific << plusminus << addlimits << adddegfree << std::setw(20)  << std::left
-    << "u1 = " << u1 << std::endl; // u1 = 1.23+-0.056 (7)   -1u1 = 1.2 +/-0.56 <0.8200, 1.6400> (7)
-  uncun u2(3.45, 0.67F, 9); // For a Y-value.
-  std::cout << "u2 = " << u2 << std::endl; // 
+    << "ux = " << ux << std::endl; // 1.2 +/-0.56 <0.8200, 1.6400> (7) 
 
-  pair<uncun, uncun > mp1 = make_pair(u1, u2); // XY pair of uncertain values.
+  uncun uy(3.45, 0.67F, 9); // For a Y-value.
+  std::cout << "uy = " << uy << std::endl; // 1.2 +/-0.56 <0.8200, 1.6400> (7), 3.5 +/-0.67 <3.0100, 3.8900> (9)
+
+  pair<uncun, uncun > mp1 = make_pair(ux, uy); // X & Y pair of uncertain values.
   // Echo both X and Y-values and add all the uncertainty information, standard deviation and degrees of freedom :
   std::cout << mp1 << std::endl; // 1.23+-0.056 (7), 2.345+-0.067 (9)
 
-  map<uncun, uncun > data1; // Container for XY pair of data point values.
-  data1.insert(mp1); // u1, u2 = 1.23+-0.056 (7), 2.345+-0.067 (9)
-  data1.insert(make_pair(uncun(4.1, 0.4F, 7), uncun(3.1, 0.3F, 18))); //
+  std::map<uncun, uncun > data1; // Container for X & Y pair of data-point values.
+  data1.insert(mp1); // ux, uy = 1.23+-0.056 (7), 2.345+-0.067 (9)
+  data1.insert(make_pair(uncun(4.1, 0.4F, 8), uncun(3.1, 0.3F, 18))); //
   data1.insert(make_pair(uncun(-2.234, 0.03F, 7), uncun(-8.76, 0.9F, 9)));
+
  /*
 `Make very sure you don't forget either uncun(...) like this
 `data1.insert(make_pair((-2.234, 0.12F, 7),(-8.76, 0.56F, 9)));`
@@ -150,6 +156,7 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
   std::copy(data1.begin(), data1.end(), ostream_iterator<pair<uncun, uncun> >(std::cout, "\n"));
   std::cout << std::endl;
 
+  return 0;
   svg_2d_plot my_plot;  // Construct an empty plot.
 
   /*`If you can be confident that the data set(s) only contains normal, valid data,
@@ -254,7 +261,7 @@ Output :
   demo_2d_uncertainty.vcxproj -> J:\Cpp\SVG\Debug\demo_2d_uncertainty.exe
   make_pair(double(-2.234), double(-8.76)) = -2.234, -8.76
    make_pair(double(-2.234), double(-8.76)) = -2.234, -8.76
-  u1 = 1.2
+  ux = 1.2
   1.2, 3.5
   3 XY data pairs:
   -2.23, -8.8

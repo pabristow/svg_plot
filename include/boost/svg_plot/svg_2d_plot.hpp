@@ -3621,6 +3621,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
         // but just setting fill if simplest,
         // but does not allow separate inside & outside colors.
         image_.gs(detail::PLOT_Y_POINT_VALUES).style().fill_color(col);
+        image_.gs(detail::PLOT_Y_POINT_VALUES).style().stroke_color(col);
         //svg_2d_plot().image_.gs(PLOT_Y_POINT_VALUES).style().stroke_color(col);
         return *this; //! \return reference to svg_2d_plot to make chainable.
       }
@@ -3629,7 +3630,8 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       { //! \return Color for Y-axis values.
         // Function could get either fill and stroke color,
         // return svg_2d_plot().image_.gs(PLOT_Y_POINT_VALUES).style().stroke_color();
-        return image_.gs(detail::PLOT_Y_POINT_VALUES).style().fill_color();
+    //    return image_.gs(detail::PLOT_Y_POINT_VALUES).style().fill_color();
+        return image_.gs(detail::PLOT_Y_POINT_VALUES).style().stroke_color();
       }
 
       svg_2d_plot& svg_2d_plot::y_values_rotation(rotate_style rotate)
