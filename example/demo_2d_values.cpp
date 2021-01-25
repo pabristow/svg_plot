@@ -65,7 +65,7 @@ int main()
     Inserting some fictional values also sorts the data.
     The index value in [] is the x value.
     */
-    my_data[1.1] = 3.2;  // X and Y-values.
+    my_data[1.1] = 3.2;  // X = 1.1 and Y = 3.2.
     my_data[7.3] = 9.1; // 
     my_data[2.12] = 2.4394;
     my_data[5.47] = 5.3861;

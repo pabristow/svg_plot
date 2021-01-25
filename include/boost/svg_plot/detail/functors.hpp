@@ -207,12 +207,12 @@ public:
 
     //!< \tparam T type that can be converted to double.
     //!< \tparam U type that can be converted to double.
-    //! \returns A @c std::pair of double precision data point values.
+    //! \returns A @c std::pair of double precision data-point values.
     template <typename T, typename U>
     std::pair<Meas, unc<correlated> > operator()(const std::pair<T, U>& a) const
     {  //!< Convert a pair of X and Y uncertain type values to a pair of doubles.
-       //! \return pair of Meas & uncs.
-       // Cast to double so that can use with float, long double.
+       //! \return pair of Meas (an unc including time, ID and order info) & an unc.
+       // Cast to double so that can potentially use with float, long double.
       BOOST_STATIC_ASSERT_MSG(std::is_constructible<T, double>::value, "Uncertain types must be convertible to double!");
       BOOST_STATIC_ASSERT_MSG(std::is_constructible<U, double>::value, "Uncertain types must be convertible to double!");
       return std::pair<Meas, unc<correlated> >((Meas)(static_cast<double>(a.first)), (unc<correlated>)(static_cast<double>(a.second)));
@@ -224,7 +224,7 @@ public:
         return std::pair<Meas, unc<correlated> >(i++, (unc<correlated>)(static_cast<double>(a)));
         //! \return pair of Meas & unc.
     }
-}; // class pair_unc_2d_convert
+}; // class pair_Meas_2d_convert
 
 } // namespace detail
 } // namespace svg

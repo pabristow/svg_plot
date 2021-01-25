@@ -2219,8 +2219,8 @@ my_plot.background_color(ghostwhite) // Whole image.
           size_t ignored = 0;
           size_t plotted = 0;
 
-          for(std::multimap<Meas, unc<false> >::const_iterator j = serieses_[i].series_.begin();
-          //for(std::multimap<unc<false>, unc<false> >::const_iterator j = serieses_[i].series_.begin();
+         // for(std::multimap<Meas, unc<false> >::const_iterator j = serieses_[i].series_.begin();
+          for(std::multimap<unc<false>, unc<false> >::const_iterator j = serieses_[i].series_.begin();
             j != serieses_[i].series_.end(); ++j)
           {
             Meas ux = j->first;
@@ -2239,14 +2239,14 @@ my_plot.background_color(ghostwhite) // Whole image.
               // TODO might refactor so that only pass ux, and uy.
               g_element& g_ptr_vx = image_.gs(detail::PLOT_X_POINT_VALUES).add_g_element();
               if (x_values_on_)
-              { // Show the value of the X data point too.
+              { // Label with the value of the X-data-point too.
                 // void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, double value)
 
                 draw_plot_point_value(x, y, g_ptr_vx, x_values_style_, serieses_[i].point_style_, ux);
               }
               g_element& g_ptr_vy = image_.gs(detail::PLOT_Y_POINT_VALUES).add_g_element();
               if (y_values_on_)
-              { // Show the value of the Y data point too.
+              { // Label the value of the Y-data point too.
                 draw_plot_point_value(x, y, g_ptr_vy, y_values_style_,serieses_[i].point_style_, uy);
               }
               if (xy_values_on_)
@@ -2535,7 +2535,7 @@ my_plot.background_color(ghostwhite) // Whole image.
       void update_image()
       { //! Draw the whole SVG image.
         clear_all();
-        // SVG paint rules are that later 'painting' writes over previous painting, so the order of drawing is important.
+        // SVG 'painting' rules are that later 'painting' writes over previous painting, so the order of drawing is important.
 
         // Draw image background (perhaps with border and/or fill color).
         image_.gs(detail::PLOT_BACKGROUND).push_back(
