@@ -3118,6 +3118,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       svg_2d_plot& svg_2d_plot::y_plusminus_color(const svg_color& col)
       {  //! Set color of Y uncertainty of value.
         y_values_style_.plusminus_color_ = col;
+
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 

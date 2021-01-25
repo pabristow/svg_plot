@@ -183,6 +183,11 @@ namespace svg
       return is_blank_;
     }
 
+    void is_blank(bool b)
+    {
+      is_blank_ = b;
+    }
+
     unsigned int red() const
     { //! return red component of color [0, 255]
       return r_;

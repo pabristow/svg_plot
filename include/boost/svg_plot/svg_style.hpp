@@ -2045,19 +2045,19 @@ const std::string strip_e0s(std::string s)
 
   using std::string;
   size_t j = s.find("e+000");
-  if (j != string::npos)
+  if (j != std::string::npos)
   { // Found "e+000".
     s.erase(j, 5); // remove "e+000" completely, leaving no e... at all.
     return s;
   }
   j = s.find("e-000");
-  if (j != string::npos)
+  if (j != std::string::npos)
   { //
     s.erase(j, 5); // remove entire "e-000".
     return s;
   }
   j = s.find("e+00");
-  if (j != string::npos)
+  if (j != std::string::npos)
   { // Found "e+00", either 1.23e+00 or 2.34e+01 .. e+09
      // From VS2015 and GCC and Clang all follow C++ standard
     // which says use at least two exponent digits (MS was always 3 e+ddd)
@@ -2074,24 +2074,24 @@ const std::string strip_e0s(std::string s)
   }
 
   j = s.find("e-00");
-  if (j != string::npos)
+  if (j != std::string::npos)
   {
     s.erase(j+2, 2); // remove "00", leave "-" and any trailing d.
     return s;
   }
 
   j = s.find("e+0");
-  if (j != string::npos)
+  if (j != std::string::npos)
   {
     s.erase(j + 1, 2); // remove "+0", leave "dd"
     return s;
   }
   j = s.find("e-0");
-  if (j != string::npos)
+  if (j != std::string::npos)
   {
     s.erase(j+2, 1); // remove "-0", leave "-dd"
   }
-  return s; //! \return length of trimmed string (perhaps unchanged).
+  return s; //! \return Trimmed string (perhaps unchanged).
 } // const std::string strip(double d)
 
   /*! \details

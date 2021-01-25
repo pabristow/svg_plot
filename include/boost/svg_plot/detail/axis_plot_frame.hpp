@@ -738,7 +738,7 @@ namespace boost
         clear_grids();
       }
 
-      std::string sv(double v, const value_style& sty, bool);
+      std::string strip_if(double v, const value_style& sty, bool);
 
       template <class Derived>
       void axis_plot_frame<Derived>::clear_background()
@@ -2727,7 +2727,7 @@ namespace boost
               )
             {  // std_dev estimate usually expressed 67% confidence interval + or - standard-deviation.
               sd *= derived().text_plusminus_; // typically + or - standard-deviation.
-              label_u = sv(sd, val_style, true); // stripped.
+              label_u = strip_if(sd, val_style, true); // stripped.
               t.tspan(pm_symbol).fill_color(val_style.plusminus_color_);
               t.tspan(label_u).fill_color(val_style.plusminus_color_).font_size(udf_font);
             }
@@ -2790,22 +2790,26 @@ namespace boost
             }
           } // void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, Meas uvalue)
 
-          //! Strip from double value any unnecessary e, +, & leading exponent zeros, reducing "1.200000" to "1.2" or "3.4e1"...
-          std::string sv(double v, const value_style& sty, bool precise = false)
-          {  // TODO rename for strip_value?
+          //! Strip from double value if requested by style,
+          //! removing any unnecessary e, +, & leading exponent zeros, reducing "1.200000" to "1.2" or "3.4e1"...
+          //! using strip_e0s_ 
+          std::string strip_if(double v, const value_style& sty, bool precise = false)
+          { 
             std::stringstream label;
             // Precision of std_dev is usually less than precision of value,
             // label.precision((unc) ? ((sty.value_precision_ > 3) ?  sty.value_precision_-2 : 1) : sty.value_precision_);
             // Possible but simpler to fix at precision=2
-            label.precision((precise) ? 2 : sty.value_precision_);
-            label.flags(sty.value_ioflags_);
+            //label.precision((precise) ? 2 : sty.value_precision_);
+            //label.flags(sty.value_ioflags_);
+            label.precision(2);
             label << v; // "1.2" or "3.4e+001"...
-            return  (sty.strip_e0s_) ?
-              // Default is to strip unnecessary e, +, & leading exponent zeros.
-              strip_e0s(label.str())  // reduce to "1.2" or "3.4e1"...
-              :
-              label.str();  // Leave unstripped.
-          } // std::string sv(double v, const value_style& sty)
+            //return  (sty.strip_e0s_) ?
+            //  // Default is to strip unnecessary e, +, & leading exponent zeros.
+            //  strip_e0s(label.str())  // reduce to "1.2" or "3.4e1"...
+            //  :
+            //  label.str();  // Leave unstripped.
+            return label.str();
+          } // std::string strip_if(double v, const value_style& sty)
 
          template <class Derived>
          void axis_plot_frame<Derived>::draw_plot_point_values(double x, double y, g_element& x_g_ptr, g_element& y_g_ptr, const value_style& x_sty, const value_style& y_sty, Meas uncx, unc<false> uncy)
@@ -2854,8 +2858,8 @@ namespace boost
             { // Default.
               distrib = gaussian;
             }
-            std::string label_xv = sv(vx, x_sty); //! Also strip unnecessary e, + and leading exponent zeros, if required.
-            std::string label_yv = sv(vy, y_sty);
+            std::string label_xv = strip_if(vx, x_sty); //! Also strip unnecessary e, + and leading exponent zeros, if required.
+            std::string label_yv = strip_if(vy, y_sty);
             if (x_sty.prefix_ != "")
             { // Want a prefix , for example, "["
               label_xv = x_sty.prefix_ + label_xv;
@@ -2943,22 +2947,27 @@ namespace boost
             // Write X value-label (and optional std_dev and df).
             std::string label_xdf; // X degrees of freedom as string, for example "(42)".
 
-            text_element& t = x_g_ptr.text(x, y, label_xv, x_sty.values_text_style_, al, rot);
+            text_element& t = x_g_ptr.text(x, y, label_xv, x_sty.values_text_style_, al, rot); 
             // Optionally, show std_dev as 95% confidence plus minus:  2.1 +-0.012
             // and also optionally show degrees of freedom (23).
-
             string pm_symbol = "&#x00A0;&#x00B1;"; //! Unicode space text_plusminus glyph.
             // Spaces seem to get lost, so use \&x00A0 as an explicit space glyph.
             // Layout seems to vary with font - Times New Roman leaves no space after.
             if ((x_sty.plusminus_on_ == true) && (ux > 0.) )
             {  // std_dev estimate usually 67% confidence interval + or - standard-deviation.
               ux *= derived().text_plusminus_; // typically  + or - standard-deviation.
-              std::string label_xu; // X std_dev as string.
-              label_xu = sv(ux, x_sty, true);
+              std::string label_xu; // X plusminus (std_dev) as string.
+              label_xu = strip_if(ux, x_sty, true);
               //t.tspan(pm_symbol).fill_color(darkcyan);
               // Should this be stroke_color?
-              t.tspan(pm_symbol).fill_color(x_sty.plusminus_color_);
-              t.tspan(label_xu).fill_color(x_sty.plusminus_color_).font_size(fx); // perhaps .font_weight("bold")
+             // want x_sty.plusminus_color_.is_blank_= false;  but is true!!!
+            // want  x_sty.plusminus_color_.is_blank(false); 
+                std::cout << x_sty.plusminus_color_.is_blank() << std::endl;
+              t.tspan(pm_symbol).fill_color(x_sty.plusminus_color_).font_size(fx);
+                // NOT .stroke_color(x_sty.plusminus_color_);  - makes it go fuzzy.
+              t.tspan(label_xu).fill_color(x_sty.plusminus_color_).font_size(fx);
+              // NOT .stroke_color(x_sty.plusminus_color_).font_size(fx);  - makes it go fuzzy. 
+              // perhaps .font_weight("bold")
             }
             if (x_sty.addlimits_on_ == true)
             { // Want confidence interval appended, for example: <1.23, 1.45>
@@ -3007,8 +3016,8 @@ namespace boost
             bool sameline = (x_sty.separator_[0] != '\n');
             if (sameline)
             { // On same line so use X style for separator, but Y style for any text.
-              t.tspan(x_sty.separator_).fill_color(x_sty.fill_color_).font_size(x_sty.values_text_style_.font_size());
-              t.tspan(y_sty.separator_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size());
+              t.tspan(x_sty.separator_).fill_color(x_sty.fill_color_).font_size(x_sty.values_text_style_.font_size());  // X
+              t.tspan(y_sty.separator_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size());  // Y
               if (y_sty.prefix_ != "")
               { // Want a prefix, for example: "length ="
                 t.tspan(y_sty.prefix_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size());
@@ -3022,7 +3031,7 @@ namespace boost
                 // Precision of std_dev is usually less than value,
                 uy *= derived().text_plusminus_; // Typically + or - standard-deviation.
                 std::string label_yu;
-                label_yu = "&#x00A0;" + sv(uy, y_sty, true);
+                label_yu = "&#x00A0;" + strip_if(uy, y_sty, true);
                 t.tspan(pm_symbol).font_family("arial").font_size(fy).fill_color(green);
                 t.tspan(label_yu).fill_color(y_sty.plusminus_color_).font_size(fy);
               }
@@ -3075,7 +3084,7 @@ namespace boost
                 label_yv = y_sty.prefix_ + label_yv;
               }
               // Need to start a new text_element here because tspan rotation doesn't apply to whole string?
-              // Use the mean of x and Y font size to determine the isze of the 'newline'.
+              // Use the mean of x and Y font size to determine the size of the 'newline'.
               double dy = 0.5 * (y_sty.values_text_style_.font_size() + x_sty.values_text_style_.font_size()) * 1.2 ; // 
               text_element& ty = y_g_ptr.text(x, y + dy, label_yv, y_sty.values_text_style_, al, rot);
 
@@ -3084,7 +3093,7 @@ namespace boost
                   )
               {  // std_dev estimate usually 95% confidence interval + or - 2 standard-deviation.
                  // Precision of std_dev is usually less than value,
-                std::string label_yu = "&#x00A0;" + sv(uy, y_sty, true);
+                std::string label_yu = "&#x00A0;" + strip_if(uy, y_sty, true);
                 ty.tspan(pm_symbol).font_family("arial").font_size(fy).fill_color(y_sty.plusminus_color_); // +/- sumbol.
                 ty.tspan(label_yu).fill_color(y_sty.plusminus_color_).font_size(fy);
               }
