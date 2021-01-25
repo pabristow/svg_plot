@@ -2206,7 +2206,7 @@ my_plot.background_color(ghostwhite) // Whole image.
 
       void draw_plot_points()
       { //! Draw normal 'good' non-limit points, and then any 'at limits' points.
-        double x(0.);
+        double x(0.); // SVG coordinates.
         double y(0.);
         for(unsigned int i = 0; i < serieses_.size(); ++i)
         {
@@ -2219,8 +2219,8 @@ my_plot.background_color(ghostwhite) // Whole image.
           size_t ignored = 0;
           size_t plotted = 0;
 
-         // for(std::multimap<Meas, unc<false> >::const_iterator j = serieses_[i].series_.begin();
-          for(std::multimap<unc<false>, unc<false> >::const_iterator j = serieses_[i].series_.begin();
+          for(std::multimap<Meas, unc<false> >::const_iterator j = serieses_[i].series_.begin();
+        //  for(std::multimap<unc<false>, unc<false> >::const_iterator j = serieses_[i].series_.begin();
             j != serieses_[i].series_.end(); ++j)
           {
             Meas ux = j->first;

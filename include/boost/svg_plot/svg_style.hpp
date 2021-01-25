@@ -1668,7 +1668,7 @@ public:
   } // ticks_labels_style constructor.
 
   double label_length(double value)
-  { //! Find the length of label (like "1.23E-5") for a value.
+  { //! Find the SVG length of label (like "1.23E-5") for a value.
     // Needs to know the IO precision & flags for the axis,
     // and if zeros are to be stripped, so can't be a free function.
     std::stringstream label;

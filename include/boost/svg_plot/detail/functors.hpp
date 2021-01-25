@@ -196,7 +196,7 @@ class pair_Meas_2d_convert
 {
 public:
     typedef std::pair<Meas, unc<correlated> > result_type;
-    //!< result type is pair of uncertain values.
+    //!< result type is pair of double values.
 
     Meas i; //!< Current Meas (uncun + datetime etc) value.
 
@@ -211,11 +211,11 @@ public:
     template <typename T, typename U>
     std::pair<Meas, unc<correlated> > operator()(const std::pair<T, U>& a) const
     {  //!< Convert a pair of X and Y uncertain type values to a pair of doubles.
-       //! \return pair of Meas (an unc including time, ID and order info) & an unc.
+       //! \return pair of Meas (unc including time, ID and order info) & an unc.
        // Cast to double so that can potentially use with float, long double.
       BOOST_STATIC_ASSERT_MSG(std::is_constructible<T, double>::value, "Uncertain types must be convertible to double!");
       BOOST_STATIC_ASSERT_MSG(std::is_constructible<U, double>::value, "Uncertain types must be convertible to double!");
-      return std::pair<Meas, unc<correlated> >((Meas)(static_cast<double>(a.first)), (unc<correlated>)(static_cast<double>(a.second)));
+      return std::pair<Meas, unc<correlated> >((Meas)(static_cast<unc<correlated>>(a.first)), (unc<correlated>)(static_cast<unc<correlated>>(a.second)));
     }
 
     template <typename T>    //!< \tparam T Any type that can be converted to double.
