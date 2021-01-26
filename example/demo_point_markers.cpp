@@ -1,5 +1,5 @@
 /*! \file demo_point_markers.cpp
-  \brief Demonstration of some marking data point options.
+  \brief Demonstration of some marking data-point options.
   \details Includes Quickbook markup.
   \author Paul A Bristow
 */
@@ -51,7 +51,7 @@ int main()
   my_data_1.push_back(-10.0);
   my_data_1.push_back(-9.0);
   my_data_1.push_back(-1.0);
-  my_data_1.push_back(1.23456); // Data value label will be rounded to 1.23 with my_1d_plot.x_values_precision(3); 
+  my_data_1.push_back(1.23456); // Data value-label will be rounded to 1.23 with my_1d_plot.x_values_precision(3); 
   my_data_1.push_back(2.0);
   my_data_1.push_back(8.0987); // Rounded to 8.1 
   my_data_1.push_back(99.0); // Finite value that is too big to fit into the plot window (shows as a point-right triangle in green).
@@ -88,14 +88,14 @@ here a blue diamond shape with a size of 10 pixels.
 
     my_1d_plot.plot(my_data_2, "More 1D Values").shape(circlet).size(10).stroke_color(blue).fill_color(red);
 
-/*`To put a decimal digit value label against each data point, switch on the option:
+/*`To put a decimal digit value-label against each data point, switch on the option:
 */
     my_1d_plot.x_values_on(true); // Add data decimal digit values as labels above the X-axis.
 
-    my_1d_plot.x_values_precision(3); // Decimal digits precision for the X-axis value label, for example "1.23".
-    // if data point value = 1.23456, then Data value label will be 1.23 with my_1d_plot.x_values_precision(3); 
-    my_1d_plot.x_values_rotation(steepup); // Orientation for the X-axis value labels.
-    my_1d_plot.x_values_font_size(7); // Font Size for the X-axis value labels.
+    my_1d_plot.x_values_precision(3); // Decimal digits precision for the X-axis value-label, for example "1.23".
+    // if data-point value = 1.23456, then Data value-label will be 1.23 with my_1d_plot.x_values_precision(3); 
+    my_1d_plot.x_values_rotation(steepup); // Orientation for the X-axis value-labels.
+    my_1d_plot.x_values_font_size(7); // Font Size for the X-axis value-labels.
 
     my_1d_plot.x_values_alignment(align_style::right_align); // has no effect
     // And we can show these settings:
@@ -104,8 +104,8 @@ here a blue diamond shape with a size of 10 pixels.
 
 /*`If the default size and color are not to your taste, set more options, like:
 */
-    my_1d_plot.x_values_font_size(14) // Change font size for the X-axis value labels.
-      .x_values_font_family("Times New Roman") // Change font for the X-axis value labels.
+    my_1d_plot.x_values_font_size(14) // Change font size for the X-axis value-labels.
+      .x_values_font_family("Times New Roman") // Change font for the X-axis value-labels.
       .x_values_color(red); // Change x-values font-color from default black to red.
 
  /*` The 'at limit' values (+/- infinity or NaN) markers can be customised, for example:

@@ -102,8 +102,8 @@ namespace boost
       std::multimap<double, double> series_limits_; //!< 'limit' values: too big or small, or NaN.
 
       std::string title_; //!< Title of data series (to show on legend using legend style).
-      plot_point_style point_style_; //!< Data point marker like circle, square...
-      plot_point_style limit_point_style_; //!< At limit data point marker.
+      plot_point_style point_style_; //!< data-point marker like circle, square...
+      plot_point_style limit_point_style_; //!< At limit data-point marker.
       // Default is cone pointing down with point at bottom tip, not centered.
       plot_line_style line_style_; //!< Style (color, width...) of line joining data points.
       bar_style bar_style_; //!< Style of bar used in histograms.
@@ -384,34 +384,34 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
   }
 
   int svg_2d_plot_series::size()
-  { //! \return Size of data point marker(s).
+  { //! \return Size of data-point marker(s).
     return point_style_.size_;
   }
 
   // Point font control get functions.
   const std::string svg_2d_plot_series::point_font_family()
-  { //! \return Font family of data point marker(s) symbol. Examples: "arial", "verdana", "courier" ...
+  { //! \return Font family of data-point marker(s) symbol. Examples: "arial", "verdana", "courier" ...
     return point_style_.symbols_style_.font_family_;
   }
   const std::string svg_2d_plot_series::point_font_weight()
-  { //! \return weight of data point marker(s) "bold".
+  { //! \return weight of data-point marker(s) "bold".
     return point_style_.symbols_style_.weight_;
   }
   const std::string svg_2d_plot_series::point_font_decoration()
-  { //! \return Decoration of data point marker(s). Examples: "underline", "strikethru".
+  { //! \return Decoration of data-point marker(s). Examples: "underline", "strikethru".
     return point_style_.symbols_style_.decoration_;
   }
   const std::string svg_2d_plot_series::point_font_stretch()
-  { //! \return stretch of data point marker(s). Examples: "narrow", "wide".
+  { //! \return stretch of data-point marker(s). Examples: "narrow", "wide".
     return point_style_.symbols_style_.stretch_;
   }
   const std::string svg_2d_plot_series::point_font_style()
-  { //! \return style of data point marker(s) "bold", "italic" ..
+  { //! \return style of data-point marker(s) "bold", "italic" ..
     return point_style_.symbols_style_.font_style_;
   }
 
   point_shape svg_2d_plot_series::shape()
-  { //! \return shape of data point marker(s). Examples "square", "cone", circlet ... (See enum point_shape).
+  { //! \return shape of data-point marker(s). Examples "square", "cone", circlet ... (See enum point_shape).
     return point_style_.shape_;
   }
 
@@ -510,20 +510,20 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       text_style x_axis_label_style_; //!< Style for tick labels on X-axis (Example: length, time...).
       text_style x_ticks_value_label_style_; //!< Style for data-point value-labels on X-axis. (Example"1, "1.5", "2")
       text_style y_axis_label_style_; //!< Style for tick labels on Y-axis.
-      text_style y_ticks_value_label_style_;//!< Style for data point value labels on Y-axis.
+      text_style y_ticks_value_label_style_;//!< Style for data-point value-labels on Y-axis.
       text_style point_symbols_style_; //!< Style used for symbol marking a data point.
 
       text_element title_info_; //!< Plot title text etc.
       text_element legend_title_; //!< Legend box header or title (if any).
       text_element legend_text_; //!< Legend box series data descriptor text(if any).
       text_element x_label_info_; //!< X-axis label text, for example: "length".
-      text_element x_ticks_value_label_info_; //!< X-axis tick value label text, for example: "1.2" or "1.2e+001" and anchor and rotation.
+      text_element x_ticks_value_label_info_; //!< X-axis tick value-label text, for example: "1.2" or "1.2e+001" and anchor and rotation.
       text_element y_label_info_; //!< Y-axis label text, for example: "volume".
       text_element x_units_info_; //!< X-axis units, for example: "mm".
       text_element y_units_info_; //!<  Y-axis units, for example: "min". (2-D only).
-      text_element y_ticks_value_label_info_; //!< Y-axis tick value label text, for example: "1.2" or "1.2e+001" and anchor and rotation.
+      text_element y_ticks_value_label_info_; //!< Y-axis tick value-label text, for example: "1.2" or "1.2e+001" and anchor and rotation.
 
-      text_style value_style_; //!< Style used for data point value label.
+      text_style value_style_; //!< Style used for data-point value-label.
       // +/-Infinity and NaN
       plot_point_style nan_point_style_; //!< Default is cone pointing down for 2D, or NaN or point left or right for 1D.
       plot_point_style plus_inf_point_style_; //!< Default is cone pointing right for 2D, or NaN or point left or right for 1D.
@@ -532,13 +532,13 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       plot_point_style plus_limit_point_style_; //!< Default is cone pointing up for 2D, or NaN or point left or right for 1D.
       plot_point_style minus_limit_point_style_; //!< Default is cone pointing down for 2D, or NaN or point left or right for 1D.
 
-      value_style x_values_style_; //!< Data point X value marking, font, size etc.
-      value_style y_values_style_; //!< Data point Y value marking, font, size etc.
+      value_style x_values_style_; //!< data-point X value marking, font, size etc.
+      value_style y_values_style_; //!< data-point Y value marking, font, size etc.
       bool x_plusminus_on_; //!<  http://en.wikipedia.org/wiki/Plus-minus_sign Unicode \&\#0xB1; HTML \&plusmn;
 
-      rotate_style y_value_label_rotation_; //!< Direction point Y value labels written (default horizontal).
-      int y_value_precision_; //!< std::ios precision used for Y value labels (default 3).
-      std::ios_base::fmtflags y_value_ioflags_; //!< std::iosflags used for Y value labels (default std::ios::dec).
+      rotate_style y_value_label_rotation_; //!< Direction point Y value-labels written (default horizontal).
+      int y_value_precision_; //!< std::ios precision used for Y value-labels (default 3).
+      std::ios_base::fmtflags y_value_ioflags_; //!< std::iosflags used for Y value-labels (default std::ios::dec).
 
       box_style image_border_; //!< rectangular border box style of all image width, color...
       box_style plot_window_border_; //!< rectangular border box style of plot window width, color...
@@ -686,8 +686,8 @@ my_plot.background_color(ghostwhite) // Whole image.
         // Separate X and Y to allow axes to have different styles.
         y_axis_label_style_(14, default_font_family, "", "", "", "", 0), // Y-axis label. Example: length(m).
         y_ticks_value_label_style_(12, default_font_family, "", "", "", "", 0), // Y-axis tick-value labels. Example: "1", "1.5", "2" ...
-        value_style_(8, default_font_family, "", "", "", "", 0), // All X and Y value labels are initliased using this text_style.
-        point_symbols_style_(12, default_font_family, "", "", "", "", 0), // Used for data point marking.
+        value_style_(8, default_font_family, "", "", "", "", 0), // All X and Y value-labels are initliased using this text_style.
+        point_symbols_style_(12, default_font_family, "", "", "", "", 0), // Used for data-point marking.
         // Font is to try to ensure that all Unicode symbols are available (default_font_family might not be Unicode?).
         title_info_(0, 0, "", title_style_, align_style::center_align, horizontal),
         x_label_info_(0, 0, "", x_axis_label_style_, align_style::center_align, horizontal), // 
@@ -715,9 +715,9 @@ my_plot.background_color(ghostwhite) // Whole image.
         image_border_(yellow, white, 2, 3, true, true),
         // margin (parameter 4) needs to be at least the width of the border (parameter 3) to ensure any border color shows.
         // margin should be about axis tick label font size to
-        // allow for axis value labels that mark the min and max
+        // allow for axis value-labels that mark the min and max
         // that must extend about half a font width beyond the plot window border.
-        // This is set dynamically in function calculate_plot_window because user can change tick value label font-size.
+        // This is set dynamically in function calculate_plot_window because user can change tick value-label font-size.
 
         plot_window_border_(lightslategray, svg_color(255, 255, 255), 2, 3, true, false),
         legend_box_(yellow, white, 1, 1, true, true),
@@ -756,14 +756,19 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         plot_window_on_(true),
         margin_(0.5),
-        // Label data point with label. With 2D can have either or both X and Y values shown.
+        // Label data-point with label. With 2D can have either or both X and Y values shown.
         x_values_on_(false), // If X values of data points are shown.
         y_values_on_(false), // If Y values of data points are shown.
         xy_values_on_(false), // If X & Y values of data are shown as a pair.
-        x_values_style_(horizontal, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, 
-          false, black, false, black, false, black, false, black, false, black, false, black,
-          "?", "!", "£"),
+        x_values_style_(horizontal, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black),
+        //  false, blue, false, yellow, false, green, false, cyan, false, magenta, false, red, used for testing.
+        //  "?", "!", "£"), // Separators, prefix, separator, and suffix.
         y_values_style_(downward, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black),
+
+        //x_values_style_(horizontal, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, 
+        //  false, black, false, black, false, black, false, black, false, black, false, black,
+        //  "?", "!", "£"),
+        //y_values_style_(downward, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black),
 
         nan_point_style_(green, white, 20, cone_point_down, ""), // Colors and size for NaN markers.
         plus_inf_point_style_(red, white, 10, cone_point_right, ""), // Colors and size for +infinity markers.
@@ -987,7 +992,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           // A margin is needed to allow any plot window border rectangle to show OK.
           // A minimum small margin (default 3) is to prevent it overlapping the image border.
           // Might be == image_border size?
-          // Also must allow for axis value labels that mark the min and max ticks
+          // Also must allow for axis value-labels that mark the min and max ticks
           // that might extend beyond the plot window border,
           // but must extend not beyond image or will be cutoff in mid-value_label.
           // if writing is vertical need only half a font, but half x_ticks_.label_max_space_ if horizontal.
@@ -999,9 +1004,9 @@ my_plot.background_color(ghostwhite) // Whole image.
           //std::cout << "x font size " << x_ticks_values_font_size() << std::endl;
           double x_value_space;
             // Really want
-            // value_space = x_ticks_.label_max_space_ /2.; // Assume value label is center aligned.
+            // value_space = x_ticks_.label_max_space_ /2.; // Assume value-label is center aligned.
           if (x_ticks_.label_rotation_ != horizontal)
-          { // vertical-ish x value labels just need half a font.
+          { // vertical-ish x value-labels just need half a font.
             x_value_space = x_ticks_values_font_size() / 2; // half a single font width.
           }
           else
@@ -1034,7 +1039,7 @@ my_plot.background_color(ghostwhite) // Whole image.
 
           double y_value_space;
           if ((y_ticks_.label_rotation_ == downward) | (y_ticks_.label_rotation_ == upward))
-          { // vertical y axis value labels need space for half the label, assumed 4 chars.
+          { // vertical y axis value-labels need space for half the label, assumed 4 chars.
             y_value_space = y_ticks_values_font_size() * 2; // a few font widths.
           }
           else
@@ -1124,7 +1129,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         y_ticks_.max_ = y_axis_.max_;
         y_ticks_.min_ = y_axis_.min_;
 
-        // Calculate the number of chars of the longest value labels.
+        // Calculate the number of chars of the longest value-labels.
         x_ticks_.longest_label(); // Updates label_max_length_
         y_ticks_.longest_label();
 
@@ -1137,7 +1142,7 @@ my_plot.background_color(ghostwhite) // Whole image.
            y_ticks_.label_max_space_ += y_ticks_.label_max_length_; // SVG units (default pixels).
         }
         else if((y_ticks_.label_rotation_ == upward) || (y_ticks_.label_rotation_ == downward))
-        { // Only need one char & 1 space width from Y-axis value label.
+        { // Only need one char & 1 space width from Y-axis value-label.
           y_ticks_.label_max_space_ += 2 * y_ticks_value_label_style_.font_size_;
         }
         else
@@ -1147,26 +1152,26 @@ my_plot.background_color(ghostwhite) // Whole image.
         }
 
         if (y_ticks_.major_value_labels_side_ != 0)
-        { // Some major tick value labels wanted.
+        { // Some major tick value-labels wanted.
           if ((y_ticks_.ticks_on_window_or_on_axis_ < 0) // On left of plot window.
             && (y_ticks_.major_value_labels_side_ < 0) ) // & labels on left.
-          {  // Contract plot window left edge to right to make space for value labels on left.
+          {  // Contract plot window left edge to right to make space for value-labels on left.
             plot_left_ += y_ticks_.label_max_space_;
           }
           else if ((y_ticks_.ticks_on_window_or_on_axis_ > 0) // On right of plot window.
             && (y_ticks_.major_value_labels_side_ > 0) ) // & labels to right.
-          {  // Contract plot window right to left to make space for value labels on right.
+          {  // Contract plot window right to left to make space for value-labels on right.
            plot_right_ -= y_ticks_.label_max_space_;
           }
           else
           { // y_ticks_.ticks_on_window_or_on_axis_ == 0
-            // no value labels on plot window (may be on mid-plot Y-axis line).
+            // no value-labels on plot window (may be on mid-plot Y-axis line).
             // Ignore the unusual case of Y-axis line too close to the axis label.
-            // In this case the value labels may overflow the plot window
+            // In this case the value-labels may overflow the plot window
             // and collide with the axis label!
-            // User must change to put value label downward, or on other side of the axis line.
+            // User must change to put value-label downward, or on other side of the axis line.
             // using major_value_labels_side(int d)
-            // to set tick value labels to left (<0), none (==0) or right (>0).
+            // to set tick value-labels to left (<0), none (==0) or right (>0).
           }
         } // y_ticks_. major_value_labels_side
 
@@ -1185,15 +1190,15 @@ my_plot.background_color(ghostwhite) // Whole image.
         }
 
         if (x_ticks_.major_value_labels_side_ != 0)
-        { // Some tick value labels.
+        { // Some tick value-labels.
           if ((x_ticks_.ticks_on_window_or_on_axis_ < 0) // ticks on bottom of plot window.
              && (x_ticks_.major_value_labels_side_ < 0) ) // & labels on bottom too.
-          {  // Contract plot window bottom edge up to make space for X value labels on bottom.
+          {  // Contract plot window bottom edge up to make space for X value-labels on bottom.
             plot_bottom_ -= x_ticks_.label_max_space_; // Move up.
           }
           else if ((x_ticks_.ticks_on_window_or_on_axis_ > 0) //
              && (x_ticks_.major_value_labels_side_ > 0) ) // & x labels to top.
-          { // Move top of plot window down to give space for x value labels.
+          { // Move top of plot window down to give space for x value-labels.
             plot_top_ += x_ticks_.label_max_space_; // Move down.
           }
           else
@@ -1220,7 +1225,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           if ((x_axis_position_ == bottom) // All Y values definitely > zero.
             && !(x_ticks_.ticks_on_window_or_on_axis_ < 0) ) // & not already at bottom.
           { // y_min_ > 0 so X-axis will not intersect Y-axis, so use plot window.
-            plot_bottom_ -= x_ticks_.label_max_space_; // Move up for the ticks value labels.
+            plot_bottom_ -= x_ticks_.label_max_space_; // Move up for the ticks value-labels.
             x_axis_.axis_ = plot_bottom_; // Put X-axis on bottom.
           }
           else if ((x_axis_position_ == top)  // All Y values definitely < zero.
@@ -1457,14 +1462,14 @@ my_plot.background_color(ghostwhite) // Whole image.
         double x = plot_left_; // left edge of plot window.
         double y = (plot_bottom_ + plot_top_) / 2.; // center on the plot window.
         if (y_ticks_.ticks_on_window_or_on_axis_ < 0) // -1 means left
-        { // Ticks value labels left of plot window.
-          if (y_ticks_.major_value_labels_side_ < 0) // -1 means value label to left of Y-axis.
+        { // Ticks value-labels left of plot window.
+          if (y_ticks_.major_value_labels_side_ < 0) // -1 means value-label to left of Y-axis.
           { // tick values labels are to left of Y-axis.
-            // Shift right to allow for any tick value labels.
+            // Shift right to allow for any tick value-labels.
             if ((y_ticks_.label_rotation_ == downward) || (y_ticks_.label_rotation_ == upward))
-            { // downward tick value label direction 90 vertical up or down, or 60 steep degrees (might handle 60 separately).
-              if (y_ticks_.major_value_labels_side_ < 0) // tick value labels are to left of plot window.
-              { // Allow space for tick value labels font size to left of Y-axis or plot window.
+            { // downward tick value-label direction 90 vertical up or down, or 60 steep degrees (might handle 60 separately).
+              if (y_ticks_.major_value_labels_side_ < 0) // tick value-labels are to left of plot window.
+              { // Allow space for tick value-labels font size to left of Y-axis or plot window.
                 x -= y_ticks_value_label_info_.textstyle().font_size() * 1.3; //
               }
               if (y_ticks_.left_ticks_on_ == true)
@@ -1475,9 +1480,9 @@ my_plot.background_color(ghostwhite) // Whole image.
 
             }
             else if ((y_ticks_.label_rotation_ == steepdown) || (y_ticks_.label_rotation_ == steepup))
-            { // downward tick value label direction 90 vertical up or down, or 60 steep degrees (might handle 60 separately).
-              if (y_ticks_.major_value_labels_side_ < 0) // tick value labels are to left of plot window.
-              { // Allow space for tick value labels font size to left of Y-axis or plot window.
+            { // downward tick value-label direction 90 vertical up or down, or 60 steep degrees (might handle 60 separately).
+              if (y_ticks_.major_value_labels_side_ < 0) // tick value-labels are to left of plot window.
+              { // Allow space for tick value-labels font size to left of Y-axis or plot window.
                 x -= y_ticks_value_label_info_.textstyle().font_size() * 1.3; //
               }
               if (y_ticks_.left_ticks_on_ == true)
@@ -1516,7 +1521,7 @@ my_plot.background_color(ghostwhite) // Whole image.
               {  // Move left for any leftward ticks, and a small space.
                 x -= 1.1 * (std::max)(y_ticks_.major_tick_length_, y_ticks_.minor_tick_length_); // And avoid macro max trap!
               }
-              x -= y_ticks_.label_max_space_; // Move left for the longest tick value label. (Might be zero?)
+              x -= y_ticks_.label_max_space_; // Move left for the longest tick value-label. (Might be zero?)
               //x -= y_label_info_.textstyle().font_size() * 1.0; // Shift left to suit Y labels.
               x -= 0.6 * (y_label_info_.textstyle().font_size() + y_ticks_value_label_info_.textstyle().font_size_); // best compromise?
             }
@@ -1530,7 +1535,7 @@ my_plot.background_color(ghostwhite) // Whole image.
              x -= y_label_info_.textstyle().font_size() * 1.7;  // Move left from Y-axis.
           }
           else
-          { // y_ticks_.y_major_value_labels_side_ == 0 means no tick value labels.
+          { // y_ticks_.y_major_value_labels_side_ == 0 means no tick value-labels.
             x -= y_label_info_.textstyle().font_size() * 1.7;  // Move left from Y-axis.
           }
           if (y_ticks_.left_ticks_on_)
@@ -1566,7 +1571,7 @@ my_plot.background_color(ghostwhite) // Whole image.
       } // draw_y_axis_label
 
       void draw_y_major_tick(double value, path_element& tick_path, path_element& grid_path)
-      { //! Draw a Y-axis major tick, tick value labels & grids.
+      { //! Draw a Y-axis major tick, tick value-labels & grids.
         double y(value); // for tick and/or grid.
         transform_y(y); // Cartesian to SVG coordinates.
         if((y < plot_top_ - 0.01) || (y > plot_bottom_ + 0.01))
@@ -1581,7 +1586,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           if(!plot_window_on_ == true)
           {
             if(y_ticks_.major_value_labels_side_ < 0) // left
-            { // Start further right to give space for Y-axis value label.
+            { // Start further right to give space for Y-axis value-label.
               y -= y_ticks_value_label_style_.font_size() * text_margin_;
             }
 
@@ -1598,7 +1603,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           grid_path.M(x_left, y).L(x_right, y); // Horizontal grid line.
        } // y_major_grid_on
 
-        // Draw major ticks & value label, if necessary.
+        // Draw major ticks & value-label, if necessary.
         double y_tick_length = y_ticks_.major_tick_length_;
         if (y_ticks_.ticks_on_window_or_on_axis_ < 0)
         { // Start ticks on the plot window border left.
@@ -1761,7 +1766,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           }
 
           else if (y_ticks_.label_rotation_ == upward)
-          { // Tick value label straight up vertically on Y-axis.
+          { // Tick value-label straight up vertically on Y-axis.
             y -= y_ticks_value_label_style_.font_size() * 0.1;
             if (y_ticks_.major_value_labels_side_ < 0)
             { // labels to left, so start a little to left of x_left.
@@ -1776,7 +1781,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             }
           }
           else if (y_ticks_.label_rotation_ == steepup)
-          { // Tick value label straight up vertically on Y-axis.
+          { // Tick value-label straight up vertically on Y-axis.
             y -= y_ticks_value_label_style_.font_size() * 0.1;
             if (y_ticks_.major_value_labels_side_ < 0)
             { // labels to left, so start a little to left of x_left.
@@ -1791,7 +1796,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             }
           }
           else if (y_ticks_.label_rotation_ == downward)
-          { // Tick value label straight down vertically on Y-axis.
+          { // Tick value-label straight down vertically on Y-axis.
             y -= y_ticks_value_label_style_.font_size() * 0.1;
             if (y_ticks_.major_value_labels_side_ < 0)
             { // labels to left, so start a little to left of x_left.
@@ -1807,7 +1812,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           }
           else
           { // Others not yet implemented.
-            return; // Without any value label.
+            return; // Without any value-label.
          } // All rotations.
 
         if (x <= 0)
@@ -1844,7 +1849,7 @@ my_plot.background_color(ghostwhite) // Whole image.
               not_a_text_style);
           }
           else
-          { // ! y_ticks_.y_ticks_on_plot_window_ == 0 'Internal' - value labels either side of vertical Y-axis.
+          { // ! y_ticks_.y_ticks_on_plot_window_ == 0 'Internal' - value-labels either side of vertical Y-axis.
             if ((value != 0) && y_axis_.axis_line_on_)
             { // Avoid a zero "0" label ON the Y-axis if it would be cut through by any horizontal X-axis line.
               image_.gs(detail::PLOT_Y_TICKS_VALUES).text(
@@ -1854,14 +1859,14 @@ my_plot.background_color(ghostwhite) // Whole image.
                 not_a_text_style);
             }
           } // either on plot window or 'on axis'.
-        } // want value label on tick
+        } // want value-label on tick
       } // draw_y_major_tick
 
       void draw_y_minor_tick(double value, path_element& tick_path, path_element& grid_path)
-      { //! Draw a Y-axis minor tick and optional grid. (minor ticks do not have value labels).
+      { //! Draw a Y-axis minor tick and optional grid. (minor ticks do not have value-labels).
         double x_left(0.); // Start on vertical Y-axis line.
         double x_right(image_.y_size()); // right edge of image.
-        double y(value); // Tick position and value label,
+        double y(value); // Tick position and value-label,
         transform_y(y); // Convert y to svg.
 
         if(y_ticks_.minor_grid_on_)
@@ -2005,7 +2010,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             transform_point(prev_x, prev_y);
             //if ((prev_x < plot_left_) || (prev_x > plot_right_) || (prev_y < plot_top_) || (prev_y > plot_bottom_))
             if (is_in_window(prev_x, prev_y) == false)
-            { // Data point is OUTside plot window, so can't draw a line from y = 0 to this point.
+            { // data-point is OUTside plot window, so can't draw a line from y = 0 to this point.
               // so try the next point to see if that is 'good' - inside the window.
 #ifdef BOOST_SVG_VALUE_DIAGNOSTICS
               std::cout << "1st x = " << prev_x << ", y = " << prev_y << " is outside plot window! " << std::endl;
@@ -2062,14 +2067,14 @@ my_plot.background_color(ghostwhite) // Whole image.
             transform_point(temp_x, temp_y);
             if (is_in_window(temp_x, temp_y) == true)
             //if ((temp_x >= plot_left_) && (temp_x <= plot_right_) && (temp_y >= plot_top_) && (temp_y <= plot_bottom_))
-            { // Data point is inside or on plot window, so draw a line to the point.
+            { // data-point is inside or on plot window, so draw a line to the point.
               ++inside_window;
               path.L(temp_x, temp_y); // Line to next point.
               prev_x = temp_x;
               prev_y = temp_y;
             }
             else
-            { // Ignore any data point values outside the plot window.
+            { // Ignore any data-point values outside the plot window.
               // Not sure what this will do if area fill chosen.
               ++outside_window;
 #ifdef BOOST_SVG_DIAGNOSTICS
@@ -2236,7 +2241,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             //double vy = y; // Note the true Y value.
             transform_point(x, y); // Note x and y are now SVG coordinates.
             if((x > plot_left_) && (x < plot_right_) && (y > plot_top_) && (y < plot_bottom_))
-            { // Data point is inside plot window, so draw a point.
+            { // data-point is inside plot window, so draw a point.
               plotted++;
               draw_plot_point(x, y, g_ptr, serieses_[i].point_style_, ux, uy); // Add the unc ux and uy to allow access to uncertainty.
               // TODO might refactor so that only pass ux, and uy.
@@ -2249,7 +2254,7 @@ my_plot.background_color(ghostwhite) // Whole image.
               }
               g_element& g_ptr_vy = image_.gs(detail::PLOT_Y_POINT_VALUES).add_g_element();
               if (y_values_on_)
-              { // Label the value of the Y-data point too.
+              { // Label the value of the Y-data-point too.
                 draw_plot_point_value(x, y, g_ptr_vy, y_values_style_,serieses_[i].point_style_, uy);
               }
               if (xy_values_on_)
@@ -2258,7 +2263,7 @@ my_plot.background_color(ghostwhite) // Whole image.
               }
             } // if inside plot window
             else
-            { // Ignore any data point values outside the plot window.
+            { // Ignore any data-point values outside the plot window.
               ignored++;
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
               std::cout << "Ignoring x = " << x << ", y = " << y << std::endl;
@@ -2412,12 +2417,12 @@ my_plot.background_color(ghostwhite) // Whole image.
             { // Is inside plot window, so some bar to draw.
               switch(serieses_[i].bar_style_.bar_option_)
               { // -2 block to Y-axis,-1 stick to Y-axis, none, +1 stick to X-axis, -2 block to X-axis.
-              case y_block: // Draw a rectangle centered on the data point horizontally to Y-axis.
+              case y_block: // Draw a rectangle centered on the data-point horizontally to Y-axis.
                  {
                    g_ptr.style().stroke_width(serieses_[i].line_style_.width_) // line_width used for rectangle line width.
                      .fill_color(serieses_[i].bar_style_.area_fill_);
                    double h_left = x;
-                   double h_top = y - h_w / 2; // Start a half-width above the data point center.
+                   double h_top = y - h_w / 2; // Start a half-width above the data-point center.
                    path.M(h_left, h_top).L(h_left, h_top + h_w).L(x0, h_top + h_w).L(x0, h_top).z();
                  }
                  break;
@@ -2433,11 +2438,11 @@ my_plot.background_color(ghostwhite) // Whole image.
                  path.style().stroke_width(serieses_[i].bar_style_.width_); // bar_width used for stick line width.
                  path.M(x, y).L(x, y0); // Draw a line from point vertically to X-axis.
                  break;
-              case x_block: // Draw a rectangle centered on the data point vertically to X-axis.
+              case x_block: // Draw a rectangle centered on the data-point vertically to X-axis.
                {
                  g_ptr.style().stroke_width(serieses_[i].line_style_.width_) // line_width used for rectangle line width.
                    .fill_color(serieses_[i].bar_style_.area_fill_);
-                 double h_left = x - h_w / 2; // Start a half width left of the data point center.
+                 double h_left = x - h_w / 2; // Start a half width left of the data-point center.
                  double h_top = y;
                  path.M(h_left, h_top).L(h_left + h_w, h_top).L(h_left + h_w, y0).L(h_left, y0).z();
                }
@@ -2459,7 +2464,7 @@ my_plot.background_color(ghostwhite) // Whole image.
          the 2nd data X-value provides the end of the 1st bin,
          and the 1st Y-value the area of the 1st bin,
          and the start of the second bin, and so on, until the
-         width of last bin is calculated from the last data point in series,
+         width of last bin is calculated from the last data-point in series,
          that must have a zero area.  ? NaN
          Bins can be the same (most common) or different widths.
          Intervals must not overlap and bins must be adjacent.
@@ -2857,7 +2862,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       int svg_2d_plot::y_value_precision()
-      { //! \return Precision of Y tick value labels in decimal digits (default 3).
+      { //! \return Precision of Y tick value-labels in decimal digits (default 3).
         return y_ticks_.value_precision_;
       }
 
@@ -2875,7 +2880,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       int svg_2d_plot::y_value_ioflags()
-      { //! \return All stream ioflags for control of format of Y tick value labels.
+      { //! \return All stream ioflags for control of format of Y tick value-labels.
         return y_ticks_.value_ioflags_;
       }
 
@@ -2927,26 +2932,26 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       svg_2d_plot& svg_2d_plot::y_axis_value_color(const svg_color& col)
-      { //! Set color of Y-axis @b value labels.  (svg_color(0, 0, 0)), black is default color.)
+      { //! Set color of Y-axis @b value-labels.  (svg_color(0, 0, 0)), black is default color.)
         image_.gs(detail::PLOT_Y_TICKS_VALUES).style().stroke_color(col);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       svg_color svg_2d_plot::y_axis_value_color()
-      { //! \return Color of Y-axis tick value labels.
+      { //! \return Color of Y-axis tick value-labels.
         //! (svg_color(0, 0, 0)), black is default color.)
         //! \note Only return the stroke color (not the fill_color).
         return image_.gs(detail::PLOT_Y_TICKS_VALUES).style().stroke_color();
       }
 
       svg_2d_plot& svg_2d_plot::y_label_width(double width)
-      { //! Set width of Y-axis value labels.
+      { //! Set width of Y-axis value-labels.
         image_.gs(detail::PLOT_Y_LABEL).style().stroke_width(width);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       double svg_2d_plot::y_label_width()
-      { //! \return Width of Y-axis value labels.
+      { //! \return Width of Y-axis value-labels.
         return image_.gs(detail::PLOT_Y_LABEL).style().stroke_width();
       }
 
@@ -3509,7 +3514,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
         return y_label_info_.textstyle().font_family();
       }
 
-      // Y-axis tick value labels style.
+      // Y-axis tick value-labels style.
 
       svg_2d_plot& svg_2d_plot::y_ticks_values_color(const svg_color& col)
       { //! Set color for Y_axis tick values.
@@ -3639,19 +3644,19 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       svg_2d_plot& svg_2d_plot::y_values_rotation(rotate_style rotate)
-      { //! Set rotation for value labels on Y-axis ticks.
+      { //! Set rotation for value-labels on Y-axis ticks.
         //! \see rotate_style
         y_values_style_.value_label_rotation_ = rotate;
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       int svg_2d_plot::y_values_rotation()
-      { //! \return rotation for value labels on Y-axis.
+      { //! \return rotation for value-labels on Y-axis.
         return y_values_style_.value_label_rotation_;
       }
 
       align_style svg_2d_plot::y_values_alignment()
-      { //! \return rotation for value labels on Y-axis.
+      { //! \return rotation for value-labels on Y-axis.
         return y_values_style_.value_label_alignment_;
        }
 
@@ -3669,14 +3674,14 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       svg_2d_plot& svg_2d_plot::y_values_ioflags(std::ios_base::fmtflags f)
-      { //! Set @c iostream format flags for data point values.
+      { //! Set @c iostream format flags for data-point values.
         y_values_style_.value_ioflags_ = f;
         return *this; //! \return reference to svg_2d_plot to make chainable.
       }
 
       std::ios_base::fmtflags svg_2d_plot::y_values_ioflags()
       {
-        return y_values_style_.value_ioflags_;  //! \return @c std::iostream format flags for data point values.
+        return y_values_style_.value_ioflags_;  //! \return @c std::iostream format flags for data-point values.
       }
 
       svg_2d_plot& svg_2d_plot::write(const std::string& file)

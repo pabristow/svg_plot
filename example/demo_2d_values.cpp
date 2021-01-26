@@ -84,7 +84,7 @@ here a circle with a diameter of 5 pixels.
 */
     my_2d_plot.plot(my_data, "2d Values").shape(circlet).size(5).line_on(false);
 
-/*`To put a value label against each data_point, switch on the option:
+/*`To put a value-label against each data_point, switch on the option:
 */
     //my_2d_plot.x_values_on(true); // Add a label for the X-axis.
     //my_2d_plot.y_values_on(true); // Add a label for the X-axis.
@@ -92,12 +92,12 @@ here a circle with a diameter of 5 pixels.
 
 /*`If the default size and color are not to your taste, set more options, like:
 */
-    my_2d_plot.x_values_font_size(16) // Change font size for the X-axis value labels.
-      .x_values_font_family("Times New Roman") // Change font for the X-axis value labels.
+    my_2d_plot.x_values_font_size(16) // Change font size for the X-axis value-labels.
+      .x_values_font_family("Times New Roman") // Change font for the X-axis value-labels.
       .x_values_color(red); // Change X values color from default black to red.
 
-    my_2d_plot.y_values_font_size(14) // Change font size for the Y-axis value labels.
-      .y_values_font_family("Arial") // Change font for the Y-axis value labels.
+    my_2d_plot.y_values_font_size(14) // Change font size for the Y-axis value-labels.
+      .y_values_font_family("Arial") // Change font for the Y-axis value-labels.
       .y_values_color(blue); // Change Y color from default black to blue.
 
 /*`The format of the values may also not be ideal,
@@ -108,8 +108,8 @@ reducing the risk of collisions between adjacent values.
 If values are very close to each other, a higher precision will be needed to differentiate them).
 For measurement of typical precision, 2 or 3 decimal places will suffice.
 */
-    my_2d_plot.x_values_precision(3); // Typical precision (3) for the X-axis value label.
-    my_2d_plot.y_values_precision(5); // Higher precision (5) for the Y-axis value label.
+    my_2d_plot.x_values_precision(3); // Typical precision (3) for the X-axis value-label.
+    my_2d_plot.y_values_precision(5); // Higher precision (5) for the Y-axis value-label.
 
 /*`We can also prescribe the use of scientific, fixed format and/or force a positive sign:
 */
@@ -125,13 +125,13 @@ the stripping can be switched off with:
 
 In general, sticking to the default ioflags usually produces the neatest presentation of values.
 */
-    my_2d_plot.x_plusminus_on(true); // unc label for the X-axis value label.
-    my_2d_plot.x_df_on(true); // Degrees of freedom label for the X-axis value label.
+    my_2d_plot.x_plusminus_on(true); // unc label for the X-axis value-label.
+    my_2d_plot.x_df_on(true); // Degrees of freedom label for the X-axis value-label.
 
-    my_2d_plot.y_plusminus_on(true); // unc label for the X-axis value label.
-    my_2d_plot.y_df_on(true); // Degrees of freedom label for the X-axis value label.  
+    my_2d_plot.y_plusminus_on(true); // unc label for the X-axis value-label.
+    my_2d_plot.y_df_on(true); // Degrees of freedom label for the X-axis value-label.  
 
-/*`The default value label is horizontal, centered above the data_point marker,
+/*`The default value-label is horizontal, centered above the data_point marker,
 but, depending on the type and density of data_points, and the length of the values
 (controlled in turn by choice of options, the `precision` and `ioflags` in use),
 it is often clearer to use a different orientation.
@@ -147,16 +147,16 @@ This can be controlled in steps using an 'enum rotate_style` for convenience (or
 placing the values below the horizontal Y-axis line,
 but for 2-D plots all writing orientations can be useful).
 */
-    my_2d_plot.x_values_rotation(rightward); // Orientation for the Y-axis value labels.
-    //my_2d_plot.x_values_rotation(horizontal); // Orientation for the X-axis value labels.
-    //my_2d_plot.x_values_rotation(uphill); // Orientation for the X-axis value labels.
-   // my_2d_plot.y_values_rotation(downhill); // Orientation for the Y-axis value labels.
-    //my_2d_plot.x_values_rotation(leftward); // Orientation for the X-axis value labels.
-    //my_2d_plot.y_values_rotation(rightward); // Orientation for the Y-axis value labels.
+    my_2d_plot.x_values_rotation(rightward); // Orientation for the Y-axis value-labels.
+    //my_2d_plot.x_values_rotation(horizontal); // Orientation for the X-axis value-labels.
+    //my_2d_plot.x_values_rotation(uphill); // Orientation for the X-axis value-labels.
+   // my_2d_plot.y_values_rotation(downhill); // Orientation for the Y-axis value-labels.
+    //my_2d_plot.x_values_rotation(leftward); // Orientation for the X-axis value-labels.
+    //my_2d_plot.y_values_rotation(rightward); // Orientation for the Y-axis value-labels.
 
-   // my_2d_plot.x_plusminus_on(true); // Show Uncertainty for X-axis value labels.
-   // my_2d_plot.x_df_on(true); // Show Degrees of freedom (n-1) for X-axis value labels.
-    //my_2d_plot.y_plusminus_on(true); // Uncertainty for X-axis value labels.
+   // my_2d_plot.x_plusminus_on(true); // Show Uncertainty for X-axis value-labels.
+   // my_2d_plot.x_df_on(true); // Show Degrees of freedom (n-1) for X-axis value-labels.
+    //my_2d_plot.y_plusminus_on(true); // Uncertainty for X-axis value-labels.
 
 
 /*`To use all these settings, finally write the plot to file.
@@ -211,10 +211,10 @@ my_2d_plot.y_values_precision() 5
 
 //] [demo_2d_values_output]
 
-    //my_2d_plot.x_values_rotation(uphill); // Orientation for the X-axis value labels.
-    //my_2d_plot.x_values_rotation(horizontal); // Orientation for the X-axis value labels.
-    //my_2d_plot.x_values_rotation(backup); // Orientation for the X-axis value labels.
-    my_2d_plot.x_values_rotation(downhill); // Orientation for the X-axis value labels.
+    //my_2d_plot.x_values_rotation(uphill); // Orientation for the X-axis value-labels.
+    //my_2d_plot.x_values_rotation(horizontal); // Orientation for the X-axis value-labels.
+    //my_2d_plot.x_values_rotation(backup); // Orientation for the X-axis value-labels.
+    my_2d_plot.x_values_rotation(downhill); // Orientation for the X-axis value-labels.
 
 */
 

@@ -208,10 +208,10 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     // y_separator "&#x00A0;time ="  space before word time.
     // y_suffix "&#x00A0;sec" space before word sec.
 
-    .y_plusminus_on(true) // Show plus/minus +/- uncertainty with data-point value labels, for example "2.1 +/- 0.001"
+    .y_plusminus_on(true) // Show plus/minus +/- uncertainty with data-point value-labels, for example "2.1 +/- 0.001"
     .y_plusminus_color(red) // Show plus/minus +/- uncertainty in red.
 
-    .y_addlimits_on(true)  // Show plus/minus +/- confidence limits for data-point value labels.
+    .y_addlimits_on(true)  // Show plus/minus +/- confidence limits for data-point value-labels.
     .y_addlimits_color(darkgreen) // Show +/- in darkgreen, for example: "+/- 0.03".
 
     .y_df_on(true) // Show degrees of freedom (usually observations -1) for data-points.

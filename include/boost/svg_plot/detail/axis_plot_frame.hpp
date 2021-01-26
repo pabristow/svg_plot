@@ -60,7 +60,7 @@ namespace boost
     */
     static const double text_plusminus = 2.;
 
-    static const double sin45 = 0.707; //!< Used to calculate 'length' if axis value labels are sloping.
+    static const double sin45 = 0.707; //!< Used to calculate 'length' if axis value-labels are sloping.
     static const double reducer = 0.9; //!< To make uncertainty and degrees of freedom estimates a bit smaller font to help distinguish from value.
    // static const double aspect_ratio = 0.6;  //!< Guess at average height to width of font. Now in svg_style.hpp
 
@@ -268,14 +268,14 @@ namespace boost
            */
           Derived& x_value_precision(int digits);
           int x_value_precision(); //!<  \return Precision of X-tick label values in decimal digits
-          Derived& x_value_ioflags(std::ios_base::fmtflags flags); /*!< Set iostream std::ios::fmtflags for X value label (default decimal == 0X201).
+          Derived& x_value_ioflags(std::ios_base::fmtflags flags); /*!< Set iostream std::ios::fmtflags for X value-label (default decimal == 0X201).
               Mainly useful for changing to scientific, fixed or hexadecimal format.
               For example:
               \code
                  myplot.x_value_ioflags(std::ios::dec | std::ios::scientific)
               \endcode
             */
-          std::ios_base::fmtflags x_value_ioflags(); //!<  \return  stream std::ios::fmtflags for control of format of X value labels.
+          std::ios_base::fmtflags x_value_ioflags(); //!<  \return  stream std::ios::fmtflags for control of format of X value-labels.
           Derived& x_labels_strip_e0s(bool cmd); //!<  Set if to strip redundant zeros, signs and exponents, for example, reducing "1.2e+000" to "1.2"
             //! This markedly reduces visual clutter, and is the default.
           bool y_labels_strip_e0s(); //!<  \return  if to strip redundant zeros, signs and exponents, for example, reducing "1.2e+000" to "1.2"
@@ -397,8 +397,8 @@ namespace boost
            */
           Derived& x_label_font_size(int i); //!<Set X axis label font size (svg units, default pixels).
           int x_label_font_size(); //!<\return  X axis label font size (svg units, default pixels).
-          Derived& x_value_font_size(int i); //!<Set X tick value label font size (svg units, default pixels).
-           int x_value_font_size(); //!<\return  X tick value label font size (svg units, default pixels).
+          Derived& x_value_font_size(int i); //!<Set X tick value-label font size (svg units, default pixels).
+           int x_value_font_size(); //!<\return  X tick value-label font size (svg units, default pixels).
           Derived& x_label_font_family(const std::string& family); /*!< Set X-tick value-label font-family.
            Available fonts depend on the program rendering the SVG XML, usually a browser.
           The default font (usually "default_font_family") is used if a render program does not provide the font specified.
@@ -408,18 +408,18 @@ namespace boost
             "lucida calligraphy", "tahoma", "vivaldi", "informal roman", "lucida handwriting", "lucida bright", "helvetica"
           \endcode
           */
-          const std::string& x_label_font_family(); //!<\return  X tick value label font family.
+          const std::string& x_label_font_family(); //!<\return  X tick value-label font family.
           Derived& x_axis_label_color(const svg_color& col); //!<Set X axis label color, for example, red.
           svg_color x_axis_label_color(); //!<\return  X axis label color.
           //!<X-axis ticks values label style.
-          Derived& x_ticks_values_color(const svg_color& col);  //!<Set X axis tick value label color.
-          svg_color x_ticks_values_color(); //!<\return  X-axis ticks value label color.
+          Derived& x_ticks_values_color(const svg_color& col);  //!<Set X axis tick value-label color.
+          svg_color x_ticks_values_color(); //!<\return  X-axis ticks value-label color.
           Derived& x_ticks_values_precision(int p); //!<Set iostream decimal digits precision of data-point X values near data-points markers.
           int x_ticks_values_precision(); //!<\return  iostream decimal digits precision of data-point X values near data-points markers.
           Derived& x_ticks_values_ioflags(std::ios_base::fmtflags f); //!<Set iostream format flags of data-point X values near data-points markers.
           std::ios_base::fmtflags x_ticks_values_ioflags(); //!<\return  iostream format flags of data-point X values near data-points markers.
 
-          Derived& x_ticks_values_font_family(const std::string& family); /*!< Set X-ticks value label font family.
+          Derived& x_ticks_values_font_family(const std::string& family); /*!< Set X-ticks value-label font family.
             Available fonts depend on the program rendering the SVG XML, usually a browser.
             The default font (usually "default_font_family") is used if a render program does not provide the font specified.
              These are probably usable:
@@ -428,9 +428,9 @@ namespace boost
  "lucida calligraphy", "tahoma", "vivaldi", "informal roman", "lucida handwriting", "lucida bright", "helvetica"
              \endcode
            */
-          const std::string& x_ticks_values_font_family(); //!<\return  X-ticks value label font family.
-          Derived& x_ticks_values_font_size(int i); //!<Set X-ticks value label font size (svg units, default pixels).
-          int x_ticks_values_font_size(); //!<Set X-ticks value label font size (svg units, default pixels).
+          const std::string& x_ticks_values_font_family(); //!<\return  X-ticks value-label font family.
+          Derived& x_ticks_values_font_size(int i); //!<Set X-ticks value-label font size (svg units, default pixels).
+          int x_ticks_values_font_size(); //!<Set X-ticks value-label font size (svg units, default pixels).
 
           Derived& x_ticks_on_window_or_axis(int side);
             /*!<  Set position of X-ticks on window or axis.
@@ -444,16 +444,16 @@ namespace boost
             //!<\see x_label_units which also sets true.
           bool x_label_units_on(); //!<Set true if want X axis label to include units (as well as label like "length").
           Derived& x_major_labels_side(int side); /*!< Position of labels for X major ticks on horizontal X axis line.
-               \param side > 0 X tick value labels to left of Y-axis line (default), 0 (false) no major X tick value labels on Y-axis, 0 X tick labels to right of Y-axis line.
+               \param side > 0 X tick value-labels to left of Y-axis line (default), 0 (false) no major X tick value-labels on Y-axis, 0 X tick labels to right of Y-axis line.
             */
-          int x_major_labels_side(); //!<\return the side for X-ticks major value labels.
+          int x_major_labels_side(); //!<\return the side for X-ticks major value-labels.
           Derived& x_major_label_rotation(rotate_style rot); /*!< Set rotation for X-ticks major value-labels (words). (Default horizontal).
                \see rotate_style
             */
           Derived& x_major_label_rotation(int rot); /*!< Set rotation for X-ticks major value-labels (degrees). (Default 0).
                \see rotate_style
             */
-          int x_major_label_rotation(); /*!< \return rotation for X-ticks major value labels (degrees).
+          int x_major_label_rotation(); /*!< \return rotation for X-ticks major value-labels (degrees).
                 \sa rotate_style
              */
           Derived& title_on(bool cmd); //!<If set true, show a title for the plot. Note: is set true by setting a title.
@@ -531,7 +531,7 @@ namespace boost
           svg_color x_values_color(); //!<\return  the color of data-point X value- labels near data-points markers.
 
           Derived& x_values_alignment(align_style alignment); //!< Set the alignment (align_style) of data-point X values near data-points markers.
-          align_style x_values_alignment();  //!<\return Alignment (align_style) of data-point X value labelss near data-points markers.
+          align_style x_values_alignment();  //!<\return Alignment (align_style) of data-point X value-labelss near data-points markers.
 
           Derived& x_values_rotation(int rot); //!< Set the rotation (static_cast<int>(rotate)) of data-point X values near data-points markers.
           int x_values_rotation(); //!< //!<\return the rotation (int degrees) of data-point X values near data-points markers.
@@ -830,7 +830,7 @@ namespace boost
       template <class Derived>
       void axis_plot_frame<Derived>::draw_x_minor_tick(double value, path_element& tick_path, path_element& grid_path)
       { //!< Draw X-axis minor ticks, and optional grid. (Value is NOT (yet) shown beside the minor tick).
-        double x(value); // Tick position and tick value label,
+        double x(value); // Tick position and tick value-label,
         transform_x(x); // Convert to svg.
         double y_bottom(0.); // Start on the horizontal X-axis line.
         double y_top(derived().image_.y_size()); // Image top.
@@ -898,7 +898,7 @@ namespace boost
         if ((x >= derived().plot_left_) && (x <= derived().plot_right_)) // TODO allow < or <=
         {
           tick_path.M(x, y_bottom).L(x, y_top);
-          // No value labels on minor ticks, at present.
+          // No value-labels on minor ticks, at present.
         }
         else
         { // This will happen but is designed to be ignored!
@@ -1132,7 +1132,7 @@ namespace boost
             }
           }
           else if (derived().x_ticks_.label_rotation_ == horizontal)
-          { // Tick value label on X-axis is normal default horizontal.
+          { // Tick value-label on X-axis is normal default horizontal.
             if (derived().x_ticks_.major_value_labels_side_ < 0)
             { // labels to bottom of tick, so start a little below bottom of y_down.
               y = y_down + derived().x_ticks_value_label_style_.font_size() * 1.3; // 1.3 allows 1/3 font space.
@@ -1174,7 +1174,7 @@ namespace boost
       //      g_element* g_x_axis_values = &(g_ptr->add_g_element()); // cannot convert from 'boost::svg::g_element *' to 'boost::svg::g_element &'
  //           g_element& g_ticks = (derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK \nd gr.text works OK too.
           //  g_element& g_x_axis_values = derived().image_.gs(detail::PLOT_X_TICKS_VALUES).add_g_element();
-          //  g_x_axis_values.style().stroke_color(red); // OK using  g_element& and has desired effect on x axis value labels too!
+          //  g_x_axis_values.style().stroke_color(red); // OK using  g_element& and has desired effect on x axis value-labels too!
          //   g_x_axis_values.style().fill_color(blue); // OK using  g_element&
          //   g_x_axis_values->style().stroke_color(derived().style().stroke_color_); //  wrong
          //   g_x_axis_values->style().fill_color(derived().serieses_[i].point_style_.fill_color_); //
@@ -1240,7 +1240,7 @@ namespace boost
                 tick_value_label.str(),
                 derived().x_ticks_value_label_info_.textstyle(), // font, size etc,
                 // For example: text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode"
-                // But we don't really want to repeat this style info every value label!
+                // But we don't really want to repeat this style info every value-label!
                 alignment,
                 derived().x_ticks_.label_rotation_);
             }
@@ -1348,14 +1348,14 @@ namespace boost
             if ((j != 0. || !derived().y_axis_.axis_line_on_) || (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0))
             { // Avoid a minor tick at x == 0 where there *is* a vertical Y-axis line.
               // (won't be Y-axis line for 1-D where the zero tick is always wanted).
-              // But no tick means no value label 0 either unless on_plot_window.
+              // But no tick means no value-label 0 either unless on_plot_window.
               draw_x_minor_tick(j, minor_tick_path, minor_grid_path);
             }
           }
           if ((x != 0. || !derived().y_axis_.axis_line_on_) || (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0))
           { // Avoid a major tick at x == 0 where there *is* a vertical Y-axis line.
             // (won't be Y-axis line for 1-D where the zero tick is always wanted).
-            // But no tick means no value label 0 either unless on_plot_window.
+            // But no tick means no value-label 0 either unless on_plot_window.
             draw_x_major_tick(x, major_tick_path, major_grid_path);
           }
         }
@@ -1383,11 +1383,11 @@ namespace boost
         // cout << "derived().x_ticks_.ticks_on_window_or_on_axis_ " << derived().x_ticks_.ticks_on_window_or_on_axis_ << endl;
         // using derived(0 means debugging doesn't work!  So resort to old-fashioned print statements.
         if (derived().x_ticks_.ticks_on_window_or_on_axis_ < 0) // -1 means ticks on bottom of plot window.
-        { // Ticks value labels below plot window.
+        { // Ticks value-labels below plot window.
           if (derived().x_ticks_.major_value_labels_side_ < 0) // bottom
-          { // Shift down to allow for any tick value labels.
+          { // Shift down to allow for any tick value-labels.
             if ((derived().x_ticks_.label_rotation_ == static_cast<int>(downward)) || (derived().x_ticks_.label_rotation_ == static_cast<int>(upward)))
-            { // downward tick value label direction 90 up or down.
+            { // downward tick value-label direction 90 up or down.
               y += derived().x_ticks_.label_max_space_;
               if (derived().x_ticks_.down_ticks_on_ == true)
               {  // Move down for any downward ticks.
@@ -1397,7 +1397,7 @@ namespace boost
               }
             }
             else if ((derived().x_ticks_.label_rotation_ == steepdown) || (derived().x_ticks_.label_rotation_ == steepup))
-            { // downward tick value label direction 60 up or down.
+            { // downward tick value-label direction 60 up or down.
               y += derived().x_ticks_.label_max_space_;
               if (derived().x_ticks_.down_ticks_on_ == true)
               {  // Move down for any downward ticks.
@@ -1427,9 +1427,9 @@ namespace boost
               }
             }
             else if (derived().x_ticks_.label_rotation_ == horizontal)
-            { // horizontal X-ticks value labels (default).
+            { // horizontal X-ticks value-labels (default).
               if (derived().x_ticks_.major_value_labels_side_ < 0)
-              { //  Move down to allow space for font size of tick value labels below X-axis.
+              { //  Move down to allow space for font size of tick value-labels below X-axis.
                 y += derived().x_ticks_value_label_info_.textstyle().font_size();
               }
               y += derived().x_label_info_.textstyle().font_size() * 1.3; // Allow for the X-axis label font and space.
@@ -2632,8 +2632,8 @@ namespace boost
             }
             int marker_size = point_style.size_; // point marker size
             int label_size = val_style.values_text_style_.font_size();
-            // Offset of value label from point must be related mainly to
-            // size of the data marker, less the value label font size.
+            // Offset of value-label from point must be related mainly to
+            // size of the data marker, less the value-label font size.
             // May need to combine these two?
 
             int rot = val_style.value_label_rotation_;
@@ -2824,14 +2824,14 @@ namespace boost
                */
             /*!
               \verbatim x_style prefix("[ X=", and separator ",&#x00A0;Y= ", " and Y value_style = "]" 
-                 will produce a value label like "[X=-1.23, Y=4.56]"
+                 will produce a value-label like "[X=-1.23, Y=4.56]"
               \endverbatim
 
               \note You need to use a Unicode space for get space for all browsers.
               For a long a string you may need to make the total image size bigger,
-              and to orient the value labels with care.
+              and to orient the value-labels with care.
               \note draw_plot_point_values is only when both X and Y pairs are wanted.
-              See @c draw_plot_point_value for plotting just one X OR Y value label.
+              See @c draw_plot_point_value for plotting just one X OR Y value-label.
            */
             // Avoid a warning about using &#x00A0; within Doxygen comment.
             // And there is something funny about verbatim commands, hence odd layout.
@@ -2867,8 +2867,8 @@ namespace boost
 
             int marker_size = derived().serieses_[0].point_style_.size_;
             int label_size = x_sty.values_text_style_.font_size();
-            // Offset of value labels from point must be related mainly to
-            // size of the data marker, less the value label font size.
+            // Offset of value-labels from point must be related mainly to
+            // size of the data marker, less the value-label font size.
 
             int rot = x_sty.value_label_rotation_;
             align_style al; // = center_align;
@@ -3473,7 +3473,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_value_ioflags(std::ios_base::fmtflags flags)
-          { /*! Set iostream std::ios::fmtflags for X value label (default decimal == 0X201).
+          { /*! Set iostream std::ios::fmtflags for X value-label (default decimal == 0X201).
               Mainly useful for changing to scientific, fixed or hexadecimal format.
               For example: .x_value_ioflags(std::ios::dec | std::ios::scientific)
             */
@@ -3483,7 +3483,7 @@ namespace boost
 
           template <class Derived>
           std::ios_base::fmtflags axis_plot_frame<Derived>::x_value_ioflags()
-          { //! \return  stream ioflags for control of format of X value labels.
+          { //! \return  stream ioflags for control of format of X value-labels.
             return derived().x_ticks_.value_ioflags_;
           }
 
@@ -4141,27 +4141,27 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_value_font_size(int i)
-          { //! Set X tick value label font size (svg units, default pixels).
+          { //! Set X tick value-label font size (svg units, default pixels).
             derived().x_value_value.textstyle().font_size(i);
             return derived();
           }
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_value_font_size()
-          { //! \return  X tick value label font size (svg units, default pixels).
+          { //! \return  X tick value-label font size (svg units, default pixels).
             return derived().x_value_value_style_font_size();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_label_font_family(const std::string& family)
-          { //! Set X tick value label font family.
+          { //! Set X tick value-label font family.
             derived().x_label_info_.textstyle().font_family_ = family;
             return derived();
           }
 
           template <class Derived>
           const std::string& axis_plot_frame<Derived>::x_label_font_family()
-          { //! \return  X tick value label font family.
+          { //! \return  X tick value-label font family.
             return derived().x_label_info_.textstyle().font_family();
           }
 
@@ -4185,7 +4185,7 @@ namespace boost
           // X-axis tick label style.
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_ticks_values_color(const svg_color& col)
-          { //! Set X axis tick value label color.
+          { //! Set X axis tick value-label color.
             // Set BOTH stroke and fill to the same color.
             derived().image_.gs(detail::PLOT_X_TICKS_VALUES).style().fill_color(col);
             //derived().image_.gs(detail::PLOT_X_TICK_VALUE_LABELS).style().stroke_color(col);
@@ -4196,7 +4196,7 @@ namespace boost
 
           template <class Derived>
           svg_color axis_plot_frame<Derived>::x_ticks_values_color()
-          { //! \return  X-axis ticks value label color.
+          { //! \return  X-axis ticks value-label color.
             // But only return the fill color.
             return derived().image_.gs(detail::PLOT_X_TICKS_VALUES).style().fill_color();
             //return x_ticks_.color_ ;
@@ -4233,7 +4233,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_ticks_values_font_size(int size)
-          { //! Set X-ticks value label font size (svg units, default pixels).
+          { //! Set X-ticks value-label font size (svg units, default pixels).
             //derived().x_ticks_.value_label_style_.font_size(i);
             derived().x_ticks_value_label_info_.textstyle().font_size_ = size;
             return derived();
@@ -4241,7 +4241,7 @@ namespace boost
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_ticks_values_font_size()
-          { //! \return  X-ticks value label font size (svg units, default pixels).
+          { //! \return  X-ticks value-label font size (svg units, default pixels).
             // return derived().x_ticks_.value_label_style_.font_size();
             //       return derived().x_value_label_info_style_.font_size();
 
@@ -4250,7 +4250,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_ticks_values_font_family(const std::string& family)
-          { //! Set X-ticks value label font family.
+          { //! Set X-ticks value-label font family.
             //derived().x_ticks_.value_label_style_.font_family(family); // is effect same as:
             derived().x_ticks_value_label_info_.textstyle().font_family_ = family;
             return derived();
@@ -4258,7 +4258,7 @@ namespace boost
 
           template <class Derived>
           const std::string& axis_plot_frame<Derived>::x_ticks_values_font_family()
-          { //! \return  X-ticks value label font family.
+          { //! \return  X-ticks value-label font family.
             return derived().x_ticks_.value_label_style_.font_family();
           }
 
@@ -4308,13 +4308,13 @@ namespace boost
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_major_labels_side()
-          { //! \return The side for X-ticks major value labels (see `enum boost::svg::side`).
+          { //! \return The side for X-ticks major value-labels (see `enum boost::svg::side`).
             return derived().x_ticks_.major_value_labels_side_;
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_major_label_rotation(rotate_style rot)
-          { /*! Set rotation for X-ticks major value labels. (Default horizontal).
+          { /*! Set rotation for X-ticks major value-labels. (Default horizontal).
                \see rotate_style
             */
             derived().x_ticks_.label_rotation_ = static_cast<int>(rot);
@@ -4323,7 +4323,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_major_label_rotation(int rot)
-          { /*! Set rotation for X-ticks major value labels. (Default horizontal == 0.
+          { /*! Set rotation for X-ticks major value-labels. (Default horizontal == 0.
                \see rotate_style
             */
             derived().x_ticks_.label_rotation_ = rot;
@@ -4332,7 +4332,7 @@ namespace boost
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_major_label_rotation()
-          { /*! \return rotation for X-ticks major value labels in degrees.
+          { /*! \return rotation for X-ticks major value-labels in degrees.
                 \see rotate_style
              */
             return derived().x_ticks_.label_rotation_;

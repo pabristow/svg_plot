@@ -11,7 +11,7 @@ and
   to produce a somewhat lurid effect.
 
   Demonstrates that the legend marks line only shown if a dataset is plotted with a line joining points,
-  and a data point value marker is only shown if marker shapes are used,
+  and a data-point value marker is only shown if marker shapes are used,
   and not if the shape == none.
 */
 
@@ -121,7 +121,7 @@ int main()
   my_plot.plot(sin_data, "sin(x)")
     .line_on(true) // Line joining data points, using default color black.
     .shape(circlet) // and circle marker showing data points.
-    .size(10) // Size (diameter pixels) of circlet data point marker.
+    .size(10) // Size (diameter pixels) of circlet data-point marker.
     .fill_color(yellow) // Outline is default black and centre yellow.
   // Default is no bezier.  Note angularity at the minima and maxima.
     ;
@@ -130,7 +130,7 @@ int main()
     .line_color(blue) // Defaults to showing line, but not in legend.
     .line_on(true) // Needed to show in the legend.
     .line_width(1) // thinner line.
-    .shape(square) // Center of square has the data point coordinate.
+    .shape(square) // Center of square has the data-point coordinate.
     .size(5)
     .fill_color(red)  // Center of square.
     ;
@@ -138,14 +138,14 @@ int main()
   my_plot.plot(tan_data, "tan(x)")
     .line_on(false)  // No line joining points.
     .shape(cone) // bottom point of cone has the coordinate of the data point.
-    .size(5).fill_color(blue); // Just show data point markers.
+    .size(5).fill_color(blue); // Just show data-point markers.
 
   my_plot.plot(sincos_data, "sincos(x)")
     .line_on(true)  // Just line joining points.
     .line_color(purple)
     .line_width(0.5)
     .bezier_on(true) // Note smoother at the minima and maxima.
-    .shape(none) ; // NO data point markers (and only shows a line in the legend).
+    .shape(none) ; // NO data-point markers (and only shows a line in the legend).
 
   my_plot.write("demo_2d_bezier.svg"); // Final plot.
 

@@ -49,7 +49,7 @@ in svg_style.hpp
 int main()
 {
   using namespace boost::svg;
-  // Very convenient to allow easy access to colors, data point marker shapes and other svg_plot items.
+  // Very convenient to allow easy access to colors, data-point marker shapes and other svg_plot items.
 
   try
   { // try'n'catch blocks are needed to ensure error messages from any exceptions are shown.

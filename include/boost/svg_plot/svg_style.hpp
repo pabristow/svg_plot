@@ -66,8 +66,8 @@ class text_style; // Text and tspan element's font family, size ...
 class value_style; // data-series point value information, text, color, uncertainty & df, orientation, and textLength.
 class plot_point_style; // Shape, color, (optional value & uncertainty) of data-point-markers.
 class plot_line_style; // Style of line joining data-series values.
-class axis_line_style; // Style of the x and/or y axes lines. But NOT the ticks and value labels.
-class ticks_labels_style; // Style of the x and y axes ticks, grids and tick value labels.
+class axis_line_style; // Style of the x and/or y axes lines. But NOT the ticks and value-labels.
+class ticks_labels_style; // Style of the x and y axes ticks, grids and tick value-labels.
 class box_style; //  Box colors, size and border switches.
 class histogram_style;  // Options for histograms.
 class bar_style;  // Style of bars.
@@ -858,13 +858,13 @@ class value_style
      "4.5 +- 0.01 (3) Second #2, 2012-Mar-13 13:01:00"
   */
 public:
-  int value_label_rotation_; //!< Direction point value labels written.
+  int value_label_rotation_; //!< Direction point value-labels written.
   align_style value_label_alignment_; //!< Alignment of label with respect to value, left, centered, or right.\n Example: text-anchor="middle"
   // These are a duplicate of info elsewhere?
   int value_precision_; //!< Decimal digits of precision of value, default 3, for example "1.23".
   std::ios_base::fmtflags value_ioflags_; //!< Control of scientific, fixed, hex etc.
   bool strip_e0s_; //!< If true, then unnecessary zeros and + sign will be stripped to reduce length.
-  text_style values_text_style_; //!< Font etc used for data point value marking.
+  text_style values_text_style_; //!< Font etc used for data-point value marking.
   // svg_style
   svg_color stroke_color_; //!< Stroke color for value.
   svg_color fill_color_; //!< Fill color for value.
@@ -882,14 +882,14 @@ public:
   svg_color datetime_color_; //!< Color for time and date string".
   bool order_on_;  //!< If an order in sequence number # to be appended. default == false,
   svg_color order_color_; //!< Color for sequence number #".
-  std::string prefix_; //!< Prefix to data point value, default none, but typically "[".
+  std::string prefix_; //!< Prefix to data-point value, default none, but typically "[".
   std::string separator_; //!< Separator between x and y values, if both on same line (none if only X or only Y, or Y below X).
-  std::string suffix_; //!< Suffix to data point value, default none, but typically "]".
+  std::string suffix_; //!< Suffix to data-point value, default none, but typically "]".
 
   // Constructors declarations.
-  value_style(); //!< Default style for a data point value label.
+  value_style(); //!< Default style for a data-point value-label.
 
-  value_style( //!< Set style for a data point value label.
+  value_style( //!< Set style for a data-point value-label.
     int r, //!< Label orientation or rotation, default horizontal == 0.
     align_style a,  //!< Alignment of label with respect to value, left, centered, or right.\n Example: text-anchor="middle".
     int p, //!< Precision, reduced from default of 6 which is usually too long.
@@ -920,11 +920,11 @@ public:
 
 // class value_style Member Functions definitions.
 
- //!< Constructor Data point value label style (provides default color and font).
+ //!< Constructor data-point value-label style (provides default color and font).
  value_style::value_style()
     :
     value_label_rotation_(static_cast<int>(horizontal)), //!< Label orientation, default horizontal.
-    value_label_alignment_(align_style::left_align), //!< Alignment (or anchoring), default left, so value label is to the right of the data point marker.
+    value_label_alignment_(align_style::left_align), //!< Alignment (or anchoring), default left, so value-label is to the right of the data-point marker.
     value_precision_(3), //!< Precision, reduced from default of 6 which is usually too long.
     value_ioflags_(std::ios::dec), //!< Any std::ios::ioflags, for example, hex, fixed, scientific.
     strip_e0s_(true), //!< If true, then unnecessary zeros will be stripped to reduce length.
@@ -942,14 +942,14 @@ public:
     datetime_on_(false), //!< If a date and time to be appended.
     datetime_color_(black), //!< Default color for date and time is black.
     order_on_(false), //!< If a order number #  to be appended.
-    order_color_(black), //!< Default color for order number # is black.
+    order_color_(black), //!< Default color for order # is black.
     prefix_(""),
     separator_(","),
     suffix_("")
     { //! Default constructor initialises all data.
     }
 
-    //!< Constructor Data point value label style (provides default color and font).
+    //!< Constructor data-point value-label style (provides default color and font).
     value_style::value_style(
       int r = static_cast<int>(horizontal), //!< Label orientation, default horizontal.
       align_style a = align_style::left_align, //!< Label alignment, default left, so value_label is to right of data-point-marker.
@@ -1043,8 +1043,8 @@ enum point_shape
 
 class plot_point_style
 { /*! \class boost::svg::plot_point_style
-    \brief Shape, color, and symbol or shape of data point markers.
-    \details (optional x and/or y data point value(s) & optional uncertainty).
+    \brief Shape, color, and symbol or shape of data-point markers.
+    \details (optional x and/or y data-point value(s) & optional uncertainty).
   */
   friend std::ostream& operator<< (std::ostream&, plot_point_style);
 public:
@@ -1202,7 +1202,7 @@ public:
   }
 
   plot_point_style& plot_point_style::style(text_style ts)
-  { //! Assign a text_style to data point marker symbol(s).
+  { //! Assign a text_style to data-point marker symbol(s).
     symbols_style_ = ts;
     return *this; //! \return plot_point_style& to make chainable.
   }
@@ -1377,7 +1377,7 @@ enum dim
 class axis_line_style
 { /*! \class boost::svg::axis_line_style
     \brief Style of the X or Y-axes lines.
-    \details (But NOT the ticks and value labels because different styles for X and Y-axes are possible).
+    \details (But NOT the ticks and value-labels because different styles for X and Y-axes are possible).
   */
 public:
   dim dim_; //!< Dimension type : None, X (abscissa) or Y (ordinate).
@@ -1575,30 +1575,30 @@ public:
     // Unused are always false.
     int major_value_labels_side_; //!< Which side of axis for label values for major ticks.
     // < 0 means to left (for Y) or down (for X) (default),
-    // 0 (false) means no ticks value labels (just ticks),
+    // 0 (false) means no ticks value-labels (just ticks),
     // > 0 means to right (for Y) or top(for X).
     int label_rotation_; //!< Rotation direction axis tick-value labels written. Default 0 means horizontal.
     // assign by static_cast<int>(horizontal)
     //align_style label_alignment_; //< Alignment of tick-value-label using text_anchor. Default center_align for X-axis but right_align for Y-axis.
-    //!< This ensures that value labels center on the tick so that "1.1" aligns the decimal point with the tick.
+    //!< This ensures that value-labels center on the tick so that "1.1" aligns the decimal point with the tick.
     //!< Ideally alignment takes rotation into account to get label as close a possible to the tick. 
     bool major_grid_on_;  //!< Draw X grid at major ticks.
     bool minor_grid_on_; //!< Draw X grid at minor ticks.
     svg_color values_color_; //!< Color of tick values labels.
     // (just fill_color for now (stroke makes characters fuzzy.)
-    int value_precision_; //!< Precision for tick value labels, usually 3 will suffice.
+    int value_precision_; //!< Precision for tick value-labels, usually 3 will suffice.
     std::ios_base::fmtflags value_ioflags_;  //!< IO formatting flags for the axis default std::ios::dec.
     bool strip_e0s_; //!< If redundant zero, + and e are to be stripped, for example "+1.000e3" to "1e3".
-    double label_max_length_;  //!< width (in SVG units, pixels) of longest value label text on axis.
-    double label_max_space_;  //!< Space (SVG units, pixels) needed for value label adjusted for rotation.
-    int ticks_on_window_or_on_axis_; //!< Value labels & ticks on a plot window border (rather than on X or Y-axis).
+    double label_max_length_;  //!< width (in SVG units, pixels) of longest value-label text on axis.
+    double label_max_space_;  //!< Space (SVG units, pixels) needed for value-label adjusted for rotation.
+    int ticks_on_window_or_on_axis_; //!< value-labels & ticks on a plot window border (rather than on X or Y-axis).
     //! For Y-axis -1 = left, 0 = false = on X-axis, +1 = right. Default -1 to left of plot window.
     //! For X-axis -1 = bottom, 0 = false = on Y-axis, +1 = top. Default -1 below bottom of plot window.
     //! 0 = false puts the ticks and their labels on the X or Y axis line which may be in the middle of the plot.
-    //! For 1D the default overrides the constructor default of -1 below, to tick and value label the X-axis.
-    //! For 2D the default is left at -1, to use bottom and left of plot window to tick and value label X and Y-axis.
+    //! For 1D the default overrides the constructor default of -1 below, to tick and value-label the X-axis.
+    //! For 2D the default is left at -1, to use bottom and left of plot window to tick and value-label X and Y-axis.
 
-    text_style value_label_style_; //!< text style (font, size...) for value labels.
+    text_style value_label_style_; //!< text style (font, size...) for value-labels.
 
      //! Constructor setting several parameters, but providing default values for all member data.
     ticks_labels_style(
@@ -1618,7 +1618,7 @@ public:
     major_interval_(major_interval),
     num_minor_ticks_(num_minor_ticks),
     // These are the plot defaults.
-    // major_interval_(2.), // x stride between major ticks & value label.
+    // major_interval_(2.), // x stride between major ticks & value-label.
     // num_minor_ticks_(4), // suits: major 0, minor 2, 4, 6, 8, major 10
     // but given a value here for safety.
     major_tick_color_(black), // line stroke color.
@@ -1639,12 +1639,12 @@ public:
     // Simplest to have all of these although only one pair like up or down is used.
     // Unused are always false.
     major_value_labels_side_(-1), // Label values side for major ticks left (right or none).
-    label_rotation_(static_cast<int>(horizontal)), // Direction axis value labels written.
+    label_rotation_(static_cast<int>(horizontal)), // Direction axis value-labels written.
       // label_alignment(?)
     major_grid_on_(false),  // Draw grid at major ticks.
     minor_grid_on_(false),// Draw grid at minor ticks.
     values_color_(black),
-    value_precision_(3), // precision for tick value labels, usually 3 will suffice.
+    value_precision_(3), // precision for tick value-labels, usually 3 will suffice.
     // 4 might be better to permit thousands without using e format?
     value_ioflags_(std::ios::dec),  // IO formatting flags for the axis.
     // Note that ALL the flags are set, overwriting any defaults, so std::dec is wise.
@@ -1652,7 +1652,7 @@ public:
     strip_e0s_(true), // strip superflous zeros and signs.
     label_max_length_(0.), // length (estimated in SVG units) of longest label on axis.
     label_max_space_(0.), // Space (estimated in SVG units) of longest label on axis, adjusted for rotation.
-    ticks_on_window_or_on_axis_(-1), // Value labels & ticks on the plot window,
+    ticks_on_window_or_on_axis_(-1), // value-labels & ticks on the plot window,
     // rather than on X or Y-axis.
     // Default -1 means left or bottom of plot window.
     value_label_style_(style)
@@ -1688,7 +1688,7 @@ public:
   } // double label_length
 
   double longest_label()
-  { //! Update label_max_length_ with the longest value label as SVG units (default pixels),
+  { //! Update label_max_length_ with the longest value-label as SVG units (default pixels),
     //! return the count of digits etc.
     if(major_value_labels_side_ != 0) // ! none
     { // Show values by the tick as "1.2" or "3.4e+000"...
@@ -1696,7 +1696,7 @@ public:
 
       //axis_line_style& axis = (dim_ = X) ? y_axis() : x_axis(); // The intersecting *other* axis.
       //  || !axis.axis_line_on_ ignore these tests to avoid the above that doesn't work.
-      // Zero isn't likely to be the longest value label.
+      // Zero isn't likely to be the longest value-label.
       // ticks_labels_style& tick_labels = (dim_ = X) ? x_ticks() : y_ticks(); // doesn't work.
 
       // Check length of label for the ticks on the positive side (right or above zero).
@@ -1705,7 +1705,7 @@ public:
         if (v != 0. || ticks_on_window_or_on_axis_ != 0)
         { // Avoid a major tick at x == 0 where there *is* a vertical Y-axis line,
           // or avoid a major tick at y == 0 where there *is* a horizontal X-axis line.
-          // (won't be a Y-axis line for 1-D, where both the zero tick & value label is always wanted).
+          // (won't be a Y-axis line for 1-D, where both the zero tick & value-label is always wanted).
           double l = label_length(v);
           if (l > longest)
           {
@@ -1719,7 +1719,7 @@ public:
         if (v != 0. || ticks_on_window_or_on_axis_ != 0)
         { // Avoid a major tick at x == 0 where there *is* a vertical Y-axis line.
           // (won't be Y-axis line for 1-D where the zero tick is always wanted).
-          // But no tick means no value label 0 either unless on_plot_window.
+          // But no tick means no value-label 0 either unless on_plot_window.
           double l = label_length(v);
           if (l > longest)
           {
@@ -1761,12 +1761,12 @@ public:
   }
 
   int major_value_labels_side() const
-  { //! \return side for tick value labels: left (<0), none (==0) or right (>0).
+  { //! \return side for tick value-labels: left (<0), none (==0) or right (>0).
     return major_value_labels_side_;
   }
 
   ticks_labels_style& major_value_labels_side(int is)
-  { //! Set side for tick value labels: left (<0), none (==0) or right (>0).
+  { //! Set side for tick value-labels: left (<0), none (==0) or right (>0).
     major_value_labels_side_ = is;
     return *this; //! \return ticks_labels_style& to make chainable.
   }
@@ -2034,7 +2034,7 @@ double bar_style::bar_opt()
 
 const std::string strip_e0s(std::string s)
 { /* To remove redundant sign and leading zero(s) in exponent, for example, "1.2e+000" becomes "1.2"
-    \details Used to work out the longest value label before calculate_plot_window.
+    \details Used to work out the longest value-label before calculate_plot_window.
     Should also be useful for values that spill over into exponent format
     'by accident' - when leading zeros are likely.
   */

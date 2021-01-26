@@ -118,12 +118,12 @@ int main()
     .x_values_on(true)
 //   .x_values_precision(0) // Automatic number of digits of precision.
     .x_values_precision(2) // User-chosen std::ios precision decimal digits, for example "1.23".
-    //.x_values_rotation(steepup) // steeper - but need more image and plot window vertical height for all data point info.
+    //.x_values_rotation(steepup) // steeper - but need more image and plot window vertical height for all data-point info.
     .x_values_rotation(slopeup) // value at x = 7.8 overflows both plot window and image.
       // so might need to change .x_range or slope to avoid this. 
     .x_plusminus_on(true)
     .x_plusminus_color(blue)
-    .x_addlimits_on(true) // Show plus/minus +/- confidence limits/interval for data-point value labels.
+    .x_addlimits_on(true) // Show plus/minus +/- confidence limits/interval for data-point value-labels.
     .x_addlimits_color(purple)  // Show +/- in darkgreen, for example: "+/- 0.03".
     .x_df_on(true) // Show degrees of freedom (usually observations -1) for data-points.
     .x_df_color(green)  // Show degrees of freedom in green, for examples: "11").

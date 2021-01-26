@@ -58,15 +58,15 @@ enum plot_doc_structure
   PLOT_DATA_UNC3, //!  Uncertainty zone of 3 sd from data points.
   PLOT_DATA_UNC2, //! Uncertainty zone of 2 sd from data points.
   PLOT_DATA_UNC1, //! Uncertainty zone of 1 sd from data points.
-  PLOT_DATA_POINTS, //! Normal data point markers.
-  PLOT_LIMIT_POINTS, //! 'At limit' infite or NaN data point markers.
+  PLOT_DATA_POINTS, //! Normal data-point markers.
+  PLOT_LIMIT_POINTS, //! 'At limit' infite or NaN data-point markers.
   PLOT_LEGEND_BACKGROUND, //! Legend box.
   PLOT_LEGEND_POINTS, //! Legend data series point markers, circle, cross...
   PLOT_LEGEND_LINES, //! Legend data-series point lines.
   PLOT_LEGEND_TEXT, //! Legend text describing each data series.
   PLOT_TITLE, //! Title of the whole plot.
-  PLOT_X_POINT_VALUES, //! X Data point value labels.
-  PLOT_Y_POINT_VALUES, //! Y Data point value labels.
+  PLOT_X_POINT_VALUES, //! X data-point value-labels.
+  PLOT_Y_POINT_VALUES, //! Y data-point value-labels.
   PLOT_FUNCTIONS, //! Lines and curves, often to show a fit to the data.
   PLOT_NOTES, //! Free text and shapes to annotate a plot.
   SVG_PLOT_DOC_CHILDREN //! Last enum value used as count of children = size of document_ids_ = 31.
@@ -90,19 +90,19 @@ std::string document_ids_[32]= //!< Strings used describe and identify SVG layer
     "yTicksValues", //! Y-axis tick values labels, for example 1, 2, 3 ...
     "yLabel",
     "xLabel",   // axis text labels, for example: "length (cm)"
-    "plotLines", // normal data point markers.
+    "plotLines", // normal data-point markers.
     "plotUnc3",   // Uncertainty zone of 3 standard deviation from data points.
     "plotUnc2",   // Uncertainty zone of 2 standard deviation from data points.
     "plotUnc1",   // Uncertainty zone of 1 standard deviation from data points.
-    "plotPoints", // Normal data point markers.
-    "limitPoints",  // 'At limit' or NaN data point markers.
+    "plotPoints", // Normal data-point markers.
+    "limitPoints",  // 'At limit' or NaN data-point markers.
     "legendBackground", // legend box.
     "legendPoints", // data-series point markers, circle, cross...
     "legendLines", // data-series lines.
     "legendText", // text describing each data series.
     "title",  // of the whole plot.
-    "plotXValues", // Data point X value labels.
-    "plotYValues", // Data point Y value labels.
+    "plotXValues", // data-point X value-labels.
+    "plotYValues", // data-point Y value-labels.
     "plotFunctions", // Lines and curves, often to show a fit to the data.
     "plotNotes", // Free text and shapes to annotate diagram.
     "plotDocChildren" // This last string is not used.

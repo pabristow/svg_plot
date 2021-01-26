@@ -65,7 +65,7 @@ namespace svg
 // ------------------------------------------------------------------
  /*! \class boost::svg::svg_1d_plot_series
    \brief Holds a series of data values (points) to be plotted.
-   \details Scan each data point sorting them into the appropriate
+   \details Scan each data-point sorting them into the appropriate
    @c std::vectors, normal or not (NaN or infinite).\n
    Member functions allow control of data points markers and lines joining them,
    and their appearance, shape, color and size.\n
@@ -90,7 +90,7 @@ public:
 //! \endcond
 
   // Constructor svg_1d_plot_series.
-  /* Scan each data point between the iterators that are passed,
+  /* Scan each data-point between the iterators that are passed,
     sorting them into the appropriate @c std::vectors, either normal or not (NaN or infinite).
 
     \tparam C A STL container: \code std::array, std::vector<double>, std::set, std::map ... \endcode
@@ -170,8 +170,8 @@ public:
   text_style y_axis_label_style_;  //!< Not used for 1D, but needed by axis_plot_frame.hpp.
   text_style x_ticks_value_label_style_; //!< style of X-ticks value-label.
   text_style y_ticks_value_label_style_; //!< Not used for 1D, but needed by axis_plot_frame.hpp.
-  text_style point_symbols_style_; //!< Used for data point marking.
-  text_style value_style_; //!< Used for data point value label.  (should be named value_label_style?)
+  text_style point_symbols_style_; //!< Used for data-point marking.
+  text_style value_style_; //!< Used for data-point value-label.  (should be named value_label_style?)
   // Not finite values.
   plot_point_style nan_point_style_; //!< Default is cone pointing down for 2D, or NaN or point left or right for 1D.
   plot_point_style plus_inf_point_style_; //!< Default is cone pointing right for 2D, or NaN or point left or right for 1D.
@@ -180,9 +180,9 @@ public:
   plot_point_style plus_limit_point_style_; //!< Default is cone pointing up for 2D, or NaN or point left or right for 1D.
   plot_point_style minus_limit_point_style_; //!< Default is cone pointing down for 2D, or NaN or point left or right for 1D.
 
-  value_style x_values_style_; //!< Used for data point value marking.
-  int x_value_label_rotation_; //!< Direction point value labels is written (degree). Default horizonal (0).
-  int x_value_precision_; //!< Decimal digits precision for X-axis value labels. (if == 2, 1.2, 6 == 1.23456...)
+  value_style x_values_style_; //!< Used for data-point value marking.
+  int x_value_label_rotation_; //!< Direction point value-labels is written (degree). Default horizonal (0).
+  int x_value_precision_; //!< Decimal digits precision for X-axis value-labels. (if == 2, 1.2, 6 == 1.23456...)
   std::ios_base::fmtflags x_value_ioflags_; //!< std::iosflags used for Y-axis value-labels (default std::ios::dec).
 
   // text_elements hold position & alignment, and indirectly via text_style, font_family, font_size, bold, italic...
@@ -222,8 +222,8 @@ public:
   double legend_bottom_; //!< bottom of legend-box.
   double x_axis_vertical_; //!< Vertical position of 1D horizontal X-axis line as fraction of window.
   //! 0.5 is at middle(useful if no labels) (default),
-  //! 0.8 is near bottom (useful if value labels go upward),
-  //! 0.2 is near top (useful if value labels go downward).
+  //! 0.8 is near bottom (useful if value-labels go upward),
+  //! 0.2 is near top (useful if value-labels go downward).
 
   bool is_a_point_marker_; //! @c true if any data-series have point markers to show in legend (default @c false).
   bool is_a_data_series_line_;  //!< @c true if any series have lines to show in legend (default @c false). Example: @c .line_on(true).
@@ -250,8 +250,8 @@ public:
   axis_line_style x_axis_; //!< style of X axis line.
   axis_line_style y_axis_; //!< style of Y axis line. (Meaningless for 1D but added to permit shared code in axis_plot_frame.hpp!)
 
-  ticks_labels_style x_ticks_; //!< style of X axis tick value labels.
-  ticks_labels_style y_ticks_; //!< style of Y axis tick value labels. (Meaningless for 1D but added to permit shared code in axis_plot_frame.hpp!)
+  ticks_labels_style x_ticks_; //!< style of X axis tick value-labels.
+  ticks_labels_style y_ticks_; //!< style of Y axis tick value-labels. (Meaningless for 1D but added to permit shared code in axis_plot_frame.hpp!)
 
   bool title_on_; //!< If true include a title for the whole plot.
   bool legend_on_; //!< If true include a legend-box.
@@ -357,7 +357,7 @@ template <typename C>
 svg_1d_plot_series::svg_1d_plot_series(C begin, C end, const std::string& title)
 : // Constructor.
 title_(title), // of data-series.
-point_style_(black, blank, 5, vertical_line, ""), // Default data point marker style vertical line for 1D plots.
+point_style_(black, blank, 5, vertical_line, ""), // Default data-point marker style vertical line for 1D plots.
 //limit_point_style_(lightgrey, whitesmoke, 10, cone_point_right, ""), // Default limit//  (inf or NaN) point style.  right-pointing pointer.
 //limit_point_style_(red, green, 20, cone_point_right, ""), // Default limit (inf or NaN) point style is right-pointing pointer.
 line_style_(black, blank, 2, false, false) // Default line style, black, no fill, width, line_on, bezier_on false
@@ -579,7 +579,7 @@ void svg_1d_plot::update_image()
         // draw_plot_point(x, y, g_ptr, serieses_[i].point_style_, ux, unc<false>()); // Marker.
         // (y uncertainty is zero).
         if (x_values_on_)
-        { // Show the value (& perhaps uncertainty) of the data point too.
+        { // Show the value (& perhaps uncertainty) of the data-point too.
           g_element& g_ptr_v = image_.gs(detail::PLOT_X_POINT_VALUES).add_g_element();
           draw_plot_point_value(x, y, g_ptr_v, x_values_style_, serieses_[i].point_style_, ux);
           // TODO Might separate X and Y colors?
@@ -676,7 +676,7 @@ void svg_1d_plot::update_image()
     //x_label_info_(0, 0, "X Axis", x_axis_label_style_, center_align, horizontal),
     //x_units_info_(0, 0, " (units)", x_ticks_value_label_style_, center_align, horizontal),
     x_label_info_(0, 0, "", x_axis_label_style_, align_style::center_align, horizontal), // Null strings for now.
-    x_ticks_value_label_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, horizontal), // X-axis tick value label, for example: "1.2" or "1.2e1".
+    x_ticks_value_label_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, horizontal), // X-axis tick value-label, for example: "1.2" or "1.2e1".
     x_units_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, horizontal),
     x_axis_(X, -10., +10., black, 1, 0, true, false, true),
     y_axis_(Y, 0., +1., black, 1, 0, false, false, false), // Not used for 1D.
@@ -716,7 +716,7 @@ void svg_1d_plot::update_image()
     horizontal_marker_spacing_(0), // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
 
     outside_legend_on_(true),
-    legend_lines_(false), // Not very useful for 1 D as already showing data point marker shapes.
+    legend_lines_(false), // Not very useful for 1 D as already showing data-point marker shapes.
     plot_window_clip_("plot_window"), // for <clipPath id="plot_window" ...
     title_on_(true),
     plot_window_on_(true),
@@ -745,7 +745,7 @@ void svg_1d_plot::update_image()
   {
     size(500, 200); // Default image size.
   // Only needs to be quite shallow (y_size) for a 1-D plot.
-  // (But may need more height (y_size) if long value labels are used, for example: "[time = 1.23 +-0.02 sec]").
+  // (But may need more height (y_size) if long value-labels are used, for example: "[time = 1.23 +-0.02 sec]").
   // 200 barely leaves enough room for five data-series in any legend-box).
   // (2-D usually needs to be much more rectangular).
 
@@ -797,7 +797,7 @@ void svg_1d_plot::update_image()
 
   x_ticks_on_ = x_ticks_.up_ticks_on_ || x_ticks_.down_ticks_on_;
   // Only 2D has left and right y ticks.
-  x_ticks_.ticks_on_window_or_on_axis_ = 0; // Make ticks (and ticks value labels) on X-axis line the default.
+  x_ticks_.ticks_on_window_or_on_axis_ = 0; // Make ticks (and ticks value-labels) on X-axis line the default.
   // This will place the labels just under the horizontal X-axis line,
   // rather than below the plot window border.
   // This over-rides the default in class ticks_labels_style.
@@ -844,7 +844,7 @@ void svg_1d_plot::calculate_plot_window()
   if(plot_window_on_ == true)
   { // Needed to allow any plot window border rectangle to show OK.
     // A small margin is to prevent it overlapping the image border.
-    // Also allows for axis value labels that mark the min and max
+    // Also allows for axis value-labels that mark the min and max
     // that must extend about half a font width beyond the plot window border.
     plot_left_ +=  image_border_.margin_;
     plot_right_ -=  image_border_.margin_;
@@ -888,14 +888,14 @@ void svg_1d_plot::calculate_plot_window()
     x_axis_.axis_ = (plot_bottom_ - plot_top_) * x_axis_vertical_ + plot_top_;
   // Put X-axis fraction of way up plot window.
   // 0.5 is at middle(useful if no labels),
-  // 0.8 is near bottom (useful if value labels go upward),
-  // 0.2 is near top (useful if value labels go downward).
+  // 0.8 is near bottom (useful if value-labels go upward),
+  // 0.2 is near top (useful if value-labels go downward).
 
   if(plot_window_on_ == true)
   { // Using a plot window and NOT using all image.
-    // Calculate the number of chars of the longest tick value label.
+    // Calculate the number of chars of the longest tick value-label.
     x_ticks_.longest_label(); // Updates label_max_length_
-    x_ticks_.label_max_space_ = 0; // Work out the longest tick value label for X-Axis.
+    x_ticks_.label_max_space_ = 0; // Work out the longest tick value-label for X-Axis.
     if (x_ticks_.label_rotation_ == static_cast<int>(horizontal))
     { // Only 1 char height & 1 space needed if labels are horizontal.
       x_ticks_.label_max_space_ = 2 * x_ticks_value_label_style_.font_size() * aspect_ratio; // SVG chars.
@@ -924,7 +924,7 @@ void svg_1d_plot::calculate_plot_window()
       if ((x_axis_position_ == bottom) // All X data values definitely > zero.
         && !(x_ticks_.ticks_on_window_or_on_axis_ < 0) ) // & not already on bottom of plot window.
       { // y_min_ > 0 so X-axis will not intersect Y-axis, so use plot window border.
-        plot_bottom_ -= x_ticks_.label_max_space_; // Move up for the value labels.
+        plot_bottom_ -= x_ticks_.label_max_space_; // Move up for the value-labels.
         x_axis_.axis_ = plot_bottom_; // Put X-axis on bottom on plot window.
       }
       else if ((x_axis_position_ == top)  // All x data values definitely < zero.
@@ -939,18 +939,18 @@ void svg_1d_plot::calculate_plot_window()
       }
     } // if (use_x_axis_line_)
 
-    // Make space for any tick value labels.
+    // Make space for any tick value-labels.
     if (x_ticks_.major_value_labels_side_ != 0)
-    { // There are some tick value labels.
-      // If ticks and value labels are on plot window border, the need to allow space for them.
+    { // There are some tick value-labels.
+      // If ticks and value-labels are on plot window border, the need to allow space for them.
       if ((x_ticks_.ticks_on_window_or_on_axis_ < 0) // ticks on bottom of plot window.
-          && (x_ticks_.major_value_labels_side_ < 0) ) // & tick value labels below axis line too.
-      {  // Contract plot window bottom edge up to make space for X tick value labels on bottom.
+          && (x_ticks_.major_value_labels_side_ < 0) ) // & tick value-labels below axis line too.
+      {  // Contract plot window bottom edge up to make space for X tick value-labels on bottom.
         plot_bottom_ -= x_ticks_.label_max_space_; // Move up.
       }
       else if ((x_ticks_.ticks_on_window_or_on_axis_ > 0) //
-          && (x_ticks_.major_value_labels_side_ > 0) ) // & X tick value labels to top of plot window.
-      { // Move top of plot window down to give space for X tick value labels.
+          && (x_ticks_.major_value_labels_side_ > 0) ) // & X tick value-labels to top of plot window.
+      { // Move top of plot window down to give space for X tick value-labels.
         plot_top_ += x_ticks_.label_max_space_; // Move window top down.
       }
       else // (x_ticks_.major_value_labels_side_ == 0)
