@@ -686,6 +686,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         // Separate X and Y to allow axes to have different styles.
         y_axis_label_style_(14, default_font_family, "", "", "", "", 0), // Y-axis label. Example: length(m).
         y_ticks_value_label_style_(12, default_font_family, "", "", "", "", 0), // Y-axis tick-value labels. Example: "1", "1.5", "2" ...
+        value_style_(8, default_font_family, "", "", "", "", 0), // All X and Y value labels are initliased using this text_style.
         point_symbols_style_(12, default_font_family, "", "", "", "", 0), // Used for data point marking.
         // Font is to try to ensure that all Unicode symbols are available (default_font_family might not be Unicode?).
         title_info_(0, 0, "", title_style_, align_style::center_align, horizontal),
@@ -759,8 +760,10 @@ my_plot.background_color(ghostwhite) // Whole image.
         x_values_on_(false), // If X values of data points are shown.
         y_values_on_(false), // If Y values of data points are shown.
         xy_values_on_(false), // If X & Y values of data are shown as a pair.
-        x_values_style_(horizontal, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, false, false),
-        y_values_style_(downward, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, false, false),
+        x_values_style_(horizontal, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, 
+          false, black, false, black, false, black, false, black, false, black, false, black,
+          "?", "!", "£"),
+        y_values_style_(downward, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black),
 
         nan_point_style_(green, white, 20, cone_point_down, ""), // Colors and size for NaN markers.
         plus_inf_point_style_(red, white, 10, cone_point_right, ""), // Colors and size for +infinity markers.

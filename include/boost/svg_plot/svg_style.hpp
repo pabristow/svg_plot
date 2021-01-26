@@ -939,10 +939,10 @@ public:
     df_color_(black), //!< Default color for degrees of freedom is black.
     id_on_(false), //!< If an id or name string to be appended.
     id_color_(black), //!< Default color for an id or name string is black.
-    datetime_on_(false), //!< If a date and date to be appended.
-    datetime_color_(black), //!< Default color for date and date is black.
-    order_on_(false), //!< If a order #  to be appended.
-    order_color_(black), //!< Default color for order # is black.
+    datetime_on_(false), //!< If a date and time to be appended.
+    datetime_color_(black), //!< Default color for date and time is black.
+    order_on_(false), //!< If a order number #  to be appended.
+    order_color_(black), //!< Default color for order number # is black.
     prefix_(""),
     separator_(","),
     suffix_("")
@@ -951,12 +951,12 @@ public:
 
     //!< Constructor Data point value label style (provides default color and font).
     value_style::value_style(
-      int r, //!< Label orientation, default horizontal.
-      align_style a, //!< Label alignment, default left, so value_label is to right of data-point-marker.
-      int p, //!< Reduced from default of 6 which is usually too long, default 3.
-      std::ios_base::fmtflags f, //!< Any std::ios::ioflags, for example, hex, fixed, scientific.
-      bool s, //!< If true, then unnecessary zeros will be stripped to reduce length.
-      text_style ts, //!< All defaults, black etc.
+      int r = static_cast<int>(horizontal), //!< Label orientation, default horizontal.
+      align_style a = align_style::left_align, //!< Label alignment, default left, so value_label is to right of data-point-marker.
+      int p = 3, //!< Reduced from default of 6 which is usually too long, default 3.
+      std::ios_base::fmtflags f = std::ios::dec, //!< Any std::ios::ioflags, for example, hex, fixed, scientific.
+      bool s = true, //!< If true, then unnecessary zeros will be stripped to reduce length.
+      text_style ts = no_text_style, //!< All defaults, black etc.
       const svg_color& scol = black, //!< == black.
       const svg_color& fcol = black,  //!< no fill.
       bool pm = false, //!< If uncertainty estimate to be appended.
@@ -964,13 +964,13 @@ public:
       bool lim = false, //!< If confidence limits to be appended.
       const svg_color& addlimits_color = black, //!< Default color for confidence limits.
       bool df = false,  //!< If a degrees of freedom estimate to be appended.
-      const svg_color& df_color = black,//!< Default color for uncertainty of value.
-      bool id = false,  //!< If a degrees of freedom estimate to be appended.
-      const svg_color& id_color = black,//!< Default color for uncertainty of value.
-      bool dt = false,  //!< If a degrees of freedom estimate to be appended.
-      const svg_color& dt_color = black,//!< Default color for uncertainty of value.
-      bool ordno = false,  //!< If a degrees of freedom estimate to be appended.
-      const svg_color& order_color = black,//!< Default color for uncertainty of value.
+      const svg_color& df_color = black,//!< Default color for degrees of freedom.
+      bool id = false,  //!< If an ID string to be appended.
+      const svg_color& id_color = black,//!< Default color for ID string.
+      bool dt = false,  //!< If a  date and time to be appended.
+      const svg_color& dt_color = black,//!< Default color for  date and time  of value.
+      bool ordno = false,  //!< If an order # to be appended, for example: "#13".
+      const svg_color& order_color = black,//!< Default color for order #.
       // Separators [,] provide, for example: [1.23+-0.01 (3), 4.56 +-0.2 (10)]
       std::string pre = "", //!< Prefix, for example: "[",
       std::string sep  = "", //!< separator, for example: ,\&\#x00A0;", // If put ", " the trailing space seems to be ignored, so add Unicode explicit space.
