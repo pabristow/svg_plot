@@ -1354,7 +1354,7 @@ public:
 
 std::ostream& operator<< (std::ostream& os, plot_line_style p)
 { //! Output description of plot_line_style. (mainly useful for diagnosis).
-  /*! \details Example Usage: plot_line_style p;   cout << p << endl;
+  /*! \details Example Usage: plot_line_style p;   std::cout << p << std::endl;
      Outputs: point_line_style(RGB(0,0,0), blank, line, no bezier)
   */
   os << "point_line_style("

@@ -113,7 +113,7 @@ int main()
   //  or 
    
     std::transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), m1);
-  //cout << endl << my_data.size() << " values in my_data_2. " << endl;
+  //cout << std::endl << my_data.size() << " values in my_data_2. " << std::endl;
 
   /*`Next we need a new STL container, vector say, to hold our multiple containers of data series.
     They must all be the same STL container type, in this example, `vector<double>`.
@@ -123,14 +123,14 @@ int main()
 
   my_containers.push_back(my_data_1); // Add 1st data series.
   my_containers.push_back(my_data_2); // Add another data series.
-  cout << my_containers.size() << " containers." << endl;
+  cout << my_containers.size() << " containers." << std::endl;
   show_all(my_containers);
 
   /*` Finally we can use all the containers to find the minimum of mimimums and maximum of maximums
   ready to feed into the plot autoscale function.
   */
   pair<double, double> mm = range_all(my_containers);
-  cout << "Data range: "  << mm << endl; // min & max of all data.
+  cout << "Data range: "  << mm << std::endl; // min & max of all data.
   svg_1d_plot my_1d_plot; // Construct a plot with all the default constructor values.
 
   /*`We could feed the minimum and maximum values separately,*/
@@ -149,7 +149,7 @@ int main()
 
   /*`If we want, we can check the autoscale range used.*/
   using boost::svg::detail::operator<<; // To avoid ambiguity.
-  cout << "x_range() " << my_1d_plot.x_range() << endl; // x_range() 0, 15
+  cout << "x_range() " << my_1d_plot.x_range() << std::endl; // x_range() 0, 15
   /*`And even all the (hundreds of) plot settings (useful for diagnosis why your plot doesn't meet your expectations).*/
   //show_1d_plot_settings(my_1d_plot);
 

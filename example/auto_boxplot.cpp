@@ -106,7 +106,7 @@ int main()
     double mx;
     int good = mnmx(my_data.begin(), my_data.end(), &mn, &mx);
     cout << good << " good values, " << my_data.size() - good << " limit values."
-      << " min value = " << mn << ", max = " << mx << endl;
+      << " min value = " << mn << ", max = " << mx << std::endl;
     // 12 good values, 0 limit values. min value = 0.2, max = 8.5
 
     svg_boxplot my_boxplot; // Construct a plot with all the default constructor values.
@@ -116,13 +116,13 @@ int main()
     //my_boxplot.y_autoscale(my_data.begin(), my_data.end());  // Compute autoscale values for the plot.
     // my_boxplot.y_autoscale(std::make_pair(0., 10.));
     //my_boxplot.y_autoscale(0., 9.);  // Compute autoscale values for the plot.
-    cout << boolalpha << "Use y autoscale " << my_boxplot.y_autoscale() << "."<< endl;
+    cout << boolalpha << "Use y autoscale " << my_boxplot.y_autoscale() << "."<< std::endl;
     my_boxplot.plot(my_data, "Auto boxplot"); // Add the one data series, and give it a title.
     my_boxplot.write("auto_boxplot.svg"); // Write the plot to file.
 
     /*`It may be useful to display that range chosen by autoscaling. */
     using boost::svg::detail::operator<<; // For displaying std::pair.
-    cout << "y_range() " << my_boxplot.y_range() << endl; // x_range() 
+    cout << "y_range() " << my_boxplot.y_range() << std::endl; // x_range() 
   }
   catch(const std::exception& e)
   { // Error, warning and information messages are displayed by the catch block.
