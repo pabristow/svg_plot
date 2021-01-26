@@ -90,7 +90,7 @@ the order of data values is not important.
   std::copy(B_times.begin(), B_times.end(), std::ostream_iterator<uncun>(std::cout, " "));
   std::cout << std::endl;
  /*`The constructor initializes a new 1D plot, called `my_plot`,
- and also sets all the very many defaults for axes, width, colors, etc.
+ and also sets all the very many defaults for axes, fonts, width, colors, etc.
 */
   using namespace boost::gregorian;
   using namespace boost::posix_time;
