@@ -8,11 +8,11 @@
   my_plot.show_2d_plot_settings();
   \endcode
 
-  \see show_1d_settings.cpp for 1D plot.
+  \see show_1d_settings.cpp for 1D plot analog.
 */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2007, 2009, 2012
+// Copyright Paul A. Bristow 2007, 2009, 2012, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -53,10 +53,10 @@ const std::string t_or_b(int i)
 
 void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
 { /*! Diagnostic display of all settings of a 2D plot.
-   \details  Outputs a long list of over 100 plot parameter settings, default to @c std::cout.
+   \details  Outputs a long list of over 100 plot parameter settings, by default to @c std::cout.
     This list is invaluable if the plot does not look as expected.
-   \warning This creates about 100 lines of output, so should be used sparingly!
-   \param plot Name of 2D-plot.
+   \warning This creates over 100 lines of output, so should be used sparingly!
+   \param plot Name of 2D plot.
    \param os Output stream for diagnostic output, default @ std::cout.
   */
 
@@ -264,6 +264,14 @@ void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
   os << "x_addlimits_color " << plot.x_addlimits_color() << std::endl;
   os << "y_df_on " << plot.y_df_on() << std::endl;
   os << "y_df_color " << plot.y_df_color() << std::endl;
+
+  os << "y_id_on " << plot.y_id_on() << std::endl;
+  os << "y_id_color " << plot.y_id_color() << std::endl;
+  os << "y_datetime_on " << plot.y_datetime_on() << std::endl;
+  os << "y_datetime_color " << plot.y_datetime_color() << std::endl;
+  os << "y_order_on " << plot.y_order_on() << std::endl;
+  os << "y_order_color " << plot.y_order_color() << std::endl;
+
   os << "y_prefix \"" << plot.y_prefix()  << '"' << std::endl;
   os << "y_separator \"" << plot.y_separator()  << '"' << std::endl;
   os << "y_suffix \"" << plot.y_suffix()  << '"' << std::endl;

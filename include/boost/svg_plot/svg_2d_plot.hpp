@@ -2665,6 +2665,20 @@ my_plot.background_color(ghostwhite) // Whole image.
       const std::string y_prefix();
       const std::string y_suffix();
       const std::string y_separator();
+      // For Meas items
+      bool y_id_on();
+      svg_2d_plot& y_id_on(bool b);
+      svg_2d_plot& y_id_color(const svg_color& col);
+      const svg_color y_id_color();
+      bool y_datetime_on();
+      svg_2d_plot& y_datetime_on(bool b);
+      svg_2d_plot& y_datetime_color(const svg_color& col);
+      const svg_color y_datetime_color();
+      bool y_order_on();
+      svg_2d_plot& y_order_on(bool b);
+      svg_2d_plot& y_order_color(const svg_color& col);
+      const svg_color y_order_color();
+
       svg_2d_plot& y_autoscale(double minimum, double maximum);
       svg_2d_plot& y_autoscale(std::pair<double, double> p);
       template <typename T> // T an STL container: array, vector ...
@@ -3203,6 +3217,81 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
         //! \note For a space, you must use a Unicode space \code "&#x00A0;" \endcode
         //! rather than " ".
         return y_values_style_.separator_;
+      }
+
+      // Additional for Meas
+
+      svg_2d_plot& svg_2d_plot::y_id_on(bool b)
+      { //! Set true if to append a id or name to data-point X values near data-points markers.
+        //! (May not be implemented yet).
+        y_values_style_.id_on_ = b;
+        return *this;
+      }
+
+      bool svg_2d_plot::y_id_on()
+      { //! \return true if to append an ID or name to data-point X values near data-points markers.
+        return y_values_style_.id_on_;
+      }
+
+      
+      svg_2d_plot& svg_2d_plot::y_id_color(const svg_color& col)
+      { //! Set the color of X ID or name, for example, the color of text in "My_id".
+        y_values_style_.id_color_ = col;
+        return *this;
+      }
+
+      
+      const svg_color svg_2d_plot::y_id_color()
+      { //! Get the color of X ID or name, for example, the color of text in "My_id".
+        return y_values_style_.id_color_;
+      }
+
+      
+      svg_2d_plot& svg_2d_plot::y_datetime_on(bool b)
+      { //! Set true if to append a datetime to data-point X values near data-points markers.
+        //! (May not be implemented yet).
+        svg_2d_plot::y_values_style_.datetime_on_ = b;
+        return *this;
+      }
+      
+      bool svg_2d_plot::y_datetime_on()
+      { //! \return true if to append a ID or name to data-point X values near data-points markers.
+        //! (May not be implemented yet).
+        return y_values_style_.datetime_on_;
+      }
+
+      
+      svg_2d_plot& svg_2d_plot::y_datetime_color(const svg_color& col)
+      { //! Set the color of X point datetime, for example, the color of text in "2004-Jan-1 05:21:33.20".
+        y_values_style_.datetime_color_ = col;
+        return *this;
+      }
+      
+      const svg_color svg_2d_plot::y_datetime_color()
+      { //! Get the color of X point date time, for example, the color of text in "2004-Jan-1 05:21:33.20".
+        return y_values_style_.datetime_color_;
+      }
+      
+      svg_2d_plot& svg_2d_plot::y_order_on(bool b)
+      { //! Set true if to append an order # to data-point X values near data-points markers.
+        y_values_style_.order_on_ = b;
+        return *this;
+      }
+      
+      bool svg_2d_plot::y_order_on()
+      { //! \return true if to append an order # to data-point X values near data-points markers.
+        return y_values_style_.order_on_;
+      }
+
+      svg_2d_plot& svg_2d_plot::y_order_color(const svg_color& col)
+      { //! Set the color of X point order in sequence, for example, #3.
+        y_values_style_.order_color_ = col;
+        return *this;
+      }
+      
+      const svg_color svg_2d_plot::y_order_color()
+      { //! Get the color of X point order in sequence, for example, #3.
+        return y_values_style_.order_color_;
       }
 
       svg_2d_plot& svg_2d_plot::y_autoscale(double minimum, double maximum)
