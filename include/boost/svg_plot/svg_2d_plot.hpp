@@ -765,11 +765,6 @@ my_plot.background_color(ghostwhite) // Whole image.
         //  "?", "!", "£"), // Separators, prefix, separator, and suffix.
         y_values_style_(downward, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black),
 
-        //x_values_style_(horizontal, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, 
-        //  false, black, false, black, false, black, false, black, false, black, false, black,
-        //  "?", "!", "£"),
-        //y_values_style_(downward, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black),
-
         nan_point_style_(green, white, 20, cone_point_down, ""), // Colors and size for NaN markers.
         plus_inf_point_style_(red, white, 10, cone_point_right, ""), // Colors and size for +infinity markers.
         minus_inf_point_style_(blue, white, 10, cone_point_left, ""), // Colors and size for -infinity markers.
@@ -2249,16 +2244,15 @@ my_plot.background_color(ghostwhite) // Whole image.
               if (x_values_on_)
               { // Label with the value of the X-data-point too.
                 // void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, double value)
-
                 draw_plot_point_value(x, y, g_ptr_vx, x_values_style_, serieses_[i].point_style_, ux);
               }
               g_element& g_ptr_vy = image_.gs(detail::PLOT_Y_POINT_VALUES).add_g_element();
               if (y_values_on_)
-              { // Label the value of the Y-data-point too.
+              { // Label the Y-value of the data-point too.
                 draw_plot_point_value(x, y, g_ptr_vy, y_values_style_,serieses_[i].point_style_, uy);
               }
               if (xy_values_on_)
-              { // Show the two values of the X & Y data as a pair.
+              { // Show the two values of the X & Y data-point values as a pair on the same line.
                 draw_plot_point_values(x, y, g_ptr_vx, g_ptr_vy, x_values_style_, y_values_style_, ux, uy);
               }
             } // if inside plot window
@@ -3073,43 +3067,44 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
 
       bool svg_2d_plot::y_values_on()
       { /*! \return @c true if values of Y data points are shown (for example: 1.23).
-
         (Will override xy_values_on that would otherwise cause overwriting).
         So the last values_on setting will prevail.
         */
         return y_values_on_;
       }
 
-      svg_2d_plot&  svg_2d_plot::y_values_on(bool b)
+      svg_2d_plot& svg_2d_plot::y_values_on(bool b)
       { //! Set @c true if values of Y data points are shown (for example: 1.23, 2.34).
         if(xy_values_on() == true)
         { // Would be overwritten by XY pair.
           xy_values_on(false);
+          std::cout << "SVG_plot warning: y_values_on has overwritten xy_values_on!" << std::endl;
         }
         y_values_on_ = b;
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       bool svg_2d_plot::xy_values_on()
-      { //! \return @c true if values of X and Y data points are shown (for example: 1.23).
+      { //! \return @c true if values of both X and Y data points are shown on one line (for example: "1.23, 4.56").
         return xy_values_on_;
       }
 
       svg_2d_plot&  svg_2d_plot::xy_values_on(bool b)
       { /*! Set @c true if values of X and Y data points are to be shown (as 1.23).
-
         (Will override x_values_on and/or y_values_on that would otherwise cause overwriting).
           */
         if(x_values_on())
-        { // Would be overwritten by XY pair.
+        { // Would be overwritten by XY pair of values labels.
           x_values_on(false);
+          std::cout << "SVG_plot warning: xy_values_on has overwritten x_values_on!" << std::endl;
         }
         if(y_values_on())
-        { // Would be overwritten by XY pair.
+        { // Would be overwritten by XY pair of values labels.
           y_values_on(false);
+          std::cout << "SVG_plot warning: xy_values_on has overwritten y_values_on!" << std::endl;
         }
         xy_values_on_ = b;
-        return *this; //! \return reference to svg_2d_plot to make chainable.
+        return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       bool svg_2d_plot::y_plusminus_on()
@@ -3630,17 +3625,18 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
         // but just setting fill if simplest,
         // but does not allow separate inside & outside colors.
         image_.gs(detail::PLOT_Y_POINT_VALUES).style().fill_color(col);
-        image_.gs(detail::PLOT_Y_POINT_VALUES).style().stroke_color(col);
+       // image_.gs(detail::PLOT_Y_POINT_VALUES).style().stroke_color(col);
+       // Do not set stroke color, or the display of text goes fuzzy.
         //svg_2d_plot().image_.gs(PLOT_Y_POINT_VALUES).style().stroke_color(col);
         return *this; //! \return reference to svg_2d_plot to make chainable.
       }
 
       svg_color svg_2d_plot::y_values_color()
       { //! \return Color for Y-axis values.
-        // Function could get either fill and stroke color,
+        // Function could get either fill and stroke color, but see above about fuzzy text using stroke_color:
         // return svg_2d_plot().image_.gs(PLOT_Y_POINT_VALUES).style().stroke_color();
-    //    return image_.gs(detail::PLOT_Y_POINT_VALUES).style().fill_color();
-        return image_.gs(detail::PLOT_Y_POINT_VALUES).style().stroke_color();
+        return image_.gs(detail::PLOT_Y_POINT_VALUES).style().fill_color();
+      //  return image_.gs(detail::PLOT_Y_POINT_VALUES).style().stroke_color();
       }
 
       svg_2d_plot& svg_2d_plot::y_values_rotation(rotate_style rotate)
