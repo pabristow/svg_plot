@@ -2567,256 +2567,257 @@ namespace boost
       }
     } // void draw_plot_point
 
-          template <class Derived>
-          void axis_plot_frame<Derived>::draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, Meas uvalue)
-          { /*!
-          void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, unc<false> uvalue)
-             Write one data-point (X or Y) value as a string, for example "1.23e-2", near the data-point marker.
-             (See draw_plot_point_values below for plotting both X and Y information).
-             Unnecessary e, +, \& leading exponent zeros may optionally be stripped,
-             and the position and rotation controlled.
-             std_dev estimate, typically standard-deviation
-             (approximately half conventional 95% confidence "plus or minus")
-             may be optionally be appended.
-             Degrees of freedom estimate (number of replicates) may optionally be appended.
-             ID or name of point, order in sequence, and datetime may also be added.
-             For example: "3.45 +-0.1(10)"\n
-             The precision and format (scientific, fixed), and color and font type and size can be controlled too.
-             */
-            double value = uvalue.value(); // Most likely value or mean.
-            double sd = uvalue.std_dev(); // standard-deviation for value.
-            double df = uvalue.deg_free(); // Degrees of freedom estimate for value.
-            unsigned short int types = uvalue.types();  //  unctypes_
-            distribution_type distrib;
-            if (types & UNC_UNIFORM)
-            {
-              distrib = uniform;
-            }
-            else if (types & UNC_TRIANGULAR)
-            {
-              distrib = triangular;
-            }
-            else
-            { // Default.
-              distrib = gaussian;
-            }
+      template <class Derived>
+      void axis_plot_frame<Derived>::draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, Meas uvalue)
+      { /*!
+      void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, unc<false> uvalue)
+          Write one data-point (X or Y) value as a string, for example "1.23e-2", near the data-point marker.
+          (See draw_plot_point_values below for plotting both X and Y information).
+          Unnecessary e, +, \& leading exponent zeros may optionally be stripped,
+          and the position and rotation controlled.
+          std_dev estimate, typically standard-deviation
+          (approximately half conventional 95% confidence "plus or minus")
+          may be optionally be appended.
+          Degrees of freedom estimate (number of replicates) may optionally be appended.
+          ID or name of point, order in sequence, and datetime may also be added.
+          For example: "3.45 +-0.1(10)"\n
+          The precision (decimal digits) and format (scientific, fixed), and color and font type and size can be controlled too.
+          */
+        double value = uvalue.value(); // Most likely value or mean.
+        double sd = uvalue.std_dev(); // standard-deviation for value.
+        double df = uvalue.deg_free(); // Degrees of freedom estimate for value.
+        unsigned short int types = uvalue.types();  //  unctypes_
+        distribution_type distrib;
+        if (types & UNC_UNIFORM)
+        {
+          distrib = uniform;
+        }
+        else if (types & UNC_TRIANGULAR)
+        {
+          distrib = triangular;
+        }
+        else
+        { // Default.
+          distrib = gaussian;
+        }
 
-            // Extra info from Meas.
-            int order = uvalue.order_;
-            std::string label_id = uvalue.id_;
-            using boost::posix_time::ptime;
-            ptime dt = uvalue.time_;
+        // Extra info from Meas.
+        int order = uvalue.order_;
+        std::string label_id = uvalue.id_;
+        using boost::posix_time::ptime;
+        ptime dt = uvalue.time_;
 
-            std::stringstream label;
-            label.precision(val_style.value_precision_);
-            std::string stripped;
-            if (val_style.value_precision_ <= 0)
-            { // Use uncertainty to automatically control number of digits.
-              int m = round_m(derived().epsilon_, sd, derived().uncSigDigits_, distrib);
-              // Assume no need for stripping unecessary e, +, & leading exponent zeros.
-              stripped = round_ms(value, m);
-            }
-            else
-            { // Use user's chosen precision etc.
-              label.flags(val_style.value_ioflags_);
-              label << value; // "1.2" or "3.4e+001"...
-              stripped =  (derived().x_ticks_.strip_e0s_) ?
-                // Default is to strip unecessary e, +, & leading exponent zeros.
-                strip_e0s(label.str())  // "1.2" or "3.4e1"...
-                :
-              stripped = label.str();
-            }
-            if (val_style.prefix_ != "")
-            { // Want a prefix like "[" or "time = ".
-              stripped = val_style.prefix_ + stripped;
-            }
-            int marker_size = point_style.size_; // point marker size
-            int label_size = val_style.values_text_style_.font_size();
-            // Offset of value-label from point must be related mainly to
-            // size of the data marker, less the value-label font size.
-            // May need to combine these two?
+        std::stringstream label;
+        label.precision(val_style.value_precision_);
+        std::string stripped;
+        if (val_style.value_precision_ <= 0)
+        { // Use uncertainty to automatically control number of digits.
+          int m = round_m(derived().epsilon_, sd, derived().uncSigDigits_, distrib);
+          // Assume no need for stripping unecessary e, +, & leading exponent zeros.
+          stripped = round_ms(value, m);
+        }
+        else
+        { // Use user's chosen precision etc.
+          label.flags(val_style.value_ioflags_);
+          label << value; // "1.2" or "3.4e+001"...
+          stripped =  (derived().x_ticks_.strip_e0s_) ?
+            // Default is to strip unecessary e, +, & leading exponent zeros.
+            strip_e0s(label.str())  // "1.2" or "3.4e1"...
+            :
+          stripped = label.str();
+        }
+        if (val_style.prefix_ != "")
+        { // Want a prefix like "[" or "time = ".
+          stripped = val_style.prefix_ + stripped;
+        }
+        int marker_size = point_style.size_; // point marker size
+        int label_size = val_style.values_text_style_.font_size();
+        // Offset of value-label from point must be related mainly to
+        // size of the data marker, less the value-label font size.
+        // May need to combine these two?
 
-            int rot = val_style.value_label_rotation_;
-            // http://www.w3.org/TR/SVG/coords.html#RotationDefined
-            // Example: transform="rotate(-45)" == uphill
+        int rot = val_style.value_label_rotation_;
+        // http://www.w3.org/TR/SVG/coords.html#RotationDefined
+        // Example: transform="rotate(-45)" == uphill
 
-            align_style al; // = center_align;
-            switch (rot)
-            {
-            case horizontal: // OK
-              al = align_style::center_align;
-              y -= marker_size * 2;  // Up marker font size;
-              // center_align means no x correction.
-              break;
-            case leftward: // horizontal but to left of marker.
-              al = align_style::right_align;
-              x -= marker_size * 1.3;  // left
-              y += label_size * 0.3;  // down label font size;
-              rot = horizontal;
-              break;
-            case rightward: // horizontal but to right of marker.
-              al = align_style::left_align;
-              x += marker_size * 1.1;  // right
-              y += label_size * 0.3;  // down label font size;
-              rot = horizontal;
-              break;
-            case upsidedown: // OK but upsidedown so not very useful!
-              al = align_style::center_align;
-              y += marker_size;  // Down marker font size;
-             break;
-            case slopeup: // -30 - OK
-            case steepup: // -45 - OK
-            case uphill: // -60 - OK
-              al = align_style::left_align;
-              x += label_size /3;  // Right third label font size - centers on marker.
-              y -= marker_size * 0.6;  // UP marker font size;
-              break;
-            case upward: // -90 vertical writing up - OK.
-              al = align_style::left_align;
-              x += label_size /3;  // Right third label font size - centers on marker.
-              y -= marker_size * 0.9;  // Up marker font size;
-              break;
-            case backup: // OK
-              al = align_style::right_align;
-              x -= marker_size * 1.5;  // Left
-              y -= marker_size * 0.8;  // Up
-              rot = downhill;
-              break;
+        align_style al; // = center_align;
+        switch (rot)
+        {
+        case horizontal: // OK
+          al = align_style::center_align;
+          y -= marker_size * 2;  // Up marker font size;
+          // center_align means no x correction.
+          break;
+        case leftward: // horizontal but to left of marker.
+          al = align_style::right_align;
+          x -= marker_size * 1.3;  // left
+          y += label_size * 0.3;  // down label font size;
+          rot = horizontal;
+          break;
+        case rightward: // horizontal but to right of marker.
+          al = align_style::left_align;
+          x += marker_size * 1.1;  // right
+          y += label_size * 0.3;  // down label font size;
+          rot = horizontal;
+          break;
+        case upsidedown: // OK but upsidedown so not very useful!
+          al = align_style::center_align;
+          y += marker_size;  // Down marker font size;
+          break;
+        case slopeup: // -30 - OK
+        case steepup: // -45 - OK
+        case uphill: // -60 - OK
+          al = align_style::left_align;
+          x += label_size /3;  // Right third label font size - centers on marker.
+          y -= marker_size * 0.6;  // UP marker font size;
+          break;
+        case upward: // -90 vertical writing up - OK.
+          al = align_style::left_align;
+          x += label_size /3;  // Right third label font size - centers on marker.
+          y -= marker_size * 0.9;  // Up marker font size;
+          break;
+        case backup: // OK
+          al = align_style::right_align;
+          x -= marker_size * 1.5;  // Left
+          y -= marker_size * 0.8;  // Up
+          rot = downhill;
+          break;
 
-            case slopedownhill: // 30 gentle slope down.
-            case downhill: // 45 down.
-            case steepdown: //  60 steeply down.
-             al = align_style::left_align;
-              x += marker_size * 0.4;  // Right;
-              y += marker_size * 0.9;  // Down
-              break;
-            case downward: // OK
-              al = align_style::left_align;
-              x -= marker_size;  // Left
-              y += marker_size;  // Up
-             break;
-            case backdown: // OK
-              al = align_style::right_align;
-              x -= marker_size * 0.5;  // Left
-              y += marker_size * 1.5;  // down
-              rot = uphill;
-             break;
-            } // switch
-            text_element& t = g_ptr.text(x, y, stripped, val_style.values_text_style_, al, rot);  // X or Y value "1.23".
-            int udf_font = static_cast<int>(val_style.values_text_style_.font_size() * reducer);
-            // TODO what does this reducer do?
+        case slopedownhill: // 30 gentle slope down.
+        case downhill: // 45 down.
+        case steepdown: //  60 steeply down.
+          al = align_style::left_align;
+          x += marker_size * 0.4;  // Right;
+          y += marker_size * 0.9;  // Down
+          break;
+        case downward: // OK
+          al = align_style::left_align;
+          x -= marker_size;  // Left
+          y += marker_size;  // Up
+          break;
+        case backdown: // OK
+          al = align_style::right_align;
+          x -= marker_size * 0.5;  // Left
+          y += marker_size * 1.5;  // down
+          rot = uphill;
+          break;
+        } // switch
+        text_element& t = g_ptr.text(x, y, stripped, val_style.values_text_style_, al, rot);  // X or Y value "1.23".
+        int udf_font = static_cast<int>(val_style.values_text_style_.font_size() * reducer);
+        // TODO what does this reducer do?
 
-            std::string label_u; // std_dev or text_plusminus.
-            // std::string label_df; // Degrees of freedom estimate.
-            std::string pm_symbol = "&#x00A0;&#x00B1;"; //! Unicode space text_plusminus glyph.
-            // Might also use ANSI symbol for text_plusminus 0xF1 == '\361' or char(241)
-            // but seems to vary with different codepages:
-            // LOCALE_SYSTEM_DEFAULT LOCALE_IDEFAULTANSICODEPAGE == 1252
-            // LOCALE_SYSTEM_DEFAULT  LOCALE_IDEFAULTCODEPAGE ==  850 for country 44 (UK)
-            // And seems to vary from console to printable files.
-            // Spaces seem to get lost, so use 00A0 as an explicit space glyph.
-            // Layout seems to vary with font - Times New Roman leaves no space after.
-            //text_element& t = g_ptr.text(x, y, label_v, val_style.values_text_style_, al, rot);
-            // Optionally, show std_dev as 95% confidence plus minus:  2.1 +-0.012 (23)
+        std::string label_u; // std_dev or text_plusminus.
+        // std::string label_df; // Degrees of freedom estimate.
+        std::string pm_symbol = "&#x00A0;&#x00B1;"; //! Unicode space text_plusminus glyph.
+        // Might also use ANSI symbol for text_plusminus 0xF1 == '\361' or char(241)
+        // but seems to vary with different codepages:
+        // LOCALE_SYSTEM_DEFAULT LOCALE_IDEFAULTANSICODEPAGE == 1252
+        // LOCALE_SYSTEM_DEFAULT  LOCALE_IDEFAULTCODEPAGE ==  850 for country 44 (UK)
+        // And seems to vary from console to printable files.
+        // Spaces seem to get lost, so use 00A0 as an explicit space glyph.
+        // Layout seems to vary with font - Times New Roman leaves no space after.
+        //text_element& t = g_ptr.text(x, y, label_v, val_style.values_text_style_, al, rot);
+        // Optionally, show std_dev as 95% confidence plus minus:  2.1 +-0.012 (23)
 
-            // Extra info from Meas.
-            using boost::posix_time::ptime;
+        // Extra info from Meas.
+        using boost::posix_time::ptime;
 
-            if ((val_style.plusminus_on_ == true) // text_plusminus uncertainty is wanted,
-                && (sd > 0.) // and std_dev is a valid std_dev estimate.
-              )
-            {  // std_dev estimate usually expressed 67% confidence interval + or - standard-deviation.
-              sd *= derived().text_plusminus_; // typically + or - standard-deviation.
-              label_u = strip_if(sd, val_style, true); // stripped.
-              t.tspan(pm_symbol).fill_color(val_style.plusminus_color_);
-              t.tspan(label_u).fill_color(val_style.plusminus_color_).font_size(udf_font);
-            }
-            if (val_style.addlimits_on_ == true)
-            { // Want confidence interval appended, for example: <1.23, 1.45>
-              //alpha = 0.05; // oss.iword(confidenceIndex) / 1.e6; // Pick up alpha.
-              //double epsilon = 0.01; // = oss.iword(roundingLossIndex) / 1.e3; // Pick up rounding loss.
-              //int uncSigDigits = 2; // = oss.iword(setUncSigDigitsIndex);  // Pick up significant digits for uncertainty.
-              //bool isNoisyDigit = false; // Pick up?
-              if(derived().isNoisyDigit_)
-              {
-                derived().uncSigDigits_++;
-              }
-              std::pair<double, double> ci = conf_interval(value, sd, df, derived().alpha_, distrib);
-              int m = round_m(derived().epsilon_, sd, derived().uncSigDigits_, distrib);
-              using boost::lexical_cast;
-              std::stringstream label_ci;
-              label_ci << " &lt;" // '<' 003C is an XML predefined entity, so use name.
-                  << lexical_cast<double>(round_ms(ci.first, m)) << ", "
-                  << lexical_cast<double>(round_ms(ci.second, m))
-                  << "&gt;"; // '>' 003e is an XML predefined entity, so use name.
-              std::string label_limits = label_ci.str(); // For example: "<1.23, 1.45>"
-              t.tspan(label_limits).fill_color(val_style.addlimits_color_).font_size(udf_font);
-            }
-            if (val_style.df_on_ == true // degrees of freedom is wanted.
-                  && (df != (std::numeric_limits<unsigned short int>::max)()) // and deg_free is defined OK.
-                )
-            { // Degrees of freedom or number of values-1 used for this estimate of value.
-              std::stringstream label_df;
-              label_df.precision(4); // Might need 5 to show 65535?
-              //label.flags(sty.value_ioflags_); // Leave at default.
-              label_df << "&#x00A0;(" << df << ")"; // "123"
-              // Explicit space symbol "\&#x00A0;" seems necessary.
-              t.tspan(label_df.str()).fill_color(val_style.df_color_).font_size(udf_font);
-            }
-            if (val_style.id_on_) //
-            {  // Add ID or name string.
-              if (label_id.size() != 0)
-              {
-                label_id = " \"" + label_id + "\" ";
-                t.tspan(label_id).fill_color(val_style.id_color_).font_size(udf_font);
-              }
-            }
+        if ((val_style.plusminus_on_ == true) // text_plusminus uncertainty is wanted,
+            && (sd > 0.) // and std_dev is a valid std_dev estimate.
+          )
+        {  // std_dev estimate usually expressed 67% confidence interval + or - standard-deviation.
+          sd *= derived().text_plusminus_; // typically + or - standard-deviation.
+          label_u = strip_if(sd, val_style, true); // stripped.
+          t.tspan(pm_symbol).fill_color(val_style.plusminus_color_);
+          t.tspan(label_u).fill_color(val_style.plusminus_color_).font_size(udf_font);
+        }
+        if (val_style.addlimits_on_ == true)
+        { // Want confidence interval appended, for example: <1.23, 1.45>
+          //alpha = 0.05; // oss.iword(confidenceIndex) / 1.e6; // Pick up alpha.
+          //double epsilon = 0.01; // = oss.iword(roundingLossIndex) / 1.e3; // Pick up rounding loss.
+          //int uncSigDigits = 2; // = oss.iword(setUncSigDigitsIndex);  // Pick up significant digits for uncertainty.
+          //bool isNoisyDigit = false; // Pick up?
+          if(derived().isNoisyDigit_)
+          {
+            derived().uncSigDigits_++;
+          }
+          std::pair<double, double> ci = conf_interval(value, sd, df, derived().alpha_, distrib);
+          int m = round_m(derived().epsilon_, sd, derived().uncSigDigits_, distrib);
+          using boost::lexical_cast;
+          std::stringstream label_ci;
+          label_ci << " &lt;" // '<' 003C is an XML predefined entity, so use name.
+              << lexical_cast<double>(round_ms(ci.first, m)) << ", "
+              << lexical_cast<double>(round_ms(ci.second, m))
+              << "&gt;"; // '>' 003e is an XML predefined entity, so use name.
+          std::string label_limits = label_ci.str(); // For example: "<1.23, 1.45>"
+          t.tspan(label_limits).fill_color(val_style.addlimits_color_).font_size(udf_font);
+        }
+        if (val_style.df_on_ == true // degrees of freedom is wanted.
+              && (df != (std::numeric_limits<unsigned short int>::max)()) // and deg_free is defined OK.
+            )
+        { // Degrees of freedom or number of values-1 used for this estimate of value.
+          std::stringstream label_df;
+          label_df.precision(4); // Might need 5 to show 65535?
+          //label.flags(sty.value_ioflags_); // Leave at default.
+          label_df << "&#x00A0;(" << df << ")"; // "123"
+          // Explicit space symbol "\&#x00A0;" seems necessary.
+          t.tspan(label_df.str()).fill_color(val_style.df_color_).font_size(udf_font);
+        }
+        if (val_style.id_on_) //
+        {  // Add ID or name string.
+          if (label_id.size() != 0)
+          {
+            label_id = " \"" + label_id + "\" ";
+            t.tspan(label_id).fill_color(val_style.id_color_).font_size(udf_font);
+          }
+        }
 
-            if (val_style.datetime_on_  && (dt != boost::posix_time::not_a_date_time)) // from uvalue.time_;
-            {  // Add date and time stamp (if valid).
-              std::ostringstream label_dt;
-              label_dt << dt;
-              t.tspan(label_dt.str()).fill_color(val_style.datetime_color_).font_size(udf_font);
-            }
-            if (val_style.order_on_) //
-            {  // Add order in sequence number.
-              std::ostringstream label_order;
-              label_order << " #" << order;
-              t.tspan(label_order.str()).fill_color(val_style.order_color_).font_size(udf_font);
-            }
-            if (val_style.suffix_ != "")
-            { // Add a suffix like "]" or " sec]".
-              t.tspan(val_style.suffix_);
-            }
-          } // void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, Meas uvalue)
+        if (val_style.datetime_on_  && (dt != boost::posix_time::not_a_date_time)) // from uvalue.time_;
+        {  // Add date and time stamp (if valid).
+          std::ostringstream label_dt;
+          label_dt << dt;
+          t.tspan(label_dt.str()).fill_color(val_style.datetime_color_).font_size(udf_font);
+        }
+        if (val_style.order_on_) //
+        {  // Add order in sequence number.
+          std::ostringstream label_order;
+          label_order << " #" << order;
+          t.tspan(label_order.str()).fill_color(val_style.order_color_).font_size(udf_font);
+        }
+        if (val_style.suffix_ != "")
+        { // Add a suffix like "]" or " sec]".
+          t.tspan(val_style.suffix_);
+        }
+      } // void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, Meas uvalue)
 
-          //! Strip from double value if requested by style,
-          //! removing any unnecessary e, +, & leading exponent zeros, reducing "1.200000" to "1.2" or "3.4e1"...
-          //! using strip_e0s_ 
-          std::string strip_if(double v, const value_style& sty, bool precise = false)
-          { 
-            std::stringstream label;
-            // Precision of std_dev is usually less than precision of value,
-            // label.precision((unc) ? ((sty.value_precision_ > 3) ?  sty.value_precision_-2 : 1) : sty.value_precision_);
-            // Possible but simpler to fix at precision=2
-            //label.precision((precise) ? 2 : sty.value_precision_);
-            //label.flags(sty.value_ioflags_);
-            label.precision(2);
-            label << v; // "1.2" or "3.4e+001"...
-            //return  (sty.strip_e0s_) ?
-            //  // Default is to strip unnecessary e, +, & leading exponent zeros.
-            //  strip_e0s(label.str())  // reduce to "1.2" or "3.4e1"...
-            //  :
-            //  label.str();  // Leave unstripped.
-            return label.str();
-          } // std::string strip_if(double v, const value_style& sty)
+      //! Strip from double value if requested by style,
+      //! removing any unnecessary e, +, & leading exponent zeros, reducing "1.200000" to "1.2" or "3.4e1"...
+      //! using strip_e0s_ 
+      std::string strip_if(double v, const value_style& sty, bool precise = false)
+      { 
+        std::stringstream label;
+        // Precision of std_dev is usually less than precision of value,
+        // label.precision((unc) ? ((sty.value_precision_ > 3) ?  sty.value_precision_-2 : 1) : sty.value_precision_);
+        // Possible but simpler to fix at precision=2
+        //label.precision((precise) ? 2 : sty.value_precision_);
+        //label.flags(sty.value_ioflags_);
+        label.precision(2);
+        label << v; // "1.2" or "3.4e+001"...
+        //return  (sty.strip_e0s_) ?
+        //  // Default is to strip unnecessary e, +, & leading exponent zeros.
+        //  strip_e0s(label.str())  // reduce to "1.2" or "3.4e1"...
+        //  :
+        //  label.str();  // Leave unstripped.
+        return label.str();
+      } // std::string strip_if(double v, const value_style& sty)
 
          template <class Derived>
          void axis_plot_frame<Derived>::draw_plot_point_values(double x, double y, g_element& x_g_ptr, g_element& y_g_ptr, const value_style& x_sty, const value_style& y_sty, Meas uncx, unc<false> uncy)
           { /*! \brief Write the \b pair of data-points @b both X @b and Y values as a string.
                \details
-               The x parameter also carries the measurement information for the pair,
-               and so is a @c Meas, not just an @c unc<false> as is the Y parameter.
+               The X parameter also carries the measurement information for the pair,
+               and so X is a @c Meas, not just an @c unc<false> or @c uncun as is the Y parameter.
+
                If a separator starting with newline,
                then show both on the same line, for example "1.23, 3.45", or "[5.6, 7.8]
                X value_style is used to provide the prefix and separator, and Y value_style to provide the suffix.
@@ -2865,10 +2866,10 @@ namespace boost
               label_xv = x_sty.prefix_ + label_xv;
             }
 
-            int marker_size = derived().serieses_[0].point_style_.size_;
+            int marker_size = derived().serieses_[0].point_style_.size_; 
             int label_size = x_sty.values_text_style_.font_size();
             // Offset of value-labels from point must be related mainly to
-            // size of the data marker, less the value-label font size.
+            // size of the data marker, less from the value-label font size.
 
             int rot = x_sty.value_label_rotation_;
             align_style al; // = center_align;
@@ -2933,6 +2934,8 @@ namespace boost
              break;
             } // switch
 
+            text_element& t = x_g_ptr.text(x, y, label_xv, x_sty.values_text_style_, al, rot); // X value label.
+
             // If would be simpler to prepare a single string like "1.23 +- -0.3, 3.45 +- -0.1(10)"
             // but this would not allow change of font size, type and color
             // something that proves to be very effective at visually separating
@@ -2942,12 +2945,10 @@ namespace boost
             // (even if it may not always work right yet ;-)
             // Tasteless colors and font changes are purely proof of concept!
 
-            int fx = static_cast<int>(x_sty.values_text_style_.font_size() * reducer);  // Make font about a tenth smaller.
+            const int fx = static_cast<int>(x_sty.values_text_style_.font_size() * reducer);  // Make font about a tenth smaller.
             // Make std_dev and df a bit smaller to distinguish from value by default (but make configurable).
             // Write X value-label (and optional std_dev and df).
             std::string label_xdf; // X degrees of freedom as string, for example "(42)".
-
-            text_element& t = x_g_ptr.text(x, y, label_xv, x_sty.values_text_style_, al, rot); 
             // Optionally, show std_dev as 95% confidence plus minus:  2.1 +-0.012
             // and also optionally show degrees of freedom (23).
             string pm_symbol = "&#x00A0;&#x00B1;"; //! Unicode space text_plusminus glyph.
@@ -2959,10 +2960,8 @@ namespace boost
               std::string label_xu; // X plusminus (std_dev) as string.
               label_xu = strip_if(ux, x_sty, true);
               //t.tspan(pm_symbol).fill_color(darkcyan);
-              // Should this be stroke_color?
-             // want x_sty.plusminus_color_.is_blank_= false;  but is true!!!
-            // want  x_sty.plusminus_color_.is_blank(false); 
-                std::cout << x_sty.plusminus_color_.is_blank() << std::endl;
+              // Should this be stroke_color? No it makes the font go fuzzy!
+              std::cout << x_sty.plusminus_color_.is_blank() << std::endl;
               t.tspan(pm_symbol).fill_color(x_sty.plusminus_color_).font_size(fx);
                 // NOT .stroke_color(x_sty.plusminus_color_);  - makes it go fuzzy.
               t.tspan(label_xu).fill_color(x_sty.plusminus_color_).font_size(fx);
@@ -3010,19 +3009,22 @@ namespace boost
               t.tspan(x_sty.suffix_).fill_color(y_sty.fill_color_).font_size(x_sty.values_text_style_.font_size());
             }
 
-            int fy = static_cast<int>(y_sty.values_text_style_.font_size() * reducer);  // Make font about a tenth smaller?
+            // Y-value labelling.
+            int fy = static_cast<int>(y_sty.values_text_style_.font_size() * reducer);  // Make font about a tenth smaller to de-emphasize some items.
            // If a newline is 1st char in separator, put Y value-labels on the next line below the marker,
             // else all on one line.
             bool sameline = (x_sty.separator_[0] != '\n');
             if (sameline)
-            { // On same line so use X style for separator, but Y style for any text.
+            { // On same line so use X-style for separator, but Y-style for any text.
               t.tspan(x_sty.separator_).fill_color(x_sty.fill_color_).font_size(x_sty.values_text_style_.font_size());  // X
               t.tspan(y_sty.separator_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size());  // Y
               if (y_sty.prefix_ != "")
               { // Want a prefix, for example: "length ="
                 t.tspan(y_sty.prefix_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size());
               }
-              t.tspan(label_yv, y_sty.values_text_style_); // Color.
+             svg_color ycol = derived().image_.gs(detail::PLOT_Y_POINT_VALUES).style().fill_color();  // Y label color.
+             // Must be a better way to get this Y value-label color?
+             t.tspan(label_yv, y_sty.values_text_style_).fill_color(ycol).font_size(y_sty.values_text_style_.font_size()); // Color.
               if (
                    (y_sty.plusminus_on_) // +/- is wanted.
                    && (uy > 0.) // Is valid std_dev estimate.

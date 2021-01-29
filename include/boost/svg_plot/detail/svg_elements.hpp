@@ -892,7 +892,8 @@ public:
   
   void write(std::ostream& os)
   { //! Output SVG XML for a tspan_element.
-    os << "\t" "<tspan";
+    //os << "\t" "<tspan";
+    os << "\n\t\t" "<tspan"; 
     write_attributes(os); // id & clip_path
     svg_style_.write(os); // fill, stroke, width...
 
@@ -957,7 +958,9 @@ public:
         os << " textLength=\"" << text_length_ << "\"";
       }
     }
-    os << ">" << text_ << "</tspan>" "\n";  // The actual text string.
+   // os << ">" << text_ << "</tspan>" "\n";  // The actual text string.
+    os << ">" << text_ << "</tspan>";  // The actual text string.
+
   } //   void write(std::ostream& os)
 
   }; // class tspan_element
@@ -1277,8 +1280,11 @@ public:
     }
     os << ">" ;
     generate_text(os); 
-    os << " </text>" "\n";  // Was leading space (after the actual text_string).
-    // Example: <text x="67.5" y="462" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">my_text!</text>
+    // Was os << " </text>" "\n"; 
+    os << "\n\t</text>" "\n";  // Add newline tab to line up better under <text ...  but makes layout longer.
+    // Example: <text x="67.5" y="462" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">my_text!
+    //          </text>
+    // But still doesn't newline before any tspan.
   } // void write(std::ostream& os)
 }; // class text_element_
 
