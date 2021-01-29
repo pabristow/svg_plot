@@ -25,7 +25,7 @@
 #include <boost/svg_plot/svg_2d_plot.hpp>
 // using namespace boost::svg;
 
-#include <boost/svg_plot/show_2d_settings.hpp> // Only needed for showing which settings in use.
+#include <boost/svg_plot/show_2d_settings.hpp> // Only needed for showing ALL the many settings used.
 //using boost::svg::show_2d_plot_settings;
 //void boost::svg::show_2d_plot_settings(svg_2d_plot&);
 
@@ -98,7 +98,6 @@ int main()
   using namespace boost::svg;
   using boost::svg::detail::operator<<;
 
-  setUncDefaults(std::cout);
 
   try
   {
@@ -115,6 +114,8 @@ the order of data values is important.
   using boost::svg::detail::operator<<;
   using std::ostream_iterator;
 
+  setUncDefaults(std::cout);  // Initialize for uncertain types.
+
   // Create pair for fundamental type double that is implicitly exact with no uncertainty information.
   pair<double, double> double_pair; // double X and Y pair.
   double_pair = make_pair(double(-2.234), double(-8.76)); // Construct and then echo the data values thus:
@@ -126,22 +127,23 @@ the order of data values is important.
   // Or, more informatively, use an uncertain type `uncun` that holds explicit uncertainty information 
   // (standard-deviation, degrees of freedom and so can compute confidence internals).
 
-  uncun ux(1.23, 0.56F, 7); // For an X-value. 
-  // Using the  `operator<<` provided we can output all the details of the uncertain value.
+  uncun ux(1.03, 0.56F, 7); // For an X-value. 
+  // Using the  `uncun operator<<` provided we can output all the details of the uncertain value.
   std::cout << scientific << plusminus << addlimits << adddegfree << std::setw(20)  << std::left
-    << "ux = " << ux << std::endl; // 1.2 +/-0.56 <0.8200, 1.6400> (7) 
+    << "ux = " << ux << std::endl; // 1.2 +/-0.56 <0.82, 1.64> (7) 
 
   uncun uy(3.45, 0.67F, 9); // For a Y-value.
-  std::cout << "uy = " << uy << std::endl; // 1.2 +/-0.56 <0.8200, 1.6400> (7), 3.5 +/-0.67 <3.0100, 3.8900> (9)
+  std::cout << "uy = " << uy << std::endl; // 3.5 +/-0.67 <3.01, 3.89> (9)
 
-  pair<uncun, uncun > mp1 = make_pair(ux, uy); // X & Y pair of uncertain values.
+  // Now we make a pair of X and Y uncertain values:
+  pair<uncun, uncun > mp1 = make_pair(ux, uy); // X & Y pair of two uncertain values.
   // Echo both X and Y-values and add all the uncertainty information, standard deviation and degrees of freedom :
-  std::cout << mp1 << std::endl; // 1.23+-0.056 (7), 2.345+-0.067 (9)
+  std::cout << "mp1 = "<< mp1 << std::endl; // 1.2 +/-0.56 <0.82, 1.64> (7), 3.5 +/-0.67 <3.01, 3.89> (9)
 
-  std::map<uncun, uncun > data1; // Container for X & Y pair of data-point values.
-  data1.insert(mp1); // ux, uy = 1.23+-0.056 (7), 2.345+-0.067 (9)
-  data1.insert(make_pair(uncun(4.1, 0.4F, 8), uncun(3.1, 0.3F, 18))); //
-  data1.insert(make_pair(uncun(-2.234, 0.03F, 7), uncun(-8.76, 0.9F, 9)));
+  std::map<uncun, uncun > data1; // Container for X & Y pairs of data-point values.
+  data1.insert(mp1); // Insert 1st pair of X & Y.
+  data1.insert(make_pair(uncun(3.9, 0.01F, 8), uncun(1.1, 0.1F, 18))); // and add another X&Y-pair
+  data1.insert(make_pair(uncun(-2.234, 0.3F, 7), uncun(-8.76, 0.9F, 9))); // and a third pair.
 
  /*
 `Make very sure you don't forget either uncun(...) like this
@@ -156,7 +158,13 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
   std::copy(data1.begin(), data1.end(), ostream_iterator<pair<uncun, uncun> >(std::cout, "\n"));
   std::cout << std::endl;
 
-  return 0;
+  /*
+  3 XY data pairs:
+   -2.23 +/-0.030 <-2.26, -2.21> (7), -8.8 +/-0.90 <-9.35, -8.17> (9)
+   1.2 +/-0.56 <0.82, 1.64> (7), 3.5 +/-0.67 <3.01, 3.89> (9)
+   4.1 +/-0.40 <3.82, 4.38> (8), 3.1 +/-0.30 <2.96, 3.24> (18)
+  */
+
   svg_2d_plot my_plot;  // Construct an empty plot.
 
   /*`If you can be confident that the data set(s) only contains normal, valid data,
@@ -187,26 +195,28 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     .x_values_on(true) // Show X-values next to each point.
 
      //! \note Essential use of Unicode space &#x00A0; in all strings - ANSI space has no effect!
-  //  .x_decor("d ", ", ", "km") // Keep all on one line using a separator NOT starting with a newline.
-       .x_decor("d ", "\n_", "km") // Split X and Y onto two lines because X separator *does* start with newline.
+  //  .x_decor("t ", ", ", "sec") // Keep all on one line using a separator NOT starting with a newline.
+    .x_decor("t ", "\n_", "sec") // Split X and Y onto two lines because X separator *does* start with newline.
     .x_values_rotation(uphill)
     .x_values_font_size(10) // Bigger than default.
     .x_values_font_family("Times New Roman") // Serif font to show difference from sans serif ued for Y value-labels.
+    .x_major_grid_on(true)
+    .y_major_grid_on(true)
 
     // Y values settings:
     .y_label("distance (km)")
-    .y_range(-10., +10.)
+    .y_range(-10., +10.) // But may be over-written by x and or  y-autoscale below.
     .y_values_on(true) // Show Y values next to each point.
     .y_values_rotation(uphill)
     .y_values_font_family("Arial") // Sans serif different from X-values font just to show effect.
     .y_values_font_size(8) // Smaller than default.
-    .y_decor("&#x00A0;&#x00A0;&#x00A0;", "&#x00A0;time =", "&#x00A0;sec")
+    .y_decor("&#x00A0;&#x00A0;&#x00A0; d &#x00A0;", "&#x00A0;", "&#x00A0;km")
 //    .y_decor("&#x00A0;&#x00A0; time = ", "&#x00A0;", "&#x00A0;sec")
      // Note: a few padding spaces are used to get Y-value labels to lie more nearly under X-value labels.
      // This is only necessary when value-labels are not horizontal.
-    // y_prefix "&#x00A0;&#x00A0;&#x00A0;"   3 spaces.
-    // y_separator "&#x00A0;time ="  space before word time.
-    // y_suffix "&#x00A0;sec" space before word sec.
+     // y_prefix "&#x00A0;&#x00A0;&#x00A0;"   3 spaces.
+     // y_separator "&#x00A0;time ="  space before word time.
+     // y_suffix "&#x00A0;sec" space before word sec.
 
     .y_plusminus_on(true) // Show plus/minus +/- uncertainty with data-point value-labels, for example "2.1 +/- 0.001"
     .y_plusminus_color(red) // Show plus/minus +/- uncertainty in red.
@@ -218,8 +228,7 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     .y_df_color(green) // Show degrees of freedom in green, for examples: "11").
 
      .xy_values_on(true) // Show both X-values and Y-values next to each point.
-
-     .xy_autoscale(data1)
+     // .xy_autoscale(data1) // may result in value-labels running off the plot and image.
 
   /*`The default uncertainty ellipse colors (that apply to both X and Y axes)
   can be changed thus:

@@ -2250,7 +2250,7 @@ my_plot.background_color(ghostwhite) // Whole image.
                 draw_plot_point_value(x, y, g_ptr_vy, y_values_style_,serieses_[i].point_style_, uy);
               }
               if (xy_values_on_)
-              { // Show the two values of the X & Y data-point values as a pair on the same line.
+              { // Show both the two values of the X & Y data-point values as a pair on the same line.
                 draw_plot_point_values(x, y, g_ptr_vx, g_ptr_vy, x_values_style_, y_values_style_, ux, uy);
               }
             } // if inside plot window
