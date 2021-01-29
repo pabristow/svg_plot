@@ -2209,12 +2209,11 @@ my_plot.background_color(ghostwhite) // Whole image.
 
       void draw_plot_points()
       { //! Draw normal 'good' non-limit points, and then any 'at limits' points.
-        double x(0.); // SVG coordinates.
+        double x(0.); // For conversion to SVG coordinates.
         double y(0.);
         for(unsigned int i = 0; i < serieses_.size(); ++i)
         {
           g_element& g_ptr = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
-
           g_ptr.style()
             .fill_color(serieses_[i].point_style_.fill_color_)
             .stroke_color(serieses_[i].point_style_.stroke_color_);
@@ -2223,23 +2222,22 @@ my_plot.background_color(ghostwhite) // Whole image.
           size_t plotted = 0;
 
           for(std::multimap<Meas, unc<false> >::const_iterator j = serieses_[i].series_.begin();
-        //  for(std::multimap<unc<false>, unc<false> >::const_iterator j = serieses_[i].series_.begin();
+        //  for(std::multimap<unc<false>, unc<false> >::const_iterator j = serieses_[i].series_.begin(); // unc, unc version.
             j != serieses_[i].series_.end(); ++j)
           {
             Meas ux = j->first;
             //unc<false> ux = j->first;
-            x = ux.value(); // Just the X value.
+            x = ux.value(); // To compute SVG coordinate from just the X value.
             //double vx = x; // Note the true X value.
             unc<false> uy = j->first;
             uy = j->second;
-            y = uy.value(); // Just the Y value.
+            y = uy.value(); // To compute SVG coordinate from just the Y value.
             //double vy = y; // Note the true Y value.
             transform_point(x, y); // Note x and y are now SVG coordinates.
             if((x > plot_left_) && (x < plot_right_) && (y > plot_top_) && (y < plot_bottom_))
-            { // data-point is inside plot window, so draw a point.
+            { // data-point is inside plot-window, so draw a point marker.
               plotted++;
               draw_plot_point(x, y, g_ptr, serieses_[i].point_style_, ux, uy); // Add the unc ux and uy to allow access to uncertainty.
-              // TODO might refactor so that only pass ux, and uy.
               g_element& g_ptr_vx = image_.gs(detail::PLOT_X_POINT_VALUES).add_g_element();
               if (x_values_on_)
               { // Label with the value of the X-data-point too.
