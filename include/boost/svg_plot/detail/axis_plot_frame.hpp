@@ -563,6 +563,9 @@ namespace boost
           bool x_datetime_on(); //!<\return true if to append an date time to data-point X values near data-points markers.
           Derived& x_datetime_color(const svg_color& col); //!<Set the color of X  date time , for example, the color of text in "".
           svg_color x_datetime_color(); //!<\return the color of X date time, for example, the color of text in "".
+          Derived& x_datetime_format(const std::string&); //!< Set the format of X date time, for example, the color of text in "2021Feb08_14:19".
+          const std::string& x_datetime_format(); //!<\return the format of X date time, for example, the color of text in "2021Feb08_14:19".
+
           Derived& x_order_on(bool b); //!<Set true if to append append an order # to data-point X values near data-points markers.
           bool x_order_on(); //!<\return true if to append an order # to data-point X values near data-points markers.
           Derived& x_order_color(const svg_color& col); //!<Set the color of X order #, for example, the color of #42.
@@ -574,7 +577,7 @@ namespace boost
             If 1st char in separator == \n, then Y values and info will be on a newline below.
           */
           const std::string x_suffix(); //!<\return the suffix (only used if separator != "")
-          const std::string x_separator(); //!<\return the separator, perhaps including Unicode.
+          const std::string x_separator(); //!<\return the separator(s), perhaps including Unicode.
           const std::string x_prefix(); //!<\return the prefix.
 
           Derived& x_major_tick_length(double length); //!<Set length of X major ticks (SVG units, default pixels).
@@ -3157,7 +3160,8 @@ namespace boost
               using boost::posix_time::time_facet;
               std::ostringstream label_dt;
               time_facet* f = new time_facet();
-              f->format("%Y%b%d_%H:%M");  // Format compact for hours and mins time & compact date, for example: 2012Mar13_01:02
+           //   f->format("%Y%b%d_%H:%M");  // Format compact for hours and mins time & compact date, for example: 2012Mar13_01:02
+              f->format(x_sty.datetime_format_.c_str() );  // Format compact for hours and mins time & compact date, for example: 2012Mar13_01:02
               label_dt.imbue(std::locale(label_dt.getloc(), f)); // locale from users locale.
               label_dt << " " << dt;
               t.tspan(label_dt.str()).fill_color(x_sty.datetime_color_).font_size(udf_font);
@@ -5084,8 +5088,6 @@ namespace boost
             return derived().x_values_style_.datetime_on_;
           }
 
-
-
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_datetime_color(const svg_color& col)
           { //! Set the color of X point datetime, for example, the color of text in "2004-Jan-1 05:21:33.20".
@@ -5098,6 +5100,20 @@ namespace boost
           { //! Get the color of X point date time, for example, the color of text in "2004-Jan-1 05:21:33.20".
             return derived().x_values_style_.datetime_color_;
           }
+
+          template <class Derived>
+          const std::string& axis_plot_frame<Derived>::x_datetime_format()
+          { //! Get the format to show date time, for example,   "2004-Jan-1 05:21:33.20".
+            return derived().x_values_style_.datetime_format_;
+          }
+
+          template <class Derived>
+          Derived& axis_plot_frame<Derived>::x_datetime_format(const std::string& fmt)
+          { //! Set the format of Y data-point datetime, for example, the format of text in "2004-Jan-1 05:21:33.20".
+            derived().x_values_style_.datetime_format_ = fmt;
+            return derived();
+          }
+
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_order_on(bool b)

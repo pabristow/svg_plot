@@ -2672,6 +2672,8 @@ my_plot.background_color(ghostwhite) // Whole image.
       svg_2d_plot& y_datetime_on(bool b);
       svg_2d_plot& y_datetime_color(const svg_color& col);
       const svg_color y_datetime_color();
+      svg_2d_plot& y_datetime_format(const std::string&);
+      const std::string& y_datetime_format();
       bool y_order_on();
       svg_2d_plot& y_order_on(bool b);
       svg_2d_plot& y_order_color(const svg_color& col);
@@ -3265,11 +3267,21 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
         return *this;
       }
       
+      const std::string& svg_2d_plot::y_datetime_format()
+      { //! Get the format to show date time, for example,   "2004-Jan-1 05:21:33.20".
+        return y_values_style_.datetime_format_;
+      }
+
+      svg_2d_plot& svg_2d_plot::y_datetime_format(const std::string& fmt)
+      { //! Set the format of Y data-point datetime, for example, the format of text in "2004-Jan-1 05:21:33.20".
+        y_values_style_.datetime_format_ = fmt;
+        return *this;
+      }
+
       const svg_color svg_2d_plot::y_datetime_color()
       { //! Get the color of X point date time, for example, the color of text in "2004-Jan-1 05:21:33.20".
         return y_values_style_.datetime_color_;
       }
-
 
       
       svg_2d_plot& svg_2d_plot::y_order_on(bool b)
