@@ -106,6 +106,13 @@ the order of data values is not important.
 
   Meas m1 (uncun(3.3, 0.1F, 5, 0U), "first", time1, 1);
   Meas m2 (uncun(4.5, 0.2F, 3, DEG_FREE_KNOWN), "2nd", time2, 2);
+  Meas m3(uncun(3.3, 0.1F, 5, 0U));
+  ptime local_now = boost::posix_time::time_from_string("2012-Feb-21 12:59:56");
+  m3.time( local_now);
+  std::string m3_id = "Third measurement";
+  m3.id(m3_id);
+  m3.order(3);
+
 
   std::cout << m1 << std::endl;
   std::cout << m2 << std::endl;
