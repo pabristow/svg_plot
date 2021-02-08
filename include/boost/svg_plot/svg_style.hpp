@@ -885,6 +885,7 @@ public:
   std::string prefix_; //!< Prefix to data-point value, default none, but typically "[".
   std::string separator_; //!< Separator between x and y values, if both on same line (none if only X or only Y, or Y below X).
   std::string suffix_; //!< Suffix to data-point value, default none, but typically "]".
+  std::string datetime_format_; //!< Boost.Date-time format for output of timestamp value-label (usually a compact format. default "%Y%b%d_%H:%M") .
 
   // Constructors declarations.
   value_style(); //!< Default style for a data-point value-label.
@@ -908,12 +909,14 @@ public:
     const svg_color& id_color,  //!< Default color for id or name of value.
     bool dt,  //!< If an time and/or date string to be appended. default == false,
     const svg_color& dt_color,  //!< Default color for date and time.
+
     bool ordno,  //!< If an order in sequence number # to be appended. default == false,
     const svg_color& ordno_color,  //!< Default color for degrees of freedom.
     std::string pre, //!< Prefix, for example: "[",
     std::string sep, //!< separator, for example: ",&#x00A0;",
     //!< (If just put ", " the trailing space seems to be ignored, so add Unicode explicit space).
-    std::string suf //!< suffix, for example: "]"
+    std::string suf, //!< suffix, for example: "]"
+    std::string datetime_format
   );
 
 }; // class value_style
@@ -941,11 +944,13 @@ public:
     id_color_(black), //!< Default color for an id or name string is black.
     datetime_on_(false), //!< If a date and time to be appended.
     datetime_color_(black), //!< Default color for date and time is black.
+
     order_on_(false), //!< If a order number #  to be appended.
     order_color_(black), //!< Default color for order # is black.
     prefix_(""),
     separator_(","),
-    suffix_("")
+    suffix_(""),
+    datetime_format_("%Y%b%d_%H:%M")
     { //! Default constructor initialises all data.
     }
 
@@ -974,7 +979,8 @@ public:
       // Separators [,] provide, for example: [1.23+-0.01 (3), 4.56 +-0.2 (10)]
       std::string pre = "", //!< Prefix, for example: "[",
       std::string sep  = "", //!< separator, for example: ,\&\#x00A0;", // If put ", " the trailing space seems to be ignored, so add Unicode explicit space.
-      std::string suf  = "") //!< suffix, for example: "]")
+      std::string suf  = "", //!< suffix, for example: "]")
+      std::string format = "%Y%b%d_%H:%M")
     :
     value_label_rotation_(r),
     value_label_alignment_(a),
@@ -986,7 +992,8 @@ public:
     id_on_(id), id_color_(id_color),
     datetime_on_(dt), datetime_color_(dt_color),
     order_on_(ordno), order_color_(order_color),
-    prefix_(pre), separator_(sep), suffix_(suf)
+    prefix_(pre), separator_(sep), suffix_(suf),
+    datetime_format_(format)
     { //! Constructor setting parameters with some defaults.
     }
 

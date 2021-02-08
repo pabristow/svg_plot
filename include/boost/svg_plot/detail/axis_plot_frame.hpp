@@ -3123,7 +3123,7 @@ namespace boost
                 ty.tspan(label_limits).fill_color(y_sty.addlimits_color_).font_size(fy);
               }
 
-              if ((y_sty.df_on_ == true)  // degrees of freedome is wanted.
+              if ((y_sty.df_on_ == true)  // degrees of freedom is wanted.
                     && (dfy != (std::numeric_limits<unsigned short int>::max)()) // and deg_free is defined OK.
                     )
               { // degrees of freedom or number of values -1 used for this estimate.
@@ -3153,8 +3153,12 @@ namespace boost
             using boost::posix_time::ptime;
             ptime dt = uncx.time_;
             if (x_sty.datetime_on_ && (dt != boost::posix_time::not_a_date_time))
-            {  // Add date and time stamp (if date_time valid).
+            {  // Add date and time stamp (if date_time os valid).
+              using boost::posix_time::time_facet;
               std::ostringstream label_dt;
+              time_facet* f = new time_facet();
+              f->format("%Y%b%d_%H:%M");  // Format compact for hours and mins time & compact date, for example: 2012Mar13_01:02
+              label_dt.imbue(std::locale(label_dt.getloc(), f)); // locale from users locale.
               label_dt << " " << dt;
               t.tspan(label_dt.str()).fill_color(x_sty.datetime_color_).font_size(udf_font);
             }
@@ -5079,6 +5083,8 @@ namespace boost
             //! (May not be implemented yet).
             return derived().x_values_style_.datetime_on_;
           }
+
+
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_datetime_color(const svg_color& col)

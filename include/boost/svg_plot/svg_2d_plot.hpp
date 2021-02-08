@@ -3269,6 +3269,8 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       { //! Get the color of X point date time, for example, the color of text in "2004-Jan-1 05:21:33.20".
         return y_values_style_.datetime_color_;
       }
+
+
       
       svg_2d_plot& svg_2d_plot::y_order_on(bool b)
       { //! Set true if to append an order # to data-point X values near data-points markers.
