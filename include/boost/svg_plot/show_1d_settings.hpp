@@ -22,6 +22,7 @@
 //  using boost::svg::detail::operator<<;
 
 #include <iostream>
+#include <locale>
 
 namespace boost
 {
@@ -174,7 +175,6 @@ void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
   // Save std::cout state in case use the default.
   std::ios_base::fmtflags flags = std::cout.flags(); // Save format flags to restore on exit.
   std::streamsize prec = std::cout.precision(); // Save precision to restore on exit.
-
   os << std::boolalpha << std::endl;
   os << "\nShow 1d_plot_settings:" << std::endl;
   os << "axes_on " << plot.axes_on() << std::endl;
@@ -183,6 +183,19 @@ void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
   os << "background_color " << plot.background_color() << std::endl;
   os << "image_border_margin() " << plot.image_border_margin() << std::endl;
   os << "image_border_width() " << plot.image_border_width() << std::endl;
+
+  using boost::posix_time::ptime;
+  using boost::posix_time::second_clock;
+  using boost::posix_time::time_facet;
+  boost::posix_time::ptime time_local = second_clock::local_time();
+
+  time_facet* f = new time_facet();
+  std::cout.imbue(std::locale(os.getloc(), f));
+  f->format(plot.x_datetime_format().c_str());  // Format for compact date and hours and mins time 2012Mar13_01:02
+
+  os << "datetime_format \"" << plot.x_datetime_format() << "\" " << time_local << std::endl; // datetime_format "%Y%b%d_%H:%M"
+  os << "datetime_color " << plot.x_datetime_color() << std::endl;
+  os << "datetime_on " << plot.x_datetime_on() << std::endl;
   os << "coord_precision " << plot.coord_precision() << std::endl;
   os << "copyright_date  " << plot.copyright_date() << std::endl;
   os << "copyright_holder " << plot.copyright_holder() << std::endl;

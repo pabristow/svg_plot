@@ -33,7 +33,7 @@
 #include <boost/svg_plot/svg_1d_plot.hpp>
 //  using namespace boost::svg;
 
-//#include <boost/svg_plot/show_1d_settings.hpp> // If diagnostic display of ALL setttings wanted.
+#include <boost/svg_plot/show_1d_settings.hpp> // If diagnostic display of ALL setttings wanted.
 //using boost::svg::show_1d_plot_settings;
 
 #include <iostream>
@@ -134,7 +134,7 @@ the order of data values is not important.
     .x_size(600)
     .y_size(400)
     .plot_window_on(true)
-    .background_border_color(blue)
+    .background_border_color(red)
     .plot_border_color(yellow)
     .plot_border_width(1)
     .x_axis_vertical(0.75)
@@ -154,6 +154,7 @@ the order of data values is not important.
     .x_id_color(red)
     .x_datetime_on(true)
     .x_datetime_color(magenta)
+    .x_datetime_format("%H:%M:%S") // Just show time.
     .x_order_on(true)
     .x_order_color(brown)
     .x_autoscale(B_times) // Note that this might not be right scaling for A_times and/or C_times.
@@ -187,9 +188,9 @@ Finally, we can write the SVG to a file of our choice.
     "./demo_1d_meas_legend.svg" : "./demo_1d_meas.svg";
 
   my_plot.write(svg_file);
+  show_1d_plot_settings(my_plot);
 
   std::cout <<"Plot written to file " << svg_file << std::endl;
- // show_1d_plot_settings(my_plot);
 
 //] [/demo_1d_meas_2]
 

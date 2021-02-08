@@ -2778,6 +2778,10 @@ namespace boost
         if (val_style.datetime_on_  && (dt != boost::posix_time::not_a_date_time)) // from uvalue.time_;
         {  // Add date and time stamp (if valid).
           std::ostringstream label_dt;
+          using boost::posix_time::time_facet;
+          time_facet* f = new time_facet();
+          label_dt.imbue(std::locale(label_dt.getloc(), f)); // locale from users locale
+          f->format(val_style.datetime_format_.c_str());  // Format (usually compact) for hours and mins time & date
           label_dt << dt;
           t.tspan(label_dt.str()).fill_color(val_style.datetime_color_).font_size(udf_font);
         }
