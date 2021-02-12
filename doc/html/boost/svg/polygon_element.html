@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
-<link rel="up" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">
+<link rel="up" href="../../header/boost/svg_plot/detail/svg_elements_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_elements.hpp&gt;">
 <link rel="prev" href="poly_path_point.html" title="Struct poly_path_point">
 <link rel="next" href="polyline_element.html" title="Class polyline_element">
 </head>
@@ -20,7 +20,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="poly_path_point.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="polyline_element.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="poly_path_point.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_elements_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="polyline_element.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
 </div>
 <div class="refentry">
 <a name="boost.svg.polygon_element"></a><div class="titlepage"></div>
@@ -29,108 +29,104 @@
 <p>boost::svg::polygon_element — The 'polygon' element defines a closed shape consisting of a set of connected straight line segments. </p>
 </div>
 <h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
-<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">boost/svg_plot/detail/svg_tag.hpp</a>&gt;
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/detail/svg_elements_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_elements.hpp&gt;">boost/svg_plot/detail/svg_elements.hpp</a>&gt;
 
 </span>
 <span class="keyword">struct</span> <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">:</span> <span class="keyword">public</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_element</span> <span class="special">{</span>
   <span class="comment">// <a class="link" href="polygon_element.html#boost.svg.polygon_elementconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="polygon_element.html#id574002-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polygon_element.html#id574012-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polygon_element.html#id574044-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polygon_element.html#id574049-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polygon_element.html#id574087-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> 
+  <a class="link" href="polygon_element.html#id561512-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polygon_element.html#id561514-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polygon_element.html#id561578-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polygon_element.html#id561564-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polygon_element.html#id561625-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> 
                   <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polygon_element.html#id574149-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> 
+  <a class="link" href="polygon_element.html#id561679-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> 
                   <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polygon_element.html#id574197-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> 
+  <a class="link" href="polygon_element.html#id561708-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> 
                   <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polygon_element.html#id574283-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polygon_element.html#id561799-bb"><span class="identifier">polygon_element</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="polygon_element.html#id573676-bb">public member functions</a></span>
-  <span class="keyword">void</span> <a class="link" href="polygon_element.html#id573688-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="polygon_element.html#id573750-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="polygon_element.html#id573749-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="polygon_element.html#id573787-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="polygon_element.html#id573763-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="polygon_element.html#id573803-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="polygon_element.html#id573791-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="polygon_element.html#id573835-bb"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="polygon_element.html#id573862-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a class="link" href="polygon_element.html#id573894-bb"><span class="identifier">P</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="polygon_element.html#id573916-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="polygon_element.html#id573913-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="polygon_element.html#id573946-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="polygon_element.html#id573951-bb"><span class="identifier">write_attributes</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="polygon_element.html#id561244-bb">public member functions</a></span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="polygon_element.html#id561248-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="polygon_element.html#id561246-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="polygon_element.html#id561290-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="polygon_element.html#id561288-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="polygon_element.html#id561339-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="polygon_element.html#id561346-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="polygon_element.html#id561388-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="polygon_element.html#id561369-bb"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="polygon_element.html#id561428-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a class="link" href="polygon_element.html#id561414-bb"><span class="identifier">P</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="polygon_element.html#id561457-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="polygon_element.html#id561450-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="polygon_element.html#id561472-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="polygon_element.html#id561518-bb"><span class="identifier">write_attributes</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
+  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="identifier">a_svg_style</span><span class="special">;</span>  <span class="comment">// svg style that uses black and stroke and fill off. </span>
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">class_name_</span><span class="special">;</span>  <span class="comment">// SVG class name, set &amp; get by function class id. </span>
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">clip_name_</span><span class="special">;</span>  <span class="comment">// SVG clip path name, set &amp; get by function clip_id. </span>
   <span class="keyword">bool</span> <span class="identifier">fill</span><span class="special">;</span>  <span class="comment">// polygon to have fill color. </span>
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">id_name_</span><span class="special">;</span>  <span class="comment">// SVG id name, set &amp; get by function id. </span>
   <span class="identifier">ptr_vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="identifier">poly_points</span><span class="special">;</span>  <span class="comment">// All the x, y coordinate pairs, push_backed by calls of p_path(x, y). </span>
   <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="identifier">svg_style_</span><span class="special">;</span>  <span class="comment">// Colors fill, stroke, width; set and get by function <code class="computeroutput">style()</code>. </span>
-  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="identifier">text_style_</span><span class="special">;</span>  <span class="comment">// font, font-size and font features bold. underline... </span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="identifier">text_style_</span><span class="special">;</span>  <span class="comment">// font family, font-size and font features bold, underline... </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1212288"></a><h2>Description</h2>
+<a name="id1193344"></a><h2>Description</h2>
 <p><a href="http://www.w3.org/TR/SVG/shapes.html#PolygonElement" target="_top">http://www.w3.org/TR/SVG/shapes.html#PolygonElement</a> The 'polygon' element 9.9.7. A polygon is defined by including a 'path' element which contains a points="(path data)" attribute, where the d attribute contains the x, y coordinate pairs. </p>
 <div class="refsect2">
-<a name="id1212327"></a><h3>
+<a name="id1193393"></a><h3>
 <a name="boost.svg.polygon_elementconstruct-copy-destruct"></a><code class="computeroutput">polygon_element</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a name="id574002-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
-<p>Copy constructor. </p>
+<pre class="literallayout"><a name="id561512-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Default constructor empty polygon (with fill on).</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id574012-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Default constructor empty polygon (with fill on). </p>
+<pre class="literallayout"><a name="id561514-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<p>Copy constructor.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id574044-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Constructor - One absolute (x, y) point only. Can add more path points using member function P. </p>
+<pre class="literallayout"><a name="id561578-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Constructor - One absolute (x, y) point only. Can add more path points using member function P.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id574049-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> 
+<pre class="literallayout"><a name="id561564-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> 
                 <span class="keyword">double</span> y3<span class="special">,</span> <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Constructor - Absolute (x, y) only. Used by triangle. </p>
+<p>Constructor - Absolute (x, y) only. Used by triangle.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id574087-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> 
+<pre class="literallayout"><a name="id561625-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> 
                 <span class="keyword">double</span> y3<span class="special">,</span> <span class="keyword">double</span> x4<span class="special">,</span> <span class="keyword">double</span> y4<span class="special">,</span> <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Constructor - Absolute (x, y) only. Used by rhombus. </p>
+<p>Constructor - Absolute (x, y) only. Used by rhombus.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id574149-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> 
+<pre class="literallayout"><a name="id561679-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> 
                 <span class="keyword">double</span> y3<span class="special">,</span> <span class="keyword">double</span> x4<span class="special">,</span> <span class="keyword">double</span> y4<span class="special">,</span> <span class="keyword">double</span> x5<span class="special">,</span> <span class="keyword">double</span> y5<span class="special">,</span> 
                 <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Constructor - Absolute (x, y) only. Used by pentagon. </p>
+<p>Constructor - Absolute (x, y) only. Used by pentagon.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id574197-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> 
+<pre class="literallayout"><a name="id561708-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> 
                 <span class="keyword">double</span> y3<span class="special">,</span> <span class="keyword">double</span> x4<span class="special">,</span> <span class="keyword">double</span> y4<span class="special">,</span> <span class="keyword">double</span> x5<span class="special">,</span> <span class="keyword">double</span> y5<span class="special">,</span> 
                 <span class="keyword">double</span> x6<span class="special">,</span> <span class="keyword">double</span> y6<span class="special">,</span> <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Constructor - Six absolute (x, y) only. Used by hexagon. </p>
+<p>Constructor - Six absolute (x, y) only. Used by hexagon.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id574283-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span> points<span class="special">,</span> <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Constructor from vector of path points. </p>
+<pre class="literallayout"><a name="id561799-bb"></a><span class="identifier">polygon_element</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span> points<span class="special">,</span> <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Constructor from vector of path points.</p>
 </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1213404"></a><h3>
-<a name="id573676-bb"></a><code class="computeroutput">polygon_element</code> public member functions</h3>
+<a name="id1194098"></a><h3>
+<a name="id561244-bb"></a><code class="computeroutput">polygon_element</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id573688-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> class_id<span class="special">)</span><span class="special">;</span></pre>
-<p>Set <code class="computeroutput">class_id</code>, non-unique string identifier for a Class Attribute.</p>
-<p><a href="http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute" target="_top">http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute</a> 6.12 Attributes common to all elements: id and xml:base Example: class_id == "info"</p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id573750-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id561248-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -140,16 +136,17 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>Class id, non-unique string identifier for an element. </p></td>
+<td><p>Class id, non-unique string identifier for an element.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id573749-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
-<p>Set name of a clip path, for example: g_ptr.clip_id(plot_window_clip_); </p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id561246-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> class_id<span class="special">)</span><span class="special">;</span></pre>
+<p>Set <code class="computeroutput">class_id</code>, non-unique string identifier for a Class Attribute.</p>
+<p><a href="http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute" target="_top">http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute</a> 6.12 Attributes common to all elements: id and xml:base Example: class_id == "info"</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id573787-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id561290-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -163,18 +160,16 @@
 <p>Name of a clip path, for example:</p>
 <pre class="programlisting"><span class="identifier">g_ptr</span><span class="special">.</span><span class="identifier">clip_id</span><span class="special">(</span><span class="identifier">plot_window_clip_</span><span class="special">)</span><span class="special">;</span> 
 </pre>
-<p> </p>
 </td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id573763-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
-<p>Provide a unique name for an element. Example: &lt;g id="plotBackground"</p>
-<p>See <a href="http://www.w3.org/TR/SVG/struct.html#IDAttribute" target="_top">http://www.w3.org/TR/SVG/struct.html#IDAttribute</a> 5.10.1 Attributes common to all elements: id and xml:base The id and xml:base attributes are available on all SVG elements: Attribute definitions: id = "name" Standard XML attribute for assigning a unique name to an element. Refer to the "Extensible Markup Language (XML) 1.0" Recommendation [XML10]. xml:base = "&lt;uri&gt;" Specifies a base URI other than the base URI of the document or external entity. Refer to the "XML Base" specification [XML-BASE]. A group of elements, as well as individual objects can be given a name using the id attribute. Named groups are needed for several purposes such as animation and re-usable objects.</p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id561288-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
+<p>Set name of a clip path, for example: g_ptr.clip_id(plot_window_clip_);</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id573803-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id561339-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -184,24 +179,29 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>The unique name for an element, for example:id() ="plotBackground"  </p></td>
+<td><p>The unique name for an element, for example:id() ="plotBackground" </p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id573791-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
-<p>Compare svg_elements for inequality, useful for Boost.Test. </p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id561346-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
+<p>Provide a unique name for an element. Example: &lt;g id="plotBackground"</p>
+<p>See <a href="http://www.w3.org/TR/SVG/struct.html#IDAttribute" target="_top">http://www.w3.org/TR/SVG/struct.html#IDAttribute</a> 5.10.1 Attributes common to all elements: id and xml:base The id and xml:base attributes are available on all SVG elements: Attribute definitions: id = "name" Standard XML attribute for assigning a unique name to an element. Refer to the "Extensible Markup Language (XML) 1.0" Recommendation [XML10]. xml:base = "&lt;uri&gt;" Specifies a base URI other than the base URI of the document or external entity. Refer to the "XML Base" specification [XML-BASE]. A group of elements, as well as individual objects can be given a name using the id attribute. Named groups are needed for several purposes such as animation and re-usable objects.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a name="id573835-bb"></a><span class="keyword">operator</span><span class="special">&lt;&lt;</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id561388-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
+<p>Compare svg_elements for inequality, useful for Boost.Test.</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a name="id561369-bb"></a><span class="keyword">operator</span><span class="special">&lt;&lt;</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>
 <p>Output polygon info. (May be useful for diagnosis and Boost.Test). using os &lt;&lt; "(" &lt;&lt; p.x &lt;&lt; ", " &lt;&lt; p.y &lt;&lt; ")" ; Usage: <code class="computeroutput"><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a></code> p(1, 2, 3, 4, 5, 6); my_polygon.operator &lt;&lt; (cout); (But NOT cout &lt;&lt; my_polygon &lt;&lt; endl;) Outputs: (1, 2)(3, 4)(5, 6)</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id573862-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
-<p>Compare svg_elements, useful for Boost.Test. </p>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id561428-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
+<p>Compare svg_elements, useful for Boost.Test.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a name="id573894-bb"></a><span class="identifier">P</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a name="id561414-bb"></a><span class="identifier">P</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Add another point (x, y) - absolute only.</p>
 <p>
 </p>
@@ -212,12 +212,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a>&amp; to make chainable. </p></td>
+<td><p><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a>&amp; to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id573916-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id561457-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -227,12 +227,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>Reference to <code class="computeroutput"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a></code> to provide indirect access to colors &amp; width via style().stroke_color(), fill_color(), width() etc. </p></td>
+<td><p>Reference to <code class="computeroutput"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a></code> to provide indirect access to colors &amp; width via style().stroke_color(), fill_color(), width() etc.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id573913-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id561450-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -242,18 +242,18 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>Reference to <code class="computeroutput">const</code> <code class="computeroutput"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a></code> to provide indirect access to colors &amp; width via style().stroke_color(), fill_color(), width() (const version). </p></td>
+<td><p>Reference to <code class="computeroutput">const</code> <code class="computeroutput"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a></code> to provide indirect access to colors &amp; width via style().stroke_color(), fill_color(), width() (const version).</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id573946-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>Write function outputs appropriate SVG commands for a leaf or child element. <p>SVG XML:
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id561472-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>Write function outputs appropriate SVG commands for a leaf or child element. <p>SVG XML:
    Example: &lt;polygon fill="lime" stroke="blue" stroke-width="10"
    points="850,75  958,137.5 958,262.5 850,325 742,262.6 742,137.5" /&gt;
 </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id573951-bb"></a><span class="identifier">write_attributes</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id561518-bb"></a><span class="identifier">write_attributes</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>
 <p>Output group_element id and clip-path. Example: &lt;clipPath id="plot_window"&gt;&lt;rect x="53.6" y="40.5" width="339" height="328"&gt;&lt;/clipPath&gt;</p>
 <p>Classes inherited from <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code> add other references, see section 5.3.1, like color, fill, stroke, gradients...</p>
 </li>
@@ -271,7 +271,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="poly_path_point.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="polyline_element.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="poly_path_point.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_elements_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="polyline_element.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

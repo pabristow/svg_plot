@@ -122,7 +122,7 @@
 <span class="comment">//  or </span>
 
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">transform</span><span class="special">(</span><span class="identifier">my_data_2</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">my_data_2</span><span class="special">.</span><span class="identifier">end</span><span class="special">(),</span> <span class="identifier">my_data_2</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">m1</span><span class="special">);</span>
-<span class="comment">//cout &lt;&lt; endl &lt;&lt; my_data.size() &lt;&lt; " values in my_data_2. " &lt;&lt; endl;</span>
+<span class="comment">//cout &lt;&lt; std::endl &lt;&lt; my_data.size() &lt;&lt; " values in my_data_2. " &lt;&lt; std::endl;</span>
 </pre>
 <p>
         Next we need a new STL container, vector say, to hold our multiple containers
@@ -134,7 +134,7 @@
 
 <span class="identifier">my_containers</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">my_data_1</span><span class="special">);</span> <span class="comment">// Add 1st data series.</span>
 <span class="identifier">my_containers</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">my_data_2</span><span class="special">);</span> <span class="comment">// Add another data series.</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_containers</span><span class="special">.</span><span class="identifier">size</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="string">" containers."</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_containers</span><span class="special">.</span><span class="identifier">size</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="string">" containers."</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
 <span class="identifier">show_all</span><span class="special">(</span><span class="identifier">my_containers</span><span class="special">);</span>
 </pre>
 <p>
@@ -142,7 +142,7 @@
         maximum of maximums ready to feed into the plot autoscale function.
       </p>
 <pre class="programlisting"><span class="identifier">pair</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">mm</span> <span class="special">=</span> <span class="identifier">range_all</span><span class="special">(</span><span class="identifier">my_containers</span><span class="special">);</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Data range: "</span>  <span class="special">&lt;&lt;</span> <span class="identifier">mm</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span> <span class="comment">// min &amp; max of all data.</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Data range: "</span>  <span class="special">&lt;&lt;</span> <span class="identifier">mm</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// min &amp; max of all data.</span>
 <span class="identifier">svg_1d_plot</span> <span class="identifier">my_1d_plot</span><span class="special">;</span> <span class="comment">// Construct a plot with all the default constructor values.</span>
 </pre>
 <p>
@@ -169,7 +169,7 @@
         If we want, we can check the autoscale range used.
       </p>
 <pre class="programlisting"><span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">detail</span><span class="special">::</span><span class="keyword">operator</span><span class="special">&lt;&lt;;</span> <span class="comment">// To avoid ambiguity.</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"x_range() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_range</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span> <span class="comment">// x_range() 0, 15</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"x_range() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_range</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// x_range() 0, 15</span>
 </pre>
 <p>
         And even all the (hundreds of) plot settings (useful for diagnosis why your

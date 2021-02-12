@@ -1,6 +1,6 @@
 # jamfile.v2 for SVG_plot Quickbook Documentation and index using Doxygen
 
-# Copyright Paul A. Bristow 2013, 2014
+# Copyright Paul A. Bristow 2013, 2014, 2021
 
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE_1_0.txt
@@ -28,9 +28,10 @@ path-constant parent : .. ;  # Beman Dawes - so that inspect.exe will start in b
 echo "nav_images" $(nav_images) ;
 echo "images_location" $(images_location) ;
 
+# Remove option for index generation so always generates an index.
 #if --enable-index in  [ modules.peek : ARGV ]
 #{
-   ECHO "Building the SVG_Plot docs with automatic index generation enabled." ;
+   ECHO "Building the SVG_Plot docs (with automatic index generation enabled)." ;
    using auto-index ;
    project : requirements
         <auto-index>on # Turns on index (or off).
@@ -73,7 +74,7 @@ xml svg_plot
 ;
 
 doxygen autodoc
-  :
+  : # Inputs
     [ glob ../../../boost/svg_plot/*.*pp ]
     [ glob ../../../boost/quan/*.hpp ]
     [ glob ../../../boost/svg_plot/detail/*.hpp ]
@@ -124,7 +125,7 @@ doxygen autodoc
     # contain include files that are not input files but should be processed by the preprocessor.
     <doxygen:param>WARNINGS=YES # If WARN_IF_UNDOCUMENTED is set to YES, then doxygen will generate warnings for undocumented members.
     # If EXTRACT_ALL is set to YES then this flag will automatically be disabled.
-    <doxygen:param>WARN_IF_UNDOCUMENTED=YES # If WARN_IF_UNDOCUMENTED is set to YES,
+    <doxygen:param>WARN_IF_UNDOCUMENTED=NO # If WARN_IF_UNDOCUMENTED is set to YES,
     # then doxygen will generate warnings for undocumented members.
     <doxygen:param>WARN_IF_DOC_ERROR=YES # If WARN_IF_DOC_ERROR is set to YES, Doxygen will generate warnings for
     # potential errors in the documentation.

@@ -762,7 +762,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         xy_values_on_(false), // If X & Y values of data are shown as a pair.
         x_values_style_(horizontal, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black),
         //  false, blue, false, yellow, false, green, false, cyan, false, magenta, false, red, used for testing.
-        //  "?", "!", "£"), // Separators, prefix, separator, and suffix.
+        //  "?", "!", "|"), // Separators, prefix, separator, and suffix.
         y_values_style_(downward, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black),
 
         nan_point_style_(green, white, 20, cone_point_down, ""), // Colors and size for NaN markers.
