@@ -8,6 +8,7 @@ doc/doxywarnings.log
 doc/autodoc.xml
 doc/html/
 doc/*.lnk
+doc/doxygen/html/
 
 
 
