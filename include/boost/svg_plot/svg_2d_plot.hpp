@@ -33,8 +33,9 @@
 #include <boost/iterator/transform_iterator.hpp>
 //  using boost::make_transform_iterator;
 
-#include <boost/quan/unc.hpp> // Values with uncertainty.
-#include <boost/quan/meas.hpp> // Values with timestamp and uncertainty.
+#include <boost/quan/unc.hpp> // Values with uncertainty, class unc and uncun.
+// using template<is_correlated> class unc;
+#include <boost/quan/meas.hpp> // Values with timestamp and uncertainty, class Meas.
 
 #include <boost/svg_plot/svg.hpp>
 #include <boost/svg_plot/svg_style.hpp> // Font and other styles.
@@ -89,9 +90,14 @@ namespace boost
         are unaffected by the order in which data is presented.
        (For 1-D a vector of doubles can be used).
    */
+    using boost::quan::Meas;
+    using boost::quan::unc;
+    using boost::quan::uncun;
 
   class svg_2d_plot_series
   {
+
+
     void draw_straight_lines(const svg_2d_plot_series& series);
     friend void draw_straight_lines(const svg_2d_plot_series&);
     public:

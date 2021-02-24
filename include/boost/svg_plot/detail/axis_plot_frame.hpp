@@ -24,19 +24,17 @@
 #ifndef BOOST_SVG_AXIS_PLOT_FRAME_HPP
 #define BOOST_SVG_AXIS_PLOT_FRAME_HPP
 
+#include <boost/quan/unc.hpp>
+// using boost::svg::unc;
+#include <boost/quan/meas.hpp>
+//using boost::quan::Meas
+#include <boost/quan/rounding.hpp>
+
 #include <boost/svg_plot/svg.hpp>
 #include <boost/svg_plot/svg_style.hpp>
 #include <boost/svg_plot/detail/svg_elements.hpp>
 #include <boost/svg_plot/detail/numeric_limits_handling.hpp>
-// using boost::math::fpclassify for
-// boost::math::
-// template <class T>bool isfinite (T);
-// template <class T>bool isinf (T);
-// template <class T> bool isnan (T);
 #include <boost/svg_plot/detail/auto_axes.hpp>  // Automatic selection of axes ranges.
-#include <boost/quan/unc.hpp>
-// using boost::svg::unc;
-#include <boost/quan/meas.hpp>
 
 #include <limits>
 #include <string>
@@ -54,7 +52,7 @@ namespace boost
 {
   namespace svg
   {
-
+    using namespace boost::quan;
     /*! Number of standard-deviations used for text_plusminus text display.\n
       Nominal factor of 2 (strictly 1.96) corresponds to 95% confidence limit.
     */
@@ -2590,6 +2588,7 @@ namespace boost
         double sd = uvalue.std_dev(); // standard-deviation for value.
         double df = uvalue.deg_free(); // Degrees of freedom estimate for value.
         unsigned short int types = uvalue.types();  //  unctypes_
+        using boost::quan::distribution_type;
         distribution_type distrib;
         if (types & UNC_UNIFORM)
         {
@@ -2853,6 +2852,7 @@ namespace boost
             double dfx = uncx.deg_free();
             double dfy = uncy.deg_free();
             unsigned short int types = uncx.types();  //  unctypes_
+            using boost::quan::distribution_type;
             distribution_type distrib;
             if (types & UNC_UNIFORM)
             {

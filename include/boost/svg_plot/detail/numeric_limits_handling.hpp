@@ -24,11 +24,9 @@
 #include <boost/math/special_functions/fpclassify.hpp>
 
 #include <boost/quan/unc.hpp>
+// using boost::quan::uncun ...
 #include <boost/quan/meas.hpp>
-
-// using boost::svg::unc;
-
-// TODO use the boost version instead to be more portable?
+// using boost::quan Meas;
 
 #include <limits>
   // using std::numeric_limits;
@@ -45,12 +43,16 @@ namespace detail
 
 // std::numeric_limits<double>::min() or denorm min() are just ignored as almost zero (which is an OK value).
 
-const double margin = 4.;  //!< Consider values close to std::numeric_limits<double>::max() as maximum to try to take account of computation errors.
+constexpr double margin = 4.;  //!< Consider values close to std::numeric_limits<double>::max() as maximum to try to take account of computation errors.
+
+using boost::quan::unc;
+using boost::quan::Meas;
 
 inline bool limit_max(double a)
 { //! At (or near) max value or +infinity, most positive values.
     return ((a > (std::numeric_limits<double>::max)() / margin) // Avoid macro max trap!
-         || (a == std::numeric_limits<double>::infinity()));
+         || (std::isinf(a)));
+        // || (a == std::numeric_limits<double>::infinity()));
 }
 
 inline bool limit_min(double a)
@@ -62,10 +64,9 @@ inline bool limit_min(double a)
 }
 
 // Allow NaNs to be displayed differently from just too big or too small values.
-
 inline bool limit_NaN(double a)
 { //! Separate test for NaNs.
-  using boost::math::isnan;
+  using std::isnan;
   return isnan(a) ? true : false;
   // Ternary operator used to remove warning about casting int to bool.
 }
