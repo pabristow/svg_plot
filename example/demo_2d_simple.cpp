@@ -1,4 +1,4 @@
-/*! \file demo_2d_simple.cpp
+/*! \file
     \brief Demonstration of some simple 2D plot features.
     \details Uses some simple math functions to generate curves.
     This demonstrates plotting some simple math functions with most of the 2-D defaults,
@@ -6,14 +6,12 @@
     The detailed output shows the plot settings for each plot.
     See default_2d_plot.cpp for using \b all defaults.
     See also demo_2d_plot.cpp for use of some of the very many options.
-    \date Feb 2009
-    \author Jacob Voytko and Paul A. Bristow 
 */
 
 // demo_2d_simple.cpp
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2007, 2008, 2012, 2018
+// Copyright Paul A. Bristow 2007, 2008, 2012, 2018, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -72,6 +70,7 @@ double h(double x)
 int main()
 {
   std::cout << "Demonstration of a simple 2D plot showing data points with markers and with lines joining points." << std::endl;
+  using boost::quan::setUncDefaults;
   try
   {
     // Some containers for (sorted) sample data.

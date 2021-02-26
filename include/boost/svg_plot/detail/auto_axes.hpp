@@ -25,7 +25,7 @@
 #include <boost/svg_plot/detail/fp_compare.hpp> // is_small & is_close
 #include <boost/quan/meas.hpp> // for boost::quan::value_of.
 
-#include <boost/math/special_functions/fpclassify.hpp>
+//#include <boost/math/special_functions/fpclassify.hpp>
 // for template <class FPT> bool boost::math::isfinite(FPT t);
 #include <boost/algorithm/minmax_element.hpp>
  using boost::minmax_element;
@@ -801,7 +801,7 @@ void scale_axis_impl(
     throw std::domain_error("tight not in range 0 to 1 !");
   }
 
-  using boost::math::isfinite;
+  using std::isfinite;
   if(!(isfinite)(min_value))
   {
     throw std::domain_error("min_value not finite!");
@@ -859,7 +859,7 @@ void scale_axis_impl(
   else
   { // Range is reasonably large, so
     // compute candidate for increment - must be smaller than range, so divide by 10.
-    test_increment = std::pow(10., ceil(log10(std::abs<double>(range)/10.)));
+    test_increment = std::pow(10., std::ceil(std::log10(std::abs<double>(range)/10.)));
     // Must be a decimal multiple or decimal fraction,
     // but is not necessarily exactly representable in floating-point format.
     // Establish maximum axis scale value, using this increment.
