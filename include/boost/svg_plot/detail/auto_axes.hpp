@@ -11,7 +11,7 @@
   \author
 */
 
-// Copyright Paul A. Bristow 2006 - 2013.
+// Copyright Paul A. Bristow 2006 - 2013, 2021.
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -21,14 +21,9 @@
 #ifndef BOOST_SVG_AUTO_AXES_HPP
 #define BOOST_SVG_AUTO_AXES_HPP
 
-#if defined (_MSC_VER)
-#  pragma warning (push)
-#  pragma warning (disable: 4100) // check_limits and autoscale_plusminus: unreferenced formal parameters.
-#endif
-
 #include <boost/svg_plot/detail/numeric_limits_handling.hpp>
 #include <boost/svg_plot/detail/fp_compare.hpp> // is_small & is_close
-#include <boost/quan/meas.hpp> // for value_of.
+#include <boost/quan/meas.hpp> // for boost::quan::value_of.
 
 #include <boost/math/special_functions/fpclassify.hpp>
 // for template <class FPT> bool boost::math::isfinite(FPT t);
@@ -48,24 +43,24 @@
 // J. A. Nelder and W. Douglas Stirling, FORTRAN program SCALE.
 // Daniel Herring
 
-namespace boost
-{
-  namespace math
-  {
-  // This is only needed to avoid a warning from Doxygen
-  // which can't find the function if declared as
-  // template <class FPT> bool boost::math::isfinite(FPT t);
-  // because of the leading boost::math::
-  /*!
-    \brief If a floating-point value is finite, return true.
-    \tparam FPT floating-point type (float, double, long double, or user-defined).
-    \param[in] t floating-point value to test if finite.
-    \return @c true if is finite, false if + or - infinite, or any NaN.
-  */
-  template <class FPT> bool isfinite(FPT t);
-  } // namespace math
-} //  namespace boost
-
+//namespace boost
+//{
+//  namespace math
+//  {
+//  // This is only needed to avoid a warning from Doxygen
+//  // which can't find the function if declared as
+//  // template <class FPT> bool boost::math::isfinite(FPT t);
+//  // because of the leading boost::math::
+//  /*!
+//    \brief If a floating-point value is finite, return true.
+//    \tparam FPT floating-point type (float, double, long double, or user-defined).
+//    \param[in] t floating-point value to test if finite.
+//    \return @c true if is finite, false if + or - infinite, or any NaN.
+//  */
+//  template <class FPT> bool isfinite(FPT t);
+//  } // namespace math
+//} //  namespace boost
+//
 namespace boost
 {
 namespace svg
@@ -307,6 +302,7 @@ int mnmx(
   int goods = 0; // Count of values within limits.
   int limits = 0;
   Iter pos = begin;
+  using boost::quan::value_of;
   while(pos != end && is_limit(value_of(*pos)))
   { // Count any limits before the first 'good' (FP normal) value.
     limits++;
@@ -320,6 +316,7 @@ int mnmx(
   }
   else
   {
+    using boost::quan::value_of;
     double x = value_of(*pos);
     *max = x;
     *min = x;
@@ -536,7 +533,7 @@ void scale_axis(
     // minmax_element is efficient because can use knowledge of being sorted,
     // BUT only if it can be assumed that no values are 'at limits',
     // infinity, NaN, max_value, min_value, denorm_min.
-
+    using boost::quan::value_of;
     x_min = value_of(*(result.first));
     x_max = value_of(*(result.second));
   }
@@ -624,6 +621,7 @@ void scale_axis(
 
     std::pair<typename C::const_iterator, typename C::const_iterator> result
       = boost::minmax_element(container.begin(), container.end());
+    using boost::quan::values_of;
     std::pair<double, double> px = values_of(*result.first); // X min & X max.
     std::pair<double, double> py = values_of(*result.second); // Y min & Y max.
     x_min = px.first;
@@ -637,7 +635,9 @@ void scale_axis(
     {
       throw std::runtime_error("SVG_plot Autoscale could not find any values to scale axes!");
     }
+    using boost::quan::value_of;
     double y = value_of(pos->second);
+    using boost::quan::unc_of;
     double yu = unc_of(pos->second) * autoscale_plusminus;
     y_max = y + yu;
     y_min = y - yu;
@@ -685,7 +685,9 @@ void scale_axis(
     }
     else
     {
+      using boost::quan::value_of;
       double x = value_of(pos->first);
+      using boost::quan::unc_of;
       double xu = unc_of(pos->first) * autoscale_plusminus;
       x_max = x + xu;
       x_min = x - xu;
@@ -1243,9 +1245,5 @@ double rounddown2(double value)
 
 } // namespace svg
 } // namespace boost
-
-#if defined (BOOST_MSVC)
-#  pragma warning(pop)
-#endif
 
 #endif // BOOST_SVG_AUTO_AXES_HPP

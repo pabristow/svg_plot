@@ -1,10 +1,9 @@
 /*! \file auto_2d_plot.cpp
   \brief An example to demonstrate autoscaling with *multiple* STL containers.
   \details See also demo_2d_autoscaling.cpp, auto_1d_plot.cpp and auto_1d_container.cpp.
-  \author Paul A Bristow
 */
 
-// Copyright Paul A Bristow 2008, 2020
+// Copyright Paul A Bristow 2008, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -16,7 +15,7 @@
 
 //[auto_2d_plot_1
 
-/*`First we need a few includes to use Boost.Plot
+/*`First we need a few includes to use Boost.Plot:
 */
 
 #include <boost/svg_plot/svg_2d_plot.hpp>
@@ -38,9 +37,9 @@
 #include <boost/math/special_functions.hpp>
   //using boost::math::isfinite;
 
-  // Getting the max and min of x and y data points.
+  // Getting the max and min of X and Y data-points.
 template <typename T> // T an STL container: array, vector ...
-void s(T& container, // Container Data series to plot - entire container.
+void s(T& container, // Container Data-series to plot - entire container.
                // (not necessarily ordered, so will find min and max).
                double* x_min,  double* x_max,
                double* y_min,  double* y_max
@@ -68,12 +67,12 @@ int main()
 {
 //[auto_2d_plot_2
   /*`This example uses a single map to demonstrate autoscaling.
-  We create a map to hold our data series.
+  We create a map to hold our data-series.
   */
   std::map<const double, double> my_map;
   /*`
   Inserting some fictional values also sorts the data.
-  The index value in [] is the x value.
+  The index value in [] is the X value.
   */
   my_map[1.1] = 3.2;
   my_map[7.3] = 9.1;

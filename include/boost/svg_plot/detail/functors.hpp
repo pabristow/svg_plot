@@ -20,7 +20,7 @@
 */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2009, 2012, 2013, 2018
+// Copyright Paul A. Bristow 2009, 2012, 2013, 2018, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -30,11 +30,6 @@
 #ifndef BOOST_SVG_DETAIL_FUNCTORS_HPP
 #define BOOST_SVG_DETAIL_FUNCTORS_HPP
 
-#if defined (_MSC_VER)
-#  pragma warning (push)
-#  pragma warning (disable : 4244)
-#endif
-
 //#include <boost/svg_plot/uncertain.hpp>
 #include <boost/quan/unc.hpp>
 #include <boost/quan/meas.hpp>
@@ -43,6 +38,7 @@ namespace boost {
 namespace svg {
 namespace detail
 {
+  using namespace boost::quan;
 
 class double_1d_convert
 { /*! \class boost::svg::detail::double_1d_convert
@@ -65,14 +61,14 @@ public:
 template <bool correlated>
 class unc_1d_convert
 { /*! \class boost::svg::detail::unc_1d_convert
-      \brief This functor allows any 1D data that can be converted to unc (uncertain doubles) to be plotted.
-      \details Defaults provided by the unc class constructor ensure that
+      \brief This functor allows any 1D data that can be converted to @c boost::quan::unc (uncertain double) to be plotted.
+      \details Defaults provided by the @c unc class constructor ensure that
         uncertainty, degrees of freedom information, and type are suitably set too.
 */
 public:
-    typedef unc<correlated> result_type; //!< result type is an uncertain floating-point type.
+    typedef unc<correlated> result_type; //!< @c result_type is an uncertain floating-point type.
 
-    //! \tparam T Any data type with a value that can be converted to double, for example: double, unc, Meas.
+    //! \tparam T Any data type with a value that can be converted to double, for example: @c double, @c uncun, @c Meas.
     template <class T>
     unc<correlated> operator()(T val) const
     /*!< Convert to uncertain type,
@@ -226,8 +222,6 @@ public:
     }
 }; // class pair_Meas_2d_convert
 
-
-
  /*! This functor allows any 2D data that can be converted to type double to be plotted.
    \tparam correlated @c true if the uncertainties are correlated (for example, adding to a constant value).
    */
@@ -269,9 +263,5 @@ public:
 } // namespace detail
 } // namespace svg
 } // namespace boost
-
-#if defined (BOOST_MSVC)
-#  pragma warning(pop)
-#endif
 
 #endif // BOOST_SVG_DETAIL_FUNCTORS_HPP
