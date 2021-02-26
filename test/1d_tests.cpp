@@ -209,9 +209,9 @@ BOOST_AUTO_TEST_CASE( test1 )
   my_plot.title_font_rotation(uphill); // Set
    BOOST_CHECK_EQUAL(my_plot.title_font_rotation(), uphill); // & check.
 
-   BOOST_CHECK_EQUAL(my_plot.title_font_alignment(), center_align);// Check default.
-  my_plot.title_font_alignment(left_align); // Set
-   BOOST_CHECK_EQUAL(my_plot.title_font_alignment(), left_align); // & check.
+   BOOST_CHECK_EQUAL(my_plot.title_font_alignment(), align_style::center_align);// Check default.
+  my_plot.title_font_alignment(align_style::left_align); // Set
+   BOOST_CHECK_EQUAL(my_plot.title_font_alignment(), align_style::left_align); // & check.
 
   // legend title & font
 

@@ -2,7 +2,7 @@
     \brief Test actual SVG in XML by comparing with expected XML.
 */
 
-// Copyright Paul A. Bristow 2007, 2009, 2013, 2016
+// Copyright Paul A. Bristow 2007, 2009, 2013, 2016, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -11,10 +11,10 @@
 
 #define BOOST_LIB_DIAGNOSTIC "on"
 #define BOOST_TEST_MAIN
-// NB define BOOST_TEST_MAIN must come BEFORE this include.
+// Note define BOOST_TEST_MAIN must come BEFORE this include.
 #include <boost/test/unit_test.hpp>
 
-#include <boost/test/output_test_stream.hpp>
+#include <boost/test/tools/output_test_stream.hpp>
 using boost::test_tools::output_test_stream;
 
 #include <boost/svg_plot/svg_2d_plot.hpp>

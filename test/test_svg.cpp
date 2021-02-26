@@ -173,7 +173,7 @@ BOOST_AUTO_TEST_CASE(test_styles)
 
   BOOST_CHECK_EQUAL(def_style.font_size(), 12);
   BOOST_CHECK_EQUAL(def_style.font_family(), "Lucida Sans Unicode");
-  BOOST_CHECK_EQUAL(def_style, no_style);
+  BOOST_CHECK_EQUAL(def_style, not_a_text_style);
 
   text_style test_style(12, "Arial", "bold", "italic", "wider", "underline");
   cout << test_style << endl;
@@ -215,9 +215,9 @@ BOOST_AUTO_TEST_CASE(test_styles)
   text.rotation(upward);
   BOOST_CHECK_EQUAL(text.rotation(), upward);
 
-  BOOST_CHECK_EQUAL(text.alignment(), left_align);
-  text.alignment(right_align);
-  BOOST_CHECK_EQUAL(text.alignment(), right_align);
+  BOOST_CHECK_EQUAL(text.alignment(), align_style::left_align);
+  text.alignment(align_style::right_align);
+  BOOST_CHECK_EQUAL(text.alignment(), align_style::right_align);
 
   // Test the svg_element class.
 
