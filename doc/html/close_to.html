@@ -35,41 +35,41 @@
 <span class="keyword">class</span> <a class="link" href="close_to.html" title="Class template close_to">close_to</a> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="close_to.html#close_toconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="close_to.html#id553386-bb"><span class="identifier">close_to</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="close_to.html#id558519-bb"><span class="identifier">close_to</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
   <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> 
-    <span class="keyword">explicit</span> <a class="link" href="close_to.html#id553390-bb"><span class="identifier">close_to</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">,</span> <span class="identifier">floating_point_comparison_type</span> <span class="special">=</span> <span class="identifier">FPC_STRONG</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">explicit</span> <a class="link" href="close_to.html#id558512-bb"><span class="identifier">close_to</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">,</span> <span class="identifier">floating_point_comparison_type</span> <span class="special">=</span> <span class="identifier">FPC_STRONG</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="close_to.html#id553336-bb">public member functions</a></span>
-  <span class="keyword">bool</span> <a class="link" href="close_to.html#id553335-bb"><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span></a><span class="special">(</span><span class="identifier">FPT</span><span class="special">,</span> <span class="identifier">FPT</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">FPT</span> <a class="link" href="close_to.html#id553341-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">floating_point_comparison_type</span> <a class="link" href="close_to.html#id553365-bb"><span class="identifier">strength</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="close_to.html#id558406-bb">public member functions</a></span>
+  <span class="keyword">bool</span> <a class="link" href="close_to.html#id556181-bb"><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span></a><span class="special">(</span><span class="identifier">FPT</span><span class="special">,</span> <span class="identifier">FPT</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">FPT</span> <a class="link" href="close_to.html#id556204-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">floating_point_comparison_type</span> <a class="link" href="close_to.html#id558523-bb"><span class="identifier">strength</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1157893"></a><h2>Description</h2>
+<a name="id1190364"></a><h2>Description</h2>
 <div class="refsect2">
-<a name="id1157942"></a><h3>
+<a name="id1190424"></a><h3>
 <a name="close_toconstruct-copy-destruct"></a><code class="computeroutput">close_to</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a name="id553386-bb"></a><span class="identifier">close_to</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id558519-bb"></a><span class="identifier">close_to</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Default constructor is strong comparison to twice numeric_limits&lt;double&gt;::epsilon().</p>
 </li>
 <li class="listitem">
 <pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> 
-  <span class="keyword">explicit</span> <a name="id553390-bb"></a><span class="identifier">close_to</span><span class="special">(</span><span class="identifier">T</span> tolerance<span class="special">,</span> 
+  <span class="keyword">explicit</span> <a name="id558512-bb"></a><span class="identifier">close_to</span><span class="special">(</span><span class="identifier">T</span> tolerance<span class="special">,</span> 
                     <span class="identifier">floating_point_comparison_type</span> fpc_type <span class="special">=</span> <span class="identifier">FPC_STRONG</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Constructor for fraction tolerance and strength of comparison. Checks that tolerance isn't negative - which does not make sense, and can be assumed to be a programmer error?</p>
 </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1158015"></a><h3>
-<a name="id553336-bb"></a><code class="computeroutput">close_to</code> public member functions</h3>
+<a name="id1190480"></a><h3>
+<a name="id558406-bb"></a><code class="computeroutput">close_to</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id553335-bb"></a><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span><span class="special">(</span><span class="identifier">FPT</span> left<span class="special">,</span> <span class="identifier">FPT</span> right<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id556181-bb"></a><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span><span class="special">(</span><span class="identifier">FPT</span> left<span class="special">,</span> <span class="identifier">FPT</span> right<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>Compare two floating point values 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -84,7 +84,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">FPT</span> <a name="id553341-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">FPT</span> <a name="id556204-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -99,7 +99,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">floating_point_comparison_type</span> <a name="id553365-bb"></a><span class="identifier">strength</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">floating_point_comparison_type</span> <a name="id558523-bb"></a><span class="identifier">strength</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">

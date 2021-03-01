@@ -6,7 +6,7 @@
     \date 20 Mar 2009
     \author Paul A. Bristow
 */
-// Copyright Paul A Bristow 2009
+// Copyright Paul A Bristow 2009, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -21,59 +21,62 @@
 
 //[demo_2d_autoscaling_1
 
-/*`As always, we need a few includes to use Boost.Plot
+/*`As always, we need a few includes to use Boost.Plot:
 */
 
 #include <boost/svg_plot/svg_2d_plot.hpp>
-  using namespace boost::svg;
-  using boost::svg::svg_2d_plot;
+  //using namespace boost::svg;
+  //using boost::svg::svg_2d_plot;
 
 #include <iostream>
-  using std::cout;
-  using std::endl;
-  using std::dec;
-  using std::hex;
+  //using std::cout;
+  //using std::endl;
+  //using std::dec;
+  //using std::hex;
 
 #include <map>
-  using std::map;
-
+//  using std::map;
 //] [demo_2d_autoscaling_1]
 
 int main()
 {
 
 //[demo_2d_autoscaling_2
-/*`Some fictional data is pushed into an STL container, here map:\n
+/*`Some fictional data is pushed into an STL container, here std::map:\n
 
   This example uses a single map to demonstrate autoscaling.
-  We construct a map to hold our data series, and insert some fictional values (that also sorts the data).
-  The index value in [] is the x value.
+  We construct a std::map to hold our data series, and insert some fictional values (that also sorts the data).
+  The 'index' value in [ ] is the X value.
   */
-  map<const double, double> my_data;
+  std::map<const double, double> my_data;
   my_data[1.1] = 3.2;
   my_data[7.3] = 9.1;
   my_data[2.12] = 2.4394;
   my_data[5.47] = 5.3861;
 
+  using namespace boost::svg;
+
   try
-  { // try'n'catch blocks are needed to ensure error messages from any exceptions are shown.
+  { 
+    // try'n'catch blocks are needed to ensure error messages from any exceptions are shown by the catch block below.
+   using boost::svg::svg_2d_plot;
     svg_2d_plot my_2d_plot; // Construct a plot with all the default constructor values.
     my_2d_plot.title("Autoscaling 2d Values"); // Add a string title of the plot.
 
-/*` With the defaults ranges would be -10 to +10 for both X and Y axes.  We could chose our own ranges
-    `.x_range(0, 6) // Add a range for the X-axis.`
-    `.y_range(0, 10) // Add a range for the Y-axis.`
+/*` With the defaults ranges would be -10 to +10 for both X and Y axes.  We could chose our own ranges thus:
+    `.x_range(0, 6) // Add a range for the X-axis.
+    .y_range(0, 10) // Add a range for the Y-axis.`
   Or we can use autoscaling.
 
 */
-   my_2d_plot.xy_autoscale(my_data); // Autoscale both x and Y axes.
+   my_2d_plot.xy_autoscale(my_data); // Autoscale both X and Y axes.
 
-   /*`This says use the entire STL container my_data to set both X and Y ranges.
+/*`This says use the entire STL container `my_data` to set both X and Y ranges.
 (The data used to autoscale the range(s) does not have to be the same as the data being plotted.
 For example, if we have analysed a product and know that an attribute like strength can only decline as the product ages,
 it would make sense to use the reference 'as new' data to scale the plot for the 'aged' product samples).
 
-The add the (one but could be more) data series, `my_data` and a description, and how the data points are to be marked,
+The add the (one but could be more) data series, @c my_data and a description, and how the data-points are to be marked,
 here a circle with a diameter of 5 pixels, without a line joining the points (also the default).
 */
     my_2d_plot.plot(my_data, "2d Values").shape(circlet).size(6).line_on(false);
@@ -97,7 +100,7 @@ here a circle with a diameter of 5 pixels, without a line joining the points (al
 //[demo_2d_autoscaling_output
 
 Output:
-
+Checked: x_min 1.1, x_max 7.3, y_min 2.4394, y_max 9.1, 4 'good' values, 0 values at limits
 
 
 */

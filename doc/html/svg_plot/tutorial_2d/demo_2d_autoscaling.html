@@ -33,7 +33,7 @@
         2D Examples</a>
       </h5>
 <p>
-        First we need a few includes to use Boost.Plot
+        First we need a few includes to use Boost.Plot:
       </p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">svg_2d_plot</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
   <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">;</span>
@@ -54,9 +54,9 @@
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">math</span><span class="special">/</span><span class="identifier">special_functions</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
   <span class="comment">//using boost::math::isfinite;</span>
 
-  <span class="comment">// Getting the max and min of x and y data points.</span>
+  <span class="comment">// Getting the max and min of X and Y data-points.</span>
 <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span> <span class="comment">// T an STL container: array, vector ...</span>
-<span class="keyword">void</span> <span class="identifier">s</span><span class="special">(</span><span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">container</span><span class="special">,</span> <span class="comment">// Container Data series to plot - entire container.</span>
+<span class="keyword">void</span> <span class="identifier">s</span><span class="special">(</span><span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">container</span><span class="special">,</span> <span class="comment">// Container Data-series to plot - entire container.</span>
                <span class="comment">// (not necessarily ordered, so will find min and max).</span>
                <span class="keyword">double</span><span class="special">*</span> <span class="identifier">x_min</span><span class="special">,</span>  <span class="keyword">double</span><span class="special">*</span> <span class="identifier">x_max</span><span class="special">,</span>
                <span class="keyword">double</span><span class="special">*</span> <span class="identifier">y_min</span><span class="special">,</span>  <span class="keyword">double</span><span class="special">*</span> <span class="identifier">y_max</span>
@@ -81,13 +81,13 @@
 </pre>
 <p>
         This example uses a single map to demonstrate autoscaling. We create a map
-        to hold our data series.
+        to hold our data-series.
       </p>
 <pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">map</span><span class="special">&lt;</span><span class="keyword">const</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">my_map</span><span class="special">;</span>
 </pre>
 <p>
         Inserting some fictional values also sorts the data. The index value in []
-        is the x value.
+        is the X value.
       </p>
 <pre class="programlisting"><span class="identifier">my_map</span><span class="special">[</span><span class="number">1.1</span><span class="special">]</span> <span class="special">=</span> <span class="number">3.2</span><span class="special">;</span>
 <span class="identifier">my_map</span><span class="special">[</span><span class="number">7.3</span><span class="special">]</span> <span class="special">=</span> <span class="number">9.1</span><span class="special">;</span>

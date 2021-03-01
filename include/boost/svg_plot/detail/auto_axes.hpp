@@ -41,26 +41,10 @@
 // Michael P.D. Bramley. CUJ July 2000, p 20 - 26.
 // Antonio Gomiz Bas, CUJ march 2000, p 42 - 45
 // J. A. Nelder and W. Douglas Stirling, FORTRAN program SCALE.
+//  // Algorithm AS 96 https://doi.org/10.2307/2346537 J. A. Nelder, Simple Algorithm for Scaling Graphs
+//  http://lib.stat.cmu.edu/apstat/96  
 // Daniel Herring
 
-//namespace boost
-//{
-//  namespace math
-//  {
-//  // This is only needed to avoid a warning from Doxygen
-//  // which can't find the function if declared as
-//  // template <class FPT> bool boost::math::isfinite(FPT t);
-//  // because of the leading boost::math::
-//  /*!
-//    \brief If a floating-point value is finite, return true.
-//    \tparam FPT floating-point type (float, double, long double, or user-defined).
-//    \param[in] t floating-point value to test if finite.
-//    \return @c true if is finite, false if + or - infinite, or any NaN.
-//  */
-//  template <class FPT> bool isfinite(FPT t);
-//  } // namespace math
-//} //  namespace boost
-//
 namespace boost
 {
 namespace svg
@@ -311,7 +295,7 @@ int mnmx(
   if (pos == end)
   { // ALL values are at limit!
       throw std::runtime_error("Autoscale could not find any useful values to scale axis!");
-    //cout << "all values at limit!" << endl;
+    // std::cout << "all values at limit (NaN or infinity)!" << std::endl;
     // min and max are both == NaN
   }
   else

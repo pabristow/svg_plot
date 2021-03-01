@@ -32,27 +32,20 @@
         example).
       </p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">svg_1d_plot</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
-  <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">;</span>
-  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_1d_plot</span><span class="special">;</span>
+  <span class="comment">//using namespace boost::svg;</span>
+  <span class="comment">//using boost::svg::svg_1d_plot;</span>
 
-<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">show_1d_settings</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="comment">//#include &lt;boost/svg_plot/show_1d_settings.hpp&gt;</span>
 <span class="comment">// Only needed for showing which settings in use.</span>
 <span class="comment">// void boost::svg::show_1d_plot_settings(svg_1d_plot&amp;);</span>
  <span class="comment">// (Also provides operator&lt;&lt; for std::pair).</span>
-
-<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">algorithm</span><span class="special">/</span><span class="identifier">minmax</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
- <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">minmax</span><span class="special">;</span>
-<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">algorithm</span><span class="special">/</span><span class="identifier">minmax_element</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
- <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">minmax_element</span><span class="special">;</span>
 
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span> <span class="comment">// for debugging.</span>
   <span class="comment">//using std::cout;</span>
   <span class="comment">//using std::endl;</span>
   <span class="comment">//using std::boolalpha;</span>
-
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">limits</span><span class="special">&gt;</span>
 <span class="comment">//  using std::numeric_limits;</span>
-
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">vector</span><span class="special">&gt;</span>
 <span class="comment">//  using std::vector;</span>
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">set</span><span class="special">&gt;</span>
@@ -68,16 +61,17 @@
   <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">range_all</span><span class="special">;</span>  <span class="comment">//! Find min and max of multiple STL containers.</span>
 </pre>
 <p>
-        This example uses a few types of containers to demonstrate autoscaling. Autoscaling
-        can inspect the container in order to find axis ranges that will be suitable.
-        First we create a container and fill with some fictional data, and display
-        the values.
+        This example uses a few types of containers to demonstrate autoscaling.<br>
+        Autoscaling must inspect the data in the container in order to find axis
+        ranges that will be suitable. First we create a container and fill with some
+        fictional data, and then display the values.
       </p>
 <pre class="programlisting"><span class="keyword">try</span>
-<span class="special">{</span>
+<span class="special">{</span> <span class="comment">// Ensure error, warning and information messages are displayed by the catch block below.</span>
+
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">my_data</span><span class="special">;</span>
   <span class="comment">// Initialize my_data with some entirely fictional data.</span>
-  <span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">0.2</span><span class="special">);</span>
+  <span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">0.2</span><span class="special">);</span> <span class="comment">// [0]</span>
   <span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">1.1</span><span class="special">);</span> <span class="comment">// [1]</span>
   <span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">4.2</span><span class="special">);</span> <span class="comment">// [2]</span>
   <span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">3.3</span><span class="special">);</span> <span class="comment">// [3]</span>
@@ -85,12 +79,14 @@
   <span class="identifier">my_data</span><span class="special">.</span><span class="identifier">push_back</span><span class="special">(</span><span class="number">6.5</span><span class="special">);</span> <span class="comment">// [5]</span>
   <span class="identifier">show</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">);</span> <span class="comment">// Show entire container contents,</span>
   <span class="comment">// 6 values in container: 0.2 1.1 4.2 3.3 5.4 6.5</span>
+
+  <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">;</span>  <span class="comment">// Convenient to access all the many svg_plot features.</span>
 </pre>
 <p>
         Construct a plot , and add some data to the plot.
       </p>
 <pre class="programlisting"><span class="identifier">svg_1d_plot</span> <span class="identifier">my_1d_plot</span><span class="special">;</span> <span class="comment">// Construct a plot with all the default constructor values.</span>
-<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Demo 1D autoscaling"</span><span class="special">).</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"X values"</span><span class="special">);</span> <span class="comment">// Add a title and X axis label.</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Demo 1D autoscaling"</span><span class="special">).</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"X values"</span><span class="special">);</span> <span class="comment">// Add a plot title and X axis-label.</span>
 <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">,</span> <span class="string">"Auto 1D my_data"</span><span class="special">);</span> <span class="comment">// Add whole data series from my_data.</span>
 </pre>
 <p>
@@ -100,16 +96,16 @@
 <pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_autoscale</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">);</span>
 </pre>
 <p>
-        and finally write the SVG to a file.
+        and finally write the SVG XML to a file.
       </p>
 <pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"demo_1d_autoscaling_1.svg"</span><span class="special">);</span> <span class="comment">// Write the plot to file.</span>
 </pre>
 <p>
-        In a second example, we use a different type of container, a set, and use
-        autoscale in a more advanced way.
+        In a second example, we use a different type of container, a <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">set</span></code>,
+        and use autoscale in a more advanced way.
       </p>
 <pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">multiset</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">my_set</span><span class="special">;</span>
-<span class="comment">// Initialize my_set with some entirely fictional data.</span>
+<span class="comment">// Initialize `my_set` with some entirely fictional data.</span>
 <span class="identifier">my_set</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">1.2</span><span class="special">);</span>
 <span class="identifier">my_set</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">2.3</span><span class="special">);</span>
 <span class="identifier">my_set</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="number">3.4</span><span class="special">);</span>
@@ -126,8 +122,8 @@
 <span class="identifier">svg_1d_plot</span> <span class="identifier">my_1d_plot_2</span><span class="special">;</span> <span class="comment">// Construct a plot with all the default constructor values.</span>
 </pre>
 <p>
-        and also override the default controls of <code class="computeroutput"><span class="identifier">scale_axis</span></code>
-        function used by autoscaling.
+        and also override the default controls of @c scale_axis function used by
+        autoscaling.
       </p>
 <pre class="programlisting"><span class="comment">// Set some autoscaling parameters:</span>
 <span class="identifier">my_1d_plot_2</span><span class="special">.</span><span class="identifier">x_with_zero</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// Always include zero in the axis range, even if the data values don't.</span>
@@ -145,7 +141,7 @@
         Purely to show the possibilities with autoscale, we don't use the whole container,
         but use the two-iterators version of autoscale to <span class="bold"><strong>not
         use the first nor the last values</strong></span> for autoscaling. (Remember values
-        in set are sorted).
+        in the constainer <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">set</span></code> are sorted).
       </p>
 <pre class="programlisting"><span class="identifier">my_1d_plot_2</span><span class="special">.</span><span class="identifier">x_autoscale</span><span class="special">(++</span><span class="identifier">my_set</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),--</span><span class="identifier">my_set</span><span class="special">.</span><span class="identifier">end</span><span class="special">());</span>
 </pre>
@@ -190,15 +186,12 @@
         The output is:
       </p>
 <pre class="programlisting"><span class="identifier">demo_1d_autoscaling</span><span class="special">.</span><span class="identifier">cpp</span>
-<span class="identifier">Linking</span><span class="special">...</span>
-<span class="identifier">Embedding</span> <span class="identifier">manifest</span><span class="special">...</span>
-<span class="identifier">Autorun</span> <span class="string">"j:\Cpp\SVG\debug\demo_1d_autoscaling.exe"</span>
+
 <span class="number">6</span> <span class="identifier">values</span> <span class="identifier">in</span> <span class="identifier">container</span><span class="special">:</span> <span class="number">0.2</span> <span class="number">1.1</span> <span class="number">4.2</span> <span class="number">3.3</span> <span class="number">5.4</span> <span class="number">6.5</span>
 <span class="number">8</span> <span class="identifier">values</span> <span class="identifier">in</span> <span class="identifier">container</span><span class="special">:</span> <span class="number">1.2</span> <span class="number">2.3</span> <span class="number">3.4</span> <span class="number">4.5</span> <span class="number">5.6</span> <span class="number">6.7</span> <span class="number">7.8</span> <span class="number">8.9</span>
 <span class="identifier">x_with_zero</span><span class="special">,</span> <span class="number">10</span> <span class="identifier">x_min_ticks</span><span class="special">,</span> <span class="number">0</span> <span class="identifier">x_steps</span><span class="special">,</span> <span class="number">0.01</span> <span class="identifier">tightness</span><span class="special">.</span>
  <span class="identifier">x_auto_min_value</span> <span class="number">0</span><span class="special">,</span> <span class="identifier">x_auto_max</span> <span class="identifier">_value</span> <span class="number">8</span><span class="special">,</span> <span class="identifier">x_auto_tick_interval</span> <span class="number">0.5</span>
 <span class="identifier">x_range</span><span class="special">()</span> <span class="number">0</span><span class="special">,</span> <span class="number">8</span>
-<span class="identifier">Build</span> <span class="identifier">Time</span> <span class="number">0</span><span class="special">:</span><span class="number">04</span>
 </pre>
 <p>
         and the plot: <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/demo_1d_autoscaling.svg" width="500" height="200"></object></span>

@@ -25,27 +25,20 @@
 */
 
 #include <boost/svg_plot/svg_1d_plot.hpp>
-  using namespace boost::svg;
-  using boost::svg::svg_1d_plot;
+  //using namespace boost::svg;
+  //using boost::svg::svg_1d_plot;
 
-#include <boost/svg_plot/show_1d_settings.hpp>
+//#include <boost/svg_plot/show_1d_settings.hpp>
 // Only needed for showing which settings in use.
 // void boost::svg::show_1d_plot_settings(svg_1d_plot&);
  // (Also provides operator<< for std::pair).
-
-#include <boost/algorithm/minmax.hpp>
- using boost::minmax;
-#include <boost/algorithm/minmax_element.hpp>
- using boost::minmax_element;
 
 #include <iostream> // for debugging.
   //using std::cout;
   //using std::endl;
   //using std::boolalpha;
-
 #include <limits>
 //  using std::numeric_limits;
-
 #include <vector>
 //  using std::vector;
 #include <set>
@@ -61,21 +54,22 @@
   using boost::svg::range_all;  //! Find min and max of multiple STL containers.
 //] [/demo_1d_autoscaling_1]
 
-const double tol100eps = 1000 * std::numeric_limits<double>::epsilon(); // A suitable value for tight.
+constexpr double tol100eps = 1000 * std::numeric_limits<double>::epsilon(); // A suitable value for tight.
 
 int main()
 {
-  //[demo_1d_autoscaling_2
-  /*`This example uses a few types of containers to demonstrate autoscaling.
-  Autoscaling can inspect the container in order to find axis ranges that will be suitable.
-  First we create a container and fill with some fictional data, and display the values.
-  */
+//[demo_1d_autoscaling_2
+/*`This example uses a few types of containers to demonstrate autoscaling.[br]
+Autoscaling must inspect the data in the container in order to find axis ranges that will be suitable.
+First we create a container and fill with some fictional data, and then display the values.
+*/
 
   try
-  {
+  { // Ensure error, warning and information messages are displayed by the catch block below.
+
     std::vector<double> my_data;
     // Initialize my_data with some entirely fictional data.
-    my_data.push_back(0.2);
+    my_data.push_back(0.2); // [0]
     my_data.push_back(1.1); // [1]
     my_data.push_back(4.2); // [2]
     my_data.push_back(3.3); // [3]
@@ -84,25 +78,27 @@ int main()
     show(my_data); // Show entire container contents,
     // 6 values in container: 0.2 1.1 4.2 3.3 5.4 6.5
 
+    using namespace boost::svg;  // Convenient to access all the many svg_plot features.
+
     /*`Construct a plot , and add some data to the plot. */
 
     svg_1d_plot my_1d_plot; // Construct a plot with all the default constructor values.
-    my_1d_plot.title("Demo 1D autoscaling").x_label("X values"); // Add a title and X axis label.
+    my_1d_plot.title("Demo 1D autoscaling").x_label("X values"); // Add a plot title and X axis-label.
     my_1d_plot.plot(my_data, "Auto 1D my_data"); // Add whole data series from my_data.
 
-    /*`Use `x_autoscale` to scale the axis, in this most common and simplest case, using all the values.*/
+    //`Use `x_autoscale` to scale the axis, in this most common and simplest case, using all the values.
     my_1d_plot.x_autoscale(my_data);
 
-    /*` and finally write the SVG to a file.*/
+    /*`and finally write the SVG XML to a file.*/
     my_1d_plot.write("demo_1d_autoscaling_1.svg"); // Write the plot to file.
 //] [/demo_1d_autoscaling_2]
 
 
 //[demo_1d_autoscaling_3
-    /*`In a second example, we use a different type of container, a set,
+    /*`In a second example, we use a different type of container, a `std::set`,
     and use autoscale in a more advanced way.*/
     std::multiset<double> my_set;
-    // Initialize my_set with some entirely fictional data.
+    // Initialize `my_set` with some entirely fictional data.
     my_set.insert(1.2);
     my_set.insert(2.3);
     my_set.insert(3.4);
@@ -118,7 +114,7 @@ int main()
 
     svg_1d_plot my_1d_plot_2; // Construct a plot with all the default constructor values.
 
-    /*`and also override the default controls of `scale_axis` function used by autoscaling.*/
+    /*`and also override the default controls of @c scale_axis function used by autoscaling.*/
     // Set some autoscaling parameters:
     my_1d_plot_2.x_with_zero(true); // Always include zero in the axis range, even if the data values don't.
     my_1d_plot_2.x_min_ticks(10); // Ensure more than the default minimum number of ticks.
@@ -133,7 +129,7 @@ int main()
 
     /*`Purely to show the possibilities with autoscale, we don't use the whole container,
     but use the two-iterators version of autoscale to *not use the first nor the last values* for autoscaling.
-    (Remember values in set are sorted).
+    (Remember values in the constainer `std::set` are sorted).
     */
     my_1d_plot_2.x_autoscale(++my_set.begin(),--my_set.end());
     /*`This also sets `autoscale(true)`, but note that `x_range()` is still not updated.
@@ -174,15 +170,12 @@ int main()
 //[demo_1d_autoscaling_output
 
 demo_1d_autoscaling.cpp
-Linking...
-Embedding manifest...
-Autorun "j:\Cpp\SVG\debug\demo_1d_autoscaling.exe"
+
 6 values in container: 0.2 1.1 4.2 3.3 5.4 6.5
 8 values in container: 1.2 2.3 3.4 4.5 5.6 6.7 7.8 8.9
 x_with_zero, 10 x_min_ticks, 0 x_steps, 0.01 tightness.
  x_auto_min_value 0, x_auto_max _value 8, x_auto_tick_interval 0.5
 x_range() 0, 8
-Build Time 0:04
 
 //] [/demo_1d_autoscaling_output]
 
