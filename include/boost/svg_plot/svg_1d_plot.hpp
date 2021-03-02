@@ -67,9 +67,9 @@ namespace svg
    \brief Holds a series of data values (points) to be plotted.
    \details Scan each data-point sorting them into the appropriate
    @c std::vectors, normal or not (NaN or infinite).\n
-   Member functions allow control of data points markers and lines joining them,
+   Member functions allow control of data-points markers and lines joining them,
    and their appearance, shape, color and size.\n
-   Data points can include their value, and optionally uncertainty and number of degrees of freedom.\n
+   data-points can include their value, and optionally uncertainty and number of degrees of freedom.\n
 
    Each data-series can have a title that can be shown on a legend-box with identifying symbols.
 */
@@ -108,7 +108,7 @@ public:
   svg_1d_plot_series& shape(point_shape shape_); // Set shape for plot point marker(s) (chainable).
   svg_1d_plot_series& symbols(const std::string s); // Set symbol(s) for plot point marker(s) (chainable).
   svg_1d_plot_series& size(int size_); // Set font size for plot point marker(s) (chainable).
-  svg_1d_plot_series& line_color(const svg_color& col_); // Set color for any line joining data points (chainable).
+  svg_1d_plot_series& line_color(const svg_color& col_); // Set color for any line joining data-points (chainable).
   svg_1d_plot_series& line_width(double wid_); // Set line width for plot point marker(s) (chainable).
   svg_1d_plot_series& line_on(bool on_); // Set true for line joining points for plot point marker(s) (chainable).
   svg_1d_plot_series& bezier_on(bool on_); // Set true for curve joining points for plot point marker(s) (chainable).
@@ -121,16 +121,16 @@ public:
   point_shape shape(); // Get shape for plot point marker(s).
   const std::string symbols(); // Get symbols for plot point marker(s).
   double line_width(); // Get line width for plot point marker(s).
-  bool line_on(); // Get true if line is to join data points.
-  bool bezier_on(); // Get true if curve if to join data points.
-  size_t series_count(); // Get number of normal data points in this data-series.
-  size_t series_limits_count(); // Get number of 'at limits' data points in this data-series.
+  bool line_on(); // Get true if line is to join data-points.
+  bool bezier_on(); // Get true if curve if to join data-points.
+  size_t series_count(); // Get number of normal data-points in this data-series.
+  size_t series_limits_count(); // Get number of 'at limits' data-points in this data-series.
 }; // class svg_1d_plot_series
 
  /*! \class boost::svg::svg_1d_plot
      \brief All settings for a plot that control the appearance,
      and functions to get and set these settings.\n
-     (But see @c svg_1d_plot_series to control appearance of data points).
+     (But see @c svg_1d_plot_series to control appearance of data-points).
 
       @c axis_plot_frame.hpp contains functions common to 1 and 2-D.
       \details Several versions of the function @c plot are provided to allow data to be in different sources,
@@ -297,7 +297,7 @@ public:
   //!< is allowed to show through but everything on the outside is masked out.
   //!< So the plot_window_clip_ limits display to a plot_window rectangle.
 
-  std::vector<svg_1d_plot_series> serieses_;  //!< The (perhaps several) series of data points for transformation.
+  std::vector<svg_1d_plot_series> serieses_;  //!< The (perhaps several) series of data-points for transformation.
   //!< These are sorted into two vectors for normal and abnormal (max, inf and NaN).
 
 public:
@@ -558,7 +558,7 @@ void svg_1d_plot::update_image()
   y -= 3.; 
 
   for(unsigned int i = 0; i < serieses_.size(); ++i)
-  { // Plot the normal data points for each of the i data-series.
+  { // Plot the normal data-points for each of the i data-series.
     g_element& g_ptr = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
     // Set the color for all the data-series markers.
     g_ptr.style().stroke_color(serieses_[i].point_style_.stroke_color_);
@@ -625,7 +625,7 @@ void svg_1d_plot::update_image()
       { // Not NaN assume infinite.
         transform_x(x);
         // Avoid overwriting any data marker at either end of the horizontal line.
-        // Can still overlap marker with half a font height?  But better if raise the data points a bit more
+        // Can still overlap marker with half a font height?  But better if raise the data-points a bit more
         if (x < plot_left_)
         {
           x = plot_left_ - minus_inf_point_style_.size_ /2; // Just half a font size to left of left plot box.
@@ -1077,7 +1077,7 @@ svg_1d_plot& svg_1d_plot::write(std::ostream& os)
     The default stream precision of 6 decimal digits is probably excessive for plots.
     4.1 Basic data types, integer or float in decimal or scientific (using E format).
     If image size is under 1000 x 1000, the SVG plot default precision of 3 is probably sufficient.
-    This reduces .svg file sizes significantly for curves represented with many data points.
+    This reduces .svg file sizes significantly for curves represented with many data-points.
     For example, if a curve is shown using 100 points,
     reducing to coord_precision(3) from default of 6 will reduce file size by 300 bytes.
   */

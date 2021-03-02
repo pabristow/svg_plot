@@ -406,7 +406,7 @@ public:
 
       4.1 Basic data types, integer or float in decimal or scientific (using E format).
       3 or 4 probably enough if image size is under 1000 x 1000.
-      This will reduce .svg file sizes significantly for curves represented with many data points.\n
+      This will reduce .svg file sizes significantly for curves represented with many data-points.\n
 
       For example, if a curve is shown using 100 points,
       reducing to precision(3) from 6 will reduce file size by 300 bytes.

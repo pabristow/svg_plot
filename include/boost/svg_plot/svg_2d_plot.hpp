@@ -78,15 +78,15 @@ namespace boost
 
       \details Data values are sorted into normal and 'at limits':
         NaN, infinity or too small or too large.\n\n
-       Member functions allow control of data points markers and lines joining them,
+       Member functions allow control of data-points markers and lines joining them,
        and their appearance, shape, color and size.\n
-       Data points can include their value,
+       data-points can include their value,
        and optionally uncertainty and optionally number of degrees of freedom.\n
 
-       Each data series can have a title that can be shown on a legend box with identifying symbols.
+       Each data-series can have a title that can be shown on a legend box with identifying symbols.
 
         @c std::multimap is used rather than @c std::vector of @c std::pair s because
-        @c std::multimap sorts and ensures that lines joining data points
+        @c std::multimap sorts and ensures that lines joining data-points
         are unaffected by the order in which data is presented.
        (For 1-D a vector of doubles can be used).
    */
@@ -102,25 +102,25 @@ namespace boost
     friend void draw_straight_lines(const svg_2d_plot_series&);
     public:
 //! \cond DETAIL
-      // 2-D Data series points to plot.
+      // 2-D data-series points to plot.
       std::multimap<Meas, unc<false> > series_; //!< Normal 'OK to plot' data values.
     //     std::multimap<unc<false>, unc<false>> series_; //!< Normal 'OK to plot' data values.
       std::multimap<double, double> series_limits_; //!< 'limit' values: too big or small, or NaN.
 
-      std::string title_; //!< Title of data series (to show on legend using legend style).
+      std::string title_; //!< Title of data-series (to show on legend using legend style).
       plot_point_style point_style_; //!< data-point marker like circle, square...
       plot_point_style limit_point_style_; //!< At limit data-point marker.
       // Default is cone pointing down with point at bottom tip, not centered.
-      plot_line_style line_style_; //!< Style (color, width...) of line joining data points.
+      plot_line_style line_style_; //!< Style (color, width...) of line joining data-points.
       bar_style bar_style_; //!< Style of bar used in histograms.
       histogram_style histogram_style_; //!< Style of histogram.
 //! \endcond
 
       /*
-        Constructor for a data series to plot
+        Constructor for a data-series to plot
         \tparam T an STL container: for example: @c multimap.
-        \param begin Starting iterator into container of data series begin() to start at the beginning.
-        \param end Ending iterator into container of data series, end() to finish with the last item.
+        \param begin Starting iterator into container of data-series begin() to start at the beginning.
+        \param end Ending iterator into container of data-series, end() to finish with the last item.
         \param title Title for the plot.
        */
        template <typename T>
@@ -172,8 +172,8 @@ namespace boost
       double bar_width();
       svg_color& bar_color();
       svg_color& bar_area_fill();
-      int values_count(); // Number of normal values in data series.
-      int limits_count(); // Number of values 'at limit' in data series.
+      int values_count(); // Number of normal values in data-series.
+      int limits_count(); // Number of values 'at limit' in data-series.
 
    }; // class svg_2d_plot_series
 
@@ -181,18 +181,18 @@ namespace boost
 
    // svg_2d_plot_series constructor.
   /*!
-    Constructor for a data series to plot
+    Constructor for a data-series to plot
     \tparam T an STL container: for example: @c multimap.
-    \param begin Starting iterator into container of data series begin() to start at the beginning.
-    \param end Ending iterator into container of data series, end() to finish with the last item.
+    \param begin Starting iterator into container of data-series begin() to start at the beginning.
+    \param end Ending iterator into container of data-series, end() to finish with the last item.
     \param title Title for the plot.
    */
 
   template <typename T>
   svg_2d_plot_series::svg_2d_plot_series(
-      T begin, // \param iterator std::begin of data series.
-      T end, // \param End of data series.
-      std::string title  // \param @c std::string title Title of data series.//
+      T begin, // \param iterator std::begin of data-series.
+      T end, // \param End of data-series.
+      std::string title  // \param @c std::string title Title of data-series.//
     )
     :
     title_(title), //!< Title of a series of data values.
@@ -206,7 +206,7 @@ namespace boost
     histogram_style_(no_histogram)
   { // Constructor.
     for(T i = begin; i != end; ++i)
-    { // Sort data points into normal and 'at-limit' series.
+    { // Sort data-points into normal and 'at-limit' series.
       std::pair<Meas, unc<false> > temp = *i;
       // Only handle uncoordinated uncertainties case unc<false>
       //std::pair<unc<false>, unc<false>> temp = *i;
@@ -228,82 +228,82 @@ namespace boost
 
   //svg_2d_plot_series & boost::svg::svg_2d_plot_series::fill_color(const svg_color &col_)
   svg_2d_plot_series& svg_2d_plot_series::fill_color(const svg_color& col_)
-  { //! Set data series point marker fill color.
+  { //! Set data-series point marker fill color.
     point_style_.fill_color_ = col_;
     return *this;
   }
 
    svg_2d_plot_series& svg_2d_plot_series::stroke_color(const svg_color& col_)
-  { //! Set Data series point marker stroke color.
+  { //! Set data-series point marker stroke color.
     point_style_.stroke_color_ = col_;
     return *this;
   }
 
   svg_2d_plot_series& svg_2d_plot_series::shape(point_shape shape_)
-  { //! Set Data series point marker shape.
+  { //! Set data-series point marker shape.
     //! Example: @c .shape(square), .shape(circlet)
     point_style_.shape_ = shape_;
     return *this;
   }
 
   svg_2d_plot_series& svg_2d_plot_series::size(int size_)
-  { //! Set Data series point marker size.
+  { //! Set data-series point marker size.
     //! Example @c .shape(square).size(5)
     point_style_.size_ = size_;
     return *this;
   }
 
   svg_2d_plot_series& svg_2d_plot_series::plot_point(plot_point_style marker)
-  { //! Set Data series point marker size.
+  { //! Set data-series point marker size.
     //! Example @c 
     point_style_ = marker;
     return *this;
   }
 
   svg_2d_plot_series& svg_2d_plot_series::point_font_family(const std::string family_)
-  { //! Set Data series point marker font family.
+  { //! Set data-series point marker font family.
     //! Example @c my_plot.plot(my_data, "my_data").shape("Z").point_font_family("times new roman")
     point_style_.symbols_style_.font_family(family_);
     return *this;
   }
 
   svg_2d_plot_series& svg_2d_plot_series::point_font_weight(const std::string weight_)
-  { //! Set Data series point marker font weight.
+  { //! Set data-series point marker font weight.
     //! Example @c my_plot.plot(my_data, "my_data").shape("Z").point_font_weight("bold")
     point_style_.symbols_style_.font_weight(weight_);
     return *this;
   }
 
   svg_2d_plot_series& svg_2d_plot_series::point_font_decoration(const std::string decoration_)
-  { //! Set Data series point marker font decoration.
+  { //! Set data-series point marker font decoration.
     //! Example @c my_plot.plot(my_data, "my_data").shape("Z").point_font_decoration("underline")
     point_style_.symbols_style_.font_decoration(decoration_);
     return *this;
   }
 
 svg_2d_plot_series& svg_2d_plot_series::point_font_stretch(const std::string stretch_)
-  { //! Set Data series point marker font stretch.
+  { //! Set data-series point marker font stretch.
     //! Example @c my_plot.plot(my_data, "my_data").shape("Z").point_font_stretch("narrow")
     point_style_.symbols_style_.font_stretch(stretch_);
     return *this;
   }
 
 svg_2d_plot_series& svg_2d_plot_series::point_font_style(const std::string text_style_)
-  { //! Set Data series point marker font style.
+  { //! Set data-series point marker font style.
     //! Example @c my_plot.plot(my_data, "my_data").shape("Z").point_font_style("italic")
     point_style_.symbols_style_.font_style(text_style_);
     return *this;
   }
 
 svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
-  { //! Set Data series line (stroke) color.
+  { //! Set data-series line (stroke) color.
     //! Example: @c .line_color(blue)
     line_style_.stroke_color_ = col_;
     return *this;
   }
 
   svg_2d_plot_series& svg_2d_plot_series::area_fill(const svg_color& col_)
-  { //! Set Data series area fill color.
+  { //! Set data-series area fill color.
     line_style_.area_fill_ = col_;
     /*! \note @c area_fill(false) will produce a @b blank color, and so NO FILL.
 
@@ -313,19 +313,19 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
   }
 
   svg_2d_plot_series& svg_2d_plot_series::line_width(double wid_)
-  { //! Set data series line width.
+  { //! Set data-series line width.
     line_style_.width_ = wid_; //! (Sets legend line width too).
     return *this; //! \return Reference to svg_2d_plot_series to make chainable.
   }
 
   svg_2d_plot_series& svg_2d_plot_series::line_on(bool on_)
-  { //! Set @c true to draw line linking data points.
+  { //! Set @c true to draw line linking data-points.
     line_style_.line_on_ = on_;
     return *this; //! \return Reference to svg_2d_plot_series to make chainable.
   }
 
   svg_2d_plot_series& svg_2d_plot_series::bezier_on(bool on_)
-  { //! Set @c true to draw bezier curved line linking data points.
+  { //! Set @c true to draw bezier curved line linking data-points.
     line_style_.bezier_on_ = on_;
     return *this; //! \return Reference to svg_2d_plot_series to make chainable.
   }
@@ -355,7 +355,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
   }
 
   plot_line_style svg_2d_plot_series::line_style()
-  { //! \return Line style for line joining data points.
+  { //! \return Line style for line joining data-points.
     return line_style_;
   }
 
@@ -365,27 +365,27 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
   }
 
     double svg_2d_plot_series::line_width()
-  { //! \return Width of line joining data points.
+  { //! \return Width of line joining data-points.
     return line_style_.width_;
   }
 
   bool svg_2d_plot_series::bezier_on()
-  { //! \return @c true if line joing data points should be a bezier curve.
+  { //! \return @c true if line joing data-points should be a bezier curve.
     return svg_2d_plot_series::line_style_.bezier_on_;
   }
 
   bool svg_2d_plot_series::line_on()
-  { //! \return @c true if a line is to join data points.
+  { //! \return @c true if a line is to join data-points.
     return svg_2d_plot_series::line_style_.line_on_;
   }
 
  svg_color& svg_2d_plot_series::line_color()
-  { //! \return color of a line to join data points.
+  { //! \return color of a line to join data-points.
     return line_style_.stroke_color_;
   }
 
   svg_color& svg_2d_plot_series::area_fill()
-  { //! \return Color for any area fill below line(s) joining data points.
+  { //! \return Color for any area fill below line(s) joining data-points.
     return line_style_.area_fill_;
   }
 
@@ -451,14 +451,14 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
   }
 
   int svg_2d_plot_series::values_count()
-  { //! \return number of normal values in a data series.
-    // Assume can never have more than max_int values in the data series.
+  { //! \return number of normal values in a data-series.
+    // Assume can never have more than max_int values in the data-series.
     // Or could return size_t?
     return static_cast<int>(series_.size());
   }
 
   int svg_2d_plot_series::limits_count()
-  {  //! \return number of values 'at limit' in a data series.
+  {  //! \return number of values 'at limit' in a data-series.
     return static_cast<int>(series_limits_.size());
   }
 
@@ -581,12 +581,12 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       bool title_on_; //!< true if to display a title for the whole plot (default @c true).
       bool legend_on_;//!< true if to provide a legend box (default false unless a legend header title is set so that legend_title_.text() != "").
       bool is_legend_title_; //!< @c true if legend_title_.text() != "" (for example: @c .legend_title("My Legend");) (default @c false).
-      bool is_a_point_marker_; //! @c true if any data series have point markers to show in legend (default @c false).
+      bool is_a_point_marker_; //! @c true if any data-series have point markers to show in legend (default @c false).
       bool is_a_data_series_line_;  //!< @c true if any series have lines to show in legend (default @c false). Example: @c .line_on(true).
-      bool is_a_data_series_text_;  //!< @c true is any series should show text describing the data series (default @c false). For example: @c my_plot.plot(my_data_0, "my_data_0_text");
+      bool is_a_data_series_text_;  //!< @c true is any series should show text describing the data-series (default @c false). For example: @c my_plot.plot(my_data_0, "my_data_0_text");
       double legend_title_font_size_; //!< Font size of legend header/title (pixels).
-      double legend_text_font_size_; //!< Font size of legend series marker text describing data series (pixels).
-      double legend_widest_line_; //!< Width of longest of legend header/title and widest data series point_marker+line+text (pixels).
+      double legend_text_font_size_; //!< Font size of legend series marker text describing data-series (pixels).
+      double legend_widest_line_; //!< Width of longest of legend header/title and widest data-series point_marker+line+text (pixels).
       double biggest_point_marker_font_size_; //!< Biggest point_marker symbol of all data_series.
 
       double vertical_title_spacing_; // = derived().legend_font_size_ * derived().text_margin_; // suits header text.
@@ -598,8 +598,8 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       double horizontal_marker_spacing_; // = derived().biggest_point_font_size_ * 0.8 * aspect_ratio; // Width of biggest marker used if no marker on a series).
 
       bool outside_legend_on_; //!< @c true if legend box should be outside the plot window (default @c true).
-      bool legend_lines_; //!< @c true if wish to add a colored line for each data series in legend box.
-      // This should be any data series?
+      bool legend_lines_; //!< @c true if wish to add a colored line for each data-series in legend box.
+      // This should be any data-series?
       bool plot_window_on_; //!< true if to use a separate plot window (not the whole image).
       bool x_ticks_on_; //!< @c true if X-axis to have ticks.
       bool y_ticks_on_; //!< @c true if Y-axis to have ticks.
@@ -647,7 +647,7 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       double y_auto_tick_interval_; //!< tick major interval (calculated by Y autoscale).
       int y_auto_ticks_; //!< Number of ticks (calculated by Y autoscale).
 
-      std::vector<svg_2d_plot_series> serieses_; //!< Store of several series of data points for transformation.
+      std::vector<svg_2d_plot_series> serieses_; //!< Store of several series of data-points for transformation.
       std::vector<text_element> notes_; //!< Store of text for annotation.  (Not used yet?)
 
       std::string plot_window_clip_; /*!< = "clip_plot_window" id for clippath
@@ -744,8 +744,8 @@ my_plot.background_color(ghostwhite) // Whole image.
         // = derived().legend_title_style.font_size_;
         legend_text_font_size_(0.), //!< legend marker descriptive text font size (set in functions @c size_legend_box and used to @c draw_legend).
          // derived().legend_text_style.font_size_;
-        biggest_point_marker_font_size_(0.), //!< Biggest font of point marker, line and data series text and legend title.
-        legend_widest_line_(0), //!< Longest width (on X-axis) of sum of point marker, line and data series text and legend title.
+        biggest_point_marker_font_size_(0.), //!< Biggest font of point marker, line and data-series text and legend title.
+        legend_widest_line_(0), //!< Longest width (on X-axis) of sum of point marker, line and data-series text and legend title.
 
         vertical_title_spacing_(0), // Legend header/title vertical spacing.
         //  derived().vertical_title_spacing_ = derived().legend_title_font_size_ * derived().text_margin_;
@@ -763,8 +763,8 @@ my_plot.background_color(ghostwhite) // Whole image.
         plot_window_on_(true),
         margin_(0.5),
         // Label data-point with label. With 2D can have either or both X and Y values shown.
-        x_values_on_(false), // If X values of data points are shown.
-        y_values_on_(false), // If Y values of data points are shown.
+        x_values_on_(false), // If X values of data-points are shown.
+        y_values_on_(false), // If Y values of data-points are shown.
         xy_values_on_(false), // If X & Y values of data are shown as a pair.
         x_values_style_(horizontal, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black),
         //  false, blue, false, yellow, false, green, false, cyan, false, magenta, false, red, used for testing.
@@ -921,7 +921,7 @@ my_plot.background_color(ghostwhite) // Whole image.
       }
       void calculate_plot_window()
       { //! The plot window is used to set a clip path:
-        //! this ensures that data points and lines (and anything else)
+        //! this ensures that data-points and lines (and anything else)
         //! outside this window are NOT drawn.
 
         //! All calculation use svg units, pixels by default.
@@ -1955,7 +1955,7 @@ my_plot.background_color(ghostwhite) // Whole image.
 
       // void draw_straight_lines(const svg_2d_plot_series& series);
 
-      //! Add line between series of data points (straight rather than a Bezier curve).
+      //! Add line between series of data-points (straight rather than a Bezier curve).
       //! Area fill with color if specified.
       void draw_straight_lines(const svg_2d_plot_series& series)
       {
@@ -1971,8 +1971,8 @@ my_plot.background_color(ghostwhite) // Whole image.
         path.style().fill_on(is_fill); // Ensure includes a fill="none" if no fill.
         //path.style().fill_color(series.line_style_.area_fill_); // Duplicates so no longer needed?
 
-        size_t outside_window = 0;  // Data points that lie outside the plot window.
-        size_t inside_window = 0;  // OK data points that lie inside the plot window.
+        size_t outside_window = 0;  // data-points that lie outside the plot window.
+        size_t inside_window = 0;  // OK data-points that lie inside the plot window.
 
         // If required to fill the area under the plot,
         // we first have to move from the X-axis (y = 0) to the first point,
@@ -2102,9 +2102,9 @@ my_plot.background_color(ghostwhite) // Whole image.
       } // draw_straight_lines
 
       void draw_bezier_lines(const svg_2d_plot_series& series)
-      { //! Add Bezier curve line between data points.
+      { //! Add Bezier curve line between data-points.
         //! Warning:
-        //! At present it is assumed that all data points lie within the plot window.
+        //! At present it is assumed that all data-points lie within the plot window.
         //! If this is not true, then strange and unpredictable curves will be produced!
 
         g_element& g_ptr = image_.gs(detail::PLOT_DATA_LINES).add_g_element();
@@ -2196,7 +2196,7 @@ my_plot.background_color(ghostwhite) // Whole image.
       } // draw_bezier_lines
 
       void draw_plot_lines()
-      { //! Draw line through data series, Bezier curved or straight, or none.
+      { //! Draw line through data-series, Bezier curved or straight, or none.
         for(unsigned int i = 0; i < serieses_.size(); ++i)
         {
           if(serieses_[i].line_style_.bezier_on_)
@@ -2358,7 +2358,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             }
             serieses_[i].limit_point_style_.stroke_color_ = image_.gs(detail::PLOT_LIMIT_POINTS).style().stroke_color();
             serieses_[i].limit_point_style_.fill_color_ = image_.gs(detail::PLOT_LIMIT_POINTS).style().fill_color();
-            // This is a kludge.  limit_point_style_ should probably be common to all data series.
+            // This is a kludge.  limit_point_style_ should probably be common to all data-series.
 
             if((x > plot_left_) && (x < plot_right_) && (y > plot_top_) && (y < plot_bottom_))
             { // Is inside plot window, so draw a point.
@@ -2405,7 +2405,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           //double h_h = 0.;
           for(std::multimap<Meas, unc<false> >::const_iterator j = serieses_[i].series_.begin();
             j != serieses_[i].series_.end(); ++j)
-          { // All the 'good' data points.
+          { // All the 'good' data-points.
             Meas ux = j->first;
             x = ux.value();
             unc<false> uy = j->second;
@@ -2457,7 +2457,7 @@ my_plot.background_color(ghostwhite) // Whole image.
          Draw a histogram with variable width but contiguous bins.
          Histograms differ from bar charts in the the *area* denotes the value,
          whereas the bar *height* denotes the value for a bar chart.
-         bin widths are provided from the X-axis data series values.
+         bin widths are provided from the X-axis data-series values.
          The 1st data X-value provides the start of the 1st bin,
          the 2nd data X-value provides the end of the 1st bin,
          and the 1st Y-value the area of the 1st bin,
@@ -2475,7 +2475,7 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         g_element& g_ptr = image_.gs(detail::PLOT_DATA_POINTS).add_g_element(); // Moved up out of loop.
         for(unsigned int i = 0; i < serieses_.size(); ++i)
-        { // for each data series.
+        { // for each data-series.
           if (serieses_[i].histogram_style_.histogram_option_ == no_histogram)
           { // No histogram wanted for this series.
             continue;
@@ -2506,7 +2506,7 @@ my_plot.background_color(ghostwhite) // Whole image.
           }
           for(std::multimap<Meas, unc<false> >::const_iterator j = serieses_[i].series_.begin();
             j != last; ++j)
-          { // All the 'good' 'real' data points.
+          { // All the 'good' 'real' data-points.
             Meas ux = j->first;
             double x = ux.value();
             unc<false> uy =  j->second;
@@ -2648,6 +2648,11 @@ my_plot.background_color(ghostwhite) // Whole image.
       double y_min();
       double y_max();
       bool y_autoscale();
+      double y_auto_max_value();
+      double y_auto_min_value();
+      double y_auto_tick_interval();
+      int y_auto_ticks();
+
       svg_2d_plot& y_autoscale(bool b);
       bool y_values_on();
       svg_2d_plot& y_values_on(bool b);
@@ -2688,11 +2693,11 @@ my_plot.background_color(ghostwhite) // Whole image.
       svg_2d_plot& y_autoscale(double minimum, double maximum);
       svg_2d_plot& y_autoscale(std::pair<double, double> p);
       template <typename T> // T an STL container: array, vector ...
-      svg_2d_plot& y_autoscale(const T& begin, const T& end); // Data series using iterators to
+      svg_2d_plot& y_autoscale(const T& begin, const T& end); // data-series using iterators to
       template <typename T> // T an STL container: array, vector ...
-      svg_2d_plot& y_autoscale(const T& container); // Whole data series.
+      svg_2d_plot& y_autoscale(const T& container); // Whole data-series.
       template <typename T> // T a 2D STL container: array, vector ...
-      svg_2d_plot& xy_autoscale(const T& container); // Whole data series,
+      svg_2d_plot& xy_autoscale(const T& container); // Whole data-series,
       bool xy_autoscale();
       double y_major_tick_length();
       svg_2d_plot& y_major_tick_length(double length);
@@ -2759,7 +2764,7 @@ my_plot.background_color(ghostwhite) // Whole image.
       svg_2d_plot& y_values_ioflags(std::ios_base::fmtflags f);
       std::ios_base::fmtflags y_values_ioflags();
 
-      // Versions of plot functions to add data series from a container, all or part,
+      // Versions of plot functions to add data-series from a container, all or part,
       // declarations including defaults for parameters (except containers, of course).
       template <typename T>
       svg_2d_plot_series& plot(const T& container, const std::string& title = "");
@@ -3079,14 +3084,37 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
         return y_autoscale_;
       }
 
+      double svg_2d_plot::y_auto_max_value()
+      { //! \return  autoscaled maximum for Y-axis.
+        return y_auto_max_value_;
+      }
+      double svg_2d_plot::y_auto_min_value()
+      { //! \return  autoscaled minimum for Y-axis.
+        return y_auto_min_value_;
+      }
+
+      double svg_2d_plot::y_auto_tick_interval()
+      { //! \return  autoscaled tick interval for Y-axis.
+        return y_auto_tick_interval_;
+      }
+
+      int svg_2d_plot::y_auto_ticks()
+      { //! \return  autoscaled tick count for Y-axis.
+        return y_auto_ticks_;
+      }
+
       svg_2d_plot& svg_2d_plot::y_autoscale(bool b)
       { //! Set @c true if to autoscale minimum and maximum for Y-axis.
+        if (b && y_auto_tick_interval_ <= 0)
+        { // No autoscale values have been calculated, so not safe to make y_autoscale true.
+          throw std::runtime_error("Y autoscale has not been calculated yet!");
+        }
         y_autoscale_ = b;
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       bool svg_2d_plot::y_values_on()
-      { /*! \return @c true if values of Y data points are shown (for example: 1.23).
+      { /*! \return @c true if values of Y data-points are shown (for example: 1.23).
         (Will override xy_values_on that would otherwise cause overwriting).
         So the last values_on setting will prevail.
         */
@@ -3094,7 +3122,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       svg_2d_plot& svg_2d_plot::y_values_on(bool b)
-      { //! Set @c true if values of Y data points are shown (for example: 1.23, 2.34).
+      { //! Set @c true if values of Y data-points are shown (for example: 1.23, 2.34).
         if(xy_values_on() == true)
         { // Would be overwritten by XY pair.
           xy_values_on(false);
@@ -3105,12 +3133,12 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       bool svg_2d_plot::xy_values_on()
-      { //! \return @c true if values of both X and Y data points are shown on one line (for example: "1.23, 4.56").
+      { //! \return @c true if values of both X and Y data-points are shown on one line (for example: "1.23, 4.56").
         return xy_values_on_;
       }
 
       svg_2d_plot&  svg_2d_plot::xy_values_on(bool b)
-      { /*! Set @c true if values of X and Y data points are to be shown (as 1.23).
+      { /*! Set @c true if values of X and Y data-points are to be shown (as 1.23).
         (Will override x_values_on and/or y_values_on that would otherwise cause overwriting).
           */
         if(x_values_on())
@@ -3128,12 +3156,12 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       bool svg_2d_plot::y_plusminus_on()
-      {//! \return @c true if values of Y data points are to include uncertainty estimates.
+      {//! \return @c true if values of Y data-points are to include uncertainty estimates.
         return y_values_style_.plusminus_on_;
       }
 
       svg_2d_plot& svg_2d_plot::y_plusminus_on(bool b)
-      { //! Set true if values of Y data points are to include uncertainty estimates.
+      { //! Set true if values of Y data-points are to include uncertainty estimates.
         y_values_style_.plusminus_on_ = b;
         return *this;
       } //! \return Reference to svg_2d_plot to make chainable.
@@ -3151,12 +3179,12 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       bool svg_2d_plot::y_addlimits_on()
-      {//! \return @c true if values of Y data points are to include confidence interval.
+      {//! \return @c true if values of Y data-points are to include confidence interval.
         return y_values_style_.addlimits_on_;
       }
 
       svg_2d_plot& svg_2d_plot::y_addlimits_on(bool b)
-      { //! Set true if values of Y data points are to include confidence interval.
+      { //! Set true if values of Y data-points are to include confidence interval.
         y_values_style_.addlimits_on_ = b;
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
@@ -3173,12 +3201,12 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       bool svg_2d_plot::y_df_on()
-      { //! \return @c true if values of Y data points are to include degrees of freedom estimates.
+      { //! \return @c true if values of Y data-points are to include degrees of freedom estimates.
         return svg_2d_plot::y_values_style_.df_on_;
       }
 
       svg_2d_plot& svg_2d_plot::y_df_on(bool b)
-      { //! Set @c true if values of Y data points are to include degrees of freedom estimates.
+      { //! Set @c true if values of Y data-points are to include degrees of freedom estimates.
         y_values_style_.df_on_ = b;
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
@@ -3337,7 +3365,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
 
       template <typename T> //! \tparam T an STL container: array, vector ...
       svg_2d_plot& svg_2d_plot::y_autoscale(const T& begin, const T& end)
-      { //! Data series using iterator's range to use to calculate autoscaled values.
+      { //! data-series using iterator's range to use to calculate autoscaled values.
         scale_axis(begin, end,
         &y_auto_min_value_, &y_auto_max_value_, &y_auto_tick_interval_, &y_auto_ticks_,
         autoscale_check_limits_, autoscale_plusminus_,
@@ -3348,7 +3376,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
 
       template <typename T> // T an STL container: array, vector ...
       svg_2d_plot& svg_2d_plot::y_autoscale(const T& container)
-      { //! Whole data series to use to calculate autoscaled values.
+      { //! Whole data-series to use to calculate autoscaled values.
         scale_axis(container.begin(), container.end(), // All the container.
         &y_auto_min_value_, &y_auto_max_value_, &y_auto_tick_interval_, &y_auto_ticks_,
         autoscale_check_limits_, autoscale_plusminus_,
@@ -3359,7 +3387,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
 
       template <typename T> // T a 2D STL container: array, vector ...
       svg_2d_plot& svg_2d_plot::xy_autoscale(const T& container)
-      { //! Whole data series to use to calculate autoscaled values for \b both X and Y axes.
+      { //! Whole data-series to use to calculate autoscaled values for \b both X and Y axes.
         scale_axis(container, // All the container.
           &x_auto_min_value_, &x_auto_max_value_, &x_auto_tick_interval_, &x_auto_ticks_,
           &y_auto_min_value_, &y_auto_max_value_, &y_auto_tick_interval_, &y_auto_ticks_,
@@ -3766,13 +3794,13 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
 
 
       svg_2d_plot& svg_2d_plot::y_values_precision(int p)
-      { //! Set @c iostream precision for data points Y values.
+      { //! Set @c iostream precision for data-points Y values.
         y_values_style_.value_precision_ = p;
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
       int svg_2d_plot::y_values_precision()
-      { //! \return @c iostream precision for data points Y values.
+      { //! \return @c iostream precision for data-points Y values.
         return y_values_style_.value_precision_;
       }
 
@@ -3803,7 +3831,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       } // write(file)
 
-   /*! \brief Add a container of a data series to the plot.\n
+   /*! \brief Add a container of a data-series to the plot.\n
        (Version converting to Meas using double with pair_double_2d_convert).\n @b Example:
       \code
 my_plot.plot(data1, "Sqrt(x)");
@@ -3820,10 +3848,10 @@ my_plot.plot(data1, "Sqrt(x)");
       boost::make_transform_iterator(container.end(), boost::svg::detail::pair_Meas_2d_convert<false>()),
       title)
     );
-    return serieses_[serieses_.size()-1]; //! \return Reference to data series just added to make chainable.
+    return serieses_[serieses_.size()-1]; //! \return Reference to data-series just added to make chainable.
   }
 
-  /*! Add a container of a data series to the plot.\n
+  /*! Add a container of a data-series to the plot.\n
      This version permits a custom functor (rather than default conversion to @c double).\n
      \note that this version assumes that @b ALL the data values in the container is used.
     */  template <typename T, typename U>
@@ -3835,10 +3863,10 @@ my_plot.plot(data1, "Sqrt(x)");
       boost::make_transform_iterator(container.end(),   functor),
       title)
     );
-    return serieses_[serieses_.size()-1]; //! \return Reference to data series just added to make chainable.
+    return serieses_[serieses_.size()-1]; //! \return Reference to data-series just added to make chainable.
   }
 
- /*! \brief Add a data series to the plot (by default, converting automatically to @c unc doubles).\n
+ /*! \brief Add a data-series to the plot (by default, converting automatically to @c unc doubles).\n
       This version permits @b part of the container to be used, a partial range, using iterators begin to end.\n
       For example:
       \code
@@ -3846,7 +3874,7 @@ my_2d_plot.plot(my_data.begin(), my_data.end(), "My container");
       \endcode
 
       \code
-my_2d_plot.plot(&my_data[1], &my_data[3], "my_data 1 to 3"); // Add part of data series.
+my_2d_plot.plot(&my_data[1], &my_data[3], "my_data 1 to 3"); // Add part of data-series.
       \endcode
    */
   template <typename T>
@@ -3863,10 +3891,10 @@ my_2d_plot.plot(&my_data[1], &my_data[3], "my_data 1 to 3"); // Add part of data
 
 #endif // _MSC_VER
 
-    return serieses_[serieses_.size() - 1]; //! \return Reference to data series just added to make chainable.
+    return serieses_[serieses_.size() - 1]; //! \return Reference to data-series just added to make chainable.
   } // plot(const T& begin, const T& end, const std::string& title = "")
 
-/* Add (part of) a container of a data series to the plot, using a functor.
+/* Add (part of) a container of a data-series to the plot, using a functor.
       This version permits part of the container to be used, a partial range, using iterators begin to end.\n
       Version with custom functor, rather than automatically converting to double).
     */
@@ -3879,7 +3907,7 @@ my_2d_plot.plot(&my_data[1], &my_data[3], "my_data 1 to 3"); // Add part of data
       boost::make_transform_iterator(end,   functor),
       title)
     );
-    return serieses_[serieses_.size() - 1]; //! \return Reference to data series just added to make chainable.
+    return serieses_[serieses_.size() - 1]; //! \return Reference to data-series just added to make chainable.
   }
 
 /*! Write the SVG image to a @c std::ostream.

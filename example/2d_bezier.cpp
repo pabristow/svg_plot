@@ -12,7 +12,7 @@
 // (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-// Example of using SVG plot bezier option showing smoothing effect when using a limited number of data points.
+// Example of using SVG plot bezier option showing smoothing effect when using a limited number of data-points.
 
 #include <boost/svg_plot/svg_2d_plot.hpp>
 using namespace boost::svg;

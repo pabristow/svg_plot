@@ -433,7 +433,7 @@ public:
      if a renderer (in a browser or a converter-to-PDF like RenderX)
      does not provide the font specified.
      A Unicode font has a better chance of providing Unicode symbols, for example, specified as @c \&\#x221E;.
-     Symbols are used to show data points and most shapes use Unicode.
+     Symbols are used to show data-points and most shapes use Unicode.
      These fonts are probably usable:
      \code
        "arial", "impact", "courier", "lucida console",  "Lucida Sans Unicode", "Verdana", "calibri", "century",
@@ -1272,8 +1272,8 @@ public:
   svg_color stroke_color_; //!< Stroke color of line. (no fill color for lines)
   svg_color area_fill_; //!< Fill color from line to axis. == false means color.is_blank = true, or = blank.
   double width_; //!< Width of line joining data-series values.
-  bool line_on_; //!< If true, data points will be joined by straight line(s).
-  bool bezier_on_; //!< If true, data points will be joined by bezier curved line(s).
+  bool line_on_; //!< If true, data-points will be joined by straight line(s).
+  bool bezier_on_; //!< If true, data-points will be joined by bezier curved line(s).
 
   //! Constructor to set plot line style, but providing defaults for all member data.
   plot_line_style(const svg_color& col = black, const svg_color& fill_col = blank, double width = 2, bool line_on = true, bool bezier_on = false);
@@ -1302,57 +1302,57 @@ public:
 // Member Functions.
 
   plot_line_style& plot_line_style::width(double w)
-  { //! Set width of line(s) joining data points.
+  { //! Set width of line(s) joining data-points.
     width_ = w;
     return *this; // Make chainable.
     //! \return plot_line_style& to make chainable.
   }
 
   double plot_line_style::width()
-  { //! \return  width of line(s) joining data points.
+  { //! \return  width of line(s) joining data-points.
     return width_;
   }
 
   plot_line_style& plot_line_style::color(const svg_color& f)
-  { //! Set color of line(s) joining data points.
+  { //! Set color of line(s) joining data-points.
     stroke_color_ = f;
     return *this; //! \return plot_line_style& to make chainable.
   }
 
   svg_color& plot_line_style::color()
-  { //! \return color of line(s) joining data points.
+  { //! \return color of line(s) joining data-points.
     return stroke_color_;
   }
 
   plot_line_style& plot_line_style::area_fill(const svg_color& f)
-  {//! Set if area under line joining data points is to be color filled.
+  {//! Set if area under line joining data-points is to be color filled.
     area_fill_ = f;
     return *this; //! \return plot_line_style& to make chainable.
   }
 
   svg_color& plot_line_style::area_fill()
-  { //! \return  if area under line joining data points is to be color filled.
+  { //! \return  if area under line joining data-points is to be color filled.
     return area_fill_;
   }
 
   bool plot_line_style::line_on() const
-  { //! \return True if line(s) will join data points.
+  { //! \return True if line(s) will join data-points.
     return line_on_;
   }
 
   plot_line_style& plot_line_style::line_on(bool is)
-  { //! Set true if line(s) are to join data points.
+  { //! Set true if line(s) are to join data-points.
     line_on_ = is;
     return *this; //! \return plot_line_style& to make chainable.
   }
 
   bool plot_line_style::bezier_on() const
-  { //! \return true if bezier curved line(s) are to join data points.
+  { //! \return true if bezier curved line(s) are to join data-points.
     return bezier_on_;
   }
 
   plot_line_style& plot_line_style::bezier_on(bool is)
-  { //! Set true if bezier curved line(s) are to join data points.
+  { //! Set true if bezier curved line(s) are to join data-points.
     bezier_on_ = is;
     return *this; //! \return plot_line_style& to make chainable.
   }

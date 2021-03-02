@@ -58,12 +58,12 @@ int main()
   try
   { // try'n'catch blocks are needed to ensure error messages from any exceptions are shown.
 
-/*`This example uses a single map to demonstrate autoscaling. We create a map to hold our first data series using type double.
+/*`This example uses a single map to demonstrate autoscaling. We create a map to hold our first data-series using type double.
 */
     std::map<double, double> my_data;
     /*`
     Inserting some fictional values also sorts the data.
-    The index value in [] is the x value.
+    The index value in [ ] is the x value.
     */
     my_data[1.1] = 3.2;  // X = 1.1 and Y = 3.2.
     my_data[7.3] = 9.1; // 

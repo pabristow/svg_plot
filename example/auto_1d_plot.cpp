@@ -1,6 +1,6 @@
 /*! \file auto_1d_plot.cpp
     \brief An example to demonstrate simple 1D settings, including auto-scaling.
-    \details See auto_1d_containers.cpp for an example autoscaling with multiple data series.
+    \details See auto_1d_containers.cpp for an example autoscaling with multiple data-series.
     See also demo_1d_plot.cpp for a wider range of use.
 */
 
@@ -111,7 +111,7 @@ int main()
     std::cout << "my_1d_plot.limit_color() " << my_1d_plot.nan_limit_color() << std::endl;
     std::cout << "my_1d_plot.limit_fill_color() " << my_1d_plot.nan_limit_fill_color() << std::endl;
 
-    my_1d_plot.plot(my_data, "Default 1D"); // Add the one data series, and give it a title.
+    my_1d_plot.plot(my_data, "Default 1D"); // Add the one data-series, and give it a title.
     my_1d_plot.write("auto_1d_plot_1.svg"); // Write the plot to file.
 
     /*`It may be useful to display that range chosen by autoscaling. */
@@ -316,15 +316,15 @@ to produce more aesthetically pleasing ranges. One can:
 
 /*`The actual addition of data values to the plot is, of course, quite separate from any autoscaling.
 */
-  my_1d_plot.plot(my_data, "Auto 1D"); // Add the one data series.
+  my_1d_plot.plot(my_data, "Auto 1D"); // Add the one data-series.
   std::cout << "Autoscaled " // Show the results of autoscale:
     " min " << my_1d_plot.x_auto_min_value()
     << ", max "<< my_1d_plot.x_auto_max_value()
     << ", interval " << my_1d_plot.x_auto_tick_interval() << std::endl; // Autoscaled min 1, max 5.5, interval 0.5
 
-  my_1d_plot.plot(my_set.begin(), my_set.end(), "Auto 1D"); // Add another data series from my_set.
-  my_1d_plot.plot(my_set, "Auto 1D"); // Add another whole data series from my_set.
-  my_1d_plot.plot(&my_data[1], &my_data[4], "Auto 1D"); // Add part (1,2 3 but *not* 4) of the one data series.
+  my_1d_plot.plot(my_set.begin(), my_set.end(), "Auto 1D"); // Add another data-series from my_set.
+  my_1d_plot.plot(my_set, "Auto 1D"); // Add another whole data-series from my_set.
+  my_1d_plot.plot(&my_data[1], &my_data[4], "Auto 1D"); // Add part (1,2 3 but *not* 4) of the one data-series.
   //my_1d_plot.plot(&my_set[1], &my_set[4], "Auto 1D"); // operator[] is not defined for set container!
 
   my_1d_plot.write("auto_1d_plot_2.svg"); // Write the plot to file.

@@ -103,7 +103,7 @@ int main()
   {
 //[demo_2d_uncertainty_2
 
-/*`STL map is used as the container for our two data series,
+/*`STL map is used as the container for our two data-series,
 and pairs of values and their uncertainty information
 (approximately standard deviation and degrees of freedom)
 are inserted using push_back. Since this is a 2-D plot

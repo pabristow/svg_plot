@@ -74,7 +74,7 @@ int main()
 {
 //[auto_1d_containers_2
   /*`This example uses two containers to demonstrate autoscaling.
-  It is common to plot more than one set of data series together.
+  It is common to plot more than one set of data-series together.
   Autoscaling must probably inspect all the containers of these series
   in order to find axis ranges that will be *suitable for all of them*.
   */
@@ -98,10 +98,10 @@ int main()
   ``
   */
   /*`
-  Now we concoct another equally fictional data series by a transform multiplying by 2.3.
+  Now we concoct another equally fictional data-series by a transform multiplying by 2.3.
   */
 
-  vector<double> my_data_2; // Create a second data series.
+  vector<double> my_data_2; // Create a second data-series.
   copy(my_data_1.begin(), my_data_1.end(), back_inserter(my_data_2));
   // Change the values in an entirely arbitrary way (each * 2.3).
   //std::transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), std::bind1st(std::multiplies<double>(), 2.3));
@@ -115,14 +115,14 @@ int main()
     std::transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), m1);
   //cout << std::endl << my_data.size() << " values in my_data_2. " << std::endl;
 
-  /*`Next we need a new STL container, vector say, to hold our multiple containers of data series.
+  /*`Next we need a new STL container, vector say, to hold our multiple containers of data-series.
     They must all be the same STL container type, in this example, `vector<double>`.
     And we use pushback to add the containers.
   */
   vector<vector<double> > my_containers;
 
-  my_containers.push_back(my_data_1); // Add 1st data series.
-  my_containers.push_back(my_data_2); // Add another data series.
+  my_containers.push_back(my_data_1); // Add 1st data-series.
+  my_containers.push_back(my_data_2); // Add another data-series.
   cout << my_containers.size() << " containers." << std::endl;
   show_all(my_containers);
 
@@ -141,7 +141,7 @@ int main()
   */
   my_1d_plot.x_autoscale(mm);  // Use overall minimum and maximum to autoscale.
 
-  /*`Finally, we add the data series containers to the plot, and write the SVG out to file.*/
+  /*`Finally, we add the data-series containers to the plot, and write the SVG out to file.*/
   my_1d_plot.plot(my_data_1, "data_1");
   my_1d_plot.plot(my_data_2, "data_2").stroke_color(red);
 

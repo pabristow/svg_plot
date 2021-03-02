@@ -15,8 +15,7 @@
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
+// (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 #ifndef BOOST_SVG_AUTO_AXES_HPP
 #define BOOST_SVG_AUTO_AXES_HPP
@@ -41,9 +40,15 @@
 // Michael P.D. Bramley. CUJ July 2000, p 20 - 26.
 // Antonio Gomiz Bas, CUJ march 2000, p 42 - 45
 // J. A. Nelder and W. Douglas Stirling, FORTRAN program SCALE.
-//  // Algorithm AS 96 https://doi.org/10.2307/2346537 J. A. Nelder, Simple Algorithm for Scaling Graphs
-//  http://lib.stat.cmu.edu/apstat/96  
-// Daniel Herring
+//  // Algorithm AS 168: Scale Selection and Formatting  W.Douglas Stirling
+// Journal of the Royal Statistical Society.Series C(Applied Statistics)
+// Vol. 30, No. 3 (1981), pp. 339-344 (6 pages)
+// Published By: Wiley
+// Journal of the Royal Statistical Society.Series C(Applied Statistics)
+// https://doi.org/10.2307/2346366
+// https://www.jstor.org/stable/2346366
+// Algorithm AS 96 https://doi.org/10.2307/2346537 J. A. Nelder, Simple Algorithm for Scaling Graphs
+// http://lib.stat.cmu.edu/apstat/96   FORTRAN code
 
 namespace boost
 {
@@ -74,17 +79,17 @@ double rounddown2(double value);
 
 // Scale axis and update min and max axis values, and tick increment and number of ticks.
 void scale_axis(
-   double min_value, // Scale axis from explicit input minimum.
-   double max_value, // Scale axis from explicit input maximum.
-   double* axis_min_value, // Computed minimum value for the axis, updated by scale_axis.
-   double* axis_max_value, //  Computed maximum value for the axis, updated by scale_axis.
-   double* axis_tick_increment, //  Computed tick increment for the axis, updated by scale_axis.
-   int* auto_ticks, // Computed number of ticks, updated by scale_axis.
+   double min_value, //!< Scale axis from explicit input minimum.
+   double max_value, //!< Scale axis from explicit input maximum.
+   double* axis_min_value, //!< Computed minimum value for the axis, updated by scale_axis.
+   double* axis_max_value, //!<  Computed maximum value for the axis, updated by scale_axis.
+   double* axis_tick_increment, //!<  Computed tick increment for the axis, updated by scale_axis.
+   int* auto_ticks, //!< Computed number of ticks, updated by scale_axis.
    //  NO check_limits parameter.
-   bool origin = false, // Do not include the origin unless the range min_value <= 0 <= max_value.
-   double tight = 0., // Tightness - fraction of overrun allowed before another tick used. For visual effect up to about 0.001 might suit a 1000 pixel wide image, allowing values just 1 pixel over the tick to be shown.
-   int min_ticks = 6, // Minimum number of major ticks.
-   int steps = 0 // Round up and down to 2, 4, 6, 8, 10, or 5, 10 or 2, 5, 10 systems.
+   bool origin = false, //!< Do not include the origin unless the range min_value <= 0 <= max_value.
+   double tight = 0., //!< Tightness - fraction of overrun allowed before another tick used. For visual effect up to about 0.001 might suit a 1000 pixel wide image, allowing values just 1 pixel over the tick to be shown.
+   int min_ticks = 6, //!< Minimum number of major ticks.
+   int steps = 0 //!< Round up and down to 2, 4, 6, 8, 10, or 5, 10 or 2, 5, 10 systems.
 );
 
 /* Scale axis function to define axis marker ticks based on min & max parameters values (handling uncertainty).
@@ -120,7 +125,7 @@ void scale_axis(
 
 /* Scale axis using an iterator into an STL container.
 
- \details Scale axis from data series values (usually to then plot), perhaps using only part of container.
+ \details Scale axis from data-series values (usually to then plot), perhaps using only part of container.
 
  \tparam iter Iterator into an STL container: array, vector, set ...
  \param begin Iterator into @c begin in STL container.
@@ -153,14 +158,14 @@ void scale_axis(
   // for visual effect up to about 0.001 might suit a 1000 pixel wide image,
   // allowing values just 1 pixel over the tick to be shown.
   int min_ticks = 6, // Minimum number of major ticks.
-   int steps = 0 // 0,  or 2 for 2, 4, 6, 8, 10, 5 for 1, 5, 10, or 10 (2, 5, 10).
+  int steps = 0 // 0,  or 2 for 2, 4, 6, 8, 10, 5 for 1, 5, 10, or 10 (2, 5, 10).
 );
 
 /* Scale axis using all the 1D data in an STL container.
-  Scale axis using an \b entire Container Data series, usually to plot.
+  Scale axis using an \b entire Container data-series, usually to plot.
   (not necessarily ordered, so will find min and max).
   \tparam C an STL container: array, vector ...
-  \param container STL container, usually of a data series.
+  \param container STL container, usually of a data-series.
   \param axis_min_value Computed minimum value for the X-axis, updated by scale_axis.
   \param axis_max_value Computed minimum value for the X-axis, updated by scale_axis.
   \param axis_tick_increment Computed tick increment for the axis, updated by scale_axis.
@@ -174,7 +179,7 @@ void scale_axis(
 */
  template <typename C>
  void scale_axis(
-   const C& container, // STL container, usually of a data series.
+   const C& container, // STL container, usually of a data-series.
    double* axis_min_value, // Computed minimum value for the axis, updated by @c scale_axis.
    double* axis_max_value,  // Computed maximum value for the axis, updated by @c scale_axis.
    double* axis_tick_increment, //  Computed tick increment for the axis, updated by @c scale_axis.
@@ -192,7 +197,7 @@ void scale_axis(
 /* Scale X and Y axis using T a 2D STL container: array of pairs, vector of pairs, list of pairs, map ...
   \tparam C STL container of 2D pairs of X and Y.
 
-  \param container Data series to plot - entire 2D container (not necessarily ordered, so will find min and max)..
+  \param container data-series to plot - entire 2D container (not necessarily ordered, so will find min and max)..
   \param x_axis_min_value Computed minimum value for the X-axis, updated by @c scale_axis.
   \param x_axis_max_value Computed minimum value for the X-axis, updated by @c scale_axis.
   \param x_axis_tick_increment Computed tick increment for the axis, updated @c by scale_axis.
@@ -214,7 +219,7 @@ void scale_axis(
 */
 template <typename C>
 void scale_axis(
-  const C& container, // Data series to plot - \b entire 2D container (not necessarily ordered, so will find min and max).
+  const C& container, // data-series to plot - \b entire 2D container (not necessarily ordered, so will find min and max).
   double* x_axis_min_value, //  \param x_axis_min_value Computed minimum value for the X-axis, updated by scale_axis.
   double* x_axis_max_value,  //   \param x_axis_max_value Computed minimum value for the X-axis, updated by scale_axis.
   double* x_axis_tick_increment, // Updated with X axis tick increment.
@@ -375,8 +380,6 @@ void scale_axis(
     origin, tight, min_ticks, steps); // Display range.
 } //
 
-
-
 /*! Scale axis function to define axis marker ticks based on min & max parameters values (handling uncertainty).
 
   \param min_value Scale axis from explicit input minimum.
@@ -415,7 +418,7 @@ void scale_axis(
     origin, tight, min_ticks, steps); // Display range.
 }
 
- /*! Scale axis from data series (usually to plot), perhaps only part of container.
+ /*! Scale axis from data-series (usually to plot), perhaps only part of container.
 
    \tparam Iter Type of interator into STL container type: @c array, @c vector ...
 
@@ -476,11 +479,11 @@ void scale_axis(
 } // template <typename iter> void scale_axis(iter begin, iter end, ...
 
 /*!
-  \brief Scale axis using an \b entire Container of a Data series, usually to plot (not necessarily ordered, so will find minimum and maximum).
+  \brief Scale axis using an \b entire Container of a data-series, usually to plot (not necessarily ordered, so will find minimum and maximum).
 
   \tparam C STL container type: @c array, @c vector ...
 
-  \param container STL container, usually of a data series.
+  \param container STL container, usually of a data-series.
   \param axis_min_value Computed minimum value for the axis, updated by scale_axis.
   \param axis_max_value Computed maximum value for the axis, updated by scale_axis.
   \param axis_tick_increment  Computed tick increment for the axis, updated by scale_axis.
@@ -494,7 +497,7 @@ void scale_axis(
 */
 template <class C>
 void scale_axis(
-  const C& container, // STL container, usually of a data series.
+  const C& container, // STL container, usually of a data-series.
   double* axis_min_value, // Computed minimum value for the axis, updated by scale_axis.
   double* axis_max_value,  // Computed maximum value for the axis, updated by scale_axis.
   double* axis_tick_increment, //  Computed tick increment for the axis, updated by scale_axis.
@@ -544,7 +547,7 @@ void scale_axis(
 
   \tparam C STL container holding 2D pairs of X and Y.
 
-  \param container Data series to plot - entire 2D container.
+  \param container data-series to plot - entire 2D container.
   \param x_axis_min_value Computed minimum value for the X-axis, updated by scale_axis.
   \param x_axis_max_value Computed minimum value for the X-axis, updated by scale_axis.
   \param x_axis_tick_increment Computed tick increment for the axis, updated by scale_axis.
@@ -566,7 +569,7 @@ void scale_axis(
 */
 template <class C>
 void scale_axis(
-  const C& container, // Data series to plot - \b entire 2D container (not necessarily ordered, so will find min and max).
+  const C& container, // data-series to plot - \b entire 2D container (not necessarily ordered, so will find min and max).
   double* x_axis_min_value, // Computed minimum value for the X-axis, updated by scale_axis.
   double* x_axis_max_value,  // Computed minimum value for the X-axis, updated by scale_axis.
   double* x_axis_tick_increment, // Updated with X axis tick increment.
@@ -590,7 +593,7 @@ void scale_axis(
   int y_min_ticks, // = 6, // Minimum number of major ticks.
   int y_steps) // = 0) // 0,  or 2 for 2, 4, 6, 8, 10, 5 for 1, 5, 10, or 10 (2, 5, 10).
 { /* Scale X and Y axis using T a 2D STL container: array of pairs, vector of pairs, list of pairs, map ...
-      container Data series to plot - entire 2D container.
+      container data-series to plot - entire 2D container.
     */
   double x_max = std::numeric_limits<double>::quiet_NaN();
   double x_min = std::numeric_limits<double>::quiet_NaN();
@@ -947,7 +950,7 @@ size_t show(const T& container)
   }
   std::cout << std::endl;
   return container.size();
-}// Container Data series to plot.
+}// Container data-series to plot.
 
 // Pointer version is not needed - iterator version is used instead.
 
@@ -964,7 +967,7 @@ size_t show(iter begin, iter end) // Iterators
   std::cout << ": " << count << " values used.";
   std::cout << std::endl;
   return count;
-}// Container Data series to plot.
+}// Container data-series to plot.
 
 template <typename T>
 size_t show_all(const T& containers)
@@ -975,10 +978,10 @@ size_t show_all(const T& containers)
     show(*it);
   }
   return containers.size();
-} // Container Data series to plot.
+} // Container data-series to plot.
 
   /*! Calculate minimum and maximum from data in a container.
-    \param container Container Data series.
+    \param container Container data-series.
     \return minimum and maximum of an STL container as a @c std::pair.
     \tparam  T an STL container: array, vector, set, map ...
   */
@@ -994,7 +997,7 @@ std::pair<double, double> range_mx(const T& container)
 } // template <class T> range_mx
 
 template <typename T> // T an STL container: array, vector, set, map ...
-std::pair<double, double> range_all(const T& containers) // Container of STL containers of Data series.
+std::pair<double, double> range_all(const T& containers) // Container of STL containers of data-series.
 { /*! \return minimum and maximum of a container containing STL containers.
       \tparam T an STL container: array, vector, set, map ...
   */

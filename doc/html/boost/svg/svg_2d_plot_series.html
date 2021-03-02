@@ -35,80 +35,80 @@
 <span class="keyword">class</span> <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="svg_2d_plot_series.html#boost.svg.svg_2d_plot_seriesconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <a class="link" href="svg_2d_plot_series.html#id607121-bb"><span class="identifier">svg_2d_plot_series</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">,</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">=</span> <span class="string">""</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <a class="link" href="svg_2d_plot_series.html#id612315-bb"><span class="identifier">svg_2d_plot_series</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">,</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">=</span> <span class="string">""</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="svg_2d_plot_series.html#id606289-bb">private member functions</a></span>
-  <span class="keyword">void</span> <a class="link" href="svg_2d_plot_series.html#id606326-bb"><span class="identifier">draw_straight_lines</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="svg_2d_plot_series.html#id611489-bb">private member functions</a></span>
+  <span class="keyword">void</span> <a class="link" href="svg_2d_plot_series.html#id611497-bb"><span class="identifier">draw_straight_lines</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="svg_2d_plot_series.html#id606347-bb">public member functions</a></span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606325-bb"><span class="identifier">area_fill</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606365-bb"><span class="identifier">area_fill</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606421-bb"><span class="identifier">bar_area_fill</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606426-bb"><span class="identifier">bar_area_fill</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606437-bb"><span class="identifier">bar_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606431-bb"><span class="identifier">bar_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">bar_option</span> <a class="link" href="svg_2d_plot_series.html#id606467-bb"><span class="identifier">bar_opt</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606493-bb"><span class="identifier">bar_opt</span></a><span class="special">(</span><span class="identifier">bar_option</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="svg_2d_plot_series.html#id606527-bb"><span class="identifier">bar_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606574-bb"><span class="identifier">bar_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="svg_2d_plot_series.html#id606570-bb"><span class="identifier">bezier_on</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606613-bb"><span class="identifier">bezier_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606653-bb"><span class="identifier">fill_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606643-bb"><span class="identifier">histogram</span></a><span class="special">(</span><span class="identifier">histogram_option</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">int</span> <a class="link" href="svg_2d_plot_series.html#id606671-bb"><span class="identifier">limits_count</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606682-bb"><span class="identifier">line_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606728-bb"><span class="identifier">line_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="svg_2d_plot_series.html#id606707-bb"><span class="identifier">line_on</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606745-bb"><span class="identifier">line_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="plot_line_style.html" title="Class plot_line_style">plot_line_style</a> <a class="link" href="svg_2d_plot_series.html#id606770-bb"><span class="identifier">line_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="svg_2d_plot_series.html#id606790-bb"><span class="identifier">line_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606797-bb"><span class="identifier">line_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606846-bb"><span class="identifier">plot_point</span></a><span class="special">(</span><a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="svg_2d_plot_series.html#id606864-bb"><span class="identifier">point_font_decoration</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606860-bb"><span class="identifier">point_font_decoration</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="svg_2d_plot_series.html#id606920-bb"><span class="identifier">point_font_family</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606912-bb"><span class="identifier">point_font_family</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="svg_2d_plot_series.html#id606907-bb"><span class="identifier">point_font_stretch</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606956-bb"><span class="identifier">point_font_stretch</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="svg_2d_plot_series.html#id606952-bb"><span class="identifier">point_font_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id606980-bb"><span class="identifier">point_font_style</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="svg_2d_plot_series.html#id607002-bb"><span class="identifier">point_font_weight</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id607036-bb"><span class="identifier">point_font_weight</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <a class="link" href="svg_2d_plot_series.html#id607042-bb"><span class="identifier">point_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">point_shape</span> <a class="link" href="svg_2d_plot_series.html#id607050-bb"><span class="identifier">shape</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id607078-bb"><span class="identifier">shape</span></a><span class="special">(</span><span class="identifier">point_shape</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">int</span> <a class="link" href="svg_2d_plot_series.html#id607093-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id607085-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id607090-bb"><span class="identifier">stroke_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">int</span> <a class="link" href="svg_2d_plot_series.html#id607145-bb"><span class="identifier">values_count</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="svg_2d_plot_series.html#id611514-bb">public member functions</a></span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611530-bb"><span class="identifier">area_fill</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611512-bb"><span class="identifier">area_fill</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611554-bb"><span class="identifier">bar_area_fill</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611597-bb"><span class="identifier">bar_area_fill</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611613-bb"><span class="identifier">bar_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611646-bb"><span class="identifier">bar_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">bar_option</span> <a class="link" href="svg_2d_plot_series.html#id611668-bb"><span class="identifier">bar_opt</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611688-bb"><span class="identifier">bar_opt</span></a><span class="special">(</span><span class="identifier">bar_option</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="svg_2d_plot_series.html#id611701-bb"><span class="identifier">bar_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611716-bb"><span class="identifier">bar_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="svg_2d_plot_series.html#id611754-bb"><span class="identifier">bezier_on</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611745-bb"><span class="identifier">bezier_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611783-bb"><span class="identifier">fill_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611845-bb"><span class="identifier">histogram</span></a><span class="special">(</span><span class="identifier">histogram_option</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">int</span> <a class="link" href="svg_2d_plot_series.html#id611850-bb"><span class="identifier">limits_count</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611880-bb"><span class="identifier">line_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611856-bb"><span class="identifier">line_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="svg_2d_plot_series.html#id611904-bb"><span class="identifier">line_on</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611901-bb"><span class="identifier">line_on</span></a><span class="special">(</span><span class="keyword">bool</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="plot_line_style.html" title="Class plot_line_style">plot_line_style</a> <a class="link" href="svg_2d_plot_series.html#id611933-bb"><span class="identifier">line_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="svg_2d_plot_series.html#id611950-bb"><span class="identifier">line_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id611971-bb"><span class="identifier">line_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id612028-bb"><span class="identifier">plot_point</span></a><span class="special">(</span><a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="svg_2d_plot_series.html#id612039-bb"><span class="identifier">point_font_decoration</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id612052-bb"><span class="identifier">point_font_decoration</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="svg_2d_plot_series.html#id612055-bb"><span class="identifier">point_font_family</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id612065-bb"><span class="identifier">point_font_family</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="svg_2d_plot_series.html#id612118-bb"><span class="identifier">point_font_stretch</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id612089-bb"><span class="identifier">point_font_stretch</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="svg_2d_plot_series.html#id612139-bb"><span class="identifier">point_font_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id612147-bb"><span class="identifier">point_font_style</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="svg_2d_plot_series.html#id612169-bb"><span class="identifier">point_font_weight</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id612193-bb"><span class="identifier">point_font_weight</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <a class="link" href="svg_2d_plot_series.html#id612214-bb"><span class="identifier">point_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">point_shape</span> <a class="link" href="svg_2d_plot_series.html#id612219-bb"><span class="identifier">shape</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id612265-bb"><span class="identifier">shape</span></a><span class="special">(</span><span class="identifier">point_shape</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">int</span> <a class="link" href="svg_2d_plot_series.html#id612235-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id612257-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_2d_plot_series.html#id612292-bb"><span class="identifier">stroke_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">int</span> <a class="link" href="svg_2d_plot_series.html#id612342-bb"><span class="identifier">values_count</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="identifier">bar_style_</span><span class="special">;</span>  <span class="comment">// Style of bar used in histograms. </span>
   <a class="link" href="histogram_style.html" title="Class histogram_style">histogram_style</a> <span class="identifier">histogram_style_</span><span class="special">;</span>  <span class="comment">// Style of histogram. </span>
   <a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <span class="identifier">limit_point_style_</span><span class="special">;</span>  <span class="comment">// At limit data-point marker. </span>
-  <a class="link" href="plot_line_style.html" title="Class plot_line_style">plot_line_style</a> <span class="identifier">line_style_</span><span class="special">;</span>  <span class="comment">// Style (color, width...) of line joining data points. </span>
+  <a class="link" href="plot_line_style.html" title="Class plot_line_style">plot_line_style</a> <span class="identifier">line_style_</span><span class="special">;</span>  <span class="comment">// Style (color, width...) of line joining data-points. </span>
   <a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <span class="identifier">point_style_</span><span class="special">;</span>  <span class="comment">// data-point marker like circle, square... </span>
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">multimap</span><span class="special">&lt;</span> Meas<span class="special">,</span> <a class="link" href="unc.html" title="Class template unc">unc</a><span class="special">&lt;</span> <span class="keyword">false</span> <span class="special">&gt;</span> <span class="special">&gt;</span> <span class="identifier">series_</span><span class="special">;</span>  <span class="comment">// Normal 'OK to plot' data values. </span>
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">multimap</span><span class="special">&lt;</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">&gt;</span> <span class="identifier">series_limits_</span><span class="special">;</span>  <span class="comment">// 'limit' values: too big or small, or NaN. </span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">title_</span><span class="special">;</span>  <span class="comment">// Title of data series (to show on legend using legend style). </span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">title_</span><span class="special">;</span>  <span class="comment">// Title of data-series (to show on legend using legend style). </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1404883"></a><h2>Description</h2>
+<a name="id1393124"></a><h2>Description</h2>
 <p>Data values are sorted into normal and 'at limits': NaN, infinity or too small or too large.<br>
 <br>
- Member functions allow control of data points markers and lines joining them, and their appearance, shape, color and size.<br>
- Data points can include their value, and optionally uncertainty and optionally number of degrees of freedom.<br>
- Each data series can have a title that can be shown on a legend box with identifying symbols.</p>
-<p><code class="computeroutput">std::multimap</code> is used rather than <code class="computeroutput">std::vector</code> of <code class="computeroutput">std::pair</code> s because <code class="computeroutput">std::multimap</code> sorts and ensures that lines joining data points are unaffected by the order in which data is presented. (For 1-D a vector of doubles can be used). </p>
+ Member functions allow control of data-points markers and lines joining them, and their appearance, shape, color and size.<br>
+ data-points can include their value, and optionally uncertainty and optionally number of degrees of freedom.<br>
+ Each data-series can have a title that can be shown on a legend box with identifying symbols.</p>
+<p><code class="computeroutput">std::multimap</code> is used rather than <code class="computeroutput">std::vector</code> of <code class="computeroutput">std::pair</code> s because <code class="computeroutput">std::multimap</code> sorts and ensures that lines joining data-points are unaffected by the order in which data is presented. (For 1-D a vector of doubles can be used). </p>
 <div class="refsect2">
-<a name="id1404901"></a><h3>
+<a name="id1393140"></a><h3>
 <a name="boost.svg.svg_2d_plot_seriesconstruct-copy-destruct"></a><code class="computeroutput">svg_2d_plot_series</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
 <pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> 
-  <a name="id607121-bb"></a><span class="identifier">svg_2d_plot_series</span><span class="special">(</span><span class="identifier">T</span> begin<span class="special">,</span> <span class="identifier">T</span> end<span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> title <span class="special">=</span> <span class="string">""</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Constructor for a data series to plot 
+  <a name="id612315-bb"></a><span class="identifier">svg_2d_plot_series</span><span class="special">(</span><span class="identifier">T</span> begin<span class="special">,</span> <span class="identifier">T</span> end<span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> title <span class="special">=</span> <span class="string">""</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Constructor for a data-series to plot 
 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -127,11 +127,11 @@
 <tbody>
 <tr>
 <td><p><span class="term"><code class="computeroutput">begin</code></span></p></td>
-<td><p>Starting iterator into container of data series begin() to start at the beginning. </p></td>
+<td><p>Starting iterator into container of data-series begin() to start at the beginning. </p></td>
 </tr>
 <tr>
 <td><p><span class="term"><code class="computeroutput">end</code></span></p></td>
-<td><p>Ending iterator into container of data series, end() to finish with the last item. </p></td>
+<td><p>Ending iterator into container of data-series, end() to finish with the last item. </p></td>
 </tr>
 <tr>
 <td><p><span class="term"><code class="computeroutput">title</code></span></p></td>
@@ -158,16 +158,16 @@
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1405053"></a><h3>
-<a name="id606289-bb"></a><code class="computeroutput">svg_2d_plot_series</code> private member functions</h3>
-<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><pre class="literallayout"><span class="keyword">void</span> <a name="id606326-bb"></a><span class="identifier">draw_straight_lines</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> series<span class="special">)</span><span class="special">;</span></pre></li></ol></div>
+<a name="id1393309"></a><h3>
+<a name="id611489-bb"></a><code class="computeroutput">svg_2d_plot_series</code> private member functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><pre class="literallayout"><span class="keyword">void</span> <a name="id611497-bb"></a><span class="identifier">draw_straight_lines</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> series<span class="special">)</span><span class="special">;</span></pre></li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1405081"></a><h3>
-<a name="id606347-bb"></a><code class="computeroutput">svg_2d_plot_series</code> public member functions</h3>
+<a name="id1393333"></a><h3>
+<a name="id611514-bb"></a><code class="computeroutput">svg_2d_plot_series</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a name="id606325-bb"></a><span class="identifier">area_fill</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a name="id611530-bb"></a><span class="identifier">area_fill</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -177,13 +177,13 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>Color for any area fill below line(s) joining data points.</p></td>
+<td><p>Color for any area fill below line(s) joining data-points.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606365-bb"></a><span class="identifier">area_fill</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set Data series area fill color.</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id611512-bb"></a><span class="identifier">area_fill</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set data-series area fill color.</p>
 <div class="note"><table border="0" summary="Note">
 <tr>
 <td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../../../../../doc/src/images/note.png"></td>
@@ -195,7 +195,7 @@
 <code class="computeroutput">area_fill(blank)</code> will produce the default non-blank color (black?).</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a name="id606421-bb"></a><span class="identifier">bar_area_fill</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a name="id611554-bb"></a><span class="identifier">bar_area_fill</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -210,7 +210,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606426-bb"></a><span class="identifier">bar_area_fill</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id611597-bb"></a><span class="identifier">bar_area_fill</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 
 </p>
@@ -226,7 +226,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a name="id606437-bb"></a><span class="identifier">bar_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a name="id611613-bb"></a><span class="identifier">bar_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -241,7 +241,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606431-bb"></a><span class="identifier">bar_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id611646-bb"></a><span class="identifier">bar_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Set bar color.</p>
 <p>
 </p>
@@ -257,7 +257,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">bar_option</span> <a name="id606467-bb"></a><span class="identifier">bar_opt</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">bar_option</span> <a name="id611668-bb"></a><span class="identifier">bar_opt</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -272,7 +272,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606493-bb"></a><span class="identifier">bar_opt</span><span class="special">(</span><span class="identifier">bar_option</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id611688-bb"></a><span class="identifier">bar_opt</span><span class="special">(</span><span class="identifier">bar_option</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Set bar options.</p>
 <p>
 </p>
@@ -288,7 +288,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id606527-bb"></a><span class="identifier">bar_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id611701-bb"></a><span class="identifier">bar_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -303,7 +303,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606574-bb"></a><span class="identifier">bar_width</span><span class="special">(</span><span class="keyword">double</span> wid_<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id611716-bb"></a><span class="identifier">bar_width</span><span class="special">(</span><span class="keyword">double</span> wid_<span class="special">)</span><span class="special">;</span></pre>
 <p>Set Bar width.</p>
 <p>
 </p>
@@ -319,7 +319,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id606570-bb"></a><span class="identifier">bezier_on</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id611754-bb"></a><span class="identifier">bezier_on</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -329,13 +329,13 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><code class="computeroutput">true</code> if line joing data points should be a bezier curve.</p></td>
+<td><p><code class="computeroutput">true</code> if line joing data-points should be a bezier curve.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606613-bb"></a><span class="identifier">bezier_on</span><span class="special">(</span><span class="keyword">bool</span> on_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set <code class="computeroutput">true</code> to draw bezier curved line linking data points.</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id611745-bb"></a><span class="identifier">bezier_on</span><span class="special">(</span><span class="keyword">bool</span> on_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set <code class="computeroutput">true</code> to draw bezier curved line linking data-points.</p>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -350,11 +350,11 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606653-bb"></a><span class="identifier">fill_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set data series point marker fill color.</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id611783-bb"></a><span class="identifier">fill_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set data-series point marker fill color.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606643-bb"></a><span class="identifier">histogram</span><span class="special">(</span><span class="identifier">histogram_option</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id611845-bb"></a><span class="identifier">histogram</span><span class="special">(</span><span class="identifier">histogram_option</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 
 </p>
@@ -370,7 +370,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">int</span> <a name="id606671-bb"></a><span class="identifier">limits_count</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">int</span> <a name="id611850-bb"></a><span class="identifier">limits_count</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -380,12 +380,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>number of values 'at limit' in a data series.</p></td>
+<td><p>number of values 'at limit' in a data-series.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a name="id606682-bb"></a><span class="identifier">line_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a name="id611880-bb"></a><span class="identifier">line_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -395,16 +395,16 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>color of a line to join data points.</p></td>
+<td><p>color of a line to join data-points.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606728-bb"></a><span class="identifier">line_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set Data series line (stroke) color. Example: <code class="computeroutput"></code>.line_color(blue)</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id611856-bb"></a><span class="identifier">line_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set data-series line (stroke) color. Example: <code class="computeroutput"></code>.line_color(blue)</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id606707-bb"></a><span class="identifier">line_on</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id611904-bb"></a><span class="identifier">line_on</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -414,13 +414,13 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><code class="computeroutput">true</code> if a line is to join data points.</p></td>
+<td><p><code class="computeroutput">true</code> if a line is to join data-points.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606745-bb"></a><span class="identifier">line_on</span><span class="special">(</span><span class="keyword">bool</span> on_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set <code class="computeroutput">true</code> to draw line linking data points.</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id611901-bb"></a><span class="identifier">line_on</span><span class="special">(</span><span class="keyword">bool</span> on_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set <code class="computeroutput">true</code> to draw line linking data-points.</p>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -435,7 +435,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="plot_line_style.html" title="Class plot_line_style">plot_line_style</a> <a name="id606770-bb"></a><span class="identifier">line_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="plot_line_style.html" title="Class plot_line_style">plot_line_style</a> <a name="id611933-bb"></a><span class="identifier">line_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -445,12 +445,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>Line style for line joining data points.</p></td>
+<td><p>Line style for line joining data-points.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id606790-bb"></a><span class="identifier">line_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id611950-bb"></a><span class="identifier">line_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -460,13 +460,13 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>Width of line joining data points.</p></td>
+<td><p>Width of line joining data-points.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606797-bb"></a><span class="identifier">line_width</span><span class="special">(</span><span class="keyword">double</span> wid_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set data series line width.</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id611971-bb"></a><span class="identifier">line_width</span><span class="special">(</span><span class="keyword">double</span> wid_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set data-series line width.</p>
 <p>(Sets legend line width too).</p>
 <p>
 </p>
@@ -482,11 +482,11 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606846-bb"></a><span class="identifier">plot_point</span><span class="special">(</span><a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a><span class="special">)</span><span class="special">;</span></pre>
-<p>Set Data series point marker size. Example <code class="computeroutput"></code> </p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id612028-bb"></a><span class="identifier">plot_point</span><span class="special">(</span><a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a><span class="special">)</span><span class="special">;</span></pre>
+<p>Set data-series point marker size. Example <code class="computeroutput"></code> </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id606864-bb"></a><span class="identifier">point_font_decoration</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id612039-bb"></a><span class="identifier">point_font_decoration</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -501,11 +501,11 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606860-bb"></a><span class="identifier">point_font_decoration</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> decoration_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set Data series point marker font decoration. Example <code class="computeroutput">my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_decoration("underline")</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id612052-bb"></a><span class="identifier">point_font_decoration</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> decoration_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set data-series point marker font decoration. Example <code class="computeroutput">my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_decoration("underline")</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id606920-bb"></a><span class="identifier">point_font_family</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id612055-bb"></a><span class="identifier">point_font_family</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -520,11 +520,11 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606912-bb"></a><span class="identifier">point_font_family</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> family_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set Data series point marker font family. Example <code class="computeroutput">my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_family("times new roman")</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id612065-bb"></a><span class="identifier">point_font_family</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> family_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set data-series point marker font family. Example <code class="computeroutput">my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_family("times new roman")</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id606907-bb"></a><span class="identifier">point_font_stretch</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id612118-bb"></a><span class="identifier">point_font_stretch</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -539,11 +539,11 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606956-bb"></a><span class="identifier">point_font_stretch</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> stretch_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set Data series point marker font stretch. Example <code class="computeroutput">my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_stretch("narrow")</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id612089-bb"></a><span class="identifier">point_font_stretch</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> stretch_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set data-series point marker font stretch. Example <code class="computeroutput">my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_stretch("narrow")</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id606952-bb"></a><span class="identifier">point_font_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id612139-bb"></a><span class="identifier">point_font_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -558,11 +558,11 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id606980-bb"></a><span class="identifier">point_font_style</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> text_style_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set Data series point marker font style. Example <code class="computeroutput">my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_style("italic")</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id612147-bb"></a><span class="identifier">point_font_style</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> text_style_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set data-series point marker font style. Example <code class="computeroutput">my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_style("italic")</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id607002-bb"></a><span class="identifier">point_font_weight</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id612169-bb"></a><span class="identifier">point_font_weight</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -577,11 +577,11 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id607036-bb"></a><span class="identifier">point_font_weight</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> weight_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set Data series point marker font weight. Example <code class="computeroutput">my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_weight("bold")</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id612193-bb"></a><span class="identifier">point_font_weight</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> weight_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set data-series point marker font weight. Example <code class="computeroutput">my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_weight("bold")</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <a name="id607042-bb"></a><span class="identifier">point_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <a name="id612214-bb"></a><span class="identifier">point_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -596,7 +596,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">point_shape</span> <a name="id607050-bb"></a><span class="identifier">shape</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">point_shape</span> <a name="id612219-bb"></a><span class="identifier">shape</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -611,11 +611,11 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id607078-bb"></a><span class="identifier">shape</span><span class="special">(</span><span class="identifier">point_shape</span> shape_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set Data series point marker shape. Example: <code class="computeroutput"></code>.shape(square), .shape(circlet)</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id612265-bb"></a><span class="identifier">shape</span><span class="special">(</span><span class="identifier">point_shape</span> shape_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set data-series point marker shape. Example: <code class="computeroutput"></code>.shape(square), .shape(circlet)</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">int</span> <a name="id607093-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">int</span> <a name="id612235-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -630,15 +630,15 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id607085-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="keyword">int</span> size_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set Data series point marker size. Example <code class="computeroutput"></code>.shape(square).size(5)</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id612257-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="keyword">int</span> size_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set data-series point marker size. Example <code class="computeroutput"></code>.shape(square).size(5)</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id607090-bb"></a><span class="identifier">stroke_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col_<span class="special">)</span><span class="special">;</span></pre>
-<p>Set Data series point marker stroke color.</p>
+<pre class="literallayout"><a class="link" href="svg_2d_plot_series.html" title="Class svg_2d_plot_series">svg_2d_plot_series</a> <span class="special">&amp;</span> <a name="id612292-bb"></a><span class="identifier">stroke_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col_<span class="special">)</span><span class="special">;</span></pre>
+<p>Set data-series point marker stroke color.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">int</span> <a name="id607145-bb"></a><span class="identifier">values_count</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">int</span> <a name="id612342-bb"></a><span class="identifier">values_count</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -648,7 +648,7 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>number of normal values in a data series.</p></td>
+<td><p>number of normal values in a data-series.</p></td>
 </tr></tbody>
 </table></div>
 </li>

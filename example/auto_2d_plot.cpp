@@ -1,8 +1,9 @@
-/*! \file auto_2d_plot.cpp
-  \brief An example to demonstrate autoscaling with *multiple* STL containers.
-  \details See also demo_2d_autoscaling.cpp, auto_1d_plot.cpp and auto_1d_container.cpp.
+/*! \file
+  \brief An example to demonstrate autoscaling with @b multiple STL containers.
+  \details See also demo_2d_autoscaling.cpp, auto_1d_plot.cpp,
+  demo_1d_axis_scaling.cpp, demo_2d_autoscaling_vector.cpp and auto_1d_container.cpp.
 */
-
+//  auto_2d_plot.cpp
 // Copyright Paul A Bristow 2008, 2021
 
 // Use, modification and distribution are subject to the
@@ -19,7 +20,7 @@
 */
 
 #include <boost/svg_plot/svg_2d_plot.hpp>
-  using namespace boost::svg;
+//  using namespace boost::svg;
 
 #include <utility>
  // using std::pair;
@@ -33,11 +34,9 @@
 
 #include <limits>
 //  using std::numeric_limits;
+//] [/auto_2d_plot_1]
 
-#include <boost/math/special_functions.hpp>
-  //using boost::math::isfinite;
-
-  // Getting the max and min of X and Y data-points.
+//! Getting the max and min of X and Y data-points.
 template <typename T> // T an STL container: array, vector ...
 void s(T& container, // Container Data-series to plot - entire container.
                // (not necessarily ordered, so will find min and max).
@@ -61,18 +60,17 @@ void s(T& container, // Container Data-series to plot - entire container.
   std::cout << "s x_min " << *x_min << ", x_max " << *x_max << std::endl; // x_min 1, x_max 7.3
   std::cout << "s y_min " << *y_min << ", y_max " << *y_max << std::endl; // y_min 3.2, y_max 9.1
 } // template <class T> int scale_axis  T an STL container: array, vector ...
-//] [/auto_2d_plot_1]
 
 int main()
 {
 //[auto_2d_plot_2
-  /*`This example uses a single map to demonstrate autoscaling.
-  We create a map to hold our data-series.
+  /*`This example uses a single @c std::map to demonstrate autoscaling.
+  We create a @c std::map to hold our data-series.
   */
   std::map<const double, double> my_map;
   /*`
   Inserting some fictional values also sorts the data.
-  The index value in [] is the X value.
+  The index value in [ ] is the X value.
   */
   my_map[1.1] = 3.2;
   my_map[7.3] = 9.1;
@@ -88,35 +86,31 @@ int main()
   */
   try
   { // try'n'catch clocks are needed to ensure error messages from any exceptions are shown.
-
-  /*`Construct `myplot` and add at least a title,
+   /*`Construct `myplot` and add at least a title,
     specify the both X and Y axes are to use autoscaling,
     and add the one data-series to be plotted.
   */
+  using  namespace boost::svg;
   svg_2d_plot my_plot;
   my_plot.title("Autoscale example 1"); // Add a title.
-  my_plot.xy_autoscale(my_map); // Specify that both x and y axes are to use autoscaling,
-  my_plot.plot(my_map); // Add the one data series to be plotted
+  my_plot.xy_autoscale(my_map); // Specify that both X and Y-axes are to use autoscaling,
+  my_plot.plot(my_map); // Add the one data-series to be plotted.
   my_plot.write("./auto_2d_plot_1.svg"); // And write the SVG image to a file.
 
   /*`We can show the ranges used by autoscaling; */
   std::cout << "X min " << my_plot.x_range().first << ", X max " << my_plot.x_range().second << std::endl;
   std::cout << "Y min " << my_plot.y_range().first << ", Y max "  << my_plot.y_range().second << std::endl;
 
-  /*`Had we know that there were no 'at limits' values, we could have chosen to skip the checks.
+  /*`Had we know that there were no 'at limits' (NaN or infinite) values, we could have chosen to skip the checks.
   This might be important for speed if there are thousands of data values.
   */
   my_plot.autoscale_check_limits(false);  // Skip checks for speed.
 /*`The possible cost is that it will fail at run-time if there are any infinite or NaNs.
-We could also chose to autoscale either of the axes separately, for example:
 */
 
-  /*`But we might consider the Y-axis range of 3 to 10 a little ugly? so instead
-  */
   svg_2d_plot my_plot_2;
   my_plot_2.title("Autoscale example 2"); // Add a title.
-  my_plot_2.xy_autoscale(my_map); // Specify that both x and y axes are to use autoscaling.
-  my_plot_2.plot(my_map); // Add the one data series to be plotted.
+  my_plot_2.plot(my_map); // Add the one data-series to be plotted.
 
 /*`and specify:*/
 
@@ -124,8 +118,8 @@ We could also chose to autoscale either of the axes separately, for example:
 
 /*`which will chose a neater scale range from 0 to 10 for the Y axis. */
 
-/*`It is also possible to fully control the factors used by autoscaling with function @c scale_axis.
- For examples, see \example\demo_1d_axis_scaling.cpp */
+/*`It is also possible to fully control the factors used by autoscaling with function `scale_axis`.
+ For examples, see [../example/demo_1d_axis_scaling.cpp demo_1d_axis_scaling.cpp] */
 
   my_plot_2.write("./auto_2d_plot_2.svg"); // And write another SVG image to another file.
 

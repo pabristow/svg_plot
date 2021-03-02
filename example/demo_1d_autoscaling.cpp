@@ -1,7 +1,7 @@
 /*! \file demo_1d_autoscaling.cpp
     \brief An example to demonstrate simple 1D settings, including auto-scaling.
     \details
-      See auto_1d_containers.cpp for an example autoscaling with multiple data series.
+      See auto_1d_containers.cpp for an example autoscaling with multiple data-series.
       See also demo_1d_plot.cpp for a wider range of use.
 */
 // Copyright Jacob Voytko 2007
@@ -84,7 +84,7 @@ First we create a container and fill with some fictional data, and then display 
 
     svg_1d_plot my_1d_plot; // Construct a plot with all the default constructor values.
     my_1d_plot.title("Demo 1D autoscaling").x_label("X values"); // Add a plot title and X axis-label.
-    my_1d_plot.plot(my_data, "Auto 1D my_data"); // Add whole data series from my_data.
+    my_1d_plot.plot(my_data, "Auto 1D my_data"); // Add whole data-series from my_data.
 
     //`Use `x_autoscale` to scale the axis, in this most common and simplest case, using all the values.
     my_1d_plot.x_autoscale(my_data);
@@ -143,10 +143,10 @@ First we create a container and fill with some fictional data, and then display 
     If you inspect the plot, you will see that the
     lowest data value 1.2 and highest data value 8.9 are no longer shown,
     because it is now outside the plot window.
-    This is as if we had only written part of the data series.
+    This is as if we had only written part of the data-series.
     */
-     my_1d_plot_2.plot(++my_set.begin(),--my_set.end(), "Auto 1D my_set"); // Add 'top and tailed' data series from my_set.
-   //my_1d_plot.plot(my_set, "Auto 1D my_set"); // Add whole data series from my_set.
+     my_1d_plot_2.plot(++my_set.begin(),--my_set.end(), "Auto 1D my_set"); // Add 'top and tailed' data-series from my_set.
+   //my_1d_plot.plot(my_set, "Auto 1D my_set"); // Add whole data-series from my_set.
      my_1d_plot_2.write("demo_1d_autoscaling_2.svg"); // Write the plot to file.
 
     /*`If we want, we can check the autoscale range used, noting that zero *is* included because we demanded it.*/

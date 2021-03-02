@@ -42,10 +42,10 @@ int main()
 {
 
 //[demo_2d_autoscaling_2
-/*`Some fictional data is pushed into an STL container, here std::map:\n
+/*`Some fictional data is pushed into an STL container, here `std::map`:\n
 
   This example uses a single map to demonstrate autoscaling.
-  We construct a std::map to hold our data series, and insert some fictional values (that also sorts the data).
+  We construct a `std::map` to hold our data-series, and insert some fictional values (that also sorts the data).
   The 'index' value in [ ] is the X value.
   */
   std::map<const double, double> my_data;
@@ -54,7 +54,7 @@ int main()
   my_data[2.12] = 2.4394;
   my_data[5.47] = 5.3861;
 
-  using namespace boost::svg;
+  using namespace boost::svg; // Convenient for access to named colors and data-point marker shapes.
 
   try
   { 
@@ -71,15 +71,22 @@ int main()
 */
    my_2d_plot.xy_autoscale(my_data); // Autoscale both X and Y axes.
 
-/*`This says use the entire STL container `my_data` to set both X and Y ranges.
+/*`This says use the entire STL `std::map` container `my_data` to set both X and Y ranges.
 (The data used to autoscale the range(s) does not have to be the same as the data being plotted.
 For example, if we have analysed a product and know that an attribute like strength can only decline as the product ages,
 it would make sense to use the reference 'as new' data to scale the plot for the 'aged' product samples).
+*/
 
-The add the (one but could be more) data series, @c my_data and a description, and how the data-points are to be marked,
+  /*`We can show the ranges used by autoscaling; */
+   std::cout << "X min " << my_2d_plot.x_range().first << ", X max " << my_2d_plot.x_range().second << std::endl;
+   std::cout << "Y min " << my_2d_plot.y_range().first << ", Y max "  << my_2d_plot.y_range().second << std::endl;
+
+
+
+/*`Then add the (one but could be more) data-series, @c my_data and a description, and how the data-points are to be marked,
 here a circle with a diameter of 5 pixels, without a line joining the points (also the default).
 */
-    my_2d_plot.plot(my_data, "2d Values").shape(circlet).size(6).line_on(false);
+    my_2d_plot.plot(my_data, "2d Values").shape(circlet).size(8).line_on(false);
 
 /*`To use all these settings, finally write the plot to file.
 */

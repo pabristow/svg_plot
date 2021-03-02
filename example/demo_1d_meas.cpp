@@ -55,7 +55,7 @@ int main()
   {
 //[demo_1d_meas_2
 
-/*`STL vector is used as the container for our two data series,
+/*`STL vector is used as the container for our two data-series,
 and values are inserted using push_back.  Since this is a 1-D plot
 the order of data values is not important.
 */
@@ -130,7 +130,7 @@ the order of data values is not important.
 /*`A few (member) functions that are set should be fairly self-explanatory:
 
 * title provides a title at the top for the whole plot,
-* `legend_on(true)` will mean that titles of data series and markers will display in the legend box.
+* `legend_on(true)` will mean that titles of data-series and markers will display in the legend box.
 * `x_range(-1, 11)` sets the axis limits from -1 to +11 (instead of the default -10 to +10).
 * `background_border_color(blue)` sets just one of the very many other options.
 */
@@ -168,15 +168,15 @@ the order of data values is not important.
     ;
 
 /*`
-Then we add our data series,
-and add optional data series titles
+Then we add our data-series,
+and add optional data-series titles
 (very helpful if we want them to show on the legend).
 
-The A_times mark data points with a red border circle with a green fill,
+The A_times mark data-points with a red border circle with a green fill,
 The B_times use a blue vertical line,
 while C_times use an ellipse whose width (x radius) is from the uncertainty,
 1st standard deviation shows as ellipse in magenta, and 2nd as yellow.
-All the data points are also labelled with their value,
+All the data-points are also labelled with their value,
 and uncertainty and degrees of freedom if known.
 */
   my_plot.plot(D_data, "D");

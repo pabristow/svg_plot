@@ -2,8 +2,8 @@
 \brief Simple 2D plot of trig functions,
 contrived to show optionally
   using Bezier for curves,
-  data points markers,
-  lines joining data points,
+  data-points markers,
+  lines joining data-points,
 and 
   legend identifying point marks and/or lines.
 
@@ -55,7 +55,7 @@ int main()
 
   std::map<double, double> sin_data, cos_data, tan_data, sincos_data;
 
-  double step = 3.14159265 / 8.;  // Interval between function data points.
+  double step = 3.14159265 / 8.;  // Interval between function data-points.
 
   // Generate some trigonmetric data to plot.
   for(double i = 0; i <= 10.; i += step)
@@ -119,8 +119,8 @@ int main()
     .legend_title("Legend");
 
   my_plot.plot(sin_data, "sin(x)")
-    .line_on(true) // Line joining data points, using default color black.
-    .shape(circlet) // and circle marker showing data points.
+    .line_on(true) // Line joining data-points, using default color black.
+    .shape(circlet) // and circle marker showing data-points.
     .size(10) // Size (diameter pixels) of circlet data-point marker.
     .fill_color(yellow) // Outline is default black and centre yellow.
   // Default is no bezier.  Note angularity at the minima and maxima.

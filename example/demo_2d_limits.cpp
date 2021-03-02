@@ -54,7 +54,7 @@ int main()
   map<double, double> my_data;
   /*`
   Inserting some fictional values also sorts the data.
-  The map index value in [] is the x value, so mydata[x] = y.
+  The map index value in [ ] is the x value, so mydata[x] = y.
 
   First some normal valued points, not 'at limits'.
   */

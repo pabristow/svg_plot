@@ -2,7 +2,7 @@
 
    \brief An example to demonstrate boxplot settings, including auto-scaling.
    \details See also:
-     example @c auto_1d_containers.cpp for an example autoscaling with multiple data series.
+     example @c auto_1d_containers.cpp for an example autoscaling with multiple data-series.
      example @c demo_boxplot.cpp for a wider range of use.
 
 // Copyright Jacob Voytko 2007
@@ -117,7 +117,7 @@ int main()
     // my_boxplot.y_autoscale(std::make_pair(0., 10.));
     //my_boxplot.y_autoscale(0., 9.);  // Compute autoscale values for the plot.
     cout << boolalpha << "Use y autoscale " << my_boxplot.y_autoscale() << "."<< std::endl;
-    my_boxplot.plot(my_data, "Auto boxplot"); // Add the one data series, and give it a title.
+    my_boxplot.plot(my_data, "Auto boxplot"); // Add the one data-series, and give it a title.
     my_boxplot.write("auto_boxplot.svg"); // Write the plot to file.
 
     /*`It may be useful to display that range chosen by autoscaling. */

@@ -81,7 +81,7 @@ int main()
     my_1d_plot.title("Demo point markers 1D") // Add a string title of the plot.
       .x_label("length (m)"); // Add a label for the X-axis, including a unit.
 
-/*`Add the one data series, `my_data` and a description, and how the data points are to be marked,
+/*`Add the one data-series, `my_data` and a description, and how the data-points are to be marked,
 here a blue diamond shape with a size of 10 pixels.
 */
     my_1d_plot.plot(my_data_1, "1D Values").shape(diamond).size(10).stroke_color(red).fill_color(blue);

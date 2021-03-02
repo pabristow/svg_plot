@@ -51,7 +51,7 @@
 <span class="comment">//  using std::copy;</span>
 </pre>
 <p>
-        STL vector is used as the container for our two data series, and values are
+        STL vector is used as the container for our two data-series, and values are
         inserted using push_back. Since this is a 1-D plot the order of data values
         is not important.
       </p>
@@ -98,7 +98,7 @@
         be fairly self-explanatory:
       </p>
 <pre class="programlisting"><span class="special">*</span> <span class="special">.</span><span class="identifier">title</span><span class="special">()</span> <span class="identifier">provides</span> <span class="identifier">a</span> <span class="identifier">title</span> <span class="identifier">at</span> <span class="identifier">the</span> <span class="identifier">top</span> <span class="keyword">for</span> <span class="identifier">the</span> <span class="identifier">whole</span> <span class="identifier">plot</span><span class="special">,</span>
-<span class="special">*</span> <span class="special">.</span><span class="identifier">legend_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span> <span class="identifier">will</span> <span class="identifier">mean</span> <span class="identifier">that</span> <span class="identifier">titles</span> <span class="identifier">of</span> <span class="identifier">data</span> <span class="identifier">series</span> <span class="keyword">and</span> <span class="identifier">markers</span> <span class="identifier">will</span> <span class="identifier">display</span> <span class="identifier">in</span> <span class="identifier">the</span> <span class="identifier">legend</span> <span class="identifier">box</span><span class="special">.</span>
+<span class="special">*</span> <span class="special">.</span><span class="identifier">legend_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span> <span class="identifier">will</span> <span class="identifier">mean</span> <span class="identifier">that</span> <span class="identifier">titles</span> <span class="identifier">of</span> <span class="identifier">data</span><span class="special">-</span><span class="identifier">series</span> <span class="keyword">and</span> <span class="identifier">markers</span> <span class="identifier">will</span> <span class="identifier">display</span> <span class="identifier">in</span> <span class="identifier">the</span> <span class="identifier">legend</span> <span class="identifier">box</span><span class="special">.</span>
 <span class="special">*</span> <span class="special">.</span><span class="identifier">x_range</span><span class="special">(-</span><span class="number">1</span><span class="special">,</span> <span class="number">11</span><span class="special">)</span> <span class="identifier">sets</span> <span class="identifier">the</span> <span class="identifier">axis</span> <span class="identifier">limits</span> <span class="identifier">from</span> <span class="special">-</span><span class="number">1</span> <span class="identifier">to</span> <span class="special">+</span><span class="number">11</span> <span class="special">(</span><span class="identifier">instead</span> <span class="identifier">of</span> <span class="identifier">the</span> <span class="keyword">default</span> <span class="special">-</span><span class="number">10</span> <span class="identifier">to</span> <span class="special">+</span><span class="number">10</span><span class="special">).</span>
 <span class="special">*</span> <span class="special">.</span><span class="identifier">background_border_color</span><span class="special">(</span><span class="identifier">blue</span><span class="special">)</span> <span class="identifier">sets</span> <span class="identifier">just</span> <span class="identifier">one</span> <span class="identifier">of</span> <span class="identifier">the</span> <span class="identifier">very</span> <span class="identifier">many</span> <span class="identifier">other</span> <span class="identifier">options</span><span class="special">.</span>
 </pre>
@@ -139,8 +139,8 @@
         "B_times" ... (very helpful if we want them to show on the legend).
       </p>
 <p>
-        All the data points are also labeled with their value, and uncertainty (+/-)
-        and degrees of freedom if known. The A_times mark data points with a red
+        All the data-points are also labeled with their value, and uncertainty (+/-)
+        and degrees of freedom if known. The A_times mark data-points with a red
         border circle with a green fill, The B_times use a blue vertical line, while
         C_times use an ellipse whose width (x radius) is from the uncertainty, 1st
         standard deviation shows as ellipse in magenta, and 2nd as yellow.

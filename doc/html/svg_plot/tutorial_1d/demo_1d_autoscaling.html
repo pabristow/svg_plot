@@ -87,7 +87,7 @@
       </p>
 <pre class="programlisting"><span class="identifier">svg_1d_plot</span> <span class="identifier">my_1d_plot</span><span class="special">;</span> <span class="comment">// Construct a plot with all the default constructor values.</span>
 <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Demo 1D autoscaling"</span><span class="special">).</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"X values"</span><span class="special">);</span> <span class="comment">// Add a plot title and X axis-label.</span>
-<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">,</span> <span class="string">"Auto 1D my_data"</span><span class="special">);</span> <span class="comment">// Add whole data series from my_data.</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">,</span> <span class="string">"Auto 1D my_data"</span><span class="special">);</span> <span class="comment">// Add whole data-series from my_data.</span>
 </pre>
 <p>
         Use <code class="computeroutput"><span class="identifier">x_autoscale</span></code> to scale
@@ -158,10 +158,10 @@
         As before, we add the data set to the plot, and write to SVG XML to file.
         If you inspect the plot, you will see that the lowest data value 1.2 and
         highest data value 8.9 are no longer shown, because it is now outside the
-        plot window. This is as if we had only written part of the data series.
+        plot window. This is as if we had only written part of the data-series.
       </p>
-<pre class="programlisting">  <span class="identifier">my_1d_plot_2</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(++</span><span class="identifier">my_set</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),--</span><span class="identifier">my_set</span><span class="special">.</span><span class="identifier">end</span><span class="special">(),</span> <span class="string">"Auto 1D my_set"</span><span class="special">);</span> <span class="comment">// Add 'top and tailed' data series from my_set.</span>
-<span class="comment">//my_1d_plot.plot(my_set, "Auto 1D my_set"); // Add whole data series from my_set.</span>
+<pre class="programlisting">  <span class="identifier">my_1d_plot_2</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(++</span><span class="identifier">my_set</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),--</span><span class="identifier">my_set</span><span class="special">.</span><span class="identifier">end</span><span class="special">(),</span> <span class="string">"Auto 1D my_set"</span><span class="special">);</span> <span class="comment">// Add 'top and tailed' data-series from my_set.</span>
+<span class="comment">//my_1d_plot.plot(my_set, "Auto 1D my_set"); // Add whole data-series from my_set.</span>
   <span class="identifier">my_1d_plot_2</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"demo_1d_autoscaling_2.svg"</span><span class="special">);</span> <span class="comment">// Write the plot to file.</span>
 </pre>
 <p>

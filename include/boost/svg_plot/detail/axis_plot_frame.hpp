@@ -5366,7 +5366,7 @@ namespace boost
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_autoscale(bool b)
           { //! Set @c true if to use autoscaled values for X-axis.
-             if (b && derived().x_auto_tick_interval_ < 0)
+             if (b && derived().x_auto_tick_interval_ <= 0)
              { // No autoscale values have been calculated, so not safe to make x_autoscale true.
                 throw std::runtime_error("X autoscale has not been calculated yet!" );
              }
@@ -5385,7 +5385,7 @@ namespace boost
           Derived& axis_plot_frame<Derived>::autoscale(bool b)
           { //! Set whether to use X autoscaled values.
             //! Same as x_autoscale, and used by boxplot too.
-             if (derived().x_auto_tick_interval_ < 0)
+             if (derived().x_auto_tick_interval_ <= 0)
              { // No autoscale values have been calculated, so not safe to make x_autoscale true.
                 throw std::runtime_error("X-axis autoscale has not been calculated yet!" );
              }

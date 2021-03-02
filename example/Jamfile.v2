@@ -97,6 +97,7 @@ run demo_1d_vector.cpp ; # Simple plot of vector of 1D data.
 run demo_1d_x_external.cpp ; #
 run demo_1d_heat_flow_data.cpp ; # demonstrate 1d and boxplot of NIST heatflow data.
 run demo_2d_autoscaling.cpp ;
+run demo_2d_autoscaling_vector.cpp ;
 run demo_2d_bars.cpp ; # Demonstrate the bars (& columns or sticks).
 run demo_2d_histogram.cpp ; #  Demonstrate drawing histogram.
 run demo_2d_limits.cpp ; #

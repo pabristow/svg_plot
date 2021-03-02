@@ -8,7 +8,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
   <!-- Add your title here ! -->
-  <title>Boost.SVG_plot Doxygen Index Fri Feb 12 2021 17:44:53 SVG plot </title>
+  <title>Boost.SVG_plot Doxygen Index Tue Mar 2 2021 17:15:08 SVG plot </title>
   <!-- Add your custom stylesheet here ! -->
   <link href="svg_plot_doxygen.css" rel="stylesheet" type="text/css"/>
   <!-- Note that this overrides any stylesheet specified in doxyfile setting HTML_STYLESHEET="mystylesheet.css" ! -->
@@ -18,10 +18,10 @@
 <body style="background-image: url(../images/draft.png);"> <!-- </body> is in footer. -->
 <!-- Add your logo here ! -->
 <!-- Boost logo here if accepted after review, else some "Boost in mind" logo, for example the one below, or "proposed to Boost" ! -->
-<table cellpadding="5" width="100">
+<table cellpadding="5" width="50">
   <tbody>
     <tr>
-      <td valign="top"><img alt="Written with Boost C++ Libraries in mind." src="../images/proposed_for_boost.png" height="60" width="350"/>
+      <td valign="top"><img alt="With Boost C++ Libraries in mind." src="../images/proposed_for_boost.png" height="60" width="350"/>
       </td>
     </tr>
   </tbody>
@@ -156,10 +156,10 @@ Friends</h2></td></tr>
 <div class="textblock"><p>Holds a series of 2D data values (points) to be plotted. </p>
 <p>Data values are sorted into normal and 'at limits': NaN, infinity or too small or too large.<br  />
 <br  />
- Member functions allow control of data points markers and lines joining them, and their appearance, shape, color and size.<br  />
- Data points can include their value, and optionally uncertainty and optionally number of degrees of freedom.<br  />
- Each data series can have a title that can be shown on a legend box with identifying symbols.</p>
-<p><code>std::multimap</code> is used rather than <code>std::vector</code> of <code>std::pair</code> s because <code>std::multimap</code> sorts and ensures that lines joining data points are unaffected by the order in which data is presented. (For 1-D a vector of doubles can be used). </p>
+ Member functions allow control of data-points markers and lines joining them, and their appearance, shape, color and size.<br  />
+ data-points can include their value, and optionally uncertainty and optionally number of degrees of freedom.<br  />
+ Each data-series can have a title that can be shown on a legend box with identifying symbols.</p>
+<p><code>std::multimap</code> is used rather than <code>std::vector</code> of <code>std::pair</code> s because <code>std::multimap</code> sorts and ensures that lines joining data-points are unaffected by the order in which data is presented. (For 1-D a vector of doubles can be used). </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6b46e17de3283705f47f5eb63ed7d2be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6b46e17de3283705f47f5eb63ed7d2be">&#9670;&nbsp;</a></span>svg_2d_plot_series()</h2>
@@ -194,7 +194,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor for a data series to plot </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>Constructor for a data-series to plot </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>an STL container: for example: <code>multimap</code>. </td></tr>
   </table>
@@ -202,8 +202,8 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">begin</td><td>Starting iterator into container of data series begin() to start at the beginning. </td></tr>
-    <tr><td class="paramname">end</td><td>Ending iterator into container of data series, end() to finish with the last item. </td></tr>
+    <tr><td class="paramname">begin</td><td>Starting iterator into container of data-series begin() to start at the beginning. </td></tr>
+    <tr><td class="paramname">end</td><td>Ending iterator into container of data-series, end() to finish with the last item. </td></tr>
     <tr><td class="paramname">title</td><td>Title for the plot. </td></tr>
   </table>
   </dd>
@@ -226,7 +226,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Color for any area fill below line(s) joining data points.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Color for any area fill below line(s) joining data-points.</dd></dl>
 
 </div>
 </div>
@@ -245,7 +245,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set Data series area fill color.</p>
+<p>Set data-series area fill color.</p>
 <dl class="section note"><dt>Note</dt><dd><code>area_fill(false)</code> will produce a <b>blank</b> color, and so NO FILL.</dd></dl>
 <p><code>area_fill(blank)</code> will produce the default non-blank color (black?).</p>
 
@@ -422,7 +422,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> if line joing data points should be a bezier curve.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if line joing data-points should be a bezier curve.</dd></dl>
 
 </div>
 </div>
@@ -441,7 +441,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set <code>true</code> to draw bezier curved line linking data points.</p>
+<p>Set <code>true</code> to draw bezier curved line linking data-points.</p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to <a class="el" href="classboost_1_1svg_1_1svg__2d__plot__series.html" title="Holds a series of 2D data values (points) to be plotted.">svg_2d_plot_series</a> to make chainable.</dd></dl>
 
 </div>
@@ -461,7 +461,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set data series point marker fill color.</p>
+<p>Set data-series point marker fill color.</p>
 
 </div>
 </div>
@@ -505,7 +505,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>number of values 'at limit' in a data series.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>number of values 'at limit' in a data-series.</dd></dl>
 
 </div>
 </div>
@@ -523,7 +523,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>color of a line to join data points.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>color of a line to join data-points.</dd></dl>
 
 </div>
 </div>
@@ -542,7 +542,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set Data series line (stroke) color. Example: <code></code>.line_color(blue)</p>
+<p>Set data-series line (stroke) color. Example: <code></code>.line_color(blue)</p>
 
 </div>
 </div>
@@ -560,7 +560,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> if a line is to join data points.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if a line is to join data-points.</dd></dl>
 
 </div>
 </div>
@@ -579,7 +579,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set <code>true</code> to draw line linking data points.</p>
+<p>Set <code>true</code> to draw line linking data-points.</p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to <a class="el" href="classboost_1_1svg_1_1svg__2d__plot__series.html" title="Holds a series of 2D data values (points) to be plotted.">svg_2d_plot_series</a> to make chainable.</dd></dl>
 
 </div>
@@ -598,7 +598,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Line style for line joining data points.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Line style for line joining data-points.</dd></dl>
 
 </div>
 </div>
@@ -616,7 +616,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Width of line joining data points.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Width of line joining data-points.</dd></dl>
 
 </div>
 </div>
@@ -635,7 +635,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set data series line width.</p>
+<p>Set data-series line width.</p>
 <p>(Sets legend line width too).</p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to <a class="el" href="classboost_1_1svg_1_1svg__2d__plot__series.html" title="Holds a series of 2D data values (points) to be plotted.">svg_2d_plot_series</a> to make chainable.</dd></dl>
 
@@ -656,7 +656,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set Data series point marker size. Example <code></code> <br  />
+<p>Set data-series point marker size. Example <code></code> <br  />
 </p>
 
 </div>
@@ -694,7 +694,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set Data series point marker font decoration. Example <code>my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_decoration("underline")</p>
+<p>Set data-series point marker font decoration. Example <code>my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_decoration("underline")</p>
 
 </div>
 </div>
@@ -731,7 +731,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set Data series point marker font family. Example <code>my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_family("times new roman")</p>
+<p>Set data-series point marker font family. Example <code>my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_family("times new roman")</p>
 
 </div>
 </div>
@@ -768,7 +768,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set Data series point marker font stretch. Example <code>my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_stretch("narrow")</p>
+<p>Set data-series point marker font stretch. Example <code>my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_stretch("narrow")</p>
 
 </div>
 </div>
@@ -805,7 +805,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set Data series point marker font style. Example <code>my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_style("italic")</p>
+<p>Set data-series point marker font style. Example <code>my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_style("italic")</p>
 
 </div>
 </div>
@@ -842,7 +842,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set Data series point marker font weight. Example <code>my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_weight("bold")</p>
+<p>Set data-series point marker font weight. Example <code>my_plot.plot</code>(my_data, "my_data").shape("Z").point_font_weight("bold")</p>
 
 </div>
 </div>
@@ -897,7 +897,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set Data series point marker shape. Example: <code></code>.shape(square), .shape(circlet)</p>
+<p>Set data-series point marker shape. Example: <code></code>.shape(square), .shape(circlet)</p>
 
 </div>
 </div>
@@ -934,7 +934,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set Data series point marker size. Example <code></code>.shape(square).size(5)</p>
+<p>Set data-series point marker size. Example <code></code>.shape(square).size(5)</p>
 
 </div>
 </div>
@@ -953,7 +953,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set Data series point marker stroke color.</p>
+<p>Set data-series point marker stroke color.</p>
 
 </div>
 </div>
@@ -971,7 +971,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>number of normal values in a data series.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>number of normal values in a data-series.</dd></dl>
 
 </div>
 </div>
@@ -1021,7 +1021,7 @@ template&lt;typename T &gt; </div>
       <!-- 2021 becomes the current year, for example 2010, so claims copyright for a range of years, 2009 - 2010. -->
      <p>Doxygen Documentation generated by&nbsp;<a href="https://www.doxygen.org/index.html"> 
      <img src="https://www.doxygen.nl/images/doxygen.png"   width="100" height="20"
-     alt="Doxygen logo" align="middle" border="1"/>&nbsp; 1.9.1</a>, Revised at Fri Feb 12 2021 17:44:53</p>
+     alt="Doxygen logo" align="middle" border="1"/>&nbsp; 1.9.1</a>, Revised at Tue Mar 2 2021 17:15:08</p>
   </address>
   </tr>
 </tbody>

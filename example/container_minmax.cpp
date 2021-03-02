@@ -1,7 +1,6 @@
 /*! \file container_minmax.cpp
     \brief Finding minmax of an STL container.
     \details Provide specialized operator<< for pairs.
-    \author Paul A Bristow
 */
 
 // Copyright Paul A Bristow 2008, 2020
@@ -21,8 +20,8 @@
   // using std::transform
 
 #include <iostream>
-  using std::cout;
-  using std::endl;
+  //using std::cout;
+  //using std::endl;
 
 #include <vector>
   using std::vector;
@@ -91,7 +90,7 @@
 //! \tparam T an STL container: array, vector ...
 template <typename T> // T an STL container: array, vector ...
 size_t show(const T& container)
-{ 
+{
   for (typename T::const_iterator it = container.begin(); it != container.end(); it++)
   {
     std::cout << *it << ' ';
@@ -99,7 +98,7 @@ size_t show(const T& container)
   std::cout << std::endl;
   std::cout << container.size() << " values in container. " << std::endl;
   return container.size();
-} // Container Data series to plot.
+} // Container data-series to plot.
 
 //template <typename T> // T an STL container: container of containers.
 //size_t show_all(vector<T> containers)
@@ -109,19 +108,19 @@ size_t show(const T& container)
 //    show(containers[i]);
 //  }
 //  return containers.size();
-//} // Container Data series to plot.
+//} // Container data-series to plot.
 
 //! Show all the containers of containers values.
 //! \tparam T an STL container: container of containers, array, vector ...
-template <typename T> 
+template <typename T>
 size_t show_all(const T& containers)
-{ 
+{
   for (typename T::const_iterator it = containers.begin(); it != containers.end(); it++)
   {
     show(*it);
   }
   return containers.size();
-} // Container Data series to plot.
+} // Container data-series to plot.
 
 // Pointer version is not needed - iterator version is used instead.
 //template <typename T> // T an STL container: array, vector ...
@@ -131,13 +130,13 @@ size_t show_all(const T& containers)
 //  while (begin != end)
 //  {
 //    count++;
-//    cout << *begin << ' ';
+//    std::cout << *begin << ' ';
 //    ++begin;
 //  }
-//  cout << endl;
-//  cout << count << " values in container used. " << endl;
+//  std::cout << std::end
+//  std::cout << count << " values in container used. " << std::end
 //  return count;
-//}// Container Data series to plot.
+//}// Container data-series to plot.
 
 template <typename iter> // T an STL container: array, vector ...
 size_t show_part(iter begin, iter end) // Iterators.
@@ -146,25 +145,25 @@ size_t show_part(iter begin, iter end) // Iterators.
   while (begin != end)
   {
     count++;
-    cout << *begin << ' ';
+    std::cout << *begin << ' ';
     ++begin;
   }
-  cout << endl;
-  cout << count << " values in container used. " << endl;
+  std::cout << std::endl;
+    std::cout << count << " values in container used. " << std::endl;
   return count;
-}// Container Data series to plot.
+}// Container data-series to plot.
 
 // typedef std::iterator_traits<iter>::value_type would be double, etc
 
 template <typename iter> // into an STL container: array, vector, set ...
-pair<double, double> s(iter begin, iter end) // Data series to plot.
+pair<double, double> s(iter begin, iter end) // data-series to plot.
 {
   iter it = min_element(begin, end);
-  cout << "min_element " << *it << endl;
+  std::cout << "min_element " << *it << std::endl;
   std::pair<iter, iter> result = boost::minmax_element(begin, end);
   //pair<const T::const_iterator, const T::const_iterator > result = boost::minmax_element(begin, end);
   // error C2825: 'T': must be a class or namespace when followed by '::'
-  cout << "minmax_elements " << *result.first << ' ' << *result.second << endl;
+  std::cout << "minmax_elements " << *result.first << ' ' << *result.second << std::endl;
 
   std::pair<double, double > minmax;
   minmax.first = *result.first;
@@ -173,10 +172,10 @@ pair<double, double> s(iter begin, iter end) // Data series to plot.
 } // template <class T> int s  T an STL container: array, vector ...
 
 template <class T> // T an STL container: for example: array<float>, vector<double> ...
-pair<double, double> s(const T& container) // Data series to plot.
+pair<double, double> s(const T& container) // data-series to plot.
 {
   pair<typename T::const_iterator, typename T::const_iterator> result = boost::minmax_element(container.begin(), container.end());
-  cout << "minmax_elements " << *result.first << ' ' << *result.second << endl;
+  std::cout << "minmax_elements " << *result.first << ' ' << *result.second << std::endl;
   std::pair<double, double > minmax; // Convert type of container T to double.
   minmax.first = *result.first;
   minmax.second = *result.second;
@@ -184,18 +183,18 @@ pair<double, double> s(const T& container) // Data series to plot.
 } // template <class T> int s  T an STL container: array, vector ...
 
 template <typename T> // T an STL container: array, vector ...
-std::pair<double, double> scale(const T& container) // Container Data series
+std::pair<double, double> scale(const T& container) // Container data-series
 {
   //typedef typename <const T& >::const_iterator container_iterator;
   //pair< T, T > result = boost::minmax_element(container.begin(), container.end());
   //pair< vector_iterator, vector_iterator > result = boost::minmax_element(container.begin(), container.end());
-  //cout << "Autoscale min is " << *(result.first) << endl;
-  //cout << "Max is  " << *(result.second) << endl;
+  //std::cout << "Autoscale min is " << *(result.first) << std::end
+  //std::cout << "Max is  " << *(result.second) << std::end
   //T::const_iterator it;
   //it = min_element(container.begin(), container.end());
-  //cout << "min " << *it << endl;
+  //std::cout << "min " << *it << std::end
   //it = max_element(container.begin(), container.end());
-  //cout << "max " << *it << endl;
+  //std::cout << "max " << *it << std::end
 
   //pair<double, double> mm;
   //mm.first= *(minmax_element(container.begin(), container.end()).first);
@@ -211,7 +210,7 @@ std::pair<double, double> scale(const T& container) // Container Data series
 } // template <class T> int scale_axis,  T an STL container: array, vector  set, map ...
 
 template <class T> // T an STL container: array, vector, set, map ...
-std::pair<double, double> s_all(const T& containers) // Container of containers of Data series.
+std::pair<double, double> s_all(const T& containers) // Container of containers of data-series.
 {
   std::pair<double, double> minmax((std::numeric_limits<double>::max)(), (std::numeric_limits<double>::min)());
   for (typename T::const_iterator it = containers.begin(); it != containers.end(); it++)
@@ -239,14 +238,14 @@ int main()
   // transform(my_data.begin(), my_data.end(), data2.begin(), bind1st(multiplies<double>(), 2.3));
   copy(my_data.begin(), my_data.end(), std::back_inserter(my_data_2));
   copy(my_data.begin(), my_data.end(), std::ostream_iterator<double>(std::cout, " "));
-  cout << endl << my_data.size() << " values in my_data. " << endl;
+  std::cout << "\n" << my_data.size() << " values in my_data. " << std::endl;
   std::copy(my_data_2.begin(), my_data_2.end(), std::ostream_iterator<double>(std::cout, " "));
   const double d = 2.3; // Multiply all items by a constant.
   std::transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), [d](double i) { return i * d; });
 
   copy(my_data_2.begin(), my_data_2.end(), ostream_iterator<double>(std::cout, " "));
 
-  cout << endl << my_data.size() << " values in my_data. " << endl;
+  std::cout << "\n" << my_data.size() << " values in my_data. " << std::endl;
 
   vector<vector<double> > my_containers;
 
@@ -303,9 +302,9 @@ int main()
   std::multiset<double>::const_iterator si;
   for (si = my_set.begin(); si != my_set.end(); si++)
   {
-    cout << *si << ' ';
+    std::cout << *si << ' ';
   }
-  std::cout << endl;
+  std::cout << std::endl;
   std::cout << my_set.size() << " values in my_set. " << std::endl; // 8 values in my_set.
 
   mm = s(my_set); // Display range.
