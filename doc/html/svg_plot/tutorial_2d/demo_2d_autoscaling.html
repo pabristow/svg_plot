@@ -36,7 +36,7 @@
         First we need a few includes to use Boost.Plot:
       </p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">svg_2d_plot</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
-  <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">;</span>
+<span class="comment">//  using namespace boost::svg;</span>
 
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">utility</span><span class="special">&gt;</span>
  <span class="comment">// using std::pair;</span>
@@ -50,44 +50,16 @@
 
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">limits</span><span class="special">&gt;</span>
 <span class="comment">//  using std::numeric_limits;</span>
-
-<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">math</span><span class="special">/</span><span class="identifier">special_functions</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
-  <span class="comment">//using boost::math::isfinite;</span>
-
-  <span class="comment">// Getting the max and min of X and Y data-points.</span>
-<span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span> <span class="comment">// T an STL container: array, vector ...</span>
-<span class="keyword">void</span> <span class="identifier">s</span><span class="special">(</span><span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">container</span><span class="special">,</span> <span class="comment">// Container Data-series to plot - entire container.</span>
-               <span class="comment">// (not necessarily ordered, so will find min and max).</span>
-               <span class="keyword">double</span><span class="special">*</span> <span class="identifier">x_min</span><span class="special">,</span>  <span class="keyword">double</span><span class="special">*</span> <span class="identifier">x_max</span><span class="special">,</span>
-               <span class="keyword">double</span><span class="special">*</span> <span class="identifier">y_min</span><span class="special">,</span>  <span class="keyword">double</span><span class="special">*</span> <span class="identifier">y_max</span>
-               <span class="special">)</span>
-<span class="special">{</span>
-  <span class="keyword">typedef</span> <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">::</span><span class="identifier">const_iterator</span> <span class="identifier">iter</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span><span class="identifier">iter</span><span class="special">,</span> <span class="identifier">iter</span><span class="special">&gt;</span> <span class="identifier">result</span> <span class="special">=</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">minmax_element</span><span class="special">(</span><span class="identifier">container</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">container</span><span class="special">.</span><span class="identifier">end</span><span class="special">());</span>
-  <span class="comment">// minmax_element is efficient for maps because can use knowledge of being sorted,</span>
-  <span class="comment">// BUT only if it can be assumed that no values are 'at limits',</span>
-  <span class="comment">// infinity, NaN, max_value, min_value, denorm_min.</span>
-  <span class="comment">// Otherwise it is necessary to inspect all values individually.</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span><span class="keyword">const</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">px</span> <span class="special">=</span> <span class="special">*</span><span class="identifier">result</span><span class="special">.</span><span class="identifier">first</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span><span class="keyword">const</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">py</span> <span class="special">=</span> <span class="special">*</span><span class="identifier">result</span><span class="special">.</span><span class="identifier">second</span><span class="special">;</span>
-  <span class="special">*</span><span class="identifier">x_min</span> <span class="special">=</span> <span class="identifier">px</span><span class="special">.</span><span class="identifier">first</span><span class="special">;</span>
-  <span class="special">*</span><span class="identifier">x_max</span> <span class="special">=</span> <span class="identifier">py</span><span class="special">.</span><span class="identifier">first</span><span class="special">;</span>
-  <span class="special">*</span><span class="identifier">y_min</span> <span class="special">=</span> <span class="identifier">px</span><span class="special">.</span><span class="identifier">second</span><span class="special">;</span>
-  <span class="special">*</span><span class="identifier">y_max</span> <span class="special">=</span> <span class="identifier">py</span><span class="special">.</span><span class="identifier">second</span><span class="special">;</span>
-
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"s x_min "</span> <span class="special">&lt;&lt;</span> <span class="special">*</span><span class="identifier">x_min</span> <span class="special">&lt;&lt;</span> <span class="string">", x_max "</span> <span class="special">&lt;&lt;</span> <span class="special">*</span><span class="identifier">x_max</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// x_min 1, x_max 7.3</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"s y_min "</span> <span class="special">&lt;&lt;</span> <span class="special">*</span><span class="identifier">y_min</span> <span class="special">&lt;&lt;</span> <span class="string">", y_max "</span> <span class="special">&lt;&lt;</span> <span class="special">*</span><span class="identifier">y_max</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// y_min 3.2, y_max 9.1</span>
-<span class="special">}</span> <span class="comment">// template &lt;class T&gt; int scale_axis  T an STL container: array, vector ...</span>
 </pre>
 <p>
-        This example uses a single map to demonstrate autoscaling. We create a map
-        to hold our data-series.
+        This example uses a single @c std::map to demonstrate autoscaling. We create
+        a @c std::map to hold our data-series.
       </p>
 <pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">map</span><span class="special">&lt;</span><span class="keyword">const</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">my_map</span><span class="special">;</span>
 </pre>
 <p>
-        Inserting some fictional values also sorts the data. The index value in []
-        is the X value.
+        Inserting some fictional values also sorts the data. The index value in [
+        ] is the X value.
       </p>
 <pre class="programlisting"><span class="identifier">my_map</span><span class="special">[</span><span class="number">1.1</span><span class="special">]</span> <span class="special">=</span> <span class="number">3.2</span><span class="special">;</span>
 <span class="identifier">my_map</span><span class="special">[</span><span class="number">7.3</span><span class="special">]</span> <span class="special">=</span> <span class="number">9.1</span><span class="special">;</span>
@@ -111,10 +83,11 @@
         at least a title, specify the both X and Y axes are to use autoscaling, and
         add the one data-series to be plotted.
       </p>
-<pre class="programlisting"><span class="identifier">svg_2d_plot</span> <span class="identifier">my_plot</span><span class="special">;</span>
+<pre class="programlisting"><span class="keyword">using</span>  <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">;</span>
+<span class="identifier">svg_2d_plot</span> <span class="identifier">my_plot</span><span class="special">;</span>
 <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Autoscale example 1"</span><span class="special">);</span> <span class="comment">// Add a title.</span>
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">xy_autoscale</span><span class="special">(</span><span class="identifier">my_map</span><span class="special">);</span> <span class="comment">// Specify that both x and y axes are to use autoscaling,</span>
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_map</span><span class="special">);</span> <span class="comment">// Add the one data-series to be plotted</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">xy_autoscale</span><span class="special">(</span><span class="identifier">my_map</span><span class="special">);</span> <span class="comment">// Specify that both X and Y-axes are to use autoscaling,</span>
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_map</span><span class="special">);</span> <span class="comment">// Add the one data-series to be plotted.</span>
 <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./auto_2d_plot_1.svg"</span><span class="special">);</span> <span class="comment">// And write the SVG image to a file.</span>
 </pre>
 <p>
@@ -124,23 +97,18 @@
 <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Y min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">y_range</span><span class="special">().</span><span class="identifier">first</span> <span class="special">&lt;&lt;</span> <span class="string">", Y max "</span>  <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">y_range</span><span class="special">().</span><span class="identifier">second</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
 </pre>
 <p>
-        Had we know that there were no 'at limits' values, we could have chosen to
-        skip the checks. This might be important for speed if there are thousands
-        of data values.
+        Had we know that there were no 'at limits' (NaN or infinite) values, we could
+        have chosen to skip the checks. This might be important for speed if there
+        are thousands of data values.
       </p>
 <pre class="programlisting"><span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">autoscale_check_limits</span><span class="special">(</span><span class="keyword">false</span><span class="special">);</span>  <span class="comment">// Skip checks for speed.</span>
 </pre>
 <p>
         The possible cost is that it will fail at run-time if there are any infinite
-        or NaNs. We could also chose to autoscale either of the axes separately,
-        for example:
-      </p>
-<p>
-        But we might consider the Y-axis range of 3 to 10 a little ugly? so instead
+        or NaNs.
       </p>
 <pre class="programlisting"><span class="identifier">svg_2d_plot</span> <span class="identifier">my_plot_2</span><span class="special">;</span>
 <span class="identifier">my_plot_2</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Autoscale example 2"</span><span class="special">);</span> <span class="comment">// Add a title.</span>
-<span class="identifier">my_plot_2</span><span class="special">.</span><span class="identifier">xy_autoscale</span><span class="special">(</span><span class="identifier">my_map</span><span class="special">);</span> <span class="comment">// Specify that both x and y axes are to use autoscaling.</span>
 <span class="identifier">my_plot_2</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_map</span><span class="special">);</span> <span class="comment">// Add the one data-series to be plotted.</span>
 </pre>
 <p>
@@ -151,7 +119,8 @@
 <p>
         which will chose a neater scale range from 0 to 10 for the Y axis. It is
         also possible to fully control the factors used by autoscaling with function
-        @c scale_axis. For examples, see \example\demo_1d_axis_scaling.cpp
+        <code class="computeroutput"><span class="identifier">scale_axis</span></code>. For examples,
+        see [../example/demo_1d_axis_scaling.cpp demo_1d_axis_scaling.cpp]
       </p>
 <pre class="programlisting"><span class="identifier">my_plot_2</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./auto_2d_plot_2.svg"</span><span class="special">);</span> <span class="comment">// And write another SVG image to another file.</span>
 </pre>
