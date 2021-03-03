@@ -416,6 +416,8 @@ void scale_axis(
   detail::scale_axis_impl(min_value, max_value,
     axis_min_value, axis_max_value, axis_tick_increment, auto_ticks, // All 4 updated.
     origin, tight, min_ticks, steps); // Display range.
+  check_limits = false;
+  autoscale_plusminus = 1.96;
 }
 
  /*! Scale axis from data-series (usually to plot), perhaps only part of container.
@@ -540,6 +542,7 @@ void scale_axis(
   detail::scale_axis_impl(x_min, x_max,
     axis_min_value, axis_max_value, axis_tick_increment, auto_ticks,
     origin, tight, min_ticks, steps);
+  autoscale_plusminus = 3.;
 
 } // template <class C> int scale_axis  C an STL container: array, vector ...
 

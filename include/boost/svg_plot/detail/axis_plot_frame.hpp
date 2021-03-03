@@ -1589,9 +1589,9 @@ namespace boost
         // so warn here of overflow or over-compress.
         // A factor of 1.6 more characters than width still allows bold characters to not quite collide or overlap.
 //        bool fit_ok = check_text_fit(const text_style& style, std::string& text, double font_size, double title_svg_length, double image_size)
-          bool fit_ok = check_text_fit(
-           derived().title_info_.textstyle(), derived().title(), derived().title_font_size(), title_svg_length, derived().image_.x_size()
-          );
+          //bool fit_ok = check_text_fit(
+          // derived().title_info_.textstyle(), derived().title(), derived().title_font_size(), title_svg_length, derived().image_.x_size()
+          //);
         /*
           if fit_ok == false
         will issue this warning
@@ -1673,7 +1673,7 @@ namespace boost
       // to get minimum vertical spacing between data-series info lines.
       double longest_legend_text = 0; // SVG units
       std::size_t longest_text_chars_count = 0;
-      size_t longest_series_text_number = 0;
+      //size_t longest_series_text_number = 0;
       size_t num_series = derived().serieses_.size(); // Number of data-series in this plot.
       for (size_t i = 0; i != num_series; ++i)
       {
@@ -2032,8 +2032,8 @@ namespace boost
     template <class Derived>
     void axis_plot_frame<Derived>::draw_legend()
     {
-      size_t num_series = derived().serieses_.size(); // NUmber of data-series.
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
+      size_t num_series = derived().serieses_.size(); // NUmber of data-series.
       std::cout << "***Drawing Legend box border width = " << derived().legend_box_.width()
         <<  ", margin = " << derived().legend_box_.margin()
       << "\n to show " << num_series << " data-series." << std::endl;
@@ -2130,7 +2130,7 @@ namespace boost
 
       // Select legend-points group
       g_ptr = &(derived().image_.gs(PLOT_LEGEND_POINTS)); // Prepare to write data-point-marker, line and description-text into legend-box.
-      g_element* g_inner_ptr = g_ptr;
+      //g_element* g_inner_ptr = g_ptr;
 
       // Show any data-point-marker, any line, & any text info for each of the data-series.
       for(unsigned int i = 0; i != derived().serieses_.size(); ++i)
@@ -2299,7 +2299,7 @@ namespace boost
       */
       double point_size = point_style.size_;
       double half_height = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
-      double half_width = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point x-coordinates.
+      //double half_width = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point x-coordinates.
       double third_height = point_size / 3.3; // Offset y vertical by third of the symbol size to try to centre symbol on the point y-coordinates.
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
@@ -2798,16 +2798,20 @@ namespace boost
 
       //! Strip from double value if requested by style,
       //! removing any unnecessary e, +, & leading exponent zeros, reducing "1.200000" to "1.2" or "3.4e1"...
-      //! using strip_e0s_ 
-      std::string strip_if(double v, const value_style& sty, bool precise = false)
+      //! using function @c strip_e0s_ .
+      //! \param v Mean value.
+      //! \param sty style of decimal digit value string returned.
+      //! \param precise Unused but perhaps might be used to control precision, at present fixed at 2.
+      //! TODO resolve this.
+      std::string strip_if(double v, const value_style& sty, bool precise = true)
       { 
         std::stringstream label;
-        // Precision of std_dev is usually less than precision of value,
+        // Precision of uncertainty (std_dev) is usually less than precision of value,
         // label.precision((unc) ? ((sty.value_precision_ > 3) ?  sty.value_precision_-2 : 1) : sty.value_precision_);
         // Possible but simpler to fix at precision=2
-        //label.precision((precise) ? 2 : sty.value_precision_);
+        label.precision((precise) ? 2 : sty.value_precision_);
         //label.flags(sty.value_ioflags_);
-        label.precision(2);
+        label.precision(2); // Temporary fixed at 2.
         label << v; // "1.2" or "3.4e+001"...
         //return  (sty.strip_e0s_) ?
         //  // Default is to strip unnecessary e, +, & leading exponent zeros.
