@@ -2283,10 +2283,10 @@ my_plot.background_color(ghostwhite) // Whole image.
           g_element& g_ptr = image_.gs(detail::PLOT_LIMIT_POINTS);
           size_t limit_point_in_window_count = 0;
           size_t limit_point_edge_window_count = 0;
-          size_t inf_count = 0;
+         // size_t inf_count = 0;
           size_t x_inf_count = 0;
           size_t y_inf_count = 0;
-          size_t nan_count = 0;
+        //  size_t nan_count = 0;
           size_t x_nan_count = 0;
           size_t y_nan_count = 0;
 

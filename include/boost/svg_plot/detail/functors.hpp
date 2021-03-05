@@ -16,7 +16,6 @@
     (This uses checks using http://www.cplusplus.com/reference/type_traits/is_constructible/
       @c BOOST_STATIC_ASSERT_MSG(std::is_constructible<T, double>::value, "Uncertain types must be convertible to double!");
      ).
-  \date Mar 2009
 */
 
 // Copyright Jacob Voytko 2007
@@ -30,7 +29,6 @@
 #ifndef BOOST_SVG_DETAIL_FUNCTORS_HPP
 #define BOOST_SVG_DETAIL_FUNCTORS_HPP
 
-//#include <boost/svg_plot/uncertain.hpp>
 #include <boost/quan/unc.hpp>
 #include <boost/quan/meas.hpp>
 
@@ -104,7 +102,8 @@ public:
     */
     {
       BOOST_STATIC_ASSERT_MSG(std::is_constructible<T, double>::value, "Uncertain types must be that can be converted to double!");
-      return (Meas)val;
+      return (double)val;
+    //  return (Meas)val;
       /*! \return uncertain type (uncertainty, degrees of freedom information, and type meaning undefined).
        Warning C4244: 'argument' : conversion from 'long double' to 'double', possible loss of data.
        because unc only holds values to double precision.

@@ -43,15 +43,16 @@
 [/def __todo [link Plotting_graphs_in_SVG_format.todo TODO]]
 [def __todo [link svg_plot.todo TODO]]
 [def __rationale [link svg_plot.implementation Rationale and Implementation]]
-[def __caution Boost.Plot is not (yet) an official Boost library, but remains a library under construction,
-     the code is functional, but interfaces, library structure, and function and distribution names
-     may still be changed without notice.]
+[def __caution SVG_plot is NOT an official Boost library, but remains a library under construction,
+the code is functional, but interfaces, library structure, and function and distribution names
+may still be changed without notice.]
      
 [def __Unicode_widths [@https://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c Markus Kuhn. An implementation of `wcwidth()` and `wcswidth()` for Unicode.]]
 
+[import html4_symbols.qbk]
+
 [section:preface Preface]
 
-[heading Preface]
 Humans have a fantastic capacity for visual understanding, and merely looking
 at data organized in one, two, or three dimensions allows us to see relations
 not otherwise visible in a list of numbers. Computers, however, deal with
@@ -140,9 +141,47 @@ the SVG standard.
 [xinclude autodoc.xml] [/ Using Doxygen reference documentation.]
 [include inkscape.qbk]
 [include rationale.qbk]
+
+[section:history History and Status]
+
+[h4:history History]
+
+This project started as a Google Summer of Code project supporting Jake Voytko in 2007.
+
+It was used during development to produce plot of mathematical functions for the 
+[@https://www.boost.org/doc/libs/release/libs/math/doc/html/index.html Boost.Math] library,
+and it still in use now.
+
+Over the years since it has been enhanced, in particular to handle measurements and observations of uncertain data.
+
+In 2021, a major refactoring and reburbishment has been done, both to documentation and the code.
+Numerous bugs have been squashed, new features added (Unicode data-point markers) and more examples added.
+
+The repository is now [@https://github.com/pabristow/svg_plot Github repository SVG_plot].
+
+In 2021, major refactoring and reburbishment has been done, both to documentation and the code.
+Numerous bugs have been squashed, new features added and more examples added, 
+helped by improvements in the Quan library used to label value data-points and their uncertainty.
+
+[h4:status Status]
+
+[important This is NOT an official Boost library : it was proposed a a library but was rejected as being out-of-scope for Boost.
+It was a [@http://code.google.com/soc/2007/boost/about.html Google Summer of Code project (2007)]
+whose mentor organization was Boost. It remains a library under construction,
+the code is quite functional, but interfaces, library structure, and names
+may still be changed without notice.
+]
+
+[note Comments and suggestions (even bugs!) to Paul.A.Bristow (at) hetp (dot) u-net (dot) com
+and, preferablely raise an issue at the  [@https://github.com/pabristow/svvg_plot SVG_plot GitHub repository].
+]
+
+[endsect] [/section:history History and Status]
+
 [include to_do.qbk]
 [include acknowledgements.qbk]
 
+[section:indexes Indexes]
 [/Include the indexes (class, function and everything) ]
 '''
    <index type="class_name">
@@ -153,31 +192,22 @@ the SVG standard.
      <title>Function Index</title>
     </index>
 
-    <index type="macro_name">
-    <title>Macro Index</title>
-    </index>
-
     <index type="typdef">
     <title>typedef Index</title>
     </index>
-
+    
+    <index type="MACRO">
+    <title>MACRO Index</title>
+    </index>
+    
    <index/>
 
 '''
-
-[important This is not (yet) an official Boost library. It was a
-[@http://code.google.com/soc/2007/boost/about.html Google Summer of Code project (2007)]
-whose mentor organization was Boost. It remains a library under construction,
-the code is quite functional, but interfaces, library structure, and names
-may still be changed without notice.
-]
-
-[note Comments and suggestions (even bugs!) to Paul.A.Bristow (at) hetp (dot) u-net (dot) com
-or Jake Voytko at jakevoytko (at) gmail (dot) com]
+[endsect] [/section:indexes Indexes]
 
 
 [/ svg_plot.qbk
-  Copyright 2008 Jake Voytko and Paul A. Bristow 2008, 2009, 2010, 2011, 2012, 2018, 2020.
+  Copyright 2008 Jake Voytko and Paul A. Bristow 2008, 2009, 2010, 2011, 2012, 2018, 2020, 2021.
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE_1_0.txt or copy at
   http://www.boost.org/LICENSE_1_0.txt).

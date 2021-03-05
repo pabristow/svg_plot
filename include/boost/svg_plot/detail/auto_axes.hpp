@@ -478,6 +478,7 @@ void scale_axis(
     axis_min_value, axis_max_value, axis_tick_increment, auto_ticks, // All 4 updated.
       origin, tight, min_ticks, steps); // Display range.
   }
+  autoscale_plusminus = 1.96;
 } // template <typename iter> void scale_axis(iter begin, iter end, ...
 
 /*!
@@ -582,7 +583,7 @@ void scale_axis(
   double* y_axis_tick_increment, // Updated with Y axis tick increment.
   int* y_auto_ticks,  // Computed number of Y-axis ticks, updated by scale_axis.
   bool check_limits, // = true, // Whether to check all values for infinity, NaN etc.
-  double autoscale_plusminus, // = 3., // Mutiplier of uncertainty or standard deviations to allow fo confidence ellipses.
+  double autoscale_plusminus, // = 3., // Mutiplier of uncertainty or standard deviations to allow of confidence ellipses.
   bool x_origin, // = false, // do not include the origin unless the range min_value <= 0 <= max_value.
   double x_tight, // = 0., // tightest - fraction of 'overrun' allowed before another tick used.
   // for visual effect up to about 0.001 might suit a 1000 pixel wide image,

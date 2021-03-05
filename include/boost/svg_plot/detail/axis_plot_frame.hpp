@@ -1569,8 +1569,8 @@ namespace boost
 
         // Warn if plot title will overflow image (since title is centered, this will truncate at both ends).
 
-        double title_svg_length = string_svg_length(derived().title(), derived().title_info_.textstyle());
 #ifdef BOOST_SVG_TITLE_DIAGNOSTICS
+        double title_svg_length = string_svg_length(derived().title(), derived().title_info_.textstyle());
         std::cout << "Drawing plot title, image x width " << derived().image_.x_size()  // default 700
           << "\n  Title = \"" << derived().title() << "\n"
           << "  title has = " << derived().title().size() << " characters" // number of chars.
