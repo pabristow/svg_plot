@@ -1,0 +1,59 @@
+      /*! Set prefix, separator and suffix for Y_axis.
+
+         \note if you want a space, you must use a Unicode space "&#x00A0;".
+
+         @b Example:
+\code         
+my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
+\endcode
+      */     
+      svg_2d_plot& svg_2d_plot::y_decor(const std::string& pre, const std::string& sep, const std::string& suf)
+      {
+        y_values_style_.prefix_ = pre;
+        y_values_style_.separator_ = sep;
+        y_values_style_.suffix_ = suf;
+        return *this; //! \return Reference to svg_2d_plot to make chainable.
+      }
+      
+      
+           svg_2d_plot& svg_2d_plot::y_ticks_values_font_family(const std::string& family)
+			      { /*! Set font family for Y-axis ticks values.
+			          Available fonts depend on the program rendering the SVG XML, usually a browser.
+			         The default font (usually "verdana") is used if a render program does not provide the font specified.
+			          These are probably usable:
+			          \code
+			"arial", "impact", "courier", "lucida console",  "Lucida sans unicode", "verdana", "calibri", "century",
+			"lucida calligraphy", "tahoma", "vivaldi", "informal roman", "lucida handwriting", "lucida bright", "helvetica"
+			          \endcode
+        */
+        
+        
+        //! @b Example:
+				/*!
+				          \code
+				my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
+				          \endcode
+        */
+        
+        works
+        
+        but this doesn't
+        
+				/*! @b Example:
+				          \code
+				my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
+				          \endcode
+        */
+        
+        
+        This is OK
+        
+         /*! Set precision of Y tick label values in decimal digits (default 3).
+				
+				        @b Example:
+				        */
+				        /*!
+				          \code
+				my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
+				          \endcode
+        */
