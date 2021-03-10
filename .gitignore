@@ -13,3 +13,4 @@ doc/*.lnk
 
 
 /include/boost/svg_plot/detail/wcwidth.c
+/doc/doxygen/html
