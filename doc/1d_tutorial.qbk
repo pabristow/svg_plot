@@ -87,6 +87,8 @@ for full source code and sample output.
 This section shows a few more of the near-infinite layout options.
 See also the reference section and function index.
 
+[tip Nearly all examples use  __chaining_functions to set the very many options.]
+
   #include <boost/svg_plot/svg_1d_plot.hpp>
   using namespace boost::svg;
   #include <cmath>  // for sqrt

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="350" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<!-- File demo_1d_values.svg --> 
+
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
+	<rect x="0" y="0" width="500" height="350"/>
+</g>
+
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
+	<rect x="21" y="42.5" width="458" height="279"/>
+</g>
+
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+</g>
+
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+</g>
+
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
+	<line x1="174" y1="42.5" x2="174" y2="322"/>
+	<line x1="21" y1="184" x2="479" y2="184"/>
+</g>
+
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<path d="M186,184 L186,186 
+M198,184 L198,186 
+M210,184 L210,186 
+M223,184 L223,186 
+M247,184 L247,186 
+M259,184 L259,186 
+M271,184 L271,186 
+M284,184 L284,186 
+M308,184 L308,186 
+M320,184 L320,186 
+M332,184 L332,186 
+M345,184 L345,186 
+M369,184 L369,186 
+M381,184 L381,186 
+M394,184 L394,186 
+M406,184 L406,186 
+M430,184 L430,186 
+M442,184 L442,186 
+M455,184 L455,186 
+M467,184 L467,186 
+M161,184 L161,186 
+M149,184 L149,186 
+M137,184 L137,186 
+M125,184 L125,186 
+M100,184 L100,186 
+M88.2,184 L88.2,186 
+M76,184 L76,186 
+M63.7,184 L63.7,186 
+M39.3,184 L39.3,186 
+M27.1,184 L27.1,186 
+" fill="none"/>
+</g>
+
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<path d="M174,184 L174,190 
+M235,184 L235,190 
+M296,184 L296,190 
+M357,184 L357,190 
+M418,184 L418,190 
+M479,184 L479,190 
+M174,184 L174,190 
+M113,184 L113,190 
+M51.5,184 L51.5,190 
+" fill="none"/>
+</g>
+
+<g id="xTicksValues">
+	<text x="235" y="202" text-anchor="middle" font-size="10" font-family="Verdana">2
+	</text>
+	<text x="296" y="202" text-anchor="middle" font-size="10" font-family="Verdana">4
+	</text>
+	<text x="357" y="202" text-anchor="middle" font-size="10" font-family="Verdana">6
+	</text>
+	<text x="418" y="202" text-anchor="middle" font-size="10" font-family="Verdana">8
+	</text>
+	<text x="479" y="202" text-anchor="middle" font-size="10" font-family="Verdana">10
+	</text>
+	<text x="113" y="202" text-anchor="middle" font-size="10" font-family="Verdana">-2
+	</text>
+	<text x="51.5" y="202" text-anchor="middle" font-size="10" font-family="Verdana">-4
+	</text>
+</g>
+
+<g id="xLabel">
+	<text x="250" y="338" text-anchor="middle" font-size="10" font-family="Verdana">length (m)
+	</text>
+</g>
+
+<g id="plotPoints">
+
+<g stroke="rgb(0,0,0)">
+	<text x="125" y="181" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	</text>
+	<text x="235" y="181" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	</text>
+	<text x="304" y="181" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	</text>
+	<text x="174" y="181" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	</text>
+	<text x="339" y="181" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	</text>
+	<text x="374" y="181" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	</text>
+</g>
+</g>
+
+<g id="title">
+	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">Default 1D Values Demo
+	</text>
+</g>
+
+<g id="plotXValues" fill="rgb(255,0,0)">
+
+<g>
+	<text x="129" y="176" transform="rotate(-60 129 176)" font-size="14" font-family="Times New Roman">[ x = -1.60
+		<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
+	</text>
+</g>
+
+<g>
+	<text x="239" y="176" transform="rotate(-60 239 176)" font-size="14" font-family="Times New Roman">[ x = +2.00
+		<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
+	</text>
+</g>
+
+<g>
+	<text x="308" y="176" transform="rotate(-60 308 176)" font-size="14" font-family="Times New Roman">[ x = +4.26
+		<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
+	</text>
+</g>
+
+<g>
+	<text x="178" y="176" transform="rotate(-60 178 176)" font-size="14" font-family="Times New Roman">[ x = +3.34e-3
+		<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
+	</text>
+</g>
+
+<g>
+	<text x="343" y="176" transform="rotate(-60 343 176)" font-size="14" font-family="Times New Roman">[ x = +5.40
+		<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
+	</text>
+</g>
+
+<g>
+	<text x="378" y="176" transform="rotate(-60 378 176)" font-size="14" font-family="Times New Roman">[ x = +6.56
+		<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
+	</text>
+</g>
+</g>
+</svg>

@@ -58,6 +58,9 @@ but we can also add a few optional details:
          .legend_on(true)
          .x_range(-1, 11)
          .background_border_color(black);
+         
+[tip Nearly all examples use  __chaining_functions to set the very many options.]
+
 
 All of the setter methods are fairly self-explanatory. To walk through it once,
 

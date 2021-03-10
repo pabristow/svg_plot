@@ -40,12 +40,16 @@
 [def __preface [link svg_plot.preface]]
 [def __howtouse [link svg_plot.howtouse  Document conventions]]
 
+[def __chaining_functions[@https://isocpp.org/wiki/faq/references#method-chaining chaining of functions]]
+
 [/def __todo [link Plotting_graphs_in_SVG_format.todo TODO]]
 [def __todo [link svg_plot.todo TODO]]
 [def __rationale [link svg_plot.implementation Rationale and Implementation]]
 [def __caution SVG_plot is NOT an official Boost library, but remains a library under construction,
 the code is functional, but interfaces, library structure, and function and distribution names
 may still be changed without notice.]
+
+[def __svg_plot_doc [@https://pabristow.github.io/svg_plot SVG_plot library documentation]]  
      
 [def __Unicode_widths [@https://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c Markus Kuhn. An implementation of `wcwidth()` and `wcswidth()` for Unicode.]]
 
@@ -165,7 +169,7 @@ helped by improvements in the Quan library used to label value data-points and t
 
 [h4:status Status]
 
-[important This is NOT an official Boost library : it was proposed a a library but was rejected as being out-of-scope for Boost.
+[important This is NOT an official Boost library : it was proposed as a library but was rejected as being out-of-scope for Boost.
 It was a [@http://code.google.com/soc/2007/boost/about.html Google Summer of Code project (2007)]
 whose mentor organization was Boost. It remains a library under construction,
 the code is quite functional, but interfaces, library structure, and names

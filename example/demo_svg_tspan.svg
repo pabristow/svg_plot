@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height ="400" version="1.1"
+xmlns:svg ="http://www.w3.org/2000/svg"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:cc="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns ="http://www.w3.org/2000/svg"
+>
+<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> 
+<!-- Use, modification and distribution of Boost.Plot subject to the --> 
+<!-- Boost Software License, Version 1.0.--> 
+<!-- (See accompanying file LICENSE_1_0.txt --> 
+<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
+
+<!-- File demo_svg_tspan.svg --> 
+
+<g id="group element 0" stroke="rgb(255,255,0)" fill="rgb(240,255,255)" stroke-width="5">
+	<rect x="0" y="0" width="500" height="400"/>
+	<rect x="100" y="200" width="300" height="350"/>
+	<text x="300" y="300">Text g0
+	</text>
+</g>
+	<rect x="10" y="20" width="30" height="40"/>
+	<text x="100" y="100" text-anchor="middle" font-size="10" font-family="serif">Text_0
+		<tspan dy="20" x="100">text_1</tspan>
+		<tspan dy="20" x="100">text_2</tspan>
+		<tspan dy="20" x="100">text_3</tspan>
+		<tspan dy="20" x="100">text_4</tspan>
+		<tspan stroke="rgb(128,0,128)" fill="rgb(255,192,203)" stroke-width="2" dx="100" dy="20" font-size="40" font-family="Arial" font-weight="bold">text_n</tspan>
+	</text>
+</svg>
