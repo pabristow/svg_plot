@@ -10,17 +10,10 @@
 <link rel="next" href="aspect_ratio.html" title="Global aspect_ratio">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
-<td align="center"><a href="../../../../../../index.html">Home</a></td>
-<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
-<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
-<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
-</tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="ticks_labels_style.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="aspect_ratio.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="ticks_labels_style.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="aspect_ratio.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 <div class="refentry">
 <a name="boost.svg.value_style"></a><div class="titlepage"></div>
@@ -35,7 +28,7 @@
 <span class="keyword">class</span> <a class="link" href="value_style.html" title="Class value_style">value_style</a> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="value_style.html#boost.svg.value_styleconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="value_style.html#id635482-bb"><span class="identifier">value_style</span></a><span class="special">(</span><span class="keyword">int</span> <span class="special">=</span> <span class="keyword">static_cast</span><span class="special">&lt;</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">(</span><span class="identifier">horizontal</span><span class="special">)</span><span class="special">,</span> 
+  <a class="link" href="value_style.html#id638519-bb"><span class="identifier">value_style</span></a><span class="special">(</span><span class="keyword">int</span> <span class="special">=</span> <span class="keyword">static_cast</span><span class="special">&lt;</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">(</span><span class="identifier">horizontal</span><span class="special">)</span><span class="special">,</span> 
               <span class="identifier">align_style</span> <span class="special">=</span> <span class="identifier">align_style</span><span class="special">::</span><span class="identifier">left_align</span><span class="special">,</span> <span class="keyword">int</span> <span class="special">=</span> <span class="number">3</span><span class="special">,</span> 
               <span class="identifier">std</span><span class="special">::</span><span class="identifier">ios_base</span><span class="special">::</span><span class="identifier">fmtflags</span> <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ios</span><span class="special">::</span><span class="identifier">dec</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span> 
               <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">=</span> <span class="identifier">no_text_style</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">black</span><span class="special">,</span> 
@@ -76,17 +69,17 @@
   <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="identifier">values_text_style_</span><span class="special">;</span>  <span class="comment">// Font etc used for data-point value marking. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1506647"></a><h2>Description</h2>
+<a name="id1504076"></a><h2>Description</h2>
 <p>For example, to output: 5.123 +- 0.01 (19). Uncertainty and degrees of freedom estimate. Prefix, separator and suffix allow X and Y values to be together on one line, for example<br>
  [1.23+- 0.01 (3), 4.56 +-0.2 (10)]<br>
  Used in draw_plot_point_values (note plural - not used in singular draw_plot_point_value) where X <a class="link" href="value_style.html" title="Class value_style">value_style</a> is used to provide the prefix and separator, and Y <a class="link" href="value_style.html" title="Class value_style">value_style</a> to provide the suffix. Prefix, separator and suffix are ignored when X or Y are shown separately using draw_plot_point_value. "4.5 +- 0.01 (3) Second #2, 2012-Mar-13 13:01:00" </p>
 <div class="refsect2">
-<a name="id1506636"></a><h3>
+<a name="id1504099"></a><h3>
 <a name="boost.svg.value_styleconstruct-copy-destruct"></a><code class="computeroutput">value_style</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><a name="id635482-bb"></a><span class="identifier">value_style</span><span class="special">(</span><span class="keyword">int</span> r <span class="special">=</span> <span class="keyword">static_cast</span><span class="special">&lt;</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">(</span><span class="identifier">horizontal</span><span class="special">)</span><span class="special">,</span> 
+<pre class="literallayout"><a name="id638519-bb"></a><span class="identifier">value_style</span><span class="special">(</span><span class="keyword">int</span> r <span class="special">=</span> <span class="keyword">static_cast</span><span class="special">&lt;</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">(</span><span class="identifier">horizontal</span><span class="special">)</span><span class="special">,</span> 
             <span class="identifier">align_style</span> a <span class="special">=</span> <span class="identifier">align_style</span><span class="special">::</span><span class="identifier">left_align</span><span class="special">,</span> <span class="keyword">int</span> p <span class="special">=</span> <span class="number">3</span><span class="special">,</span> 
             <span class="identifier">std</span><span class="special">::</span><span class="identifier">ios_base</span><span class="special">::</span><span class="identifier">fmtflags</span> f <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ios</span><span class="special">::</span><span class="identifier">dec</span><span class="special">,</span> <span class="keyword">bool</span> s <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span> 
             <a class="link" href="text_style.html" title="Class text_style">text_style</a> ts <span class="special">=</span> <span class="identifier">no_text_style</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> scol <span class="special">=</span> <span class="identifier">black</span><span class="special">,</span> 
@@ -103,7 +96,7 @@
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1508534"></a><h3>
+<a name="id1506595"></a><h3>
 <a name="boost.svg.value_stylepublic-data-members"></a><code class="computeroutput">value_style</code> 
         public
        public data members</h3>
@@ -123,7 +116,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2007 to 2018 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -131,7 +124,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="ticks_labels_style.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="aspect_ratio.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="ticks_labels_style.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="aspect_ratio.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

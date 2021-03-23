@@ -2,7 +2,7 @@
     [quickbook 1.7]
     [id svg_plot]
     [authors [Voytko, Jake], [Bristow, Paul A.]]
-    [copyright 2007 to 2018 Jake Voytko and Paul A. Bristow]
+    [copyright 2007 to 2021 Jake Voytko and Paul A. Bristow]
     [license
         Distributed under the Boost Software License, Version 1.0.
         (See accompanying file LICENSE_1_0.txt or copy at
@@ -67,7 +67,7 @@ do not currently offer an easy way to bridge the gap.
 This library aims to help the C++ programmer to easily plot data that is stored in STL containers.
 
 This project is focused on using STL containers in order to display data on a
-one-dimensional, two-dimensional plot and boxplots.
+one-dimensional (1-D), two-dimensional (2-D) plot and boxplots.
 The plot is written to a
 [@http://en.wikipedia.org/wiki/Scalable_Vector_Graphics Scalable Vector Graphic SVG image].
 (SVG plots can also be converted to other graph types,
@@ -77,7 +77,7 @@ for example, [@http://en.wikipedia.org/wiki/Portable_Network_Graphics Portable N
 [@http://www.w3.org/TR/REC-xml/#sec-comments XML specification]
 and file format for describing two-dimensional vector graphics.
 
-SVG files (.svg) can be viewed with any Internet Browsers:
+SVG files (.svg) can be viewed with any recent Internet Browsers:
 
 * [@http://www.mozilla.com/firefox/ Mozilla Firefox (version 3 and later)]
 You may wish to associate Firefox with SVG files (or perhaps Inkscape - see below).
@@ -88,11 +88,10 @@ You may wish to associate Firefox with SVG files (or perhaps Inkscape - see belo
 
 * [@http://www.opera.com Opera] has good [@http://http://www.opera.com/docs/specs/opera95/svg/ SVG support].
 
-* Microsoft Internet Explorer IE9 and later,
-but the quality of rendering before IE11 is poor compared to all other browsers
-and cannot yet be fully recommended.
-Earlier versions of Microsoft Internet Explorer
-can adequately render SVG files provided a suitable
+* [@https://microsoftedgewelcome.microsoft.com/en-gb/ Microsoft Edge browser].
+
+* Microsoft Internet Explorer IE11 is poor compared to all other browsers and cannot yet be fully recommended.
+Earlier versions of Microsoft Internet Explorer can adequately render SVG files provided a suitable
 [@http://www.adobe.com/svg/ Adobe SVG Viewer plug-in for SVG files] is installed.
 (Adobe have stopped offering this for download (as they warned years ago)
 but the download software can still be obtained elsewhere, for example from
