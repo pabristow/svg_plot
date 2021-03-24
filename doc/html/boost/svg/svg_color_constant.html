@@ -19,7 +19,7 @@
 <a name="boost.svg.svg_color_constant"></a><div class="titlepage"></div>
 <div class="refnamediv">
 <h2><span class="refentrytitle">Type svg_color_constant</span></h2>
-<p>boost::svg::svg_color_constant — Colors that have SVG standard special names. See <a href="https://www.w3schools.com/colors/" target="_top">https://www.w3schools.com/colors/</a> Example: <code class="computeroutput">my_plot.background_color(darkgreen)</code>.legend_background_color(lightgray).title_color(white) </p>
+<p>boost::svg::svg_color_constant — Colors that have SVG standard special names. See <a href="https://www.w3schools.com/colors/" target="_top">https://www.w3schools.com/colors/</a> SVG standard names for some colors. </p>
 </div>
 <h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
 <div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/svg_color_hpp.html" title="Header &lt;boost/svg_plot/svg_color.hpp&gt;">boost/svg_plot/svg_color.hpp</a>&gt;
@@ -61,8 +61,24 @@
                           tomato, turquoise, violet, wheat, white, whitesmoke, 
                           yellow, yellowgreen, blank <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1481254"></a><h2>Description</h2>
-<p>The reason that the underscore separator convention does not match the normal Boost format is that these names that are specified by the SVG standard. <a href="http://www.w3.org/TR/SVG/types.html#ColorKeywords" target="_top">http://www.w3.org/TR/SVG/types.html#ColorKeywords</a> color "tan" is also renamed to "tanned" to avoid clash with global function name tan in math.h. </p>
+<a name="id1480774"></a><h2>Description</h2>
+<p><span class="bold"><strong>See Also:</strong></span></p>
+<p><a href="http://www.w3.org/TR/SVG/types.html#ColorKeywords" target="_top">http://www.w3.org/TR/SVG/types.html#ColorKeywords</a>. Example: <code class="computeroutput">my_plot.background_color(darkgreen)</code>.legend_background_color(lightgray).title_color(white)</p>
+<p>
+</p>
+<p>
+The reason that the underscore separator convention does not match the normal Boost format is that these names that are specified by the SVG standard. <a href="http://www.w3.org/TR/SVG/types.html#ColorKeywords" target="_top">http://www.w3.org/TR/SVG/types.html#ColorKeywords</a> color "tan" is also renamed to "tanned" to avoid clash with global function name tan in math.h.<br>
+ </p>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p><code class="computeroutput">enum</code> <code class="computeroutput">class</code> is recommended but then all calls would need to be qualified boost::svg::svg_color::black<br>
+ /boost/svg_plot/svg_color.hpp(131,18): error C2065: 'blank': undeclared identifier and all colors. If user code also mentions color word in another context then there will be ambiguity. This means a lot of code changes, and use in all examples, so not done for now. </p></td></tr>
+</table></div>
+<p>
+</p>
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>

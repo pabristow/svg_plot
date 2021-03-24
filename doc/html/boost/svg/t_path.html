@@ -27,10 +27,10 @@
 </span>
 <span class="keyword">struct</span> <a class="link" href="t_path.html" title="Struct t_path">t_path</a> <span class="special">:</span> <span class="keyword">public</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">path_point</span> <span class="special">{</span>
   <span class="comment">// <a class="link" href="t_path.html#boost.svg.t_pathconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="t_path.html#id576298-bb"><span class="identifier">t_path</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="t_path.html#id567186-bb"><span class="identifier">t_path</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="t_path.html#id576286-bb">public member functions</a></span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="t_path.html#id576278-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="t_path.html#id567187-bb">public member functions</a></span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="t_path.html#id567190-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="keyword">bool</span> <span class="identifier">relative</span><span class="special">;</span>  <span class="comment">// If true relative else absolute. </span>
@@ -38,23 +38,23 @@
   <span class="keyword">double</span> <span class="identifier">y</span><span class="special">;</span>  <span class="comment">// SVG Y coordinate. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1239649"></a><h2>Description</h2>
+<a name="id1238561"></a><h2>Description</h2>
 <p>see also <a class="link" href="s_path.html" title="Struct s_path">s_path</a> for a cubic Bezier curve. </p>
 <div class="refsect2">
-<a name="id1239675"></a><h3>
+<a name="id1238556"></a><h3>
 <a name="boost.svg.t_pathconstruct-copy-destruct"></a><code class="computeroutput">t_path</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><a name="id576298-bb"></a><span class="identifier">t_path</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">bool</span> relative <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id567186-bb"></a><span class="identifier">t_path</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">bool</span> relative <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Constructor of path that draws a quadratic Bezier curve from the current point to (x,y)</p>
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1239754"></a><h3>
-<a name="id576286-bb"></a><code class="computeroutput">t_path</code> public member functions</h3>
+<a name="id1238602"></a><h3>
+<a name="id567187-bb"></a><code class="computeroutput">t_path</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id576278-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands like "M1.2, 3.4", <p>Write SVG command for a cubic Bezier curve.</p>
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id567190-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands like "M1.2, 3.4", <p>Write SVG command for a cubic Bezier curve.</p>
 </li></ol></div>
 </div>
 </div>

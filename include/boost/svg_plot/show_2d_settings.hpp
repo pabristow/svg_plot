@@ -38,7 +38,7 @@ namespace svg
 
 // Declaration (defined below).
 //! \cond DETAIL
-  void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os);
+//  void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os);
 //! \endcond
 
 const std::string l_or_r(int i)
@@ -51,15 +51,15 @@ const std::string t_or_b(int i)
   return ((i < 0) ? "bottom" : ((i == 0) ? "none" : "top"));
 }
 
-void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
-{ /*! Diagnostic display of all settings of a 2D plot.
-   \details  Outputs a long list of over 100 plot parameter settings, by default to @c std::cout.
+/*! Diagnostic display of all settings of a 2D plot.
+   \details  Outputs to @c std::ostream a long list of over 100 plot parameter settings, by default to @c std::cout.
     This list is invaluable if the plot does not look as expected.
    \warning This creates over 100 lines of output, so should be used sparingly!
    \param plot Name of 2D plot.
    \param os Output stream for diagnostic output, default @ std::cout.
   */
-
+void show_2d_plot_settings(svg_2d_plot& plot, std::ostream& os = std::cout)
+{ 
   using boost::svg::detail::operator<<;
   //std::ostream& operator<< (std::ostream& os, const std::pair<double, double>& p); //! Output pair of doubles to ostream.
 

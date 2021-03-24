@@ -75,9 +75,10 @@ namespace svg
 
   class svg_element
   { /*! \class boost::svg::svg_element
-       \brief svg_element is base class for all the leaf elements @c g_element, @c rect_element.. .
-       \details
-       \code g_element, rect_element, circle_element, line_element, polygon_element, polyline_element, path_element, clip_path_element, text_element, tspan_element.\n
+       \brief @c svg_element is base class for all the leaf elements @c g_element, @c rect_element.. .
+       \details derived classes are:
+       \code 
+         g_element, rect_element, circle_element, line_element, polygon_element, polyline_element, path_element, clip_path_element, text_element, tspan_element.
        \endcode
      */
   public:
@@ -89,7 +90,8 @@ namespace svg
 
     void write_attributes(std::ostream& os)
     { //! Output group_element id and clip-path.
-      //! Example: <clipPath id="plot_window"><rect x="53.6" y="40.5" width="339" height="328"/></clipPath>
+      //! Example: 
+      //! \code <clipPath id="plot_window"><rect x="53.6" y="40.5" width="339" height="328"/></clipPath> \endcode
       if(id_name_.size() != 0)
       { // Is an id_name, so output.
         os << " id=\"" << id_name_ << "\""; // Prefix with space.
@@ -1208,9 +1210,8 @@ public:
     //! It is not applicable to other types of auto-wrapped text, see instead text-align.
     //! For multi-line text, the alignment takes place for each line.
     //! \sa https://www.w3.org/TR/SVG/text.html#TextAnchoringProperties
-    //! Alignment and justification controls how inline content is distributed \bold within a line box.\endbold
-    //! 
-     //! \sa https://www.w3.org/TR/css-text-3/#text-align-property
+    //! Alignment and justification controls how inline content is distributed <b> within a line box. </b>
+    //! \sa https://www.w3.org/TR/css-text-3/#text-align-property
 
    // Anchor output should be *also* in g_element.
     std::string anchor;
@@ -1293,7 +1294,7 @@ public:
     //! Example: 
     //! \code
     //!   text_element& t = my_doc.text(100, 100, "My Text", my_text_style, center_align, uphill);
-    //    std::cout << "text_element = " << t << std::endl;
+    //!    std::cout << "text_element = " << t << std::endl;
     //! \endcode
     // Outputs:  text_element = text_element(100, 100, text_style(20, "serif", "bold", "", "", ""), center, -45)
       os << "text_element(" << t.x_ << ", " << t.y_
@@ -2033,7 +2034,8 @@ public:
   std::ostream& operator<< (std::ostream& os, polygon_element& p)
   { /*! Output all poly_path_ points (May be useful for Boost.Test and diagnosis).
         ptr_vector<poly_path_point> poly_points; All the x, y coordinate pairs,
-        Example: \code
+        Example: 
+        \code
           polygon_element p(1, 2, 3, 4, 5, 6);
           std::cout << p << std::endl;
         \endcode
@@ -2271,7 +2273,9 @@ public:
     g_element& add_g_element()
     { //! Add a new group element.
       //! \return Reference to the new child node just created.
-      //! Example: \code  g_element& g0 = my_svg.add_g_element(); // Add first (zeroth) new element to the document. \endcode
+      //! Example: \code
+      //!   g_element& g0 = my_svg.add_g_element(); // Add first (zeroth) new element to the document.
+      //!    \endcode
       children_.push_back(new g_element());
       return *(static_cast<g_element*>(&children_[children_.size()-1]));
     }

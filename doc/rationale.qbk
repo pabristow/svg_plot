@@ -8,6 +8,7 @@
 # 2012 Full uncertainty handling added by Paul A. Bristow.
 # 2013 Update documentation to use C++11 and GIT.
 # 2014 Improved handling of values outside the plot window.
+# 2021 Major refactoring to separate Quan uncertain classes library.
 
 [endsect] [/section:history  History]
 
@@ -46,7 +47,7 @@ The examples have been built with
 # GCC 10.0.1 needs option -std=c++11
 # Clang 10.0.0 needs option -std=c++11
 
-but might work on some earlier releases.
+but should work on some earlier compiler releases that have good C++11 compliance.
 
 To avoid warnings:
 
@@ -61,7 +62,7 @@ and with MSVC
   /wd4512 # Assignment operator could not be generated.
   /wd4127 # Expression is constant.
 
-Other compilers like Apple Darwin and Intel have not been used, but are likely to work OK.
+Other compilers like Apple Darwin and Intel have not been tested, but are likely to work OK.
 
 [h4 IDE]
 
@@ -93,7 +94,7 @@ So there functions have the effect of switching these options on, as if, for exa
 `x_autoscale(true);`
 `y_label_on(true);`
 
-This avoids users providing an axis label string and then wondering why it appears to have no effect.
+This avoids users providing an axis-label string and then wondering why it appears to have no effect.
 
 It also avoids wasting plot space for empty labels.
 

@@ -7,11 +7,11 @@
   layout of plots, data markers and lines.\n
 
   (Many items common to 1D and 2D use functions and classes in @c axis_plot_frame).
-  #define BOOST_SVG_DIAGNOSTICS can be added to output diagnostic information.
+  \#define BOOST_SVG_DIAGNOSTICS can be added to output diagnostic information.
  */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2007 - 2020
+// Copyright Paul A. Bristow 2007 - 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -255,7 +255,7 @@ namespace boost
 
   svg_2d_plot_series& svg_2d_plot_series::plot_point(plot_point_style marker)
   { //! Set data-series point marker size.
-    //! Example @c 
+    //! Example:  
     point_style_ = marker;
     return *this;
   }
@@ -441,24 +441,26 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
     return bar_style_.area_fill_;
   }
 
+  /*! \brief Set options for histogram.
+     \param opt_ no_histogram = 0 or bar = +1 // Stick or column line (stroke width) vertical to X-axis.
+  */
   svg_2d_plot_series& svg_2d_plot_series::histogram(histogram_option opt_)
-  { /*!
-      \param opt_ no_histogram = 0,
-      \param opt_ bar = +1 // Stick or column line (stroke width) vertical to X-axis.
-    */
+  {
     histogram_style_.histogram_option_ = opt_;
     return *this; //! \return Reference to svg_2d_plot_series to make chainable.
   }
 
+  //! \return number of normal values in a data-series.
+    // Assume can never have more than @c max_int values in the data-series.
+    // Or could return size_t rather than int?
   int svg_2d_plot_series::values_count()
-  { //! \return number of normal values in a data-series.
-    // Assume can never have more than max_int values in the data-series.
-    // Or could return size_t?
+  { 
     return static_cast<int>(series_.size());
   }
 
+  //! \return number of values 'at limit' in a data-series.
   int svg_2d_plot_series::limits_count()
-  {  //! \return number of values 'at limit' in a data-series.
+  {  
     return static_cast<int>(series_limits_.size());
   }
 
@@ -2855,8 +2857,9 @@ my_plot.background_color(ghostwhite) // Whole image.
         return  y_ticks_.label_rotation_ ;
       }
 
+      //! Set width of Y-axis line. 
       svg_2d_plot& svg_2d_plot::y_axis_width(double width)
-      { //! Set width of Y-axis line.
+      {
         image_.gs(detail::PLOT_Y_AXIS).style().stroke_width(width);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
@@ -2867,16 +2870,13 @@ my_plot.background_color(ghostwhite) // Whole image.
       }
 
       svg_2d_plot& svg_2d_plot::y_value_precision(int digits)
-      { /*! Set precision of Y tick label values in decimal digits (default 3).
-
-        @b Example:
-        */
-        /*!
+      { /*! Set precision = 2 of Y-tick label values in decimal digits (default 3).
+         Example:
           \code
 my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
           \endcode
         */
-        y_ticks_.value_precision_ = digits;
+        y_ticks_.value_precision_ = digits; 
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }
 
@@ -2886,13 +2886,12 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       }
 
       svg_2d_plot& svg_2d_plot::y_value_ioflags(std::ios_base::fmtflags flags)
-      { //! Set std::ioflags of Y tick label values (default 0x201 == dec).
-
-        //! @b Example:
-        /*!
+      { /*! Set @c std::ioflags of Y-tick label values (default 0x201 == dec).
+         Example:
           \code
 my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
           \endcode
+          sets the values to use precision of 2 decimal digits and scientific format like "1.2e99".
         */
         y_ticks_.value_ioflags_ = flags;
         return *this; //! \return Reference to svg_2d_plot to make chainable.
@@ -3226,7 +3225,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
         \code
           my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]");
         \endcode
-       \note If you want a space, you must use a @b Unicode space \&#x00A0;.
+        //! \note For a space, you must use a Unicode space \code "&#x00A0;" \endcode
       */
       svg_2d_plot& svg_2d_plot::y_decor(const std::string& pre, const std::string& sep, const std::string& suf)
       {
@@ -3249,7 +3248,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       const std::string svg_2d_plot::y_separator()
       { //! Get separator (also controls use of the prefix & suffix - they are only used if separator != "").
         //! \note For a space, you must use a Unicode space \code "&#x00A0;" \endcode
-        //! rather than " ".
+        //! rather than normal space " ".
         return y_values_style_.separator_;
       }
 
@@ -3702,21 +3701,18 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
         return y_ticks_.value_label_style_.font_size();
       }
 
-      svg_2d_plot& svg_2d_plot::y_ticks_values_font_family(const std::string& family)
-      { /*! Set font family for Y-axis ticks values.
+      /*! Set font family for Y-axis ticks values.
           Available fonts depend on the program rendering the SVG XML, usually a browser.
-         The default font (usually "verdana") is used if a render program does not provide the font specified.
+          The default font (usually "verdana") is used if a render program does not provide the font specified.
 
-          These are probably usable:
-        */
-
-        /*!
-          \code
-"arial", "impact", "courier", "lucida console",  "Lucida sans unicode", "verdana", "calibri", "century",
-"lucida calligraphy", "tahoma", "vivaldi", "informal roman", "lucida handwriting", "lucida bright", "helvetica"
-          \endcode
-        */
-
+         These are probably usable:
+                \code
+      "arial", "impact", "courier", "lucida console",  "Lucida sans unicode", "verdana", "calibri", "century",
+      "lucida calligraphy", "tahoma", "vivaldi", "informal roman", "lucida handwriting", "lucida bright", "helvetica"
+                \endcode
+      */
+      svg_2d_plot& svg_2d_plot::y_ticks_values_font_family(const std::string& family)
+      { 
         y_ticks_.value_label_style_.font_family(family);
         return *this; //! \return Reference to svg_2d_plot to make chainable.
       }

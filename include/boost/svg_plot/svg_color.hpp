@@ -1,9 +1,8 @@
 /*!
   \file svg_color.hpp
   \brief SVG standard names of colors, and functions to create and output colors.
-  \date 9 Feb 2009
-  \author Jacob Voytko & Paul A. Bristow
 */
+
 // Copyright Jacob Voytko 2007
 // Copyright Paul A. Bristow 2007, 2009, 2020
 //
@@ -15,12 +14,13 @@
 #ifndef BOOST_SVG_SVG_COLOR_HPP
 #define BOOST_SVG_SVG_COLOR_HPP
 
-#include <boost/assert.hpp>
-#include <boost/array.hpp>
-
 #include <ostream>
-// using std::ostream
+// using std::ostream;
 #include <string>
+// using std::string;
+#include <array>
+// using std::array;
+#include <cassert>
 
 namespace boost
 {
@@ -28,19 +28,21 @@ namespace svg
 {
   /*!
     \brief Colors that have SVG standard special names. See https://www.w3schools.com/colors/
+    \enum svg_color_constant SVG standard names for some colors.
+    \sa http://www.w3.org/TR/SVG/types.html#ColorKeywords.
     Example: @c my_plot.background_color(darkgreen).legend_background_color(lightgray).title_color(white) 
     \details  The reason that the underscore separator convention does not match
     the normal Boost format is that these names that are specified by the SVG standard.
     http://www.w3.org/TR/SVG/types.html#ColorKeywords
-    color "tan" is also renamed to "tanned" to avoid clash with global function name tan in math.h.
-  */
-  // enum class is recommended but then all calls would need to be qualified boost::svg::svg_color::black  
-  // I:\boost\boost\svg_plot\svg_color.hpp(131,18): error C2065: 'blank': undeclared identifier and all colors.
-  // If user code also mentions color word in another context then there will be ambiguity.
-  // This means a lot of code changes, and use in all examples, so not done for now.
+    color "tan" is also renamed to "tanned" to avoid clash with global function name tan in math.h.\n
+
+    \note @c enum @c class is recommended but then all calls would need to be qualified boost::svg::svg_color::black\n 
+    /boost/svg_plot/svg_color.hpp(131,18): error C2065: 'blank': undeclared identifier and all colors.
+   If user code also mentions color word in another context then there will be ambiguity.
+    This means a lot of code changes, and use in all examples, so not done for now.
+    */
   enum svg_color_constant
-  { //! \enum svg_color_constant SVG standard names for some colors.
-    //! See http://www.w3.org/TR/SVG/types.html#ColorKeywords
+  {
     aliceblue, antiquewhite, aqua, aquamarine, azure, beige,
     bisque, black, blanchedalmond, blue, blueviolet, brown,
     burlywood, cadetblue, chartreuse, chocolate, coral,
@@ -74,18 +76,19 @@ namespace svg
     blank // 'NotAColor' == 147
   }; // enum svg_color_constant
 
-  // Forward declarations in this module (see also svg_fwd):
+  // Forward declarations in this module (see also @c svg_fwd):
   class svg_color;
   void constant_to_rgb(svg_color_constant c, unsigned char& r, unsigned char& g, unsigned char& b);
   std::ostream& operator<< (std::ostream&, const svg_color&);
 
-  class svg_color
   /*! \brief SVG standard colors, see also enum svg_color_constant
-      \details svg_color is the struct that contains information about RGB colors.
-      For the constructor, the SVG standard specifies that numbers
-      outside the normal rgb range are to be accepted,
-      but are constrained to acceptable range of integer values [0, 255].
-  */
+     \details svg_color is the struct that contains information about RGB colors.
+     For the constructor, the SVG standard specifies that numbers
+     outside the normal rgb range are to be accepted,
+     but are constrained to acceptable range of integer values [0, 255].
+   */
+  class svg_color
+ 
   {
     friend std::ostream& operator<<(std::ostream& os, const svg_color& color);
     friend bool operator== (const svg_color& lhs, const svg_color& rhs);
@@ -101,11 +104,12 @@ namespace svg
     bool is_blank_; //!< true means "Not to be displayed" a 'pseudo-color' or 'non-color'.
     // If is_blank_ == true should write output to SVG XML file as text string "none".
 
-    svg_color(int red, int green, int blue) : is_blank_(false)
-    {  /*! \brief Construct an SVG color from RGB values.
+    /*! \brief Construct an SVG color from RGB values.
        \details Constrain rgb to [0 .. 255].
        Default is to construct a 'pseudo-color' blank.
-       */
+    */ 
+    svg_color(int red, int green, int blue) : is_blank_(false)
+    { 
       red = ( red < 0 ) ? 0 : red;
       green = ( green < 0 ) ? 0 : green;
       blue = ( blue < 0 ) ? 0 : blue;
@@ -114,22 +118,24 @@ namespace svg
       b_ = (unsigned char)(( blue > 255 ) ? 255 : blue);
     } // svg_color(int red, int green, int blue)
 
-    svg_color(bool is) : is_blank_(!is)
-    { //! Constructor from bool permits svg_color my_blank(false) as a (non-)color.
-      /*! \details with same effect as svg_color my_blank(blank);
-      svg_color(true) means default (black?)
+ /*! \brief Constructor from bool permits @c svg_color my_blank(false) as a (non-)color.
+       \details with same effect as svg_color my_blank(blank);
+      svg_color(true) means default (black)
       svg_color(false) means blank.
       For example:
       plot.area_fill(false) will be a blank == no fill.
       plot.area_fill(true) will be a default(black) fill.
       */
+    svg_color(bool is) : is_blank_(!is)
+    { 
       r_ = 0; // Safer to assign *some* value to rgb: zero, or 255 or something,
       g_ = 0; // rather than leaving them random.
       b_ = 0; // Default 'blank' color 0,0,0 is black.
     }  //  svg_color(bool is)
 
-    svg_color(svg_color_constant col)
-    { //! Set a color (including blank) using the SVG 'standard' colors defined in enum boost::svg::svg_color_constant
+    //! Set a color (including blank) using the SVG 'standard' colors defined in @c enum @c boost::svg::svg_color_constant.
+     svg_color(svg_color_constant col)
+    { 
       if (col == blank)
       { // NotAColor.
         is_blank_ = true;
@@ -205,10 +211,10 @@ namespace svg
 
   }; // class svg_color
 
-  // Note operator== and operator<< are both needed to use Boost.Test.
+  //! Compare colors (for equal).
+  // Note operator== and operator << both needed to use Boost.Test.
   bool operator== (const svg_color& lhs, const svg_color& rhs)
-  { //! Compare colors (for equal).
-    // Note operator== and operator << both needed to use Boost.Test.
+  { 
     if ((lhs.is_blank_ == true) && (rhs.is_blank_ == true))
     { // Both blank.
       return true;
@@ -216,9 +222,10 @@ namespace svg
     return (lhs.r_ == rhs.r_) && (lhs.g_ == rhs.g_) && (lhs.b_ == rhs.b_);
   }
 
+  //! Compare colors (for not equal).
+  // Note operator== and operator << both needed to use Boost.Test.
   bool operator!= (const svg_color& lhs, const svg_color& rhs)
-  { //! Compare colors (for not equal).
-    // Note operator== and operator << both needed to use Boost.Test.
+  { 
     if ((lhs.is_blank_ == true) || (rhs.is_blank_ == true))
     { // Either blank.
       return true;
@@ -226,22 +233,28 @@ namespace svg
     return (lhs.r_ == rhs.r_) || (lhs.g_ == rhs.g_) || (lhs.b_ == rhs.b_);
   }
 
+  //! \return true if color is blank.
   bool is_blank(const svg_color& col)
-  { //! \return true if color is blank.
+  {
     return col.is_blank_;
   }
-
+  
+  /*!
+  \brief Output color to stream as RGB. See @c boost::svg::svg_color_constant
+  \details for example: "RGB(138, 43 , 226)" for blueviolet.
+  This comment does not appear - for reasons entirely unclear.
+   \details Usage: svg_color my_color(127, 255, 212); cout << "my_color " << my_color << endl;
+     Outputs: my_color RGB(127,255,212)       std::cout << "magenta " << svg_color(magenta) << std::endl;
+     but caution!
+     \code std::cout << magenta << std::endl; \endcode
+     outputs int value 85 because magenta is an @c enum @c boost::svg::svg_color_constant !
+ */
   std::ostream& operator<<(std::ostream& os, const svg_color& color)
-  { /*!
-      \brief Output color to stream as RGB. See @c boost::svg::svg_color_constant
-      \details for example: "RGB(138, 43 , 226)" for blueviolet.
-      This comment does not appear - for reasons entirely unclear.
-    */
-
+  { 
     // Would be nice to output colors as description words in the standard list below.
     if(!color.is_blank_)
     {
-      os << "RGB(" // Note deliberate uppercase to show difference between write and operator<<
+      os << "RGB(" // Note deliberate uppercase to show difference between @c write and @c operator<<
         << (unsigned int)color.r_ << ","
         << (unsigned int)color.g_ << ","
         << (unsigned int)color.b_ << ")";
@@ -250,18 +263,13 @@ namespace svg
     {
       os << "blank";
     }
-    /*! \details Usage: svg_color my_color(127, 255, 212); cout << "my_color " << my_color << endl;
-         Outputs: my_color RGB(127,255,212)       std::cout << "magenta " << svg_color(magenta) << std::endl;
-         but caution!
-         \code std::cout << magenta << std::endl; \endcode
-         outputs int value 85 because magenta is an enum boost::svg::svg_color_constant !
-     */
+
     return os;
   } // std::ostream& operator<<
 
-  //! SVG standard colors, \see svg_color_constant
+  //! \brief SVG standard colors, \sa svg_color_constant
   //! 
-  using boost::array;
+  using std::array;
 
   array<svg_color, 148> color_array =
  // svg_color color_array[] =
@@ -416,41 +424,31 @@ namespace svg
     svg_color(true)          // blank - "Not to be displayed" pseudo-color.
   } }; // svg_color color_array[]
 
-  void constant_to_rgb(svg_color_constant c, unsigned char& r, unsigned char& g, unsigned char& b)
-  { /*! Convert a named SVG standard color, see enum boost::svg::svg_color_constant
+  /*! Convert a named SVG standard color, \sa @c enum boost::svg::svg_color_constant
       to update three variables (r, g, b) holding red, green and blue values.
       Asserts that c NOT the blank color.
-    */
-    BOOST_ASSERT(c != blank);
+  */ 
+  void constant_to_rgb(svg_color_constant c, unsigned char& r, unsigned char& g, unsigned char& b)
+  {
+    assert(c != blank);
     svg_color color(color_array[c]);
     r = color.r_;
     g = color.g_;
     b = color.b_;
   } // void constant_to_rgb
 
-  svg_color constant_to_rgb(svg_color_constant c)
-  { /*! Convert a svg color constant enum boost::svg::svg_color_constant to a svg_color.
+/*! Convert a svg color constant enum boost::svg::svg_color_constant to a svg_color.
     \return svg_color
       Example:
       constant_to_rgb(4) or constant_to_rgb(aquamarine)
       gives svg_color(127, 255, 212) // aquamarine.
     */
-    // This comment appears OK.
+  svg_color constant_to_rgb(svg_color_constant c)
+  { 
     return color_array[c];
   } // svg_color constant_to_rgb(svg_color_constant c)
 
-  //std::string show_color(svg_color color)
-  //{
-  //  for (int i = 0; i <= color_array.size(); i++)
-  //  {
-  //    if ((color.r_ == color_array[i].r_) && (color.r_ == color_array[i].r_) && (color.r_ == color_array[i].r_))
-  //    {
-  //      return color_name_array[i]; // Not going to work :-(
-  //    }
-  //  }
-  //  return "";  // Not a standard SVG color.
-  //}
-} // svg
+  } // svg
 } // boost
 
 #endif // BOOST_SVG_SVG_COLOR_HPP

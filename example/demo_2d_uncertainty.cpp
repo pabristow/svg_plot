@@ -121,16 +121,16 @@ the order of data values is important.
   double_pair = make_pair(double(-2.234), double(-8.76)); // Construct and then echo the data values thus:
   std::cout << double_pair.first << ", " << double_pair.second << std::endl; //  make_pair(double(-2.234), double(-8.76)) = -2.234, -8.76
   // But it is more convenient to use a specialization of operator<< for `std::pair` to show both:
-  std::cout << "make_pair(double(-2.234), double(-8.76)) = " << double_pair << std::endl; 
-  // make_pair(double(-2.234), double(-8.76)) = -2.234, -8.76 
+  std::cout << "make_pair(double(-2.234), double(-8.76)) = " << double_pair << std::endl;
+  // make_pair(double(-2.234), double(-8.76)) = -2.234, -8.76
 
-  // Or, more informatively, use an uncertain type `uncun` that holds explicit uncertainty information 
+  // Or, more informatively, use an uncertain type `uncun` that holds explicit uncertainty information
   // (standard-deviation, degrees of freedom and so can compute confidence internals).
 
-  uncun ux(1.03, 0.56F, 7); // For an X-value. 
+  uncun ux(1.03, 0.56F, 7); // For an X-value.
   // Using the  `uncun operator<<` provided we can output all the details of the uncertain value.
   std::cout << scientific << plusminus << addlimits << adddegfree << std::setw(20)  << std::left
-    << "ux = " << ux << std::endl; // 1.2 +/-0.56 <0.82, 1.64> (7) 
+    << "ux = " << ux << std::endl; // 1.2 +/-0.56 <0.82, 1.64> (7)
 
   uncun uy(3.45, 0.67F, 9); // For a Y-value.
   std::cout << "uy = " << uy << std::endl; // 3.5 +/-0.67 <3.01, 3.89> (9)
@@ -194,7 +194,7 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     .x_range(-3, +10)
     .x_values_on(true) // Show X-values next to each point.
 
-     //! \note Essential use of Unicode space &#x00A0; in all strings - ANSI space has no effect!
+     //! \note Essential use of Unicode space &\#x00A0; in all strings - ANSI space has no effect!
   //  .x_decor("t ", ", ", "sec") // Keep all on one line using a separator NOT starting with a newline.
     .x_decor("t ", "\n_", "sec") // Split X and Y onto two lines because X separator *does* start with newline.
     .x_values_rotation(uphill)

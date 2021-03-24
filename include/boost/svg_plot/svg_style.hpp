@@ -94,9 +94,10 @@ enum rotate_style
   upsidedown = 180 //!< upside down!  (== -180)
 };
 
+//! \enum align_style Represents alignment a single @c std::string of chars.
 enum class align_style
-{ //! \enum align_style Represents alignment a single string of chars .
-  no_align = -1,  // Not aligned (so not 
+{ 
+  no_align = -1,  // Not aligned.
   left_align, //!< Align text to left. Outputs: \verbatim text-anchor="left" \endverbatim
   right_align, //!< Align text to right. Outputs: \verbatim text-anchor="right" \endverbatim
   center_align //!< Center align text. Outputs: \verbatim text-anchor="middle" \endverbatim
@@ -462,10 +463,9 @@ class text_style
   std::string decoration_; //!< Font decoration, examples: "underline" | "overline" | "line-through".
   double text_length_; //!< Estimate of SVG length of text used to force compress or expand into exactly this width.
   // Only actually used if text_length_ > 0.
- // int al_;  part of text_element
- // int rot_;
 
-  text_style( //! Default Constructor.
+  //! Default Constructor.
+  text_style( 
     int font_size = 0, //!< Default font size (12 pixels).  NOT const because it might be changed during sizing.
     const std::string& font = "", //!< Examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"...
     const std::string& weight = "", //!< Font weight examples: "bold", "normal".
@@ -473,7 +473,7 @@ class text_style
     const std::string& stretch = "", //!< Font stretch examples: normal | wider | narrower ...
     // ultra-condensed, extra-condensed, condensed, semi-condensed, normal, semi-expanded, expanded, extra-expanded, ultra-expanded
     const std::string& decoration = "", //!< Font decoration examples: "underline" | "overline" | "line-through".
-    double text_length = 0); //!< Estimated length of text string. Default zero means do not attempt to compress or expand to fit to length.
+    double text_length = 0); //!< Estimated length of text string. Default = 0 means do not attempt to compress or expand to fit to length.
 
   text_style(const text_style & rhs); // Copy constructor.  NOT const because can be changed during sizing.
 
@@ -522,9 +522,10 @@ text_style::text_style( //!< Constructor to allow all text style font parameters
   const std::string& style, //!< font-style: normal | italic | oblique (\sa https://www.w3.org/TR/css-fonts-3/#propdef-font-style) 
   const std::string& stretch, //!< font-stretch: normal | condensed | expanded (\sa https://www.w3.org/TR/css-fonts-3/#font-stretch-prop)
   const std::string& decoration, //!< Default is No decoration.  underline | overline | strike-through (or moe than one)
-  // text-decoration="line-through" "underline" "overline" 
-  // \sa https://www.w3.org/TR/SVG/text.html#TextDecorationProperties
-  double text_length)
+  //!< text-decoration="line-through" "underline" "overline" 
+  //!< \sa https://www.w3.org/TR/SVG/text.html#TextDecorationProperties
+  double text_length //!< Force compression or expansion to this length (if text_length >).
+  ) 
   : // Constructor.
   font_size_(size),
   font_family_(font),
@@ -887,9 +888,8 @@ public:
   std::string suffix_; //!< Suffix to data-point value, default none, but typically "]".
   std::string datetime_format_; //!< Boost.Date-time format for output of timestamp value-label (usually a compact format. default "%Y%b%d_%H:%M") .
 
-
-
-  //!< Constructor data-point value-label style (provides default color and font).
+  //! Constructor data-point value-label style (provides default color and font).
+  //! Separators [,] provide for customising layout, for example: [1.23+-0.01 (3), 4.56 +-0.2 (10)].
   value_style(
     int r = static_cast<int>(horizontal), //!< Label orientation, default horizontal.
     align_style a = align_style::left_align, //!< Label alignment, default left, so value_label is to right of data-point-marker.
@@ -911,11 +911,13 @@ public:
     const svg_color& dt_color = black,//!< Default color for  date and time  of value.
     bool ordno = false,  //!< If an order # to be appended, for example: "#13".
     const svg_color& order_color = black,//!< Default color for order #.
-    // Separators [,] provide, for example: [1.23+-0.01 (3), 4.56 +-0.2 (10)]
-    std::string pre = "", //!< Prefix, for example: "[",
-    std::string sep  = "", //!< separator, for example: ,\&\#x00A0;", // If put ", " the trailing space seems to be ignored, so add Unicode explicit space.
-    std::string suf  = "", //!< suffix, for example: "]")
-    std::string format = "%Y%b%d_%H:%M")
+    
+    std::string pre = "", //!< pre Prefix, for example: "[",
+    std::string sep  = "", //!< sep Separator, for example: ,\&\#x00A0;", 
+                           //!< \note If put comma space ", " the trailing space seems to be ignored, so add Unicode explicit space.
+    std::string suf  = "", //!< suf Suffix, for example: "]")
+    std::string format = "%Y%b%d_%H:%M" //!< format for date and time if use to label data-point values. 
+  )
     :
   value_label_rotation_(r),
     value_label_alignment_(a),
@@ -934,14 +936,16 @@ public:
 }; // class value_style
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// 
+ //! \enum point_shape used for marking a data point.
+//! (Used in draw_plot_point in axis_plot_frame.hpp).
 enum point_shape
-{ //! \enum point_shape used for marking a data point.
-  // Used in draw_plot_point in axis_plot_frame.hpp
+{
   none = 0, //!< No marker for data point.
-  circlet, /*!< Circle. Name was changed to round to avoid clash with function named circle,
-  but was then found to clash with C++ Standard numeric function round.
-  Full qualification `point_shape::round` requires C++11 support to compile, so then changed to circlet.
+  circlet, /*!< Circle. 
+    \note Name was changed to round to avoid clash with function named circle,
+    but was then found to clash with C++ Standard numeric function round.
+    Full qualification `point_shape::round` requires C++11 support to compile, so then changed to circlet.
   */
   square, //!< Square.
   point, //!< Small solid point.
@@ -1311,8 +1315,9 @@ std::ostream& operator<< (std::ostream& os, plot_line_style p)
 
 // Member Functions.
 
+ //! \enum dim dimension of plot. (Used so that an axis knows what type it is,  X (abscissa) or Y (ordinate), or N (none).
 enum dim
-{ //! \enum dim dimension of plot. (Used so that an axis knows what type it is,  X (abscissa) or Y (ordinate), or N (none).
+{
   N = 0, X = 1, Y = 2
 };
 
@@ -1790,8 +1795,9 @@ box_style::box_style(
     return fill_; //! \return Fill color for box.
   }
 
+  //! Set width for box.
   box_style& box_style::width(double w)
-  { //! Set width for box.
+  { 
     border_width_ = w;
     return *this; //! \return box_style& to make chainable.
   }
@@ -1836,8 +1842,9 @@ box_style::box_style(
 
 // End class box_style Definitions.
 
+//! \enum bar_option Options for bar to draw bar charts.
 enum bar_option
-{ //! \enum bar_option Options for bar to draw bar charts.
+{ 
   y_block = -2, //!< Rectangular (optionally filled) block style horizontal to Y-axis,
   y_stick = -1, //!< Bar or row line (stroke width) horizontal to Y-axis.
   no_bar = 0, //!< No bar.
@@ -1847,8 +1854,9 @@ enum bar_option
   // x_cyl = +3, x_cone = +4 ...
 };
 
+//! \enum histogram_option options for histograms.
 enum histogram_option
-{ //! \enum histogram_option options for histograms.
+{ 
   // row = -1, // Row line (stroke width) horizontal to Y-axis. Not implemented.
   // See svg_2d_plot for details of why not.
   no_histogram = 0, //!< No histogram.
@@ -1856,10 +1864,11 @@ enum histogram_option
   //! Column is the most common histogram style.
 };
 
-class histogram_style
-{ /*! \class boost::svg::histogram_style
+ /*! \class boost::svg::histogram_style
      \brief Histogram options.
-    */
+*/
+class histogram_style
+{
 public:
   histogram_option histogram_option_; //!< default bar, no_histogram or column.
 

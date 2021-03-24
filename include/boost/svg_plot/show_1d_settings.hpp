@@ -160,15 +160,15 @@ const std::string t_or_b(int i)
  return ((i < 0) ? "bottom" : ((i == 0) ? "none" : "top"));
 }
 
-void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
-{ /*! \brief Diagnostic display of all settings of a 1D plot.
-     Outputs a long list of about hundred of plot parameter settings, by default to @c std::cout.
+ /*! \brief Diagnostic display of all settings of a 1D plot.
+     Outputs to a @c std::ostream a long list of about hundred of plot parameter settings, by default to @c std::cout.
     This list is invaluable if the plot does not look as expected.
-    \warning This creates about 100 lines of output, so should be used sparingly!
-    \param plot Name of svg_1d_plot.
+    \warning This creates over 100 lines of output, so should be used sparingly!
+    \param plot Name of @c svg_1d_plot.
     \param os @c std::ostream& for output, default @c std::cout.
   */
-
+void show_1d_plot_settings(svg_1d_plot& plot, std::ostream& os = std::cout)
+{
   using boost::svg::detail::operator<<;
   // std::ostream& operator<< (std::ostream&, const std::pair<double, double>&);
   // defined above.

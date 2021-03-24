@@ -27,11 +27,11 @@
 </span>
 <span class="keyword">struct</span> <a class="link" href="a_path.html" title="Struct a_path">a_path</a> <span class="special">:</span> <span class="keyword">public</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">path_point</span> <span class="special">{</span>
   <span class="comment">// <a class="link" href="a_path.html#boost.svg.a_pathconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="a_path.html#id563079-bb"><span class="identifier">a_path</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">,</span> 
+  <a class="link" href="a_path.html#id554335-bb"><span class="identifier">a_path</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">,</span> 
          <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="a_path.html#id565301-bb">public member functions</a></span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="a_path.html#id565306-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="a_path.html#id554354-bb">public member functions</a></span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="a_path.html#id554328-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="keyword">bool</span> <span class="identifier">large_arc</span><span class="special">;</span>  <span class="comment">// true if arc &gt;= 180 degrees wanted. </span>
@@ -44,22 +44,22 @@
   <span class="keyword">double</span> <span class="identifier">y</span><span class="special">;</span>  <span class="comment">// Y End of arc from current point. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1192812"></a><h2>Description</h2>
+<a name="id1188990"></a><h2>Description</h2>
 <p>See 8.3.8 The elliptical arc curve commands.! Useful for pie charts, etc. </p>
 <div class="refsect2">
-<a name="id1192837"></a><h3>
+<a name="id1189051"></a><h3>
 <a name="boost.svg.a_pathconstruct-copy-destruct"></a><code class="computeroutput">a_path</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><a name="id563079-bb"></a><span class="identifier">a_path</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">double</span> rx<span class="special">,</span> <span class="keyword">double</span> ry<span class="special">,</span> <span class="keyword">double</span> x_axis_rotation<span class="special">,</span> 
+<pre class="literallayout"><a name="id554335-bb"></a><span class="identifier">a_path</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">double</span> rx<span class="special">,</span> <span class="keyword">double</span> ry<span class="special">,</span> <span class="keyword">double</span> x_axis_rotation<span class="special">,</span> 
        <span class="keyword">bool</span> large_arc <span class="special">=</span> <span class="keyword">false</span><span class="special">,</span> <span class="keyword">bool</span> sweep <span class="special">=</span> <span class="keyword">false</span><span class="special">,</span> <span class="keyword">bool</span> relative <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span></pre>Construct elliptic arc path. </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1192954"></a><h3>
-<a name="id565301-bb"></a><code class="computeroutput">a_path</code> public member functions</h3>
+<a name="id1189168"></a><h3>
+<a name="id554354-bb"></a><code class="computeroutput">a_path</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id565306-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands like "M1.2, 3.4", <p>Write elliptical arc path XML to ostream.</p>
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id554328-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands like "M1.2, 3.4", <p>Write elliptical arc path XML to ostream.</p>
 </li></ol></div>
 </div>
 </div>

@@ -30,13 +30,13 @@
 #include <boost/svg_plot/detail/numeric_limits_handling.hpp>
 //#include <boost/quan/unc.hpp>
 //#include <boost/quan/unc_init.hpp>
-//#include <boost/quan/meas.hpp>
+#include <boost/quan/meas.hpp>
 
 using boost::svg::detail::limit_NaN;  // Handling of non-finite data values.
 
 #include <boost/svg_plot/detail/auto_axes.hpp>
-/*! Provides variants for @c void boost::svg::scale_axis
-*/
+// Provides variants for @c void boost::svg::scale_axis
+
 
 #include <vector>
 #include <ostream>
@@ -93,7 +93,7 @@ public:
   /* Scan each data-point between the iterators that are passed,
     sorting them into the appropriate @c std::vectors, either normal or not (NaN or infinite).
 
-    \tparam C A STL container: \code std::array, std::vector<double>, std::set, std::map ... \endcode
+    \tparam C An STL container: \code std::array, std::vector<double>, std::set, std::map ... \endcode
   */
 
   template <typename C>
@@ -1101,11 +1101,11 @@ svg_1d_plot& svg_1d_plot::write(std::ostream& os)
   //! @b Example:
 /*!
   \code
-std::vector<float> my_data; // my container.
-my_data.push_back(2.f); // Fill container with some data.
-my_data.push_back(3.f);
-my_data.push_back(4.f);
-my_1d_plot.plot(my_data, "All data in my container"); // Plot all data in container.
+    std::vector<float> my_data; // my container.
+    my_data.push_back(2.f); // Fill container with some data.
+    my_data.push_back(3.f);
+    my_data.push_back(4.f);
+    my_1d_plot.plot(my_data, "All data in my container"); // Plot all data in container.
   \endcode
 */
 template <typename T>
@@ -1130,15 +1130,13 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& container, const std::string& tit
     \return Reference to the data-series just added.
     \note This version permits a @b partial range of the container, from begin to end, to be used.
 
-    @b Example:
-    */
-/*!
+    Example:
     \code
 my_1d_plot.plot(my_data.begin(), my_data.end(), "My container"); // Whole container of data values.
 my_1d_plot.plot(&my_data[1], &my_data[4], "my_data 1 to 4"); // Add part of data-series
     \endcode
 
-    \warning last == end  which is one past the last, so this only does 1, 2 & 3 -  \b not 4!
+    \warning last == end  which is one past the last, so this only does 1, 2 and 3 -  \b not 4!
   */
   template <class T>  // \tparam T floating-point type of the data (T must be convertible to double).
 svg_1d_plot_series& svg_1d_plot::plot(const T& begin, const T& end, const std::string& title)
@@ -1155,23 +1153,19 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& begin, const T& end, const std::s
 } // plot
 
 /*!
-  Add a data-series to the plot, with optional title.
+  \brief Add a data-series in a container to the plot, with optional title.
 
   \tparam T floating-point type of the data (which must be convertible to @c double).
   \tparam U functor floating-point type (default is @c double_1d_convert).
-
-
   \param container Container for data (for example @c std::vector) that contains the data to be added to the plot.
   \param title Optional title for the plot (default is no title).
   \param functor Custom functor to convert data value to @c double.
-
   \return a reference to data-series just added (to make chainable).
-
-  \note This version of plot includes a functor, allowing other than just convert data values to @c double (the default).
+  \note This version of function @c plot includes a functor, allowing other types to just convert data values to @c double (the default).
 */
 
 template <typename T, typename U>
-svg_1d_plot_series& svg_1d_plot::plot(const T& container, const std::string& title /* = "" */, U functor/*= double_1d_convert*/)
+svg_1d_plot_series& svg_1d_plot::plot(const T& container, const std::string& title /* = "" */, U functor /*= double_1d_convert*/)
 {
   serieses_.push_back(
     svg_1d_plot_series(
@@ -1179,22 +1173,19 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& container, const std::string& tit
     boost::make_transform_iterator(container.end(),   functor),
     title)
   );
-  return serieses_[serieses_.size() - 1]; // Reference to data-series just added.
+  return serieses_[serieses_.size() - 1]; //  Reference to data-series just added to make chainable.
 } // plot
 
 /*!
-   Add a data-series to the plot, with optional title. (Version with custom functor, rather than to @c double).
-
+   \brief Add a data-series to the plot, with optional title. (Version with custom functor, rather than to @c double).
     \tparam T Floating-point type of the data (which must be convertible to @c double).
     \tparam U Functor floating-point type (default is @c double_1d_convert).
-
     \param begin Iterator to 1st data item in container.
     \param end Iterator to one-beyond-end of data in container.
     \param title Optional title for the plot (default is no title).
     \param functor Custom functor.
     \return a reference to data-series just added (to make chainable).
-
-    \note This version permits a @b partial range, within begin to end, of the container to be used.
+    \note This version permits a @b partial range of the container (within begin to end) to be used.
 */
 template <typename T, typename U>
 svg_1d_plot_series& svg_1d_plot::plot(const T& begin, const T& end, const std::string& title /* = ""*/,
@@ -1209,8 +1200,6 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& begin, const T& end, const std::s
   return serieses_[serieses_.size() - 1];
 } // plot
 
-
-// End Definitions of svg_plot_series Public Member Functions.
 } // namespace svg
 } // namespace boost
 

@@ -2,14 +2,14 @@
   \brief SVG Plot functions common to 1D, 2D and Boxplots.
   \details Functions are derived from base class @c axis_plot_frame.
 
-  \details
-  #define BOOST_SVG_LEGEND_DIAGNOSTICS for diagnostics of plot legend.
-  #define BOOST_SVG_TITLE_DIAGNOSTICS for diagnostics of plot title.
-  #define BOOST_SVG_POINT_DIAGNOSTICS for diagnostics of data-point markers.
+  define 
+    BOOST_SVG_LEGEND_DIAGNOSTICS for diagnostics of plot legend.\n
+    BOOST_SVG_TITLE_DIAGNOSTICS for diagnostics of plot title.\n
+    BOOST_SVG_POINT_DIAGNOSTICS for diagnostics of data-point markers.
 */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2007, 2008, 2009, 2012, 2013, 2018
+// Copyright Paul A. Bristow 2007, 2008, 2009, 2012, 2013, 2018, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -62,23 +62,27 @@ namespace boost
     static const double reducer = 0.9; //!< To make uncertainty and degrees of freedom estimates a bit smaller font to help distinguish from value.
    // static const double aspect_ratio = 0.6;  //!< Guess at average height to width of font. Now in svg_style.hpp
 
-    // x_axis_position_ and y_axis_position_ use x_axis_intersect & y_axis_intersect
+    
+    //! \enum x_axis_intersect If and how the X axes intersects Y-axis.
+    //! \note x_axis_position_ and y_axis_position_ use x_axis_intersect & y_axis_intersect
     enum x_axis_intersect
-    { //! \enum x_axis_intersect If and how the X axes intersects Y-axis.
+    {
       bottom = -1, //!< X-axis free below bottom of end of Y-axis (case of all Y definitely < 0).
       x_intersects_y = 0, //!< x_intersects_y when Y values include zero, so X intersects the Y-axis.
       top = +1 //!< X-axis free above top of X-axis (case of all Y definitely > 0).
       };
 
+    //! \enum y_axis_intersect  If and how the Y axes intersects X axis.
     enum y_axis_intersect
-    { //! \enum y_axis_intersect  If and how the Y axes intersects X axis.
+    { 
       left = -1, //!< Y-axis free to left of end of X-axis (case of all X definitely < 0).
       y_intersects_x = 0, //!< y_intersects_x when X values include zero, so intersects the X axis.
       right = +1 //!< Y-axis free to left of end of X-axis (case of all X definitely > 0).
      };
 
+    //! \enum legend_places Placing of legend box, if requested by legend_on == true.
     enum legend_places
-    { //! \enum legend_places Placing of legend box, if requested by legend_on == true.
+    { 
       nowhere = 0, //!< Placing of legend box not requested or not calculated yet.
       inside = -1,  //!< Default place for inside is top left of plot window, (exact location controlled by legend_top_left()).
       outside_left = 1, //!< Outside on the left of the graph.
@@ -88,8 +92,9 @@ namespace boost
       somewhere = +5 //!< Use values set by call of legend_top_left(x, y)
     };
 
+    //! \namespace detail Holds base class axis_plot_frame for 1D, 2D and Box plots.
     namespace detail
-    { //! \namespace detail Holds base class axis_plot_frame for 1D, 2D and Box plots.
+    {
 
       /*! \brief Used as base class for 1D, 2D and Box plots.
          \details For example:
@@ -116,7 +121,7 @@ namespace boost
        and so is returned by all get functions.
        */
 
-      // Max and min three item functions use to compare font sizes.
+      //! Max three item functions used to compare font sizes.
       template <typename T>
       inline
         T max(T a, T b, T c)
@@ -124,6 +129,7 @@ namespace boost
         return ((a > b) ? a : (b > c) ? b : c);
       }
 
+      //! min three item functions used to compare font sizes.
       template <typename T>
       inline
         T min(T a, T b, T c)

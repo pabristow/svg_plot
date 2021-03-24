@@ -19,15 +19,13 @@
 <div class="titlepage"><div><div><h3 class="title">
 <a name="header.boost.svg_plot.detail.svg_boxplot_detail_hpp"></a>Header &lt;<a href="../../../../../../boost/svg_plot/detail/svg_boxplot_detail.hpp" target="_top">boost/svg_plot/detail/svg_boxplot_detail.hpp</a>&gt;</h3></div></div></div>
 <p>Boost.Plot SVG Box plot Implemention details. </p>
-<p>See svg_boxplot.hpp for user functions. See also svg_style_detail.hpp for enum plot_doc_structure. Caution: these two enum and ids must match because the enum value is used to index the array of id strings. void set_ids() copies all strings to matching image.get_g_element(i).id() So add any new id items to both!</p>
-<p>Jacob Voytko and Paul A. Bristow </p>
-<p>
-
-</p>
+<p>See svg_boxplot.hpp for user functions. See also svg_style_detail.hpp for enum plot_doc_structure. Caution: these two enum and ids must match because the enum value is used to index the array of id strings. void set_ids() copies all strings to matching image.get_g_element(i).id() So add any new id items to both! </p>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">svg</span> <span class="special">{</span>
     <span class="keyword">namespace</span> <span class="identifier">boxplot</span> <span class="special">{</span>
 
+      <span class="comment">// groups that form the boxplot svg document structure. <br>
+ Order controls the painting order, later ones overwriting earlier layers. </span>
       <span class="keyword">enum</span> <a name="boost.svg.boxplot.boxplot_doc_structure"></a>boxplot_doc_structure <span class="special">{</span> PLOT_BACKGROUND = = 0, 
                                    PLOT_WINDOW_BACKGROUND, X_AXIS, Y_AXIS, 
                                    X_TICKS, Y_MAJOR_TICKS, Y_MINOR_TICKS, 
@@ -37,7 +35,7 @@
                                    DATA_VALUE_LABELS, PLOT_TITLE, PLOT_NOTES, 
                                    BOXPLOT_DOC_CHILDREN <span class="special">}</span><span class="special">;</span>
 
-      <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="../../../../boost/svg/boxplot/document_ids_.html" title="Global document_ids_">document_ids_</a><span class="special">;</span>      <span class="comment">// String descriptors used in SVG XML (matching enum boxplot_doc_structure). </span>
+      <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="../../../../boost/svg/boxplot/document_ids_.html" title="Global document_ids_">document_ids_</a><span class="special">;</span>      <span class="comment">// String descriptors of layers used in SVG XML (matching <code class="computeroutput">enum</code><code class="computeroutput">boxplot_doc_structure</code>). </span>
     <span class="special">}</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>

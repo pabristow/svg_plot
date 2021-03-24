@@ -25,22 +25,11 @@
 <div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/show_2d_settings_hpp.html" title="Header &lt;boost/svg_plot/show_2d_settings.hpp&gt;">boost/svg_plot/show_2d_settings.hpp</a>&gt;
 
 </span>
-<span class="keyword">void</span> <span class="identifier">show_2d_plot_settings</span><span class="special">(</span><a class="link" href="svg_2d_plot.html" title="Class svg_2d_plot">svg_2d_plot</a> <span class="special">&amp;</span> plot<span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre></div>
+<span class="keyword">void</span> <span class="identifier">show_2d_plot_settings</span><span class="special">(</span><a class="link" href="svg_2d_plot.html" title="Class svg_2d_plot">svg_2d_plot</a> <span class="special">&amp;</span> plot<span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">)</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1259586"></a><h2>Description</h2>
+<a name="id1257468"></a><h2>Description</h2>
 <p>Diagnostic display of all settings of a 2D plot.</p>
-<p>Outputs a long list of over 100 plot parameter settings, by default to <code class="computeroutput">std::cout</code>. This list is invaluable if the plot does not look as expected. </p>
-<div class="warning"><table border="0" summary="Warning">
-<tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../images/warning.png"></td>
-<th align="left">Warning</th>
-</tr>
-<tr><td align="left" valign="top"><p>This creates over 100 lines of output, so should be used sparingly! </p></td></tr>
-</table></div>
-<p>
-
-Diagnostic display of all settings of a 2D plot.</p>
-<p>Outputs a long list of over 100 plot parameter settings, by default to <code class="computeroutput">std::cout</code>. This list is invaluable if the plot does not look as expected. </p>
+<p>Outputs to <code class="computeroutput">std::ostream</code> a long list of over 100 plot parameter settings, by default to <code class="computeroutput">std::cout</code>. This list is invaluable if the plot does not look as expected. </p>
 <div class="warning"><table border="0" summary="Warning">
 <tr>
 <td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../images/warning.png"></td>
@@ -66,17 +55,11 @@ Diagnostic display of all settings of a 2D plot.</p>
 <tbody>
 <tr>
 <td><p><span class="term"><code class="computeroutput">os</code></span></p></td>
-<td>
-<p>Output stream for diagnostic output, default @ std::cout.</p>
-<p>Output stream for diagnostic output, default @ std::cout.</p>
-</td>
+<td><p>Output stream for diagnostic output, default @ std::cout. </p></td>
 </tr>
 <tr>
 <td><p><span class="term"><code class="computeroutput">plot</code></span></p></td>
-<td>
-<p>Name of 2D plot. </p>
-<p>Name of 2D plot. </p>
-</td>
+<td><p>Name of 2D plot. </p></td>
 </tr>
 </tbody>
 </table></div></td>

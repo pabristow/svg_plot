@@ -35,9 +35,10 @@ namespace detail
 // void set_ids() copies all strings to matching image.get_g_element(i).id()
 // Add any new id items to both!
 
-enum plot_doc_structure
-{ //! \enum plot_doc_structure
   //! Plot document structure whose order controls the painting order, later ones overwriting earlier layers.
+  //! \enum plot_doc_structure
+enum plot_doc_structure
+{ 
   PLOT_BACKGROUND = 0, //! Must be zero to index array document_ids_[]
   PLOT_WINDOW_BACKGROUND, //! the smaller plot window (if used).
   PLOT_Y_MINOR_GRID, //! Y minor grid.
