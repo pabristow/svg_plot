@@ -9,7 +9,7 @@
  */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2008, 2009, 2011, 2012, 2013, 2020
+// Copyright Paul A. Bristow 2008, 2009, 2011, 2012, 2013, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -29,14 +29,12 @@
 //using boost::svg::detail::unc_1d_convert;
 #include <boost/svg_plot/detail/numeric_limits_handling.hpp>
 //#include <boost/quan/unc.hpp>
-//#include <boost/quan/unc_init.hpp>
 #include <boost/quan/meas.hpp>
 
 using boost::svg::detail::limit_NaN;  // Handling of non-finite data values.
 
 #include <boost/svg_plot/detail/auto_axes.hpp>
 // Provides variants for @c void boost::svg::scale_axis
-
 
 #include <vector>
 #include <ostream>

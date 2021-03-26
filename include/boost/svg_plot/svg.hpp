@@ -159,7 +159,7 @@
 
 */
 // Copyright Jacob Voytko 2007
-// Copyright Paul A Bristow 2007, 2009, 2020
+// Copyright Paul A Bristow 2007, 2009, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -175,7 +175,7 @@
 #include <exception>
 #include <vector>
 
-//#include "stylesheet.hpp" // TODO better to be called svg_stylesheet.hpp?
+//#include "stylesheet.hpp" // TODO - and better to be called svg_stylesheet.hpp?
 #include "detail/svg_elements.hpp" // element class definitions.
 #include "svg_style.hpp"
 //#include "svg_fwd.hpp" // Could be used to check declarations and definitions match correctly.
@@ -198,7 +198,7 @@
 namespace boost
 {
 namespace svg
-{ //! \namespace boost \brief www.Boost.org.
+{ //! \namespace boost \brief https://www.Boost.org.
   //! \namespace boost::math \brief Boost.Math library at www.boost.org.
   //! \namespace boost::math::detail \brief Boost.Math library at www.boost.org implementation details.
   //! \namespace svg \brief Scalable Vector Graph plot functions, classes and data.
@@ -312,7 +312,7 @@ class svg
 
   g_element document_; //!< Parent g_element to hold all group elements of the svg document.  Initially none.
   // Function gs accesses ith g_element child nodes in tree, for example:
-  //  image_.gs(PLOT_BACKGROUND).style().fill_color(red); 
+  //  image_.gs(PLOT_BACKGROUND).style().fill_color(red);
   // where macro PLOT_BACKGROUND is index integer value 0 <= index < gs.size().
   // Could better be called parent_group_ ?
 
@@ -479,14 +479,14 @@ public:
       // .x_axis_value{ font-size:12px;font-weight:normal;fill:black }
       //   </style></defs>
 
-      // Might output the 
-      // const static char* default_font_family("Lucida Sans Unicode"); 
+      // Might output the
+      // const static char* default_font_family("Lucida Sans Unicode");
       // and a font-size etc?
       // But SVG element classes have default parameter that override these at present.
 
       //  <style>
       // text{
-      //    font-family:Lucida Sans Unicode; 
+      //    font-family:Lucida Sans Unicode;
       //}
       //  < / style>
 
@@ -840,19 +840,19 @@ public:
     return document_.text(x, y, text, style, align, rotate); // see svg_elements.hpp 2137 for definition.
   }
   /*  text_length  SVG XML textLength = "<length>"
-  The author's (this program svg_plot) computation of the total sum of all of 
+  The author's (this program svg_plot) computation of the total sum of all of
   the advance values that correspond to character data within this element,
   including the advance value on the glyph (horizontal or vertical),
   the effect of properties 'kerning', 'letter-spacing' and 'word-spacing'
-  and adjustments due to attributes 'dx' and 'dy' on 'tspan' elements. 
-  
+  and adjustments due to attributes 'dx' and 'dy' on 'tspan' elements.
+
   This value is used to calibrate the user agent's (renderer) own calculations with that of the author.
-  The purpose of this attribute is to allow the author to achieve exact alignment, 
-  in visual rendering order after any bidirectional reordering, 
+  The purpose of this attribute is to allow the author to achieve exact alignment,
+  in visual rendering order after any bidirectional reordering,
   for the first and last rendered glyphs that correspond to this element;
-  thus, for the last rendered character (in visual rendering order after any bidirectional reordering), 
-  any supplemental inter-character spacing beyond normal glyph advances are ignored (in most cases) 
-  when the user agent (this program) determines the appropriate amount 
+  thus, for the last rendered character (in visual rendering order after any bidirectional reordering),
+  any supplemental inter-character spacing beyond normal glyph advances are ignored (in most cases)
+  when the user agent (this program) determines the appropriate amount
   to expand/compress the text string to fit within a length of 'textLength'.
   */
   // \sa https://www.w3.org/TR/SVG11/text.html#TextElementTextLengthAttribute
@@ -931,7 +931,7 @@ public:
 }; // class svg
 
   // ----------------------------------------------------------------------------------------
-  // Load stylesheet - to provide some defaults like font size, type but not yet implemented. 
+  // Load stylesheet - to provide some defaults like font size, type but not yet implemented.
   // ----------------------------------------------------------------------------------------
 
 

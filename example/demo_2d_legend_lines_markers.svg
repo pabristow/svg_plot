@@ -12,7 +12,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- (See accompanying file LICENSE_1_0.txt --> 
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
-<clipPath id="plot_window">	<rect x="63.9" y="40.5" width="324" height="312"/>
+<clipPath id="plot_window">	<rect x="63.9" y="40.5" width="324" height="313"/>
 </clipPath>
 
 <g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
@@ -20,7 +20,7 @@ xmlns ="http://www.w3.org/2000/svg"
 </g>
 
 <g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(245,245,245)" stroke-width="2">
-	<rect x="62.9" y="39.5" width="326" height="314"/>
+	<rect x="62.9" y="39.5" width="326" height="315"/>
 </g>
 
 <g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">

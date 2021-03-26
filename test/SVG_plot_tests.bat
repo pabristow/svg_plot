@@ -1,6 +1,6 @@
 rem svg_plot_tests.bat
 echo off
-rem Do not forget to SVN update jamroot which contains the (updated) Boost version number.
+rem Do not forget to update jamroot which contains the (updated) Boost version number.
 rem This changes the version number suffix!
 rem cd boost-trunk/tools/build/v2/
 rem boostrap.bat

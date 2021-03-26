@@ -70,7 +70,8 @@ doxygen autodoc
     [ glob ../../../boost/svg_plot/*.*pp ]
     [ glob ../../../boost/quan/*.hpp ]
     [ glob ../../../boost/svg_plot/detail/*.hpp ]
-    [ glob ../../../boost/svg_plot/detail/axis_plot_frame.hpp ]
+ #   [ glob ../../../boost/svg_plot/detail/axis_plot_frame.hpp ]
+    [ glob ../../../boost/svg_plot/detail/*.hpp ]
   :
     #<doxygen:param>INPUT="filename1 directoryname2" # Separate with spaces.
     # But also see paths specified above.
@@ -125,7 +126,7 @@ doxygen autodoc
     # Note: no commas required but need quotes if more than one file.
 
     <xsl:param>"boost.doxygen.reftitle=Boost.SVG plot C++ Reference"
-    <doxygen:param>ENABLED_SECTIONS="DETAIL" # enable Doxygen indexing of all DETAIL sections.  (Only useful for maintainers).
+   # <doxygen:param>ENABLED_SECTIONS="DETAIL" # Enable Doxygen indexing of all DETAIL sections.  (Only useful for maintainers).
 ;
     #<doxygen:param>"PREDEFINED=\"BOOST_DEDUCED_TYPENAME=typename\" "
 # See Doxygen configuration for detailed explanation of these options.
@@ -144,7 +145,7 @@ boostbook standalone
   :
 
   # Path for links to Boost from /html:
-  # <xsl:param>boost.root=../../../..
+  <xsl:param>boost.root=../../../..
 
   # Path for libraries index:
   # <xsl:param>boost.libraries=../../../../libs/libraries.htm #  Not for standalone.

@@ -29,7 +29,7 @@ xmlns ="http://www.w3.org/2000/svg"
 </g>
 
 <g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
-	<line x1="109" y1="61.8" x2="109" y2="162"/>
+	<line x1="109" y1="61.8" x2="109" y2="163"/>
 	<line x1="21" y1="119" x2="403" y2="119"/>
 </g>
 
@@ -121,13 +121,13 @@ M50.4,119 L50.4,133
 </g>
 
 <g id="legendBackground" stroke="rgb(255,215,0)" fill="rgb(240,255,255)" stroke-width="1">
-	<rect x="409" y="61.8" width="82.3" height="83.2"/>
+	<rect x="409" y="61.8" width="82.3" height="83.3"/>
 </g>
 
 <g id="legendPoints">
 
 <g stroke="rgb(0,0,255)">
-	<line x1="424" y1="110" x2="424" y2="100"/>
+	<line x1="424" y1="111" x2="424" y2="101"/>
 </g>
 
 <g stroke="rgb(255,165,0)">
@@ -142,11 +142,11 @@ M50.4,119 L50.4,133
 <g id="legendText">
 	<text x="450" y="87.8" text-anchor="middle" font-size="15" textLength="55.8">Animal
 	</text>
-	<text x="430" y="106" font-size="10" font-family="Verdana" textLength="31.2">Lions
+	<text x="431" y="107" font-size="10" font-family="Verdana" textLength="31.2">Lions
 	</text>
-	<text x="430" y="119" font-size="10" font-family="Verdana" textLength="37.2">Tigers
+	<text x="431" y="119" font-size="10" font-family="Verdana" textLength="37.2">Tigers
 	</text>
-	<text x="430" y="132" font-size="10" font-family="Verdana" textLength="31.2">Bears
+	<text x="431" y="132" font-size="10" font-family="Verdana" textLength="31.2">Bears
 	</text>
 </g>
 
