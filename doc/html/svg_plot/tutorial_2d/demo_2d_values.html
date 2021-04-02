@@ -1,26 +1,19 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>2-D Data Values Examples</title>
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="../tutorial_2d.html" title="2D Tutorial">
 <link rel="prev" href="2d_special.html" title="Tutorial: 2D Special Features">
 <link rel="next" href="demo_2d_autoscaling.html" title="2-D Autoscaling Examples">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
-<td align="center"><a href="../../../../../../index.html">Home</a></td>
-<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
-<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
-<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
-</tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="2d_special.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_2d.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="demo_2d_autoscaling.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="2d_special.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_2d.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="demo_2d_autoscaling.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
@@ -36,65 +29,70 @@
         As always, we need a few includes to use Boost.Plot
       </p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">svg_plot</span><span class="special">/</span><span class="identifier">svg_2d_plot</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
-  <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">;</span>
-  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_2d_plot</span><span class="special">;</span>
+  <span class="comment">//using namespace boost::svg;</span>
+  <span class="comment">//using boost::svg::svg_2d_plot;</span>
 
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span>
-  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">;</span>
-  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
-  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">dec</span><span class="special">;</span>
-  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">hex</span><span class="special">;</span>
+  <span class="comment">//using std::cout;</span>
+  <span class="comment">//using std::endl;</span>
+  <span class="comment">//using std::dec;</span>
+  <span class="comment">//using std::hex;</span>
 
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">map</span><span class="special">&gt;</span>
-  <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">map</span><span class="special">;</span>
+<span class="comment">//  using std::map;</span>
 </pre>
 <p>
-        Some fictional data is pushed into an STL container, here map: This example
-        uses a single map to demonstrate autoscaling. We create a map to hold our
-        data series.
+        Some fictional data is pushed into an STL container, here map:
       </p>
-<pre class="programlisting"><span class="identifier">map</span><span class="special">&lt;</span><span class="keyword">const</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">my_data</span><span class="special">;</span>
+<pre class="programlisting"><span class="keyword">try</span>
+<span class="special">{</span> <span class="comment">// try'n'catch blocks are needed to ensure error messages from any exceptions are shown.</span>
 </pre>
 <p>
-        Inserting some fictional values also sorts the data. The index value in []
-        is the x value.
+        This example uses a single map to demonstrate autoscaling. We create a map
+        to hold our first data-series using type double.
       </p>
-<pre class="programlisting"><span class="comment">//my_data[1.1] = 3.2;</span>
-<span class="comment">//my_data[7.3] = 9.1;</span>
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">map</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">my_data</span><span class="special">;</span>
+</pre>
+<p>
+        Inserting some fictional values also sorts the data. The index value in [
+        ] is the x value.
+      </p>
+<pre class="programlisting"><span class="identifier">my_data</span><span class="special">[</span><span class="number">1.1</span><span class="special">]</span> <span class="special">=</span> <span class="number">3.2</span><span class="special">;</span>  <span class="comment">// X = 1.1 and Y = 3.2.</span>
+<span class="identifier">my_data</span><span class="special">[</span><span class="number">7.3</span><span class="special">]</span> <span class="special">=</span> <span class="number">9.1</span><span class="special">;</span> <span class="comment">// </span>
 <span class="identifier">my_data</span><span class="special">[</span><span class="number">2.12</span><span class="special">]</span> <span class="special">=</span> <span class="number">2.4394</span><span class="special">;</span>
 <span class="identifier">my_data</span><span class="special">[</span><span class="number">5.47</span><span class="special">]</span> <span class="special">=</span> <span class="number">5.3861</span><span class="special">;</span>
 
-<span class="keyword">try</span>
-<span class="special">{</span> <span class="comment">// try'n'catch blocks are needed to ensure error messages from any exceptions are shown.</span>
-  <span class="identifier">svg_2d_plot</span> <span class="identifier">my_2d_plot</span><span class="special">;</span> <span class="comment">// Construct a plot with all the default constructor values.</span>
+<span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_2d_plot</span><span class="special">;</span>  <span class="comment">// This is needed to construct, setup and output the plot in SVG format.</span>
 
-  <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Default 2d Values Demo"</span><span class="special">)</span> <span class="comment">// Add a string title of the plot.</span>
-    <span class="special">.</span><span class="identifier">x_range</span><span class="special">(-</span><span class="number">5</span><span class="special">,</span> <span class="number">10</span><span class="special">)</span> <span class="comment">// Add a range for the X-axis.</span>
-    <span class="special">.</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"length (m)"</span><span class="special">);</span> <span class="comment">// Add a label for the X-axis.</span>
+<span class="identifier">svg_2d_plot</span> <span class="identifier">my_2d_plot</span><span class="special">;</span> <span class="comment">// Construct a plot with all the default constructor values.</span>
+
+<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"Demo 2d Values"</span><span class="special">)</span> <span class="comment">// Add a string title of the plot.</span>
+  <span class="special">.</span><span class="identifier">x_range</span><span class="special">(-</span><span class="number">5</span><span class="special">,</span> <span class="number">10</span><span class="special">)</span> <span class="comment">// Add a range for the X-axis.</span>
+  <span class="special">.</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"length (m)"</span><span class="special">);</span> <span class="comment">// Add a label for the X-axis.</span>
 </pre>
 <p>
-        Add the one data series, <code class="computeroutput"><span class="identifier">my_data</span></code>
-        and a description, and how the data points are to be marked, here a circle
+        Add the one data-point series, <code class="computeroutput"><span class="identifier">my_data</span></code>
+        and a description, and how the data-points are to be marked, here a circle
         with a diameter of 5 pixels.
       </p>
 <pre class="programlisting"><span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">,</span> <span class="string">"2d Values"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">circlet</span><span class="special">).</span><span class="identifier">size</span><span class="special">(</span><span class="number">5</span><span class="special">).</span><span class="identifier">line_on</span><span class="special">(</span><span class="keyword">false</span><span class="special">);</span>
 </pre>
 <p>
-        To put a value label against each data point, switch on the option:
+        To put a value-label against each data_point, switch on the option:
       </p>
 <pre class="programlisting"><span class="comment">//my_2d_plot.x_values_on(true); // Add a label for the X-axis.</span>
 <span class="comment">//my_2d_plot.y_values_on(true); // Add a label for the X-axis.</span>
-<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">xy_values_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// Add a label for the X-axis.</span>
+<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">xy_values_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// Add a label for both the X and Y-axis.</span>
 </pre>
 <p>
         If the default size and color are not to your taste, set more options, like:
       </p>
-<pre class="programlisting"><span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_values_font_size</span><span class="special">(</span><span class="number">16</span><span class="special">)</span> <span class="comment">// Change font size for the X-axis value labels.</span>
-  <span class="special">.</span><span class="identifier">x_values_font_family</span><span class="special">(</span><span class="string">"Times New Roman"</span><span class="special">)</span> <span class="comment">// Change font for the X-axis value labels.</span>
+<pre class="programlisting"><span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_values_font_size</span><span class="special">(</span><span class="number">16</span><span class="special">)</span> <span class="comment">// Change font size for the X-axis value-labels.</span>
+  <span class="special">.</span><span class="identifier">x_values_font_family</span><span class="special">(</span><span class="string">"Times New Roman"</span><span class="special">)</span> <span class="comment">// Change font for the X-axis value-labels.</span>
   <span class="special">.</span><span class="identifier">x_values_color</span><span class="special">(</span><span class="identifier">red</span><span class="special">);</span> <span class="comment">// Change X values color from default black to red.</span>
 
-<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_values_font_size</span><span class="special">(</span><span class="number">14</span><span class="special">)</span> <span class="comment">// Change font size for the Y-axis value labels.</span>
-  <span class="special">.</span><span class="identifier">y_values_font_family</span><span class="special">(</span><span class="string">"Arial"</span><span class="special">)</span> <span class="comment">// Change font for the Y-axis value labels.</span>
+<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_values_font_size</span><span class="special">(</span><span class="number">14</span><span class="special">)</span> <span class="comment">// Change font size for the Y-axis value-labels.</span>
+  <span class="special">.</span><span class="identifier">y_values_font_family</span><span class="special">(</span><span class="string">"Arial"</span><span class="special">)</span> <span class="comment">// Change font for the Y-axis value-labels.</span>
   <span class="special">.</span><span class="identifier">y_values_color</span><span class="special">(</span><span class="identifier">blue</span><span class="special">);</span> <span class="comment">// Change Y color from default black to blue.</span>
 </pre>
 <p>
@@ -103,12 +101,12 @@
         and <code class="computeroutput"><span class="identifier">ioflags</span></code> to change, here
         to reduce the number of digits used from default precision 6 down to a more
         readable 2, reducing the risk of collisions between adjacent values. (Obviously
-        the most suitable precision depends on the range of the data points. If values
+        the most suitable precision depends on the range of the data_points. If values
         are very close to each other, a higher precision will be needed to differentiate
         them). For measurement of typical precision, 2 or 3 decimal places will suffice.
       </p>
-<pre class="programlisting"><span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_values_precision</span><span class="special">(</span><span class="number">3</span><span class="special">);</span> <span class="comment">// precision label for the X-axis value label.</span>
-<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_values_precision</span><span class="special">(</span><span class="number">5</span><span class="special">);</span> <span class="comment">// precision label for the Y-axis value label.</span>
+<pre class="programlisting"><span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_values_precision</span><span class="special">(</span><span class="number">3</span><span class="special">);</span> <span class="comment">// Typical precision (3) for the X-axis value-label.</span>
+<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_values_precision</span><span class="special">(</span><span class="number">5</span><span class="special">);</span> <span class="comment">// Higher precision (5) for the Y-axis value-label.</span>
 </pre>
 <p>
         We can also prescribe the use of scientific, fixed format and/or force a
@@ -130,28 +128,28 @@
         In general, sticking to the default ioflags usually produces the neatest
         presentation of values.
       </p>
-<pre class="programlisting"><span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_plusminus_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// unc label for the X-axis value label.</span>
-<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_df_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// df label for the X-axis value label.</span>
+<pre class="programlisting"><span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_plusminus_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// unc label for the X-axis value-label.</span>
+<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_df_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// Degrees of freedom label for the X-axis value-label.</span>
 
-<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_plusminus_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// unc label for the X-axis value label.</span>
-<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_df_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// df label for the X-axis value label.</span>
+<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_plusminus_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// unc label for the X-axis value-label.</span>
+<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_df_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// Degrees of freedom label for the X-axis value-label.</span>
 </pre>
 <p>
-        The default value label is horizontal, centered above the data point marker,
-        but, depending on the type and density of data points, and the length of
-        the values (controlled in turn by the <code class="computeroutput"><span class="identifier">precision</span></code>
+        The default value-label is horizontal, centered above the data_point marker,
+        but, depending on the type and density of data_points, and the length of
+        the values (controlled in turn by choice of options, the <code class="computeroutput"><span class="identifier">precision</span></code>
         and <code class="computeroutput"><span class="identifier">ioflags</span></code> in use), it is
         often clearer to use a different orientation. This can be controlled in steps
-        of 45 degrees, using an 'enum rotate_style`.
+        using an 'enum rotate_style` for convenience (or in degrees).
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
 <li class="listitem">
             <code class="computeroutput"><span class="identifier">leftward</span></code> - writing level
-            with the data point but to the left.
+            with the data_point but to its left.
           </li>
 <li class="listitem">
             <code class="computeroutput"><span class="identifier">rightward</span></code> - writing level
-            with the data point but to the right.
+            with the data-point but to its right.
           </li>
 <li class="listitem">
             <code class="computeroutput"><span class="identifier">uphill</span></code> - writing up at
@@ -171,16 +169,16 @@
         the horizontal Y-axis line, but for 2-D plots all writing orientations can
         be useful).
       </p>
-<pre class="programlisting"> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_values_rotation</span><span class="special">(</span><span class="identifier">rightward</span><span class="special">);</span> <span class="comment">// Orientation for the Y-axis value labels.</span>
- <span class="comment">//my_2d_plot.x_values_rotation(horizontal); // Orientation for the X-axis value labels.</span>
- <span class="comment">//my_2d_plot.x_values_rotation(uphill); // Orientation for the X-axis value labels.</span>
-<span class="comment">// my_2d_plot.y_values_rotation(downhill); // Orientation for the Y-axis value labels.</span>
- <span class="comment">//my_2d_plot.x_values_rotation(leftward); // Orientation for the X-axis value labels.</span>
- <span class="comment">//my_2d_plot.y_values_rotation(rightward); // Orientation for the Y-axis value labels.</span>
+<pre class="programlisting"> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_values_rotation</span><span class="special">(</span><span class="identifier">rightward</span><span class="special">);</span> <span class="comment">// Orientation for the Y-axis value-labels.</span>
+ <span class="comment">//my_2d_plot.x_values_rotation(horizontal); // Orientation for the X-axis value-labels.</span>
+ <span class="comment">//my_2d_plot.x_values_rotation(uphill); // Orientation for the X-axis value-labels.</span>
+<span class="comment">// my_2d_plot.y_values_rotation(downhill); // Orientation for the Y-axis value-labels.</span>
+ <span class="comment">//my_2d_plot.x_values_rotation(leftward); // Orientation for the X-axis value-labels.</span>
+ <span class="comment">//my_2d_plot.y_values_rotation(rightward); // Orientation for the Y-axis value-labels.</span>
 
-<span class="comment">// my_2d_plot.x_plusminus_on(true); // Show Uncertainty for X-axis value labels.</span>
-<span class="comment">// my_2d_plot.x_df_on(true); // Show Degrees of freedom (n-1) for X-axis value labels.</span>
- <span class="comment">//my_2d_plot.y_plusminus_on(true); // Uncertainty for X-axis value labels.</span>
+<span class="comment">// my_2d_plot.x_plusminus_on(true); // Show Uncertainty for X-axis value-labels.</span>
+<span class="comment">// my_2d_plot.x_df_on(true); // Show Degrees of freedom (n-1) for X-axis value-labels.</span>
+ <span class="comment">//my_2d_plot.y_plusminus_on(true); // Uncertainty for X-axis value-labels.</span>
 </pre>
 <p>
         To use all these settings, finally write the plot to file.
@@ -194,17 +192,17 @@
 <p>
         (All settings can be displayed with <code class="computeroutput"><span class="identifier">show_2d_plot_settings</span><span class="special">(</span><span class="identifier">my_2d_plot</span><span class="special">)</span></code>.)
       </p>
-<pre class="programlisting"><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_2d_plot.x_values_font_size() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_values_font_size</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_2d_plot.x_values_font_family() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_values_font_family</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_2d_plot.x_values_color() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_values_color</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_2d_plot.x_values_precision() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_values_precision</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_2d_plot.x_values_ioflags() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">hex</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_values_ioflags</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">dec</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<pre class="programlisting"><span class="comment">//std::cout &lt;&lt; "my_2d_plot.x_values_font_size() " &lt;&lt; my_2d_plot.x_values_font_size() &lt;&lt; std::endl;</span>
+<span class="comment">//std::cout &lt;&lt; "my_2d_plot.x_values_font_family() " &lt;&lt; my_2d_plot.x_values_font_family() &lt;&lt; std::endl;</span>
+<span class="comment">//std::cout &lt;&lt; "my_2d_plot.x_values_color() " &lt;&lt; my_2d_plot.x_values_color() &lt;&lt; std::endl;</span>
+<span class="comment">//std::cout &lt;&lt; "my_2d_plot.x_values_precision() " &lt;&lt; my_2d_plot.x_values_precision() &lt;&lt; std::endl;</span>
+<span class="comment">//std::cout &lt;&lt; "my_2d_plot.x_values_ioflags() " &lt;&lt; std::hex &lt;&lt; my_2d_plot.x_values_ioflags() &lt;&lt; std::dec &lt;&lt; std::endl;</span>
 
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_2d_plot.y_values_font_size() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_values_font_size</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_2d_plot.y_values_font_family() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_values_font_family</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_2d_plot.y_values_color() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_values_color</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"my_2d_plot.y_values_precision() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_values_precision</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">" my_2d_plot.y_values_ioflags() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">hex</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_values_ioflags</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">dec</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<span class="comment">//std::cout &lt;&lt; "my_2d_plot.y_values_font_size() " &lt;&lt; my_2d_plot.y_values_font_size() &lt;&lt; std::endl;</span>
+<span class="comment">//std::cout &lt;&lt; "my_2d_plot.y_values_font_family() " &lt;&lt; my_2d_plot.y_values_font_family() &lt;&lt; std::endl;</span>
+<span class="comment">//std::cout &lt;&lt; "my_2d_plot.y_values_color() " &lt;&lt; my_2d_plot.y_values_color() &lt;&lt; std::endl;</span>
+<span class="comment">//std::cout &lt;&lt; "my_2d_plot.y_values_precision() " &lt;&lt; my_2d_plot.y_values_precision() &lt;&lt; std::endl;</span>
+<span class="comment">//std::cout &lt;&lt; " my_2d_plot.y_values_ioflags() " &lt;&lt; std::hex &lt;&lt; my_2d_plot.y_values_ioflags() &lt;&lt; std::dec &lt;&lt; std::endl;</span>
 </pre>
 <pre class="programlisting"><span class="identifier">Output</span><span class="special">:</span>
 
@@ -253,7 +251,7 @@
 </pre>
 <p>
         Inserting some fictional values also sorts the data. The map index value
-        in [] is the x value, so mydata[x] = y.
+        in [ ] is the x value, so mydata[x] = y.
       </p>
 <p>
         First some normal valued points, not 'at limits'.
@@ -279,7 +277,7 @@
 </pre>
 <div class="caution"><table border="0" summary="Caution">
 <tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Caution]" src="../../../../../../doc/src/images/caution.png"></td>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Caution]" src="../../images/caution.png"></td>
 <th align="left">Caution</th>
 </tr>
 <tr><td align="left" valign="top"><p>
@@ -324,8 +322,8 @@
         To change the default colors (lightgray and whitesmoke) for the 'at limit'
         point marker to something more conspicuous for this demonstration:
       </p>
-<pre class="programlisting"><span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">limit_color</span><span class="special">(</span><span class="identifier">blue</span><span class="special">);</span>
-<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">limit_fill_color</span><span class="special">(</span><span class="identifier">pink</span><span class="special">);</span>
+<pre class="programlisting"><span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">plus_inf_limit_color</span><span class="special">(</span><span class="identifier">blue</span><span class="special">);</span>
+<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">plus_inf_limit_color</span><span class="special">(</span><span class="identifier">pink</span><span class="special">);</span>
 </pre>
 <p>
         To use all these settings, finally write the plot to file.
@@ -337,8 +335,8 @@
 <p>
         To echo the new marker colors chosen:
       </p>
-<pre class="programlisting"><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"limit points stroke color "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">limit_color</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
-<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"limit points fill color "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">limit_fill_color</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<pre class="programlisting"><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"limit points stroke color "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">plus_inf_limit_color</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+<span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"limit points fill color "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">plus_inf_limit_color</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
 </pre>
 <pre class="programlisting"><span class="identifier">Output</span><span class="special">:</span>
 
@@ -359,7 +357,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -367,7 +365,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="2d_special.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_2d.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="demo_2d_autoscaling.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="2d_special.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_2d.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="demo_2d_autoscaling.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

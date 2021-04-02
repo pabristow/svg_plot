@@ -12,6 +12,20 @@ The plot is
 
 [$images/auto_2d_plot.svg]
 
+
+[h4 Autoscale 2D Vectors Examples]
+
+[import ..\example\demo_2d_autoscaling_vector.cpp]
+
+{demo_2d_autoscaling_vector_1]
+[demo_2d_autoscaling_vector_2]
+[demo_2d_autoscaling_vector_output]
+
+The plot is
+
+[$images/demo_2d_autoscaling_vector.svg]
+
+
 [endsect] [/section:demo_2d_autoscaling 2-D Autoscaling Examples]
 
 [/ demo_2d_autoscaling.qbk

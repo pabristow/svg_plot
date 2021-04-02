@@ -29,7 +29,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <dc:rights><cc:Agent><dc:title></dc:title></cc:Agent></dc:rights>
 <dc:date></dc:date>
 <dc:identifier>demo_svg.svg</dc:identifier>
-<dc:source>Boost.plot 0.5</dc:source>
+<dc:source>Boost.SVG_Plot 2.0</dc:source>
 <dc:relation></dc:relation>
 <dc:publisher><cc:Agent><dc:title></dc:title></cc:Agent></dc:publisher>
 <dc:language>en_US</dc:language>
@@ -48,5 +48,27 @@ xmlns ="http://www.w3.org/2000/svg"
 </cc:License>
 </rdf:RDF>
 </metadata>
-<g id="group element 0" stroke="rgb(255,0,0)" fill="rgb(240,255,255)" stroke-width="5"><rect x="0" y="0" width="500" height="600"/><line x1="100" y1="50" x2="50" y2="100"/><rect x="20" y="20" width="50" height="50"/><polygon points=" 30,40"/><circle cx="100" cy="200" r="10"/><ellipse cx="300" cy="300" rx="5" ry="3"/><polygon points=" 400,500 200,300 100,400 100,100"/><polygon points=" 300,100 350,200 450,200 400,300 450,400 350,400 300,500 250,400 150,400 200,300 150,200 250,200"/><polygon points=" 10,20 70,80 50,60 90,100 30,40 110,120"/><polygon points=" 350,75 379,161 469,161 397,215 423,301 350,250 277,301 303,215 231,161 321,161"/><polygon points=" 75,440 83.7,445 83.7,455 75,460 66.3,455 66.3,445"/></g>
-<ellipse id="element 1" cx="300" cy="300" rx="50" ry="30"/><polygon points=" 400,20 300,100 450,50" fill = "none"/><polygon points=" 200,20 350,100 250,100"/><polygon points=" 10,500 10,550 450,550 300,500"/><polygon points=" 100,10 120,10 130,30 110,50 110,30"/><polygon points=" 300,10 420,10 330,130 350,150 210,30 250,60"/><polygon points=" 10,20 70,80 50,60 90,100 30,40 110,120"/></svg>
+
+<g id="group element 0" stroke="rgb(255,0,0)" fill="rgb(240,255,255)" stroke-width="5">
+	<rect x="0" y="0" width="500" height="600"/>
+	<text x="250" y="150">
+	</text>
+	<line x1="100" y1="50" x2="50" y2="100"/>
+	<rect x="20" y="20" width="50" height="50"/>
+	<polygon points=" 30,40"/>
+	<circle cx="100" cy="200" r="10"/>
+	<ellipse cx="300" cy="300" rx="5" ry="3"/>
+	<polygon points=" 400,500 200,300 100,400 100,100"/>
+	<polygon points=" 300,100 350,200 450,200 400,300 450,400 350,400 300,500 250,400 150,400 200,300 150,200 250,200"/>
+	<polygon points=" 10,20 70,80 50,60 90,100 30,40 110,120"/>
+	<polygon points=" 350,75 379,161 469,161 397,215 423,301 350,250 277,301 303,215 231,161 321,161"/>
+	<polygon points=" 75,440 83.7,445 83.7,455 75,460 66.3,455 66.3,445"/>
+</g>
+	<ellipse id="element 1" cx="300" cy="300" rx="50" ry="30"/>
+	<polygon points=" 400,20 300,100 450,50" fill = "none"/>
+	<polygon points=" 200,20 350,100 250,100"/>
+	<polygon points=" 10,500 10,550 450,550 300,500"/>
+	<polygon points=" 100,10 120,10 130,30 110,50 110,30"/>
+	<polygon points=" 300,10 420,10 330,130 350,150 210,30 250,60"/>
+	<polygon points=" 10,20 70,80 50,60 90,100 30,40 110,120"/>
+</svg>

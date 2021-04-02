@@ -4,30 +4,17 @@
 */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2013
+// Copyright Paul A. Bristow 2013, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
 // (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-
-#if defined (_MSC_VER)
-#  pragma warning(disable : 4267) //  '=' : conversion from 'size_t' to 'unsigned int'
-// in spirit
-#  pragma warning(disable : 4310) //  cast truncates constant value
-#  pragma warning(disable : 4512) //  assignment operator could not be generated
-#  pragma warning(disable : 4702) //  unreachable code
-#  pragma warning(disable : 4701) //  potentially uninitialized local variable 'old_iph' used
-#  pragma warning(disable : 4224) //   nonstandard extension used : formal parameter 'arg' was previously defined as a type
-#  pragma warning(disable : 4996) //  deprecated. To disable deprecation, use _CRT_SECURE_NO_WARNINGS.
-#  pragma warning(disable : 4800) //  'const int' : forcing value to bool 'true' or 'false' (performance warning)
-#endif
-
 #define BOOST_TEST_MAIN
 // Must come BEFORE this include.
 #include <boost/test/unit_test.hpp>
-#include <boost/test/floating_point_comparison.hpp>
+#include <boost/test/tools/floating_point_comparison.hpp>
 
 #include <boost/svg_plot/svg_1d_plot.hpp>
   using namespace boost::svg;
@@ -40,6 +27,9 @@
 #include <string>
   using std::string;
 
+#include <limits>
+
+constexpr static double few_eps = std::numeric_limits<double>::epsilon() * 5;
 // using
 //enum place
 //{
@@ -69,10 +59,7 @@ BOOST_AUTO_TEST_CASE( test1 )
   //  const std::string& stretch, const std::string& decoration,
   //  int align, int rotate);
 
-
   BOOST_TEST_MESSAGE("SVG 1D Test");
-
-
 
   text_element text;
   BOOST_CHECK_EQUAL(text.x(), 0);
@@ -113,8 +100,8 @@ BOOST_AUTO_TEST_CASE( test1 )
 
   double boost::svg::string_svg_length(const std::string& s, const text_style& style);
 
-  text_style t(1); // font size / wh = unity for tests.
-  // double wh = 0.7; declared in svg_style.hpp
+  text_style t(1); // font size / aspect_ratio = unity for tests.
+  // double aspect_ratio = 0.7; declared in svg_style.hpp
 
   using boost::svg::string_svg_length;
   double boost::svg::string_svg_length(const std::string& s, const text_style& style);
@@ -123,24 +110,24 @@ BOOST_AUTO_TEST_CASE( test1 )
   double l = string_svg_length(s0, t);
   BOOST_CHECK_EQUAL(l, 0);
   const string s1("1");
-  BOOST_CHECK_EQUAL(string_svg_length(s1, t) /wh, 1);
+  BOOST_CHECK_EQUAL(string_svg_length(s1, t) /aspect_ratio, 1);
 
   string s10("1234567890");
   l = string_svg_length(s10, t);
-   BOOST_CHECK_EQUAL(l / wh, 10); // Normal chars
+   BOOST_CHECK_CLOSE_FRACTION(l / aspect_ratio, 10, few_eps); // Normal chars
   const string g1("&#x00B1;"); // One greek.
-  BOOST_CHECK_EQUAL(string_svg_length(g1, t)/ wh, 1);
+  BOOST_CHECK_EQUAL(string_svg_length(g1, t)/ aspect_ratio, 1);
    const string g2("&#x221A;&#x00B1;"); // 2 greek only.
   l = string_svg_length(g2, t);
-  BOOST_CHECK_EQUAL( l / wh, 2);
+  BOOST_CHECK_EQUAL( l / aspect_ratio, 2);
   const string g3("&#x221A; &#x00B1;"); // 2 greek plus a space.
   const string x0("<>");
-  BOOST_CHECK_EQUAL( string_svg_length(x0, t)/ wh, 0);
+  BOOST_CHECK_EQUAL( string_svg_length(x0, t)/ aspect_ratio, 0);
   const string xn("<    >"); // Should ignore all inside.
-  BOOST_CHECK_EQUAL( string_svg_length(xn, t)/ wh, 0);
+  BOOST_CHECK_EQUAL( string_svg_length(xn, t)/ aspect_ratio, 0);
 
   const std::string s = "Demo 1D plot <sup>-&#945; </sup> &#x3A9; &#x3A6; &#x221A; &#x221E; &#x3B6; &#x00B1;";
-  BOOST_CHECK_EQUAL( boost::svg::string_svg_length(s, t)/ wh, 28);
+  BOOST_CHECK_EQUAL( boost::svg::string_svg_length(s, t)/ aspect_ratio, 28);
 
   // Test the svg_element class.
 
@@ -222,9 +209,9 @@ BOOST_AUTO_TEST_CASE( test1 )
   my_plot.title_font_rotation(uphill); // Set
    BOOST_CHECK_EQUAL(my_plot.title_font_rotation(), uphill); // & check.
 
-   BOOST_CHECK_EQUAL(my_plot.title_font_alignment(), center_align);// Check default.
-  my_plot.title_font_alignment(left_align); // Set
-   BOOST_CHECK_EQUAL(my_plot.title_font_alignment(), left_align); // & check.
+   BOOST_CHECK_EQUAL(my_plot.title_font_alignment(), align_style::center_align);// Check default.
+  my_plot.title_font_alignment(align_style::left_align); // Set
+   BOOST_CHECK_EQUAL(my_plot.title_font_alignment(), align_style::left_align); // & check.
 
   // legend title & font
 

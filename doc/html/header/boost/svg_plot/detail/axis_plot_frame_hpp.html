@@ -1,35 +1,28 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Header &lt;boost/svg_plot/detail/axis_plot_frame.hpp&gt;</title>
 <link rel="stylesheet" href="../../../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../../../index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="../../../../boost_svg_plot_c___reference.html" title="Boost.SVG plot C++ Reference">
 <link rel="prev" href="../../../../boost/svg/show_all.html" title="Function template show_all">
-<link rel="next" href="../../../../boost/svg/reducer.html" title="Global reducer">
+<link rel="next" href="../../../../boost/svg/x_axis_intersect.html" title="Type x_axis_intersect">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../../../.././images/proposed_for_boost.png"></td>
-<td align="center"><a href="../../../../../../../../index.html">Home</a></td>
-<td align="center"><a href="../../../../../../../../libs/libraries.htm">Libraries</a></td>
-<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
-<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="../../../../../../../../more/index.htm">More</a></td>
-</tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../../../.././images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="../../../../boost/svg/show_all.html"><img src="../../../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../../boost_svg_plot_c___reference.html"><img src="../../../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../../../index.html"><img src="../../../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="../../../../boost/svg/reducer.html"><img src="../../../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="../../../../boost/svg/show_all.html"><img src="../../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../../boost_svg_plot_c___reference.html"><img src="../../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../../../index.html"><img src="../../../../images/home.png" alt="Home"></a><a accesskey="n" href="../../../../boost/svg/x_axis_intersect.html"><img src="../../../../images/next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
 <a name="header.boost.svg_plot.detail.axis_plot_frame_hpp"></a>Header &lt;<a href="../../../../../../../../boost/svg_plot/detail/axis_plot_frame.hpp" target="_top">boost/svg_plot/detail/axis_plot_frame.hpp</a>&gt;</h3></div></div></div>
 <p>SVG Plot functions common to 1D, 2D and Boxplots. </p>
-<p>Functions are derived from base class <code class="computeroutput">axis_plot_frame</code>. </p>
-<p>Jacob Voytko and Paul A. Bristow </p>
-<p>
-</p>
+<p>Functions are derived from base class <code class="computeroutput">axis_plot_frame</code>.</p>
+<p>define BOOST_SVG_LEGEND_DIAGNOSTICS for diagnostics of plot legend.<br>
+ BOOST_SVG_TITLE_DIAGNOSTICS for diagnostics of plot title.<br>
+ BOOST_SVG_POINT_DIAGNOSTICS for diagnostics of data-point markers. </p>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
   <span class="keyword">namespace</span> <span class="identifier">svg</span> <span class="special">{</span>
 
@@ -37,22 +30,20 @@
     <span class="keyword">enum</span> <a name="boost.svg.legend_places"></a>legend_places <span class="special">{</span> nowhere = = 0, inside = = -1, outside_left = = 1, 
                          outside_right = = +2, outside_top = = +3, 
                          outside_bottom = = +4, somewhere = = +5 <span class="special">}</span><span class="special">;</span>
-
-    <span class="comment">// If and how the X axes intersects Y axis. </span>
-    <span class="keyword">enum</span> <a name="boost.svg.x_axis_intersect"></a>x_axis_intersect <span class="special">{</span> bottom = = -1, x_intersects_y = = 0, top = = +1 <span class="special">}</span><span class="special">;</span>
+    <span class="keyword">enum</span> <a class="link" href="../../../../boost/svg/x_axis_intersect.html" title="Type x_axis_intersect">x_axis_intersect</a><span class="special">;</span>
 
     <span class="comment">// If and how the Y axes intersects X axis. </span>
     <span class="keyword">enum</span> <a name="boost.svg.y_axis_intersect"></a>y_axis_intersect <span class="special">{</span> left = = -1, y_intersects_x = = 0, right = = +1 <span class="special">}</span><span class="special">;</span>
 
     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">double</span> <a class="link" href="../../../../boost/svg/reducer.html" title="Global reducer">reducer</a><span class="special">;</span>    <span class="comment">// To make uncertainty and degrees of freedom estimates a bit smaller font to help distinguish from value. </span>
-    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">double</span> <a class="link" href="../../../../boost/svg/sin45.html" title="Global sin45">sin45</a><span class="special">;</span>    <span class="comment">// Used to calculate 'length' if axis value labels are sloping. </span>
+    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">double</span> <a class="link" href="../../../../boost/svg/sin45.html" title="Global sin45">sin45</a><span class="special">;</span>    <span class="comment">// Used to calculate 'length' if axis value-labels are sloping. </span>
     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">double</span> <a class="link" href="../../../../boost/svg/text_plusminus.html" title="Global text_plusminus">text_plusminus</a><span class="special">;</span>
   <span class="special">}</span>
 <span class="special">}</span></pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -60,7 +51,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="../../../../boost/svg/show_all.html"><img src="../../../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../../boost_svg_plot_c___reference.html"><img src="../../../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../../../index.html"><img src="../../../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="../../../../boost/svg/reducer.html"><img src="../../../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="../../../../boost/svg/show_all.html"><img src="../../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../../boost_svg_plot_c___reference.html"><img src="../../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../../../index.html"><img src="../../../../images/home.png" alt="Home"></a><a accesskey="n" href="../../../../boost/svg/x_axis_intersect.html"><img src="../../../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

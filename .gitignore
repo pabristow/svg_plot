@@ -2,9 +2,15 @@
 # ignore all log file in any directory
 *.log
 /**/*.bat
+/**/*.bak
 /**/*.db
 doc/doxywarnings.log
 doc/autodoc.xml
+# doc/html/
+doc/*.lnk
+doc/doxygen/html/
 
 
 
+
+/include/boost/svg_plot/detail/wcwidth.c

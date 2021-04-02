@@ -1,0 +1,140 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Function template round_e</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../header/boost/quan/rounding_hpp.html" title="Header &lt;boost/quan/rounding.hpp&gt;">
+<link rel="prev" href="round_3.html" title="Function round_3">
+<link rel="next" href="round_f.html" title="Function template round_f">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="round_3.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/rounding_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="round_f.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.quan.round_e"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Function template round_e</span></h2>
+<p>boost::quan::round_e</p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/quan/rounding_hpp.html" title="Header &lt;boost/quan/rounding.hpp&gt;">boost/quan/rounding.hpp</a>&gt;
+
+</span>
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> FPT<span class="special">&gt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">round_e</span><span class="special">(</span><span class="identifier">FPT</span> d<span class="special">,</span> <span class="keyword">int</span> sigdigits<span class="special">)</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id1135223"></a><h2>Description</h2>
+<p>Show only <code class="computeroutput">sigdigits</code> digits, in minimal scientific or 'e' format only, rounded asymmetric (round-half-up, arithmetic rounding).<br>
+ Round asymmetric avoids values like 0.15, which cannot be stored exactly in binary IEEE 754 floating-point format and are stored internally as 1.499999999999, being rounded unexpectedly to 0.1 rather than 0.2. For example: format -1.2345e12 or 1.2345e-123.</p>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top">
+<p>the difference in meaning of precision from default, fixed and scientific, for example: <code class="computeroutput">d = 19.99;</code> <br>
+</p>
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">cerr</span> <span class="special">&lt;&lt;</span> <span class="identifier">setprecision</span><span class="special">(</span><span class="number">2</span><span class="special">)</span> <span class="special">&lt;&lt;</span> <span class="identifier">d</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// 20 // rounded </span>
+</pre>
+<p> <br>
+</p>
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">cerr</span> <span class="special">&lt;&lt;</span> <span class="identifier">fixed</span> <span class="special">&lt;&lt;</span> <span class="identifier">setprecision</span><span class="special">(</span><span class="number">1</span><span class="special">)</span> <span class="special">&lt;&lt;</span> <span class="identifier">d</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// 20.0 - rounded up. </span>
+</pre>
+<p> <br>
+</p>
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">cerr</span> <span class="special">&lt;&lt;</span> <span class="identifier">fixed</span> <span class="special">&lt;&lt;</span> <span class="identifier">setprecision</span><span class="special">(</span><span class="number">2</span><span class="special">)</span> <span class="special">&lt;&lt;</span> <span class="identifier">d</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// 19.99 - 2 digits after decimal point.  </span>
+</pre>
+<p> <br>
+</p>
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">cerr</span> <span class="special">&lt;&lt;</span> <span class="identifier">scientific</span> <span class="special">&lt;&lt;</span> <span class="identifier">setprecision</span><span class="special">(</span><span class="number">2</span><span class="special">)</span> <span class="special">&lt;&lt;</span> <span class="identifier">d</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// 2.00e+001 - 2 digits after decimal point  </span>
+</pre>
+</td></tr>
+</table></div>
+<p>
+Also remove all redundant exponent characters and digits, </p>
+<p><span class="bold"><strong>See Also:</strong></span></p>
+<p><a href="http://en.wikipedia.org/wiki/Rounding" target="_top">http://en.wikipedia.org/wiki/Rounding</a>.</p>
+<p>
+</p>
+<p>
+</p>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>The normal rounding provided by C and C++ is chosen to avoid loss of accuracy and bias in any further <span class="bold"><strong>binary</strong></span> calculations. The rounded decimal digit <span class="bold"><strong>strings</strong></span> returned are provided solely for <span class="bold"><strong>human</strong></span> viewing and should NOT be used for input to other calculations when one or two extra noisy digits are needed to avoid loss of information by rounding. If it is necessary to provide a decimal digit string for input, it should use <code class="computeroutput">std::numeric_limits&lt;FPT&gt;::max_digits10</code> in C++0x, or <code class="computeroutput">2</code> + std::numeric_limits&lt;FPT&gt;::digits * 3010/10000 if the platform implementation of C++ Standard IOstream library does not yet provide this. For 64-bit double, <code class="computeroutput">max_digits10</code> is 17, so write <code class="computeroutput">cout.precision(17)</code>. This will avoid any bias or loss of accuracy in statistical calculations caused by rounding.</p></td></tr>
+</table></div>
+<p>
+Use the scientific (exponential) format with precision max_digits10 (17 for double).</p>
+<p>Logic is using C++ std printf-style rounding to start with a decimal digit string with rounded value of digits10, only the guaranteed correct digits to get the best estimate of the digit to be used for the final rounding. Hopefully, any imprecision caused by inexact presentation is (binary) rounded away.</p>
+<p><span class="bold"><strong>See Also:</strong></span></p>
+<p><a href="http://www.exploringbinary.com/" target="_top">http://www.exploringbinary.com/</a> for much more detail of defects in other libraries.</p>
+<p>
+</p>
+<p>
+</p>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>Only lowercase letter e is used, and positive exponents are not preceeded by + sign, and leading zeros are omitted.<br>
+This is done to make the display as compact as possible.<br>
+If a fixed width is needed, the user program must provide any necessary padding, using the size (length) of the string.</p></td></tr>
+</table></div>
+<p>
+
+
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term">Parameters:</span></p></td>
+<td><div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><code class="computeroutput">d</code></span></p></td>
+<td><p>value to be converted to decimal digit string. </p></td>
+</tr>
+<tr>
+<td><p><span class="term"><code class="computeroutput">sigdigits</code></span></p></td>
+<td><p>number of significant digits to show in string. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>std::string containing value rounded and converted to <code class="computeroutput">sigdigits</code> decimal digits in exponential format.</p></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="round_3.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/rounding_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="round_f.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

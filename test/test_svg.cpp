@@ -14,14 +14,6 @@
 // (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-//#if defined (BOOST_MSVC) // requires a prior Boost include, so use MSC_VER instead.
-#if defined (_MSC_VER)
-#  pragma warning(disable : 4996) // Deprecated.
-#  pragma warning(disable : 4224) // nonstandard extension used : formal parameter 'arg' was previously defined as a type.
-#  pragma warning(disable : 4310) //  cast truncates constant value.
-#  pragma warning(disable : 4512) //  assignment operator could not be generated.
-#endif
-
 #define BOOST_TEST_MAIN
 // NB define BOOST_TEST_MAIN must come BEFORE this include.
 #include <boost/test/unit_test.hpp>
@@ -181,7 +173,7 @@ BOOST_AUTO_TEST_CASE(test_styles)
 
   BOOST_CHECK_EQUAL(def_style.font_size(), 12);
   BOOST_CHECK_EQUAL(def_style.font_family(), "Lucida Sans Unicode");
-  BOOST_CHECK_EQUAL(def_style, no_style);
+  BOOST_CHECK_EQUAL(def_style, not_a_text_style);
 
   text_style test_style(12, "Arial", "bold", "italic", "wider", "underline");
   cout << test_style << endl;
@@ -223,9 +215,9 @@ BOOST_AUTO_TEST_CASE(test_styles)
   text.rotation(upward);
   BOOST_CHECK_EQUAL(text.rotation(), upward);
 
-  BOOST_CHECK_EQUAL(text.alignment(), left_align);
-  text.alignment(right_align);
-  BOOST_CHECK_EQUAL(text.alignment(), right_align);
+  BOOST_CHECK_EQUAL(text.alignment(), align_style::left_align);
+  text.alignment(align_style::right_align);
+  BOOST_CHECK_EQUAL(text.alignment(), align_style::right_align);
 
   // Test the svg_element class.
 

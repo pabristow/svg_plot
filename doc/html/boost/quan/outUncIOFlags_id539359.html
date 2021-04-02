@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Function outUncIOFlags</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../header/boost/quan/unc_hpp.html" title="Header &lt;boost/quan/unc.hpp&gt;">
+<link rel="prev" href="operator_id539046.html" title="Function operator&lt;&lt;">
+<link rel="next" href="outUncIOFlags_id539466.html" title="Function outUncIOFlags">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="operator_id539046.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/unc_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="outUncIOFlags_id539466.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.quan.outUncIOFlags_id539359"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Function outUncIOFlags</span></h2>
+<p>boost::quan::outUncIOFlags</p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/quan/unc_hpp.html" title="Header &lt;boost/quan/unc.hpp&gt;">boost/quan/unc.hpp</a>&gt;
+
+</span>
+<span class="keyword">void</span> <span class="identifier">outUncIOFlags</span><span class="special">(</span><span class="keyword">long</span> uncFlags<span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cerr</span><span class="special">,</span> 
+                   <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> terminator <span class="special">=</span> <span class="string">".\n"</span><span class="special">)</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id1162741"></a><h2>Description</h2>
+<p>Show the set uncertain class io stream&amp; flags settings as words, for examples: add_/-, set_scaled, addlimits.<br>
+
+</p>
+<p><span class="bold"><strong>See Also:</strong></span></p>
+<p>Version that takes the <code class="computeroutput">uncflags</code> from <code class="computeroutput">std::ostream&amp;</code> as parameter. </p>
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">outUncIOFlags</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span><span class="special">&amp;</span> <span class="identifier">os</span> <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span><span class="special">&amp;</span> <span class="identifier">osout</span> <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cerr</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">terminator</span> <span class="special">=</span> <span class="string">".\n"</span><span class="special">)</span> 
+</pre>
+<p> </p>
+<p>
+</p>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Parameters:</span></p></td>
+<td><div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><code class="computeroutput">os</code></span></p></td>
+<td><p><code class="computeroutput">std::ostream&amp;</code> for output. </p></td>
+</tr>
+<tr>
+<td><p><span class="term"><code class="computeroutput">terminator</code></span></p></td>
+<td>
+<p>String to append to the setting words string, default period and newline. Usage: </p>
+<pre class="programlisting"><span class="identifier">outUncIOFlags</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">.</span><span class="identifier">iword</span><span class="special">(</span><span class="number">1</span><span class="special">)</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cerr</span><span class="special">)</span><span class="special">;</span> <span class="comment">// uncFlags (0xa08) add_+/-  adddegfree replicates addlimits</span>
+</pre>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><code class="computeroutput">uncFlags</code></span></p></td>
+<td><p>Output unc class uncertain IO flags value to be displayed as words. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="operator_id539046.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/unc_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="outUncIOFlags_id539466.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

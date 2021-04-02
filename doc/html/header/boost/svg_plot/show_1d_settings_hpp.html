@@ -1,26 +1,19 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Header &lt;boost/svg_plot/show_1d_settings.hpp&gt;</title>
 <link rel="stylesheet" href="../../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../../index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="../../../boost_svg_plot_c___reference.html" title="Boost.SVG plot C++ Reference">
 <link rel="prev" href="../../../boost/svg/quantile.html" title="Function quantile">
 <link rel="next" href="../../../boost/svg/fmtFlagWords.html" title="Global fmtFlagWords">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../../.././images/proposed_for_boost.png"></td>
-<td align="center"><a href="../../../../../../../index.html">Home</a></td>
-<td align="center"><a href="../../../../../../../libs/libraries.htm">Libraries</a></td>
-<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
-<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="../../../../../../../more/index.htm">More</a></td>
-</tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../../.././images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="../../../boost/svg/quantile.html"><img src="../../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../boost_svg_plot_c___reference.html"><img src="../../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="../../../boost/svg/fmtFlagWords.html"><img src="../../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="../../../boost/svg/quantile.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../boost_svg_plot_c___reference.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="../../../boost/svg/fmtFlagWords.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
@@ -28,12 +21,16 @@
 <p>Shows settings and options for 1D Plot. </p>
 <p>Paul A. Bristow </p>
 <p>
+
 </p>
 <p>Mar 2009 </p>
 <p>
+
 </p>
 <p><span class="bold"><strong>See Also:</strong></span></p>
 <p>show_2d_settings.cpp for 2-D plot. </p>
+<p>
+</p>
 <p>
 </p>
 <pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
@@ -43,7 +40,7 @@
     <span class="comment">// Outputs strings to show horizontal orientation: left, right or none. </span>
     <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="boost.svg.l_or_r"></a><span class="identifier">l_or_r</span><span class="special">(</span><span class="keyword">int</span> i<span class="special">)</span><span class="special">;</span>
     <span class="keyword">void</span> <a class="link" href="../../../boost/svg/outFmtFlags.html" title="Function outFmtFlags"><span class="identifier">outFmtFlags</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ios_base</span><span class="special">::</span><span class="identifier">fmtflags</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="keyword">char</span> <span class="special">*</span><span class="special">)</span><span class="special">;</span>
-    <span class="keyword">void</span> <a class="link" href="../../../boost/svg/show_1d_plot_settings.html" title="Function show_1d_plot_settings"><span class="identifier">show_1d_plot_settings</span></a><span class="special">(</span><a class="link" href="../../../boost/svg/svg_1d_plot.html" title="Class svg_1d_plot">svg_1d_plot</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">void</span> <a class="link" href="../../../boost/svg/show_1d_plot_settings.html" title="Function show_1d_plot_settings"><span class="identifier">show_1d_plot_settings</span></a><span class="special">(</span><a class="link" href="../../../boost/svg/svg_1d_plot.html" title="Class svg_1d_plot">svg_1d_plot</a> <span class="special">&amp;</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">)</span><span class="special">;</span>
 
     <span class="comment">// Outputs strings to show vertical orientation: top, bottom, or none. </span>
     <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="boost.svg.t_or_b"></a><span class="identifier">t_or_b</span><span class="special">(</span><span class="keyword">int</span> i<span class="special">)</span><span class="special">;</span>
@@ -52,7 +49,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -60,7 +57,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="../../../boost/svg/quantile.html"><img src="../../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../boost_svg_plot_c___reference.html"><img src="../../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="../../../boost/svg/fmtFlagWords.html"><img src="../../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="../../../boost/svg/quantile.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../boost_svg_plot_c___reference.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="../../../boost/svg/fmtFlagWords.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

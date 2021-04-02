@@ -1,2 +1,34 @@
-I:/modular-boost/libs/svg_plot/example/auto_boxplot.cpp:164: warning: Reached end of file while still inside a (nested) comment. Nesting level 2 (probable line reference: 11, 1)
-I:/modular-boost/boost/svg_plot/svg_2d_plot.hpp:13: warning: explicit link request to 'define' could not be resolved
+I:/boost/boost/svg_plot/detail/axis_plot_frame.hpp:69: warning: Documentation for undefined enum 'x_axis_intersect' found.
+I:/boost/boost/svg_plot/detail/axis_plot_frame.hpp:76: warning: Documentation for undefined enum 'y_axis_intersect' found.
+I:/boost/boost/svg_plot/detail/axis_plot_frame.hpp:83: warning: Documentation for undefined enum 'legend_places' found.
+I:/boost/boost/svg_plot/detail/svg_boxplot_detail.hpp:31: warning: Documentation for undefined enum 'boxplot_doc_structure' found.
+I:/boost/boost/svg_plot/detail/svg_style_detail.hpp:39: warning: Documentation for undefined enum 'plot_doc_structure' found.
+I:/boost/boost/svg_plot/svg_color.hpp:42: warning: Documentation for undefined enum 'svg_color_constant' found.
+I:/boost/boost/svg_plot/svg_style.hpp:98: warning: Documentation for undefined enum 'align_style' found.
+I:/boost/boost/svg_plot/svg_style.hpp:1004: warning: Documentation for undefined enum 'point_shape' found.
+I:/boost/boost/svg_plot/svg_style.hpp:1380: warning: Documentation for undefined enum 'dim' found.
+I:/boost/boost/svg_plot/svg_style.hpp:1905: warning: Documentation for undefined enum 'bar_option' found.
+I:/boost/boost/svg_plot/svg_style.hpp:1916: warning: Documentation for undefined enum 'histogram_option' found.
+I:/boost/boost/svg_plot/detail/axis_plot_frame.hpp:5: warning: explicit link request to 'define' could not be resolved
+I:/boost/boost/svg_plot/detail/axis_plot_frame.hpp:6: warning: explicit link request to 'define' could not be resolved
+I:/boost/boost/svg_plot/detail/axis_plot_frame.hpp:7: warning: explicit link request to 'define' could not be resolved
+I:/boost/libs/svg_plot/example/demo_2d_uncertainty.cpp:197: warning: explicit link request to 'x00A0' could not be resolved
+I:/boost/boost/svg_plot/svg_2d_plot.hpp:13: warning: explicit link request to 'define' could not be resolved
+I:/boost/boost/svg_plot/uncertain.hpp:242: warning: explicit link request to 'x00B1' could not be resolved
+I:/boost/boost/svg_plot/svg_1d_plot.hpp:1168: warning: unexpected command endcode
+I:/boost/boost/svg_plot/svg_2d_plot.hpp:3205: warning: explicit link request to 'x00A0' could not be resolved
+I:/boost/boost/svg_plot/svg_2d_plot.hpp:3683: warning: unexpected command endcode
+I:/boost/boost/svg_plot/svg_2d_plot.hpp:2887: warning: unexpected command endcode
+I:/boost/boost/svg_plot/svg_2d_plot.hpp:2867: warning: unexpected command endcode
+I:/boost/boost/svg_plot/svg_2d_plot.hpp:147: warning: argument 'opt_' from the argument list of boost::svg::svg_2d_plot_series::histogram has multiple @param documentation sections
+I:/boost/boost/svg_plot/detail/svg_elements.hpp:92: warning: Unsupported xml/html tag <clipPath> found
+I:/boost/boost/svg_plot/detail/svg_elements.hpp:92: warning: Unsupported xml/html tag <rect> found
+I:/boost/boost/svg_plot/detail/svg_elements.hpp:92: warning: Unsupported xml/html tag </clipPath> found
+I:/boost/boost/svg_plot/detail/svg_elements.hpp:1211: warning: Found unknown command '\bold'
+I:/boost/boost/svg_plot/detail/svg_elements.hpp:1211: warning: Found unknown command '\endbold'
+I:/boost/boost/svg_plot/svg_style.hpp:468: warning: The following parameter of boost::svg::text_style::text_style(int font_size=0, const std::string &font="", const std::string &weight="", const std::string &style="", const std::string &stretch="", const std::string &decoration="", double text_length=0) is not documented:
+  parameter 'text_length'
+I:/boost/boost/svg_plot/uncertain.hpp:120: warning: documented empty return type of boost::svg::unc::value
+I:/boost/boost/svg_plot/uncertain.hpp:242: warning: explicit link request to 'x00B1' could not be resolved
+I:/boost/boost/svg_plot/svg_style.hpp:893: warning: The following parameter of boost::svg::value_style::value_style(int r=static_cast< int >(horizontal), align_style a=align_style::left_align, int p=3, std::ios_base::fmtflags f=std::ios::dec, bool s=true, text_style ts=no_text_style, const svg_color &scol=black, const svg_color &fcol=black, bool pm=false, const svg_color &plusminus_color=black, bool lim=false, const svg_color &addlimits_color=black, bool df=false, const svg_color &df_color=black, bool id=false, const svg_color &id_color=black, bool dt=false, const svg_color &dt_color=black, bool ordno=false, const svg_color &ordno_color=black, std::string pre="", std::string sep="", std::string suf="", std::string datetime_format="%%Y%%b%%d_%%H:%%M") is not documented:
+  parameter 'datetime_format'

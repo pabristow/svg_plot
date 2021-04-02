@@ -1,26 +1,19 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Function string_svg_length</title>
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="../../header/boost/svg_plot/svg_style_hpp.html" title="Header &lt;boost/svg_plot/svg_style.hpp&gt;">
-<link rel="prev" href="operator___id1118671.html" title="Function operator==">
+<link rel="prev" href="show_rotation.html" title="Function show_rotation">
 <link rel="next" href="strip_e0s.html" title="Function strip_e0s">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
-<td align="center"><a href="../../../../../../index.html">Home</a></td>
-<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
-<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
-<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
-</tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="operator___id1118671.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="strip_e0s.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="show_rotation.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="strip_e0s.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 <div class="refentry">
 <a name="boost.svg.string_svg_length"></a><div class="titlepage"></div>
@@ -34,15 +27,15 @@
 </span>
 <span class="keyword">double</span> <span class="identifier">string_svg_length</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> s<span class="special">,</span> <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> style<span class="special">)</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1907198"></a><h2>Description</h2>
-<p><a href="http://www.w3.org/TR/SVG/text.html#FontSizeProperty" target="_top">http://www.w3.org/TR/SVG/text.html#FontSizeProperty</a> Font size is the height of the text's font, so width = wh * font_size.</p>
-<p>Even after reading <a href="http://www.w3.org/TR/SVG/fonts.html," target="_top">http://www.w3.org/TR/SVG/fonts.html,</a><br>
-unclear how to determine the exact width of digits, so an arbitrary average width height ratio wh = 0.7 is used as a good approximation. </p>
+<a name="id1488965"></a><h2>Description</h2>
+<p><a href="http://www.w3.org/TR/SVG/text.html#FontSizeProperty" target="_top">http://www.w3.org/TR/SVG/text.html#FontSizeProperty</a> Font size is the height of the text's font, so width = aspect_ratio * font_size.</p>
+<p>Even after reading <a href="http://www.w3.org/TR/SVG/fonts.html" target="_top">http://www.w3.org/TR/SVG/fonts.html</a>,<br>
+unclear how to determine the exact width of digits, so an arbitrary average width height ratio aspect_ratio = 0.6 is used as a good approximation. </p>
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -50,7 +43,7 @@ unclear how to determine the exact width of digits, so an arbitrary average widt
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="operator___id1118671.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="strip_e0s.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="show_rotation.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="strip_e0s.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

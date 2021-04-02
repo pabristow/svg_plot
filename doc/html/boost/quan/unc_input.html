@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Function unc_input</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../header/boost/quan/unc_hpp.html" title="Header &lt;boost/quan/unc.hpp&gt;">
+<link rel="prev" href="setuncsigdigits.html" title="Function setuncsigdigits">
+<link rel="next" href="unc_of_id543346.html" title="Function template unc_of">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="setuncsigdigits.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/unc_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="unc_of_id543346.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.quan.unc_input"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Function unc_input</span></h2>
+<p>boost::quan::unc_input — Uncertainties ARE correlated. This is the unusual case where the sum must be exact, so the uncertainties are subtracted. Example: two blocks which fit into a box perfectly. So if both have an uncertainties, they must cancel when the uncertainties are added. Also applies to items like concentrations which must add up to 100% or unity. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/quan/unc_hpp.html" title="Header &lt;boost/quan/unc.hpp&gt;">boost/quan/unc.hpp</a>&gt;
+
+</span>
+<span class="keyword">void</span> <span class="identifier">unc_input</span><span class="special">(</span><span class="keyword">double</span> <span class="special">&amp;</span> mean<span class="special">,</span> <span class="keyword">double</span> <span class="special">&amp;</span> stdDev<span class="special">,</span> 
+               <span class="keyword">unsigned</span> <span class="keyword">short</span> <span class="keyword">int</span> <span class="special">&amp;</span> degreesOfFreedom<span class="special">,</span> 
+               <span class="keyword">unsigned</span> <span class="keyword">short</span> <span class="keyword">int</span> <span class="special">&amp;</span> uncTypes<span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">istream</span> <span class="special">&amp;</span> is<span class="special">)</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id1178417"></a><h2>Description</h2>
+<p>Inputs uncertainty as value, (implicitly exact, std deviation = 0). &amp; optionally an explicit measure of uncertainty [[+]|[-] &lt;standard deviation * 2. &gt;], (1.0 implies 1. +|- 0.5 and sd of 0.5, 1.00 implies 1. +|- 0.05 and sd of 0.05)</p>
+<p>&amp; optionally degrees of freedom [(&lt;short int&gt;)] like (99) Used by istream&amp; operator&gt;&gt; (istream&amp;, unc&lt;is_correlated&gt;&amp;) Original simple version: char plus, slash, minus; s &gt;&gt; value &gt;&gt; plus &gt;&gt; slash &gt;&gt; minus &gt;&gt; stdDev; if ((plus != '+') || (slash != '/') || (minus != '-')) { cerr &lt;&lt; "Unexpected characters encountered in reading " "value +/- stdDev !" &lt;&lt; endl; is.setf(ios_base::failbit);</p>
+<p>Used by std::istream&amp; operator&gt;&gt; (std::istream&amp; is, const unc } </p>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="setuncsigdigits.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/unc_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="unc_of_id543346.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

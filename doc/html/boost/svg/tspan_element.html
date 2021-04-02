@@ -1,35 +1,28 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Class tspan_element</title>
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
-<link rel="up" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">
+<link rel="up" href="../../header/boost/svg_plot/detail/svg_elements_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_elements.hpp&gt;">
 <link rel="prev" href="text_parent.html" title="Class text_parent">
 <link rel="next" href="v_path.html" title="Struct v_path">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
-<td align="center"><a href="../../../../../../index.html">Home</a></td>
-<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
-<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
-<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
-</tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="text_parent.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="v_path.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="text_parent.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_elements_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="v_path.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 <div class="refentry">
 <a name="boost.svg.tspan_element"></a><div class="titlepage"></div>
 <div class="refnamediv">
 <h2><span class="refentrytitle">Class tspan_element</span></h2>
-<p>boost::svg::tspan_element &#8212; tspan (not text) to be stored in <a class="link" href="text_parent.html" title="Class text_parent">text_parent</a>. </p>
+<p>boost::svg::tspan_element — tspan (not <a class="link" href="text_element.html" title="Class text_element">text_element</a>) to be stored in <a class="link" href="text_parent.html" title="Class text_parent">text_parent</a>. </p>
 </div>
 <h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
-<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">boost/svg_plot/detail/svg_tag.hpp</a>&gt;
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/detail/svg_elements_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_elements.hpp&gt;">boost/svg_plot/detail/svg_elements.hpp</a>&gt;
 
 </span>
 <span class="keyword">class</span> <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">:</span>
@@ -37,91 +30,98 @@
 <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="tspan_element.html#boost.svg.tspan_elementconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="tspan_element.html#id1079279-bb"><span class="identifier">tspan_element</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">no_style</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html#id1079267-bb"><span class="identifier">tspan_element</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html#id560531-bb"><span class="identifier">tspan_element</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">not_a_text_style</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html#id560579-bb"><span class="identifier">tspan_element</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="tspan_element.html#id1075858-bb">public member functions</a></span>
-  <span class="keyword">void</span> <a class="link" href="tspan_element.html#id1075832-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="tspan_element.html#id1075868-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="tspan_element.html#id1075887-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="tspan_element.html#id1075931-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1075924-bb"><span class="identifier">dx</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="tspan_element.html#id1075976-bb"><span class="identifier">dx</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1075948-bb"><span class="identifier">dy</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="tspan_element.html#id1076006-bb"><span class="identifier">dy</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1076008-bb"><span class="identifier">fill_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="tspan_element.html#id1076040-bb"><span class="identifier">fill_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="tspan_element.html#id1076026-bb"><span class="identifier">fill_on</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1076020-bb"><span class="identifier">font_family</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1076084-bb"><span class="identifier">font_family</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1076068-bb"><span class="identifier">font_size</span></a><span class="special">(</span><span class="keyword">unsigned</span> <span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">unsigned</span> <span class="keyword">int</span> <a class="link" href="tspan_element.html#id1076114-bb"><span class="identifier">font_size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1076129-bb"><span class="identifier">font_style</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1076162-bb"><span class="identifier">font_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1076147-bb"><span class="identifier">font_style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1076176-bb"><span class="identifier">font_weight</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1076230-bb"><span class="identifier">font_weight</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="tspan_element.html#id1076223-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="tspan_element.html#id1076274-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="tspan_element.html#id1076266-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="tspan_element.html#id1076253-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1076315-bb"><span class="identifier">rotation</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">int</span> <a class="link" href="tspan_element.html#id1076350-bb"><span class="identifier">rotation</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1076338-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1079002-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1078997-bb"><span class="identifier">text</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="tspan_element.html#id1079030-bb"><span class="identifier">text</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1079060-bb"><span class="identifier">text_length</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="tspan_element.html#id1079102-bb"><span class="identifier">text_length</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1079103-bb"><span class="identifier">textstyle</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1079130-bb"><span class="identifier">textstyle</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1079121-bb"><span class="identifier">textstyle</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="tspan_element.html#id1079172-bb"><span class="identifier">use_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="tspan_element.html#id1079164-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1079200-bb"><span class="identifier">x</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="tspan_element.html#id1079254-bb"><span class="identifier">x</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id1079244-bb"><span class="identifier">y</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="tspan_element.html#id1079278-bb"><span class="identifier">y</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="tspan_element.html#id559591-bb">public member functions</a></span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="tspan_element.html#id559563-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="tspan_element.html#id559565-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="tspan_element.html#id559631-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="tspan_element.html#id559605-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="tspan_element.html#id559652-bb"><span class="identifier">dx</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id559661-bb"><span class="identifier">dx</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="tspan_element.html#id559695-bb"><span class="identifier">dy</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id559693-bb"><span class="identifier">dy</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="tspan_element.html#id559710-bb"><span class="identifier">fill_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id559749-bb"><span class="identifier">fill_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="tspan_element.html#id559784-bb"><span class="identifier">fill_on</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id559772-bb"><span class="identifier">font_family</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id559808-bb"><span class="identifier">font_family</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">int</span> <a class="link" href="tspan_element.html#id559815-bb"><span class="identifier">font_size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id559849-bb"><span class="identifier">font_size</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id559847-bb"><span class="identifier">font_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id559902-bb"><span class="identifier">font_style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id559901-bb"><span class="identifier">font_style</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id559913-bb"><span class="identifier">font_weight</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id559965-bb"><span class="identifier">font_weight</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="tspan_element.html#id559950-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="tspan_element.html#id560010-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="tspan_element.html#id559997-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="tspan_element.html#id560054-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">int</span> <a class="link" href="tspan_element.html#id560034-bb"><span class="identifier">rotation</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id560075-bb"><span class="identifier">rotation</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="tspan_element.html#id560113-bb"><span class="identifier">stroke_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id560100-bb"><span class="identifier">stroke_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="tspan_element.html#id560168-bb"><span class="identifier">stroke_on</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="tspan_element.html#id560161-bb"><span class="identifier">stroke_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id560192-bb"><span class="identifier">stroke_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id560175-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id560244-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="tspan_element.html#id560280-bb"><span class="identifier">text</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id560265-bb"><span class="identifier">text</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="tspan_element.html#id560294-bb"><span class="identifier">text_length</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id560300-bb"><span class="identifier">text_length</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id560337-bb"><span class="identifier">text_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id560382-bb"><span class="identifier">textstyle</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="tspan_element.html#id560418-bb"><span class="identifier">width_on</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="tspan_element.html#id560432-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="tspan_element.html#id560479-bb"><span class="identifier">write_attributes</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="tspan_element.html#id560456-bb"><span class="identifier">x</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id560492-bb"><span class="identifier">x</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="tspan_element.html#id560498-bb"><span class="identifier">y</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="tspan_element.html#id560534-bb"><span class="identifier">y</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="tspan_element.html#id1079310-bb">protected member functions</a></span>
-  <span class="keyword">void</span> <a class="link" href="tspan_element.html#id1079326-bb"><span class="identifier">write_attributes</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="tspan_element.html#boost.svg.tspan_elementpublic-data-members">public data members</a></span>
+  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="identifier">a_svg_style</span><span class="special">;</span>  <span class="comment">// svg style that uses black and stroke and fill off. </span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">class_name_</span><span class="special">;</span>  <span class="comment">// SVG class name, set &amp; get by function class id. </span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">clip_name_</span><span class="special">;</span>  <span class="comment">// SVG clip path name, set &amp; get by function clip_id. </span>
+  <span class="keyword">double</span> <span class="identifier">dx_</span><span class="special">;</span>  <span class="comment">// Relative X position of a 1st single character of text. </span>
+  <span class="keyword">double</span> <span class="identifier">dy_</span><span class="special">;</span>  <span class="comment">// Relative Y position of a 1st single character of text. </span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">id_name_</span><span class="special">;</span>  <span class="comment">// SVG id name, set &amp; get by function id. </span>
+  <span class="keyword">int</span> <span class="identifier">rotate_</span><span class="special">;</span>  <span class="comment">// Rotation of a 1st single character of text. (A list of shifts or rotations for several characters is not yet implemented). </span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="identifier">svg_style_</span><span class="special">;</span>  <span class="comment">// Colors fill, stroke, width; set and get by function <code class="computeroutput">style()</code>. </span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">text_</span><span class="special">;</span>  <span class="comment">// Actual text string for SVG text. </span>
+  <span class="keyword">double</span> <span class="identifier">text_length_</span><span class="special">;</span>  <span class="comment">// Allows the author to provide exact alignment. dx_, dy_, and rotate_ can all be omitted, usually meaning no shift or rotation, but see <a href="http://www.w3.org/TR/SVG/text.html#TSpanElement" target="_top">http://www.w3.org/TR/SVG/text.html#TSpanElement</a> for ancestor rules. (<code class="computeroutput">text_length_</code> only used if &gt; 0). but x_, y_, need a flag? </span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <a class="link" href="tspan_element.html#boost.svg.tspan_element.text_style_"><span class="identifier">text_style_</span></a><span class="special">;</span>  <span class="comment">// <div class="blockquote"><blockquote class="blockquote"><p>If true then use Y absolute position. </p></blockquote></div></span>
+  <span class="keyword">bool</span> <span class="identifier">use_x_</span><span class="special">;</span>
+  <span class="keyword">bool</span> <span class="identifier">use_y_</span><span class="special">;</span>  <span class="comment">// <div class="blockquote"><blockquote class="blockquote"><p>If true then use X absolute position. </p></blockquote></div></span>
+  <span class="keyword">double</span> <span class="identifier">x_</span><span class="special">;</span>  <span class="comment">// Absolute X position. </span>
+  <span class="keyword">double</span> <span class="identifier">y_</span><span class="special">;</span>  <span class="comment">// Absolute Y position. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1700251"></a><h2>Description</h2>
-<p>See 10.5 tspan element <a href="http://www.w3.org/TR/SVG/text.html#TSpanElement" target="_top">http://www.w3.org/TR/SVG/text.html#TSpanElement</a> </p>
+<a name="id1260991"></a><h2>Description</h2>
+<p>See 10.5 tspan element <a href="http://www.w3.org/TR/SVG/text.html#TSpanElement" target="_top">http://www.w3.org/TR/SVG/text.html#TSpanElement</a> Example: </p>
 <div class="refsect2">
-<a name="id1700241"></a><h3>
+<a name="id1261047"></a><h3>
 <a name="boost.svg.tspan_elementconstruct-copy-destruct"></a><code class="computeroutput">tspan_element</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a name="id1079279-bb"></a><span class="identifier">tspan_element</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> text<span class="special">,</span> <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> style <span class="special">=</span> <span class="identifier">no_style</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Construct tspan element (with all defaults except text string). </p>
+<pre class="literallayout"><a name="id560531-bb"></a><span class="identifier">tspan_element</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> text<span class="special">,</span> 
+              <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> textstyle <span class="special">=</span> <span class="identifier">not_a_text_style</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Construct tspan element (with all defaults except text string).</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id1079267-bb"></a><span class="identifier">tspan_element</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>Copy contructor. </li>
+<pre class="literallayout"><a name="id560579-bb"></a><span class="identifier">tspan_element</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>Copy constructor. </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1700378"></a><h3>
-<a name="id1075858-bb"></a><code class="computeroutput">tspan_element</code> public member functions</h3>
+<a name="id1261150"></a><h3>
+<a name="id559591-bb"></a><code class="computeroutput">tspan_element</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id1075832-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> class_id<span class="special">)</span><span class="special">;</span></pre>
-<p>Class class id, non-unique identifier for an element.</p>
-<p><a href="http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute" target="_top">http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute</a> 6.12 Attributes common to all elements: id and xml:base Example: class="info"</p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id1075868-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Class id, non-unique identifier for an element. </p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id1075887-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
-<p>Set name of a clip path, for example: g_ptr.clip_id(plot_window_clip_); </p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id1075931-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id559563-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -131,12 +131,44 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>name of a clip path, for example: g_ptr.clip_id(plot_window_clip_); </p></td>
+<td><p>Class id, non-unique string identifier for an element.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id1075924-bb"></a><span class="identifier">dx</span><span class="special">(</span><span class="keyword">double</span> dx<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id559565-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> class_id<span class="special">)</span><span class="special">;</span></pre>
+<p>Set <code class="computeroutput">class_id</code>, non-unique string identifier for a Class Attribute.</p>
+<p><a href="http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute" target="_top">http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute</a> 6.12 Attributes common to all elements: id and xml:base Example: class_id == "info"</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id559631-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td>
+<p>Name of a clip path, for example:</p>
+<pre class="programlisting"><span class="identifier">g_ptr</span><span class="special">.</span><span class="identifier">clip_id</span><span class="special">(</span><span class="identifier">plot_window_clip_</span><span class="special">)</span><span class="special">;</span> 
+</pre>
+</td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">void</span> <a name="id559605-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
+<p>Set name of a clip path, for example: g_ptr.clip_id(plot_window_clip_);</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">double</span> <a name="id559652-bb"></a><span class="identifier">dx</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get relative X position for tspan element.</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id559661-bb"></a><span class="identifier">dx</span><span class="special">(</span><span class="keyword">double</span> dx<span class="special">)</span><span class="special">;</span></pre>
 <p>Relative X position of a 1st single character of text string to use with SVG tspan command.</p>
 <p>
 </p>
@@ -147,16 +179,16 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable. </p></td>
+<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id1075976-bb"></a><span class="identifier">dx</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Get relative X position for tspan element. </p>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id559695-bb"></a><span class="identifier">dy</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get relative Y position for tspan element.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id1075948-bb"></a><span class="identifier">dy</span><span class="special">(</span><span class="keyword">double</span> dy<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id559693-bb"></a><span class="identifier">dy</span><span class="special">(</span><span class="keyword">double</span> dy<span class="special">)</span><span class="special">;</span></pre>
 <p>Relative Y position of a 1st single character of text string to use with SVG tspan command.</p>
 <p>
 </p>
@@ -167,16 +199,16 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable. </p></td>
+<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id1076006-bb"></a><span class="identifier">dy</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Get relative Y position for tspan element. </p>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id559710-bb"></a><span class="identifier">fill_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get the fill color for tspan element from SVG style <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code>.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id1076008-bb"></a><span class="identifier">fill_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id559749-bb"></a><span class="identifier">fill_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
 <p>Set fill color for a tspan element.</p>
 <p>
 </p>
@@ -187,20 +219,20 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable. </p></td>
+<td><p><code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp;</code> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id1076040-bb"></a><span class="identifier">fill_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Get the fill color for tspan element . </p>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id559784-bb"></a><span class="identifier">fill_on</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get true if to use stroke color for tspan element from SVG style <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code>.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id1076026-bb"></a><span class="identifier">fill_on</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Get true if to use fill color for tspan element . </p>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id559772-bb"></a><span class="identifier">font_family</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get the font family for tspan element (from its <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code>).</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id1076020-bb"></a><span class="identifier">font_family</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> family<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id559808-bb"></a><span class="identifier">font_family</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> family<span class="special">)</span><span class="special">;</span></pre>
 <p>font family of 1st single character of text string to use with SVG tspan command.</p>
 <p>
 </p>
@@ -211,16 +243,16 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable. </p></td>
+<td><p><code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp;</code> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id1076084-bb"></a><span class="identifier">font_family</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Get the font family for tspan element (from its <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code>). </p>
+<pre class="literallayout"><span class="keyword">int</span> <a name="id559815-bb"></a><span class="identifier">font_size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get the font size for tspan element (from its <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code>).</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id1076068-bb"></a><span class="identifier">font_size</span><span class="special">(</span><span class="keyword">unsigned</span> <span class="keyword">int</span> size<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id559849-bb"></a><span class="identifier">font_size</span><span class="special">(</span><span class="keyword">int</span> size<span class="special">)</span><span class="special">;</span></pre>
 <p>font size of 1st single character of text string to use with SVG tspan command.</p>
 <p>
 </p>
@@ -231,16 +263,20 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable. </p></td>
+<td><p><code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp;</code> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">unsigned</span> <span class="keyword">int</span> <a name="id1076114-bb"></a><span class="identifier">font_size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Get the font size for tspan element (from its <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code>). </p>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id559847-bb"></a><span class="identifier">font_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get the font style for tspan element (from its <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code>).</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id1076129-bb"></a><span class="identifier">font_style</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> style<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id559902-bb"></a><span class="identifier">font_style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p>Get the font style for tspan element (from its <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code>). const version.</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id559901-bb"></a><span class="identifier">font_style</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> textstyle<span class="special">)</span><span class="special">;</span></pre>
 <p>font style of 1st single character of text string to use with SVG tspan command. font-style: normal | bold | italic | oblique Examples: "italic" <a href="http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg" target="_top">http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg</a></p>
 <p>
 </p>
@@ -251,20 +287,16 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable. </p></td>
+<td><p><code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp;</code> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id1076162-bb"></a><span class="identifier">font_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Get the font style for tspan element (from its <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code>). </p>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id559913-bb"></a><span class="identifier">font_weight</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p>Get the font weight for tspan element (from its <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code>).</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id1076147-bb"></a><span class="identifier">font_style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
-<p>Get the font style for tspan element (from its <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code>). const version. </p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id1076176-bb"></a><span class="identifier">font_weight</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> w<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id559965-bb"></a><span class="identifier">font_weight</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> w<span class="special">)</span><span class="special">;</span></pre>
 <p>font weight of 1st single character of text string to use with SVG tspan command. svg font-weight: normal | bold | bolder | lighter | 100 | 200 .. 900 Examples: "bold", "normal" <a href="http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg" target="_top">http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg</a> tests conformance. Only two weights are supported by Firefox, Opera, Inkscape.</p>
 <p>
 </p>
@@ -275,21 +307,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable. </p></td>
+<td><p><code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp;</code> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id1076230-bb"></a><span class="identifier">font_weight</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
-<p>Get the font weight for tspan element (from its <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code>). </p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id1076223-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
-<p>Provide a unique name for an element. Example: id="plotBackground"</p>
-<p>See <a href="http://www.w3.org/TR/SVG/struct.html#IDAttribute" target="_top">http://www.w3.org/TR/SVG/struct.html#IDAttribute</a> 5.10.1 Attributes common to all elements: id and xml:base The id and xml:base attributes are available on all SVG elements: Attribute definitions: id = "name" Standard XML attribute for assigning a unique name to an element. Refer to the "Extensible Markup Language (XML) 1.0" Recommendation [XML10]. xml:base = "&lt;uri&gt;" Specifies a base URI other than the base URI of the document or external entity. Refer to the "XML Base" specification [XML-BASE]. A group of elements, as well as individual objects, can be given a name using the id attribute. Named groups are needed for several purposes such as animation and re-usable objects.</p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id1076274-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id559950-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -299,20 +322,29 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>the unique name for an element, for example id() ="plotBackground". </p></td>
+<td><p>The unique name for an element, for example:id() ="plotBackground" </p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id1076266-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
-<p>Compare svg_elements for inequality, useful for Boost.Test. </p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id560010-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
+<p>Provide a unique name for an element. Example: &lt;g id="plotBackground"</p>
+<p>See <a href="http://www.w3.org/TR/SVG/struct.html#IDAttribute" target="_top">http://www.w3.org/TR/SVG/struct.html#IDAttribute</a> 5.10.1 Attributes common to all elements: id and xml:base The id and xml:base attributes are available on all SVG elements: Attribute definitions: id = "name" Standard XML attribute for assigning a unique name to an element. Refer to the "Extensible Markup Language (XML) 1.0" Recommendation [XML10]. xml:base = "&lt;uri&gt;" Specifies a base URI other than the base URI of the document or external entity. Refer to the "XML Base" specification [XML-BASE]. A group of elements, as well as individual objects can be given a name using the id attribute. Named groups are needed for several purposes such as animation and re-usable objects.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id1076253-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
-<p>Compare svg_elements, useful for Boost.Test. </p>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id559997-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
+<p>Compare svg_elements for inequality, useful for Boost.Test.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id1076315-bb"></a><span class="identifier">rotation</span><span class="special">(</span><span class="keyword">int</span> rotation<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id560054-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
+<p>Compare svg_elements, useful for Boost.Test.</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">int</span> <a name="id560034-bb"></a><span class="identifier">rotation</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get rotation for the next character for tspan element.</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id560075-bb"></a><span class="identifier">rotation</span><span class="special">(</span><span class="keyword">int</span> rotation<span class="special">)</span><span class="special">;</span></pre>
 <p>&lt; Note implementation so far only rotates the 1st character in string. <code class="computeroutput"><a class="link" href="text_element.html" title="Class text_element">text_element</a></code> rotation rotates the whole text string, so it <span class="emphasis"><em>much</em></span> more useful.</p>
 <p>
 </p>
@@ -323,16 +355,17 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable. </p></td>
+<td><p><code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp;</code> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">int</span> <a name="id1076350-bb"></a><span class="identifier">rotation</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Get rotation for the next character for tspan element. </p>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id560113-bb"></a><span class="identifier">stroke_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get the stroke color for tspan element from SVG style <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code>.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id1076338-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id560100-bb"></a><span class="identifier">stroke_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
+<p>Set stroke color for a tspan element.</p>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -342,12 +375,21 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>reference to <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> to provide indirect access to colors &amp; width via style().stroke_color(), fill_color(), width() </p></td>
+<td><p><code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp;</code> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id1079002-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id560168-bb"></a><span class="identifier">stroke_on</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get true if to use stroke color for tspan element from SVG style <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code>.</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">double</span> <a name="id560161-bb"></a><span class="identifier">stroke_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get stroke width for tspan element from SVG style <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code>.</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id560192-bb"></a><span class="identifier">stroke_width</span><span class="special">(</span><span class="keyword">double</span> width<span class="special">)</span><span class="special">;</span></pre>
+<p>Set stroke width for a tspan element.</p>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -357,12 +399,46 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>reference to const <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> to provide indirect access to colors &amp; width via style().stroke_color(), fill_color(), width() (const version). </p></td>
+<td><p><code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp;</code> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id1078997-bb"></a><span class="identifier">text</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> text<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id560175-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>Reference to <code class="computeroutput"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a></code> to provide indirect access to colors &amp; width via style().stroke_color(), .fill_color(), .width() etc.</p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id560244-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>Reference to <code class="computeroutput">const</code> <code class="computeroutput"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a></code> to provide indirect access to colors &amp; width via style().stroke_color(), fill_color(), width() (const version).</p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id560280-bb"></a><span class="identifier">text</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get text from a tspan element.</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id560265-bb"></a><span class="identifier">text</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> text<span class="special">)</span><span class="special">;</span></pre>
 <p>Set text string to use with SVG tspan command.</p>
 <p>
 </p>
@@ -373,16 +449,16 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable. </p></td>
+<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id1079030-bb"></a><span class="identifier">text</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Get text from a tspan element. </p>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id560294-bb"></a><span class="identifier">text_length</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get user's estimated length for a text string. This length may be used to expand or contract the SVG text to fit into this width, if text_length_ == 0, then has no effect as is not output by <code class="computeroutput">write</code> below. If &lt; 0 would be an error if output like textLength=-1</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id1079060-bb"></a><span class="identifier">text_length</span><span class="special">(</span><span class="keyword">double</span> text_length<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id560300-bb"></a><span class="identifier">text_length</span><span class="special">(</span><span class="keyword">double</span> text_length<span class="special">)</span><span class="special">;</span></pre>
 <p>Set user estimate of text length (see <a href="http://www.w3.org/TR/SVG/text.html#TSpanElement" target="_top">http://www.w3.org/TR/SVG/text.html#TSpanElement</a> TSPAN SVG Specification).</p>
 <p>
 </p>
@@ -393,17 +469,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable. </p></td>
+<td><p><code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp;</code> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id1079102-bb"></a><span class="identifier">text_length</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Get user estimated length for a text string. </p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id1079103-bb"></a><span class="identifier">textstyle</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> style<span class="special">)</span><span class="special">;</span></pre>
-<p>Set text style (font) for a tspan element.</p>
+<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id560337-bb"></a><span class="identifier">text_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -413,12 +484,13 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable. </p></td>
+<td><p>Reference to <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a>&amp;</code> to permit access to font family, size ...</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id1079130-bb"></a><span class="identifier">textstyle</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id560382-bb"></a><span class="identifier">textstyle</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> textstyle<span class="special">)</span><span class="special">;</span></pre>
+<p>Set text style (font) for a <code class="computeroutput"><code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a></code></code>.</p>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -428,34 +500,30 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="text_style.html" title="Class text_style">text_style</a>&amp; to permit access to font family, size ... </p></td>
+<td><p><code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp;</code> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id1079121-bb"></a><span class="identifier">textstyle</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
-<p>
-</p>
-<div class="variablelist"><table border="0" class="variablelist compact">
-<colgroup>
-<col align="left" valign="top">
-<col>
-</colgroup>
-<tbody><tr>
-<td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="text_style.html" title="Class text_style">text_style</a>&amp; to permit access to font family, size (const version). </p></td>
-</tr></tbody>
-</table></div>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id560418-bb"></a><span class="identifier">width_on</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get true if to use stroke width for tspan element from SVG style <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code>.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id1079172-bb"></a><span class="identifier">use_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Get true if to use the estimated text string length. </p>
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id560432-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>Write function outputs appropriate SVG commands for a leaf or child element. <p>Output SVG XML for a <code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a></code>.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id1079164-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands. <p>Output SVG XML for <code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a></code> </p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id560479-bb"></a><span class="identifier">write_attributes</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>
+<p>Output group_element id and clip-path. Example: </p>
+<pre class="programlisting"><span class="special">&lt;</span><span class="identifier">clipPath</span> <span class="identifier">id</span><span class="special">=</span><span class="string">"plot_window"</span><span class="special">&gt;</span><span class="special">&lt;</span><span class="identifier">rect</span> <span class="identifier">x</span><span class="special">=</span><span class="string">"53.6"</span> <span class="identifier">y</span><span class="special">=</span><span class="string">"40.5"</span> <span class="identifier">width</span><span class="special">=</span><span class="string">"339"</span> <span class="identifier">height</span><span class="special">=</span><span class="string">"328"</span><span class="special">/</span><span class="special">&gt;</span><span class="special">&lt;</span><span class="special">/</span><span class="identifier">clipPath</span><span class="special">&gt;</span> 
+</pre>
+<p>Classes inherited from <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code> add other references, see section 5.3.1, like color, fill, stroke, gradients...</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id1079200-bb"></a><span class="identifier">x</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id560456-bb"></a><span class="identifier">x</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get absolute X position for tspan element.</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id560492-bb"></a><span class="identifier">x</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">)</span><span class="special">;</span></pre>
 <p>Absolute X position of a 1st single character of text string to use with SVG tspan command.</p>
 <p>
 </p>
@@ -466,16 +534,16 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable. </p></td>
+<td><p><code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp;</code> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id1079254-bb"></a><span class="identifier">x</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Get absolute X position for tspan element. </p>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id560498-bb"></a><span class="identifier">y</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Get absolute Y position for tspan element.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id1079244-bb"></a><span class="identifier">y</span><span class="special">(</span><span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id560534-bb"></a><span class="identifier">y</span><span class="special">(</span><span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Absolute Y position of a 1st single character of text string to use with SVG tspan command.</p>
 <p>
 </p>
@@ -486,30 +554,27 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp; to make chainable. </p></td>
+<td><p><code class="computeroutput"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a>&amp;</code> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
-</li>
-<li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id1079278-bb"></a><span class="identifier">y</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Get absolute Y position for tspan element. </p>
 </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1703075"></a><h3>
-<a name="id1079310-bb"></a><code class="computeroutput">tspan_element</code> protected member functions</h3>
+<a name="id1264408"></a><h3>
+<a name="boost.svg.tspan_elementpublic-data-members"></a><code class="computeroutput">tspan_element</code> 
+        public
+       public data members</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id1079326-bb"></a><span class="identifier">write_attributes</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> s_out<span class="special">)</span><span class="special">;</span></pre>
-<p>Output group_element id and clip-path.</p>
-<p>Classes inherited from <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code> add other references, 5.3.1, like color, fill, stroke, gradients...</p>
+<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <a name="boost.svg.tspan_element.text_style_"></a><span class="identifier">text_style_</span><span class="special">;</span></pre>
+<p>font variants. </p>
 </li></ol></div>
 </div>
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -517,7 +582,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="text_parent.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="v_path.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="text_parent.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_elements_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="v_path.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

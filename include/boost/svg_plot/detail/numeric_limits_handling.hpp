@@ -5,6 +5,8 @@
       and TR1 should provide max, min, denorm_min, infinity and isnan,
       but older compilers and libraries may not provide all these.
 
+      Better to use boost::math throughout?  Done?
+
     \author Jacob Voytko and Paul A. Bristow
 */
 
@@ -22,17 +24,9 @@
 #include <boost/math/special_functions/fpclassify.hpp>
 
 #include <boost/quan/unc.hpp>
+// using boost::quan::uncun ...
 #include <boost/quan/meas.hpp>
-
-// using boost::svg::unc;
-
-// TODO use the boost version instead to be more portable?
-
-// using boost::math::fpclassify
-// boost::math::
-// template <class T>bool isfinite (T);
-// template <class T>bool isinf (T);
-// template <class T> bool isnan (T);
+// using boost::quan Meas;
 
 #include <limits>
   // using std::numeric_limits;
@@ -49,12 +43,16 @@ namespace detail
 
 // std::numeric_limits<double>::min() or denorm min() are just ignored as almost zero (which is an OK value).
 
-const double margin = 4.;  //!< Consider values close to std::numeric_limits<double>::max() as maximum to try to take account of computation errors.
+constexpr double margin = 4.;  //!< Consider values close to std::numeric_limits<double>::max() as maximum to try to take account of computation errors.
+
+using boost::quan::unc;
+using boost::quan::Meas;
 
 inline bool limit_max(double a)
 { //! At (or near) max value or +infinity, most positive values.
     return ((a > (std::numeric_limits<double>::max)() / margin) // Avoid macro max trap!
-         || (a == std::numeric_limits<double>::infinity()));
+         || (std::isinf(a)));
+        // || (a == std::numeric_limits<double>::infinity()));
 }
 
 inline bool limit_min(double a)
@@ -66,20 +64,16 @@ inline bool limit_min(double a)
 }
 
 // Allow NaNs to be displayed differently from just too big or too small values.
-
 inline bool limit_NaN(double a)
 { //! Separate test for NaNs.
-#if defined (BOOST_MSVC)
-    return _isnan(a) ? true : false;
+  using std::isnan;
+  return isnan(a) ? true : false;
   // Ternary operator used to remove warning about casting int to bool.
-#else
-    return (std::fpclassify(a) == FP_NAN);
-#endif
 }
 
 inline bool is_limit(double a)
 { //! Is at some limit.
-    return limit_max(a) || limit_min(a) || limit_NaN(a);
+  return limit_max(a) || limit_min(a) || limit_NaN(a);
 }
 
 inline bool pair_is_limit(std::pair<const double, double> a)

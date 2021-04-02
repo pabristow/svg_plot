@@ -1,32 +1,25 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Class bar_style</title>
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="../../header/boost/svg_plot/svg_style_hpp.html" title="Header &lt;boost/svg_plot/svg_style.hpp&gt;">
 <link rel="prev" href="axis_line_style.html" title="Class axis_line_style">
 <link rel="next" href="box_style.html" title="Class box_style">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
-<td align="center"><a href="../../../../../../index.html">Home</a></td>
-<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
-<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
-<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
-</tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="axis_line_style.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="box_style.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="axis_line_style.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="box_style.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 <div class="refentry">
 <a name="boost.svg.bar_style"></a><div class="titlepage"></div>
 <div class="refnamediv">
 <h2><span class="refentrytitle">Class bar_style</span></h2>
-<p>boost::svg::bar_style &#8212; Style (color, width, fill) of histogram bars. </p>
+<p>boost::svg::bar_style — Style (color, width, fill) of histogram bars. </p>
 </div>
 <h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
 <div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/svg_style_hpp.html" title="Header &lt;boost/svg_plot/svg_style.hpp&gt;">boost/svg_plot/svg_style.hpp</a>&gt;
@@ -35,18 +28,18 @@
 <span class="keyword">class</span> <a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="bar_style.html#boost.svg.bar_styleconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="bar_style.html#id1112634-bb"><span class="identifier">bar_style</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">black</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="number">2</span><span class="special">,</span> 
+  <a class="link" href="bar_style.html#id601064-bb"><span class="identifier">bar_style</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">black</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="number">2</span><span class="special">,</span> 
             <span class="identifier">bar_option</span> <span class="special">=</span> <span class="identifier">no_bar</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="bar_style.html#id1112493-bb">public member functions</a></span>
-  <a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a class="link" href="bar_style.html#id1112468-bb"><span class="identifier">area_fill</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a class="link" href="bar_style.html#id1112495-bb"><span class="identifier">area_fill</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a class="link" href="bar_style.html#id1112506-bb"><span class="identifier">bar_opt</span></a><span class="special">(</span><span class="identifier">bar_option</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="bar_style.html#id1112564-bb"><span class="identifier">bar_opt</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a class="link" href="bar_style.html#id1112542-bb"><span class="identifier">color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a class="link" href="bar_style.html#id1112592-bb"><span class="identifier">color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a class="link" href="bar_style.html#id1112600-bb"><span class="identifier">width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="bar_style.html#id1112624-bb"><span class="identifier">width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="bar_style.html#id600889-bb">public member functions</a></span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a class="link" href="bar_style.html#id600890-bb"><span class="identifier">area_fill</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a class="link" href="bar_style.html#id600914-bb"><span class="identifier">area_fill</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="bar_style.html#id600944-bb"><span class="identifier">bar_opt</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a class="link" href="bar_style.html#id600965-bb"><span class="identifier">bar_opt</span></a><span class="special">(</span><span class="identifier">bar_option</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a class="link" href="bar_style.html#id600953-bb"><span class="identifier">color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a class="link" href="bar_style.html#id601004-bb"><span class="identifier">color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="bar_style.html#id601045-bb"><span class="identifier">width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a class="link" href="bar_style.html#id601025-bb"><span class="identifier">width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="identifier">area_fill_</span><span class="special">;</span>  <span class="comment">// Fill color from line to axis. </span>
@@ -55,23 +48,23 @@
   <span class="keyword">double</span> <span class="identifier">width_</span><span class="special">;</span>  <span class="comment">// Width of bar, not enclosing line width. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1885864"></a><h2>Description</h2>
+<a name="id1466386"></a><h2>Description</h2>
 <div class="refsect2">
-<a name="id1885884"></a><h3>
+<a name="id1466401"></a><h3>
 <a name="boost.svg.bar_styleconstruct-copy-destruct"></a><code class="computeroutput">bar_style</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><a name="id1112634-bb"></a><span class="identifier">bar_style</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col <span class="special">=</span> <span class="identifier">black</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> acol <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span> 
+<pre class="literallayout"><a name="id601064-bb"></a><span class="identifier">bar_style</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col <span class="special">=</span> <span class="identifier">black</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> acol <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span> 
           <span class="keyword">double</span> width <span class="special">=</span> <span class="number">2</span><span class="special">,</span> <span class="identifier">bar_option</span> opt <span class="special">=</span> <span class="identifier">no_bar</span><span class="special">)</span><span class="special">;</span></pre>Construct with defaults for all member variables. <p>Constructor, setting defaults for all member variables. </p>
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1885985"></a><h3>
-<a name="id1112493-bb"></a><code class="computeroutput">bar_style</code> public member functions</h3>
+<a name="id1466492"></a><h3>
+<a name="id600889-bb"></a><code class="computeroutput">bar_style</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a name="id1112468-bb"></a><span class="identifier">area_fill</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> f<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a name="id600890-bb"></a><span class="identifier">area_fill</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -81,12 +74,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="box_style.html" title="Class box_style">box_style</a>&amp; to make chainable. </p></td>
+<td><p>bar rectangle fill color.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a name="id1112495-bb"></a><span class="identifier">area_fill</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a name="id600914-bb"></a><span class="identifier">area_fill</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> f<span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -96,12 +89,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>bar rectangle fill color. </p></td>
+<td><p><a class="link" href="box_style.html" title="Class box_style">box_style</a>&amp; to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a name="id1112506-bb"></a><span class="identifier">bar_opt</span><span class="special">(</span><span class="identifier">bar_option</span> option<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id600944-bb"></a><span class="identifier">bar_opt</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -111,12 +104,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="box_style.html" title="Class box_style">box_style</a>&amp; to make chainable. </p></td>
+<td><p>If to use stick or bar for histograms.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id1112564-bb"></a><span class="identifier">bar_opt</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a name="id600965-bb"></a><span class="identifier">bar_opt</span><span class="special">(</span><span class="identifier">bar_option</span> option<span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -126,12 +119,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>If to use stick or bar for histograms. </p></td>
+<td><p><a class="link" href="box_style.html" title="Class box_style">box_style</a>&amp; to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a name="id1112542-bb"></a><span class="identifier">color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> f<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a name="id600953-bb"></a><span class="identifier">color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -141,12 +134,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="box_style.html" title="Class box_style">box_style</a>&amp; to make chainable. </p></td>
+<td><p>Color of bar line or enclosing line.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <a name="id1112592-bb"></a><span class="identifier">color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a name="id601004-bb"></a><span class="identifier">color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> f<span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -156,12 +149,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>Color of bar line or enclosing line. </p></td>
+<td><p><a class="link" href="box_style.html" title="Class box_style">box_style</a>&amp; to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a name="id1112600-bb"></a><span class="identifier">width</span><span class="special">(</span><span class="keyword">double</span> w<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id601045-bb"></a><span class="identifier">width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -171,12 +164,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><a class="link" href="box_style.html" title="Class box_style">box_style</a>&amp; to make chainable. </p></td>
+<td><p>Width of bar, not enclosing line width.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id1112624-bb"></a><span class="identifier">width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="bar_style.html" title="Class bar_style">bar_style</a> <span class="special">&amp;</span> <a name="id601025-bb"></a><span class="identifier">width</span><span class="special">(</span><span class="keyword">double</span> w<span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -186,7 +179,7 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>Width of bar, not enclosing line width. </p></td>
+<td><p><a class="link" href="box_style.html" title="Class box_style">box_style</a>&amp; to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
@@ -196,7 +189,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -204,7 +197,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="axis_line_style.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="box_style.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="axis_line_style.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="box_style.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

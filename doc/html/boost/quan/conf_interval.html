@@ -1,0 +1,107 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Function conf_interval</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../header/boost/quan/rounding_hpp.html" title="Header &lt;boost/quan/rounding.hpp&gt;">
+<link rel="prev" href="cdf_uni.html" title="Function cdf_uni">
+<link rel="next" href="delta.html" title="Function delta">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="cdf_uni.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/rounding_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="delta.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.quan.conf_interval"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Function conf_interval</span></h2>
+<p>boost::quan::conf_interval</p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/quan/rounding_hpp.html" title="Header &lt;boost/quan/rounding.hpp&gt;">boost/quan/rounding.hpp</a>&gt;
+
+</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">&gt;</span> 
+<span class="identifier">conf_interval</span><span class="special">(</span><span class="keyword">double</span> mean<span class="special">,</span> <span class="keyword">double</span> sigma<span class="special">,</span> <span class="keyword">double</span> df <span class="special">=</span> <span class="number">1</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> alpha <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="number">05</span><span class="special">,</span> 
+              <span class="identifier">distribution_type</span> distrib <span class="special">=</span> <span class="identifier">gaussian</span><span class="special">)</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id1133716"></a><h2>Description</h2>
+<p>Calculate confidence interval for chosen alpha confidence level and chosen distribution type.</p>
+<p>Uses confidence interval equations from:<br>
+ Gejza Wimmer, Viktor Witkovsky, Tomas Duby Measurement Science and Technolology, 11 (2000) 1659-1665. ISSN 0957-0233 S0957-233(00)13838-X. Proper rounding of the measurement result under the assumption of gaussian distribution,<br>
+ Confidence interval equation 6, p 1660.</p>
+<p>Gejza Wimmer, Viktor Witkovsky, Tomas Duby<br>
+ Measurement Science and Technolology, 11 (2000) 1659-1665. ISSN 0957-0233 S0957-233(00)13838-X.<br>
+ Proper rounding of the measurement result under the assumption of triangular distribution,<br>
+ Measurement Science Review, Vol 2, section 1, (2002), pages 21 to 31.<br>
+ Confidence interval Equation 12, page 25.<br>
+ Gejza Wimmer, Viktor Witkovsky,<br>
+ Proper rounding of the measurement result under the assumption of uniform distribution,<br>
+ Measurement Science Review, Vol 2, section 1, (2002), pages 1 - 7.<br>
+ Confidence interval, page 5, equation 13.<br>
+ 
+
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term">Parameters:</span></p></td>
+<td><div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><code class="computeroutput">alpha</code></span></p></td>
+<td><p>Confidence (0. &lt; unc &lt; 1.), typically 0.05 for 95% confidence. alpha/2 = 0.025 quantile = -1.96, and 1 - alpha/2 is 1.96 for normal distribution, so typically confidence interval is roughly twice unc either side (+ or - ) of mean. </p></td>
+</tr>
+<tr>
+<td><p><span class="term"><code class="computeroutput">df</code></span></p></td>
+<td><p>Degrees of freedom (usually number of observations -1). </p></td>
+</tr>
+<tr>
+<td><p><span class="term"><code class="computeroutput">distrib</code></span></p></td>
+<td><p>Distribution type, Gaussian(default), uniform, triangular, laplace. </p></td>
+</tr>
+<tr>
+<td><p><span class="term"><code class="computeroutput">mean</code></span></p></td>
+<td><p>Interval estimate for mean mu. </p></td>
+</tr>
+<tr>
+<td><p><span class="term"><code class="computeroutput">sigma</code></span></p></td>
+<td><p>Standard uncertainty sigma from variance sigma. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>Confidence interval upper and lower limits as a <code class="computeroutput">std::pair</code> of <code class="computeroutput">double</code>.</p></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="cdf_uni.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/rounding_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="delta.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

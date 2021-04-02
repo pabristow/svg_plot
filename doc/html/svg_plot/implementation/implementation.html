@@ -1,26 +1,19 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Implementation and other notes</title>
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="../implementation.html" title="Implementation, History &amp; Rationale">
 <link rel="prev" href="compilers.html" title="Compilers and Examples">
-<link rel="next" href="../todo.html" title="To Do List">
+<link rel="next" href="../history.html" title="History and Status">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
-<td align="center"><a href="../../../../../../index.html">Home</a></td>
-<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
-<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
-<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
-</tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="compilers.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../implementation.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="../todo.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="compilers.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../implementation.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="../history.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
@@ -45,7 +38,7 @@
         <code class="computeroutput"><span class="identifier">x_autoscale</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span></code> <code class="computeroutput"><span class="identifier">y_label_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span></code>
       </p>
 <p>
-        This avoids users providing an axis label string and then wondering why it
+        This avoids users providing an axis-label string and then wondering why it
         appears to have no effect.
       </p>
 <p>
@@ -444,6 +437,75 @@
       </p>
 <h5>
 <a name="svg_plot.implementation.implementation.h9"></a>
+        <span class="phrase"><a name="svg_plot.implementation.implementation.unicode_character_cells"></a></span><a class="link" href="implementation.html#svg_plot.implementation.implementation.unicode_character_cells">Unicode
+        character cell - size and position</a>
+      </h5>
+<p>
+        /boost/libs/svg_plot/wcwidth.c is an implementation of wcwidth() and wcswidth()
+        (defined in IEEE Std 1002.1-2001) for Unicode.
+      </p>
+<p>
+        http://www.opengroup.org/onlinepubs/007904975/functions/wcwidth.html http://www.opengroup.org/onlinepubs/007904975/functions/wcswidth.html
+      </p>
+<p>
+        In fixed-width output devices, Latin characters all occupy a single "cell"
+        position of equal width, whereas <a href="https://en.wikipedia.org/wiki/CJK_Unified_Ideographs" target="_top">ideographic
+        CJK (Chinese, Japanese and Korean ) Unified Ideographs</a>
+      </p>
+<p>
+        occupy two such cells. Interoperability between terminal-line applications
+        and (teletype-style) character terminals using the UTF-8 encoding requires
+        agreement on which character should advance the cursor by how many cell positions.
+        No established formal standards exist at present on which Unicode character
+        shall occupy how many cell positions on character terminals. These routines
+        are a first attempt of defining such behavior based on simple rules applied
+        to data provided by the Unicode Consortium.
+      </p>
+<p>
+        For some graphical characters, the Unicode standard explicitly defines a
+        character-cell width via the definition of the East Asian FullWidth (F),
+        Wide (W), Half-width (H), and Narrow (Na) classes. In all these cases, there
+        is no ambiguity about which width a terminal shall use. For characters in
+        the East Asian Ambiguous (A) class, the width choice depends purely on a
+        preference of backward compatibility with either historic CJK or Western
+        practice. Choosing single-width for these characters is easy to justify as
+        the appropriate long-term solution, as the CJK practice of displaying these
+        characters as double-width comes from historic implementation simplicity
+        (8-bit encoded characters were displayed single-width and 16-bit ones double-width,
+        even for Greek, Cyrillic, etc.) and not any typographic considerations.
+      </p>
+<p>
+        Much less clear is the choice of width for the Not East Asian (Neutral) class.
+        Existing practice does not dictate a width for any of these characters. It
+        would nevertheless make sense typographically to allocate two character cells
+        to characters such as for instance EM SPACE or VOLUME INTEGRAL, which cannot
+        be represented adequately with a single-width glyph. The following routines
+        at present merely assign a single-cell width to all neutral characters, in
+        the interest of simplicity. This is not entirely satisfactory and should
+        be reconsidered before establishing a formal standard in this area. At the
+        moment, the decision which Not East Asian (Neutral) characters should be
+        represented by double-width glyphs cannot yet be answered by applying a simple
+        rule from the Unicode database content. Setting up a proper standard for
+        the behavior of UTF-8 character terminals will require a careful analysis
+        not only of each Unicode character, but also of each presentation form, something
+        the author of these routines has avoided to do so far.
+      </p>
+<p>
+        <a href="http://www.unicode.org/unicode/reports/tr11/" target="_top">http://www.unicode.org/unicode/reports/tr11/</a>
+      </p>
+<p>
+        Markus Kuhn -- 2007-05-26 (Unicode 5.0)
+      </p>
+<p>
+        Permission to use, copy, modify, and distribute this software for any purpose
+        and without fee is hereby granted. The author disclaims all warranties with
+        regard to this software.
+      </p>
+<p>
+        Latest version: <a href="http://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c" target="_top">wcwidth.c</a>
+      </p>
+<h5>
+<a name="svg_plot.implementation.implementation.h10"></a>
         <span class="phrase"><a name="svg_plot.implementation.implementation.coding_style"></a></span><a class="link" href="implementation.html#svg_plot.implementation.implementation.coding_style">Coding
         style</a>
       </h5>
@@ -458,7 +520,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -466,7 +528,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="compilers.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../implementation.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="../todo.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="compilers.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../implementation.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="../history.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

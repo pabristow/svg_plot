@@ -1,32 +1,25 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Class text_style</title>
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="../../header/boost/svg_plot/svg_style_hpp.html" title="Header &lt;boost/svg_plot/svg_style.hpp&gt;">
 <link rel="prev" href="svg_style.html" title="Class svg_style">
 <link rel="next" href="ticks_labels_style.html" title="Class ticks_labels_style">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
-<td align="center"><a href="../../../../../../index.html">Home</a></td>
-<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
-<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
-<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
-</tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="svg_style.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="ticks_labels_style.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="svg_style.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="ticks_labels_style.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 <div class="refentry">
 <a name="boost.svg.text_style"></a><div class="titlepage"></div>
 <div class="refnamediv">
 <h2><span class="refentrytitle">Class text_style</span></h2>
-<p>boost::svg::text_style &#8212; Font family, font size, weight, style, stretch &amp; decoration. </p>
+<p>boost::svg::text_style — Font size, font family, font weight, font style, stretch &amp; decoration, and text_length. </p>
 </div>
 <h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
 <div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/svg_style_hpp.html" title="Header &lt;boost/svg_plot/svg_style.hpp&gt;">boost/svg_plot/svg_style.hpp</a>&gt;
@@ -35,55 +28,66 @@
 <span class="keyword">class</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="text_style.html#boost.svg.text_styleconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="text_style.html#id1117080-bb"><span class="identifier">text_style</span></a><span class="special">(</span><span class="keyword">int</span> <span class="special">=</span> <span class="number">12</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">default_font</span><span class="special">,</span> 
+  <a class="link" href="text_style.html#id603531-bb"><span class="identifier">text_style</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="text_style.html#id603538-bb"><span class="identifier">text_style</span></a><span class="special">(</span><span class="keyword">int</span> <span class="special">=</span> <span class="number">0</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">""</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
              <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">""</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
-             <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">""</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">""</span><span class="special">)</span><span class="special">;</span>
+             <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">""</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="number">0</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id603513-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="text_style.html#id1116708-bb">public member functions</a></span>
-  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id1116738-bb"><span class="identifier">font_decoration</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="text_style.html#id1116768-bb"><span class="identifier">font_decoration</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id1116756-bb"><span class="identifier">font_family</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="text_style.html#id1116783-bb"><span class="identifier">font_family</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id1116838-bb"><span class="identifier">font_size</span></a><span class="special">(</span><span class="keyword">unsigned</span> <span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">int</span> <a class="link" href="text_style.html#id1116830-bb"><span class="identifier">font_size</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id1116874-bb"><span class="identifier">font_stretch</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="text_style.html#id1116875-bb"><span class="identifier">font_stretch</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id1116921-bb"><span class="identifier">font_style</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="text_style.html#id1116948-bb"><span class="identifier">font_style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id1116940-bb"><span class="identifier">font_weight</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="text_style.html#id1116989-bb"><span class="identifier">font_weight</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="text_style.html#id1117024-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="text_style.html#id1117035-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="text_style.html#id603034-bb">public member functions</a></span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="text_style.html#id603062-bb"><span class="identifier">font_decoration</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id603101-bb"><span class="identifier">font_decoration</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="text_style.html#id603140-bb"><span class="identifier">font_family</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id603136-bb"><span class="identifier">font_family</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">int</span> <a class="link" href="text_style.html#id603151-bb"><span class="identifier">font_size</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id603209-bb"><span class="identifier">font_size</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="text_style.html#id603257-bb"><span class="identifier">font_stretch</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id603238-bb"><span class="identifier">font_stretch</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="text_style.html#id603291-bb"><span class="identifier">font_style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id603296-bb"><span class="identifier">font_style</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a class="link" href="text_style.html#id603327-bb"><span class="identifier">font_weight</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id603376-bb"><span class="identifier">font_weight</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="text_style.html#id603405-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="text_style.html#id603416-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="text_style.html#id603433-bb"><span class="identifier">text_length</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_style.html#id603421-bb"><span class="identifier">text_length</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="text_style.html#id603488-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">decoration_</span><span class="special">;</span>  <span class="comment">// Font decoration, examples: "underline" | "overline" | "line-through". </span>
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">font_family_</span><span class="special">;</span>  <span class="comment">// Font family, examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode". </span>
   <span class="keyword">int</span> <span class="identifier">font_size_</span><span class="special">;</span>  <span class="comment">// Font size (SVG units, default pixels). </span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">stretch_</span><span class="special">;</span>  <span class="comment">// Font stretch, examples: normal | wider | narrower. </span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">style_</span><span class="special">;</span>  <span class="comment">// Font weight, examples: normal | bold | italic | oblique. </span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">weight_</span><span class="special">;</span>  <span class="comment">// Font style, examples: "bold", "normal". </span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">font_style_</span><span class="special">;</span>  <span class="comment">// Font style, examples: normal | bold | italic | oblique. </span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">stretch_</span><span class="special">;</span>  <span class="comment">// Font stretch, examples: normal | wider | narrower. (Not supported by all browsers). </span>
+  <span class="keyword">double</span> <span class="identifier">text_length_</span><span class="special">;</span>  <span class="comment">// Estimate of SVG length of text used to force compress or expand into exactly this width. </span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">weight_</span><span class="special">;</span>  <span class="comment">// Font weight examples: "bold", "normal". </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1901145"></a><h2>Description</h2>
+<a name="id1476698"></a><h2>Description</h2>
+<p>text font-family (for example: "Lucida Sans Unicode", "arial", Times New Roman" ...). Available fonts depend on the program rendering the SVG XML, usually a browser. The default font (usually "Lucida Sans Unicode") is used if a renderer (in a browser or a converter-to-PDF like RenderX) does not provide the font specified. A Unicode font has a better chance of providing Unicode symbols, for example, specified as <code class="computeroutput">&amp;#x221E</code>;. Symbols are used to show data-points and most shapes use Unicode. These fonts are probably usable: </p>
+<pre class="programlisting"><span class="string">"arial"</span><span class="special">,</span> <span class="string">"impact"</span><span class="special">,</span> <span class="string">"courier"</span><span class="special">,</span> <span class="string">"lucida console"</span><span class="special">,</span>  <span class="string">"Lucida Sans Unicode"</span><span class="special">,</span> <span class="string">"Verdana"</span><span class="special">,</span> <span class="string">"calibri"</span><span class="special">,</span> <span class="string">"century"</span><span class="special">,</span>
+<span class="string">"lucida calligraphy"</span><span class="special">,</span> <span class="string">"tahoma"</span><span class="special">,</span> <span class="string">"vivaldi"</span><span class="special">,</span> <span class="string">"informal roman"</span><span class="special">,</span> <span class="string">"lucida handwriting"</span><span class="special">,</span> <span class="string">"lucida bright"</span><span class="special">,</span> <span class="string">"helvetica"</span>
+</pre>
+<p><a href="http://www.fileformat.info/info/unicode/font/index.htm" target="_top">http://www.fileformat.info/info/unicode/font/index.htm</a> provdes a fuller listing of support by many fonts; those awarded 4 or 5 stars are probably most useful.</p>
+<p><a href="https://www.w3.org/TR/css-fonts-3/#font-stretch-prop" target="_top">https://www.w3.org/TR/css-fonts-3/#font-stretch-prop</a> </p>
 <div class="refsect2">
-<a name="id1901156"></a><h3>
+<a name="id1476846"></a><h3>
 <a name="boost.svg.text_styleconstruct-copy-destruct"></a><code class="computeroutput">text_style</code> 
         public
        construct/copy/destruct</h3>
-<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><a name="id1117080-bb"></a><span class="identifier">text_style</span><span class="special">(</span><span class="keyword">int</span> size <span class="special">=</span> <span class="number">12</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> font <span class="special">=</span> <span class="identifier">default_font</span><span class="special">,</span> 
-           <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> weight <span class="special">=</span> <span class="string">""</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> style <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
-           <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> stretch <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
-           <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> decoration <span class="special">=</span> <span class="string">""</span><span class="special">)</span><span class="special">;</span></pre>Examples: "underline" | "overline" | "line-through". <p>Default constructor only sets font size = 20, and leaves other font details as SVG defaults. </p>
-</li></ol></div>
-</div>
-<div class="refsect2">
-<a name="id1901386"></a><h3>
-<a name="id1116708-bb"></a><code class="computeroutput">text_style</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id1116738-bb"></a><span class="identifier">font_decoration</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
-<p>Set font decoration. Examples: "underline" | "overline" | "line-through" <a href="http://www.croczilla.com/~alex/conformance_suite/svg/text-deco-01-b.svg" target="_top">http://www.croczilla.com/~alex/conformance_suite/svg/text-deco-01-b.svg</a> tests line-through and underline. But implementation varies.</p>
+<pre class="literallayout"><a name="id603531-bb"></a><span class="identifier">text_style</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code> Copy constructor. </li>
+<li class="listitem">
+<pre class="literallayout"><a name="id603538-bb"></a><span class="identifier">text_style</span><span class="special">(</span><span class="keyword">int</span> font_size <span class="special">=</span> <span class="number">0</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> font <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
+           <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> weight <span class="special">=</span> <span class="string">""</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> style <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
+           <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> stretch <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
+           <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> decoration <span class="special">=</span> <span class="string">""</span><span class="special">,</span> <span class="keyword">double</span> text_length <span class="special">=</span> <span class="number">0</span><span class="special">)</span><span class="special">;</span></pre>Default Constructor. <p>Estimated length of text string. Default = 0 means do not attempt to compress or expand to fit to length. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id603513-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<p>Assignment operator=.</p>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -93,12 +97,18 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>reference to <a class="link" href="text_style.html" title="Class text_style">text_style</a> to make chainable. </p></td>
+<td><p><a class="link" href="text_style.html" title="Class text_style">text_style</a>&amp; to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
+</ol></div>
+</div>
+<div class="refsect2">
+<a name="id1477868"></a><h3>
+<a name="id603034-bb"></a><code class="computeroutput">text_style</code> public member functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id1116768-bb"></a><span class="identifier">font_decoration</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id603062-bb"></a><span class="identifier">font_decoration</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -108,22 +118,52 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>font decoration. </p></td>
+<td><p>font decoration.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id1116756-bb"></a><span class="identifier">font_family</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id603101-bb"></a><span class="identifier">font_decoration</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
+<p>Set font decoration: "underline" | "overline" | "line-through" ... <a href="http://www.croczilla.com/~alex/conformance_suite/svg/text-deco-01-b.svg" target="_top">http://www.croczilla.com/~alex/conformance_suite/svg/text-deco-01-b.svg</a> tests line-through and underline. But implementation varies. Example <code class="computeroutput"></code>.font_decoration("underline");</p>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>reference to <a class="link" href="text_style.html" title="Class text_style">text_style</a> to make chainable.</p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id603140-bb"></a><span class="identifier">font_family</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p><code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a>'s</code> font family as <code class="computeroutput">std::string</code>, for example: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"..</p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id603136-bb"></a><span class="identifier">font_family</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
 <p>Set font family, for example: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode".</p>
-<p><br>
-<br>
-</p>
 <p>Default for browser is sans with Firefox &amp; IE but serif with Opera.<br>
  See also browser conformance test at<br>
  <a href="http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-01-t.svg" target="_top">http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-01-t.svg</a><br>
  which tests three styles of font, serif, sans-serif and mono-spaced.<br>
-    &lt;text font-family="Georgia, 'Minion Web', 'Times New Roman', Times, 'MS PMincho', Heisei-Mincho, serif " x="20" y="80"&gt;A serifed face&lt;/text&gt;\n
-    &lt;text font-family="Arial, 'Arial Unicode', 'Myriad Web', Geneva, 'Lucida Sans Unicode', 'MS PGothic', Osaka, sans-serif " x="20" y="160"&gt;A sans-serif face&lt;/text&gt;\n
+    &lt;text font-family="Georgia, 'Minion Web', 'Times New Roman', Times, 'MS PMincho', Heisei-Mincho, serif " x="20" y="80"&gt;A serifed face&lt;/text&gt;
+
+    &lt;text font-family="Arial, 'Arial Unicode', 'Myriad Web', Geneva, 'Lucida Sans Unicode', 'MS PGothic', Osaka, sans-serif " x="20" y="160"&gt;A sans-serif face&lt;/text&gt;
+
     &lt;text font-family="'Lucida Console', 'Courier New', Courier, Monaco, 'MS Gothic', Osaka-Mono, monospace" x="20" y="240"&gt;A mono (iW) face&lt;/text&gt;</p>
 <p>
 </p>
@@ -134,12 +174,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>reference to <a class="link" href="text_style.html" title="Class text_style">text_style</a> to make chainable. </p></td>
+<td><p>reference to <a class="link" href="text_style.html" title="Class text_style">text_style</a> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id1116783-bb"></a><span class="identifier">font_family</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">int</span> <a name="id603151-bb"></a><span class="identifier">font_size</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -149,28 +189,13 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>font family as string. </p></td>
+<td><p><a class="link" href="text_style.html" title="Class text_style">text_style</a>'s font size (svg units, usually pixels).</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id1116838-bb"></a><span class="identifier">font_size</span><span class="special">(</span><span class="keyword">unsigned</span> <span class="keyword">int</span> i<span class="special">)</span><span class="special">;</span></pre>
-<p>Set font size (svg units usually pixels) default 10.              \return text_style&amp; to make chainable.
- 
-</p>
-<div class="variablelist"><table border="0" class="variablelist compact">
-<colgroup>
-<col align="left" valign="top">
-<col>
-</colgroup>
-<tbody><tr>
-<td><p><span class="term">Returns:</span></p></td>
-<td><p>reference to <a class="link" href="text_style.html" title="Class text_style">text_style</a> to make chainable. </p></td>
-</tr></tbody>
-</table></div>
-</li>
-<li class="listitem">
-<pre class="literallayout"><span class="keyword">int</span> <a name="id1116830-bb"></a><span class="identifier">font_size</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id603209-bb"></a><span class="identifier">font_size</span><span class="special">(</span><span class="keyword">int</span> i<span class="special">)</span><span class="special">;</span></pre>
+<p>Set font size (svg units usually pixels) default 10.</p>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -180,13 +205,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>font size (svg units, usually pixels). </p></td>
+<td><p>reference to <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a>&amp;</code> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id1116874-bb"></a><span class="identifier">font_stretch</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
-<p>Examples: "wider" but implementation by browsers varies. font-stretch: normal | wider | narrower ...</p>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id603257-bb"></a><span class="identifier">font_stretch</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -196,12 +220,13 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>reference to <a class="link" href="text_style.html" title="Class text_style">text_style</a> to make chainable. </p></td>
+<td><p>font stretch, for example: "normal" | "wider" | "narrower".</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id1116875-bb"></a><span class="identifier">font_stretch</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id603238-bb"></a><span class="identifier">font_stretch</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
+<p>font-stretch:"normal" | "wider" | "narrower" Examples: <code class="computeroutput"></code>.font_stretch("wider") Note that implementation by browsers varies.</p>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -211,12 +236,27 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>font stretch, for example: normal | wider | narrower . </p></td>
+<td><p>reference to <a class="link" href="text_style.html" title="Class text_style">text_style</a> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id1116921-bb"></a><span class="identifier">font_style</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id603291-bb"></a><span class="identifier">font_style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p>
+font-style: normal | bold | italic | oblique. Example: "normal" is default.</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>font style, default normal.</p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id603296-bb"></a><span class="identifier">font_style</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
 <p>Set font style. Example: my_text_style.font_style("italic");<br>
 See also browser conformance tests:<br>
 <a href="http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg" target="_top">http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg</a></p>
@@ -229,28 +269,19 @@ See also browser conformance tests:<br>
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>reference to <a class="link" href="text_style.html" title="Class text_style">text_style</a> to make chainable. </p></td>
+<td><p>reference to <a class="link" href="text_style.html" title="Class text_style">text_style</a> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id1116948-bb"></a><span class="identifier">font_style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
-<p>
-font-style: normal | bold | italic | oblique. Example "normal" is default.</p>
-<div class="variablelist"><table border="0" class="variablelist compact">
-<colgroup>
-<col align="left" valign="top">
-<col>
-</colgroup>
-<tbody><tr>
-<td><p><span class="term">Returns:</span></p></td>
-<td><p>font style.</p></td>
-</tr></tbody>
-</table></div>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id603327-bb"></a><span class="identifier">font_weight</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p>Set font weight. Example: my_text_style.font_style("bold");<br>
+See also browser conformance tests:<br>
+<a href="http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg" target="_top">http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg</a></p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id1116940-bb"></a><span class="identifier">font_weight</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
-<p>svg font-weight: normal | bold | bolder | lighter | 100 | 200 .. 900 Examples: "bold", "normal" <a href="http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg" target="_top">http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg</a> tests conformance. Only two weights, "bold", "normal", are supported by Firefox, Opera, Inkscape.</p>
+<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id603376-bb"></a><span class="identifier">font_weight</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> s<span class="special">)</span><span class="special">;</span></pre>
+<p>svg font-weight: "normal" | "bold" | "bolder" | "lighter" | "100" | "200" .. "900" Examples: <code class="computeroutput"></code>.font_weight("bold"); <a href="http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg" target="_top">http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg</a> tests conformance. Only two weights, "bold", "normal", are supported by Firefox, Opera, Inkscape.</p>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -260,31 +291,57 @@ font-style: normal | bold | italic | oblique. Example "normal" is default.</p>
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>reference to <a class="link" href="text_style.html" title="Class text_style">text_style</a> to make chainable. </p></td>
+<td><p>reference to <a class="link" href="text_style.html" title="Class text_style">text_style</a> to make chainable.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <a name="id1116989-bb"></a><span class="identifier">font_weight</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
-<p>Set font weight. Example: my_text_style.font_style("bold");<br>
-See also browser conformance tests:<br>
-<a href="http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg" target="_top">http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg</a></p>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id603405-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> ts<span class="special">)</span><span class="special">;</span></pre>
+<p>Compare <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code> for inequality (needed for testing).</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id1117024-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> ts<span class="special">)</span><span class="special">;</span></pre>
-<p>Compare <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code> for inequality (needed for testing). </p>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id603416-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> ts<span class="special">)</span><span class="special">;</span></pre>
+<p>Compare <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code> for equality (needed for testing).</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id1117035-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> ts<span class="special">)</span><span class="special">;</span></pre>
-<p>Compare <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code> for equality (needed for testing). </p>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id603433-bb"></a><span class="identifier">text_length</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>text_length to be rendered from an estimate of length from number of characters in string.</p></td>
+</tr></tbody>
+</table></div>
 </li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id603421-bb"></a><span class="identifier">text_length</span><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Set text_length to be rendered from an estimate of length from number of characters in string.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>reference to <a class="link" href="text_style.html" title="Class text_style">text_style</a> to make chainable.</p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem"><pre class="literallayout"><span class="keyword">void</span> <a name="id603488-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre></li>
 </ol></div>
 </div>
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -292,7 +349,7 @@ See also browser conformance tests:<br>
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="svg_style.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="ticks_labels_style.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="svg_style.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/svg_style_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="ticks_labels_style.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

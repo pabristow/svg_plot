@@ -2,16 +2,11 @@
 
    \brief An example to demonstrate boxplot settings, including auto-scaling.
    \details See also:
-     example auto_1d_containers.cpp
-     for an example autoscaling with multiple data series.
-     example demo_boxplot.cpp for a wider range of use.
-
-  \date 11 Feb 2009
-  \author Paul A Bristow
-/*
+     example @c auto_1d_containers.cpp for an example autoscaling with multiple data-series.
+     example @c demo_boxplot.cpp for a wider range of use.
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A Bristow 2008
+// Copyright Paul A Bristow 2008, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -27,12 +22,12 @@
 
 //[auto_boxplot_1
 
-/*`First we need a few includes to use Boost.Plot
-(and some others only needed for this example).
+//!`First we need a few includes to use Boost.Plot
+//! (and some others only needed for this example).
 */
 
-#include <boost/quan/meas.hpp>
-#include <boost/quan/unc.hpp>
+#include <boost/quan/meas.hpp> // measurement class
+#include <boost/quan/unc.hpp> // uncertain class
 
 #include <boost/svg_plot/svg_boxplot.hpp>
   using boost::svg::svg_boxplot;
@@ -73,7 +68,7 @@ void scale_axis(double min_value, double max_value, // input
                double* axis_min_value,  double* axis_max_value, double* axis_tick_increment, // updated.
                bool origin, double tight, int min_ticks, int steps); 
 
-double tol100eps = 1000 * numeric_limits<double>::epsilon(); // Suitable tight value.
+constexpr double tol100eps = 1000 * numeric_limits<double>::epsilon(); // Suitable tight value.
 
 int main()
 {
@@ -100,10 +95,10 @@ int main()
   my_data.push_back(8.1); // [10]
   my_data.push_back(8.5); // [11]
 
-  /*`Also included is an 'at limit' value that could confuse autoscaling.
-  Obviously we do not want the plot range to include infinity.*/
+  /*`Not included is an 'at limit' value that could confuse autoscaling.
+  Obviously we do not want the plot range to include infinity.
   // my_data.push_back(numeric_limits<double>::infinity()); // [12]
-
+  */
   try
   { // Ensure error, warning and information messages from svg_plot are displayed by the catch block.
     
@@ -111,7 +106,7 @@ int main()
     double mx;
     int good = mnmx(my_data.begin(), my_data.end(), &mn, &mx);
     cout << good << " good values, " << my_data.size() - good << " limit values."
-      << " min value = " << mn << ", max = " << mx << endl;
+      << " min value = " << mn << ", max = " << mx << std::endl;
     // 12 good values, 0 limit values. min value = 0.2, max = 8.5
 
     svg_boxplot my_boxplot; // Construct a plot with all the default constructor values.
@@ -121,20 +116,19 @@ int main()
     //my_boxplot.y_autoscale(my_data.begin(), my_data.end());  // Compute autoscale values for the plot.
     // my_boxplot.y_autoscale(std::make_pair(0., 10.));
     //my_boxplot.y_autoscale(0., 9.);  // Compute autoscale values for the plot.
-    cout << boolalpha << "Use y autoscale " << my_boxplot.y_autoscale() << "."<< endl;
-    my_boxplot.plot(my_data, "Auto boxplot"); // Add the one data series, and give it a title.
+    cout << boolalpha << "Use y autoscale " << my_boxplot.y_autoscale() << "."<< std::endl;
+    my_boxplot.plot(my_data, "Auto boxplot"); // Add the one data-series, and give it a title.
     my_boxplot.write("auto_boxplot.svg"); // Write the plot to file.
 
     /*`It may be useful to display that range chosen by autoscaling. */
     using boost::svg::detail::operator<<; // For displaying std::pair.
-    cout << "y_range() " << my_boxplot.y_range() << endl; // x_range() 
+    cout << "y_range() " << my_boxplot.y_range() << std::endl; // x_range() 
   }
   catch(const std::exception& e)
   { // Error, warning and information messages are displayed by the catch block.
     std::cout <<
       "\n""Message from thrown exception was:\n   " << e.what() << std::endl;
   }
-
   //] [/auto_boxplot_2]
 
   return 0;

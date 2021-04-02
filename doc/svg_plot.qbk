@@ -2,7 +2,7 @@
     [quickbook 1.7]
     [id svg_plot]
     [authors [Voytko, Jake], [Bristow, Paul A.]]
-    [copyright 2007 to 2013 Jake Voytko and Paul A. Bristow]
+    [copyright 2007 to 2021 Jake Voytko and Paul A. Bristow]
     [license
         Distributed under the Boost Software License, Version 1.0.
         (See accompanying file LICENSE_1_0.txt or copy at
@@ -40,16 +40,24 @@
 [def __preface [link svg_plot.preface]]
 [def __howtouse [link svg_plot.howtouse  Document conventions]]
 
+[def __chaining_functions[@https://isocpp.org/wiki/faq/references#method-chaining chaining of functions]]
+
 [/def __todo [link Plotting_graphs_in_SVG_format.todo TODO]]
 [def __todo [link svg_plot.todo TODO]]
 [def __rationale [link svg_plot.implementation Rationale and Implementation]]
-[def __caution Boost.Plot is not (yet) an official Boost library, but remains a library under construction,
-     the code is functional, but interfaces, library structure, and function and distribution names
-     may still be changed without notice.]
+[def __caution SVG_plot is NOT an official Boost library, but remains a library under construction,
+the code is functional, but interfaces, library structure, and function and distribution names
+may still be changed without notice.]
+
+[def __svg_plot_doc [@https://pabristow.github.io/svg_plot SVG_plot library documentation]]  
+[def __svg_plot_github [@https://pabristow.github/svg_plot SVG_plot library at GitHub]]  
+
+[def __Unicode_widths [@https://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c Markus Kuhn. An implementation of `wcwidth()` and `wcswidth()` for Unicode.]]
+
+[import html4_symbols.qbk]
 
 [section:preface Preface]
 
-[heading Preface]
 Humans have a fantastic capacity for visual understanding, and merely looking
 at data organized in one, two, or three dimensions allows us to see relations
 not otherwise visible in a list of numbers. Computers, however, deal with
@@ -60,7 +68,7 @@ do not currently offer an easy way to bridge the gap.
 This library aims to help the C++ programmer to easily plot data that is stored in STL containers.
 
 This project is focused on using STL containers in order to display data on a
-one-dimensional, two-dimensional plot and boxplots.
+one-dimensional (1-D), two-dimensional (2-D) plot and boxplots.
 The plot is written to a
 [@http://en.wikipedia.org/wiki/Scalable_Vector_Graphics Scalable Vector Graphic SVG image].
 (SVG plots can also be converted to other graph types,
@@ -70,7 +78,7 @@ for example, [@http://en.wikipedia.org/wiki/Portable_Network_Graphics Portable N
 [@http://www.w3.org/TR/REC-xml/#sec-comments XML specification]
 and file format for describing two-dimensional vector graphics.
 
-SVG files (.svg) can be viewed with most Internet Browsers:
+SVG files (.svg) can be viewed with any recent Internet Browsers:
 
 * [@http://www.mozilla.com/firefox/ Mozilla Firefox (version 3 and later)]
 You may wish to associate Firefox with SVG files (or perhaps Inkscape - see below).
@@ -81,17 +89,20 @@ You may wish to associate Firefox with SVG files (or perhaps Inkscape - see belo
 
 * [@http://www.opera.com Opera] has good [@http://http://www.opera.com/docs/specs/opera95/svg/ SVG support].
 
-* Microsoft Internet Explorer IE9 and later,
-but the quality of rendering before IE11 is poor compared to all other browsers
-and cannot yet be fully recommended.
-Earlier versions of Microsoft Internet Explorer
-can adequately render SVG files provided a suitable
+* [@https://microsoftedgewelcome.microsoft.com/en-gb/ Microsoft Edge browser].
+
+* Microsoft Internet Explorer IE11 is acceptable.
+Earlier versions of Microsoft Internet Explorer can adequately render SVG files provided a suitable
 [@http://www.adobe.com/svg/ Adobe SVG Viewer plug-in for SVG files] is installed.
 (Adobe have stopped offering this for download (as they warned years ago)
 but the download software can still be obtained elsewhere, for example from
 [@http://adobe-svg-viewer.software.informer.com/download/ software.informer].
 Information about limitations of IE with Vista and the Adobe add-in are given on the
 [@http://www.adobe.com/svg/viewer/install/main.html Adobe End of Line FAQ]).
+But since there are many other browsers that better support SVG, using IE is second best. 
+
+* [@https://en.wikipedia.org/wiki/Microsoft_Edge Microsoft Edge] is based on the Chrome engine 
+and so has SVG support similar to Google Chrome.
 
 * __inkscape, a fine Open Source SVG editor/viewer
 with excellent rendering, full scaling and other editing features.
@@ -111,17 +122,16 @@ The goals of the project are:
 
 * To let users produce simple plots with minimal intervention by using sane defaults.
 * To allow users to easily customize plots but allow very fine-grained control of appearance.
-* To provide very high quality plots suitable for publication, including printing, but with tiny file sizes.
-* To produce and transfer plots quickly enough to be useful in real-time.
-* To represent uncertainty visually and numerically by showing only significant digits, and optionally adding uncertainty and degrees of freedom estimates.
-* To allow the user to talk to the plot classes using coordinate units
-rather than pixels or other arbitrary units.
-* To create the backbone of a `svg` class that can be extended to fully support
-the SVG standard.
+* To provide very high quality plots directly suitable for publication, including printing, but with tiny file sizes.
+* To produce and transfer plots quickly enough to be useful in real-time, taking advantage of the high compressibility of SVG.
+* To represent uncertainty visually and numerically by showing only significant digits 
+(avoiding noisy digits that carry an unwarranted implied precision). Also optionally adding uncertainty and degrees of freedom estimates.
+* To allow the user to talk to the plot classes using coordinate units rather than pixels or other arbitrary units.
+* To create the backbone of a `svg` class that can be extended to fully support the SVG standard.
 * Compliance with the
 [@http://www.w3.org/TR/SVG11/ W3C Scalable Vector Graph standard].
 * Validation using [@http://validator.w3.org/#validate_by_upload W3C Markup Validation Service].
-* Copyright and license conditions built into the SVG file.
+* Copyright claims, dates and license conditions can be easily embedded into the SVG file.
 
 [endsect] [/section:preface Preface]
 
@@ -139,9 +149,48 @@ the SVG standard.
 [xinclude autodoc.xml] [/ Using Doxygen reference documentation.]
 [include inkscape.qbk]
 [include rationale.qbk]
+
+[section:history History and Status]
+
+[h4:history History]
+
+This project started as a Google Summer of Code project supporting Jake Voytko in 2007.
+
+It was used during development to produce plot of mathematical functions for the 
+[@https://www.boost.org/doc/libs/release/libs/math/doc/html/index.html Boost.Math] library,
+and it still in use now.
+
+Over the years since it has been enhanced, in particular to handle measurements and observations of uncertain data.
+
+In 2021, a major refactoring and reburbishment has been done, both to documentation and the code.
+Numerous bugs have been squashed, new features added (Unicode data-point markers) and more examples added.
+
+The repository is now [@https://github.com/pabristow/svg_plot Github repository SVG_plot].
+
+In 2021, major refactoring and reburbishment has been started, both to documentation and the code.
+All too numerous bugs have been squashed, new features added and more examples added, 
+helped by improvements in the now separate Quan library used to label value data-points and their uncertainty,
+including proper decimal digit rounding with a controlled risk of loss of information published by Wimmer et al.
+
+[h4:status Status]
+
+[important This is NOT an official Boost library : 
+it was proposed as a library but was rejected as being out-of-scope for Boost.
+It was a [@http://code.google.com/soc/2007/boost/about.html Google Summer of Code project (2007)]
+whose mentor organization was Boost. It remains a library under construction,
+the code is quite functional, but interfaces, library structure, and names may still be changed without notice.
+]
+
+[note Comments and suggestions (even bugs!) to Paul.A.Bristow (at) hetp (dot) u-net (dot) com
+and, preferablely raise an issue at the  [@https://github.com/pabristow/svg_plot SVG_plot GitHub repository].
+]
+
+[endsect] [/section:history History and Status]
+
 [include to_do.qbk]
 [include acknowledgements.qbk]
 
+[section:indexes Indexes]
 [/Include the indexes (class, function and everything) ]
 '''
    <index type="class_name">
@@ -152,23 +201,22 @@ the SVG standard.
      <title>Function Index</title>
     </index>
 
+    <index type="typdef">
+    <title>typedef Index</title>
+    </index>
+    
+    <index type="MACRO">
+    <title>MACRO Index</title>
+    </index>
+    
    <index/>
 
 '''
-
-[important This is not (yet) an official Boost library. It was a
-[@http://code.google.com/soc/2007/boost/about.html Google Summer of Code project (2007)]
-whose mentor organization was Boost. It remains a library under construction,
-the code is quite functional, but interfaces, library structure, and names
-may still be changed without notice.
-]
-
-[note Comments and suggestions (even bugs!) to Paul.A.Bristow (at) hetp (dot) u-net (dot) com
-or Jake Voytko at jakevoytko (at) gmail (dot) com]
+[endsect] [/section:indexes Indexes]
 
 
 [/ svg_plot.qbk
-  Copyright 2008 Jake Voytko and Paul A. Bristow 2008, 2009, 2010, 2011, 2012.
+  Copyright 2008 Jake Voytko and Paul A. Bristow 2008, 2009, 2010, 2011, 2012, 2018, 2020, 2021.
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE_1_0.txt or copy at
   http://www.boost.org/LICENSE_1_0.txt).

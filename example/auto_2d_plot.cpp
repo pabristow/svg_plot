@@ -1,11 +1,10 @@
-/*! \file auto_2d_plot.cpp
-  \brief An example to demonstrate autoscaling with *multiple* STL containers.
-  \details See also demo_2d_autoscaling.cpp, auto_1d_plot.cpp and auto_1d_container.cpp.
-  \author Paul A Bristow
-  \date 2009
+/*! \file
+  \brief An example to demonstrate autoscaling with @b multiple STL containers.
+  \details See also demo_2d_autoscaling.cpp, auto_1d_plot.cpp,
+  demo_1d_axis_scaling.cpp, demo_2d_autoscaling_vector.cpp and auto_1d_container.cpp.
 */
-
-// Copyright Paul A Bristow 2008
+//  auto_2d_plot.cpp
+// Copyright Paul A Bristow 2008, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -17,30 +16,29 @@
 
 //[auto_2d_plot_1
 
-/*`First we need a few includes to use Boost.Plot
+/*`First we need a few includes to use Boost.Plot:
 */
 
 #include <boost/svg_plot/svg_2d_plot.hpp>
-  using namespace boost::svg;
+//  using namespace boost::svg;
+
 #include <utility>
-  using std::pair;
+ // using std::pair;
 #include <map>
-  using std::map;
+ // using std::map;
 #include <set>
-  using std::multiset;
+//  using std::multiset;
 #include <iostream>
-  using std::cout;
-  using std::endl;
+//  using std::cout;
+//  using std::endl;
 
 #include <limits>
-  using std::numeric_limits;
+//  using std::numeric_limits;
+//] [/auto_2d_plot_1]
 
-#include <boost/math/special_functions.hpp>
-  using boost::math::isfinite;
-
-  // Getting the max and min of x and y data points.
+//! Getting the max and min of X and Y data-points.
 template <typename T> // T an STL container: array, vector ...
-void s(T& container, // Container Data series to plot - entire container.
+void s(T& container, // Container Data-series to plot - entire container.
                // (not necessarily ordered, so will find min and max).
                double* x_min,  double* x_max,
                double* y_min,  double* y_max
@@ -59,21 +57,20 @@ void s(T& container, // Container Data series to plot - entire container.
   *y_min = px.second;
   *y_max = py.second;
 
-  cout << "s x_min " << *x_min << ", x_max " << *x_max << endl; // x_min 1, x_max 7.3
-  cout << "s y_min " << *y_min << ", y_max " << *y_max << endl; // y_min 3.2, y_max 9.1
+  std::cout << "s x_min " << *x_min << ", x_max " << *x_max << std::endl; // x_min 1, x_max 7.3
+  std::cout << "s y_min " << *y_min << ", y_max " << *y_max << std::endl; // y_min 3.2, y_max 9.1
 } // template <class T> int scale_axis  T an STL container: array, vector ...
-//] [/auto_2d_plot_1]
 
 int main()
 {
 //[auto_2d_plot_2
-  /*`This example uses a single map to demonstrate autoscaling.
-  We create a map to hold our data series.
+  /*`This example uses a single @c std::map to demonstrate autoscaling.
+  We create a @c std::map to hold our data-series.
   */
   std::map<const double, double> my_map;
   /*`
   Inserting some fictional values also sorts the data.
-  The index value in [] is the x value.
+  The index value in [ ] is the X value.
   */
   my_map[1.1] = 3.2;
   my_map[7.3] = 9.1;
@@ -89,38 +86,43 @@ int main()
   */
   try
   { // try'n'catch clocks are needed to ensure error messages from any exceptions are shown.
-
-  /*`Construct `myplot` and add at least a title,
-    specify the both x and y axes are to use autoscaling,
-    and add the one data series to be plotted.
+   /*`Construct `myplot` and add at least a title,
+    specify the both X and Y axes are to use autoscaling,
+    and add the one data-series to be plotted.
   */
+  using  namespace boost::svg;
   svg_2d_plot my_plot;
-  my_plot.title("Autoscale example"); // Add a title.
-  my_plot.xy_autoscale(my_map); // Specify that both x and y axes are to use autoscaling,
-  my_plot.plot(my_map); // Add the one data series to be plotted
-  my_plot.write("./auto_2d_plot.svg"); // And write the SVG image to a file.
+  my_plot.title("Autoscale example 1"); // Add a title.
+  my_plot.xy_autoscale(my_map); // Specify that both X and Y-axes are to use autoscaling,
+  my_plot.plot(my_map); // Add the one data-series to be plotted.
+  my_plot.write("./auto_2d_plot_1.svg"); // And write the SVG image to a file.
 
-  /*`We can show the ranges chosen by autoscaling; */
-  cout << "X min " << my_plot.x_range().first << ", X max " << my_plot.x_range().second << endl;
-  cout << "Y min " << my_plot.y_range().first << ", Y max "  << my_plot.y_range().second << endl;
+  /*`We can show the ranges used by autoscaling; */
+  std::cout << "X min " << my_plot.x_range().first << ", X max " << my_plot.x_range().second << std::endl;
+  std::cout << "Y min " << my_plot.y_range().first << ", Y max "  << my_plot.y_range().second << std::endl;
 
-  /*`Had we know that there were no 'at limits' values, we could have chosen to skip the checks.
-  This might be important for speed if there were thousands of data values.
+  /*`Had we know that there were no 'at limits' (NaN or infinite) values, we could have chosen to skip the checks.
+  This might be important for speed if there are thousands of data values.
   */
   my_plot.autoscale_check_limits(false);  // Skip checks for speed.
+/*`The possible cost is that it will fail at run-time if there are any infinite or NaNs.
+*/
 
-  /*`The possible cost is that it will fail at run-time if there are any infinite or NaNs.
-We could also chose to autoscale either of the axes separately, for example:*/
+  svg_2d_plot my_plot_2;
+  my_plot_2.title("Autoscale example 2"); // Add a title.
+  my_plot_2.plot(my_map); // Add the one data-series to be plotted.
 
-  my_plot.y_autoscale(0.4, 9.3); // autoscale using two doubles.
+/*`and specify:*/
 
-/*`which will chose a neater scale from 0 to 10 for the Y axis. */
+  my_plot_2.y_autoscale(0.4, 9.3); // autoscale using two doubles.
 
-  my_plot.write("./auto_2d_plot2.svg"); // And write another SVG image to a file.
+/*`which will chose a neater scale range from 0 to 10 for the Y axis. */
 
-/*`We can show the ranges chosen by autoscaling; */
-  cout << "X min " << my_plot.x_range().first << ", X max " << my_plot.x_range().second << endl;
-  cout << "Y min " << my_plot.y_range().first << ", Y max "  << my_plot.y_range().second << endl;
+/*`It is also possible to fully control the factors used by autoscaling with function `scale_axis`.
+ For examples, see [../example/demo_1d_axis_scaling.cpp demo_1d_axis_scaling.cpp] */
+
+  my_plot_2.write("./auto_2d_plot_2.svg"); // And write another SVG image to another file.
+
 //] [/auto_2d_plot_2]
   }
   catch(const std::exception& e)
@@ -128,7 +130,6 @@ We could also chose to autoscale either of the axes separately, for example:*/
     std::cout <<
       "\n""Message from thrown exception was:\n   " << e.what() << std::endl;
   }
-
   return 0;
 }
 

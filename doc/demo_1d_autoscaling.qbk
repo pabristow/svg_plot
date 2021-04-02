@@ -37,7 +37,7 @@ for full source code.
 [endsect] [/section:demo_1d_autoscaling 1-D Autoscaling Various Containers Examples]
 
 [/ demo_1d_autoscaling.qbk
-  Copyright 2008 Jake Voytko and Paul A. Bristow.
+  Copyright 2008, 2021 Jake Voytko and Paul A. Bristow.
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE_1_0.txt or copy at
   http://www.boost.org/LICENSE_1_0.txt).

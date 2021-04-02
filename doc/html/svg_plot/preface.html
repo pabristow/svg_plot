@@ -1,35 +1,24 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Preface</title>
 <link rel="stylesheet" href="../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="../index.html" title="Plotting Graphs in SVG format.">
 <link rel="prev" href="../index.html" title="Plotting Graphs in SVG format.">
 <link rel="next" href="howtouse.html" title="How To Use This Documentation">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src=".././images/proposed_for_boost.png"></td>
-<td align="center"><a href="../../../../../index.html">Home</a></td>
-<td align="center"><a href="../../../../../libs/libraries.htm">Libraries</a></td>
-<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
-<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="../../../../../more/index.htm">More</a></td>
-</tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src=".././images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="../index.html"><img src="../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="howtouse.html"><img src="../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="../index.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="howtouse.html"><img src="../images/next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
 <a name="svg_plot.preface"></a><a class="link" href="preface.html" title="Preface">Preface</a>
 </h2></div></div></div>
-<h4>
-<a name="svg_plot.preface.h0"></a>
-      <span class="phrase"><a name="svg_plot.preface.preface"></a></span><a class="link" href="preface.html#svg_plot.preface.preface">Preface</a>
-    </h4>
 <p>
       Humans have a fantastic capacity for visual understanding, and merely looking
       at data organized in one, two, or three dimensions allows us to see relations
@@ -44,8 +33,8 @@
     </p>
 <p>
       This project is focused on using STL containers in order to display data on
-      a one-dimensional, two-dimensional plot and boxplots. The plot is written to
-      a <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics" target="_top">Scalable
+      a one-dimensional (1-D), two-dimensional (2-D) plot and boxplots. The plot
+      is written to a <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics" target="_top">Scalable
       Vector Graphic SVG image</a>. (SVG plots can also be converted to other
       graph types, for example, <a href="http://en.wikipedia.org/wiki/Portable_Network_Graphics" target="_top">Portable
       Network Graphics PNG</a>).
@@ -56,7 +45,7 @@
       and file format for describing two-dimensional vector graphics.
     </p>
 <p>
-      SVG files (.svg) can be viewed with most Internet Browsers:
+      SVG files (.svg) can be viewed with any recent Internet Browsers:
     </p>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
 <li class="listitem">
@@ -76,16 +65,25 @@
           support</a>.
         </li>
 <li class="listitem">
-          Microsoft Internet Explorer IE9 and later, but the quality of rendering
-          before IE11 is poor compared to all other browsers and cannot yet be fully
-          recommended. Earlier versions of Microsoft Internet Explorer can adequately
-          render SVG files provided a suitable <a href="http://www.adobe.com/svg/" target="_top">Adobe
-          SVG Viewer plug-in for SVG files</a> is installed. (Adobe have stopped
-          offering this for download (as they warned years ago) but the download
-          software can still be obtained elsewhere, for example from <a href="http://adobe-svg-viewer.software.informer.com/download/" target="_top">software.informer</a>.
+          <a href="https://microsoftedgewelcome.microsoft.com/en-gb/" target="_top">Microsoft
+          Edge browser</a>.
+        </li>
+<li class="listitem">
+          Microsoft Internet Explorer IE11 is acceptable. Earlier versions of Microsoft
+          Internet Explorer can adequately render SVG files provided a suitable
+          <a href="http://www.adobe.com/svg/" target="_top">Adobe SVG Viewer plug-in for SVG
+          files</a> is installed. (Adobe have stopped offering this for download
+          (as they warned years ago) but the download software can still be obtained
+          elsewhere, for example from <a href="http://adobe-svg-viewer.software.informer.com/download/" target="_top">software.informer</a>.
           Information about limitations of IE with Vista and the Adobe add-in are
           given on the <a href="http://www.adobe.com/svg/viewer/install/main.html" target="_top">Adobe
-          End of Line FAQ</a>).
+          End of Line FAQ</a>). But since there are many other browsers that
+          better support SVG, using IE is second best.
+        </li>
+<li class="listitem">
+          <a href="https://en.wikipedia.org/wiki/Microsoft_Edge" target="_top">Microsoft Edge</a>
+          is based on the Chrome engine and so has SVG support similar to Google
+          Chrome.
         </li>
 <li class="listitem">
           <a href="http://www.inkscape.org/" target="_top">Inkscape</a>, a fine Open Source
@@ -122,15 +120,17 @@
           of appearance.
         </li>
 <li class="listitem">
-          To provide very high quality plots suitable for publication, including
+          To provide very high quality plots directly suitable for publication, including
           printing, but with tiny file sizes.
         </li>
 <li class="listitem">
-          To produce and transfer plots quickly enough to be useful in real-time.
+          To produce and transfer plots quickly enough to be useful in real-time,
+          taking advantage of the high compressibility of SVG.
         </li>
 <li class="listitem">
           To represent uncertainty visually and numerically by showing only significant
-          digits, and optionally adding uncertainty and degrees of freedom estimates.
+          digits (avoiding noisy digits that carry an unwarranted implied precision).
+          Also optionally adding uncertainty and degrees of freedom estimates.
         </li>
 <li class="listitem">
           To allow the user to talk to the plot classes using coordinate units rather
@@ -149,13 +149,14 @@
           Markup Validation Service</a>.
         </li>
 <li class="listitem">
-          Copyright and license conditions built into the SVG file.
+          Copyright claims, dates and license conditions can be easily embedded into
+          the SVG file.
         </li>
 </ul></div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -163,7 +164,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="../index.html"><img src="../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="howtouse.html"><img src="../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="../index.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="howtouse.html"><img src="../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

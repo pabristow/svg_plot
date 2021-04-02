@@ -11,7 +11,7 @@
 /*!
   \mainpage Scalable Vector Graphic (SVG) Plot Package
 
-  \section intro_sec Introduction
+  \section intro_section Introduction
 
   Humans have a fantastic capacity for visual understanding, and merely looking
   at data organized in one, two, or three dimensions allows us to see relations
@@ -159,15 +159,15 @@
 
 */
 // Copyright Jacob Voytko 2007
-// Copyright Paul A Bristow 2007, 2009
+// Copyright Paul A Bristow 2007, 2009, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
 // (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_SVG_SVG_HPP
-#define BOOST_SVG_SVG_HPP
+#ifndef BOOST_SVG_PLOT_SVG_HPP
+#define BOOST_SVG_PLOT_SVG_HPP
 
 #include <string>
 #include <ostream>
@@ -175,8 +175,8 @@
 #include <exception>
 #include <vector>
 
-//#include "stylesheet.hpp" // TODO better to be called svg_stylesheet.hpp?
-#include "detail/svg_tag.hpp" // element class definitions.
+//#include "stylesheet.hpp" // TODO - and better to be called svg_stylesheet.hpp?
+#include "detail/svg_elements.hpp" // element class definitions.
 #include "svg_style.hpp"
 //#include "svg_fwd.hpp" // Could be used to check declarations and definitions match correctly.
 
@@ -198,7 +198,7 @@
 namespace boost
 {
 namespace svg
-{ //! \namespace boost \brief www.Boost.org.
+{ //! \namespace boost \brief https://www.Boost.org.
   //! \namespace boost::math \brief Boost.Math library at www.boost.org.
   //! \namespace boost::math::detail \brief Boost.Math library at www.boost.org implementation details.
   //! \namespace svg \brief Scalable Vector Graph plot functions, classes and data.
@@ -222,26 +222,20 @@ namespace svg
 \endverbatim
 \n
 \verbatim
-
       <!-- Boost Software License, Version 1.0.-->
 \endverbatim
 \n
 \verbatim
-
       <!-- (See accompanying file LICENSE_1_0.txt -->
 \endverbatim
 \n
 \verbatim
-
       <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) -->
-
 \endverbatim
 
 */
 
 // Note problem here caused by -- being read as an en dash!
-
-
     static const std::string package_info = //!< Default SVG package information about this program that produced the SVG image (not the image itself).
       "<!-- SVG plot written using Boost.Plot program (Creator Jacob Voytko) --> \n"
       "<!-- Use, modification and distribution of Boost.Plot subject to the --> \n"
@@ -249,16 +243,23 @@ namespace svg
       "<!-- (See accompanying file LICENSE_1_0.txt --> \n"
       "<!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> \n";
 
-  /*
+  /*!
      Copyright notice to be inserted into plot image produced by this program.
      Note: can have more than one copyright date, or a range.
      Produces a copyright notice as an SVG comment like this:
-     "<!-- Copyright Paul A. Bristow, 2007  --> \n"
+     "<!-- Copyright Paul A. Bristow, 2020  --> \n"
      and as a meta item:
      \verbatim
        <meta name="copyright" content="Paul A. Bristow" />
+       <meta name="Date" content="20071101" />
      \endverbatim
    */
+
+    /*!
+    Another popular option is Creative Commons Attribution-ShareAlike 4.0 International License
+          https://creativecommons.org/licenses/by-sa/4.0/
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+    */
 
 //! \cond DETAIL
 // Forward declaration of Class to output Scalable Vector Graph XML graph elements: point, path, line, circle, rect, polygon and text.
@@ -288,11 +289,9 @@ class svg;
 // svg& circle(double x, double y, unsigned int radius = 5)
 // svg& ellipse(double rx, double ry, double cx, double cy)
 
-// write image out to ostream and file:
-// svg& write(std::ostream& s_out)
+// write SVG image out to @c std::ostream or to file:
+// svg& write(std::ostream&)
 // svg& write(const std::string& file)
-
-// svg& load_stylesheet(const std::string& input) // Load a stylesheet into string css from an input file.
 
 // Possibles for license strings:
 // static const std::string permit("permits");
@@ -306,20 +305,25 @@ class svg
   \details  Class to add basic Scalable Vector Graph XML graph elements:
   point, path, line, circle, rect, polygon and text to SVG images,
   including metadata like author, copyright and license.
-  Finally output the final image as SVG XML to a @c std::stream or file.
+  Finally output the final image as SVG XML to a @c std::stream or file of type .svg (by default).
 */
-protected:
   unsigned int x_size_; //!< SVG image X-axis size (in SVG units (default pixels).
   unsigned int y_size_; //!< SVG image Y-axis size (in SVG units (default pixels).
 
-  g_element document; //!< To hold all group elements of the svg document.
-  std::vector<clip_path_element> clip_paths; //!< Points on clip path (used for plot window).
+  g_element document_; //!< Parent g_element to hold all group elements of the svg document.  Initially none.
+  // Function gs accesses ith g_element child nodes in tree, for example:
+  //  image_.gs(PLOT_BACKGROUND).style().fill_color(red);
+  // where macro PLOT_BACKGROUND is index integer value 0 <= index < gs.size().
+  // Could better be called parent_group_ ?
+
+  std::vector<clip_path_element> clip_paths_; //!< Points on clip path (used for plot window).
+
   // Document metadata:
   std::string title_document_; //!< SVG document title (appears in the SVG file header as \verbatim <title> ... </title> \endverbatim).
   std::string image_desc_; //!< SVG image description (appears in the SVG file header as \verbatim <desc> ... </desc> \endverbatim).
   std::string holder_copyright_; //!< SVG info on holder of copyright (probably == author, but could be an institution).
   std::string date_copyright_; //!< SVG info on date of copyright claimed.
-  std::string css_; //!< Cascading Style Sheet.
+  std::string css_; //!< Cascading Style Sheet (CSS)  (not yet used or implemented).
   std::string filename_; //!< file SVG XML written to.
   std::string author_; //!< Author(s) name. (Probably == copyright holder).
   bool is_boost_license_; //!< If true, to include the Boost license as a XML comment.
@@ -329,14 +333,98 @@ protected:
   std::string commercialuse_; //!< License requirements for commerical use: "permits", "requires", or "prohibits".
   std::string distribution_; //!< License requirements for distribution: "permits", "requires", or "prohibits".
   std::string derivative_works_; //!< License requirements for derivative: "permits", "requires", or "prohibits".
-
   int coord_precision_; //!< Number of decimal digits precision for output of X and Y coordinates to SVG XML.
   // Not sure this is the best place for this?
 
-private:
-//! \cond DETAIL
+public:
+  svg() //! Define class svg default constructor.
+    :
+    document_(), // Defautl construct - this should give not_a_text_style.
+    x_size_(400), //!< X-axis of the whole SVG image (default 400 SVG units, default pixels).
+    y_size_(400), //!< Y-axis of the whole SVG image (default 400 SVG units, default pixels).
+    title_document_(""),  //!< This is a SVG document title, not a plot title (@c std::string).
+    image_desc_(""), //!< Information about the SVG image, for example, the program that created it  (@c std::string).
+    holder_copyright_(""),  //!< Name of copyright holder (@c std::string).
+    date_copyright_(""), //!<  Date of copyright claim (@c std::string).
+    author_(""), //!< Author of image (@c std::string) (defaults to the copyright holder) .
+    css_(""), //!< Stylesheet filename, if any. (@c std::string)  Not used at present.
+    filename_(""), //!< Name of file to which SVG XML has been written is embedded in the file as an XML comment (if written only to an ostream, filename will not appear in comment).
+    is_boost_license_(false), //!< If true, Boost license text is written as comment in SVG XML. (Default is no license). Suggested strings for license permission are "permits", "requires", or "prohibits", or "".
+    is_license_(false), //!< If true, license text is written as comment in SVG XML. (Default is no license).
+    reproduction_("permits"), //!< Default license permits reproduction.
+    attribution_("requires"), //!< Default license requires attribution.
+    commercialuse_("permits"), //<! Default license permits commerical use.
+    distribution_("permits"), //!< Default license permits distribution.
+    derivative_works_("permits"), //!< Default license permits derivative works.
+    coord_precision_(3) //!< 3 decimal digits precision is enough for 1 in 1000 resolution: suits small image use. Higher precision (4, 5 or 6) will be needed for larger images, but increase the SVG XML file size, especially if there are very many data values.
+  { // Default constructor.
+  }
+
+  svg(const svg& rhs) : x_size_(rhs.x_size_), y_size_(rhs.y_size_)
+  { //! Copy constructor copies ONLY X and Y image sizes.
+    // TODO Other member data items are NOT copied.  OK? Unused and untested, and perhaps not useful.
+    // I think this means that in practice one can't copy an existing customised SVG?
+  }
+
+  // Set & get functions for x_size_ and y_size_
+  void x_size(unsigned int x)
+  { //! Set X-axis (horizontal) image size in SVG units (default pixels).
+    x_size_ = x;
+  }
+
+  void y_size(unsigned int y)
+  { //! Set Y-axis (vertical) image size in SVG units (default pixels).
+    y_size_ = y;
+  }
+
+  unsigned int x_size()
+  { //! \return  X-axis (horizontal width) SVG image size  in SVG units (default pixels).
+    return x_size_;
+  }
+
+  unsigned int y_size()
+  { //! \return  Y-axis (vertical height) SVG image size in SVG units (default pixels).
+    return y_size_;
+  }
+
+  std::pair<double, double> xy_sizes()
+  { //! \return Both X and Y sizes (horizontal width and vertical height) of the SVG image in SVG units (default pixels).
+    std::pair<double, double> r;
+    r.first = x_size_;
+    r.second = y_size_;
+    return r;
+  }
+
+  unsigned int document_size()
+  { //! \return How many group elements groups have been added to the document.
+    return static_cast<unsigned int>(document_.size());
+  }
+
+  void coord_precision(int digits)
+  { //! \brief Set decimal digits to be output for X and Y coordinates.
+    /*! \details Default stream precision 6 decimal digits is probably excessive.\n
+
+      4.1 Basic data types, integer or float in decimal or scientific (using E format).
+      3 or 4 probably enough if image size is under 1000 x 1000.
+      This will reduce .svg file sizes significantly for curves represented with many data-points.\n
+
+      For example, if a curve is shown using 100 points,
+      reducing to precision(3) from 6 will reduce file size by 300 bytes.
+      So a default of 3 is used in the default constructor above,
+      but can be changed using this function.
+      Used in @c svg.write below and so applies to all the entire @c svg document.
+     */
+    coord_precision_ = digits;
+  }
+
+  int coord_precision()
+  { //! \return  Decimal digits precision to be output for X and Y coordinates.
+    return coord_precision_;
+  }
+
+  //! \cond DETAIL // Doxygen document this section only if DETAIL defined.
   void write_header(std::ostream& s_out)
-  { //! Output the DTD SVG 1.1 header into the svg g_element document.
+  { //! Output the DTD SVG 1.1 header into the SVG g_element document.
     s_out << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
       //<< "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" "
       //<< "\"http://www.w3.org/graphics/svg/1.1/dtd/svg11.dtd\">"
@@ -386,125 +474,55 @@ private:
       // Example: <defs><style type="text/css"><![CDATA[]]>
       // .axes { fill:none;stroke:#333333;stroke-width:1.6 }
       // .title{ font-size:20px;font-weight:bold;font-style:italic;fill:magenta }
-      // .legend_header{ font-size:16px;font-weight:bold;fill:darkblue;text-anchor:middle }
+      // .legend_title{ font-size:16px;font-weight:bold;fill:darkblue;text-anchor:middle }
       // .legend_item{ font-size:16px;font-weight:normal;fill:blue }
       // .x_axis_value{ font-size:12px;font-weight:normal;fill:black }
       //   </style></defs>
+
+      // Might output the
+      // const static char* default_font_family("Lucida Sans Unicode");
+      // and a font-size etc?
+      // But SVG element classes have default parameter that override these at present.
+
+      //  <style>
+      // text{
+      //    font-family:Lucida Sans Unicode;
+      //}
+      //  < / style>
+
+
     }
   } // void write_css(std::ostream& s_out)
 
   void write_document(std::ostream& s_out)
-  { //! \brief Output all of the image to the svg document (Internal function)
+  { //! \brief Output all of the image to the SVG document (Internal function)
     /*! \details Output all clip paths that define a region of the output device
       to which paint can be applied.
      */
-    for(size_t i = 0; i < clip_paths.size(); ++i)
+    for (size_t i = 0; i < clip_paths_.size(); ++i)
     {
-      clip_paths[(unsigned int)i].write(s_out);
+      clip_paths_[(unsigned int)i].write(s_out);
     }
     // Write all visual group elements.
-    for(size_t i = 0; i < document.size(); ++i)
+    for (size_t i = 0; i < document_.size(); ++i)
     { // plot_background, grids, axes ... title
-      document[(unsigned int)i].write(s_out);
+      document_[(unsigned int)i].write(s_out);
     }
   } // write_document
-//! \endcond
-public:
-  svg() //! Define default constructor.
-    :
-    x_size_(400), //!< X-axis of the whole SVG image (default SVG units, default pixels).
-    y_size_(400), //!< Y-axis of the whole SVG image (default SVG units, default pixels).
-    title_document_(""),  //!< This is a SVG document title, not a plot title.
-    image_desc_(""), //!< Information about the SVG image, for example, the program that created it.
-    holder_copyright_(""),  //!< Name of copyright holder.
-    date_copyright_(""), //!<  Date of copyright claim.
-    author_(""), //!< Author of image (defaults to the copyright holder).
-    css_(""), //!< Stylesheet filename.
-    filename_(""), //!< Name of file to which SVG XML has been written is embedded in the file as an XML comment (if written only to an ostream, filename will not appear in comment).
-    is_boost_license_(false), //!< If true, Boost license text is written as comment in SVG XML. (Default is no license). Suggested strings for license permission are "permits", "requires", or "prohibits", or "".
-    is_license_(false), //!< If true, license text is written as comment in SVG XML. (Default is no license).
-    reproduction_("permits"), //!< Default license permits reproduction.
-    attribution_("requires"), //!< Default license requires attribution.
-    commercialuse_("permits"), //<! Default license permits commerical use.
-    distribution_("permits"), //!< Default license permits distribution.
-    derivative_works_("permits"), //!< Default license permits derivative works.
-    coord_precision_(3) //!< 3 decimal digits precision is enough for 1 in 1000 resolution: suits small image use. Higher precision (4, 5 or 6) will be needed for larger images, but increase the SVG XML file size, especially if there are very many data values.
-  { // Default constructor.
-  }
+//! \endcond // DETAIL
 
-  svg(const svg& rhs) : x_size_(rhs.x_size_), y_size_(rhs.y_size_)
-  { //! Copy constructor copies X and Y image sizes.
-    // TODO Other member data items are NOT copied.  OK?
-    // I think this means that in practice one can't copy an existing customised SVG?
-  }
+  /*! \brief Write whole .svg 'file' contents to SVG file.
 
-  // Set & get functions for x_size_ and y_size_
-  void x_size(unsigned int x)
-  { //! Set X-axis (horizontal) image size.
-    x_size_ = x;
-  }
+  \details @c svg.write() also has two flavors, a file and an @c std::ostream.
+  The file version opens an @c std::ofstream, and calls the stream version.
 
-  void y_size(unsigned int y)
-  { //! Set Y-axis (vertical) image size.
-    y_size_ = y;
-  }
-
-  unsigned int x_size()
-  { //! \return  X-axis (horizontal width) SVG image size.
-    return x_size_;
-  }
-
-  unsigned int y_size()
-  { //! \return  Y-axis (vertical height) SVG image size.
-    return y_size_;
-  }
-
-  std::pair<double, double> xy_sizes()
-  { //! \return Both X and Y sizes (horizontal width and vertical height) of the SVG image.
-    std::pair<double, double> r;
-    r.first = x_size_;
-    r.second = y_size_;
-    return r;
-  }
-
-  unsigned int document_size()
-  { //! \return How many group elements groups have been added to the document.
-    return static_cast<unsigned int>(document.size());
-  }
-
-  void coord_precision(int digits)
-  { //! \brief Set decimal digits to be output for X and Y coordinates.
-    /*! \details Default stream precision 6 decimal digits is probably excessive.\n
-
-      4.1 Basic data types, integer or float in decimal or scientific (using e format).
-      3 or 4 probably enough if image size is under 1000 x 1000.
-      This will reduce .svg file sizes significantly for curves represented with many data points.\n
-
-      For example, if a curve is shown using 100 points,
-      reducing to precision(3) from 6 will reduce file size by 300 bytes.
-      So a default of 3 is used in the default constructor above,
-      but can be changed using this function.
-      Used in @c svg.write below and so applies to all the entire @c svg document.
-     */
-    coord_precision_ = digits;
-  }
-
-  int coord_precision()
-  { //! \return  Decimal digits to be output for X and Y coordinates.
-    return coord_precision_;
-  }
-
-  /*! \brief Write whole .svg 'file' contents to file.
-
-  \details @c svg.write() also has two flavors, a file and an ostream.
-  The file version opens an ostream, and calls the stream version.
   The stream version first clears all unnecessary data from the graph,
   builds the document tree, and then calls the write function for the root
   document node, which calls all other nodes through the Visitor pattern.
 
   TODO provide a filtered-stream version that writes in zipped format type .svgz ?
   http://lists.w3.org/Archives/Public/www-svg/2005Dec/0308.html
-  recommends MUST have  correct Content-Encoding headers.
+  recommends MUST have correct Content-Encoding headers.
   */
   // --------------------------------------------------------------------------------
 
@@ -542,7 +560,7 @@ public:
       "xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
       "xmlns =\"http://www.w3.org/2000/svg\"\n"
 
-      // xml namespace containing svg shapes rect, circle...
+      // XML namespace containing SVG shapes rect, circle...
       // so can write rect or circle avoiding need for qualification svg:rect, svg:circle...
       // This site isn't visited, but if missing Firefox, at least, will fail to render.
 
@@ -626,7 +644,7 @@ public:
                "<dc:rights><cc:Agent><dc:title>" << holder_copyright_ << "</dc:title></cc:Agent></dc:rights>\n"
                "<dc:date>" << date_copyright_ << "</dc:date>\n"
                "<dc:identifier>" << filename_ << "</dc:identifier>\n" // URI for this svg document.
-               "<dc:source>" << "Boost.plot 0.5" << "</dc:source>\n"
+               "<dc:source>" << "Boost.SVG_Plot 2.0" << "</dc:source>\n"
                "<dc:relation>" << "" << "</dc:relation>\n" // URI to a related document, perhaps user source program.
                "<dc:publisher><cc:Agent><dc:title>" << holder_copyright_ << "</dc:title></cc:Agent></dc:publisher>\n"
                // publisher could be different from copyright holder.
@@ -654,7 +672,7 @@ public:
          "</metadata>"
        << std::endl;
     } // is_license
-    write_css(s_out);// stylesheet, if any.
+    write_css(s_out);// Defaults stylesheet, if any.
     write_document(s_out); // write clip paths and all document elements.
     s_out << "</svg>" << std::endl;   // close off svg tag.
   }
@@ -719,7 +737,7 @@ public:
 
   // -------------------------------------------------------
   // Writes the information about the image to the document.
-  // TODO: allow other unit identifiers.
+  // TODO: allow other unit identifiers other than default pixel, abbreviation "px".
   // -------------------------------------------------------
   void size(unsigned int x, unsigned int y)
   { //! Set both X and Y image size (SVG units, default pixels).
@@ -787,118 +805,135 @@ public:
     return filename_;
   }
 
-  // ------------------------------------------------------------------------
+  // ------------------------------------------------------------------------------
   // Add (push_back) information about line, rec, circle & ellipse to the document.
-  // ------------------------------------------------------------------------
+  // ------------------------------------------------------------------------------
 
   line_element& line(double x1, double y1, double x2, double y2)
   { //! Add (push_back) information about a line to the document.
     //! 'line' element defines a line segment that starts at one point (x1, y1) and ends at another (x2, y2).
-    return document.line(x1, y1, x2, y2);
+    return document_.line(x1, y1, x2, y2);
   }
 
   rect_element& rect(double x1, double y1, double x2, double y2)
   { //! push_back information about a rectangle to the document.
     //! 'Rect' element defines a rect segment with one point (x1, y1) and opposite vertex is (x2, y2).
-    return document.rect(x1, y1, x2, y2);
+    return document_.rect(x1, y1, x2, y2);
   }
 
   circle_element& circle(double x, double y, unsigned int radius = 5)
   { //! push_back information about a circle to the document.
     //! 'circle' element defines a circle centered at (x1, y1) and its radius.
-    return document.circle(x, y, radius);
+    return document_.circle(x, y, radius);
   }
 
   ellipse_element& ellipse(double rx, double ry, double cx, double cy)
   { //! push_back information about a ellipse to the document.
     //! 'ellipse' element defines a ellipse centered at point (x1, y1) and its two radii.
-    return document.ellipse(rx, ry, cx, cy);
+    return document_.ellipse(rx, ry, cx, cy);
   }
 
   text_element& text(double x, double y, const std::string& text,
-    const text_style& style, // size, font etc.
-    align_style align, rotate_style rotate)
-  { //! push_back information about text to the document, with location, style, alignment & rotation.
-    return document.text(x, y, text, style, align, rotate);
+    const text_style& style, // font size, font family etc., and any text_length estimate.
+    align_style align, int rotate)
+  { //! push_back information about text to the document, with location, style (font size, family etc and text_length), alignment & rotation.
+    return document_.text(x, y, text, style, align, rotate); // see svg_elements.hpp 2137 for definition.
   }
+  /*  text_length  SVG XML textLength = "<length>"
+  The author's (this program svg_plot) computation of the total sum of all of
+  the advance values that correspond to character data within this element,
+  including the advance value on the glyph (horizontal or vertical),
+  the effect of properties 'kerning', 'letter-spacing' and 'word-spacing'
+  and adjustments due to attributes 'dx' and 'dy' on 'tspan' elements.
+
+  This value is used to calibrate the user agent's (renderer) own calculations with that of the author.
+  The purpose of this attribute is to allow the author to achieve exact alignment,
+  in visual rendering order after any bidirectional reordering,
+  for the first and last rendered glyphs that correspond to this element;
+  thus, for the last rendered character (in visual rendering order after any bidirectional reordering),
+  any supplemental inter-character spacing beyond normal glyph advances are ignored (in most cases)
+  when the user agent (this program) determines the appropriate amount
+  to expand/compress the text string to fit within a length of 'textLength'.
+  */
+  // \sa https://www.w3.org/TR/SVG11/text.html#TextElementTextLengthAttribute
 
   // Polygon for shapes with many vertices.
   polygon_element& polygon(double x, double y, bool f = true) // 1st point only, add others later with .P(x, y).
   { //! push_back info about 1st point of a polygon shape (add others later with .P(x, y)).
-    return document.polygon(x, y, f);
+    return document_.polygon(x, y, f);
   }
 
-  //JVTODO: Replace with STL container template version.
-
   polygon_element& polygon(std::vector<poly_path_point>& v, bool f = true)
-  { //! push_back a complete many-sided polygon to the document with vertices specified as a vector of path_points.
-    return document.polygon(v, f);
+  { //! push_back a complete many-sided polygon to the document_ with vertices specified as a vector of path_points.
+    return document_.polygon(v, f);
   }
 
   // Specific polygon shapes: triangle, rhombus, pentagon & hexagon. (not in SVG standard but convenient).
   polygon_element& triangle(double x1, double y1, double x2, double y2, double x3, double y3, bool f = true)
   { //! push_back a complete triangle to the document.
-    return document.polygon(x1, y1, f).P(x2, y2).P(x3, y3);
+    return document_.polygon(x1, y1, f).P(x2, y2).P(x3, y3);
   }
 
   polygon_element& rhombus(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, bool f = true)
   { //! push_back the four coordinate of a complete rhombus to the document.
-    return document.polygon(x1, y1, f).P(x2, y2).P(x3, y3).P(x4, y4);
+    return document_.polygon(x1, y1, f).P(x2, y2).P(x3, y3).P(x4, y4);
   }
 
   polygon_element& pentagon(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, double x5, double y5, bool f = true)
   { //! push_back the five coordinates complete pentagon to the document.
-    return document.polygon(x1, y1, f).P(x2, y2).P(x3, y3).P(x4, y4).P(x5, y5);
+    return document_.polygon(x1, y1, f).P(x2, y2).P(x3, y3).P(x4, y4).P(x5, y5);
   }
 
   polygon_element& hexagon(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, double x5, double y5, double x6, double y6, bool f = true)
   { //! push_back the coordinate of the points of a complete hexagon to the document.
-    return document.polygon(x1, y1, f).P(x2, y2).P(x3, y3).P(x4, y4).P(x5, y5).P(x6, y6);
+    return document_.polygon(x1, y1, f).P(x2, y2).P(x3, y3).P(x4, y4).P(x5, y5).P(x6, y6);
   }
 
   polyline_element& polyline(double x, double y)
   { //! push_back info about the 1st point of a polyline (add others later with .P(x, y)).
 
-    return document.polyline(x, y);
+    return document_.polyline(x, y);
   }
 
   polyline_element& polyline(double x1, double y1, double x2, double y2)
   { //! push_back info about the 1st & 2nd point of a polyline (add others later with .P(x, y)).
-    return document.polyline(x1, y1).P(x2, y2);
+    return document_.polyline(x1, y1).P(x2, y2);
   }
 
   polyline_element& polyline(std::vector<poly_path_point>& v)
   { //! push_back a complete many-sided polygon to the document, from a vector of path_points.
-    return document.polyline(v);
+    return document_.polyline(v);
   }
 
   // Add information about path, clip_path to the document.
 
   path_element& path()
   { //! Construct an empty path, ready for additions with chainable functions M., L., ...
-    return document.path(); //! \return reference to path element.
+    return document_.path(); //! \return reference to @c path_element.
   }
 
   clip_path_element& clip_path(const rect_element& rect, const std::string& id)
   { //! Rectangle outside which 'painting' is 'clipped' so doesn't show.
-    clip_paths.push_back(clip_path_element(id, rect));
-    return clip_paths[clip_paths.size()-1]; //! \return Reference to clip_path element.
+    clip_paths_.push_back(clip_path_element(id, rect));
+    return clip_paths_[clip_paths_.size()-1]; //! \return Reference to @c clip_path_element.
   }
 
   g_element& add_g_element()
   { //! Add information about a group element to the document.
-    //! Increments the size of the array of g_elements, returned by g_element.size().
-    return document.add_g_element(); //! \return reference to the added group element.
+    //! Increments the size of the array @c children of child nodes @c svg_elements, size returned by @c g_element.size().
+    return document_.add_g_element(); //! \return Reference to the added group element @c add_g_element.
   }
 
-  g_element& g(int i)
+  g_element& gs(int i)
   { //! from array of g_elements, indexed by group type, PLOT_BACKGROUND, PLOT_WINDOW_BACKGROUND, ... SVG_PLOT_DOC_CHILDREN,
-    return document.g(i); //! \return reference to the ith group element.
+    return document_.gs(i); //! \return Reference to the ith group element.
   }
+}; // class svg
 
-  //// -------------------------------------------------------------
-  //// Load stylesheet
-  //// -------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------
+  // Load stylesheet - to provide some defaults like font size, type but not yet implemented.
+  // ----------------------------------------------------------------------------------------
+
 
   //void load_stylesheet(const std::string& input)
   //{ // Load a stylesheet into string css from an input file.
@@ -924,9 +959,8 @@ public:
   //    css += tmp;
   //  }
   //} // svg& load_stylesheet
-}; // class svg
 
 } // namespace svg
 } // namespace boost
 
-#endif // BOOST_SVG_SVG_HPP
+#endif // BOOST_SVG_PLOT_SVG_HPP

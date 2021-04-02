@@ -1,26 +1,19 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>1-D Axis Scaling</title>
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="../tutorial_1d.html" title="1D Tutorials">
 <link rel="prev" href="1d_special.html" title="Tutorial: 1D Gridlines &amp; Axes - more examples">
 <link rel="next" href="auto_1d_plot.html" title="1-D Auto scaling Examples">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
-<td align="center"><a href="../../../../../../index.html">Home</a></td>
-<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
-<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
-<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
-</tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="1d_special.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_1d.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="auto_1d_plot.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="1d_special.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_1d.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="auto_1d_plot.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
@@ -182,7 +175,7 @@
   <span class="number">0</span><span class="special">);</span> <span class="comment">// Display range.</span>
 <span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Axis_scaled 4 min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_min_value</span> <span class="special">&lt;&lt;</span> <span class="string">", max = "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_max_value</span> <span class="special">&lt;&lt;</span> <span class="string">", increment "</span> <span class="special">&lt;&lt;</span> <span class="identifier">axis_tick_increment</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
 
-<span class="comment">// axis_scaling using two begin &amp; end iterators into STL container,</span>
+<span class="comment">// axis_scaling using two iterators @c begin() &amp; @c end() into an STL container,</span>
 <span class="comment">// scale_axis does finding min and max.</span>
 <span class="identifier">scale_axis</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">[</span><span class="number">1</span><span class="special">],</span> <span class="identifier">my_data</span><span class="special">[</span><span class="number">4</span><span class="special">],</span> <span class="comment">// Only middle part of the container used, ignoring 1st and last values.</span>
   <span class="special">&amp;</span><span class="identifier">axis_min_value</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_max_value</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_tick_increment</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">axis_ticks</span><span class="special">,</span>
@@ -295,7 +288,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -303,7 +296,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="1d_special.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_1d.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="auto_1d_plot.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="1d_special.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial_1d.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="auto_1d_plot.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

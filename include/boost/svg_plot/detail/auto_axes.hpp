@@ -11,26 +11,20 @@
   \author
 */
 
-// Copyright Paul A. Bristow 2006 - 2013.
+// Copyright Paul A. Bristow 2006 - 2013, 2021.
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
+// (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 #ifndef BOOST_SVG_AUTO_AXES_HPP
 #define BOOST_SVG_AUTO_AXES_HPP
 
-#if defined (_MSC_VER)
-#  pragma warning (push)
-#  pragma warning (disable: 4100) // check_limits and autoscale_plusminus: unreferenced formal parameters.
-#endif
-
 #include <boost/svg_plot/detail/numeric_limits_handling.hpp>
 #include <boost/svg_plot/detail/fp_compare.hpp> // is_small & is_close
-#include <boost/quan/meas.hpp> // for value_of.
+#include <boost/quan/meas.hpp> // for boost::quan::value_of.
 
-#include <boost/math/special_functions/fpclassify.hpp>
+//#include <boost/math/special_functions/fpclassify.hpp>
 // for template <class FPT> bool boost::math::isfinite(FPT t);
 #include <boost/algorithm/minmax_element.hpp>
  using boost::minmax_element;
@@ -46,25 +40,15 @@
 // Michael P.D. Bramley. CUJ July 2000, p 20 - 26.
 // Antonio Gomiz Bas, CUJ march 2000, p 42 - 45
 // J. A. Nelder and W. Douglas Stirling, FORTRAN program SCALE.
-// Daniel Herring
-
-namespace boost
-{
-  namespace math
-  {
-  // This is only needed to avoid a warning from Doxygen
-  // which can't find the function if declared as
-  // template <class FPT> bool boost::math::isfinite(FPT t);
-  // because of the leading boost::math::
-  /*!
-    \brief If a floating-point value is finite, return true.
-    \tparam FPT floating-point type (float, double, long double, or user-defined).
-    \param[in] t floating-point value to test if finite.
-    \return @c true if is finite, false if + or - infinite, or any NaN.
-  */
-  template <class FPT> bool isfinite(FPT t);
-  } // namespace math
-} //  namespace boost
+//  // Algorithm AS 168: Scale Selection and Formatting  W.Douglas Stirling
+// Journal of the Royal Statistical Society.Series C(Applied Statistics)
+// Vol. 30, No. 3 (1981), pp. 339-344 (6 pages)
+// Published By: Wiley
+// Journal of the Royal Statistical Society.Series C(Applied Statistics)
+// https://doi.org/10.2307/2346366
+// https://www.jstor.org/stable/2346366
+// Algorithm AS 96 https://doi.org/10.2307/2346537 J. A. Nelder, Simple Algorithm for Scaling Graphs
+// http://lib.stat.cmu.edu/apstat/96   FORTRAN code
 
 namespace boost
 {
@@ -95,17 +79,17 @@ double rounddown2(double value);
 
 // Scale axis and update min and max axis values, and tick increment and number of ticks.
 void scale_axis(
-   double min_value, // Scale axis from explicit input minimum.
-   double max_value, // Scale axis from explicit input maximum.
-   double* axis_min_value, // Computed minimum value for the axis, updated by scale_axis.
-   double* axis_max_value, //  Computed maximum value for the axis, updated by scale_axis.
-   double* axis_tick_increment, //  Computed tick increment for the axis, updated by scale_axis.
-   int* auto_ticks, // Computed number of ticks, updated by scale_axis.
+   double min_value, //!< Scale axis from explicit input minimum.
+   double max_value, //!< Scale axis from explicit input maximum.
+   double* axis_min_value, //!< Computed minimum value for the axis, updated by scale_axis.
+   double* axis_max_value, //!<  Computed maximum value for the axis, updated by scale_axis.
+   double* axis_tick_increment, //!<  Computed tick increment for the axis, updated by scale_axis.
+   int* auto_ticks, //!< Computed number of ticks, updated by scale_axis.
    //  NO check_limits parameter.
-   bool origin = false, // Do not include the origin unless the range min_value <= 0 <= max_value.
-   double tight = 0., // Tightness - fraction of overrun allowed before another tick used. For visual effect up to about 0.001 might suit a 1000 pixel wide image, allowing values just 1 pixel over the tick to be shown.
-   int min_ticks = 6, // Minimum number of major ticks.
-   int steps = 0 // Round up and down to 2, 4, 6, 8, 10, or 5, 10 or 2, 5, 10 systems.
+   bool origin = false, //!< Do not include the origin unless the range min_value <= 0 <= max_value.
+   double tight = 0., //!< Tightness - fraction of overrun allowed before another tick used. For visual effect up to about 0.001 might suit a 1000 pixel wide image, allowing values just 1 pixel over the tick to be shown.
+   int min_ticks = 6, //!< Minimum number of major ticks.
+   int steps = 0 //!< Round up and down to 2, 4, 6, 8, 10, or 5, 10 or 2, 5, 10 systems.
 );
 
 /* Scale axis function to define axis marker ticks based on min & max parameters values (handling uncertainty).
@@ -141,7 +125,7 @@ void scale_axis(
 
 /* Scale axis using an iterator into an STL container.
 
- \details Scale axis from data series values (usually to then plot), perhaps using only part of container.
+ \details Scale axis from data-series values (usually to then plot), perhaps using only part of container.
 
  \tparam iter Iterator into an STL container: array, vector, set ...
  \param begin Iterator into @c begin in STL container.
@@ -174,14 +158,14 @@ void scale_axis(
   // for visual effect up to about 0.001 might suit a 1000 pixel wide image,
   // allowing values just 1 pixel over the tick to be shown.
   int min_ticks = 6, // Minimum number of major ticks.
-   int steps = 0 // 0,  or 2 for 2, 4, 6, 8, 10, 5 for 1, 5, 10, or 10 (2, 5, 10).
+  int steps = 0 // 0,  or 2 for 2, 4, 6, 8, 10, 5 for 1, 5, 10, or 10 (2, 5, 10).
 );
 
 /* Scale axis using all the 1D data in an STL container.
-  Scale axis using an \b entire Container Data series, usually to plot.
+  Scale axis using an \b entire Container data-series, usually to plot.
   (not necessarily ordered, so will find min and max).
   \tparam C an STL container: array, vector ...
-  \param container STL container, usually of a data series.
+  \param container STL container, usually of a data-series.
   \param axis_min_value Computed minimum value for the X-axis, updated by scale_axis.
   \param axis_max_value Computed minimum value for the X-axis, updated by scale_axis.
   \param axis_tick_increment Computed tick increment for the axis, updated by scale_axis.
@@ -195,7 +179,7 @@ void scale_axis(
 */
  template <typename C>
  void scale_axis(
-   const C& container, // STL container, usually of a data series.
+   const C& container, // STL container, usually of a data-series.
    double* axis_min_value, // Computed minimum value for the axis, updated by @c scale_axis.
    double* axis_max_value,  // Computed maximum value for the axis, updated by @c scale_axis.
    double* axis_tick_increment, //  Computed tick increment for the axis, updated by @c scale_axis.
@@ -213,7 +197,7 @@ void scale_axis(
 /* Scale X and Y axis using T a 2D STL container: array of pairs, vector of pairs, list of pairs, map ...
   \tparam C STL container of 2D pairs of X and Y.
 
-  \param container Data series to plot - entire 2D container (not necessarily ordered, so will find min and max)..
+  \param container data-series to plot - entire 2D container (not necessarily ordered, so will find min and max)..
   \param x_axis_min_value Computed minimum value for the X-axis, updated by @c scale_axis.
   \param x_axis_max_value Computed minimum value for the X-axis, updated by @c scale_axis.
   \param x_axis_tick_increment Computed tick increment for the axis, updated @c by scale_axis.
@@ -235,7 +219,7 @@ void scale_axis(
 */
 template <typename C>
 void scale_axis(
-  const C& container, // Data series to plot - \b entire 2D container (not necessarily ordered, so will find min and max).
+  const C& container, // data-series to plot - \b entire 2D container (not necessarily ordered, so will find min and max).
   double* x_axis_min_value, //  \param x_axis_min_value Computed minimum value for the X-axis, updated by scale_axis.
   double* x_axis_max_value,  //   \param x_axis_max_value Computed minimum value for the X-axis, updated by scale_axis.
   double* x_axis_tick_increment, // Updated with X axis tick increment.
@@ -307,6 +291,7 @@ int mnmx(
   int goods = 0; // Count of values within limits.
   int limits = 0;
   Iter pos = begin;
+  using boost::quan::value_of;
   while(pos != end && is_limit(value_of(*pos)))
   { // Count any limits before the first 'good' (FP normal) value.
     limits++;
@@ -315,11 +300,12 @@ int mnmx(
   if (pos == end)
   { // ALL values are at limit!
       throw std::runtime_error("Autoscale could not find any useful values to scale axis!");
-    //cout << "all values at limit!" << endl;
+    // std::cout << "all values at limit (NaN or infinity)!" << std::endl;
     // min and max are both == NaN
   }
   else
   {
+    using boost::quan::value_of;
     double x = value_of(*pos);
     *max = x;
     *min = x;
@@ -375,9 +361,9 @@ int mnmx(
 */
 void scale_axis(
    double min_value, // Scale axis from explicit input range minimum.
-   double max_value, // Scale axis from input range min & max.
-   double* axis_min_value, // Computed minimum value for the axis, updated by scale_axis.
-   double* axis_max_value, //  Computed maximum value for the axis, updated by scale_axis.
+   double max_value, // Scale axis from input range maximum.
+   double* axis_min_value, // Computed minimum value for the axis, updated by @c scale_axis.
+   double* axis_max_value, //  Computed maximum value for the axis, updated by @c scale_axis.
    double* axis_tick_increment, //  Computed tick increment for the axis, updated by scale_axis.
    int* auto_ticks, // Computed number of ticks, updated by scale_axis.
    //  NO check_limits parameter.
@@ -393,8 +379,6 @@ void scale_axis(
     axis_min_value, axis_max_value, axis_tick_increment, auto_ticks, // All 4 updated.
     origin, tight, min_ticks, steps); // Display range.
 } //
-
-
 
 /*! Scale axis function to define axis marker ticks based on min & max parameters values (handling uncertainty).
 
@@ -432,9 +416,11 @@ void scale_axis(
   detail::scale_axis_impl(min_value, max_value,
     axis_min_value, axis_max_value, axis_tick_increment, auto_ticks, // All 4 updated.
     origin, tight, min_ticks, steps); // Display range.
+  check_limits = false;
+  autoscale_plusminus = 1.96;
 }
 
- /*! Scale axis from data series (usually to plot), perhaps only part of container.
+ /*! Scale axis from data-series (usually to plot), perhaps only part of container.
 
    \tparam Iter Type of interator into STL container type: @c array, @c vector ...
 
@@ -492,14 +478,15 @@ void scale_axis(
     axis_min_value, axis_max_value, axis_tick_increment, auto_ticks, // All 4 updated.
       origin, tight, min_ticks, steps); // Display range.
   }
+  autoscale_plusminus = 1.96;
 } // template <typename iter> void scale_axis(iter begin, iter end, ...
 
 /*!
-  \brief Scale axis using an \b entire Container of a Data series, usually to plot (not necessarily ordered, so will find minimum and maximum).
+  \brief Scale axis using an \b entire Container of a data-series, usually to plot (not necessarily ordered, so will find minimum and maximum).
 
   \tparam C STL container type: @c array, @c vector ...
 
-  \param container STL container, usually of a data series.
+  \param container STL container, usually of a data-series.
   \param axis_min_value Computed minimum value for the axis, updated by scale_axis.
   \param axis_max_value Computed maximum value for the axis, updated by scale_axis.
   \param axis_tick_increment  Computed tick increment for the axis, updated by scale_axis.
@@ -513,7 +500,7 @@ void scale_axis(
 */
 template <class C>
 void scale_axis(
-  const C& container, // STL container, usually of a data series.
+  const C& container, // STL container, usually of a data-series.
   double* axis_min_value, // Computed minimum value for the axis, updated by scale_axis.
   double* axis_max_value,  // Computed maximum value for the axis, updated by scale_axis.
   double* axis_tick_increment, //  Computed tick increment for the axis, updated by scale_axis.
@@ -536,7 +523,7 @@ void scale_axis(
     // minmax_element is efficient because can use knowledge of being sorted,
     // BUT only if it can be assumed that no values are 'at limits',
     // infinity, NaN, max_value, min_value, denorm_min.
-
+    using boost::quan::value_of;
     x_min = value_of(*(result.first));
     x_max = value_of(*(result.second));
   }
@@ -556,6 +543,7 @@ void scale_axis(
   detail::scale_axis_impl(x_min, x_max,
     axis_min_value, axis_max_value, axis_tick_increment, auto_ticks,
     origin, tight, min_ticks, steps);
+  autoscale_plusminus = 3.;
 
 } // template <class C> int scale_axis  C an STL container: array, vector ...
 
@@ -563,7 +551,7 @@ void scale_axis(
 
   \tparam C STL container holding 2D pairs of X and Y.
 
-  \param container Data series to plot - entire 2D container.
+  \param container data-series to plot - entire 2D container.
   \param x_axis_min_value Computed minimum value for the X-axis, updated by scale_axis.
   \param x_axis_max_value Computed minimum value for the X-axis, updated by scale_axis.
   \param x_axis_tick_increment Computed tick increment for the axis, updated by scale_axis.
@@ -585,7 +573,7 @@ void scale_axis(
 */
 template <class C>
 void scale_axis(
-  const C& container, // Data series to plot - \b entire 2D container (not necessarily ordered, so will find min and max).
+  const C& container, // data-series to plot - \b entire 2D container (not necessarily ordered, so will find min and max).
   double* x_axis_min_value, // Computed minimum value for the X-axis, updated by scale_axis.
   double* x_axis_max_value,  // Computed minimum value for the X-axis, updated by scale_axis.
   double* x_axis_tick_increment, // Updated with X axis tick increment.
@@ -595,7 +583,7 @@ void scale_axis(
   double* y_axis_tick_increment, // Updated with Y axis tick increment.
   int* y_auto_ticks,  // Computed number of Y-axis ticks, updated by scale_axis.
   bool check_limits, // = true, // Whether to check all values for infinity, NaN etc.
-  double autoscale_plusminus, // = 3., // Mutiplier of uncertainty or standard deviations to allow fo confidence ellipses.
+  double autoscale_plusminus, // = 3., // Mutiplier of uncertainty or standard deviations to allow of confidence ellipses.
   bool x_origin, // = false, // do not include the origin unless the range min_value <= 0 <= max_value.
   double x_tight, // = 0., // tightest - fraction of 'overrun' allowed before another tick used.
   // for visual effect up to about 0.001 might suit a 1000 pixel wide image,
@@ -609,7 +597,7 @@ void scale_axis(
   int y_min_ticks, // = 6, // Minimum number of major ticks.
   int y_steps) // = 0) // 0,  or 2 for 2, 4, 6, 8, 10, 5 for 1, 5, 10, or 10 (2, 5, 10).
 { /* Scale X and Y axis using T a 2D STL container: array of pairs, vector of pairs, list of pairs, map ...
-      container Data series to plot - entire 2D container.
+      container data-series to plot - entire 2D container.
     */
   double x_max = std::numeric_limits<double>::quiet_NaN();
   double x_min = std::numeric_limits<double>::quiet_NaN();
@@ -624,6 +612,7 @@ void scale_axis(
 
     std::pair<typename C::const_iterator, typename C::const_iterator> result
       = boost::minmax_element(container.begin(), container.end());
+    using boost::quan::values_of;
     std::pair<double, double> px = values_of(*result.first); // X min & X max.
     std::pair<double, double> py = values_of(*result.second); // Y min & Y max.
     x_min = px.first;
@@ -635,9 +624,11 @@ void scale_axis(
     typename C::const_iterator pos = container.begin();
     if (pos == container.end())
     {
-      throw std::runtime_error("Autoscale could not find any values to scale axes!");
+      throw std::runtime_error("SVG_plot Autoscale could not find any values to scale axes!");
     }
+    using boost::quan::value_of;
     double y = value_of(pos->second);
+    using boost::quan::unc_of;
     double yu = unc_of(pos->second) * autoscale_plusminus;
     y_max = y + yu;
     y_min = y - yu;
@@ -655,7 +646,8 @@ void scale_axis(
       }
       pos++;
     }
-    std::cout << "No limits checks: x_min = " << x_min
+    std::cout << "SVG_plot Autoscale warning (No limits checks):"
+                 "x_min = " << x_min
             << ", x_max = " << x_max
             << ", y_min = " << y_min
             << ", y_max = " << y_max << std::endl;
@@ -684,7 +676,9 @@ void scale_axis(
     }
     else
     {
+      using boost::quan::value_of;
       double x = value_of(pos->first);
+      using boost::quan::unc_of;
       double xu = unc_of(pos->first) * autoscale_plusminus;
       x_max = x + xu;
       x_min = x - xu;
@@ -798,7 +792,7 @@ void scale_axis_impl(
     throw std::domain_error("tight not in range 0 to 1 !");
   }
 
-  using boost::math::isfinite;
+  using std::isfinite;
   if(!(isfinite)(min_value))
   {
     throw std::domain_error("min_value not finite!");
@@ -856,7 +850,7 @@ void scale_axis_impl(
   else
   { // Range is reasonably large, so
     // compute candidate for increment - must be smaller than range, so divide by 10.
-    test_increment = std::pow(10., ceil(log10(std::abs<double>(range)/10.)));
+    test_increment = std::pow(10., std::ceil(std::log10(std::abs<double>(range)/10.)));
     // Must be a decimal multiple or decimal fraction,
     // but is not necessarily exactly representable in floating-point format.
     // Establish maximum axis scale value, using this increment.
@@ -960,7 +954,7 @@ size_t show(const T& container)
   }
   std::cout << std::endl;
   return container.size();
-}// Container Data series to plot.
+}// Container data-series to plot.
 
 // Pointer version is not needed - iterator version is used instead.
 
@@ -977,7 +971,7 @@ size_t show(iter begin, iter end) // Iterators
   std::cout << ": " << count << " values used.";
   std::cout << std::endl;
   return count;
-}// Container Data series to plot.
+}// Container data-series to plot.
 
 template <typename T>
 size_t show_all(const T& containers)
@@ -988,10 +982,10 @@ size_t show_all(const T& containers)
     show(*it);
   }
   return containers.size();
-} // Container Data series to plot.
+} // Container data-series to plot.
 
   /*! Calculate minimum and maximum from data in a container.
-    \param container Container Data series.
+    \param container Container data-series.
     \return minimum and maximum of an STL container as a @c std::pair.
     \tparam  T an STL container: array, vector, set, map ...
   */
@@ -1007,7 +1001,7 @@ std::pair<double, double> range_mx(const T& container)
 } // template <class T> range_mx
 
 template <typename T> // T an STL container: array, vector, set, map ...
-std::pair<double, double> range_all(const T& containers) // Container of STL containers of Data series.
+std::pair<double, double> range_all(const T& containers) // Container of STL containers of data-series.
 { /*! \return minimum and maximum of a container containing STL containers.
       \tparam T an STL container: array, vector, set, map ...
   */
@@ -1029,6 +1023,7 @@ std::pair<double, double> range_all(const T& containers) // Container of STL con
 */
 double roundup10(double value)
 {
+  BOOST_MATH_STD_USING
   smallest<> is_small(100. * (std::numeric_limits<double>::min)()); // 100 * min value.
   if (is_small(value) )
   { // Value very close to zero.
@@ -1064,6 +1059,8 @@ double roundup10(double value)
 */
 double rounddown10(double value)
 {
+  BOOST_MATH_STD_USING
+
   smallest<> is_small(100. * (std::numeric_limits<double>::min)()); // 100 * min value
   if (is_small(value))
   { // Value very close to zero.
@@ -1098,6 +1095,8 @@ double rounddown10(double value)
 */
 double roundup5(double value)
 {
+  BOOST_MATH_STD_USING
+
   smallest<> is_small(100. * (std::numeric_limits<double>::min)()); // 100 * min value.
   if (is_small(value) )
   { // Value very close to zero.
@@ -1128,6 +1127,8 @@ double roundup5(double value)
 */
 double rounddown5(double value)
 {
+  BOOST_MATH_STD_USING
+
   smallest<> is_small(100. * (std::numeric_limits<double>::min)()); // 100 * min value
   if (is_small(value))
   { // Value very close to zero.
@@ -1159,6 +1160,8 @@ double rounddown5(double value)
 */
 double roundup2(double value)
 {
+  BOOST_MATH_STD_USING
+
   smallest<> is_small(100. * (std::numeric_limits<double>::min)()); // 100 * min value.
   if (is_small(value) )
   { // Value very close to zero.
@@ -1197,6 +1200,7 @@ double roundup2(double value)
 */
 double rounddown2(double value)
 {
+  BOOST_MATH_STD_USING
   smallest<> is_small(100. * (std::numeric_limits<double>::min)()); // 100 * min value
   if (is_small(value))
   { // Value very close to zero.
@@ -1232,9 +1236,5 @@ double rounddown2(double value)
 
 } // namespace svg
 } // namespace boost
-
-#if defined (BOOST_MSVC)
-#  pragma warning(pop)
-#endif
 
 #endif // BOOST_SVG_AUTO_AXES_HPP

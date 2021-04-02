@@ -18,13 +18,12 @@
   \sa The Bagplot: A Bivariate Boxplot
   Peter J. Rousseeuw, Ida Ruts and John W. Tukey
   The American Statistician, Vol. 53, No. 4 (Nov., 1999), pp. 382-387
-
-  \author Jacob Voytko & Paul A. Bristow
  */
 
 // file svg_boxplot.hpp
+
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2008, 2009, 2013
+// Copyright Paul A. Bristow 2008, 2009, 2013, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -33,12 +32,6 @@
 
 #ifndef BOOST_SVG_SVG_BOXPLOT_HPP
 #define BOOST_SVG_SVG_BOXPLOT_HPP
-
-#if defined (_MSC_VER)
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#  pragma warning(disable: 4127) // conditional expression is constant.
-#endif
 
 #include <boost/iterator/transform_iterator.hpp>
 
@@ -52,6 +45,7 @@
 #include  <boost/svg_plot/quantile.hpp>
 
 #include <boost/quan/unc.hpp> // Values with uncertainty.
+// using boost::quan::unc;
 
 #include <vector>
 #include <string>
@@ -157,7 +151,7 @@ namespace svg
       ext_outlier_(extos), //  blue, blank, 25, cone),
       values_style_(vs),
       series_style_(ss), // for series_info to control font etc of box labels.
-      series_info_(0, 0, title, series_style_, center_align, horizontal),
+      series_info_(0, 0, title, series_style_, align_style::center_align, horizontal),
       quartile_definition_(q_def), // Default is H&F recommendation.
       text_margin_(2.) // for axis label text, as a multiplier of the font size.
     { // Default Constructor sorts a copy of @c std::vector copy and used for fast lookup of quartile values.
@@ -663,9 +657,9 @@ class svg_boxplot : public detail::axis_plot_frame<svg_boxplot>
   text_style a_style_; //!< Default text style (font etc).
   text_style title_style_; //!< text style (font) used for plot title.
   text_style x_axis_label_style_; //!< text style (font) used for Y axis label.
-  text_style x_value_label_style_; //!< text style (font) used for X data point value label.
+  text_style x_ticks_value_label_style_; //!< text style (font) used for X data point value label.
   text_style y_axis_label_style_; //!< text style (font) used for Y axis label.
-  text_style y_value_label_style_; //!< text style (font) used for Y data point value label.
+  text_style y_ticks_value_label_style_; //!< text style (font) used for Y data point value label.
   text_style point_symbols_style_; //!< text style (font) used for symbol used for data point marking.
   text_style value_style_; //!< style used for data point value label.
 
@@ -770,30 +764,30 @@ class svg_boxplot : public detail::axis_plot_frame<svg_boxplot>
 
 //! \endcond
 public:
- // text_element(double x = 0., double y = 0., const std::string text = "", text_style ts = no_style, align_style align = left_align, rotate_style rotate = horizontal)
+ // text_element(double x = 0., double y = 0., const std::string text = "", text_style ts = no_text_style, align_style align = left_align, rotate_style rotate = horizontal)
 
   svg_boxplot()
   :
-  title_style_(18, default_font, "", "", "", ""),
-  value_style_(10, default_font, "", "", "", ""), // Data values
-  title_info_(0, 0, "", title_style_, center_align, horizontal),
+  title_style_(18, default_font_family, "", "", "", ""),
+  value_style_(10, default_font_family, "", "", "", ""), // Data values
+  title_info_(0, 0, "", title_style_, align_style::center_align, horizontal),
   title_on_(true),
-  x_label_info_(0, 0, "", x_axis_label_style_ ,center_align, horizontal),
-  x_units_info_(0, 0, "", x_value_label_style_, center_align, horizontal),
-  y_label_info_(0, 0, "", y_axis_label_style_, center_align, upward),
-  y_units_info_(0, 0, "", y_axis_label_style_, center_align, upward),
+  x_label_info_(0, 0, "", x_axis_label_style_ , align_style::center_align, horizontal),
+  x_units_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, horizontal),
+  y_label_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward),
+  y_units_info_(0, 0, "", y_axis_label_style_, align_style::center_align, upward),
   x_axis_(X, -10., +10., black, 1, 0, true, false, true),
   y_axis_(Y,   0.,  +1., black, 1, 0, true, false, true),
-  x_axis_label_style_(14, default_font, "", ""),
-  x_value_label_style_(12, default_font, "", ""),
-  y_axis_label_style_(14, default_font, "", ""),
-  y_value_label_style_(12, default_font, "", ""),
+  x_axis_label_style_(14, default_font_family, "", ""),
+  x_ticks_value_label_style_(12, default_font_family, "", ""),
+  y_axis_label_style_(14, default_font_family, "", ""),
+  y_ticks_value_label_style_(12, default_font_family, "", ""),
   point_symbols_style_(12, "Lucida Sans Unicode"), // Used for data point marking to try to get in right place.
   // try to center accurately on the point's value.
-  values_style_(rightward, 3, std::ios::dec, true, value_style_, black, black, false, false),
+  values_style_(rightward, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, false, false),
 
-  x_ticks_(X, x_value_label_style_),// so for other defaults see ticks_labels_style.
-  y_ticks_(Y, y_value_label_style_),
+  x_ticks_(X, x_ticks_value_label_style_),// so for other defaults see ticks_labels_style.
+  y_ticks_(Y, y_ticks_value_label_style_),
 
   autoscale_check_limits_(true), // Do check all value for limits, infinity, max, min, NaN.
   x_autoscale_(false),
@@ -857,44 +851,44 @@ public:
    // document ids for use in <g id = "PLOT_TITLE".../>
     for(int i = 0; i < boxplot::BOXPLOT_DOC_CHILDREN; ++i)
     { // Order determines the painting order.
-      image_.g(i).id(boxplot::document_ids_[i]);
+      image_.gs(i).id(boxplot::document_ids_[i]);
     }
 
     // Set boxplot color defaults.
-    image_.g(boxplot::PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
-    image_.g(boxplot::PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);
-    image_.g(boxplot::PLOT_BACKGROUND).style().stroke_width(image_border_.width_); //
+    image_.gs(boxplot::PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
+    image_.gs(boxplot::PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);
+    image_.gs(boxplot::PLOT_BACKGROUND).style().stroke_width(image_border_.border_width_); //
 
-    image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color(plot_window_border_.fill_);
-    image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.width_).stroke_color(plot_window_border_.stroke_);
-    image_.g(boxplot::X_AXIS).style().stroke_color(black).stroke_width(x_axis_.width());
-    image_.g(boxplot::Y_AXIS).style().stroke_color(black).stroke_width(y_axis_.width());
+    image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color(plot_window_border_.fill_);
+    image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.border_width_).stroke_color(plot_window_border_.stroke_);
+    image_.gs(boxplot::X_AXIS).style().stroke_color(black).stroke_width(x_axis_.width());
+    image_.gs(boxplot::Y_AXIS).style().stroke_color(black).stroke_width(y_axis_.width());
 
     // Ticks & grids.
     if(x_ticks_.use_up_ticks() || x_ticks_.use_down_ticks())
     {
-      image_.g(boxplot::X_TICKS).style().stroke_width(x_ticks_.minor_tick_width_).stroke_color(black);
+      image_.gs(boxplot::X_TICKS).style().stroke_width(x_ticks_.minor_tick_width_).stroke_color(black);
     }
     if(y_ticks_.left_ticks_on_ || y_ticks_.right_ticks_on_)
     {
-      image_.g(boxplot::Y_MAJOR_TICKS).style().stroke_width(y_ticks_.major_tick_width_).stroke_color(black);
-      image_.g(boxplot::Y_MINOR_TICKS).style().stroke_width(y_ticks_.minor_tick_width_).stroke_color(black);
-      image_.g(boxplot::Y_MAJOR_GRID).style().stroke_width(y_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255));
-      image_.g(boxplot::Y_MINOR_GRID).style().stroke_width(y_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
+      image_.gs(boxplot::Y_MAJOR_TICKS).style().stroke_width(y_ticks_.major_tick_width_).stroke_color(black);
+      image_.gs(boxplot::Y_MINOR_TICKS).style().stroke_width(y_ticks_.minor_tick_width_).stroke_color(black);
+      image_.gs(boxplot::Y_MAJOR_GRID).style().stroke_width(y_ticks_.major_grid_width_).stroke_color(svg_color(200, 220, 255));
+      image_.gs(boxplot::Y_MINOR_GRID).style().stroke_width(y_ticks_.minor_grid_width_).stroke_color(svg_color(200, 220, 255));
     }
 
-    image_.g(boxplot::X_LABEL).style().fill_color(black); // for text only specify fill_color (NOT stroke color).
-    image_.g(boxplot::Y_LABEL).style().fill_color(black);
-    image_.g(boxplot::VALUE_LABELS).style().fill_color(black);
-    image_.g(boxplot::PLOT_TITLE).style().fill_color(black);
+    image_.gs(boxplot::X_LABEL).style().fill_color(black); // for text only specify fill_color (NOT stroke color).
+    image_.gs(boxplot::Y_LABEL).style().fill_color(black);
+    image_.gs(boxplot::VALUE_LABELS).style().fill_color(black);
+    image_.gs(boxplot::PLOT_TITLE).style().fill_color(black);
 
-    image_.g(boxplot::WHISKER).style().stroke_color(black);
-    image_.g(boxplot::BOX_AXIS).style().stroke_color(black);
-    image_.g(boxplot::BOX).style().stroke_color(black).fill_color(ghostwhite);
-    image_.g(boxplot::MEDIAN).style().stroke_color(red).stroke_width(2);
-    image_.g(boxplot::EXTREME_OUTLIERS).style().stroke_color(purple).fill_color(white);
-    image_.g(boxplot::MILD_OUTLIERS).style().stroke_color(pink).fill_color(black);
-    image_.g(boxplot::DATA_VALUE_LABELS).style().fill_color(black).stroke_on(false);
+    image_.gs(boxplot::WHISKER).style().stroke_color(black);
+    image_.gs(boxplot::BOX_AXIS).style().stroke_color(black);
+    image_.gs(boxplot::BOX).style().stroke_color(black).fill_color(ghostwhite);
+    image_.gs(boxplot::MEDIAN).style().stroke_color(red).stroke_width(2);
+    image_.gs(boxplot::EXTREME_OUTLIERS).style().stroke_color(purple).fill_color(white);
+    image_.gs(boxplot::MILD_OUTLIERS).style().stroke_color(pink).fill_color(black);
+    image_.gs(boxplot::DATA_VALUE_LABELS).style().fill_color(black).stroke_on(false);
 
   } // boxplot constructor.
 
@@ -933,10 +927,10 @@ public:
   { //! Calculate the position of the plot window.
     // Start by assuming we can use all the svg image,
     // but reduce by the width of any image border.
-    plot_left_ = 0. + image_border_.width_; // Top left of image.
-    plot_top_ = 0. + image_border_.width_;
-    plot_right_ = image_.x_size() - image_border_.width_; // Bottom right of image.
-    plot_bottom_ = image_.y_size() - image_border_.width_;
+    plot_left_ = 0. + image_border_.border_width_; // Top left of image.
+    plot_top_ = 0. + image_border_.border_width_;
+    plot_right_ = image_.x_size() - image_border_.border_width_; // Bottom right of image.
+    plot_bottom_ = image_.y_size() - image_border_.border_width_;
     if(plot_window_on_)
     { // Needed to allow any plot window border rectangle to show OK.
       // A small margin is to prevent it overlapping the image border.
@@ -1022,6 +1016,7 @@ public:
     // Check that labels won't collide and advise if they will?
     // Change rotation to avoid collision?
 
+    const double wh = 0.6; // TODO width of font?
     y_ticks_.label_max_space_ = 0.; // Space for Y axis labels, depending on orientation.
     if (y_ticks_.label_rotation_ == horizontal)
     { // Move plot left edge right to give space for y_value_precision_ digits.
@@ -1029,7 +1024,7 @@ public:
     }
     else if((y_ticks_.label_rotation_ == upward) || (y_ticks_.label_rotation_ == downward))
     { // Only need one char & 1 space width from Y-axis label.
-      y_ticks_.label_max_space_ += 2 * y_value_label_style_.font_size() * wh;
+      y_ticks_.label_max_space_ += 2 * y_ticks_value_label_style_.font_size() * wh;
     }
     else
     { // Assume some slope 45, so diagonally down from tick,
@@ -1064,7 +1059,7 @@ public:
     x_ticks_.label_max_space_ = 0; // Work out the longest value label for X-Axis.
     if (x_ticks_.label_rotation_ == horizontal)
     { // Only 1 char height & 1 space needed if labels are horizontal, regardless of length of string.
-      x_ticks_.label_max_space_ = 2 * x_value_label_style_.font_size() * wh; // 2 SVG chars
+      x_ticks_.label_max_space_ = 2 * x_ticks_value_label_style_.font_size() * wh; // 2 SVG chars
     }
     else if ((x_ticks_.label_rotation_ == upward) || (x_ticks_.label_rotation_ == downward))
     { // Not horizontal so will need more than 2 chars worth.
@@ -1152,12 +1147,12 @@ public:
     // plot window now calculated, so make some checks (might also check it fits into image?).
     if (plot_right_ <= plot_left_)
     {
-      std::cout << "plot window left " << plot_left_ << ", right " << plot_right_ << std::endl;
+      std::cout << "Plot window left " << plot_left_ << ", right " << plot_right_ << std::endl;
       throw std::runtime_error("Plot window right <= left!");
     }
     if (plot_top_ >= plot_bottom_)
     {
-      std::cout << "plot window top " << plot_top_ << ", bottom " << plot_bottom_ << std::endl;
+      std::cout << "Plot window top " << plot_top_ << ", bottom " << plot_bottom_ << std::endl;
       throw std::runtime_error("Plot window top >= bottom!");
     }
 
@@ -1190,7 +1185,7 @@ public:
     //}
     if (plot_window_on_)
     { // Draw plot window rectangle with border and/or background.
-      image_.g(detail::PLOT_WINDOW_BACKGROUND).push_back(
+      image_.gs(detail::PLOT_WINDOW_BACKGROUND).push_back(
         new rect_element(plot_left_, plot_top_, (plot_right_ - plot_left_), plot_bottom_ - plot_top_));
     }
   } //  void calculate_plot_window()
@@ -1207,7 +1202,7 @@ public:
     */
     double y = title_info_.textstyle().font_size() * text_margin_; // Leave a linespace above.
     title_info_.y(y); // Vertical position.
-    image_.g(boxplot::PLOT_TITLE).push_back(new text_element(title_info_));
+    image_.gs(boxplot::PLOT_TITLE).push_back(new text_element(title_info_));
   } // void draw_title()
 
   void draw_x_axis()
@@ -1216,21 +1211,21 @@ public:
     { // Want a X-axis line.
       if (x_axis_position_ == top)
       { // horizontal line at top of plot window.
-         image_.g(boxplot::X_AXIS).line(plot_left_, plot_top_, plot_right_, plot_top_);
+         image_.gs(boxplot::X_AXIS).line(plot_left_, plot_top_, plot_right_, plot_top_);
       }
       else if (x_axis_position_ == bottom)
       {// horizontal line at bottom of plot window.
-         image_.g(boxplot::X_AXIS).line(plot_left_, plot_bottom_, plot_right_, plot_bottom_);
+         image_.gs(boxplot::X_AXIS).line(plot_left_, plot_bottom_, plot_right_, plot_bottom_);
       }
       else
       { // horizontal line at y = 0
         double y(0.);
         transform_y(y);
         //x_axis_. = y;
-         image_.g(boxplot::X_AXIS).line(plot_left_, y, plot_right_, y);
+         image_.gs(boxplot::X_AXIS).line(plot_left_, y, plot_right_, y);
       }
     }
-    path_element& major_tick_path = image_.g(boxplot::X_TICKS).path();
+    path_element& major_tick_path = image_.gs(boxplot::X_TICKS).path();
     for(size_t i = 0; i < series.size(); ++i)
     { // Draw a ticks for each series, evenly spaced along X axis.
       draw_x_major_tick(
@@ -1246,18 +1241,18 @@ public:
     { // Want a vertical Y-axis line, for boxplot only ever left or right.
       if (y_axis_position_ == left)
       { // Vertical line at left of plot window.
-         image_.g(boxplot::Y_AXIS).line(plot_left_, plot_bottom_, plot_left_, plot_top_);
+         image_.gs(boxplot::Y_AXIS).line(plot_left_, plot_bottom_, plot_left_, plot_top_);
       }
       else if (y_axis_position_ == right)
       {// Vertical line at right of plot window.
-         image_.g(boxplot::Y_AXIS).line(plot_right_, plot_bottom_, plot_right_, plot_top_);
+         image_.gs(boxplot::Y_AXIS).line(plot_right_, plot_bottom_, plot_right_, plot_top_);
       }
     }
 
-    path_element& minor_tick_path = image_.g(boxplot::Y_MINOR_TICKS).path();
-    path_element& major_tick_path = image_.g(boxplot::Y_MAJOR_TICKS).path();
-    path_element& major_grid_path = image_.g(boxplot::Y_MAJOR_GRID).path();
-    path_element& minor_grid_path = image_.g(boxplot::Y_MINOR_GRID).path();
+    path_element& minor_tick_path = image_.gs(boxplot::Y_MINOR_TICKS).path();
+    path_element& major_tick_path = image_.gs(boxplot::Y_MAJOR_TICKS).path();
+    path_element& major_grid_path = image_.gs(boxplot::Y_MAJOR_GRID).path();
+    path_element& minor_grid_path = image_.gs(boxplot::Y_MINOR_GRID).path();
 
     // y_minor_jump is the interval between minor ticks.
     double y_minor_jump = y_ticks_.major_interval_ / ((double)(y_ticks_.num_minor_ticks_ + 1.) );
@@ -1307,7 +1302,7 @@ public:
       series_info.x(x_left); // Horizontal position.
       double y = y_bottom + series_info.textstyle().font_size() * (text_margin_ * 0.7); // Leave a linespace above.
       series_info.y(y); // Vertical position.
-      image_.g(boxplot::VALUE_LABELS).push_back(new text_element(series_info));
+      image_.gs(boxplot::VALUE_LABELS).push_back(new text_element(series_info));
     }
   } // void draw_x_major_tick
 
@@ -1328,7 +1323,7 @@ public:
       {
         if(y_ticks_.major_value_labels_side_ < 0) // left
         { // Start further right to give space for y axis value label.
-          y -= y_value_label_style_.font_size() * text_margin_;
+          y -= y_ticks_value_label_style_.font_size() * text_margin_;
         }
 
         if(y_ticks_.left_ticks_on_ == true)
@@ -1338,8 +1333,8 @@ public:
       }
       else
       { // plot_window_on_ to use full width of plot window.
-        x_left = plot_left_ + plot_window_border_.width_; // Don't write over either border.
-        x_right = plot_right_ - plot_window_border_.width_;
+        x_left = plot_left_ + plot_window_border_.border_width_; // Don't write over either border.
+        x_right = plot_right_ - plot_window_border_.border_width_;
       }
       grid_path.M(x_left, y).L(x_right, y); // Horizontal grid line.
    } // y_major_grid_on
@@ -1389,98 +1384,98 @@ public:
 
       double x = 0; // Where to start writing from, at end of left or right tick, if any.
       // = 0 is only to avoid unitialised warning.
-      align_style alignment = center_align;
+      align_style alignment = align_style::center_align;
       // Adjustments to provide space from end of tick before or after writing label.
       if (y_ticks_.label_rotation_ == horizontal)
       {  // Just shift up to center value digits on tick.
         if (y_ticks_.major_value_labels_side_ < 0)
         { // labels to left, so start a little to left of x_left.
-          y += y_value_label_style_.font_size() * 0.2;
-          x = x_left - y_value_label_style_.font_size() * 0.5;
-          alignment = right_align;
+          y += y_ticks_value_label_style_.font_size() * 0.2;
+          x = x_left - y_ticks_value_label_style_.font_size() * 0.5;
+          alignment = align_style::right_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
-         y += y_value_label_style_.font_size() * 0.2;
-         x = x_right + y_value_label_style_.font_size() * 0.5;
-          alignment = left_align;
+         y += y_ticks_value_label_style_.font_size() * 0.2;
+         x = x_right + y_ticks_value_label_style_.font_size() * 0.5;
+          alignment = align_style::left_align;
         }
       }
       else if (y_ticks_.label_rotation_ == upsidedown)
        {  // Just shift up to center value digits on tick.
         if (y_ticks_.major_value_labels_side_ < 0)
         { // labels to left, so start a little to left of x_left.
-          y -= y_value_label_style_.font_size() * 0.1;
-          x = x_left - y_value_label_style_.font_size() * 0.5;
-          alignment = left_align;
+          y -= y_ticks_value_label_style_.font_size() * 0.1;
+          x = x_left - y_ticks_value_label_style_.font_size() * 0.5;
+          alignment = align_style::left_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
-          y -= y_value_label_style_.font_size() * 0.1;
-          x = x_right + y_value_label_style_.font_size() * 0.5;
-          alignment = right_align;
+          y -= y_ticks_value_label_style_.font_size() * 0.1;
+          x = x_right + y_ticks_value_label_style_.font_size() * 0.5;
+          alignment = align_style::right_align;
         }
       }
       else if (y_ticks_.label_rotation_ == uphill)
       { // Assume some 45 slope, so need about sqrt(2) less space.
         if (y_ticks_.major_value_labels_side_ < 0)
         { // labels to left, so start a little to left of x_left.
-          y -= y_value_label_style_.font_size() * 0.2;
-          x = x_left - y_value_label_style_.font_size() * 0.2;
+          y -= y_ticks_value_label_style_.font_size() * 0.2;
+          x = x_left - y_ticks_value_label_style_.font_size() * 0.2;
           // Seems to need a bit more space for right than left if rotated.
-          alignment = right_align;
+          alignment = align_style::right_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
-          y += y_value_label_style_.font_size() * 0.2;
-          x = x_right + y_value_label_style_.font_size() * 0.7;
-          alignment = left_align;
+          y += y_ticks_value_label_style_.font_size() * 0.2;
+          x = x_right + y_ticks_value_label_style_.font_size() * 0.7;
+          alignment = align_style::left_align;
         }
       }
       else if (y_ticks_.label_rotation_ == downhill)
       { // Assume some 45 slope, so need about sqrt(2) less space.
         if (y_ticks_.major_value_labels_side_ < 0)
         { // labels to left, so start a little to left of x_left.
-          y += y_value_label_style_.font_size() * 0.3;
-          x = x_left - y_value_label_style_.font_size() * 0.7;
+          y += y_ticks_value_label_style_.font_size() * 0.3;
+          x = x_left - y_ticks_value_label_style_.font_size() * 0.7;
           // Seems to need a bit more space for right than left if rotated.
-          alignment = right_align;
+          alignment = align_style::right_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
-          y -= y_value_label_style_.font_size() * 0.3;
-          x = x_right + y_value_label_style_.font_size() * 0.1;
-          alignment = left_align;
+          y -= y_ticks_value_label_style_.font_size() * 0.3;
+          x = x_right + y_ticks_value_label_style_.font_size() * 0.1;
+          alignment = align_style::left_align;
         }
       }
       else if (y_ticks_.label_rotation_ == upward)
       { // Tick value label straight up vertically on Y-axis.
-        y -= y_value_label_style_.font_size() * 0.1;
+        y -= y_ticks_value_label_style_.font_size() * 0.1;
         if (y_ticks_.major_value_labels_side_ < 0)
         { // labels to left, so start a little to left of x_left.
-          x = x_left - y_value_label_style_.font_size() * 0.7;
+          x = x_left - y_ticks_value_label_style_.font_size() * 0.7;
           // Seems to need a bit more space for right than left if rotated.
-          alignment = center_align;
+          alignment = align_style::center_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
-          x = x_right + y_value_label_style_.font_size() * 1.5;
-          alignment = center_align;
+          x = x_right + y_ticks_value_label_style_.font_size() * 1.5;
+          alignment = align_style::center_align;
         }
       }
       else if (y_ticks_.label_rotation_ == downward)
       { // Tick value label straight down vertically on Y-axis.
-        y -= y_value_label_style_.font_size() * 0.1;
+        y -= y_ticks_value_label_style_.font_size() * 0.1;
         if (y_ticks_.major_value_labels_side_ < 0)
         { // labels to left, so start a little to left of x_left.
-          x = x_left - y_value_label_style_.font_size() * 1.2;
+          x = x_left - y_ticks_value_label_style_.font_size() * 1.2;
           // Seems to need a bit more space for right than left if rotated.
-          alignment = center_align;
+          alignment = align_style::center_align;
         }
         else if(y_ticks_.major_value_labels_side_ > 0)
         { // labels to right, so start a little to right of x_right.
-          x = x_right + y_value_label_style_.font_size() * 0.7;
-          alignment = center_align;
+          x = x_right + y_ticks_value_label_style_.font_size() * 0.7;
+          alignment = align_style::center_align;
         }
       }
       else
@@ -1499,20 +1494,20 @@ public:
       { // External to plot window style left or right.
         // Always want all values including "0", if labeling external to plot window.
         // y_ticks_.ticks_on_window_or_on_axis_ == true != 0
-        image_.g(boxplot::VALUE_LABELS).text(
+        image_.gs(boxplot::VALUE_LABELS).text(
           x,
           y,
-          label.str(), y_value_label_style_, alignment, y_ticks_.label_rotation_);
+          label.str(), y_ticks_value_label_style_, alignment, y_ticks_.label_rotation_);
       }
       else
       { // ! y_ticks_.y_ticks_on_plot_window_ == 0 'Internal' - value labels either side of vertical Y-axis.
         if ((value != 0) && y_axis_.axis_line_on_)
         { // Avoid a zero ON the Y-axis if it would be cut through by any horizontal X-axis line.
-          image_.g(boxplot::VALUE_LABELS).text(
+          image_.gs(boxplot::VALUE_LABELS).text(
             x,
             y,
             label.str(),
-            y_value_label_style_,
+            y_ticks_value_label_style_,
             alignment,
             y_ticks_.label_rotation_);
         }
@@ -1533,14 +1528,14 @@ public:
       {
         if(x_axis_.label_on_)
         {
-          x_left += y_value_label_style_.font_size() * text_margin_;
-          x_right -= y_value_label_style_.font_size() * text_margin_;
+          x_left += y_ticks_value_label_style_.font_size() * text_margin_;
+          x_right -= y_ticks_value_label_style_.font_size() * text_margin_;
         }
       }
       else
       { // plot_window_on_
-        x_left = plot_left_ + plot_window_border_.width_;
-        x_right = plot_right_ - plot_window_border_.width_; // Ensure just *inside* window?
+        x_left = plot_left_ + plot_window_border_.border_width_;
+        x_right = plot_right_ - plot_window_border_.border_width_; // Ensure just *inside* window?
       }
       if((y >= plot_top_) && (y <= plot_bottom_) && (x_left >= plot_left_) && (x_right <= plot_right_) )
       { // Make sure that we are drawing inside the allowed plot window.
@@ -1594,7 +1589,7 @@ public:
   void draw_x_axis_label()
   { //! Draw an axis label (and optional units) for example "length (km)".
     // X-label color is set in constructor thus:
-    // image_.g(detail::PLOT_X_LABEL).style().stroke_color(black);
+    // image_.gs(detail::PLOT_X_LABEL).style().stroke_color(black);
     // and changed using x_label_color(color);
 
     std::string label = x_label_info_.text(); // x_axis_ label, and optional units.
@@ -1617,20 +1612,20 @@ public:
       }
     }
 
-    image_.g(boxplot::X_LABEL).push_back(new text_element(
+    image_.gs(boxplot::X_LABEL).push_back(new text_element(
       ( // x position relative to the x-axis which is middle of plot window.
       plot_right_ + plot_left_) / 2,  // x coordinate - middle.
       y, // Down from plot window.
       label,
       x_label_info_.textstyle(),
-      center_align, horizontal)
+      align_style::center_align, horizontal)
       );
   } // void draw_x_axis_label()
 
   void draw_y_axis_label()
   { //! Draw vertical y_axis label, and optional y units.
     // Y-label color is set in constructor thus:
-    // image_.g(boxplot::Y_LABEL).style().fill_color(black);
+    // image_.gs(boxplot::Y_LABEL).style().fill_color(black);
     // and changed using y_label_color(color);
 
     std::string label = y_label_info_.text();
@@ -1653,12 +1648,12 @@ public:
       }
     }
 
-    image_.g(boxplot::Y_LABEL).push_back(new
+    image_.gs(boxplot::Y_LABEL).push_back(new
       text_element(x,
       (plot_bottom_ + plot_top_) / 2., // center on the plot window.
       label, // "Y-Axis" for example.
       y_axis_label_style_,
-      center_align, // One might want it to left or right_align?
+      align_style::center_align, // One might want it to left or right_align?
       upward)); // Y label must be drawn vertically.
 
   } // draw_y_axis_label
@@ -1667,7 +1662,7 @@ public:
   double x, double width,
   const svg_style& box_styl)
   { //! Draw the box border and any fill color.
-    g_element& g_ptr = image_.g(boxplot::MEDIAN).add_g_element();
+    g_element& g_ptr = image_.gs(boxplot::MEDIAN).add_g_element();
 
     g_ptr.style().stroke_color(box_styl.stroke_color())
       .stroke_width(box_styl.stroke_width())
@@ -1685,7 +1680,7 @@ public:
     //! and optionally the median value.
     double median_y = median;
     transform_y(median_y); // SVG coordinate of median line.
-    g_element& g_ptr = image_.g(boxplot::MEDIAN).add_g_element();
+    g_element& g_ptr = image_.gs(boxplot::MEDIAN).add_g_element();
     g_ptr.style().stroke_color(median_style.stroke_color())
       .stroke_width(median_style.stroke_width());
 
@@ -1694,7 +1689,7 @@ public:
     //  void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, double value)
     if (median_values_on_)
     { // Show the value of the median too.
-      g_element& g_ptr_median = image_.g(boxplot::DATA_VALUE_LABELS).add_g_element();
+      g_element& g_ptr_median = image_.gs(boxplot::DATA_VALUE_LABELS).add_g_element();
       draw_plot_point_value(x_offset + half_width, median_y, g_ptr_median, const_cast<value_style&>(values_style), mild_outlier_, median);
       // Share the mild_outlier point style?
       g_ptr_median.clip_id(plot_window_clip_);
@@ -1709,7 +1704,7 @@ public:
     const svg_style& axis_whisker)
   { //! Draw the whiskers for the boxplot.
     // Set up document structure for whiskers:
-    g_element& g_whisk_ptr = image_.g(boxplot::WHISKER).add_g_element();
+    g_element& g_whisk_ptr = image_.gs(boxplot::WHISKER).add_g_element();
 
     // Set colors for min and max whiskers.
     g_whisk_ptr.add_g_element().style()
@@ -1723,7 +1718,7 @@ public:
       .stroke_width(max_whisker.stroke_width());
 
     // Set axis structure and colors.
-    g_element& g_axis_ptr = image_.g(boxplot::BOX_AXIS).add_g_element();
+    g_element& g_axis_ptr = image_.gs(boxplot::BOX_AXIS).add_g_element();
 
     g_axis_ptr.style()
       .stroke_color(axis_whisker.stroke_color())
@@ -1734,8 +1729,8 @@ public:
     transform_y(max);
 
     double half_length = length / 2.;
-    g_whisk_ptr.g(0).line(x - half_length, min, x + half_length, min);
-    g_whisk_ptr.g(1).line(x - half_length, max, x + half_length, max);
+    g_whisk_ptr.gs(0).line(x - half_length, min, x + half_length, min);
+    g_whisk_ptr.gs(1).line(x - half_length, max, x + half_length, max);
     g_axis_ptr.line(x, min, x, max);
 
     // Clip elements.
@@ -1749,7 +1744,7 @@ public:
     const value_style& values_style)
   { //! Draw any outliers, both mild and extreme.
     // Draw marker points for any mild and/or extreme outliers.
-    g_element& g_mild_ptr = image_.g(boxplot::MILD_OUTLIERS).add_g_element();
+    g_element& g_mild_ptr = image_.gs(boxplot::MILD_OUTLIERS).add_g_element();
     g_mild_ptr.style().fill_color(mild_style.fill_color_)
       .stroke_color(mild_style.stroke_color_);
 
@@ -1769,12 +1764,12 @@ public:
         draw_plot_point(x, y, g_mild_ptr, const_cast<plot_point_style&>(mild_style), unc<false>(0), unc<false>(0)); // Kludge!
         if (outlier_values_on_)
         { // Show the value of the data point too.
-          draw_plot_point_value(x, y, image_.g(boxplot::DATA_VALUE_LABELS).add_g_element(), const_cast<value_style&>(values_style), mild_outlier_, value);
+          draw_plot_point_value(x, y, image_.gs(boxplot::DATA_VALUE_LABELS).add_g_element(), const_cast<value_style&>(values_style), mild_outlier_, value);
         }
         // Label the (outlier) data point with a name here?
       } // In window OK.
     }
-    g_element& g_ext_ptr = image_.g(boxplot::EXTREME_OUTLIERS).add_g_element();
+    g_element& g_ext_ptr = image_.gs(boxplot::EXTREME_OUTLIERS).add_g_element();
     g_ext_ptr.style().fill_color(extreme_style.fill_color_)
       .stroke_color(extreme_style.stroke_color_);
 
@@ -1788,7 +1783,7 @@ public:
         draw_plot_point(x, y, g_ext_ptr, const_cast<plot_point_style&>(extreme_style), 0, 0); // Kludge!
         if (extreme_outlier_values_on_) // This isn't a series setting - but might be.
         { // Show the value of the data point too.
-          draw_plot_point_value(x, y, image_.g(boxplot::DATA_VALUE_LABELS).add_g_element(), const_cast<value_style&>(values_style), ext_outlier_, value);
+          draw_plot_point_value(x, y, image_.gs(boxplot::DATA_VALUE_LABELS).add_g_element(), const_cast<value_style&>(values_style), ext_outlier_, value);
         }
       } // in window.
     }
@@ -1827,7 +1822,7 @@ public:
     clear_all();
 
     // Draw image background & border, if any.
-    image_.g(boxplot::PLOT_BACKGROUND).push_back(
+    image_.gs(boxplot::PLOT_BACKGROUND).push_back(
       new rect_element(0, 0, image_.x_size(), image_.y_size()) );
 
     draw_title();
@@ -1837,7 +1832,7 @@ public:
     // We don't want to allow too much overlap of the plot window lines,
     // so allow for the border.
 
-    double margin = plot_window_border_.width_ * 5.; // Or more?
+    double margin = plot_window_border_.border_width_ * 5.; // Or more?
     // This controls how much points can overlap the plot window.
     // Might also make margin relative to data value font size and/or data marker size?
     image_.clip_path(rect_element(plot_left_ - margin, // margin left
@@ -2204,52 +2199,52 @@ public:
 
   svg_boxplot& svg_boxplot::y_major_tick_color(const svg_color& col)
   { //! Set Y major ticks color.
-    image_.g(boxplot::Y_MAJOR_TICKS).style().stroke_color(col);
+    image_.gs(boxplot::Y_MAJOR_TICKS).style().stroke_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::x_tick_color(const svg_color& col)
   { //! \return Y major ticks color.
-    image_.g(boxplot::X_TICKS).style().stroke_color(col);
+    image_.gs(boxplot::X_TICKS).style().stroke_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::y_minor_tick_color(const svg_color& col)
   {  //! Set Y minor ticks color.
-    image_.g(detail::PLOT_Y_MINOR_TICKS).style().stroke_color(col);
+    image_.gs(detail::PLOT_Y_MINOR_TICKS).style().stroke_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::title_color(const svg_color& col)
   { //! Set boxplot title color.
-    image_.g(boxplot::PLOT_TITLE).style().stroke_color(col);
+    image_.gs(boxplot::PLOT_TITLE).style().stroke_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::background_color(const svg_color& col)
   { //! Set SVG image background color.
     // "imageBackground"
-    image_.g(boxplot::PLOT_BACKGROUND).style().fill_color(col);
+    image_.gs(boxplot::PLOT_BACKGROUND).style().fill_color(col);
     return *this;
   }
 
   svg_boxplot& svg_boxplot::background_border_color(const svg_color& col)
   { //! Set SVG image background border color.
-    image_.g(boxplot::PLOT_BACKGROUND).style().stroke_color(col);
+    image_.gs(boxplot::PLOT_BACKGROUND).style().stroke_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::plot_background_color(const svg_color& col)
   { //! Set plot window background color.
     // Plot Window "plotBackground"
-    image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color(col);
+    image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::plot_border_color(const svg_color& col)
   { //! Set plot window border color.
     // Plot window "plotBackground"
-    image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_color(col);
+    image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
@@ -2306,7 +2301,7 @@ public:
 
   svg_boxplot& svg_boxplot::y_label_color(const svg_color& col)
   { //! Set font color for Y axis label.
-    image_.g(boxplot::Y_LABEL).style().fill_color(col);
+    image_.gs(boxplot::Y_LABEL).style().fill_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
@@ -2368,7 +2363,7 @@ public:
 
   svg_boxplot& svg_boxplot::x_label_color(const svg_color& col)
   { //! Set the font color for the X axis label.
-    image_.g(boxplot::X_LABEL).style().fill_color(col);
+    image_.gs(boxplot::X_LABEL).style().fill_color(col);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
@@ -2407,19 +2402,19 @@ public:
 
   svg_boxplot& svg_boxplot::x_tick_width(unsigned int width)
   { //! Set the width of major ticks on the X axis.
-    image_.g(boxplot::X_TICKS).style().stroke_width(width);
+    image_.gs(boxplot::X_TICKS).style().stroke_width(width);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::y_major_tick_width(unsigned int width)
   { //! Set the width of major ticks on the Y axis.
-    image_.g(boxplot::Y_MAJOR_TICKS).style().stroke_width(width);
+    image_.gs(boxplot::Y_MAJOR_TICKS).style().stroke_width(width);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
   svg_boxplot& svg_boxplot::y_minor_tick_width(unsigned int width)
   { //! Set the width of minor ticks on the Y axis.
-    image_.g(boxplot::Y_MINOR_TICKS).style().stroke_width(width);
+    image_.gs(boxplot::Y_MINOR_TICKS).style().stroke_width(width);
     return *this; //! \return Reference to svg_boxplot to make chainable.
   }
 
@@ -2450,37 +2445,37 @@ public:
 
   svg_color svg_boxplot::title_color()
   { //! \return color of the title.
-    return image_.g(boxplot::PLOT_TITLE).style().fill_color();
+    return image_.gs(boxplot::PLOT_TITLE).style().fill_color();
   }
 
   svg_color svg_boxplot::background_color()
   { //! \return Color of the background for the SVG image.
-    return image_.g(boxplot::PLOT_BACKGROUND).style().fill_color();
+    return image_.gs(boxplot::PLOT_BACKGROUND).style().fill_color();
   }
 
   svg_color svg_boxplot::background_border_color()
   { //! \return Color of the border of the background for the SVG image.
-    return image_.g(boxplot::PLOT_BACKGROUND).style().stroke_color();
+    return image_.gs(boxplot::PLOT_BACKGROUND).style().stroke_color();
   }
 
   svg_color svg_boxplot::plot_background_color()
   { //! \return Color of the background for the plot.
-    return image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color();
+    return image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color();
   }
 
   svg_color svg_boxplot::plot_border_color()
   { //! \return Color of the border of the background for the plot.
-    return image_.g(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_color();
+    return image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_color();
   }
 
   svg_color svg_boxplot::x_label_color()
   { //! \return Color of the X axis label.
-    return image_.g(boxplot::X_LABEL).style().fill_color();
+    return image_.gs(boxplot::X_LABEL).style().fill_color();
   }
 
   svg_color svg_boxplot::x_tick_color()
   { //! \return Color of ticks on the X axis.
-    return image_.g(boxplot::X_TICKS).style().stroke_color();
+    return image_.gs(boxplot::X_TICKS).style().stroke_color();
   }
 
   double svg_boxplot::x_tick_length()
@@ -2490,7 +2485,7 @@ public:
 
   double svg_boxplot::x_major_tick_width()
   { //! \return Width of major ticks on the X axis.
-    return image_.g(boxplot::X_TICKS).style().stroke_width();
+    return image_.gs(boxplot::X_TICKS).style().stroke_width();
   }
 
   std::string svg_boxplot::x_label_text()
@@ -2774,11 +2769,6 @@ public:
     y_autoscale_ = true;  // Change (from default false) to use calculated values.
     return *this; //! \return Reference to @c svg_boxplot to make chainable.
   } // y_autoscale(const T& container)
-
-
-#if defined (BOOST_MSVC)
-#  pragma warning(pop)
-#endif
 
 } // namespace svg
 } // namespace boost

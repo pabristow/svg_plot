@@ -3,11 +3,10 @@
     \details Contains Quickbook markup.
 
     \author Paul A. Bristow
-   \date Feb 2009
 */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A Bristow 2008
+// Copyright Paul A Bristow 2008, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -39,18 +38,18 @@
 // for testing its correctness.
 
 #include <iostream> // for debugging.
-  using std::cout;
-  using std::endl;
+ // using std::cout;
+ // using std::endl;
 
 #include <vector>
-  using std::vector;
+ // using std::vector;
 
 #include <limits>
-  using std::numeric_limits;
+//  using std::numeric_limits;
 
 int main()
 {
-  vector<double> my_data1;
+  std::vector<double> my_data1;
   // Initialize my_data here with some entirely fictional data.
   my_data1.push_back(0.1);
   my_data1.push_back(1.1);
@@ -59,19 +58,19 @@ int main()
   my_data1.push_back(5.4);
   my_data1.push_back(6.5);
 
-  vector<double> my_data2;
+  std::vector<double> my_data2;
   // Initialize my_data here with some more entirely fictional data.
   my_data2.push_back(0.5);
   my_data2.push_back(1.5);
   my_data2.push_back(4.7);
 
-  vector<double> my_data3;
+  std::vector<double> my_data3;
   // Initialize my_data here with some more entirely fictional data.
   my_data3.push_back(0.7);
   my_data3.push_back(2.5);
   my_data3.push_back(5.8);
 
-  vector<double> my_data4;
+  std::vector<double> my_data4;
   // Initialize my_data with some integral values so can check points are marked exactly right.
   my_data4.push_back(1.);
   my_data4.push_back(2.);
@@ -80,21 +79,21 @@ int main()
   my_data4.push_back(7.);
   my_data4.push_back(8.);
 
-  vector<double> my_data5;
+  std::vector<double> my_data5;
   my_data5.push_back(0.);
   my_data5.push_back(-1.);
   my_data5.push_back(+1.);
   // Include an out-of-axis range value:
   my_data5.push_back(999.9);
   // Max and min values.
-  my_data5.push_back((numeric_limits<double>::max)());
-  my_data5.push_back((numeric_limits<double>::min)());
+  my_data5.push_back((std::numeric_limits<double>::max)());
+  my_data5.push_back((std::numeric_limits<double>::min)());
   // and non-finite values.
-  my_data5.push_back((numeric_limits<double>::quiet_NaN)());
-  my_data5.push_back((numeric_limits<double>::infinity)());
+  my_data5.push_back((std::numeric_limits<double>::quiet_NaN)());
+  my_data5.push_back((std::numeric_limits<double>::infinity)());
 
   svg_1d_plot my_1d_plot; // Construct with all the default constructor values.
-  cout << "Image x & y " << my_1d_plot.x_size() << " by " << my_1d_plot.y_size() << endl;
+  std::cout << "Image x & y " << my_1d_plot.x_size() << " by " << my_1d_plot.y_size() << std::endl;
   //my_1d_plot.size(100,100); // Alter both together.
   //cout << "Image x & y " << my_1d_plot.x_size() << " by " << my_1d_plot.y_size() << endl;
   //// And alter both separately.
@@ -110,7 +109,7 @@ int main()
   //see  http://creativecommons.org/licenses/ for details.
   my_1d_plot.coord_precision(4);
 
-  cout << "font-family was " << my_1d_plot.title_font_family() << endl;
+ std::cout << "font-family was " << my_1d_plot.title_font_family() << std::endl;
 
   my_1d_plot
   .y_size(250)
@@ -160,8 +159,8 @@ int main()
   .x_minor_grid_on(true)
   .x_minor_grid_width(1)
   .x_minor_grid_color(pink)
-  .limit_color(red)
-  .limit_fill_color(green)
+  .nan_limit_color(red)
+  .nan_limit_fill_color(green)
   .x_ticks_on_window_or_axis(0) // -1 bottom, 0 on axis, +1 top
 
   .x_range(-1., 7.); // Display range.

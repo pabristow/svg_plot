@@ -74,7 +74,7 @@ int main()
 {
 //[auto_1d_containers_2
   /*`This example uses two containers to demonstrate autoscaling.
-  It is common to plot more than one set of data series together.
+  It is common to plot more than one set of data-series together.
   Autoscaling must probably inspect all the containers of these series
   in order to find axis ranges that will be *suitable for all of them*.
   */
@@ -98,31 +98,39 @@ int main()
   ``
   */
   /*`
-  Now we concoct another equally fictional data series by a transform multiplying by 2.3.
+  Now we concoct another equally fictional data-series by a transform multiplying by 2.3.
   */
 
-  vector<double> my_data_2; // Create a second data series.
+  vector<double> my_data_2; // Create a second data-series.
   copy(my_data_1.begin(), my_data_1.end(), back_inserter(my_data_2));
   // Change the values in an entirely arbitrary way (each * 2.3).
-  transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), bind1st(multiplies<double>(), 2.3));
-  //cout << endl << my_data.size() << " values in my_data_2. " << endl;
+  //std::transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), std::bind1st(std::multiplies<double>(), 2.3));
+  // std::bind1st is deprecated or removed.
 
-  /*`Next we need a new STL container, vector say, to hold our multiple containers of data series.
+  double factor = 2.3456;
+  auto m1 = [factor](double& c) { return c * factor; };
+  std::transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), [factor](double& c) { return c * factor; });
+  //  or 
+   
+    std::transform(my_data_2.begin(), my_data_2.end(), my_data_2.begin(), m1);
+  //cout << std::endl << my_data.size() << " values in my_data_2. " << std::endl;
+
+  /*`Next we need a new STL container, vector say, to hold our multiple containers of data-series.
     They must all be the same STL container type, in this example, `vector<double>`.
     And we use pushback to add the containers.
   */
   vector<vector<double> > my_containers;
 
-  my_containers.push_back(my_data_1); // Add 1st data series.
-  my_containers.push_back(my_data_2); // Add another data series.
-  cout << my_containers.size() << " containers." << endl;
+  my_containers.push_back(my_data_1); // Add 1st data-series.
+  my_containers.push_back(my_data_2); // Add another data-series.
+  cout << my_containers.size() << " containers." << std::endl;
   show_all(my_containers);
 
   /*` Finally we can use all the containers to find the minimum of mimimums and maximum of maximums
   ready to feed into the plot autoscale function.
   */
   pair<double, double> mm = range_all(my_containers);
-  cout << "Data range: "  << mm << endl; // min & max of all data.
+  cout << "Data range: "  << mm << std::endl; // min & max of all data.
   svg_1d_plot my_1d_plot; // Construct a plot with all the default constructor values.
 
   /*`We could feed the minimum and maximum values separately,*/
@@ -133,7 +141,7 @@ int main()
   */
   my_1d_plot.x_autoscale(mm);  // Use overall minimum and maximum to autoscale.
 
-  /*`Finally, we add the data series containers to the plot, and write the SVG out to file.*/
+  /*`Finally, we add the data-series containers to the plot, and write the SVG out to file.*/
   my_1d_plot.plot(my_data_1, "data_1");
   my_1d_plot.plot(my_data_2, "data_2").stroke_color(red);
 
@@ -141,7 +149,7 @@ int main()
 
   /*`If we want, we can check the autoscale range used.*/
   using boost::svg::detail::operator<<; // To avoid ambiguity.
-  cout << "x_range() " << my_1d_plot.x_range() << endl; // x_range() 0, 15
+  cout << "x_range() " << my_1d_plot.x_range() << std::endl; // x_range() 0, 15
   /*`And even all the (hundreds of) plot settings (useful for diagnosis why your plot doesn't meet your expectations).*/
   //show_1d_plot_settings(my_1d_plot);
 

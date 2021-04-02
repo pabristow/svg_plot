@@ -1,13 +1,11 @@
 /*! \file auto_1d_plot.cpp
     \brief An example to demonstrate simple 1D settings, including auto-scaling.
-    \details See auto_1d_containers.cpp for an example autoscaling with multiple data series.
+    \details See auto_1d_containers.cpp for an example autoscaling with multiple data-series.
     See also demo_1d_plot.cpp for a wider range of use.
-    \author Paul A Bristow
-    \date Feb 2009
 */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A Bristow 2008, 2009
+// Copyright Paul A Bristow 2008, 2009, 2020
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -36,48 +34,54 @@
  // (Also provides operator<< for std::pair).
 
 #include <boost/algorithm/minmax.hpp>
- using boost::minmax;
+ //using boost::minmax;
 #include <boost/algorithm/minmax_element.hpp>
- using boost::minmax_element;
+ //using boost::minmax_element;
 
 #include <iostream> // for debugging.
-  using std::cout;
-  using std::endl;
-  using std::boolalpha;
+  //using std::cout;
+  //using std::endl;
+  //using std::boolalpha;
 
 #include <limits>
-  using std::numeric_limits;
+//  using std::numeric_limits;
 
 #include <vector>
-  using std::vector;
+//  using std::vector;
 #include <set>
-  using std::multiset;
+//  using std::multiset;
 
 #include <utility>
-  using std::pair;
+//  using std::pair;
 
 #include <boost/svg_plot/detail/auto_axes.hpp>
+ // using boost::svg::show; // A single STL container.
+ // using boost::svg::show_all; // Multiple STL containers.
+ //// using boost::svg::range; // Find min and max of a STL container.
+ // using boost::svg::range_all;// Find min and max of multipler STL containers.
+
+//] [/auto_1d_plot_1]
+
+//void scale_axis(double min_value, double max_value, // input
+//               double* axis_min_value,  double* axis_max_value, double* axis_tick_increment, // updated.
+//               bool origin, double tight, int min_ticks, int steps);
+
+static const double tol100eps = 1000 * std::numeric_limits<double>::epsilon(); // suitable tight value.
+
+int main()
+{
   using boost::svg::show; // A single STL container.
   using boost::svg::show_all; // Multiple STL containers.
  // using boost::svg::range; // Find min and max of a STL container.
   using boost::svg::range_all;// Find min and max of multipler STL containers.
 
-//] [/auto_1d_plot_1]
 
-void scale_axis(double min_value, double max_value, // input
-               double* axis_min_value,  double* axis_max_value, double* axis_tick_increment, // updated.
-               bool origin, double tight, int min_ticks, int steps);
-
-double tol100eps = 1000 * numeric_limits<double>::epsilon(); // suitable tight value.
-
-int main()
-{
 //[auto_1d_plot_2
   /*`This example uses containers to demonstrate autoscaling.
   Autoscaling must inspect the container in order to find axis ranges that will be suitable.
   First we create a container and fill with some fictional data.
   */
-  vector<double> my_data;
+  std::vector<double> my_data;
   // Initialize my_data with some entirely fictional data.
   my_data.push_back(0.2);
   my_data.push_back(1.1); // [1]
@@ -88,28 +92,30 @@ int main()
 
   /*`Also included is an 'at limit' value that could confuse autoscaling.
   Obviously, we do *not* want the plot range to include infinity.*/
-  my_data.push_back(numeric_limits<double>::infinity()); // [6]
+  my_data.push_back(std::numeric_limits<double>::infinity()); // [6]
 
   try
   { // Ensure error, warning and information messages are displayed by the catch block.
     double mn;
     double mx;
     int good = mnmx(my_data.begin(), my_data.end(), &mn, &mx);
-    cout << good << " good values, " << my_data.size() - good << " limit values." << endl;
+    std::cout << good << " good values, " << my_data.size() - good << " limit values." << std::endl;
 
     using boost::svg::detail::operator<<; // For displaying std::pair.
     svg_1d_plot my_1d_plot; // Construct a plot with all the default constructor values.
     my_1d_plot.x_autoscale(my_data);  // Compute autoscale values for the plot.
-    my_1d_plot.limit_color(blue).limit_fill_color(green); // Add limit value styling.
+    my_1d_plot.nan_limit_color(blue).nan_limit_fill_color(green); // Add NaNlimit value styling.
+    //my_1d_plot.plus_inf_limit_color(blue).plus_inf_limit_fill_color(green); // Add + infinity limit value styling.
+    //my_1d_plot.minus_inf_limit_color(blue).minus_inf_limit_fill_color(green); // Add - infinity limit value styling.
 
-    cout << "my_1d_plot.limit_color() " << my_1d_plot.limit_color() << endl;
-    cout << "my_1d_plot.limit_fill_color() " << my_1d_plot.limit_fill_color() << endl;
+    std::cout << "my_1d_plot.limit_color() " << my_1d_plot.nan_limit_color() << std::endl;
+    std::cout << "my_1d_plot.limit_fill_color() " << my_1d_plot.nan_limit_fill_color() << std::endl;
 
-    my_1d_plot.plot(my_data, "Default 1D"); // Add the one data series, and give it a title.
+    my_1d_plot.plot(my_data, "Default 1D"); // Add the one data-series, and give it a title.
     my_1d_plot.write("auto_1d_plot_1.svg"); // Write the plot to file.
 
     /*`It may be useful to display that range chosen by autoscaling. */
-    cout << "x_range() " << my_1d_plot.x_range() << endl; // x_range()
+    std::cout << "x_range() " << my_1d_plot.x_range() << std::endl; // x_range()
 //] [/auto_1d_plot_2]
   }
   catch(const std::exception& e)
@@ -123,7 +129,7 @@ int main()
   try
   { // Ensure error, warning and information messages are displayed by the catch block.
 
-  multiset<double> my_set;
+  std::multiset<double> my_set;
   // Initialize my_set with some entirely fictional data.
   my_set.insert(1.2);
   my_set.insert(2.3);
@@ -134,7 +140,7 @@ int main()
   my_set.insert(7.8);
   my_set.insert(8.9);
   // Some examples of showing the set using various iterators:
-  multiset<double>::const_iterator si;
+  std::multiset<double>::const_iterator si;
 
   show(my_data); // Entire container contents,
   show(my_set); // for two different types of container.
@@ -145,17 +151,17 @@ int main()
   show(my_data.begin(), my_data.end()); // iterators.
   show(++(my_data.begin()), --(my_data.end())); // Just the 4 middle values.
 
-  vector<double>::const_iterator idb = my_data.begin();
-  vector<double>::const_iterator ide = my_data.end();
+  std::vector<double>::const_iterator idb = my_data.begin();
+  std::vector<double>::const_iterator ide = my_data.end();
   show(idb, ide); // All
   ++idb; // Move to 2nd value.
   --ide; // move back from last value.
   show(idb, ide); // Just the 4 middle values.
 
-  typedef vector<double>::const_iterator vector_iterator;
-  pair<vector_iterator, vector_iterator> result = boost::minmax_element(my_data.begin(), my_data.end());
-  cout << "The smallest element is " << *(result.first) << endl; // 0.2
-  cout << "The largest element is  " << *(result.second) << endl; // 6.5
+  typedef std::vector<double>::const_iterator vector_iterator;
+  std::pair<vector_iterator, vector_iterator> result = boost::minmax_element(my_data.begin(), my_data.end());
+  std::cout << "The smallest element is " << *(result.first) << std::endl; // 0.2
+  std::cout << "The largest element is  " << *(result.second) << std::endl; // 6.5
 
 /*`Autoscaling can also use two double min and max values provided by the user program.
 Using `x_autoscale(my_set)` effectively uses the first and last items in the STL container.
@@ -163,7 +169,7 @@ If the container is sorted, then these are the minimum and maximum values.*/
 
   double min_value = *(my_data.begin());
   double max_value = *(--my_data.end());
-  cout << "my_set min " << min_value << ", max = " << max_value << endl;
+  std::cout << "my_set min " << min_value << ", max = " << max_value << std::endl;
 
 /*`Function `scale_axis` is used by autoscale, but is also available for use direct by the user.
 It accepts parameters controlling the scaling and updates 4 items. Its signature is:
@@ -191,8 +197,8 @@ Several examples follow: */
   scale_axis(1., 9., // User chosen min and max.
     &axis_min_value, &axis_max_value, &axis_tick_increment, &axis_ticks,
     false, tol100eps, 6, 0); // Display range.
-  cout << "scaled min " << axis_min_value << ", max = " << axis_max_value
-    << ", increment " << axis_tick_increment << ", axis ticks " << axis_ticks << endl;
+  std::cout << "scaled min " << axis_min_value << ", max = " << axis_max_value
+    << ", increment " << axis_tick_increment << ", axis ticks " << axis_ticks << std::endl;
 
   // Scaling using only the first and last values in a container,
   // assuming the data are already ordered in ascending value,
@@ -204,30 +210,30 @@ Several examples follow: */
   scale_axis(my_data.begin(), my_data.end(),
     &axis_min_value, &axis_max_value, &axis_tick_increment, &axis_ticks,
     true, 3., false, tol100eps, 6); // Display range.
-  cout << "scaled min " << axis_min_value << ", max = " << axis_max_value
-    << ", increment " << axis_tick_increment << ", axis ticks " << axis_ticks << endl;
+  std::cout << "scaled min " << axis_min_value << ", max = " << axis_max_value
+    << ", increment " << axis_tick_increment << ", axis ticks " << axis_ticks << std::endl;
 
   // Scaling using two begin & end iterators into STL container,
   // scale_axis does finding min and max.
   scale_axis(my_data[1], my_data[4], // Only middle part of the container used, ignoring 1st and last values.
     &axis_min_value, &axis_max_value, &axis_tick_increment, &axis_ticks,
     false, tol100eps, 6); // Display range.
-  cout << "scaled min " << axis_min_value << ", max = " << axis_max_value
-    << ", increment " << axis_tick_increment << ", axis ticks " << axis_ticks << endl;
+  std::cout << "scaled min " << axis_min_value << ", max = " << axis_max_value
+    << ", increment " << axis_tick_increment << ", axis ticks " << axis_ticks << std::endl;
 
   // Scaling using whole  STL vector container,
   // scale_axis does finding min and max.
   scale_axis(my_data, &axis_min_value, &axis_max_value, &axis_tick_increment, &axis_ticks,
     true, 3., false, tol100eps, 6); // Display range.
-  cout << "scaled min " << axis_min_value << ", max = " << axis_max_value
-    << ", increment " << axis_tick_increment << ", axis ticks " << axis_ticks << endl;
+  std::cout << "scaled min " << axis_min_value << ", max = " << axis_max_value
+    << ", increment " << axis_tick_increment << ", axis ticks " << axis_ticks << std::endl;
 
   // Scaling using whole STL set container,
   // scale_axis does finding min and max.
   scale_axis(my_set, &axis_min_value, &axis_max_value, &axis_tick_increment, &axis_ticks,
     true, 3., false, tol100eps, 6); // Display range.
-  cout << "scaled min " << axis_min_value << ", max = " << axis_max_value
-    << ", increment " << axis_tick_increment << ", axis ticks " << axis_ticks << endl;
+  std::cout << "scaled min " << axis_min_value << ", max = " << axis_max_value
+    << ", increment " << axis_tick_increment << ", axis ticks " << axis_ticks << std::endl;
 /*`
 However autoscaling may go wrong if the data could contain values that are outside normal limits.
 Infinity (+ and -), and maximum value, and NaN (Not A Number),
@@ -277,54 +283,54 @@ to produce more aesthetically pleasing ranges. One can:
   my_1d_plot.x_tight(0.001);
 
   // Show the flags just set.
-  cout << (my_1d_plot.x_with_zero() ? "x_with_zero, " : "not x_with_zero, ")
+  std::cout << (my_1d_plot.x_with_zero() ? "x_with_zero, " : "not x_with_zero, ")
     << my_1d_plot.x_min_ticks() << " x_min_ticks, "
     << my_1d_plot.x_steps() << " x_steps, "
-    << my_1d_plot.x_tight() << " tightness." << endl;
+    << my_1d_plot.x_tight() << " tightness." << std::endl;
 
 /*`Finally here are some examples of using autoscaling using all or part of containers.
 */
 
   my_1d_plot.x_autoscale(my_data);  // Use all my_data to autoscale.
-  cout << "Autoscaled " // Show the results of autoscale:
+  std::cout << "Autoscaled " // Show the results of autoscale:
     "min " << my_1d_plot.x_auto_min_value()
     << ", max "<< my_1d_plot.x_auto_max_value()
-    << ", interval " << my_1d_plot.x_auto_tick_interval() << endl; // Autoscaled min 0, max 6.5, interval 0.5
+    << ", interval " << my_1d_plot.x_auto_tick_interval() << std::endl; // Autoscaled min 0, max 6.5, interval 0.5
 
   my_1d_plot.x_autoscale(my_data.begin(), my_data.end());  // Use all my_data to autoscale.
 
-  cout << "Autoscaled " // Show the results of autoscale:
+  std::cout << "Autoscaled " // Show the results of autoscale:
     "min " << my_1d_plot.x_auto_min_value()
     << ", max "<< my_1d_plot.x_auto_max_value()
-    << ", interval " << my_1d_plot.x_auto_tick_interval() << endl; // Autoscaled min 0, max 6.5, interval 0.5
+    << ", interval " << my_1d_plot.x_auto_tick_interval() << std::endl; // Autoscaled min 0, max 6.5, interval 0.5
 
   my_1d_plot.x_autoscale(my_data[1], my_data[4]);  // Use only part of my_data to autoscale.
 
-  cout << "Autoscaled " // Show the results of autoscale:
+  std::cout << "Autoscaled " // Show the results of autoscale:
     "min " << my_1d_plot.x_auto_min_value()
     << ", max "<< my_1d_plot.x_auto_max_value()
-    << ", interval " << my_1d_plot.x_auto_tick_interval() << endl; // Autoscaled min 1, max 5.5, interval 0.5
+    << ", interval " << my_1d_plot.x_auto_tick_interval() << std::endl; // Autoscaled min 1, max 5.5, interval 0.5
 
   //my_1d_plot.x_autoscale(true);  // Ensure autoscale values are used for the plot.
   // This is also automatically set true by any call of x_autoscale(some_data);
 
 /*`The actual addition of data values to the plot is, of course, quite separate from any autoscaling.
 */
-  my_1d_plot.plot(my_data, "Auto 1D"); // Add the one data series.
-  cout << "Autoscaled " // Show the results of autoscale:
+  my_1d_plot.plot(my_data, "Auto 1D"); // Add the one data-series.
+  std::cout << "Autoscaled " // Show the results of autoscale:
     " min " << my_1d_plot.x_auto_min_value()
     << ", max "<< my_1d_plot.x_auto_max_value()
-    << ", interval " << my_1d_plot.x_auto_tick_interval() << endl; // Autoscaled min 1, max 5.5, interval 0.5
+    << ", interval " << my_1d_plot.x_auto_tick_interval() << std::endl; // Autoscaled min 1, max 5.5, interval 0.5
 
-  my_1d_plot.plot(my_set.begin(), my_set.end(), "Auto 1D"); // Add another data series from my_set.
-  my_1d_plot.plot(my_set, "Auto 1D"); // Add another whole data series from my_set.
-  my_1d_plot.plot(&my_data[1], &my_data[4], "Auto 1D"); // Add part (1,2 3 but *not* 4) of the one data series.
+  my_1d_plot.plot(my_set.begin(), my_set.end(), "Auto 1D"); // Add another data-series from my_set.
+  my_1d_plot.plot(my_set, "Auto 1D"); // Add another whole data-series from my_set.
+  my_1d_plot.plot(&my_data[1], &my_data[4], "Auto 1D"); // Add part (1,2 3 but *not* 4) of the one data-series.
   //my_1d_plot.plot(&my_set[1], &my_set[4], "Auto 1D"); // operator[] is not defined for set container!
 
   my_1d_plot.write("auto_1d_plot_2.svg"); // Write the plot to file.
 
   using boost::svg::detail::operator<<;
-  cout << "x_range() " << my_1d_plot.x_range() << endl; // x_range() 1, 5.5
+  std::cout << "x_range() " << my_1d_plot.x_range() << std::endl; // x_range() 1, 5.5
   show_1d_plot_settings(my_1d_plot);
   }
   catch(const std::exception& e)

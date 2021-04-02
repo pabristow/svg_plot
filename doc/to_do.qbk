@@ -56,6 +56,34 @@ options to control features have been added.
 
 [endsect] [/section:todo To Do]
 
+[section:diagnostics Diagnostic tools]
+
+During development a optional display code has been added.  In extremis, users may find them useful.
+
+The following macros will, if defined, create (often much) output:
+
+BOOST_SVG_LEGEND_DIAGNOSTICS
+BOOST_SVG_POINT_DIAGNOSTICS
+BOOST_SVG_STYLE_DIAGNOSTICS
+BOOST_SVG_DIAGNOSTICS
+
+// Diagnostics output if these are defined.
+// BOOST_SVG_DIAGNOSTICS
+// BOOST_SVG_DATA_POINT_DIAGNOSTICS
+
+// BOOST_SVG_VALUE_DIAGNOSTICS
+// BOOST_SVG_LEGEND_DIAGNOSTICS
+// BOOST_SVG_WINDOW_DIAGNOSTICS
+// BOOST_SVG_AXES_DIAGNOSTICS
+
+So for example inserting  
+#define BOOST_SVG_LEGEND_DIAGNOSTICS
+or adding \DBOOST_SVG_LEGEND_DIAGNOSTICS (MSVC) or -DBOOST_SVG_LEGEND_DIAGNOSTICS (Linux)
+at the head of your test program will produce information about the sizing and layout of any legend box.
+
+
+[endsect] [/section:diagnostics Diagnostic tools]
+
 [/ todo.qbk
   Copyright 2007, 2008, 2009, 2011 Jake Voytko and Paul A. Bristow.
   Distributed under the Boost Software License, Version 1.0.

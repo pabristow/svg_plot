@@ -1,26 +1,19 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Compilers and Examples</title>
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="../implementation.html" title="Implementation, History &amp; Rationale">
 <link rel="prev" href="history.html" title="History">
 <link rel="next" href="implementation.html" title="Implementation and other notes">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
-<td align="center"><a href="../../../../../../index.html">Home</a></td>
-<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
-<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
-<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
-</tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="history.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../implementation.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="implementation.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="history.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../implementation.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="implementation.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
@@ -55,11 +48,12 @@
 </span></pre>
 <p>
         The code of version 2 is written to comply with the C++11 standard (and use
-        some features).
+        some features), and future versions will soonuse C++20 features, so recent
+        compilers are highly recommended..
       </p>
 <div class="note"><table border="0" summary="Note">
 <tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../../../../../doc/src/images/note.png"></td>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../images/note.png"></td>
 <th align="left">Note</th>
 </tr>
 <tr><td align="left" valign="top"><p>
@@ -74,17 +68,18 @@
       </p>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-            Microsoft Visual Studio 2010 and 2012 (MSVC).
+            Microsoft Visual Studio Community 2019 Preview Version 16.8.0 Preview
+            2.0 (MSVC 14.2).
           </li>
 <li class="listitem">
-            GCC 4.7.2 needs option -std=c++11
+            GCC 10.0.1 needs option -std=c++11
           </li>
 <li class="listitem">
-            Clang 3.1 needs option -std=c++11
+            Clang 10.0.0 needs option -std=c++11
           </li>
 </ol></div>
 <p>
-        but might work on some earlier releases.
+        but should work on some earlier compiler releases that have good C++11 compliance.
       </p>
 <p>
         To avoid warnings:
@@ -103,8 +98,8 @@
 <span class="special">/</span><span class="identifier">wd4127</span> <span class="special">#</span> <span class="identifier">Expression</span> <span class="identifier">is</span> <span class="identifier">constant</span><span class="special">.</span>
 </pre>
 <p>
-        Other compilers like Apple Darwin and Intel have not been used, but are likely
-        to work OK.
+        Other compilers like Apple Darwin and Intel have not been tested, but are
+        likely to work OK.
       </p>
 <h5>
 <a name="svg_plot.implementation.compilers.h1"></a>
@@ -118,8 +113,7 @@
             Microsoft Visual Studio (using the Microsoft compilers only).
           </li>
 <li class="listitem">
-            Netbeans 7.2 (using Clang and GCC, and Microsoft compiler using <code class="computeroutput"><span class="identifier">VCC4N</span> <span class="identifier">C</span><span class="special">++</span> <span class="identifier">Compiler</span></code>
-            tool).
+            CodeBlocks 20.04 (using Clang and GCC).
           </li>
 </ul></div>
 <h5>
@@ -137,7 +131,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -145,7 +139,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="history.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../implementation.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="implementation.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="history.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../implementation.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="implementation.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Type uncIOflags</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../header/boost/quan/unc_hpp.html" title="Header &lt;boost/quan/unc.hpp&gt;">
+<link rel="prev" href="unc.html" title="Class template unc">
+<link rel="next" href="DEG_FREE_DEF.html" title="Global DEG_FREE_DEF">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="unc.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/unc_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="DEG_FREE_DEF.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.quan.uncIOflags"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Type uncIOflags</span></h2>
+<p>boost::quan::uncIOflags — Control of printing uncertain values, similar to <code class="computeroutput">std::ios</code> flags. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/quan/unc_hpp.html" title="Header &lt;boost/quan/unc.hpp&gt;">boost/quan/unc.hpp</a>&gt;
+
+</span>
+
+<span class="keyword">enum</span> <span class="identifier">uncIOflags</span> <span class="special">{</span> <a class="link" href="uncIOflags.html#boost.quan.uncIOflags.defaults">defaults</a> = = 0, <a class="link" href="uncIOflags.html#boost.quan.uncIOflags.firm">firm</a> = = 1  &lt;&lt; 0, <a class="link" href="uncIOflags.html#boost.quan.uncIOflags.setScaled">setScaled</a> = = 1 &lt;&lt; 1, 
+                  <a class="link" href="uncIOflags.html#boost.quan.uncIOflags.autoScaled">autoScaled</a> = = 1 &lt;&lt; 2, <a class="link" href="uncIOflags.html#boost.quan.uncIOflags.plusMinus">plusMinus</a> = = 1 &lt;&lt; 3, 
+                  <a class="link" href="uncIOflags.html#boost.quan.uncIOflags.addSISymbol">addSISymbol</a> = = 1 &lt;&lt; 4, <a class="link" href="uncIOflags.html#boost.quan.uncIOflags.addSIPrefix">addSIPrefix</a> = = 1 &lt;&lt; 5, 
+                  <a class="link" href="uncIOflags.html#boost.quan.uncIOflags.noisyDigit">noisyDigit</a> = = 1 &lt;&lt; 6, <a class="link" href="uncIOflags.html#boost.quan.uncIOflags.useSetSigDigits">useSetSigDigits</a> = = 1 &lt;&lt; 7, 
+                  <a class="link" href="uncIOflags.html#boost.quan.uncIOflags.useSetUncSigDigits">useSetUncSigDigits</a> = = 1 &lt;&lt; 8, <a class="link" href="uncIOflags.html#boost.quan.uncIOflags.degfree">degfree</a> = = 1 &lt;&lt; 9, 
+                  <a class="link" href="uncIOflags.html#boost.quan.uncIOflags.replicates">replicates</a> = = 1 &lt;&lt; 0xA, <a class="link" href="uncIOflags.html#boost.quan.uncIOflags.limits">limits</a> = = 1 &lt;&lt; 0xB <span class="special">}</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id1166089"></a><h2>Description</h2>
+<p>Can be output for diagnostic use, for example: </p>
+<pre class="programlisting"><span class="identifier">outUncIOFlags</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">.</span><span class="identifier">flags</span><span class="special">(</span><span class="special">)</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cerr</span><span class="special">)</span><span class="special">;</span> <span class="comment">// uncFlags (0x201) firm adddegfree.  </span>
+</pre>
+<p> </p>
+<div class="variablelist"><dl class="variablelist compact">
+<dt><span class="term"><code class="computeroutput">defaults</code><a name="boost.quan.uncIOflags.defaults"></a></span></dt>
+<dd>Default. </dd>
+<dt><span class="term"><code class="computeroutput">firm</code><a name="boost.quan.uncIOflags.firm"></a></span></dt>
+<dd>bit 0: == 0 == false means flexible layout, or firm == 1 means true. </dd>
+<dt><span class="term"><code class="computeroutput">setScaled</code><a name="boost.quan.uncIOflags.setScaled"></a></span></dt>
+<dd>bit 1 Set scaled == 1 or not scaled == 0. by fixed factor SetScale and &lt;&lt; scale ... power10 in range -max to +max. </dd>
+<dt><span class="term"><code class="computeroutput">autoScaled</code><a name="boost.quan.uncIOflags.autoScaled"></a></span></dt>
+<dd>bit 2: auto = 1 with &lt;&lt; autoscale ... </dd>
+<dt><span class="term"><code class="computeroutput">plusMinus</code><a name="boost.quan.uncIOflags.plusMinus"></a></span></dt>
+<dd>
+<p>bit 3 = 1 means add +/- uncertainty Usage:</p>
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">plusminus</span> <span class="special">&lt;&lt;</span> <span class="identifier">u</span><span class="special">;</span> 
+</pre>
+<p> </p>
+</dd>
+<dt><span class="term"><code class="computeroutput">addSISymbol</code><a name="boost.quan.uncIOflags.addSISymbol"></a></span></dt>
+<dd>bit 4 = 1, add suffix SI symbol G, M, k, m, u, n, p ... If one is applicable, else = 0 do nothing. </dd>
+<dt><span class="term"><code class="computeroutput">addSIPrefix</code><a name="boost.quan.uncIOflags.addSIPrefix"></a></span></dt>
+<dd>bit 5 = 1, add suffix SI prefix Giga, Mega, kilo ... </dd>
+<dt><span class="term"><code class="computeroutput">noisyDigit</code><a name="boost.quan.uncIOflags.noisyDigit"></a></span></dt>
+<dd><p>Add extra 'noisy' decimal digit to value &amp; sd. Usage: std::cout <code class="computeroutput">&lt;&lt; addnoisyDigit &lt;&lt; u;</code> This means is suitable for input to other calculations because the random extra 2 to 3 bits will approximate a continuous function. Quantization to fewer digits would distort statistical calculations. Default is to use minimum decimal digits for clearer display. Extra digit also added when degrees of freedom &gt; 10. </p></dd>
+<dt><span class="term"><code class="computeroutput">useSetSigDigits</code><a name="boost.quan.uncIOflags.useSetSigDigits"></a></span></dt>
+<dd>if bit 7 = 1 use set sig digits else calculate from sd(isUseSetSigDigits). </dd>
+<dt><span class="term"><code class="computeroutput">useSetUncSigDigits</code><a name="boost.quan.uncIOflags.useSetUncSigDigits"></a></span></dt>
+<dd>if bit 8 = 1 use set Unc sigfig (isStdDevSigDigitsSet). else calculate from degrees of freedom. </dd>
+<dt><span class="term"><code class="computeroutput">degfree</code><a name="boost.quan.uncIOflags.degfree"></a></span></dt>
+<dd>0x200, If bit 9 == 1, add output of degrees of freedom as (99). </dd>
+<dt><span class="term"><code class="computeroutput">replicates</code><a name="boost.quan.uncIOflags.replicates"></a></span></dt>
+<dd>0x400 If == 1, add output of replicates as [99] if &gt; 1. </dd>
+<dt><span class="term"><code class="computeroutput">limits</code><a name="boost.quan.uncIOflags.limits"></a></span></dt>
+<dd>0X800 add limits. </dd>
+</dl></div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="unc.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/unc_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="DEG_FREE_DEF.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

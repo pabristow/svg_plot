@@ -181,7 +181,7 @@ A number of variations are shown below, mainly by way of testing.
     0); // Display range.
   cout << "Axis_scaled 4 min " << axis_min_value << ", max = " << axis_max_value << ", increment " << axis_tick_increment << endl;
 
-  // axis_scaling using two begin & end iterators into STL container,
+  // axis_scaling using two iterators @c begin() & @c end() into an STL container,
   // scale_axis does finding min and max.
   scale_axis(my_data[1], my_data[4], // Only middle part of the container used, ignoring 1st and last values.
     &axis_min_value, &axis_max_value, &axis_tick_increment, &axis_ticks,

@@ -1,6 +1,6 @@
 # jamfile.v2 for SVG_plot Quickbook Documentation and index using Doxygen
 
-# Copyright Paul A. Bristow 2013, 2014
+# Copyright Paul A. Bristow 2013, 2014, 2021
 
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE_1_0.txt
@@ -13,24 +13,14 @@
 # SVG plot documentation as html and pdf from Quickbook, using Doxygen.
 # AND auto-indexing.
 
-# project boost/doc ;
-
-using quickbook ;
-using doxygen ;
-
-import os ; # Needed to get environment variables.
-path-constant nav_images :  html/images/ ; # png and svg images for home, next, note, tip...
-path-constant images_location : html ; # location of SVG and PNG images referenced by Quickbook.
-
 path-constant parent : .. ;  # Beman Dawes - so that inspect.exe will start in boost-root/libs/timer
                              # when run from another directory, such as boost-root/status
+path-constant here : . ;  # /svg_plot/doc
 
-echo "nav_images" $(nav_images) ;
-echo "images_location" $(images_location) ;
-
+# Remove option for index generation so always generates an index.
 if --enable-index in  [ modules.peek : ARGV ]
 {
-   ECHO "Building the SVG_Plot docs with automatic index generation enabled." ;
+   ECHO "Building the SVG_Plot docs (with automatic index generation enabled)." ;
    using auto-index ;
    project : requirements
         <auto-index>on # Turns on index (or off).
@@ -65,6 +55,7 @@ else
    ECHO "Building the SVG_plot docs with automatic index generation disabled. To get an AutoIndex, try building with --enable-index." ;
 }
 
+using quickbook ;
 
 xml svg_plot
   :
@@ -72,13 +63,14 @@ xml svg_plot
   :
 ;
 
-doxygen autodoc
-  :
-    [ glob ../../../boost/svg_plot/*.*pp ]
-   # [ glob ../../../boost/quan/*.hpp ]
-    [ glob ../../../boost/svg_plot/detail/*.hpp ]
-   #     [ glob ../../../boost/svg_plot/detail/axis_plot_frame.hpp ]
+using doxygen ;
 
+doxygen autodoc
+  : # Inputs
+    [ glob ../../../boost/svg_plot/*.*pp ]
+    [ glob ../../../boost/quan/*.hpp ]
+    [ glob ../../../boost/svg_plot/detail/*.hpp ]
+    [ glob ../../../boost/svg_plot/detail/axis_plot_frame.hpp ]
   :
     #<doxygen:param>INPUT="filename1 directoryname2" # Separate with spaces.
     # But also see paths specified above.
@@ -123,7 +115,7 @@ doxygen autodoc
     # contain include files that are not input files but should be processed by the preprocessor.
     <doxygen:param>WARNINGS=YES # If WARN_IF_UNDOCUMENTED is set to YES, then doxygen will generate warnings for undocumented members.
     # If EXTRACT_ALL is set to YES then this flag will automatically be disabled.
-    <doxygen:param>WARN_IF_UNDOCUMENTED=YES # If WARN_IF_UNDOCUMENTED is set to YES,
+    <doxygen:param>WARN_IF_UNDOCUMENTED=NO # If WARN_IF_UNDOCUMENTED is set to YES,
     # then doxygen will generate warnings for undocumented members.
     <doxygen:param>WARN_IF_DOC_ERROR=YES # If WARN_IF_DOC_ERROR is set to YES, Doxygen will generate warnings for
     # potential errors in the documentation.
@@ -133,11 +125,18 @@ doxygen autodoc
     # Note: no commas required but need quotes if more than one file.
 
     <xsl:param>"boost.doxygen.reftitle=Boost.SVG plot C++ Reference"
+   # <doxygen:param>ENABLED_SECTIONS="DETAIL" # Enable Doxygen indexing of all DETAIL sections.  (Only useful for maintainers).
 ;
     #<doxygen:param>"PREDEFINED=\"BOOST_DEDUCED_TYPENAME=typename\" "
-# See Doxygen configuration for detailed explanation of these options
+# See Doxygen configuration for detailed explanation of these options.
 
-# import boostbook : boostbook ;
+path-constant nav_images :  html/images/ ; # png and svg images for home, next, note, tip...
+path-constant images_location : html ; # location of SVG and PNG images referenced by Quickbook.
+
+echo "nav_images" $(nav_images) ;
+echo "images_location" $(images_location) ;
+
+using boostbook ;
 
 boostbook standalone
   :
@@ -148,17 +147,18 @@ boostbook standalone
   <xsl:param>boost.root=../../../..
 
   # Path for libraries index:
-  <xsl:param>boost.libraries=../../../../libs/libraries.htm
+  # <xsl:param>boost.libraries=../../../../libs/libraries.htm #  Not for standalone.
   # Use the main Boost stylesheet:
   #<xsl:param>html.stylesheet=../../../doc/html/boostbook.css
-  # Or a local preference Boost stylesheet with different syntax colors:
+  # Or a local preference Boost stylesheet (perhaps with different syntax colors or fonts?):
   <xsl:param>html.stylesheet=boostbook.css
 
-  <xsl:param>nav.layout=horizontal # to get a horizontal navigation bar (you probably DO want this).
-  <xsl:param>boost.image=Boost # Options are: none (no logo), Boost (for boost.png), or your own logo.
+ # <xsl:param>nav.layout=horizontal # to get a horizontal home/libraries/people navigation bar (you DO want this for Boost libraries, but not for standalone).
+ # Logo, if required.
+  <xsl:param>boost.image=none # Options are: none (no logo), Boost (for boost.png), or your own logo.
   <xsl:param>boost.image.src=./images/proposed_for_boost.png #
-  <xsl:param>boost.image.w=200 # Width of logo in pixels. (JM has W = 162, h = 46)
-  <xsl:param>boost.image.h=90 # Height of logo in pixels.
+  <xsl:param>boost.image.w=150 # Width of logo in pixels.
+  <xsl:param>boost.image.h=50 # Height of logo in pixels.
 
   # Some general style settings:
   <xsl:param>table.footnote.number.format=1
@@ -184,8 +184,7 @@ boostbook standalone
   # <xsl:param>quickbook.source.style.show="'true'"
 
   # PDF Options:
-  # TOC Generation
-  <xsl:param>fop1.extensions=0
+  # TOC Generation  <xsl:param>fop1.extensions=0
   <format>pdf:<xsl:param>xep.extensions=1
   #<format>pdf:<xsl:param>fop.extensions=0
 
@@ -218,8 +217,6 @@ boostbook standalone
   <dependency>images
   <dependency>svg-images
  ;
-
-# install html : ../../../doc/html/boostbook.css ; # Boost standard style sheet.
 
 install html : boostbook.css : <location>html ;  # Copy custom Boostbook style sheet from /doc folder to /doc/html.
 explicit html ;

@@ -1,117 +1,121 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Class g_element</title>
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
 <link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
-<link rel="up" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">
+<link rel="up" href="../../header/boost/svg_plot/detail/svg_elements_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_elements.hpp&gt;">
 <link rel="prev" href="ellipse_element.html" title="Class ellipse_element">
 <link rel="next" href="h_path.html" title="Struct h_path">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="200" height="90" src="../.././images/proposed_for_boost.png"></td>
-<td align="center"><a href="../../../../../../index.html">Home</a></td>
-<td align="center"><a href="../../../../../../libs/libraries.htm">Libraries</a></td>
-<td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
-<td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="../../../../../../more/index.htm">More</a></td>
-</tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="ellipse_element.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="h_path.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="ellipse_element.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_elements_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="h_path.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 <div class="refentry">
 <a name="boost.svg.g_element"></a><div class="titlepage"></div>
 <div class="refnamediv">
 <h2><span class="refentrytitle">Class g_element</span></h2>
-<p>boost::svg::g_element &#8212; <a class="link" href="g_element.html" title="Class g_element">g_element</a> (group element) is the node element of our document tree. 'g' element is a container element for grouping together: </p>
+<p>boost::svg::g_element — <a class="link" href="g_element.html" title="Class g_element">g_element</a> (group element) is the node element of our document tree. </p>
 </div>
 <h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
-<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_tag.hpp&gt;">boost/svg_plot/detail/svg_tag.hpp</a>&gt;
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/svg_plot/detail/svg_elements_hpp.html" title="Header &lt;boost/svg_plot/detail/svg_elements.hpp&gt;">boost/svg_plot/detail/svg_elements.hpp</a>&gt;
 
 </span>
 <span class="keyword">class</span> <a class="link" href="g_element.html" title="Class g_element">g_element</a> <span class="special">:</span> <span class="keyword">public</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_element</span> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="g_element.html#boost.svg.g_elementconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="g_element.html#id1069448-bb"><span class="identifier">g_element</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="g_element.html#id550309-bb"><span class="identifier">g_element</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="g_element.html#id1070796-bb">public member functions</a></span>
-  <a class="link" href="g_element.html" title="Class g_element">g_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1070790-bb"><span class="identifier">add_g_element</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="circle_element.html" title="Class circle_element">circle_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1070807-bb"><span class="identifier">circle</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="special">=</span> <span class="number">5</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="g_element.html#id1070811-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="g_element.html#id1070870-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="g_element.html#id1070871-bb"><span class="identifier">clear</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="g_element.html#id1070864-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="g_element.html#id1070891-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="ellipse_element.html" title="Class ellipse_element">ellipse_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1070897-bb"><span class="identifier">ellipse</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="g_element.html" title="Class g_element">g_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1070952-bb"><span class="identifier">g</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="g_element.html#id549297-bb">public member functions</a></span>
+  <a class="link" href="g_element.html" title="Class g_element">g_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549280-bb"><span class="identifier">add_g_element</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="circle_element.html" title="Class circle_element">circle_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549313-bb"><span class="identifier">circle</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="number">5</span><span class="special">.</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="g_element.html#id549319-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="g_element.html#id549378-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="g_element.html#id549387-bb"><span class="identifier">clear</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="g_element.html#id549356-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="g_element.html#id549403-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="ellipse_element.html" title="Class ellipse_element">ellipse_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549409-bb"><span class="identifier">ellipse</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="g_element.html" title="Class g_element">g_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549457-bb"><span class="identifier">gs</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
   <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> 
-  <a class="link" href="g_element.html#id1070927-bb"><span class="identifier">hexagon</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> 
+  <a class="link" href="g_element.html#id549506-bb"><span class="identifier">hexagon</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> 
           <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="g_element.html#id1071008-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="g_element.html#id1071048-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="line_element.html" title="Class line_element">line_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1071044-bb"><span class="identifier">line</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="g_element.html#id1071112-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="g_element.html#id1071123-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1071118-bb"><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span></a><span class="special">(</span><span class="keyword">unsigned</span> <span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1071160-bb"><span class="identifier">path</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="g_element.html#id549554-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="g_element.html#id549560-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="line_element.html" title="Class line_element">line_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549621-bb"><span class="identifier">line</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="g_element.html#id549648-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="g_element.html#id549642-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549674-bb"><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span></a><span class="special">(</span><span class="keyword">unsigned</span> <span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549712-bb"><span class="identifier">path</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
   <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> 
-  <a class="link" href="g_element.html#id1071170-bb"><span class="identifier">pentagon</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> 
+  <a class="link" href="g_element.html#id549727-bb"><span class="identifier">pentagon</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> 
            <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1071258-bb"><span class="identifier">polygon</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1071293-bb"><span class="identifier">polygon</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1071339-bb"><span class="identifier">polygon</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1071328-bb"><span class="identifier">polyline</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1071382-bb"><span class="identifier">polyline</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1071359-bb"><span class="identifier">polyline</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="g_element.html#id1071422-bb"><span class="identifier">push_back</span></a><span class="special">(</span><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">*</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="rect_element.html" title="Class rect_element">rect_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1071412-bb"><span class="identifier">rect</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549778-bb"><span class="identifier">polygon</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549813-bb"><span class="identifier">polygon</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549844-bb"><span class="identifier">polygon</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549864-bb"><span class="identifier">polyline</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549872-bb"><span class="identifier">polyline</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549926-bb"><span class="identifier">polyline</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="g_element.html#id549940-bb"><span class="identifier">push_back</span></a><span class="special">(</span><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">*</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="rect_element.html" title="Class rect_element">rect_element</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id549956-bb"><span class="identifier">rect</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
   <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> 
-  <a class="link" href="g_element.html#id1069229-bb"><span class="identifier">rhombus</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> 
+  <a class="link" href="g_element.html#id550004-bb"><span class="identifier">rhombus</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> 
           <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">size_t</span> <a class="link" href="g_element.html#id1069272-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1069301-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id1069302-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">size_t</span> <a class="link" href="g_element.html#id550056-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id550065-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="g_element.html#id550114-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
   <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> 
-  <a class="link" href="g_element.html#id1069340-bb"><span class="identifier">text</span></a><span class="special">(</span><span class="keyword">double</span> <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
-       <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">no_style</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">align_style</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">left_align</span><span class="special">,</span> 
-       <span class="keyword">const</span> <span class="identifier">rotate_style</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">horizontal</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="g_element.html#id550138-bb"><span class="identifier">text</span></a><span class="special">(</span><span class="keyword">double</span> <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
+       <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">no_text_style</span><span class="special">,</span> 
+       <span class="keyword">const</span> <span class="identifier">align_style</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">align_style</span><span class="special">::</span><span class="identifier">left_align</span><span class="special">,</span> 
+       <span class="keyword">const</span> <span class="keyword">int</span> <span class="special">=</span> <span class="keyword">static_cast</span><span class="special">&lt;</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">(</span><span class="identifier">horizontal</span><span class="special">)</span><span class="special">)</span><span class="special">;</span>
   <a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> 
-  <a class="link" href="g_element.html#id1069384-bb"><span class="identifier">triangle</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="g_element.html#id1069445-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-
-  <span class="comment">// <a class="link" href="g_element.html#id1069494-bb">protected member functions</a></span>
-  <span class="keyword">void</span> <a class="link" href="g_element.html#id1069491-bb"><span class="identifier">write_attributes</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="g_element.html#id550194-bb"><span class="identifier">triangle</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="g_element.html#id550263-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="g_element.html#id550270-bb"><span class="identifier">write_attributes</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// <a class="link" href="g_element.html#boost.svg.g_elementpublic-data-members">public data members</a></span>
-  <span class="identifier">ptr_vector</span><span class="special">&lt;</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&gt;</span> <a class="link" href="g_element.html#boost.svg.g_element.children"><span class="identifier">children</span></a><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">clip_name</span><span class="special">;</span>  <span class="comment">// Name of clip path. </span>
-  <span class="keyword">bool</span> <span class="identifier">clip_on</span><span class="special">;</span>  <span class="comment">// true if to clip anything outside the clip path. </span>
+  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="identifier">a_svg_style</span><span class="special">;</span>  <span class="comment">// svg style that uses black and stroke and fill off. </span>
+  <span class="identifier">align_style</span> <span class="identifier">alignment_</span><span class="special">;</span>  <span class="comment">// group alignment, left middle or right, or no_align. </span>
+  <span class="identifier">ptr_vector</span><span class="special">&lt;</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&gt;</span> <a class="link" href="g_element.html#boost.svg.g_element.children_"><span class="identifier">children_</span></a><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">class_name_</span><span class="special">;</span>  <span class="comment">// SVG class name, set &amp; get by function class id. </span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">clip_name_</span><span class="special">;</span>  <span class="comment">// Name of clip path. </span>
+  <span class="keyword">bool</span> <span class="identifier">clip_on_</span><span class="special">;</span>  <span class="comment">// <code class="computeroutput">true</code> if to clip anything outside the clip path, often the plot window, so that data-point markers do not overlap axes tick-values on the inside of the window. </span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">id_name_</span><span class="special">;</span>  <span class="comment">// SVG id name, set &amp; get by function id. </span>
+  <span class="keyword">int</span> <span class="identifier">rotation_</span><span class="special">;</span>  <span class="comment">// text rotation, positive degrees 0 &lt;= rotation_ &lt;= 360, or specifically no rotation if &lt; 0. </span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="identifier">svg_style_</span><span class="special">;</span>  <span class="comment">// Colors fill, stroke, width; set and get by function <code class="computeroutput">style()</code>. </span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="identifier">text_style_</span><span class="special">;</span>  <span class="comment">// font family, font-size and font features bold, underline... </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1658820"></a><h2>Description</h2>
-<p>&lt;g&gt; ... &lt;/g&gt;  </p>
-<p><a class="link" href="g_element.html" title="Class g_element">g_element</a> ('g' element is a container element for grouping together related graphics elements).<br>
- See <a href="http://www.w3.org/TR/SVG/struct.html#NewDocument" target="_top">http://www.w3.org/TR/SVG/struct.html#NewDocument</a> 5.2.1 Overview.</p>
-<p>'g' element is a container element for grouping together&lt;g /&gt; &lt;/g&gt; related graphics elements, for example, an image background rectangle with border and fill: &lt;g id="background" fill="rgb(255,255,255)"&gt;&lt;rect width="500" height="350"/&gt;&lt;/g&gt; </p>
+<a name="id1213720"></a><h2>Description</h2>
+<p><a class="link" href="g_element.html" title="Class g_element">g_element</a> is a container element for grouping together related graphics elements).<br>
+ See <a href="https://www.w3.org/TR/SVG/struct.html#Groups" target="_top">https://www.w3.org/TR/SVG/struct.html#Groups</a> 5.2.1 Overview. Container element is an element which can have graphics elements and other container elements as child elements. Container elements are: a, clipPath, defs, <span class="bold"><strong>g</strong></span>, marker, mask, pattern, svg, switch, symbol, and unknown.</p>
+<p>A group of elements, as well as individual objects, can be given a name using the <span class="bold"><strong>id</strong></span> attribute. All g_elements should include an id as a string like id="background", or a macro defined in ../include/boost/svg_plot/detail/svg_style_detail.hpp to index <code class="computeroutput">std::string</code> <code class="computeroutput">document_ids_</code> </p>
+<p>For example, an image background rectangle with border and fill: </p>
+<pre class="programlisting"><span class="identifier">g0</span><span class="special">.</span><span class="identifier">svg_style_</span><span class="special">.</span><span class="identifier">fill_color</span><span class="special">(</span><span class="identifier">red</span><span class="special">)</span><span class="special">;</span> <span class="comment">// Set svg_style color. </span>
+</pre>
+<p>     &lt;g id="background" fill="rgb(255,255,255)"&gt;  
+       &lt;rect width="500" height="350"/&gt;
+     &lt;/g&gt; </p>
 <div class="refsect2">
-<a name="id1658828"></a><h3>
+<a name="id1213799"></a><h3>
 <a name="boost.svg.g_elementconstruct-copy-destruct"></a><code class="computeroutput">g_element</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><a name="id1069448-bb"></a><span class="identifier">g_element</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Construct <code class="computeroutput"><a class="link" href="g_element.html" title="Class g_element">g_element</a></code> (with no clipping). </p>
+<pre class="literallayout"><a name="id550309-bb"></a><span class="identifier">g_element</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Construct <code class="computeroutput"><a class="link" href="g_element.html" title="Class g_element">g_element</a></code> (default with no clipping).</p>
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1658868"></a><h3>
-<a name="id1070796-bb"></a><code class="computeroutput">g_element</code> public member functions</h3>
+<a name="id1213858"></a><h3>
+<a name="id549297-bb"></a><code class="computeroutput">g_element</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="g_element.html" title="Class g_element">g_element</a> <span class="special">&amp;</span> <a name="id1070790-bb"></a><span class="identifier">add_g_element</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="g_element.html" title="Class g_element">g_element</a> <span class="special">&amp;</span> <a name="id549280-bb"></a><span class="identifier">add_g_element</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Add a new group element. 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -121,13 +125,17 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created. </p></td>
+<td>
+<p>Reference to the new child node just created. Example:</p>
+<pre class="programlisting"><span class="identifier">g_element</span><span class="special">&amp;</span> <span class="identifier">g0</span> <span class="special">=</span> <span class="identifier">my_svg</span><span class="special">.</span><span class="identifier">add_g_element</span><span class="special">(</span><span class="special">)</span><span class="special">;</span> <span class="comment">// Add first (zeroth) new element to the document.</span>
+</pre>
+</td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="circle_element.html" title="Class circle_element">circle_element</a> <span class="special">&amp;</span> <a name="id1070807-bb"></a><span class="identifier">circle</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> radius <span class="special">=</span> <span class="number">5</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Add a new circle element. 
+<pre class="literallayout"><a class="link" href="circle_element.html" title="Class circle_element">circle_element</a> <span class="special">&amp;</span> <a name="id549313-bb"></a><span class="identifier">circle</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">double</span> radius <span class="special">=</span> <span class="number">5</span><span class="special">.</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Add a new circle child element. 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
 <colgroup>
@@ -136,29 +144,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created. </p></td>
+<td><p>A reference to the new child node just created.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id1070811-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> class_id<span class="special">)</span><span class="special">;</span></pre>
-<p>Class class id, non-unique identifier for an element.</p>
-<p><a href="http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute" target="_top">http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute</a> 6.12 Attributes common to all elements: id and xml:base Example: class="info"</p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id1070870-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Class id, non-unique identifier for an element. </p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id1070871-bb"></a><span class="identifier">clear</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Remove all the child nodes. </p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id1070864-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
-<p>Set name of a clip path, for example: g_ptr.clip_id(plot_window_clip_); </p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id1070891-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id549319-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -168,13 +159,22 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>name of a clip path, for example: g_ptr.clip_id(plot_window_clip_); </p></td>
+<td><p>Class id, non-unique string identifier for an element.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="ellipse_element.html" title="Class ellipse_element">ellipse_element</a> <span class="special">&amp;</span> <a name="id1070897-bb"></a><span class="identifier">ellipse</span><span class="special">(</span><span class="keyword">double</span> rx<span class="special">,</span> <span class="keyword">double</span> ry<span class="special">,</span> <span class="keyword">double</span> cx<span class="special">,</span> <span class="keyword">double</span> cy<span class="special">)</span><span class="special">;</span></pre>
-<p>Add a new ellipse element. 
+<pre class="literallayout"><span class="keyword">void</span> <a name="id549378-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> class_id<span class="special">)</span><span class="special">;</span></pre>
+<p>Set <code class="computeroutput">class_id</code>, non-unique string identifier for a Class Attribute.</p>
+<p><a href="http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute" target="_top">http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute</a> 6.12 Attributes common to all elements: id and xml:base Example: class_id == "info"</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">void</span> <a name="id549387-bb"></a><span class="identifier">clear</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Remove all the child nodes.</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id549356-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
 <colgroup>
@@ -183,17 +183,42 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created. </p></td>
+<td>
+<p>Name of a clip path, for example:</p>
+<pre class="programlisting"><span class="identifier">g_ptr</span><span class="special">.</span><span class="identifier">clip_id</span><span class="special">(</span><span class="identifier">plot_window_clip_</span><span class="special">)</span><span class="special">;</span> 
+</pre>
+</td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="g_element.html" title="Class g_element">g_element</a> <span class="special">&amp;</span> <a name="id1070952-bb"></a><span class="identifier">g</span><span class="special">(</span><span class="keyword">int</span> i<span class="special">)</span><span class="special">;</span></pre>
-<p>i is index of children nodes. </p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id549403-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
+<p>Set name of a clip path, for example: g_ptr.clip_id(plot_window_clip_);</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="ellipse_element.html" title="Class ellipse_element">ellipse_element</a> <span class="special">&amp;</span> <a name="id549409-bb"></a><span class="identifier">ellipse</span><span class="special">(</span><span class="keyword">double</span> rx<span class="special">,</span> <span class="keyword">double</span> ry<span class="special">,</span> <span class="keyword">double</span> cx<span class="special">,</span> <span class="keyword">double</span> cy<span class="special">)</span><span class="special">;</span></pre>
+<p>Add a new ellipse child element. 
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>A reference to the new child node just created.</p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="g_element.html" title="Class g_element">g_element</a> <span class="special">&amp;</span> <a name="id549457-bb"></a><span class="identifier">gs</span><span class="special">(</span><span class="keyword">int</span> i<span class="special">)</span><span class="special">;</span></pre>
+<p>i is index of children <code class="computeroutput"><a class="link" href="g_element.html" title="Class g_element">g_element</a></code> nodes (first is zero). Example:</p>
+<pre class="programlisting"><span class="identifier">g_element</span><span class="special">&amp;</span> <span class="identifier">g1</span> <span class="special">=</span> <span class="identifier">my_svg</span><span class="special">.</span><span class="identifier">gs</span><span class="special">(</span><span class="number">1</span><span class="special">)</span><span class="special">;</span> <span class="comment">// index is one. </span>
+</pre>
 </li>
 <li class="listitem">
 <pre class="literallayout"><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> 
-<a name="id1070927-bb"></a><span class="identifier">hexagon</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> <span class="keyword">double</span> y3<span class="special">,</span> 
+<a name="id549506-bb"></a><span class="identifier">hexagon</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> <span class="keyword">double</span> y3<span class="special">,</span> 
         <span class="keyword">double</span> x4<span class="special">,</span> <span class="keyword">double</span> y4<span class="special">,</span> <span class="keyword">double</span> x5<span class="special">,</span> <span class="keyword">double</span> y5<span class="special">,</span> <span class="keyword">double</span> x6<span class="special">,</span> <span class="keyword">double</span> y6<span class="special">,</span> 
         <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Add a new hexagon element. 
@@ -205,17 +230,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created. </p></td>
+<td><p>A reference to the new child node just created.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id1071008-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
-<p>Provide a unique name for an element. Example: id="plotBackground"</p>
-<p>See <a href="http://www.w3.org/TR/SVG/struct.html#IDAttribute" target="_top">http://www.w3.org/TR/SVG/struct.html#IDAttribute</a> 5.10.1 Attributes common to all elements: id and xml:base The id and xml:base attributes are available on all SVG elements: Attribute definitions: id = "name" Standard XML attribute for assigning a unique name to an element. Refer to the "Extensible Markup Language (XML) 1.0" Recommendation [XML10]. xml:base = "&lt;uri&gt;" Specifies a base URI other than the base URI of the document or external entity. Refer to the "XML Base" specification [XML-BASE]. A group of elements, as well as individual objects, can be given a name using the id attribute. Named groups are needed for several purposes such as animation and re-usable objects.</p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id1071048-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id549554-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -225,13 +245,18 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>the unique name for an element, for example id() ="plotBackground". </p></td>
+<td><p>The unique name for an element, for example:id() ="plotBackground" </p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="line_element.html" title="Class line_element">line_element</a> <span class="special">&amp;</span> <a name="id1071044-bb"></a><span class="identifier">line</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">)</span><span class="special">;</span></pre>
-<p>Add a new line element. 
+<pre class="literallayout"><span class="keyword">void</span> <a name="id549560-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
+<p>Provide a unique name for an element. Example: &lt;g id="plotBackground"</p>
+<p>See <a href="http://www.w3.org/TR/SVG/struct.html#IDAttribute" target="_top">http://www.w3.org/TR/SVG/struct.html#IDAttribute</a> 5.10.1 Attributes common to all elements: id and xml:base The id and xml:base attributes are available on all SVG elements: Attribute definitions: id = "name" Standard XML attribute for assigning a unique name to an element. Refer to the "Extensible Markup Language (XML) 1.0" Recommendation [XML10]. xml:base = "&lt;uri&gt;" Specifies a base URI other than the base URI of the document or external entity. Refer to the "XML Base" specification [XML-BASE]. A group of elements, as well as individual objects can be given a name using the id attribute. Named groups are needed for several purposes such as animation and re-usable objects.</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="line_element.html" title="Class line_element">line_element</a> <span class="special">&amp;</span> <a name="id549621-bb"></a><span class="identifier">line</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">)</span><span class="special">;</span></pre>
+<p>Add a new line child element. 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
 <colgroup>
@@ -240,20 +265,20 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created. </p></td>
+<td><p>A reference to the new child node just created.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id1071112-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
-<p>Compare svg_elements for inequality, useful for Boost.Test. </p>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id549648-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
+<p>Compare svg_elements for inequality, useful for Boost.Test.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id1071123-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
-<p>Compare svg_elements, useful for Boost.Test. </p>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id549642-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
+<p>Compare svg_elements, useful for Boost.Test.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> <a name="id1071118-bb"></a><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span><span class="special">(</span><span class="keyword">unsigned</span> <span class="keyword">int</span> i<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> <a name="id549674-bb"></a><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span><span class="special">(</span><span class="keyword">unsigned</span> <span class="keyword">int</span> i<span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -263,12 +288,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>child <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> node. </p></td>
+<td><p>Child <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code> ith node.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id1071160-bb"></a><span class="identifier">path</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="path_element.html" title="Class path_element">path_element</a> <span class="special">&amp;</span> <a name="id549712-bb"></a><span class="identifier">path</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Add a new path element. 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -278,13 +303,13 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new path just created. </p></td>
+<td><p>A reference to the new path just created.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
 <pre class="literallayout"><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> 
-<a name="id1071170-bb"></a><span class="identifier">pentagon</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> <span class="keyword">double</span> y3<span class="special">,</span> 
+<a name="id549727-bb"></a><span class="identifier">pentagon</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> <span class="keyword">double</span> y3<span class="special">,</span> 
          <span class="keyword">double</span> x4<span class="special">,</span> <span class="keyword">double</span> y4<span class="special">,</span> <span class="keyword">double</span> x5<span class="special">,</span> <span class="keyword">double</span> y5<span class="special">,</span> <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Add a new pentagon element. 
 </p>
@@ -295,12 +320,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created. </p></td>
+<td><p>A reference to the new child node just created.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a name="id1071258-bb"></a><span class="identifier">polygon</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a name="id549778-bb"></a><span class="identifier">polygon</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Add a new polygon element. 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -310,12 +335,27 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created. </p></td>
+<td><p>A reference to the new polygon element just created.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a name="id1071293-bb"></a><span class="identifier">polygon</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span> v<span class="special">,</span> <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a name="id549813-bb"></a><span class="identifier">polygon</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
+<p>Add a new polygon element. 
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>A reference to the new child node just created.</p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a name="id549844-bb"></a><span class="identifier">polygon</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span> v<span class="special">,</span> <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Add a new complete polygon element. 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -325,57 +365,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created.// push_back a complete many-sided polygon to the document. </p></td>
+<td><p>A reference to the new child node just created.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> <a name="id1071339-bb"></a><span class="identifier">polygon</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
-<p>Add a new polygon element. 
-</p>
-<div class="variablelist"><table border="0" class="variablelist compact">
-<colgroup>
-<col align="left" valign="top">
-<col>
-</colgroup>
-<tbody><tr>
-<td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new polygon element just created. </p></td>
-</tr></tbody>
-</table></div>
-</li>
-<li class="listitem">
-<pre class="literallayout"><a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a name="id1071328-bb"></a><span class="identifier">polyline</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span> v<span class="special">)</span><span class="special">;</span></pre>
-<p>Add a new complete polyline. 
-</p>
-<div class="variablelist"><table border="0" class="variablelist compact">
-<colgroup>
-<col align="left" valign="top">
-<col>
-</colgroup>
-<tbody><tr>
-<td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created. </p></td>
-</tr></tbody>
-</table></div>
-</li>
-<li class="listitem">
-<pre class="literallayout"><a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a name="id1071382-bb"></a><span class="identifier">polyline</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
-<p>Add a new polyline element, but 1st point only, add others later with .P(x, y)... 
-</p>
-<div class="variablelist"><table border="0" class="variablelist compact">
-<colgroup>
-<col align="left" valign="top">
-<col>
-</colgroup>
-<tbody><tr>
-<td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created. </p></td>
-</tr></tbody>
-</table></div>
-</li>
-<li class="listitem">
-<pre class="literallayout"><a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a name="id1071359-bb"></a><span class="identifier">polyline</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a name="id549864-bb"></a><span class="identifier">polyline</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Add a new polyline element. 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -385,17 +380,13 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new polyline element just created. </p></td>
+<td><p>A reference to the new polyline element just created.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id1071422-bb"></a><span class="identifier">push_back</span><span class="special">(</span><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">*</span> g<span class="special">)</span><span class="special">;</span></pre>
-<p>Add a new child node <code class="computeroutput"><a class="link" href="g_element.html" title="Class g_element">g_element</a></code>. </p>
-</li>
-<li class="listitem">
-<pre class="literallayout"><a class="link" href="rect_element.html" title="Class rect_element">rect_element</a> <span class="special">&amp;</span> <a name="id1071412-bb"></a><span class="identifier">rect</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">)</span><span class="special">;</span></pre>
-<p>Add a new rect element. 
+<pre class="literallayout"><a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a name="id549872-bb"></a><span class="identifier">polyline</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<p>Add a new polyline element, but 1st point only, add others later with .P(x, y)... 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
 <colgroup>
@@ -404,13 +395,47 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created. </p></td>
+<td><p>A reference to the new child node just created.</p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span> <a name="id549926-bb"></a><span class="identifier">polyline</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <a class="link" href="poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&gt;</span> <span class="special">&amp;</span> v<span class="special">)</span><span class="special">;</span></pre>
+<p>Add a new complete polyline. 
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>A reference to the new child node just created.</p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">void</span> <a name="id549940-bb"></a><span class="identifier">push_back</span><span class="special">(</span><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">*</span> g<span class="special">)</span><span class="special">;</span></pre>
+<p>Add a new child node <code class="computeroutput"><a class="link" href="g_element.html" title="Class g_element">g_element</a></code>.</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><a class="link" href="rect_element.html" title="Class rect_element">rect_element</a> <span class="special">&amp;</span> <a name="id549956-bb"></a><span class="identifier">rect</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">)</span><span class="special">;</span></pre>
+<p>Add a new rect child element. 
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>A reference to the new child node just created.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
 <pre class="literallayout"><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> 
-<a name="id1069229-bb"></a><span class="identifier">rhombus</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> <span class="keyword">double</span> y3<span class="special">,</span> 
+<a name="id550004-bb"></a><span class="identifier">rhombus</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> <span class="keyword">double</span> y3<span class="special">,</span> 
         <span class="keyword">double</span> x4<span class="special">,</span> <span class="keyword">double</span> y4<span class="special">,</span> <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Add a new rhombus element. 
 </p>
@@ -421,12 +446,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created. </p></td>
+<td><p>A reference to the new child node just created.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">size_t</span> <a name="id1069272-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">size_t</span> <a name="id550056-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -436,12 +461,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>Number of child nodes. </p></td>
+<td><p>Number of child (leaf) nodes.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id1069301-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id550065-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -451,12 +476,12 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>reference to <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> to provide indirect access to colors &amp; width via style().stroke_color(), fill_color(), width() </p></td>
+<td><p>Reference to <code class="computeroutput"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a></code> to provide indirect access to colors &amp; width via style().stroke_color(), fill_color(), width() etc.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id1069302-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id550114-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -466,16 +491,16 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>reference to const <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> to provide indirect access to colors &amp; width via style().stroke_color(), fill_color(), width() (const version). </p></td>
+<td><p>Reference to <code class="computeroutput">const</code> <code class="computeroutput"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a></code> to provide indirect access to colors &amp; width via style().stroke_color(), fill_color(), width() (const version).</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
 <pre class="literallayout"><a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> 
-<a name="id1069340-bb"></a><span class="identifier">text</span><span class="special">(</span><span class="keyword">double</span> x <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> y <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> text <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
-     <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> style <span class="special">=</span> <span class="identifier">no_style</span><span class="special">,</span> 
-     <span class="keyword">const</span> <span class="identifier">align_style</span> <span class="special">&amp;</span> align <span class="special">=</span> <span class="identifier">left_align</span><span class="special">,</span> 
-     <span class="keyword">const</span> <span class="identifier">rotate_style</span> <span class="special">&amp;</span> rotate <span class="special">=</span> <span class="identifier">horizontal</span><span class="special">)</span><span class="special">;</span></pre>
+<a name="id550138-bb"></a><span class="identifier">text</span><span class="special">(</span><span class="keyword">double</span> x <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> y <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> text <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
+     <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> textstyle <span class="special">=</span> <span class="identifier">no_text_style</span><span class="special">,</span> 
+     <span class="keyword">const</span> <span class="identifier">align_style</span> <span class="special">&amp;</span> align <span class="special">=</span> <span class="identifier">align_style</span><span class="special">::</span><span class="identifier">left_align</span><span class="special">,</span> 
+     <span class="keyword">const</span> <span class="keyword">int</span> rotate <span class="special">=</span> <span class="keyword">static_cast</span><span class="special">&lt;</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">(</span><span class="identifier">horizontal</span><span class="special">)</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Add a new text element. 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -485,13 +510,13 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created. </p></td>
+<td><p>A reference to the new child (leaf) node just created.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
 <pre class="literallayout"><a class="link" href="polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span> 
-<a name="id1069384-bb"></a><span class="identifier">triangle</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> <span class="keyword">double</span> y3<span class="special">,</span> 
+<a name="id550194-bb"></a><span class="identifier">triangle</span><span class="special">(</span><span class="keyword">double</span> x1<span class="special">,</span> <span class="keyword">double</span> y1<span class="special">,</span> <span class="keyword">double</span> x2<span class="special">,</span> <span class="keyword">double</span> y2<span class="special">,</span> <span class="keyword">double</span> x3<span class="special">,</span> <span class="keyword">double</span> y3<span class="special">,</span> 
          <span class="keyword">bool</span> f <span class="special">=</span> <span class="keyword">true</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Add a new triangle element. 
 </p>
@@ -502,45 +527,39 @@
 </colgroup>
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p>A reference to the new child node just created. </p></td>
+<td><p>A reference to the new child node just created.</p></td>
 </tr></tbody>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id1069445-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands. <p>Output all children of a group element.      Example:
-     &lt;g fill="rgb(255,255,255)" id="background"&gt;&lt;rect x="0" y="0" width="500" height="350"/&gt;&lt;/g&gt;</p>
-<p><br>
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id550263-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>Write function outputs appropriate SVG commands for a leaf or child element. <p>Output all children groups (leafs of tree) of a group element. Example:     &lt;g fill="rgb(255,255,255)" id="background"&gt;&lt;rect x="0" y="0" width="500" height="350"/&gt;&lt;/g&gt;</p>
+<p>Do not output anything if no child leafs to avoid useless output. Example:  &lt;g id="legendBackground"&gt; &lt;/g&gt;
 </p>
-<p>  Avoid useless output like: &lt;g id="legendBackground"&gt;&lt;/g&gt;
-  TODO check this doesn't mean that useful style is lost?
-</p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">void</span> <a name="id550270-bb"></a><span class="identifier">write_attributes</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>
+<p>Output group_element id and clip-path. Example: </p>
+<pre class="programlisting"><span class="special">&lt;</span><span class="identifier">clipPath</span> <span class="identifier">id</span><span class="special">=</span><span class="string">"plot_window"</span><span class="special">&gt;</span><span class="special">&lt;</span><span class="identifier">rect</span> <span class="identifier">x</span><span class="special">=</span><span class="string">"53.6"</span> <span class="identifier">y</span><span class="special">=</span><span class="string">"40.5"</span> <span class="identifier">width</span><span class="special">=</span><span class="string">"339"</span> <span class="identifier">height</span><span class="special">=</span><span class="string">"328"</span><span class="special">/</span><span class="special">&gt;</span><span class="special">&lt;</span><span class="special">/</span><span class="identifier">clipPath</span><span class="special">&gt;</span> 
+</pre>
+<p>Classes inherited from <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code> add other references, see section 5.3.1, like color, fill, stroke, gradients...</p>
 </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1662854"></a><h3>
-<a name="id1069494-bb"></a><code class="computeroutput">g_element</code> protected member functions</h3>
-<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id1069491-bb"></a><span class="identifier">write_attributes</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> s_out<span class="special">)</span><span class="special">;</span></pre>
-<p>Output group_element id and clip-path.</p>
-<p>Classes inherited from <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code> add other references, 5.3.1, like color, fill, stroke, gradients...</p>
-</li></ol></div>
-</div>
-<div class="refsect2">
-<a name="id1662931"></a><h3>
+<a name="id1218419"></a><h3>
 <a name="boost.svg.g_elementpublic-data-members"></a><code class="computeroutput">g_element</code> 
         public
        public data members</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="identifier">ptr_vector</span><span class="special">&lt;</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&gt;</span> <a name="boost.svg.g_element.children"></a><span class="identifier">children</span><span class="special">;</span></pre>
-<p>Children of this group element node, containg graphics elements like text, circle line, polyline... </p>
+<pre class="literallayout"><span class="identifier">ptr_vector</span><span class="special">&lt;</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&gt;</span> <a name="boost.svg.g_element.children_"></a><span class="identifier">children_</span><span class="special">;</span></pre>
+<p>Children of this group element node, containing graphics elements like text, rect, circle, line, path, polyline, group ... </p>
 </li></ol></div>
 </div>
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2007 to 2013 Jake Voytko and Paul A. Bristow<p>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -548,7 +567,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="ellipse_element.html"><img src="../../../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_tag_hpp.html"><img src="../../../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="h_path.html"><img src="../../../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="ellipse_element.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/svg_plot/detail/svg_elements_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="h_path.html"><img src="../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

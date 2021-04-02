@@ -94,8 +94,7 @@ svg& ellipse(double rx, double ry, double cx, double cy);
 svg& text(double x, double y, const std::string& text, int text_size,
 const std::string& font,
 const std::string& style, const std::string& weight,
-const std::string& stretch, const std::string& decoration,
-align_style align,  int rotate);
+const std::string& stretch, const std::string& decoration, align_style align,  int rotate);
 
 // Write image out to ostream and file:
 svg& write(std::ostream& s_out);
@@ -117,7 +116,7 @@ svg_style& stroke_color(const svg_color& col);
 svg_style& stroke_width(unsigned int width);
 // void svg_style::write(std::ostream& rhs);
 
-// svg_tag.hpp
+// svg_elements.hpp
 
 class svg_element; //svg_element is base class for
   // rect_element, circle_element, line_element, text_element, path_element, clip_path_element, g_element
@@ -127,7 +126,7 @@ svg_style& style();
 void id(const std::string& id);
 std::string id( );
 void clip_id(const std::string& id);
-enum align_style; // left_align, right_align, center_align
+enum class align_style; // left_align, right_align, center_align
 enum rotate_style; // Rotation in degrees from horizontal.
 //    horizontal = 0, // normal left to right.
 //    upward = -90, // vertical writing up.
@@ -157,7 +156,7 @@ struct t_path; // Draws a quadratic Bezier curve from the current point to (x,y)
 struct a_path; // Draws a elliptical arc from the current point to (x,y).
 class g_element; // 'g' element is a container element for grouping together related graphics elements.
 
-// Note don't try to use accent in Bezier - causes failure in autodoc .xml files - not UTF-8.
+// Note don't try to use accent in Bezier! - causes failure in autodoc .xml files - not UTF-8.
 
 // svg_1d_plot.hpp
 struct svg_plot_series;

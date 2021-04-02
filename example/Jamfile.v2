@@ -2,7 +2,10 @@
 
 # Runs SVG Plot examples.
 
-# Copyright 2009, 2012, 2014 Paul A. Bristow.
+# Paul@hetpD MINGW64 /i/boost/libs/svg_plot/example (develop)
+# $ b2 toolset=msvc,gcc,clang cxxstd=17 release > svg_plot_examples_msvc_gcc_clang_c++17_9sep2020.log    
+
+# Copyright 2009, 2012, 2014, 2020 Paul A. Bristow.
 
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE_1_0.txt
@@ -28,7 +31,7 @@ project
       #  GCC
       <toolset>gcc:<cxxflags>-w # Inhibit all warning messages.
       <toolset>gcc:<cxxflags>-Wno-missing-braces
-      <toolset>gcc:<cxxflags>-std=c++11
+      <toolset>gcc:<cxxflags>-std=c++14
       <toolset>gcc:<cxxflags>-Wno-reorder
       # Darwin
       #<toolset>darwin:<cxxflags>-Wno-missing-braces
@@ -36,9 +39,10 @@ project
       #<toolset>intel:<cxxflags>-Qwd264,239
       #  Clang
       #<toolset>clang:<cxxflags>-w # Inhibit all warning messages.
-      <toolset>clang:<cxxflags>-std=c++11
+      <toolset>clang:<cxxflags>-std=c++17
       <toolset>clang:<cxxflags>-Wno-reorder
       <toolset>clang:<cxxflags>-Wno-unused-variable
+      # <toolset>clang:<cxxflags>-Wno-delete-non-abstract-non-virtual-dtor #  virtual functions but non-virtual destructor (in
       #<toolset>clang:<link>static
       #  MSVC
       #<toolset>msvc:<link>static
@@ -53,7 +57,7 @@ project
      # needed for  boost/algorithm/minmax_element.hpp(103)
       #<toolset>msvc:<cxxflags>/wd4610 #
       #<toolset>msvc:<cxxflags>/wd4510 #
-      #<toolset>msvc:<cxxflags>/wd4701 #
+      <toolset>msvc:<cxxflags>/wd4702 # unreachable code (in triangular and uniform distribution).
       <toolset>msvc:<cxxflags>/wd4127 # Expression is constant.
       #<toolset>msvc:<cxxflags>/wd4305 #
       #<toolset>msvc:<cxxflags>/wd4503 # Decorated name length exceeded, name was truncated.
@@ -61,6 +65,8 @@ project
       <include>../../../ # boost-trunk
       #<include>../../../boost/quan/
     ;
+
+# 6 Feb 2020 Concentrate on 2D first.
 
 run 1d_full_layout.cpp ;
 run 1d_simple_style.cpp ;
@@ -91,9 +97,11 @@ run demo_1d_vector.cpp ; # Simple plot of vector of 1D data.
 run demo_1d_x_external.cpp ; #
 run demo_1d_heat_flow_data.cpp ; # demonstrate 1d and boxplot of NIST heatflow data.
 run demo_2d_autoscaling.cpp ;
+run demo_2d_autoscaling_vector.cpp ;
 run demo_2d_bars.cpp ; # Demonstrate the bars (& columns or sticks).
 run demo_2d_histogram.cpp ; #  Demonstrate drawing histogram.
 run demo_2d_limits.cpp ; #
+run demo_2d_legend_lines_markers.cpp ; # Demonstration of legend with combinations of markers, styles, lines.
 run demo_2d_lines.cpp ; # Demonstrate fit lines.
 run demo_2d_plot.cpp ; # Demonstration of some 2D plot features.
 run demo_2d_simple.cpp ; # Demonstration of some simple 2D plot features.
@@ -112,11 +120,11 @@ run demo_svg_tspan.cpp ; # Demonstration of tspan commands.
 run svg_colors.cpp ;
 run svg_test.cpp ;
 run svg_test_boxplot.cpp ;
-#run demo_fp_compare.cpp ;  #
+run demo_fp_compare.cpp ;  #
 
-#run test_1d_color_consistency.cpp ;
-#run test_legend_place.cpp ;
-#run test_quantiles.cpp ;
+# run test_1d_color_consistency.cpp ; # all missing?
+# run test_legend_place.cpp ;
+# run test_quantiles.cpp ;
 #run test_axis_labels.cpp ;
 #run test_axis_scaling.cpp ;
 #run test_axis_scaling2.cpp ;

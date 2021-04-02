@@ -13,28 +13,127 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
 <!-- File ./demo_1d_deque_double.svg --> 
-<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="200"/></g>
-<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="11" y="56" width="478" height="100"/></g>
-<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
-<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="250" y1="56" x2="250" y2="156"/><line x1="11" y1="109" x2="489" y2="109"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M260,109 L260,111 M269,109 L269,111 M279,109 L279,111 M288,109 L288,111 M307,109 L307,111 M317,109 L317,111 M326,109 L326,111 M336,109 L336,111 M355,109 L355,111 M365,109 L365,111 M374,109 L374,111 M384,109 L384,111 M403,109 L403,111 M413,109 L413,111 M422,109 L422,111 M432,109 L432,111 M451,109 L451,111 M460,109 L460,111 M470,109 L470,111 M479,109 L479,111 M240,109 L240,111 M231,109 L231,111 M221,109 L221,111 M212,109 L212,111 M193,109 L193,111 M183,109 L183,111 M174,109 L174,111 M164,109 L164,111 M145,109 L145,111 M135,109 L135,111 M126,109 L126,111 M116,109 L116,111 M97,109 L97,111 M87.5,109 L87.5,111 M77.9,109 L77.9,111 M68.4,109 L68.4,111 M49.2,109 L49.2,111 M39.7,109 L39.7,111 M30.1,109 L30.1,111 M20.6,109 L20.6,111 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M250,109 L250,114 M298,109 L298,114 M346,109 L346,114 M393,109 L393,114 M441,109 L441,114 M489,109 L489,114 M250,109 L250,114 M202,109 L202,114 M154,109 L154,114 M107,109 L107,114 M58.8,109 L58.8,114 M11,109 L11,114 " fill="none"/></g>
-<g id="xTicksValues">
-<text x="298" y="129" text-anchor="middle" font-size="12" font-family="Verdana">2</text>
-<text x="346" y="129" text-anchor="middle" font-size="12" font-family="Verdana">4</text>
-<text x="393" y="129" text-anchor="middle" font-size="12" font-family="Verdana">6</text>
-<text x="441" y="129" text-anchor="middle" font-size="12" font-family="Verdana">8</text>
-<text x="489" y="129" text-anchor="middle" font-size="12" font-family="Verdana">10</text>
-<text x="202" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-2</text>
-<text x="154" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-4</text>
-<text x="107" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-6</text>
-<text x="58.8" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-8</text>
-<text x="11" y="129" text-anchor="middle" font-size="12" font-family="Verdana">-10</text></g>
-<g id="xLabel">
-<text x="250" y="180" text-anchor="middle" font-size="14" font-family="Verdana">X values as doubles</text></g>
-<g id="plotPoints"><g stroke="rgb(0,0,0)"><line x1="436" y1="111" x2="436" y2="101"/><line x1="384" y1="111" x2="384" y2="101"/><line x1="252" y1="111" x2="252" y2="101"/><line x1="195" y1="111" x2="195" y2="101"/><line x1="49.2" y1="111" x2="49.2" y2="101"/></g>
+
+<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
+	<rect x="0" y="0" width="500" height="200"/>
 </g>
+
+<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
+	<rect x="21" y="42.5" width="458" height="129"/>
+</g>
+
+<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+</g>
+
+<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+</g>
+
+<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
+	<line x1="250" y1="42.5" x2="250" y2="172"/>
+	<line x1="21" y1="110" x2="479" y2="110"/>
+</g>
+
+<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<path d="M259,110 L259,112 
+M268,110 L268,112 
+M277,110 L277,112 
+M287,110 L287,112 
+M305,110 L305,112 
+M314,110 L314,112 
+M323,110 L323,112 
+M332,110 L332,112 
+M351,110 L351,112 
+M360,110 L360,112 
+M369,110 L369,112 
+M378,110 L378,112 
+M397,110 L397,112 
+M406,110 L406,112 
+M415,110 L415,112 
+M424,110 L424,112 
+M442,110 L442,112 
+M452,110 L452,112 
+M461,110 L461,112 
+M470,110 L470,112 
+M241,110 L241,112 
+M232,110 L232,112 
+M223,110 L223,112 
+M213,110 L213,112 
+M195,110 L195,112 
+M186,110 L186,112 
+M177,110 L177,112 
+M168,110 L168,112 
+M149,110 L149,112 
+M140,110 L140,112 
+M131,110 L131,112 
+M122,110 L122,112 
+M103,110 L103,112 
+M94.3,110 L94.3,112 
+M85.1,110 L85.1,112 
+M76,110 L76,112 
+M57.6,110 L57.6,112 
+M48.5,110 L48.5,112 
+M39.3,110 L39.3,112 
+M30.2,110 L30.2,112 
+" fill="none"/>
+</g>
+
+<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<path d="M250,110 L250,115 
+M296,110 L296,115 
+M342,110 L342,115 
+M387,110 L387,115 
+M433,110 L433,115 
+M479,110 L479,115 
+M250,110 L250,115 
+M204,110 L204,115 
+M158,110 L158,115 
+M113,110 L113,115 
+M66.8,110 L66.8,115 
+M21,110 L21,115 
+" fill="none"/>
+</g>
+
+<g id="xTicksValues">
+	<text x="296" y="128" text-anchor="middle" font-size="10" font-family="Verdana">2
+	</text>
+	<text x="342" y="128" text-anchor="middle" font-size="10" font-family="Verdana">4
+	</text>
+	<text x="387" y="128" text-anchor="middle" font-size="10" font-family="Verdana">6
+	</text>
+	<text x="433" y="128" text-anchor="middle" font-size="10" font-family="Verdana">8
+	</text>
+	<text x="479" y="128" text-anchor="middle" font-size="10" font-family="Verdana">10
+	</text>
+	<text x="204" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-2
+	</text>
+	<text x="158" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-4
+	</text>
+	<text x="113" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-6
+	</text>
+	<text x="66.8" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-8
+	</text>
+	<text x="21" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-10
+	</text>
+</g>
+
+<g id="xLabel">
+	<text x="250" y="189" text-anchor="middle" font-size="10" font-family="Verdana">X values as doubles
+	</text>
+</g>
+
+<g id="plotPoints">
+
+<g stroke="rgb(0,0,0)">
+	<line x1="429" y1="109" x2="429" y2="99"/>
+	<line x1="378" y1="109" x2="378" y2="99"/>
+	<line x1="252" y1="109" x2="252" y2="99"/>
+	<line x1="197" y1="109" x2="197" y2="99"/>
+	<line x1="57.6" y1="109" x2="57.6" y2="99"/>
+</g>
+</g>
+
 <g id="title">
-<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">deque&lt;double&gt; example</text></g>
+	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">deque&lt;double&gt; example
+	</text>
+</g>
 </svg>
