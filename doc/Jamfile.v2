@@ -70,8 +70,7 @@ doxygen autodoc
     [ glob ../../../boost/svg_plot/*.*pp ]
     [ glob ../../../boost/quan/*.hpp ]
     [ glob ../../../boost/svg_plot/detail/*.hpp ]
- #   [ glob ../../../boost/svg_plot/detail/axis_plot_frame.hpp ]
-    [ glob ../../../boost/svg_plot/detail/*.hpp ]
+    [ glob ../../../boost/svg_plot/detail/axis_plot_frame.hpp ]
   :
     #<doxygen:param>INPUT="filename1 directoryname2" # Separate with spaces.
     # But also see paths specified above.

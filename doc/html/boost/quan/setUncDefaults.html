@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Function setUncDefaults</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../header/boost/quan/unc_hpp.html" title="Header &lt;boost/quan/unc.hpp&gt;">
+<link rel="prev" href="setsigdigits.html" title="Function setsigdigits">
+<link rel="next" href="setuncsigdigits.html" title="Function setuncsigdigits">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="setsigdigits.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/unc_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="setuncsigdigits.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.quan.setUncDefaults"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Function setUncDefaults</span></h2>
+<p>boost::quan::setUncDefaults — Random id value bracketing the various uncertain class display attributes. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/quan/unc_hpp.html" title="Header &lt;boost/quan/unc.hpp&gt;">boost/quan/unc.hpp</a>&gt;
+
+</span>
+<span class="keyword">void</span> <span class="identifier">setUncDefaults</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ios_base</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id1176599"></a><h2>Description</h2>
+<p>Set 16 default flag bit values for uncertain output flags. Usage:</p>
+<pre class="programlisting"><span class="identifier">setUncDefaults</span><span class="special">(</span><span class="identifier">cout</span><span class="special">)</span><span class="special">;</span> 
+</pre>
+<p> </p>
+<div class="warning"><table border="0" summary="Warning">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../images/warning.png"></td>
+<th align="left">Warning</th>
+</tr>
+<tr><td align="left" valign="top"><p><code class="computeroutput">setUncDefaults()</code> MUST be called before using a stream.</p></td></tr>
+</table></div>
+<p>
+Default iword(*) values are all zero - these are not usable. Function <code class="computeroutput">setUncDefaults()</code> sets some defaults Can set individual value, for example, for 3 sig Digits, os.iword(sigDigitsIndex) = 3; </p>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>Index values must have been initialised by xalloc calls. </p></td></tr>
+</table></div>
+<p>
+</p>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>Might be best to make <code class="computeroutput">setUncDefaults</code> also set <code class="computeroutput">std::ios_base</code> defaults with <code class="computeroutput">setiosDefaults(ostream&amp;)</code>;?<br>
+</p></td></tr>
+</table></div>
+<p>
+</p>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="setsigdigits.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/unc_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="setuncsigdigits.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

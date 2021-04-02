@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Header &lt;boost/quan/pair_io.hpp&gt;</title>
+<link rel="stylesheet" href="../../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="../../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../../boost_svg_plot_c___reference.html" title="Boost.SVG plot C++ Reference">
+<link rel="prev" href="../../../boost/quan/values_of_id535095.html" title="Function template values_of">
+<link rel="next" href="rounding_hpp.html" title="Header &lt;boost/quan/rounding.hpp&gt;">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../../.././images/proposed_for_boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../../boost/quan/values_of_id535095.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../boost_svg_plot_c___reference.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="rounding_hpp.html"><img src="../../../images/next.png" alt="Next"></a>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.quan.pair_io_hpp"></a>Header &lt;<a href="../../../../../../../boost/quan/pair_io.hpp" target="_top">boost/quan/pair_io.hpp</a>&gt;</h3></div></div></div>
+<p>Provide operator&lt;&lt; to output pair, surrounded by &lt; &gt; and separated by comma, for example: "&lt;1.23, 4.56&gt;". Typically used to show confidence intervals around a mean. </p>
+<p>Polite to keep this a private detail namespace to avoid clash with other implementations! </p>
+<p>Paul A. Bristow </p>
+<p>
+
+</p>
+<p>Oct 2009, 2012, 2021 </p>
+<p>
+
+</p>
+<pre class="synopsis">
+
+<span class="comment">// Output pair, separated by comma &amp; space, enclosed by &lt;&gt; and separated by comma &amp; space. </span>
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> charT<span class="special">,</span> <span class="keyword">typename</span> traits<span class="special">&gt;</span> 
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_ostream</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span> 
+  <a name="operator_id535144"></a><span class="keyword">operator</span><span class="special">&lt;&lt;</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_ostream</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span> os<span class="special">,</span> 
+             <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">&gt;</span> <span class="special">&amp;</span> p<span class="special">)</span><span class="special">;</span>
+
+<span class="comment">// Output both items of a pair of items (not necessarily the same type), enclosed by &lt;&gt; and separated by comma &amp; space. </span>
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> charT<span class="special">,</span> <span class="keyword">typename</span> traits<span class="special">,</span> <span class="keyword">typename</span> T1<span class="special">,</span> <span class="keyword">typename</span> T2<span class="special">&gt;</span> 
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_ostream</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span> 
+  <a name="operator_id535191"></a><span class="keyword">operator</span><span class="special">&lt;&lt;</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_ostream</span><span class="special">&lt;</span> <span class="identifier">charT</span><span class="special">,</span> <span class="identifier">traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span> os<span class="special">,</span> 
+             <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="identifier">T1</span><span class="special">,</span> <span class="identifier">T2</span> <span class="special">&gt;</span> <span class="special">&amp;</span> p<span class="special">)</span><span class="special">;</span></pre>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../../boost/quan/values_of_id535095.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../boost_svg_plot_c___reference.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="rounding_hpp.html"><img src="../../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

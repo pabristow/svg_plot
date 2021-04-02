@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Header &lt;boost/quan/si_units.hpp&gt;</title>
+<link rel="stylesheet" href="../../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="../../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../../boost_svg_plot_c___reference.html" title="Boost.SVG plot C++ Reference">
+<link rel="prev" href="../../../boost/quan/rounded_div_value.html" title="Function rounded_div_value">
+<link rel="next" href="../../../unit.html" title="Struct unit">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../../.././images/proposed_for_boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../../boost/quan/rounded_div_value.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../boost_svg_plot_c___reference.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="../../../unit.html"><img src="../../../images/next.png" alt="Next"></a>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.quan.si_units_hpp"></a>Header &lt;<a href="../../../../../../../boost/quan/si_units.hpp" target="_top">boost/quan/si_units.hpp</a>&gt;</h3></div></div></div>
+<p>SI Unit, names and abbreviations &amp; conversion factors. </p>
+<p>See NIST 811 Special publication, Barry N Taylor (1995) "Guide for the Use of the International System of Units (SI) &amp; ISO 31, a closely aligned document. NIST version contains more on non-SI units and many useful notes. </p>
+<pre class="synopsis">
+<span class="keyword">struct</span> <a class="link" href="../../../unit.html" title="Struct unit">unit</a><span class="special">;</span>
+<span class="keyword">const</span> <a class="link" href="../../../unit.html" title="Struct unit">unit</a> <span class="special">&amp;</span> 
+<a name="findAnyUnit"></a><span class="identifier">findAnyUnit</span><span class="special">(</span><span class="keyword">const</span> string<span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+<span class="keyword">unsigned</span> <span class="keyword">int</span> 
+<a name="findUnit"></a><span class="identifier">findUnit</span><span class="special">(</span><span class="keyword">const</span> string<span class="special">,</span> <span class="keyword">const</span> <a class="link" href="../../../unit.html" title="Struct unit">unit</a> <span class="special">*</span><span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+<span class="keyword">void</span> <a name="showAllNonSIunits"></a><span class="identifier">showAllNonSIunits</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="../../../unit.html" title="Struct unit">unit</a> <span class="special">*</span><span class="special">,</span> <span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+<span class="keyword">void</span> <a name="showAllUnits"></a><span class="identifier">showAllUnits</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="../../../unit.html" title="Struct unit">unit</a> <span class="special">*</span><span class="special">,</span> <span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+<span class="keyword">void</span> <a name="showNonSIunits"></a><span class="identifier">showNonSIunits</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="../../../unit.html" title="Struct unit">unit</a> <span class="special">*</span><span class="special">,</span> <span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+<span class="keyword">void</span> <a name="showSIunit"></a><span class="identifier">showSIunit</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="../../../unit.html" title="Struct unit">unit</a> <span class="special">*</span><span class="special">,</span> <span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+<span class="keyword">void</span> <a name="showSIunits"></a><span class="identifier">showSIunits</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="../../../unit.html" title="Struct unit">unit</a> <span class="special">*</span><span class="special">,</span> <span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../../boost/quan/rounded_div_value.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../boost_svg_plot_c___reference.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="../../../unit.html"><img src="../../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

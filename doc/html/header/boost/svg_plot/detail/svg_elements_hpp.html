@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Header &lt;boost/svg_plot/detail/svg_elements.hpp&gt;</title>
+<link rel="stylesheet" href="../../../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="../../../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../../../boost_svg_plot_c___reference.html" title="Boost.SVG plot C++ Reference">
+<link rel="prev" href="../../../../boost/svg/boxplot/document_ids_.html" title="Global document_ids_">
+<link rel="next" href="../../../../boost/svg/a_path.html" title="Struct a_path">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../../../.././images/proposed_for_boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../../../boost/svg/boxplot/document_ids_.html"><img src="../../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../../boost_svg_plot_c___reference.html"><img src="../../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../../../index.html"><img src="../../../../images/home.png" alt="Home"></a><a accesskey="n" href="../../../../boost/svg/a_path.html"><img src="../../../../images/next.png" alt="Next"></a>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.svg_plot.detail.svg_elements_hpp"></a>Header &lt;<a href="../../../../../../../../boost/svg_plot/detail/svg_elements.hpp" target="_top">boost/svg_plot/detail/svg_elements.hpp</a>&gt;</h3></div></div></div>
+<p>Boost.Plot SVG plot Implementation details. </p>
+<p>See svg.hpp etc for user functions. svg_elements.hpp defines all classes that can occur in the SVG parse tree. </p>
+<pre class="synopsis"><span class="keyword">namespace</span> <span class="identifier">boost</span> <span class="special">{</span>
+  <span class="keyword">namespace</span> <span class="identifier">svg</span> <span class="special">{</span>
+    <span class="keyword">struct</span> <a class="link" href="../../../../boost/svg/a_path.html" title="Struct a_path">a_path</a><span class="special">;</span>
+    <span class="keyword">struct</span> <a class="link" href="../../../../boost/svg/c_path.html" title="Struct c_path">c_path</a><span class="special">;</span>
+
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/circle_element.html" title="Class circle_element">circle_element</a><span class="special">;</span>
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/clip_path_element.html" title="Class clip_path_element">clip_path_element</a><span class="special">;</span>
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/ellipse_element.html" title="Class ellipse_element">ellipse_element</a><span class="special">;</span>
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/g_element.html" title="Class g_element">g_element</a><span class="special">;</span>
+
+    <span class="keyword">struct</span> <a class="link" href="../../../../boost/svg/h_path.html" title="Struct h_path">h_path</a><span class="special">;</span>
+    <span class="keyword">struct</span> <a class="link" href="../../../../boost/svg/l_path.html" title="Struct l_path">l_path</a><span class="special">;</span>
+
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/line_element.html" title="Class line_element">line_element</a><span class="special">;</span>
+
+    <span class="keyword">struct</span> <a class="link" href="../../../../boost/svg/m_path.html" title="Struct m_path">m_path</a><span class="special">;</span>
+
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/path_element.html" title="Class path_element">path_element</a><span class="special">;</span>
+
+    <span class="keyword">struct</span> <a class="link" href="../../../../boost/svg/path_point.html" title="Struct path_point">path_point</a><span class="special">;</span>
+    <span class="keyword">struct</span> <a class="link" href="../../../../boost/svg/poly_path_point.html" title="Struct poly_path_point">poly_path_point</a><span class="special">;</span>
+    <span class="keyword">struct</span> <a class="link" href="../../../../boost/svg/polygon_element.html" title="Struct polygon_element">polygon_element</a><span class="special">;</span>
+
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/polyline_element.html" title="Class polyline_element">polyline_element</a><span class="special">;</span>
+
+    <span class="keyword">struct</span> <a class="link" href="../../../../boost/svg/q_path.html" title="Struct q_path">q_path</a><span class="special">;</span>
+
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/qurve_element.html" title="Class qurve_element">qurve_element</a><span class="special">;</span>
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/rect_element.html" title="Class rect_element">rect_element</a><span class="special">;</span>
+
+    <span class="keyword">struct</span> <a class="link" href="../../../../boost/svg/s_path.html" title="Struct s_path">s_path</a><span class="special">;</span>
+
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/svg_element.html" title="Class svg_element">svg_element</a><span class="special">;</span>
+
+    <span class="keyword">struct</span> <a class="link" href="../../../../boost/svg/t_path.html" title="Struct t_path">t_path</a><span class="special">;</span>
+
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/text_element.html" title="Class text_element">text_element</a><span class="special">;</span>
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/text_element_text.html" title="Class text_element_text">text_element_text</a><span class="special">;</span>
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/text_parent.html" title="Class text_parent">text_parent</a><span class="special">;</span>
+    <span class="keyword">class</span> <a class="link" href="../../../../boost/svg/tspan_element.html" title="Class tspan_element">tspan_element</a><span class="special">;</span>
+
+    <span class="keyword">struct</span> <a class="link" href="../../../../boost/svg/v_path.html" title="Struct v_path">v_path</a><span class="special">;</span>
+    <span class="keyword">struct</span> <a class="link" href="../../../../boost/svg/z_path.html" title="Struct z_path">z_path</a><span class="special">;</span>
+    <span class="keyword">bool</span> <a class="link" href="../../../../boost/svg/operator___id560677.html" title="Function operator!="><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="../../../../boost/svg/rect_element.html" title="Class rect_element">rect_element</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="../../../../boost/svg/rect_element.html" title="Class rect_element">rect_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="../../../../boost/svg/operator_id560745.html" title="Function operator&lt;&lt;"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="../../../../boost/svg/circle_element.html" title="Class circle_element">circle_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="../../../../boost/svg/operator_id560759.html" title="Function operator&lt;&lt;"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="../../../../boost/svg/line_element.html" title="Class line_element">line_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="../../../../boost/svg/operator_id560802.html" title="Function operator&lt;&lt;"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="../../../../boost/svg/poly_path_point.html" title="Struct poly_path_point">poly_path_point</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="../../../../boost/svg/operator_id558563.html" title="Function operator&lt;&lt;"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="../../../../boost/svg/rect_element.html" title="Class rect_element">rect_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="../../../../boost/svg/operator_id558609.html" title="Function operator&lt;&lt;"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="../../../../boost/svg/tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="../../../../boost/svg/operator_id558605.html" title="Function operator&lt;&lt;"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <a class="link" href="../../../../boost/svg/polygon_element.html" title="Struct polygon_element">polygon_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="../../../../boost/svg/operator_id558649.html" title="Function operator&lt;&lt;"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <a class="link" href="../../../../boost/svg/polyline_element.html" title="Class polyline_element">polyline_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="../../../../boost/svg/operator_id560907.html" title="Function operator&lt;&lt;"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <a class="link" href="../../../../boost/svg/text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> <a class="link" href="../../../../boost/svg/operator_id560888.html" title="Function operator&lt;&lt;"><span class="keyword">operator</span><span class="special">&lt;&lt;</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">,</span> <a class="link" href="../../../../boost/svg/text_element_text.html" title="Class text_element_text">text_element_text</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <span class="keyword">bool</span> <a class="link" href="../../../../boost/svg/operator___id560956.html" title="Function operator=="><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="../../../../boost/svg/rect_element.html" title="Class rect_element">rect_element</a> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="../../../../boost/svg/rect_element.html" title="Class rect_element">rect_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="special">}</span>
+<span class="special">}</span></pre>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../../../boost/svg/boxplot/document_ids_.html"><img src="../../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../../../boost_svg_plot_c___reference.html"><img src="../../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../../../index.html"><img src="../../../../images/home.png" alt="Home"></a><a accesskey="n" href="../../../../boost/svg/a_path.html"><img src="../../../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

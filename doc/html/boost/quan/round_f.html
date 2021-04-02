@@ -1,0 +1,106 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Function template round_f</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="../../index.html" title="Plotting Graphs in SVG format.">
+<link rel="up" href="../../header/boost/quan/rounding_hpp.html" title="Header &lt;boost/quan/rounding.hpp&gt;">
+<link rel="prev" href="round_e.html" title="Function template round_e">
+<link rel="next" href="round_m.html" title="Function round_m">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="../.././images/proposed_for_boost.png"></td></tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="round_e.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/rounding_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="round_m.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+<div class="refentry">
+<a name="boost.quan.round_f"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Function template round_f</span></h2>
+<p>boost::quan::round_f — Round floating-point value <code class="computeroutput">v</code> (fixed, not-exponential) to <code class="computeroutput">sigdigits</code> significant digits. This is variously called 'common rounding', 'round_5_up' or 'proper' rounding. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../header/boost/quan/rounding_hpp.html" title="Header &lt;boost/quan/rounding.hpp&gt;">boost/quan/rounding.hpp</a>&gt;
+
+</span>
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> FPT<span class="special">&gt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">round_f</span><span class="special">(</span><span class="identifier">FPT</span> v<span class="special">,</span> <span class="keyword">int</span> sigdigits<span class="special">)</span><span class="special">;</span></pre></div>
+<div class="refsect1">
+<a name="id1135810"></a><h2>Description</h2>
+<p>Gejza Wimmer, Viktor Witkovsky, Tomas Duby<br>
+ Measurement Science and Technology, 11 (2000) 1659-1665. ISSN 0957-0233 S0957-233(00)13838-X<br>
+ Proper rounding of the measurement results under normality assumptions.<br>
+ Uncertainty of measurement – Part 3: Guide to the expression of uncertainty in measurement (GUM:1995)<br>
+ ISO Guide 98 (1995) and updated version 2008.</p>
+<p>
+
+</p>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>All these functions are templated on floating-point type and are not intended to be called (and thus instantiated) for integral (or other) types. This is because the value will not be output in scientific format, assumed by the code. A check is_floating_point == true is provided. </p></td></tr>
+</table></div>
+<p>
+</p>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>C++0X provides <code class="computeroutput">std::numeric_limits&lt;double&gt;::max_digits10</code>; which is maximum number of possibly significant digits, but only <code class="computeroutput">digit10</code> are guaranteed to be significant, so limit <code class="computeroutput">sigdigits</code> to <code class="computeroutput">digits10</code> (15 for IEEE 64-bit double).</p></td></tr>
+</table></div>
+<p>
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"></ul></div>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term">Parameters:</span></p></td>
+<td><div class="variablelist"><table border="0" class="variablelist compact">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><code class="computeroutput">sigdigits</code></span></p></td>
+<td><p>Number of significant digits after rounding. </p></td>
+</tr>
+<tr>
+<td><p><span class="term"><code class="computeroutput">v</code></span></p></td>
+<td><p>Value to be converted to a decimal digit string, rounded to sigdigits significant digits. </p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p><code class="computeroutput">std::string</code> containing decimal digit string, properly decimally rounded.</p></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright © 2007 to 2021 Jake Voytko and Paul A. Bristow<p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="round_e.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../header/boost/quan/rounding_hpp.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="round_m.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>
