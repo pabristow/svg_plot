@@ -13,7 +13,7 @@ The SVG_plot project was originally written by Jake Voytko in 2007 as a Boost-sp
 
 Version 2 adds representation of uncertainty estimates as numbers and zones and allows far more control of font sizes and appearance controls.
 
-***The develop branch is under major revision (Sep 2020) and is not yet usable.***
+***The develop branch is obselete, and the main branch and documentation is under major revision (Apr 2021) and is not yet usable.***
 
 [Boost License](http://www.boost.org/LICENSE_1_0.txt).
 
