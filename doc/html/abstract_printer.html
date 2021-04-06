@@ -31,32 +31,32 @@
   <span class="keyword">typedef</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">type_erasure</span><span class="special">::</span><span class="identifier">any</span><span class="special">&lt;</span> <span class="identifier">requirements</span><span class="special">,</span> <a class="link" href="_iter.html" title="Struct _iter">_iter</a> <span class="special">&gt;</span> <a name="abstract_printer.iterator_type"></a><span class="identifier">iterator_type</span><span class="special">;</span>
 
   <span class="comment">// <a class="link" href="abstract_printer.html#abstract_printerconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="abstract_printer.html#id536969-bb"><span class="special">~</span><span class="identifier">abstract_printer</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="abstract_printer.html#id531107-bb"><span class="special">~</span><span class="identifier">abstract_printer</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="abstract_printer.html#id536881-bb">public member functions</a></span>
+  <span class="comment">// <a class="link" href="abstract_printer.html#id531047-bb">public member functions</a></span>
   <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Range<span class="special">,</span> <span class="keyword">typename</span> CharT<span class="special">,</span> <span class="keyword">typename</span> Traits<span class="special">&gt;</span> 
-    <span class="keyword">void</span> <a class="link" href="abstract_printer.html#id536880-bb"><span class="identifier">print</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">Range</span> <span class="special">&amp;</span><span class="special">,</span> 
+    <span class="keyword">void</span> <a class="link" href="abstract_printer.html#id531041-bb"><span class="identifier">print</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">Range</span> <span class="special">&amp;</span><span class="special">,</span> 
                <span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_ostream</span><span class="special">&lt;</span> <span class="identifier">CharT</span><span class="special">,</span> <span class="identifier">Traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="abstract_printer.html#id536940-bb">protected member functions</a></span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="abstract_printer.html#id536941-bb"><span class="identifier">do_print</span></a><span class="special">(</span><span class="identifier">iterator_type</span><span class="special">,</span> <span class="identifier">iterator_type</span><span class="special">,</span> <span class="identifier">ostream_type</span><span class="special">)</span> <span class="keyword">const</span> <span class="special">=</span> <span class="number">0</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="abstract_printer.html#id531098-bb">protected member functions</a></span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="abstract_printer.html#id531104-bb"><span class="identifier">do_print</span></a><span class="special">(</span><span class="identifier">iterator_type</span><span class="special">,</span> <span class="identifier">iterator_type</span><span class="special">,</span> <span class="identifier">ostream_type</span><span class="special">)</span> <span class="keyword">const</span> <span class="special">=</span> <span class="number">0</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1137992"></a><h2>Description</h2>
+<a name="id1145660"></a><h2>Description</h2>
 <p>An abstract sequence printer - a 'template' that is inherited to implement the examples of actual printers defined below. </p>
 <div class="refsect2">
-<a name="id1138000"></a><h3>
+<a name="id1145671"></a><h3>
 <a name="abstract_printerconstruct-copy-destruct"></a><code class="computeroutput">abstract_printer</code> 
         public
        construct/copy/destruct</h3>
-<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><pre class="literallayout"><a name="id536969-bb"></a><span class="special">~</span><span class="identifier">abstract_printer</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></li></ol></div>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><pre class="literallayout"><a name="id531107-bb"></a><span class="special">~</span><span class="identifier">abstract_printer</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1142325"></a><h3>
-<a name="id536881-bb"></a><code class="computeroutput">abstract_printer</code> public member functions</h3>
+<a name="id1145710"></a><h3>
+<a name="id531047-bb"></a><code class="computeroutput">abstract_printer</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
 <pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Range<span class="special">,</span> <span class="keyword">typename</span> CharT<span class="special">,</span> <span class="keyword">typename</span> Traits<span class="special">&gt;</span> 
-  <span class="keyword">void</span> <a name="id536880-bb"></a><span class="identifier">print</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">Range</span> <span class="special">&amp;</span> r<span class="special">,</span> 
+  <span class="keyword">void</span> <a name="id531041-bb"></a><span class="identifier">print</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">Range</span> <span class="special">&amp;</span> r<span class="special">,</span> 
              <span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_ostream</span><span class="special">&lt;</span> <span class="identifier">CharT</span><span class="special">,</span> <span class="identifier">Traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span> os <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 
@@ -104,11 +104,11 @@
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1142575"></a><h3>
-<a name="id536940-bb"></a><code class="computeroutput">abstract_printer</code> protected member functions</h3>
+<a name="id1145885"></a><h3>
+<a name="id531098-bb"></a><code class="computeroutput">abstract_printer</code> protected member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
 <pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> 
-<a name="id536941-bb"></a><span class="identifier">do_print</span><span class="special">(</span><span class="identifier">iterator_type</span> first<span class="special">,</span> <span class="identifier">iterator_type</span> last<span class="special">,</span> <span class="identifier">ostream_type</span> os<span class="special">)</span> <span class="keyword">const</span> <span class="special">=</span> <span class="number">0</span><span class="special">;</span></pre>Declare the pure virtual function <code class="computeroutput">do_print</code> that is defined in all real printers. </li></ol></div>
+<a name="id531104-bb"></a><span class="identifier">do_print</span><span class="special">(</span><span class="identifier">iterator_type</span> first<span class="special">,</span> <span class="identifier">iterator_type</span> last<span class="special">,</span> <span class="identifier">ostream_type</span> os<span class="special">)</span> <span class="keyword">const</span> <span class="special">=</span> <span class="number">0</span><span class="special">;</span></pre>Declare the pure virtual function <code class="computeroutput">do_print</code> that is defined in all real printers. </li></ol></div>
 </div>
 </div>
 </div>

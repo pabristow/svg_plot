@@ -13,17 +13,16 @@ often producing examples of outstandingly bad taste!
 is in error, please check the TODO page first, as well as the rationale section.
 
 If you do not find your idea/complaint, please reach me by email me direct at pbristow (at) hetp (dot) u-net (dot) com,
-or better by posting a Github issue at __svg_plot_github.
+or better by posting a Github issue at __svg_plot_github_doc or __quan_github_doc (for Uncertainty issues).
 
-[heading Admonishments]
+[heading:admons Admonishments]
 
 [note These blocks typically go into more detail about an explanation given above.]
 
-[tip These blocks contain information that you may find helpful while coding.]
+[tip These blocks contain tips that you will often find helpful while coding.]
 
 [important These contain information that is imperative to understanding a concept.
-Failure to follow suggestions in these blocks will probably result in undesired behavior.
-Read all of these you find.]
+Failure to follow suggestions in these blocks will probably result in undesired behavior.]
 
 [warning It is imperative that you follow these. Failure to do so will lead to
 incorrect, and very likely undesired, results in the plot.]

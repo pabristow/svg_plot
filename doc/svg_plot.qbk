@@ -49,8 +49,10 @@
 the code is functional, but interfaces, library structure, and function and distribution names
 may still be changed without notice.]
 
-[def __svg_plot_doc [@https://pabristow.github.io/svg_plot SVG_plot library documentation]]  
-[def __svg_plot_github [@https://pabristow.github/svg_plot SVG_plot library at GitHub]]  
+[def __svg_plot_github_doc [@https://pabristow.github.io/svg_plot/doc/html/index.html  SVG_plot library documentation]]  
+[def __svg_plot_github [@https://github.com/pabristow/svg_plot SVG_plot library at GitHub]]  
+[def __quan_github [@https://github.com/pabristow/quan   Quan uncertain classes library at Github]]
+[def __quan_github_doc [@https://pabristow.github.io/quan/doc/html/index.html  Quan uncertain classes library documentation]]
 
 [def __Unicode_widths [@https://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c Markus Kuhn. An implementation of `wcwidth()` and `wcswidth()` for Unicode.]]
 
@@ -91,17 +93,17 @@ You may wish to associate Firefox with SVG files (or perhaps Inkscape - see belo
 
 * [@https://microsoftedgewelcome.microsoft.com/en-gb/ Microsoft Edge browser].
 
-* Microsoft Internet Explorer IE11 is acceptable.
-Earlier versions of Microsoft Internet Explorer can adequately render SVG files provided a suitable
+* Microsoft Internet Explorer IE11 is just usable to adequately render SVG files provided a suitable
 [@http://www.adobe.com/svg/ Adobe SVG Viewer plug-in for SVG files] is installed.
 (Adobe have stopped offering this for download (as they warned years ago)
 but the download software can still be obtained elsewhere, for example from
-[@http://adobe-svg-viewer.software.informer.com/download/ software.informer].
+[@https://adobe-svg-viewer.informer.com/download/software.informer].
 Information about limitations of IE with Vista and the Adobe add-in are given on the
 [@http://www.adobe.com/svg/viewer/install/main.html Adobe End of Line FAQ]).
-But since there are many other browsers that better support SVG, using IE is second best. 
+But since there are many other browsers and apps that better support SVG, 
+using IE with [@http://www.adobe.com/svg/ Adobe SVG-viewer] is the worst choice. 
 
-* [@https://en.wikipedia.org/wiki/Microsoft_Edge Microsoft Edge] is based on the Chrome engine 
+* [@https://en.wikipedia.org/wiki/Microsoft_Edge Microsoft Edge] is based on the Chrome browser engine 
 and so has SVG support similar to Google Chrome.
 
 * __inkscape, a fine Open Source SVG editor/viewer
@@ -122,10 +124,11 @@ The goals of the project are:
 
 * To let users produce simple plots with minimal intervention by using sane defaults.
 * To allow users to easily customize plots but allow very fine-grained control of appearance.
-* To provide very high quality plots directly suitable for publication, including printing, but with tiny file sizes.
+* To provide very high quality colored plots directly suitable for publication, including printing, but with tiny file sizes.
 * To produce and transfer plots quickly enough to be useful in real-time, taking advantage of the high compressibility of SVG.
 * To represent uncertainty visually and numerically by showing only significant digits 
-(avoiding noisy digits that carry an unwarranted implied precision). Also optionally adding uncertainty and degrees of freedom estimates.
+(avoiding noisy digits that carry an unwarranted implied precision).
+* Optionally adding uncertainty and degrees of freedom estimates and error bars or colored zones.
 * To allow the user to talk to the plot classes using coordinate units rather than pixels or other arbitrary units.
 * To create the backbone of a `svg` class that can be extended to fully support the SVG standard.
 * Compliance with the
