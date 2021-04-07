@@ -9,6 +9,7 @@ doc/autodoc.xml
 # doc/html/
 doc/*.lnk
 doc/doxygen/html/
+doc/bin/
 
 
 

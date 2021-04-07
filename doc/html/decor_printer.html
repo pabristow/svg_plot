@@ -7,13 +7,13 @@
 <link rel="home" href="index.html" title="Plotting Graphs in SVG format.">
 <link rel="up" href="header/boost/quan/type_erasure_printer_hpp.html" title="Header &lt;boost/quan/type_erasure_printer.hpp&gt;">
 <link rel="prev" href="base_and_derived.html" title="Struct template base_and_derived">
-<link rel="next" href="boost/type_erasure/concept_interface_id531393.html" title="Struct template concept_interface&lt;base_and_derived&lt; T, U &gt;, Base, U&gt;">
+<link rel="next" href="boost/type_erasure/concept_interface_id535951.html" title="Struct template concept_interface&lt;base_and_derived&lt; T, U &gt;, Base, U&gt;">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="" width="150" height="50" src="./images/proposed_for_boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="base_and_derived.html"><img src="images/prev.png" alt="Prev"></a><a accesskey="u" href="header/boost/quan/type_erasure_printer_hpp.html"><img src="images/up.png" alt="Up"></a><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a><a accesskey="n" href="boost/type_erasure/concept_interface_id531393.html"><img src="images/next.png" alt="Next"></a>
+<a accesskey="p" href="base_and_derived.html"><img src="images/prev.png" alt="Prev"></a><a accesskey="u" href="header/boost/quan/type_erasure_printer_hpp.html"><img src="images/up.png" alt="Up"></a><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a><a accesskey="n" href="boost/type_erasure/concept_interface_id535951.html"><img src="images/next.png" alt="Next"></a>
 </div>
 <div class="refentry">
 <a name="decor_printer"></a><div class="titlepage"></div>
@@ -31,22 +31,22 @@
   <span class="keyword">typedef</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">type_erasure</span><span class="special">::</span><span class="identifier">any</span><span class="special">&lt;</span> <span class="identifier">requirements</span><span class="special">,</span> <a class="link" href="_iter.html" title="Struct _iter">_iter</a> <span class="special">&gt;</span> <a name="decor_printer.iterator_type"></a><span class="identifier">iterator_type</span><span class="special">;</span>
 
   <span class="comment">// <a class="link" href="decor_printer.html#decor_printerconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <span class="keyword">explicit</span> <a class="link" href="decor_printer.html#id531275-bb"><span class="identifier">decor_printer</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="special">=</span> <span class="number">0</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="special">=</span> <span class="number">0</span><span class="special">,</span> 
+  <span class="keyword">explicit</span> <a class="link" href="decor_printer.html#id535825-bb"><span class="identifier">decor_printer</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="special">=</span> <span class="number">0</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="special">=</span> <span class="number">0</span><span class="special">,</span> 
                          <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">"\n"</span><span class="special">,</span> 
                          <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">" "</span><span class="special">,</span> 
                          <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">"\n"</span><span class="special">,</span> 
                          <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="string">"\n"</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="decor_printer.html#id531267-bb">public member functions</a></span>
+  <span class="comment">// <a class="link" href="decor_printer.html#id535790-bb">public member functions</a></span>
   <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Range<span class="special">,</span> <span class="keyword">typename</span> CharT<span class="special">,</span> <span class="keyword">typename</span> Traits<span class="special">&gt;</span> 
-    <span class="keyword">void</span> <a class="link" href="decor_printer.html#id531239-bb"><span class="identifier">print</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">Range</span> <span class="special">&amp;</span><span class="special">,</span> 
+    <span class="keyword">void</span> <a class="link" href="decor_printer.html#id535819-bb"><span class="identifier">print</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">Range</span> <span class="special">&amp;</span><span class="special">,</span> 
                <span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_ostream</span><span class="special">&lt;</span> <span class="identifier">CharT</span><span class="special">,</span> <span class="identifier">Traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="decor_printer.html#id531381-bb">protected member functions</a></span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="decor_printer.html#id531382-bb"><span class="identifier">do_print</span></a><span class="special">(</span><span class="identifier">iterator_type</span><span class="special">,</span> <span class="identifier">iterator_type</span><span class="special">,</span> <span class="identifier">ostream_type</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="decor_printer.html#id535920-bb">protected member functions</a></span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="decor_printer.html#id535921-bb"><span class="identifier">do_print</span></a><span class="special">(</span><span class="identifier">iterator_type</span><span class="special">,</span> <span class="identifier">iterator_type</span><span class="special">,</span> <span class="identifier">ostream_type</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1146783"></a><h2>Description</h2>
+<a name="id1137111"></a><h2>Description</h2>
 <p>Outputs items in a specified number of columns across rows with a separator (often comma and/or space(s)), and a suffix (usually newline) every <code class="computeroutput">num_columns</code> items.<br>
 Usage:</p>
 <pre class="programlisting"><span class="identifier">decor_printer</span> <span class="identifier">simple_printer</span><span class="special">(</span><span class="number">3</span><span class="special">,</span> <span class="number">0</span><span class="special">,</span> <span class="string">"\n"</span><span class="special">,</span> <span class="string">", "</span><span class="special">,</span> <span class="string">"\n"</span><span class="special">,</span> <span class="string">"\n"</span><span class="special">)</span><span class="special">;</span>
@@ -69,12 +69,12 @@ The order of parameters is chosen to try to allow use of the defaults as much as
 <p>
 </p>
 <div class="refsect2">
-<a name="id1147006"></a><h3>
+<a name="id1137370"></a><h3>
 <a name="decor_printerconstruct-copy-destruct"></a><code class="computeroutput">decor_printer</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">explicit</span> <a name="id531275-bb"></a><span class="identifier">decor_printer</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> num_columns <span class="special">=</span> <span class="number">0</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> wid <span class="special">=</span> <span class="number">0</span><span class="special">,</span> 
+<pre class="literallayout"><span class="keyword">explicit</span> <a name="id535825-bb"></a><span class="identifier">decor_printer</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> num_columns <span class="special">=</span> <span class="number">0</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> wid <span class="special">=</span> <span class="number">0</span><span class="special">,</span> 
                        <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> pre <span class="special">=</span> <span class="string">"\n"</span><span class="special">,</span> 
                        <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> sep <span class="special">=</span> <span class="string">" "</span><span class="special">,</span> 
                        <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> suf <span class="special">=</span> <span class="string">"\n"</span><span class="special">,</span> 
@@ -91,11 +91,11 @@ The order of parameters is chosen to try to allow use of the defaults as much as
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1147359"></a><h3>
-<a name="id531267-bb"></a><code class="computeroutput">decor_printer</code> public member functions</h3>
+<a name="id1137703"></a><h3>
+<a name="id535790-bb"></a><code class="computeroutput">decor_printer</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
 <pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Range<span class="special">,</span> <span class="keyword">typename</span> CharT<span class="special">,</span> <span class="keyword">typename</span> Traits<span class="special">&gt;</span> 
-  <span class="keyword">void</span> <a name="id531239-bb"></a><span class="identifier">print</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">Range</span> <span class="special">&amp;</span> r<span class="special">,</span> 
+  <span class="keyword">void</span> <a name="id535819-bb"></a><span class="identifier">print</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">Range</span> <span class="special">&amp;</span> r<span class="special">,</span> 
              <span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_ostream</span><span class="special">&lt;</span> <span class="identifier">CharT</span><span class="special">,</span> <span class="identifier">Traits</span> <span class="special">&gt;</span> <span class="special">&amp;</span> os <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 
@@ -143,11 +143,11 @@ The order of parameters is chosen to try to allow use of the defaults as much as
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1147579"></a><h3>
-<a name="id531381-bb"></a><code class="computeroutput">decor_printer</code> protected member functions</h3>
+<a name="id1137924"></a><h3>
+<a name="id535920-bb"></a><code class="computeroutput">decor_printer</code> protected member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
 <pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> 
-<a name="id531382-bb"></a><span class="identifier">do_print</span><span class="special">(</span><span class="identifier">iterator_type</span> first<span class="special">,</span> <span class="identifier">iterator_type</span> last<span class="special">,</span> <span class="identifier">ostream_type</span> os<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>Declare the pure virtual function <code class="computeroutput">do_print</code> that is defined in all real printers. </li></ol></div>
+<a name="id535921-bb"></a><span class="identifier">do_print</span><span class="special">(</span><span class="identifier">iterator_type</span> first<span class="special">,</span> <span class="identifier">iterator_type</span> last<span class="special">,</span> <span class="identifier">ostream_type</span> os<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>Declare the pure virtual function <code class="computeroutput">do_print</code> that is defined in all real printers. </li></ol></div>
 </div>
 </div>
 </div>
@@ -161,7 +161,7 @@ The order of parameters is chosen to try to allow use of the defaults as much as
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="base_and_derived.html"><img src="images/prev.png" alt="Prev"></a><a accesskey="u" href="header/boost/quan/type_erasure_printer_hpp.html"><img src="images/up.png" alt="Up"></a><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a><a accesskey="n" href="boost/type_erasure/concept_interface_id531393.html"><img src="images/next.png" alt="Next"></a>
+<a accesskey="p" href="base_and_derived.html"><img src="images/prev.png" alt="Prev"></a><a accesskey="u" href="header/boost/quan/type_erasure_printer_hpp.html"><img src="images/up.png" alt="Up"></a><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a><a accesskey="n" href="boost/type_erasure/concept_interface_id535951.html"><img src="images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

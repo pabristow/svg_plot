@@ -27,7 +27,7 @@
 </span>
 <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> FPT<span class="special">&gt;</span> <span class="identifier">FPT</span> <span class="identifier">round_sig</span><span class="special">(</span><span class="identifier">FPT</span> v<span class="special">,</span> <span class="keyword">int</span> n<span class="special">)</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1141201"></a><h2>Description</h2>
+<a name="id1131167"></a><h2>Description</h2>
 <p>These use log10 and pow and so are vulnerable to binary rounding errors, as the value may not be exactly representable for the type specified. Should give the same value as printf precision. (int)(x &lt; 0 ? x - 0.5 : x + 0.5)) So do we need to do something different for negative doubles? The difference between symmetric and asymmetric rounding? 
 
 
