@@ -94,18 +94,18 @@ M579,160 L579,165
 </g>
 
 <g id="plotUnc3" stroke="rgb(250,250,210)" fill="rgb(250,250,210)" stroke-width="1">
-	<ellipse cx="76.8" cy="154" rx="3" ry="9"/>
-	<ellipse cx="337" cy="154" rx="3" ry="9"/>
+	<ellipse cx="76.8" cy="154" rx="27.9" ry="9"/>
+	<ellipse cx="337" cy="154" rx="55.8" ry="9"/>
 </g>
 
 <g id="plotUnc2" stroke="rgb(255,218,185)" fill="rgb(255,218,185)" stroke-width="1">
-	<ellipse cx="76.8" cy="154" rx="2" ry="6"/>
-	<ellipse cx="337" cy="154" rx="2" ry="6"/>
+	<ellipse cx="76.8" cy="154" rx="18.6" ry="6"/>
+	<ellipse cx="337" cy="154" rx="37.2" ry="6"/>
 </g>
 
 <g id="plotUnc1" stroke="rgb(255,0,255)" fill="rgb(255,192,203)" stroke-width="1">
-	<ellipse cx="76.8" cy="154" rx="1" ry="3"/>
-	<ellipse cx="337" cy="154" rx="1" ry="3"/>
+	<ellipse cx="76.8" cy="154" rx="9.3" ry="3"/>
+	<ellipse cx="337" cy="154" rx="18.6" ry="3"/>
 </g>
 
 <g id="plotPoints">
@@ -140,64 +140,80 @@ M579,160 L579,165
 
 <g>
 	<text x="126" y="148" transform="rotate(-30 126 148)" font-size="10" font-family="Verdana">3.1
-		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;3.1, 3.1&gt;</tspan>
-		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(0)</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.02</tspan>
+		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;3.08, 3.12&gt;</tspan>
+		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(8)</tspan>
 	</text>
 </g>
 
 <g>
 	<text x="229" y="148" transform="rotate(-30 229 148)" font-size="10" font-family="Verdana">4.2
-		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;4.2, 4.2&gt;</tspan>
-		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(0)</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.01</tspan>
+		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;4.193, 4.207&gt;</tspan>
+		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(14)</tspan>
 	</text>
 </g>
 
 <g>
 	<text x="33.3" y="151" transform="rotate(-30 33.3 151)" font-size="10" font-family="Verdana">2.1
-		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;2.1, 2.1&gt;</tspan>
-		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(0)</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.001</tspan>
+		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;2.0995, 2.1005&gt;</tspan>
+		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(30)</tspan>
 	</text>
 </g>
 
 <g>
 	<text x="312" y="151" transform="rotate(-30 312 151)" font-size="10" font-family="Verdana">5.1
-		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;5.1, 5.1&gt;</tspan>
-		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(0)</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.025</tspan>
+		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;5.09, 5.11&gt;</tspan>
+		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(20)</tspan>
 	</text>
 </g>
 
 <g>
 	<text x="563" y="151" transform="rotate(-30 563 151)" font-size="10" font-family="Verdana">7.8
-		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;7.8, 7.8&gt;</tspan>
-		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(0)</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.0025</tspan>
+		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;7.794, 7.806&gt;</tspan>
+		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(1)</tspan>
 	</text>
 </g>
 
 <g>
 	<text x="154" y="151" transform="rotate(-30 154 151)" font-size="10" font-family="Verdana">3.4
-		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;3.4, 3.4&gt;</tspan>
-		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(0)</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.03</tspan>
+		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;3.32, 3.48&gt;</tspan>
+		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(1)</tspan>
 	</text>
 </g>
 
 <g>
 	<text x="387" y="151" transform="rotate(-30 387 151)" font-size="10" font-family="Verdana">5.9
-		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;5.9, 5.9&gt;</tspan>
-		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(0)</tspan>
+		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;nan, nan&gt;</tspan>
+		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(1)</tspan>
 	</text>
 </g>
 
 <g>
 	<text x="79.8" y="151" transform="rotate(-30 79.8 151)" font-size="10" font-family="Verdana">2.6
-		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;2.6, 2.6&gt;</tspan>
-		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(0)</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.1</tspan>
+		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;2.48, 2.72&gt;</tspan>
+		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(5)</tspan>
 	</text>
 </g>
 
 <g>
 	<text x="340" y="151" transform="rotate(-30 340 151)" font-size="10" font-family="Verdana">5.4
-		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;5.4, 5.4&gt;</tspan>
-		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(0)</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="10" font-family="Verdana">&#x00A0;&#x00B1;</tspan>
+		<tspan fill="rgb(0,0,255)" font-size="9" font-family="Verdana">0.2</tspan>
+		<tspan fill="rgb(128,0,128)" font-size="9" font-family="Verdana"> &lt;5.2, 5.6&gt;</tspan>
+		<tspan fill="rgb(0,128,0)" font-size="9" font-family="Verdana">&#x00A0;(11)</tspan>
 	</text>
 </g>
 </g>

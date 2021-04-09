@@ -518,10 +518,11 @@ size_t svg_1d_plot_series::series_limits_count()
 
 //! \cond DETAIL
 // Do not document non-user functions.
-
+// 
+ //! Calls functions to add all plot information to the image, including
+ //! plot window, axes, ticks, labels, grids, legend, and finally all the data-series.
 void svg_1d_plot::update_image()
-{ //! Calls functions to add all plot information to the image, including
-  //! plot window, axes, ticks, labels, grids, legend, and finally all the data-series.
+{
 
   clear_all(); // Removes all elements that will show up in a subsequent draw.
 
@@ -577,10 +578,9 @@ void svg_1d_plot::update_image()
         // draw_plot_point(x, y, g_ptr, serieses_[i].point_style_, ux, unc<false>()); // Marker.
         // (y uncertainty is zero).
         if (x_values_on_)
-        { // Show the value (& perhaps uncertainty) of the data-point too.
+        { // Show the value (& perhaps uncertainty and degrees of freedom) of the data-point too.
           g_element& g_ptr_v = image_.gs(detail::PLOT_X_POINT_VALUES).add_g_element();
           draw_plot_point_value(x, y, g_ptr_v, x_values_style_, serieses_[i].point_style_, ux);
-          // TODO Might separate X and Y colors?
         }
         else
         { // Don't plot anything? Might leave a marker to show an "off the scale" value?

@@ -5,17 +5,17 @@
     \author Jacob Voytko and Paul A. Bristow
 */
 // Copyright Jacob Voytko 2007
-// Copyright Paul A Bristow 2008
+// Copyright Paul A Bristow 2008, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
 // (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-// An example to demonstrate Marking data-point values with uncertainty information
-// like uncertainty (standard deviation),
-// degrees of freedom (observations - 1),
-// and/or confidence limits (confidence intervals).
+// An example to demonstrate marking data-point values with uncertainty information
+// like uncertainty (nominally standard deviation),
+// degrees of freedom (nominally observations - 1),
+// and/or computed confidence limits (confidence intervals).
 
 // See also demo_2d_plot.cpp for a wider range of use.
 // See demo_2d_uncertainty.cpp to show confidence intervals as ellipse around the data_points.
@@ -70,7 +70,7 @@ int main()
     my_data[2.12] = 2.4394;
     my_data[5.47] = 5.3861;
 
-    using boost::svg::svg_2d_plot;  // This is needed to construct, setup and output the plot in SVG format.
+    using boost::svg::svg_2d_plot;  // This is needed to construct, setup and output the 2D plot in SVG format.
 
     svg_2d_plot my_2d_plot; // Construct a plot with all the default constructor values.
 
@@ -158,8 +158,7 @@ but for 2-D plots all writing orientations can be useful).
    // my_2d_plot.x_df_on(true); // Show Degrees of freedom (n-1) for X-axis value-labels.
     //my_2d_plot.y_plusminus_on(true); // Uncertainty for X-axis value-labels.
 
-
-/*`To use all these settings, finally write the plot to file.
+/*`To use all these settings, finally write the SVG plot to file.
 */
     my_2d_plot.write("demo_2d_values.svg");
 

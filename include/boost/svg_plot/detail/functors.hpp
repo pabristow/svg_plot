@@ -38,17 +38,19 @@ namespace detail
 {
   using namespace boost::quan;
 
+  /*! \class boost::svg::detail::double_1d_convert
+     \brief This functor allows any 1D data that can be converted to @c double to be plotted.
+ */
 class double_1d_convert
-{ /*! \class boost::svg::detail::double_1d_convert
-      \brief This functor allows any 1D data that can be converted to @c double to be plotted.
-*/
+{
 public:
-    typedef double result_type; //!< result type is double.
+    typedef double result_type; //!< result type is @c double.
 
+    //! To convert a single data value to double.
     //! \tparam T Any type that can be converted to double.
-    //! returns A single double data value.
+    //! \returns A single @c double data value.
     template <class T>
-    double operator()(T val) const //! To convert a single data value to double.
+    double operator()(T val) const 
     {
       BOOST_STATIC_ASSERT_MSG(std::is_constructible<T, double>::value, "Uncertain types must be convertible to double!");
 
@@ -56,66 +58,63 @@ public:
     }
 }; // class double_1d_convert
 
-template <bool correlated>
-class unc_1d_convert
-{ /*! \class boost::svg::detail::unc_1d_convert
+ /*! \class boost::svg::detail::unc_1d_convert
       \brief This functor allows any 1D data that can be converted to @c boost::quan::unc (uncertain double) to be plotted.
       \details Defaults provided by the @c unc class constructor ensure that
-        uncertainty, degrees of freedom information, and type are suitably set too.
+        uncertainty, degrees of freedom information, and uncertain type are suitably set too.
 */
+template <bool correlated>
+class unc_1d_convert
+{
 public:
     typedef unc<correlated> result_type; //!< @c result_type is an uncertain floating-point type.
 
-    //! \tparam T Any data type with a value that can be converted to double, for example: @c double, @c uncun, @c Meas.
-    template <class T>
-    unc<correlated> operator()(T val) const
     /*!< Convert to uncertain type,
       providing defaults for uncertainty,  degrees of freedom information, and type (meaning undefined).
-    \return value including uncertainty information.
-    */
-    {
-      return (unc<correlated>)val;
-      /*! \return uncertain type (uncertainty, degrees of freedom information, and type meaning undefined).
-       warning C4244: 'argument' : conversion from 'long double' to 'double', possible loss of data.
-       because unc only holds values to double precision.
-       Suppressed by pragma for MSVC above. Need similar for other compilers.
+      \return value including uncertainty information.
+       \tparam T Any data type with a value that can be converted to double, for example: @c double, @c uncun, @c Meas.
       */
+    template <class T>
+    unc<correlated> operator()(T val) const
+    {
+      return (result_type)val;
+      /*! \return uncertain type (uncertainty, degrees of freedom information, and type meaning undefined). */
     }
 }; // template <bool correlated> class default_1d_convert
 
-class meas_1d_convert
-{ /*! \class boost::svg::detail::meas_1d_convert
+/*! \class boost::svg::detail::meas_1d_convert
       \brief This functor allows any 1D data that can be converted to measurements
       (with uncertain doubles) to be plotted.
       \details Defaults provided by the meas class constructor ensure that
         uncertainty, degrees of freedom information, type, and order, timestamp and id are suitably set too.
+    \tparam T Any data type with a value that can be converted to double, for example: double, unc, Meas.
+    \return uncertain type (uncertainty, degrees of freedom information, and type meaning undefined).
 */
+class meas_1d_convert
+{ 
 public:
     typedef Meas result_type; //!< result type includes an uncertain floating-point type.
 
-    //! \tparam T Any data type with a value that can be converted to double, for example: double, unc, Meas.
     template <class T>
     Meas operator()(T val) const
     /*!< Convert to Meas type,
-      providing defaults for uncertainty, degrees of freedom information, and type (meaning undefined).
+      providing defaults for uncertainty, degrees of freedom information, and uncertain type.
       \return value including uncertainty and other information.
     */
     {
       BOOST_STATIC_ASSERT_MSG(std::is_constructible<T, double>::value, "Uncertain types must be that can be converted to double!");
-      return (double)val;
-    //  return (Meas)val;
-      /*! \return uncertain type (uncertainty, degrees of freedom information, and type meaning undefined).
-       Warning C4244: 'argument' : conversion from 'long double' to 'double', possible loss of data.
-       because unc only holds values to double precision.
-       Suppressed by pragma for MSVC above. Need similar for other compilers.
-      */
+      return static_cast<result_type>(val);
     }
 }; // class default_1d_convert
 
 class pair_double_2d_convert
 { /*! \class boost::svg::detail::pair_double_2d_convert
-      \brief This functor allows any 2 D data that can be converted to type std::pair<double, double> to be plotted.
-*/
+      \brief This functor allows any 2-D data that can be converted to type @c std::pair<double, double> to be plotted.
+     Convert a pair of X and Y (whose types can be converted to double values) to a pair of @c doubles.
+     \tparam T type whose value can be converted to @c double.
+     \tparam U type whose value can be converted to @c  double.
+     \returns @c std::pair of @c double data point values.
+  */
 public:
     typedef std::pair<double, double> result_type; //!< result type is a pair (X and Y) of doubles.
 
@@ -125,10 +124,6 @@ public:
       i = i0;
     }
 
-     //! Convert a pair of X and Y (whose types can be converted to double values) to a pair of doubles.
-     //! \tparam T type whose value can be converted to double.
-     //! \tparam U type whose value can be converted to double.
-    //! \returns @c std::pair of double data point values.
     template <typename T, typename U>
     std::pair<double, double> operator()(const std::pair<T, U>& a) const
     { //! Assumes that a conversion from double yields just the value component of the uncertain value.
@@ -139,8 +134,8 @@ public:
 
     template <typename T>
     std::pair<double, double> operator()(T a)
-    {  //! Convert a pair of X and Y values to a pair of doubles.
-       //! \return pair of doubles.
+    {  //! Convert a pair of X and Y values to a @c std::pair of @c doubles.
+       //! \return @c std::pair of doubles.
         return std::pair<double, double>(i++, static_cast<double>(a));
     }
 }; // class pair_double_2d_convert
@@ -148,7 +143,7 @@ public:
 template <bool correlated>
 class pair_unc_2d_convert
 { /*! \class boost::svg::detail::pair_unc_2d_convert
-      \brief This functor allows any 2D data that can be converted to type std::pair<unc, unc> to be plotted.
+      \brief This functor allows any 2D data that can be converted to type @c std::pair<unc, unc> to be plotted.
 */
 public:
     typedef std::pair<unc<correlated>, unc<correlated> > result_type; //!< result type is pair of uncertain values.
@@ -165,9 +160,9 @@ public:
     //! \returns A @c std::pair of double data point values.
     template <class T, class U>
     std::pair<unc<correlated>, unc<correlated> > operator()(const std::pair<T, U>& a) const
-    {  //!< Convert a pair of X and Y uncertain type values to a pair of doubles.
-       //! \return pair of uncs.
-      // Cast to double so that can use with float, long double and UDTs.
+    { //!< Convert a pair of X and Y uncertain type values to a pair of @c doubles.
+      //! Cast to double so that can use with float, long double and UDTs.
+      //! \return @c std::pair of uncs.
       BOOST_STATIC_ASSERT_MSG(std::is_constructible<T, double>::value, "Uncertain types must be convertible to double!");
       BOOST_STATIC_ASSERT_MSG(std::is_constructible<U, double>::value, "Uncertain types must be convertible to double!");
        return std::pair<unc<correlated>, unc<correlated> >(
@@ -199,21 +194,21 @@ public:
     { //!< Set a start value.
        i = i0;
     }
-
+    //!< Convert a pair of X and Y uncertain type values to a pair of uncertain types uncun.
+    //! \return pair of Meas (an unc including time, ID and order info) & an unc.
+    //! Cast to double so that can potentially use with @c float, @c long double.
     //!< \tparam T type that can be converted to double.
-    //!< \tparam U type that can be converted to uncertain type unc.
+    //!< \tparam U type that can be converted to uncertain type @c unc.
     //! \returns A @c std::pair of double precision data-point values.
     template <typename T, typename U>
     std::pair<Meas, unc<correlated> > operator()(const std::pair<T, U>& a) const
-    {  //!< Convert a pair of X and Y uncertain type values to a pair of uncertain types uncun.
-       //! \return pair of Meas (an unc including time, ID and order info) & an unc.
-       // Cast to double so that can potentially use with float, long double.
+    {  
       BOOST_STATIC_ASSERT_MSG(std::is_constructible<T, double>::value, "Uncertain types must be convertible to uncun!");
       BOOST_STATIC_ASSERT_MSG(std::is_constructible<U, double>::value, "Uncertain types must be convertible to uncun!");
       return std::pair<Meas, unc<correlated> >((Meas)(static_cast<Meas>(a.first)), (unc<correlated>)(static_cast<unc<correlated>>(a.second)));
     }
 
-    template <typename T>    //!< \tparam T Any type that can be converted to uncun.
+    template <typename T>  //!< \tparam T Any type that can be converted to uncun.
     std::pair<Meas, unc<correlated> > operator()(T a)
     {  //!< Convert a pair of X and Y uncertain type values to a pair of Meas & unc.
         return std::pair<Meas, unc<correlated> >(i++, (unc<correlated>)(static_cast<double>(a)));
@@ -237,23 +232,25 @@ public:
   { //!< Set a start value.
     i = i0;
   }
-
+  //!< Convert a pair of X and Y uncertain type values to a pair of doubles.
+  //! \return pair of Meas (unc including time, ID and order info) & an unc.
+  //! Cast to double so that can potentially use with float, long double.
   //!< \tparam T type that can be converted to double.
   //!< \tparam U type that can be converted to double.
   //! \returns A @c std::pair of double precision data-point values.
   template <typename T, typename U>
   std::pair<Meas, unc<correlated> > operator()(const std::pair<T, U>& a) const
-  {  //!< Convert a pair of X and Y uncertain type values to a pair of doubles.
-     //! \return pair of Meas (unc including time, ID and order info) & an unc.
-     // Cast to double so that can potentially use with float, long double.
+  {  
     BOOST_STATIC_ASSERT_MSG(std::is_constructible<T, double>::value, "Uncertain types must be convertible to double!");
     BOOST_STATIC_ASSERT_MSG(std::is_constructible<U, double>::value, "Uncertain types must be convertible to double!");
     return std::pair<Meas, unc<correlated> >((Meas)(static_cast<double>(a.first)), (unc<correlated>)(static_cast<double>(a.second)));
   }
 
-  template <typename T>    //!< \tparam T Any type that can be converted to double.
+  //! Convert a pair of X and Y uncertain type values to a pair of @c Meas & @c unc.
+  //! \tparam T Any type that can be converted to @c double.
+  template <typename T>    
   std::pair<Meas, unc<correlated> > operator()(T a)
-  {  //!< Convert a pair of X and Y uncertain type values to a pair of Meas & unc.
+  {  
     return std::pair<Meas, unc<correlated> >(i++, (unc<correlated>)(static_cast<double>(a)));
     //! \return pair of Meas & unc.
   }

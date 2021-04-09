@@ -2582,12 +2582,12 @@ namespace boost
           (See draw_plot_point_values below for plotting both X and Y information).
           Unnecessary e, +, \& leading exponent zeros may optionally be stripped,
           and the position and rotation controlled.
-          std_dev estimate, typically standard-deviation
+          uncertainty estimate, notionally standard-deviation
           (approximately half conventional 95% confidence "plus or minus")
           may be optionally be appended.
           Degrees of freedom estimate (number of replicates) may optionally be appended.
           ID or name of point, order in sequence, and datetime may also be added.
-          For example: "3.45 +-0.1(10)"\n
+          For example: "3.45 +-0.1 <3.40, 3.50> (10)"\n
           The precision (decimal digits) and format (scientific, fixed), and color and font type and size can be controlled too.
           */
         double value = uvalue.value(); // Most likely value or mean.
