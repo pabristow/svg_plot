@@ -849,7 +849,7 @@ class value_style
 { /*! \class boost::svg::value_style
      \brief data-series point value-label information, text, color, orientation, alignment, (uncertainty & df),
      name ID string, order in sequence, time and date.
-     \details For example, to output: 5.123 +- 0.01 (19).
+     \details For example, to output: 5.123 +- 0.01 (19).\n
      Uncertainty and degrees of freedom estimate.
      Prefix, separator and suffix allow X and Y values to be together on one line, for example\n
      [1.23+- 0.01 (3), 4.56 +-0.2 (10)]\n
@@ -860,7 +860,7 @@ class value_style
   */
 public:
   int value_label_rotation_; //!< Direction point value-labels written.
-  align_style value_label_alignment_; //!< Alignment of label with respect to value, left, centered, or right.\n Example: text-anchor="middle"
+  align_style value_label_alignment_; //!< Alignment of label with respect to value, left, centered, or right.\n Example: \code text-anchor="middle" \endcode
   // These are a duplicate of info elsewhere?
   int value_precision_; //!< Decimal digits of precision of value, default 3, for example "1.23".
   std::ios_base::fmtflags value_ioflags_; //!< Control of scientific, fixed, hex etc.

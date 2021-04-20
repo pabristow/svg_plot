@@ -2165,14 +2165,14 @@ namespace boost
       // Use both stroke & fill colors and size from the data-point-marker's style.
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-        std::cout << "g_inner_ptr.style() = " << g_inner_ptr->style() << std::endl;
+        std::cout << "g_inner_ptr.style() = " << g_ptr->style() << std::endl;
        // Outputs: g_inner_ptr.style() = svg_style(RGB(255,255,255), RGB(0,128,0), 2, fill_on, stroke_on, width_on)
 #endif //BOOST_SVG_POINT_DIAGNOSTICS
           // Select legend-points group
         g_ptr = &(derived().image_.gs(PLOT_LEGEND_POINTS)); // Prepare to write data-point-marker, line and description-text into legend-box.
         g_element* g_legends_points = &(g_ptr->add_g_element());
 
-        // Use point stroke color instead.
+        // Use point stroke-color instead.
         g_legends_points->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_); //
         g_legends_points->style().fill_color(derived().serieses_[i].point_style_.fill_color_); //
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
@@ -2317,7 +2317,6 @@ namespace boost
       // point_style.size_ = 30, y offset half_height = 15, y offset third_height = 9.09091
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
       point_style.symbols_style_.font_size(point_style.size_); // Sets data-point-marker font-size.
-
       //  Want this text_styling, for example:
       //point_style.symbols_style_.font_family("arial");
       //point_style.symbols_style_.font_weight("bold");
@@ -2337,7 +2336,7 @@ namespace boost
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-      std::cout << "legend  data-point-marker g_ptr.style() = " << g_ptr.style() << std::endl;
+      std::cout << "legend data-point-marker g_ptr.style() = " << g_ptr.style() << std::endl;
       // plot point marker g_ptr.style() = svg_style(RGB(255,0,0), RGB(0,128,0), 0, stroke_on, fill_on, no width)
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
       switch(point_style.shape_) // Chosen from enum point_shape none, round, square, point, egg ...
@@ -2425,10 +2424,11 @@ namespace boost
 
       //  Shapes as symbols using SVG text function, (NOT using SVG line, circle or eclipse).
       case symbol: // Unicode symbol.  see https://unicode-search.net/ for search
-        g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), align_style::center_align, horizontal); // symbol(s), size and center.
-#ifdef BOOST_SVG_POINT_DIAGNOSTICS
-        std::cout << "symbol point_style.style() = " << point_style.style() << std::endl;
-#endif // BOOST_SVG_POINT_DIAGNOSTICS
+       // g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), align_style::center_align, horizontal); // symbol(s), size and center.
+        g_ptr.text(x, y + third_height, point_style.symbols_); // symbol(s), size and center.
+//#ifdef BOOST_SVG_POINT_DIAGNOSTICS
+        std::cout << "plot point symbol = " << point_style.symbols_ << ", point_style.style() = " << point_style.style() << std::endl;
+//#endif // BOOST_SVG_POINT_DIAGNOSTICS
         // Unicode symbols that work on most browsers are listed at
         // boost\math\libs\math\doc\sf_and_dist\html4_symbols.qbk,
         // http://www.htmlhelp.com/reference/html40/entities/symbols.html
@@ -2479,8 +2479,11 @@ namespace boost
         point_style.symbols("&#x25CF;");
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "point_style.symbols_style_ = " << point_style.symbols_style_ << std::endl;
+        // point_style.symbols_style_ = text_style(14, "Lucida Sans Unicode", "", "", "", "")
+        std::cout << "point_style.symbols_ = " << point_style.symbols_ << std::endl; // point_style.symbols_ = &#x25CF;
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
-        g_ptr.text(x, y + third_height, point_style.symbols(), point_style.style(), align_style::center_align, horizontal);
+       // g_ptr.text(x, y + third_height, point_style.symbols_, point_style.style(), align_style::center_align, horizontal);
+        g_ptr.text(x, y + third_height, point_style.symbols_);
         // symbol(s), size and center.
 
         break;

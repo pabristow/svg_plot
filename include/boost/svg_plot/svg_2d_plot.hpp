@@ -2221,10 +2221,23 @@ my_plot.background_color(ghostwhite) // Whole image.
         double y(0.);
         for(unsigned int i = 0; i < serieses_.size(); ++i)
         {
-          g_element& g_ptr = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
-          g_ptr.style()
-            .fill_color(serieses_[i].point_style_.fill_color_)
-            .stroke_color(serieses_[i].point_style_.stroke_color_);
+          g_element& g_ptr_dps = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
+          //g_ptr_dps.style()
+          //  .fill_color(serieses_[i].point_style_.fill_color_)
+          //  .stroke_color(serieses_[i].point_style_.stroke_color_);
+          // // style has colors but no width, only size and shape.
+
+          g_element& g_ptr_dp = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
+          plot_point_style& dps = serieses_[i].point_style_;
+          g_ptr_dps.svg_style_.stroke_color(serieses_[i].point_style_.stroke_color_);
+          g_ptr_dps.svg_style_.fill_color(serieses_[i].point_style_.fill_color_);
+          g_ptr_dps.text_style_.font_size(serieses_[i].point_style_.size_);
+          g_ptr_dps.text_style_.font_family_ = serieses_[i].point_style_.symbols_style_.font_family_;
+          g_ptr_dps.alignment_ = align_style::center_align;
+          //g_ptr_dps.
+            
+          //  y_values_style_.value_label_alignment_ = align_style::center_align;
+          // <g stroke="rgb(0,128,0)" fill="rgb(255,255,255)">
 
           size_t ignored = 0;
           size_t plotted = 0;
@@ -2245,7 +2258,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             if((x > plot_left_) && (x < plot_right_) && (y > plot_top_) && (y < plot_bottom_))
             { // data-point is inside plot-window, so draw a point marker.
               plotted++;
-              draw_plot_point(x, y, g_ptr, serieses_[i].point_style_, ux, uy); // Add the unc ux and uy to allow access to uncertainty.
+              draw_plot_point(x, y, g_ptr_dps, serieses_[i].point_style_, ux, uy); // Add the unc ux and uy to allow access to uncertainty.
               g_element& g_ptr_vx = image_.gs(detail::PLOT_X_POINT_VALUES).add_g_element();
               if (x_values_on_)
               { // Label with the value of the X-data-point too.
