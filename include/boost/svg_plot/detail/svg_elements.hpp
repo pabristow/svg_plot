@@ -95,7 +95,7 @@ namespace svg
       if(id_name_.size() != 0)
       { // Is an id_name, so output.
         os << " id=\"" << id_name_ << "\""; // Prefix with space.
-      // Example: id_name ="imageBackground"
+      // Example: \code id_name ="imageBackground" \endcode
       }
       if(class_name_.size() != 0)
       { // Is a class_name, so output.
@@ -104,7 +104,6 @@ namespace svg
       if(clip_name_.size() != 0)
       { // Is a clip_name_, so output.
         os << " clip-path=\"url(#" << clip_name_ << ")\""; // Prefix with space.
-        // Might be nicer to suffix with newline - but after the >
       }
       // should transform be here allow translate and rotate?
       /*! \details
@@ -2209,7 +2208,7 @@ public:
            <g id="legendBackground"> </g>
           \endverbatim
         */
-        os << "\n" "<g"; // Do NOT need space if convention is to start following item with space or tab or newline.
+        os << "\t" "<g"; // Do NOT need space if convention is to start following item with space or tab or newline.
         write_attributes(os); // id="background" (or clip_path).
         svg_style_.write(os); // Output SVG style info like stroke="rgb(0,0,0)" fill= "rgb(255,0,0)" ...
         // Default no_style, so not output.
