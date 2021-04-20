@@ -2306,7 +2306,7 @@ namespace boost
       double point_size = point_style.size_;
       double half_height = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
       //double half_width = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point x-coordinates.
-      double third_height = point_size / 3.3; // Offset y vertical by third of the symbol size to try to centre symbol on the point y-coordinates.
+      double third_height = point_size / 3.4; // Offset y vertical by third of the symbol size to try to centre symbol on the point y-coordinates.
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
       std::cout << "point_style.size_ = "<< point_style.size_
@@ -2485,7 +2485,6 @@ namespace boost
        // g_ptr.text(x, y + third_height, point_style.symbols_, point_style.style(), align_style::center_align, horizontal);
         g_ptr.text(x, y + third_height, point_style.symbols_);
         // symbol(s), size and center.
-
         break;
       case diamond:
         g_ptr.text(x, y + third_height, "&#x2666;", point_style.symbols_style_, align_style::center_align, horizontal);
