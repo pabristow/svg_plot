@@ -2483,7 +2483,10 @@ namespace boost
         std::cout << "point_style.symbols_ = " << point_style.symbols_ << std::endl; // point_style.symbols_ = &#x25CF;
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
        // g_ptr.text(x, y + third_height, point_style.symbols_, point_style.style(), align_style::center_align, horizontal);
-        g_ptr.text(x, y + third_height, point_style.symbols_);
+        // but if the font info is already in a g_element, the avoid repeating for each point by using no_text_style.
+        g_ptr.text(x, y + third_height, point_style.symbols_, no_text_style, align_style::center_align, horizontal);
+
+
         // symbol(s), size and center.
         break;
       case diamond:
