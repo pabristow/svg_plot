@@ -15,29 +15,23 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- File ./heat_flow_data_boxplot.svg --> 
 <clipPath id="plot_window">	<rect x="76" y="52" width="412" height="232"/>
 </clipPath>
-
-<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
+	<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="0" y="0" width="500" height="350"/>
 </g>
-
-<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
+	<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="81" y="57" width="407" height="227"/>
 </g>
-
-<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="81" y1="284" x2="488" y2="284"/>
 </g>
-
-<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="81" y1="284" x2="81" y2="57"/>
 </g>
-
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1">
-	<path d="M285,284 L285,289 
+	<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<path d="M284,284 L284,289 
 " fill="none"/>
 </g>
-
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M76,284 L81,284 
 M76,251 L81,251 
 M76,219 L81,219 
@@ -47,8 +41,7 @@ M76,122 L81,122
 M76,89.4 L81,89.4 
 " fill="none"/>
 </g>
-
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M79,277 L81,277 
 M79,271 L81,271 
 M79,264 L81,264 
@@ -79,15 +72,12 @@ M79,69.9 L81,69.9
 M79,63.5 L81,63.5 
 " fill="none"/>
 </g>
-
-<g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1">
+	<g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
-
-<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+	<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
-
-<g id="valueLabels" fill="rgb(0,0,0)">
-	<text x="285" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">NIST heat flows
+	<g id="valueLabels" fill="rgb(0,0,0)">
+	<text x="284" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">NIST heat flows
 	</text>
 	<text x="70" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.18
 	</text>
@@ -104,65 +94,50 @@ M79,63.5 L81,63.5
 	<text x="70" y="91.8" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">9.33
 	</text>
 </g>
-
-<g id="yLabel" fill="rgb(0,0,0)">
+	<g id="yLabel" fill="rgb(0,0,0)">
 	<text x="30.2" y="170" text-anchor="middle" transform="rotate(-90 30.2 170)" font-size="14" font-family="Lucida Sans Unicode">
 	</text>
 </g>
-
-<g id="xLabel" fill="rgb(0,0,0)">
-	<text x="285" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">
+	<g id="xLabel" fill="rgb(0,0,0)">
+	<text x="284" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">
 	</text>
 </g>
-
-<g id="boxAxis" stroke="rgb(0,0,0)">
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
-	<line x1="285" y1="243" x2="285" y2="108"/>
+	<g id="boxAxis" stroke="rgb(0,0,0)">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
+	<line x1="284" y1="243" x2="284" y2="108"/>
 </g>
 </g>
-
-<g id="Median" stroke="rgb(255,0,0)" stroke-width="2">
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
+	<g id="Median" stroke="rgb(255,0,0)" stroke-width="2">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
 	<rect x="270" y="153" width="30" height="38"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
 	<line x1="270" y1="171" x2="299" y2="171"/>
 </g>
 </g>
-
-<g id="whisker" stroke="rgb(0,0,0)">
-
-<g clip-path="url(#plot_window)">
-
-<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g id="whisker" stroke="rgb(0,0,0)">
+	<g clip-path="url(#plot_window)">
+	<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="270" y1="243" x2="300" y2="243"/>
 </g>
-
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="270" y1="108" x2="300" y2="108"/>
 </g>
 </g>
 </g>
-
-<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
-
-<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
-	<text x="285" y="257" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
+	<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
+	<text x="284" y="257" text-anchor="middle">&#x25CF;
 	</text>
-	<text x="285" y="87" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	<text x="284" y="87" text-anchor="middle">&#x25CF;
 	</text>
-	<text x="285" y="97.3" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	<text x="284" y="97.2" text-anchor="middle">&#x25CF;
 	</text>
 </g>
 </g>
-
-<g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)">
+	<g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)">
 </g>
-
-<g id="title" fill="rgb(0,0,0)">
+	<g id="title" fill="rgb(0,0,0)">
 	<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode">NIST Heat_Flow Data
 	</text>
 </g>

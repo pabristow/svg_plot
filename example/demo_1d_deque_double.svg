@@ -13,27 +13,21 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
 <!-- File ./demo_1d_deque_double.svg --> 
-
-<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
+	<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="0" y="0" width="500" height="200"/>
 </g>
-
-<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
+	<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="21" y="42.5" width="458" height="129"/>
 </g>
-
-<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+	<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
-
-<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+	<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
-
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="250" y1="42.5" x2="250" y2="172"/>
 	<line x1="21" y1="110" x2="479" y2="110"/>
 </g>
-
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M259,110 L259,112 
 M268,110 L268,112 
 M277,110 L277,112 
@@ -76,24 +70,22 @@ M39.3,110 L39.3,112
 M30.2,110 L30.2,112 
 " fill="none"/>
 </g>
-
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
-	<path d="M250,110 L250,115 
-M296,110 L296,115 
-M342,110 L342,115 
-M387,110 L387,115 
-M433,110 L433,115 
-M479,110 L479,115 
-M250,110 L250,115 
-M204,110 L204,115 
-M158,110 L158,115 
-M113,110 L113,115 
-M66.8,110 L66.8,115 
-M21,110 L21,115 
+	<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<path d="M250,110 L250,114 
+M296,110 L296,114 
+M342,110 L342,114 
+M387,110 L387,114 
+M433,110 L433,114 
+M479,110 L479,114 
+M250,110 L250,114 
+M204,110 L204,114 
+M158,110 L158,114 
+M113,110 L113,114 
+M66.8,110 L66.8,114 
+M21,110 L21,114 
 " fill="none"/>
 </g>
-
-<g id="xTicksValues">
+	<g id="xTicksValues">
 	<text x="296" y="128" text-anchor="middle" font-size="10" font-family="Verdana">2
 	</text>
 	<text x="342" y="128" text-anchor="middle" font-size="10" font-family="Verdana">4
@@ -115,15 +107,12 @@ M21,110 L21,115
 	<text x="21" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-10
 	</text>
 </g>
-
-<g id="xLabel">
-	<text x="250" y="189" text-anchor="middle" font-size="10" font-family="Verdana">X values as doubles
+	<g id="xLabel">
+	<text x="250" y="188" text-anchor="middle" font-size="10" font-family="Verdana">X values as doubles
 	</text>
 </g>
-
-<g id="plotPoints">
-
-<g stroke="rgb(0,0,0)">
+	<g id="plotPoints">
+	<g stroke="rgb(0,0,0)">
 	<line x1="429" y1="109" x2="429" y2="99"/>
 	<line x1="378" y1="109" x2="378" y2="99"/>
 	<line x1="252" y1="109" x2="252" y2="99"/>
@@ -131,8 +120,7 @@ M21,110 L21,115
 	<line x1="57.6" y1="109" x2="57.6" y2="99"/>
 </g>
 </g>
-
-<g id="title">
+	<g id="title">
 	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">deque&lt;double&gt; example
 	</text>
 </g>

@@ -48,8 +48,7 @@ xmlns ="http://www.w3.org/2000/svg"
 </cc:License>
 </rdf:RDF>
 </metadata>
-
-<g id="group element 0" stroke="rgb(255,0,0)" fill="rgb(240,255,255)" stroke-width="5">
+	<g id="group element 0" stroke="rgb(255,0,0)" fill="rgb(240,255,255)" stroke-width="5">
 	<rect x="0" y="0" width="500" height="600"/>
 	<text x="250" y="150">
 	</text>

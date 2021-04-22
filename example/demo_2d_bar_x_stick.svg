@@ -14,38 +14,29 @@ xmlns ="http://www.w3.org/2000/svg"
 
 <clipPath id="plot_window">	<rect x="53.6" y="40.5" width="357" height="328"/>
 </clipPath>
-
-<g id="imageBackground" stroke="rgb(0,0,0)" fill="rgb(255,255,255)" stroke-width="2">
+	<g id="imageBackground" stroke="rgb(0,0,0)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="0" y="0" width="500" height="400"/>
 </g>
-
-<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2">
+	<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="52.6" y="39.5" width="359" height="330"/>
 </g>
-
-<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+	<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
-
-<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+	<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
-
-<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+	<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
-
-<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+	<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
-
-<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="82.5" y1="39.5" x2="82.5" y2="374"/>
 	<line x1="52.6" y1="39.5" x2="52.6" y2="369"/>
 </g>
-
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="47.6" y1="204" x2="412" y2="204"/>
 	<line x1="47.6" y1="369" x2="412" y2="369"/>
 </g>
-
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M50.6,198 L52.6,198 
 M50.6,191 L52.6,191 
 M50.6,184 L52.6,184 
@@ -95,8 +86,7 @@ M50.6,362 L52.6,362
 M50.6,369 L52.6,369 
 " fill="none"/>
 </g>
-
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M94.5,369 L94.5,371 
 M106,369 L106,371 
 M118,369 L118,371 
@@ -123,8 +113,7 @@ M70.6,369 L70.6,371
 M58.6,369 L58.6,371 
 " fill="none"/>
 </g>
-
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M47.6,204 L52.6,204 
 M47.6,171 L52.6,171 
 M47.6,138 L52.6,138 
@@ -139,8 +128,7 @@ M47.6,336 L52.6,336
 M47.6,369 L52.6,369 
 " fill="none"/>
 </g>
-
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M82.5,369 L82.5,374 
 M142,369 L142,374 
 M202,369 L202,374 
@@ -150,8 +138,7 @@ M382,369 L382,374
 M82.5,369 L82.5,374 
 " fill="none"/>
 </g>
-
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="middle">
 	<text x="82.5" y="390">0
 	</text>
 	<text x="142" y="390">2
@@ -167,8 +154,7 @@ M82.5,369 L82.5,374
 	<text x="82.5" y="390">0
 	</text>
 </g>
-
-<g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="end">
+	<g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="end">
 	<text x="41.6" y="207">0
 	</text>
 	<text x="41.6" y="174">2
@@ -194,20 +180,16 @@ M82.5,369 L82.5,374
 	<text x="41.6" y="371">-10
 	</text>
 </g>
-
-<g id="yLabel">
+	<g id="yLabel">
 	<text x="14.9" y="204" text-anchor="middle" transform="rotate(-90 14.9 204)" font-size="14" font-family="Lucida Sans Unicode">
 	</text>
 </g>
-
-<g id="xLabel">
+	<g id="xLabel">
 	<text x="232" y="402" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">
 	</text>
 </g>
-
-<g id="plotPoints" clip-path="url(#plot_window)">
-
-<g stroke="rgb(255,0,0)">
+	<g id="plotPoints" clip-path="url(#plot_window)">
+	<g stroke="rgb(255,0,0)">
 	<path d="M112,152 L112,204 
 M142,115 L142,204 
 M247,115 L247,204 
@@ -217,27 +199,21 @@ M361,41.1 L361,204
 " stroke-width="5" fill="none"/>
 </g>
 </g>
-
-<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
+	<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="418" y="39.5" width="68.2" height="31.2"/>
 </g>
-
-<g id="legendPoints">
+	<g id="legendPoints">
 </g>
-
-<g id="legendText">
+	<g id="legendText">
 	<text x="430" y="57.2" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="49.2">Series 1
 	</text>
 </g>
-
-<g id="title">
+	<g id="title">
 	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode" font-weight="normal">X Times
 	</text>
 </g>
-
-<g id="plotXValues">
+	<g id="plotXValues">
 </g>
-
-<g id="plotYValues">
+	<g id="plotYValues">
 </g>
 </svg>

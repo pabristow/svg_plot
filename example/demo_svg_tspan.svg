@@ -13,8 +13,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
 <!-- File demo_svg_tspan.svg --> 
-
-<g id="group element 0" stroke="rgb(255,255,0)" fill="rgb(240,255,255)" stroke-width="5">
+	<g id="group element 0" stroke="rgb(255,255,0)" fill="rgb(240,255,255)" stroke-width="5">
 	<rect x="0" y="0" width="500" height="400"/>
 	<rect x="100" y="200" width="300" height="350"/>
 	<text x="300" y="300">Text g0

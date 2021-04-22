@@ -10,7 +10,7 @@
 
 // svg_style.hpp
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2008, 2009, 2013, 2020
+// Copyright Paul A. Bristow 2008, 2009, 2013, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -22,10 +22,10 @@
 
 //#define BOOST_SVG_STYLE_DIAGNOSTICS for diagnostic output.
 
-#include "svg_color.hpp"
-// using boost::svg_color
-#include "svg_style.hpp" // For not_a_text_style etc
-#include "detail/svg_style_detail.hpp" // For enum plot_doc_structure.
+#include <boost/svg_plot/svg_color.hpp> 
+// using boost::svg::svg_color
+#include <boost/svg_plot/svg_style.hpp> // Font and other styles. // For not_a_text_style etc
+#include <boost/svg_plot/detail/svg_style_detail.hpp> // For enum plot_doc_structure.
 
 #include <iostream>
 // using std::ostream;
@@ -399,8 +399,9 @@ public:
   } // std::ostream& operator<<
 
   void svg_style::write(std::ostream& os)
-  { //! Write any stroke, fill colors and/or width info to SVG XML document.
-    //! Example: stroke="rgb(200,220,255)" stroke-width="0.5"
+  { //! \brief Write any stroke, fill colors and/or width info to SVG XML document.
+   /*! \details Example output: \<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"\>
+   */
     if(stroke_on_)
     { // (Note: start with space but no terminating space).
         os << " stroke=\"";
@@ -419,8 +420,6 @@ public:
             << width_
             << "\"";
     }
-   /*! \details Example output: \<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"\>
-   */
  } // void svg_style::write(std::ostream& os)
 
   // End of svg_style definitions. /////////////////////////////////////////////
@@ -1044,7 +1043,7 @@ public:
 // class plot_point_style function Definitions.
 
 // Constructor.
-  plot_point_style::plot_point_style( //!< Constructor sets defaults for data members.
+  plot_point_style::plot_point_style( //!< Constructor sets defaults for all data members.
     const svg_color& stroke,  //!< Color of circumference or outline of shape.
     const svg_color& fill, //!< Fill color of the centre of the shape (if possible for symbol).
     int size, //!< Diameter of circle, height of square, font_size of Unicode symbol  ...
@@ -1081,21 +1080,21 @@ public:
 // Member Function Definitions.
 
  plot_point_style& plot_point_style::size(int i)
-  { //! Set size of shape or symbol used to mark data value plot point(s).
-    size_ = i;  //!< Diameter of circle, height of square, font_size  ...
+  { //! Set size of shape or symbol used to mark data-value plot point(s).
+    size_ = i;  //! Diameter of shape like circle, height of square, or symbols font_size.
     symbols_style_.font_size(i); // Also set Font size, in case using a symbol as marker.
     return *this;
     //! \return plot_point_style& to make chainable.
   }
 
   int plot_point_style::size()
-  { //! \return Size of shape or symbol used to mark data value plot point(s).
+  { //! \return Size of shape or symbol used to mark data-value plot point(s).
     return size_;
   }
 
   plot_point_style& plot_point_style::fill_color(const svg_color& f)
   { //! Set Fill color of shape or symbol used to mark data value plot point(s).
-    //! See also stroke_color @c .fill_color(red).stroke_color(black)
+    //! \sa stroke_color. For example: \code .fill_color(red).stroke_color(black) \endcode
     fill_color_ = f;
     return *this;
     //! \return plot_point_style& to make chainable.
@@ -1108,7 +1107,7 @@ public:
 
   plot_point_style& plot_point_style::stroke_color(const svg_color& f)
   { //! Set stroke color of shape or symbol used to mark data-value plot-point(s).
-    //! Example: @c .stroke_color(blue).fill_color(red)
+    //! Example: \code .stroke_color(blue).fill_color(red) \endcode
     stroke_color_ = f;
     return *this; //! \return plot_point_style& to make chainable.
   }
@@ -1119,10 +1118,9 @@ public:
   }
 
   plot_point_style& plot_point_style::shape(point_shape s)
-  { //! Set shape used to mark data-value plot-point(s).
-    //! Example: @c .shape(circlet).size(10).stroke_color(green).fill_color(red)
-    //! If \code shape == symbol \endcode, then a Unicode symbol set in @c symbols is used.
-    //! Example: 
+  { //! Set shape used to mark data-value plot-point(s).\n
+    //! Example: \code.shape(circlet).size(10).stroke_color(green).fill_color(red) \endcode
+    //! If shape is a symbol, then a Unicode symbol(s) in @c symbols is used.
     shape_ = s;
     return *this; //! \return plot_point_style& to make chainable.
   }
@@ -1134,28 +1132,29 @@ public:
   }
 
   plot_point_style& plot_point_style::symbols(const std::string s)
-  { //! Override default symbol "x" with a Unicode symbol like square with fill, or emoji like smiley. 
-    //! \warning Only effective if @c .shape(symbol) is also used)!
-    //! 
+  { //! Override default symbol "x" with a Unicode symbol(s) like square with fill, or emoji like smiley. 
+    //! \warning Only effective if @c .shape(symbol) is also set!
+    //! \warning Using more than one Unicode symbol will not position the symbols exactly at the correct location on the plot.
     symbols_ = s;
     return *this; //! \return plot_point_style& to make chainable.
   }
 
   std::string& plot_point_style::symbols()
-  { //! \return Plot data-point marking Unicode symbol.
-    //! \warning Only effective if @c .shape(symbol) is also used)!
+  { //! \return Plot data-point marking Unicode symbol(s).
+    //! \warning Only effective if @c .shape(symbol) is also used!
     return symbols_;
   }
 
+  //! Assign a text_style to data-point marker symbol(s).
   plot_point_style& plot_point_style::style(text_style ts)
-  { //! Assign a text_style to data-point marker symbol(s).
+  {
     symbols_style_ = ts;
     return *this; //! \return plot_point_style& to make chainable.
   }
 
   text_style& plot_point_style::style() const
-  { //! \return text_style& Control of symbol font, size, decoration etc.
-    return const_cast<text_style&>(symbols_style_);
+  { 
+    return const_cast<text_style&>(symbols_style_); //! \return text_style& Control of symbol font, size, decoration etc.
   }
 
 // End class plot_point_style function *Definitions* separated.
@@ -1300,15 +1299,16 @@ public:
 
 std::ostream& operator<< (std::ostream& os, plot_line_style p)
 { //! Output description of plot_line_style. (mainly useful for diagnosis).
-  /*! \details Example Usage: plot_line_style p;   std::cout << p << std::endl;
-     Outputs: point_line_style(RGB(0,0,0), blank, line, no bezier)
+  /*! \details Example Usage: \code plot_line_style p;   std::cout << p << std::endl; \endcode
+    \n
+    \verbatim Outputs: point_line_style(RGB(0,0,0), blank, line, no bezier)  \endverbatim
   */
   os << "point_line_style("
      << p.stroke_color_ << ", "
      << p.area_fill_ << " area fill, "
      << ((p.line_on_) ? "line, " : "no line, ")
      << ((p.bezier_on_) ? "bezier)" : "no bezier)");
-  return os;
+  return os;  // \return reference to @c std::ostream to make chainable.
 } // std::ostream& operator<<
 
 // class plot_line_style function Definitions.

@@ -29,66 +29,92 @@
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="svg_boxplot_series.html#boost.svg.svg_boxplot_seriesconstruct-copy-destruct">construct/copy/destruct</a></span>
   <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> 
-    <a class="link" href="svg_boxplot_series.html#id597598-bb"><span class="identifier">svg_boxplot_series</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">,</span> <span class="identifier">T</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a><span class="special">,</span> 
+    <a class="link" href="svg_boxplot_series.html#id623284-bb"><span class="identifier">svg_boxplot_series</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">,</span> <span class="identifier">T</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a><span class="special">,</span> 
                        <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a><span class="special">,</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a><span class="special">,</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a><span class="special">,</span> 
                        <a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a><span class="special">,</span> <a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a><span class="special">,</span> <span class="keyword">int</span><span class="special">,</span> <a class="link" href="value_style.html" title="Class value_style">value_style</a><span class="special">,</span> 
                        <a class="link" href="text_style.html" title="Class text_style">text_style</a><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="svg_boxplot_series.html#id595060-bb">public member functions</a></span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id595061-bb"><span class="identifier">axis_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id595037-bb"><span class="identifier">axis_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="svg_boxplot_series.html#id595078-bb"><span class="identifier">axis_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id595139-bb"><span class="identifier">axis_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id595114-bb"><span class="identifier">box_border</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id595167-bb"><span class="identifier">box_border</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id595211-bb"><span class="identifier">box_fill</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id595186-bb"><span class="identifier">box_fill</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id595234-bb"><span class="identifier">box_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id595217-bb"><span class="identifier">box_style</span></a><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="svg_boxplot_series.html#id595261-bb"><span class="identifier">box_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id595317-bb"><span class="identifier">box_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="svg_boxplot_series.html#id595320-bb"><span class="identifier">calculate_quantiles</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id596734-bb"><span class="identifier">extreme_outlier_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id596724-bb"><span class="identifier">extreme_outlier_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id596765-bb"><span class="identifier">extreme_outlier_fill</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id596773-bb"><span class="identifier">extreme_outlier_fill</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">point_shape</span> <a class="link" href="svg_boxplot_series.html#id596790-bb"><span class="identifier">extreme_outlier_shape</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id596839-bb"><span class="identifier">extreme_outlier_shape</span></a><span class="special">(</span><span class="identifier">point_shape</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">int</span> <a class="link" href="svg_boxplot_series.html#id596843-bb"><span class="identifier">extreme_outlier_size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id596856-bb"><span class="identifier">extreme_outlier_size</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id596885-bb"><span class="identifier">max_whisker_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id596922-bb"><span class="identifier">max_whisker_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="svg_boxplot_series.html#id596936-bb"><span class="identifier">max_whisker_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id596959-bb"><span class="identifier">max_whisker_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id596998-bb"><span class="identifier">median_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id596984-bb"><span class="identifier">median_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597040-bb"><span class="identifier">median_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597074-bb"><span class="identifier">median_style</span></a><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="svg_boxplot_series.html#id597084-bb"><span class="identifier">median_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597107-bb"><span class="identifier">median_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id597126-bb"><span class="identifier">min_whisker_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597121-bb"><span class="identifier">min_whisker_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="svg_boxplot_series.html#id597194-bb"><span class="identifier">min_whisker_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597161-bb"><span class="identifier">min_whisker_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id597227-bb"><span class="identifier">outlier_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597263-bb"><span class="identifier">outlier_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id597257-bb"><span class="identifier">outlier_fill</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597287-bb"><span class="identifier">outlier_fill</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">point_shape</span> <a class="link" href="svg_boxplot_series.html#id597325-bb"><span class="identifier">outlier_shape</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597348-bb"><span class="identifier">outlier_shape</span></a><span class="special">(</span><span class="identifier">point_shape</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">int</span> <a class="link" href="svg_boxplot_series.html#id597356-bb"><span class="identifier">outlier_size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597354-bb"><span class="identifier">outlier_size</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597419-bb"><span class="identifier">outlier_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597457-bb"><span class="identifier">outlier_style</span></a><span class="special">(</span><a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">int</span> <a class="link" href="svg_boxplot_series.html#id597452-bb"><span class="identifier">quartile_definition</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597496-bb"><span class="identifier">quartile_definition</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="svg_boxplot_series.html#id597527-bb"><span class="identifier">title</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597541-bb"><span class="identifier">title</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="svg_boxplot_series.html#id597580-bb"><span class="identifier">whisker_length</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id597568-bb"><span class="identifier">whisker_length</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="svg_boxplot_series.html#id621867-bb">public member functions</a></span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id621839-bb"><span class="identifier">axis_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id621863-bb"><span class="identifier">axis_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="svg_boxplot_series.html#id621879-bb"><span class="identifier">axis_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id621886-bb"><span class="identifier">axis_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id621924-bb"><span class="identifier">box_border</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id621980-bb"><span class="identifier">box_border</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id621976-bb"><span class="identifier">box_fill</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622010-bb"><span class="identifier">box_fill</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622043-bb"><span class="identifier">box_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622049-bb"><span class="identifier">box_style</span></a><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="svg_boxplot_series.html#id622097-bb"><span class="identifier">box_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622084-bb"><span class="identifier">box_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="svg_boxplot_series.html#id622127-bb"><span class="identifier">calculate_quantiles</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id622164-bb"><span class="identifier">extreme_outlier_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622178-bb"><span class="identifier">extreme_outlier_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id622217-bb"><span class="identifier">extreme_outlier_fill</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622226-bb"><span class="identifier">extreme_outlier_fill</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">point_shape</span> <a class="link" href="svg_boxplot_series.html#id622234-bb"><span class="identifier">extreme_outlier_shape</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622272-bb"><span class="identifier">extreme_outlier_shape</span></a><span class="special">(</span><span class="identifier">point_shape</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">int</span> <a class="link" href="svg_boxplot_series.html#id622310-bb"><span class="identifier">extreme_outlier_size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622311-bb"><span class="identifier">extreme_outlier_size</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id622542-bb"><span class="identifier">max_whisker_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622570-bb"><span class="identifier">max_whisker_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="svg_boxplot_series.html#id622585-bb"><span class="identifier">max_whisker_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622633-bb"><span class="identifier">max_whisker_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id622642-bb"><span class="identifier">median_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622673-bb"><span class="identifier">median_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622688-bb"><span class="identifier">median_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622679-bb"><span class="identifier">median_style</span></a><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="svg_boxplot_series.html#id622723-bb"><span class="identifier">median_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622775-bb"><span class="identifier">median_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id622771-bb"><span class="identifier">min_whisker_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622830-bb"><span class="identifier">min_whisker_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="svg_boxplot_series.html#id622855-bb"><span class="identifier">min_whisker_width</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622853-bb"><span class="identifier">min_whisker_width</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id622902-bb"><span class="identifier">outlier_color</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622883-bb"><span class="identifier">outlier_color</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a class="link" href="svg_boxplot_series.html#id622944-bb"><span class="identifier">outlier_fill</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id622975-bb"><span class="identifier">outlier_fill</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">point_shape</span> <a class="link" href="svg_boxplot_series.html#id622952-bb"><span class="identifier">outlier_shape</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id623018-bb"><span class="identifier">outlier_shape</span></a><span class="special">(</span><span class="identifier">point_shape</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">int</span> <a class="link" href="svg_boxplot_series.html#id623054-bb"><span class="identifier">outlier_size</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id623047-bb"><span class="identifier">outlier_size</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id623062-bb"><span class="identifier">outlier_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id623074-bb"><span class="identifier">outlier_style</span></a><span class="special">(</span><a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">int</span> <a class="link" href="svg_boxplot_series.html#id623137-bb"><span class="identifier">quartile_definition</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id623138-bb"><span class="identifier">quartile_definition</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="svg_boxplot_series.html#id623141-bb"><span class="identifier">title</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id623197-bb"><span class="identifier">title</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="svg_boxplot_series.html#id623222-bb"><span class="identifier">whisker_length</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a class="link" href="svg_boxplot_series.html#id623228-bb"><span class="identifier">whisker_length</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+
+  <span class="comment">// public data members</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="identifier">axis_style_</span><span class="special">;</span>  <span class="comment">// line widths and colors of X and Y axes. </span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="identifier">box_style_</span><span class="special">;</span>  <span class="comment">// line widths and colors of box. </span>
+  <span class="keyword">double</span> <span class="identifier">box_width_</span><span class="special">;</span>  <span class="comment">// Width of boxplot box. </span>
+  <a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <span class="identifier">ext_outlier_</span><span class="special">;</span>  <span class="comment">// Style (shape, color...) for marking 'extreme' outliers. </span>
+  <span class="keyword">bool</span> <span class="identifier">extreme_outlier_values_on_</span><span class="special">;</span>  <span class="comment">// True if extreme outliers are to have their values labelled. </span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <span class="keyword">double</span> <span class="special">&gt;</span> <span class="identifier">extreme_outliers_</span><span class="special">;</span>  <span class="comment">// Any data values that are judged extreme outliers. </span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="identifier">max_whisker_style_</span><span class="special">;</span>  <span class="comment">// Color and width etc of boxplot minimum 'whisker'. </span>
+  <span class="keyword">double</span> <span class="identifier">median_</span><span class="special">;</span>  <span class="comment">// 2nd middle quartile. </span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="identifier">median_style_</span><span class="special">;</span>  <span class="comment">// line widths and colors of median marker. </span>
+  <a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <span class="identifier">mild_outlier_</span><span class="special">;</span>  <span class="comment">// Style (shape, color...) for marking 'mild' outliers. </span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="identifier">min_whisker_style_</span><span class="special">;</span>  <span class="comment">// Color and width etc of boxplot minimum 'whisker'. </span>
+  <span class="keyword">bool</span> <span class="identifier">outlier_values_on_</span><span class="special">;</span>  <span class="comment">// True if mild outliers are to have their values labelled. </span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <span class="keyword">double</span> <span class="special">&gt;</span> <span class="identifier">outliers_</span><span class="special">;</span>  <span class="comment">// Any data values that are judged outliers. </span>
+  <span class="keyword">double</span> <span class="identifier">q1_</span><span class="special">;</span>  <span class="comment">// 1st lower quartile. </span>
+  <span class="keyword">double</span> <span class="identifier">q3_</span><span class="special">;</span>  <span class="comment">// 3rd upper quartile. </span>
+  <span class="keyword">int</span> <span class="identifier">quartile_definition_</span><span class="special">;</span>  <span class="comment">// The definition of the quartile can be selected. </span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;</span> <span class="keyword">double</span> <span class="special">&gt;</span> <span class="identifier">series_</span><span class="special">;</span>  <span class="comment">// Data series for the boxplot. </span>
+  <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="identifier">series_info_</span><span class="special">;</span>  <span class="comment">// information about the data series. </span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="identifier">series_style_</span><span class="special">;</span>  <span class="comment">// Style (font etc) for text. </span>
+  <span class="keyword">double</span> <span class="identifier">text_margin_</span><span class="special">;</span>  <span class="comment">// Margin (SVG units, default pixels) around text items. </span>
+  <a class="link" href="value_style.html" title="Class value_style">value_style</a> <span class="identifier">values_style_</span><span class="special">;</span>  <span class="comment">// Style for data value labels. </span>
+  <span class="keyword">double</span> <span class="identifier">whisker_length_</span><span class="special">;</span>  <span class="comment">// Length of boxplot 'whisker'. </span>
+  <span class="keyword">double</span> <span class="identifier">whisker_max_</span><span class="special">;</span>  <span class="comment">// Maximum of whisker. </span>
+  <span class="keyword">double</span> <span class="identifier">whisker_min_</span><span class="special">;</span>  <span class="comment">// Minimum of whisker. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1443592"></a><h2>Description</h2>
+<a name="id1491395"></a><h2>Description</h2>
 <p>Information about a series of data values to be displayed as a Box Plot. A Box Plot that can contain several boxplot data series. Median, whiskers and outliers are computed for each series. </p>
 <p><span class="bold"><strong>See Also:</strong></span></p>
 <p><a href="http://en.wikipedia.org/wiki/Boxplot" target="_top">http://en.wikipedia.org/wiki/Boxplot</a> </p>
@@ -97,13 +123,13 @@
 <p>
 </p>
 <div class="refsect2">
-<a name="id1443626"></a><h3>
+<a name="id1491463"></a><h3>
 <a name="boost.svg.svg_boxplot_seriesconstruct-copy-destruct"></a><code class="computeroutput">svg_boxplot_series</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
 <pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> 
-  <a name="id597598-bb"></a><span class="identifier">svg_boxplot_series</span><span class="special">(</span><span class="identifier">T</span> begin<span class="special">,</span> <span class="identifier">T</span> end<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> title<span class="special">,</span> <span class="keyword">double</span> bw<span class="special">,</span> 
+  <a name="id623284-bb"></a><span class="identifier">svg_boxplot_series</span><span class="special">(</span><span class="identifier">T</span> begin<span class="special">,</span> <span class="identifier">T</span> end<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> title<span class="special">,</span> <span class="keyword">double</span> bw<span class="special">,</span> 
                      <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> bs<span class="special">,</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> ms<span class="special">,</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> as<span class="special">,</span> <span class="keyword">double</span> wl<span class="special">,</span> 
                      <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> minws<span class="special">,</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> maxws<span class="special">,</span> <a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> os<span class="special">,</span> 
                      <a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> extos<span class="special">,</span> <span class="keyword">int</span> q_def<span class="special">,</span> <a class="link" href="value_style.html" title="Class value_style">value_style</a> vs<span class="special">,</span> 
@@ -133,11 +159,11 @@
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1445227"></a><h3>
-<a name="id595060-bb"></a><code class="computeroutput">svg_boxplot_series</code> public member functions</h3>
+<a name="id1491665"></a><h3>
+<a name="id621867-bb"></a><code class="computeroutput">svg_boxplot_series</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id595061-bb"></a><span class="identifier">axis_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id621839-bb"></a><span class="identifier">axis_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -152,7 +178,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id595037-bb"></a><span class="identifier">axis_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id621863-bb"></a><span class="identifier">axis_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
 <p>Set color of axis line.</p>
 <p>
 </p>
@@ -168,7 +194,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id595078-bb"></a><span class="identifier">axis_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id621879-bb"></a><span class="identifier">axis_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -183,7 +209,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id595139-bb"></a><span class="identifier">axis_width</span><span class="special">(</span><span class="keyword">double</span> l<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id621886-bb"></a><span class="identifier">axis_width</span><span class="special">(</span><span class="keyword">double</span> l<span class="special">)</span><span class="special">;</span></pre>
 <p>Set width of axis line.</p>
 <p>
 </p>
@@ -199,7 +225,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id595114-bb"></a><span class="identifier">box_border</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id621924-bb"></a><span class="identifier">box_border</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -214,7 +240,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id595167-bb"></a><span class="identifier">box_border</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id621980-bb"></a><span class="identifier">box_border</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
 <p>Set color of box border.</p>
 <p>
 </p>
@@ -230,7 +256,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id595211-bb"></a><span class="identifier">box_fill</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id621976-bb"></a><span class="identifier">box_fill</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -245,7 +271,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id595186-bb"></a><span class="identifier">box_fill</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622010-bb"></a><span class="identifier">box_fill</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
 <p>Set color of box fill (not border).</p>
 <p>
 </p>
@@ -261,7 +287,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id595234-bb"></a><span class="identifier">box_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id622043-bb"></a><span class="identifier">box_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -276,7 +302,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id595217-bb"></a><span class="identifier">box_style</span><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> bs<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622049-bb"></a><span class="identifier">box_style</span><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> bs<span class="special">)</span><span class="special">;</span></pre>
 <p>Set entire box style.</p>
 <p>
 </p>
@@ -292,7 +318,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id595261-bb"></a><span class="identifier">box_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id622097-bb"></a><span class="identifier">box_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -307,7 +333,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id595317-bb"></a><span class="identifier">box_width</span><span class="special">(</span><span class="keyword">double</span> l<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622084-bb"></a><span class="identifier">box_width</span><span class="special">(</span><span class="keyword">double</span> l<span class="special">)</span><span class="special">;</span></pre>
 <p>Set width of the box.</p>
 <p>
 </p>
@@ -323,7 +349,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id595320-bb"></a><span class="identifier">calculate_quantiles</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id622127-bb"></a><span class="identifier">calculate_quantiles</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Divide sorted data set into four equal parts, called quartiles, so each part represent 1/4th of the sampled population.</p>
 <p>Michael Frigge, David C. Hoaglin and Boris Iglewicz<br>
  The American Statistician, Vol. 43, No. 1 (Feb., 1989), pp. 50-54<br>
@@ -334,7 +360,7 @@
 Extreme outlier usually set at k = 3.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id596734-bb"></a><span class="identifier">extreme_outlier_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id622164-bb"></a><span class="identifier">extreme_outlier_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -349,7 +375,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id596724-bb"></a><span class="identifier">extreme_outlier_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622178-bb"></a><span class="identifier">extreme_outlier_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
 <p>Set fill color of extreme outlier line in box.</p>
 <p>
 </p>
@@ -365,7 +391,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id596765-bb"></a><span class="identifier">extreme_outlier_fill</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id622217-bb"></a><span class="identifier">extreme_outlier_fill</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -380,7 +406,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id596773-bb"></a><span class="identifier">extreme_outlier_fill</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622226-bb"></a><span class="identifier">extreme_outlier_fill</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
 <p>Set fill color of extreme outlier line in box.</p>
 <p>
 </p>
@@ -396,7 +422,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">point_shape</span> <a name="id596790-bb"></a><span class="identifier">extreme_outlier_shape</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">point_shape</span> <a name="id622234-bb"></a><span class="identifier">extreme_outlier_shape</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -411,7 +437,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id596839-bb"></a><span class="identifier">extreme_outlier_shape</span><span class="special">(</span><span class="identifier">point_shape</span> shape<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622272-bb"></a><span class="identifier">extreme_outlier_shape</span><span class="special">(</span><span class="identifier">point_shape</span> shape<span class="special">)</span><span class="special">;</span></pre>
 <p>Set shape of extreme outlier marker.</p>
 <p>
 </p>
@@ -427,7 +453,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">int</span> <a name="id596843-bb"></a><span class="identifier">extreme_outlier_size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">int</span> <a name="id622310-bb"></a><span class="identifier">extreme_outlier_size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -442,7 +468,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id596856-bb"></a><span class="identifier">extreme_outlier_size</span><span class="special">(</span><span class="keyword">int</span> size<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622311-bb"></a><span class="identifier">extreme_outlier_size</span><span class="special">(</span><span class="keyword">int</span> size<span class="special">)</span><span class="special">;</span></pre>
 <p>Set size of extreme outlier marker.</p>
 <p>
 </p>
@@ -458,7 +484,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id596885-bb"></a><span class="identifier">max_whisker_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id622542-bb"></a><span class="identifier">max_whisker_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -473,7 +499,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id596922-bb"></a><span class="identifier">max_whisker_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622570-bb"></a><span class="identifier">max_whisker_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col<span class="special">)</span><span class="special">;</span></pre>
 <p>Set color of minimum whisker.</p>
 <p>
 </p>
@@ -489,7 +515,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id596936-bb"></a><span class="identifier">max_whisker_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id622585-bb"></a><span class="identifier">max_whisker_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -504,7 +530,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id596959-bb"></a><span class="identifier">max_whisker_width</span><span class="special">(</span><span class="keyword">double</span> l<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622633-bb"></a><span class="identifier">max_whisker_width</span><span class="special">(</span><span class="keyword">double</span> l<span class="special">)</span><span class="special">;</span></pre>
 <p>
 
 </p>
@@ -526,7 +552,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id596998-bb"></a><span class="identifier">median_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id622642-bb"></a><span class="identifier">median_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -541,7 +567,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id596984-bb"></a><span class="identifier">median_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622673-bb"></a><span class="identifier">median_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
 <p>Set color of median line in box.</p>
 <p>
 </p>
@@ -557,7 +583,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id597040-bb"></a><span class="identifier">median_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id622688-bb"></a><span class="identifier">median_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -572,7 +598,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id597074-bb"></a><span class="identifier">median_style</span><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> ms<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622679-bb"></a><span class="identifier">median_style</span><span class="special">(</span><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> ms<span class="special">)</span><span class="special">;</span></pre>
 <p>Set entire median style.</p>
 <p>
 </p>
@@ -588,7 +614,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id597084-bb"></a><span class="identifier">median_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id622723-bb"></a><span class="identifier">median_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -603,7 +629,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id597107-bb"></a><span class="identifier">median_width</span><span class="special">(</span><span class="keyword">double</span> l<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622775-bb"></a><span class="identifier">median_width</span><span class="special">(</span><span class="keyword">double</span> l<span class="special">)</span><span class="special">;</span></pre>
 <p>Set width of median line in box.</p>
 <p>
 </p>
@@ -619,7 +645,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id597126-bb"></a><span class="identifier">min_whisker_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id622771-bb"></a><span class="identifier">min_whisker_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -634,7 +660,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id597121-bb"></a><span class="identifier">min_whisker_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622830-bb"></a><span class="identifier">min_whisker_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> col<span class="special">)</span><span class="special">;</span></pre>
 <p>Set color of minimum whisker.</p>
 <p>
 </p>
@@ -650,7 +676,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id597194-bb"></a><span class="identifier">min_whisker_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id622855-bb"></a><span class="identifier">min_whisker_width</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -665,7 +691,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id597161-bb"></a><span class="identifier">min_whisker_width</span><span class="special">(</span><span class="keyword">double</span> l<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622853-bb"></a><span class="identifier">min_whisker_width</span><span class="special">(</span><span class="keyword">double</span> l<span class="special">)</span><span class="special">;</span></pre>
 <p>Set line width of minimum whisker.</p>
 <p>
 </p>
@@ -681,7 +707,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id597227-bb"></a><span class="identifier">outlier_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id622902-bb"></a><span class="identifier">outlier_color</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -696,7 +722,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id597263-bb"></a><span class="identifier">outlier_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622883-bb"></a><span class="identifier">outlier_color</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
 <p>Set color of outlier line in box.</p>
 <p>
 </p>
@@ -712,7 +738,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id597257-bb"></a><span class="identifier">outlier_fill</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <a name="id622944-bb"></a><span class="identifier">outlier_fill</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -727,7 +753,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id597287-bb"></a><span class="identifier">outlier_fill</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id622975-bb"></a><span class="identifier">outlier_fill</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> color<span class="special">)</span><span class="special">;</span></pre>
 <p>Set fill color of mild outlier line in box.</p>
 <p>
 </p>
@@ -743,7 +769,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">point_shape</span> <a name="id597325-bb"></a><span class="identifier">outlier_shape</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">point_shape</span> <a name="id622952-bb"></a><span class="identifier">outlier_shape</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -758,7 +784,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id597348-bb"></a><span class="identifier">outlier_shape</span><span class="special">(</span><span class="identifier">point_shape</span> shape<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id623018-bb"></a><span class="identifier">outlier_shape</span><span class="special">(</span><span class="identifier">point_shape</span> shape<span class="special">)</span><span class="special">;</span></pre>
 <p>Set shape of outlier marker.</p>
 <p>
 </p>
@@ -774,7 +800,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">int</span> <a name="id597356-bb"></a><span class="identifier">outlier_size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">int</span> <a name="id623054-bb"></a><span class="identifier">outlier_size</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -789,7 +815,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id597354-bb"></a><span class="identifier">outlier_size</span><span class="special">(</span><span class="keyword">int</span> size<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id623047-bb"></a><span class="identifier">outlier_size</span><span class="special">(</span><span class="keyword">int</span> size<span class="special">)</span><span class="special">;</span></pre>
 <p>Set size of outlier marker.</p>
 <p>
 </p>
@@ -805,7 +831,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <span class="special">&amp;</span> <a name="id597419-bb"></a><span class="identifier">outlier_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <span class="special">&amp;</span> <a name="id623062-bb"></a><span class="identifier">outlier_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Get current outlier style. </p>
 <p>
 </p>
@@ -821,7 +847,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id597457-bb"></a><span class="identifier">outlier_style</span><span class="special">(</span><a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id623074-bb"></a><span class="identifier">outlier_style</span><span class="special">(</span><a class="link" href="plot_point_style.html" title="Class plot_point_style">plot_point_style</a> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>
 <p>Set entire outlier style.. </p>
 <p>Set entire outlier style.</p>
 <p>
@@ -838,7 +864,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">int</span> <a name="id597452-bb"></a><span class="identifier">quartile_definition</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">int</span> <a name="id623137-bb"></a><span class="identifier">quartile_definition</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -853,7 +879,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id597496-bb"></a><span class="identifier">quartile_definition</span><span class="special">(</span><span class="keyword">int</span> def<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id623138-bb"></a><span class="identifier">quartile_definition</span><span class="special">(</span><span class="keyword">int</span> def<span class="special">)</span><span class="special">;</span></pre>
 <p>set Choice of H&amp;F quartile definition.</p>
 <p>
 </p>
@@ -869,7 +895,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id597527-bb"></a><span class="identifier">title</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id623141-bb"></a><span class="identifier">title</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Obtain current series title. 
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -884,7 +910,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id597541-bb"></a><span class="identifier">title</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> t<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id623197-bb"></a><span class="identifier">title</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> t<span class="special">)</span><span class="special">;</span></pre>
 <p>Set title of a <span class="bold"><strong>data</strong></span> series.</p>
 <p>
 </p>
@@ -900,7 +926,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id597580-bb"></a><span class="identifier">whisker_length</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>Get current whisker length (Applies to BOTH min and max whisker). <p>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id623222-bb"></a><span class="identifier">whisker_length</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>Get current whisker length (Applies to BOTH min and max whisker). <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
 <colgroup>
@@ -914,7 +940,7 @@ Extreme outlier usually set at k = 3.</p>
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id597568-bb"></a><span class="identifier">whisker_length</span><span class="special">(</span><span class="keyword">double</span> l<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_boxplot_series.html" title="Class svg_boxplot_series">svg_boxplot_series</a> <span class="special">&amp;</span> <a name="id623228-bb"></a><span class="identifier">whisker_length</span><span class="special">(</span><span class="keyword">double</span> l<span class="special">)</span><span class="special">;</span></pre>
 <p>Set minimum and maximum whisker length.</p>
 <p>
 </p>

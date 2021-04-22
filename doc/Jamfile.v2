@@ -125,7 +125,7 @@ doxygen autodoc
     # Note: no commas required but need quotes if more than one file.
 
     <xsl:param>"boost.doxygen.reftitle=Boost.SVG plot C++ Reference"
-   # <doxygen:param>ENABLED_SECTIONS="DETAIL" # Enable Doxygen indexing of all DETAIL sections.  (Only useful for maintainers).
+    <doxygen:param>ENABLED_SECTIONS="DETAIL" # Enable Doxygen indexing of all DETAIL sections.  (Only useful for maintainers).
 ;
     #<doxygen:param>"PREDEFINED=\"BOOST_DEDUCED_TYPENAME=typename\" "
 # See Doxygen configuration for detailed explanation of these options.

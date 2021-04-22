@@ -1126,7 +1126,7 @@ svg_1d_plot_series& svg_1d_plot::plot(const T& container, const std::string& tit
     \param end Iterator to one-beyond-end of data in container.
     \param title Optional title for the plot (default is no title).
     \return Reference to the data-series just added.
-    \note This version permits a @b partial range of the container, from begin to end, to be used.
+    \note This version permits a @b partial range of the container, from begin to end, to be used.\n
 
     Example:
     \code

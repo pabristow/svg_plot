@@ -14,36 +14,27 @@ xmlns ="http://www.w3.org/2000/svg"
 
 <clipPath id="plot_window">	<rect x="46.4" y="40.5" width="427" height="328"/>
 </clipPath>
-
-<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
+	<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="0" y="0" width="500" height="400"/>
 </g>
-
-<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2">
+	<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="45.4" y="39.5" width="429" height="330"/>
 </g>
-
-<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+	<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
-
-<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+	<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
-
-<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+	<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
-
-<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+	<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
-
-<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="45.4" y1="39.5" x2="45.4" y2="369"/>
 </g>
-
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="45.4" y1="369" x2="474" y2="369"/>
 </g>
-
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M43.4,361 L45.4,361 
 M43.4,353 L45.4,353 
 M43.4,344 L45.4,344 
@@ -78,8 +69,7 @@ M43.4,56 L45.4,56
 M43.4,47.7 L45.4,47.7 
 " fill="none"/>
 </g>
-
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M57.6,369 L57.6,371 
 M69.9,369 L69.9,371 
 M82.1,369 L82.1,371 
@@ -110,8 +100,7 @@ M450,369 L450,371
 M462,369 L462,371 
 " fill="none"/>
 </g>
-
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M40.4,369 L45.4,369 
 M40.4,328 L45.4,328 
 M40.4,287 L45.4,287 
@@ -123,8 +112,7 @@ M40.4,80.7 L45.4,80.7
 M40.4,39.5 L45.4,39.5 
 " fill="none"/>
 </g>
-
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M45.4,369 L45.4,374 
 M107,369 L107,374 
 M168,369 L168,374 
@@ -135,8 +123,7 @@ M413,369 L413,374
 M474,369 L474,374 
 " fill="none"/>
 </g>
-
-<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="middle">
 	<text x="45.4" y="390">1
 	</text>
 	<text x="107" y="390">2
@@ -154,8 +141,7 @@ M474,369 L474,374
 	<text x="474" y="390">8
 	</text>
 </g>
-
-<g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="end">
+	<g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="end">
 	<text x="34.4" y="371">2
 	</text>
 	<text x="34.4" y="330">3
@@ -175,39 +161,32 @@ M474,369 L474,374
 	<text x="34.4" y="41.9">10
 	</text>
 </g>
-
-<g id="yLabel">
+	<g id="yLabel">
 	<text x="14.9" y="204" text-anchor="middle" transform="rotate(-90 14.9 204)" font-size="14" font-family="Lucida Sans Unicode">
 	</text>
 </g>
-
-<g id="xLabel">
+	<g id="xLabel">
 	<text x="260" y="402" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">
 	</text>
 </g>
-
-<g id="plotPoints" clip-path="url(#plot_window)">
-
-<g stroke="rgb(0,0,0)" fill="rgb(255,255,255)">
-	<text x="51.5" y="322" text-anchor="middle" font-size="8" font-family="Lucida Sans Unicode">&#x25CF;
+	<g id="plotPoints" clip-path="url(#plot_window)">
+	<g stroke="rgb(0,0,0)" fill="rgb(255,255,255)" font-size="8" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<text x="51.5" y="322" text-anchor="middle">&#x25CF;
 	</text>
-	<text x="114" y="353" text-anchor="middle" font-size="8" font-family="Lucida Sans Unicode">&#x25CF;
+	<text x="114" y="353" text-anchor="middle">&#x25CF;
 	</text>
-	<text x="319" y="232" text-anchor="middle" font-size="8" font-family="Lucida Sans Unicode">&#x25CF;
+	<text x="319" y="232" text-anchor="middle">&#x25CF;
 	</text>
-	<text x="431" y="79" text-anchor="middle" font-size="8" font-family="Lucida Sans Unicode">&#x25CF;
+	<text x="431" y="78.9" text-anchor="middle">&#x25CF;
 	</text>
 </g>
 </g>
-
-<g id="title">
+	<g id="title">
 	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode" font-weight="normal">Autoscaling 2d Values
 	</text>
 </g>
-
-<g id="plotXValues">
+	<g id="plotXValues">
 </g>
-
-<g id="plotYValues">
+	<g id="plotYValues">
 </g>
 </svg>

@@ -1,11 +1,9 @@
 /*! \file demo_1d_containers.cpp
   \brief An example to demonstrate simple 1D plotting using a range of different STL containers.
-  \author Paul A Bristow
-  \date Feb 2009
 */
 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A Bristow 2008, 2012
+// Copyright Paul A Bristow 2008, 2012, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -78,9 +76,9 @@ and plot adds a (unnamed) data series (naming isn't very useful if there is only
 
   {
 //[demo_1d_containers_3
-/*`If the container is a static array, then it must be filled by assignment:*/
-  boost::array<long double, 4> values = {3.1L,-5.5L, 8.7L, 0.5L};
 
+  static boost::array<const long double, 4> values {3.1L,-5.5L, 8.7L, 0.5L};
+  //! \note Using @c long double provokes an expected warning about conversion from 'T' to 'const double', possible loss of data.
   boost::svg::svg_1d_plot my_plot;
   my_plot.title("array&lt;long double&gt; example");
   my_plot.plot(values);
@@ -143,15 +141,16 @@ and plot adds a (unnamed) data series (naming isn't very useful if there is only
 } // int main()
 
 /*
-
-Output:
+Sample output:
 //[demo_1d_containers_output
 
-Compiling...
 demo_1d_containers.cpp
-Linking... 
-Embedding manifest...
-Autorun "j:\Cpp\SVG\debug\demo_1d_containers.exe"
-Build Time 0:03
+demo_1d_containers.vcxproj -> I:\Cpp\SVG_plot\svg_plot\x64\Release\demo_1d_containers.exe
+Autorun "I:\Cpp\SVG_plot\svg_plot\x64\Release\demo_1d_containers.exe"
+Plot written to file ./demo_1d_vector_float.svg.
+Plot written to file ./demo_1d_array_long_double.svg.
+Plot written to file ./demo_1d_set_double.svg.
+Plot written to file ./demo_1d_list_double.svg.
+Plot written to file ./demo_1d_deque_double.svg.
 //] [/demo_1d_containers_output]
 */

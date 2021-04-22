@@ -15,24 +15,19 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- File demo_Hoaglin.svg --> 
 <clipPath id="plot_window">	<rect x="61.6" y="52" width="426" height="232"/>
 </clipPath>
-
-<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
+	<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="0" y="0" width="500" height="350"/>
 </g>
-
-<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
+	<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="66.6" y="57" width="421" height="227"/>
 </g>
-
-<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="66.6" y1="284" x2="488" y2="284"/>
 </g>
-
-<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="66.6" y1="284" x2="66.6" y2="57"/>
 </g>
-
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M127,284 L127,289 
 M187,284 L187,289 
 M247,284 L247,289 
@@ -41,8 +36,7 @@ M368,284 L368,289
 M428,284 L428,289 
 " fill="none"/>
 </g>
-
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M61.6,267 L66.6,267 
 M61.6,235 L66.6,235 
 M61.6,203 L66.6,203 
@@ -52,8 +46,7 @@ M61.6,106 L66.6,106
 M61.6,73.2 L66.6,73.2 
 " fill="none"/>
 </g>
-
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M64.6,280 L66.6,280 
 M64.6,274 L66.6,274 
 M64.6,261 L66.6,261 
@@ -84,14 +77,11 @@ M64.6,66.7 L66.6,66.7
 M64.6,60.2 L66.6,60.2 
 " fill="none"/>
 </g>
-
-<g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1">
+	<g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
-
-<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+	<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
-
-<g id="valueLabels" fill="rgb(0,0,0)">
+	<g id="valueLabels" fill="rgb(0,0,0)">
 	<text x="127" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">default_8
 	</text>
 	<text x="187" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">def #4
@@ -119,221 +109,167 @@ M64.6,60.2 L66.6,60.2
 	<text x="55.6" y="75.6" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">110
 	</text>
 </g>
-
-<g id="yLabel" fill="rgb(0,0,0)">
+	<g id="yLabel" fill="rgb(0,0,0)">
 	<text x="30.2" y="170" text-anchor="middle" transform="rotate(-90 30.2 170)" font-size="14" font-family="Lucida Sans Unicode">Value
 	</text>
 </g>
-
-<g id="xLabel" fill="rgb(0,0,0)">
+	<g id="xLabel" fill="rgb(0,0,0)">
 	<text x="277" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">Boxplot
 	</text>
 </g>
-
-<g id="boxAxis" stroke="rgb(0,0,0)">
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="boxAxis" stroke="rgb(0,0,0)">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="127" y1="258" x2="127" y2="106"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="187" y1="258" x2="187" y2="106"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="247" y1="258" x2="247" y2="106"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="307" y1="258" x2="307" y2="106"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="368" y1="186" x2="368" y2="106"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="428" y1="258" x2="428" y2="106"/>
 </g>
 </g>
-
-<g id="Median" stroke="rgb(255,0,0)" stroke-width="2">
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
+	<g id="Median" stroke="rgb(255,0,0)" stroke-width="2">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
 	<rect x="112" y="125" width="30" height="58.3"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
 	<line x1="112" y1="154" x2="141" y2="154"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
 	<rect x="172" y="136" width="30" height="65.6"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
-	<line x1="173" y1="154" x2="202" y2="154"/>
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
+	<line x1="172" y1="154" x2="202" y2="154"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
 	<rect x="232" y="127" width="30" height="55"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
 	<line x1="233" y1="154" x2="262" y2="154"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
 	<rect x="292" y="122" width="30" height="64.7"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
 	<line x1="293" y1="154" x2="322" y2="154"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
 	<rect x="353" y="131" width="30" height="45.3"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
 	<line x1="353" y1="154" x2="382" y2="154"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
 	<rect x="413" y="125" width="30" height="58.3"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
 	<line x1="413" y1="154" x2="442" y2="154"/>
 </g>
 </g>
-
-<g id="whisker" stroke="rgb(0,0,0)">
-
-<g clip-path="url(#plot_window)">
-
-<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g id="whisker" stroke="rgb(0,0,0)">
+	<g clip-path="url(#plot_window)">
+	<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="112" y1="258" x2="142" y2="258"/>
 </g>
-
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="112" y1="106" x2="142" y2="106"/>
 </g>
 </g>
-
-<g clip-path="url(#plot_window)">
-
-<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g clip-path="url(#plot_window)">
+	<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="185" y1="258" x2="189" y2="258"/>
 </g>
-
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="185" y1="106" x2="189" y2="106"/>
 </g>
 </g>
-
-<g clip-path="url(#plot_window)">
-
-<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g clip-path="url(#plot_window)">
+	<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="245" y1="258" x2="250" y2="258"/>
 </g>
-
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="245" y1="106" x2="250" y2="106"/>
 </g>
 </g>
-
-<g clip-path="url(#plot_window)">
-
-<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g clip-path="url(#plot_window)">
+	<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="304" y1="258" x2="310" y2="258"/>
 </g>
-
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="304" y1="106" x2="310" y2="106"/>
 </g>
 </g>
-
-<g clip-path="url(#plot_window)">
-
-<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g clip-path="url(#plot_window)">
+	<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="364" y1="186" x2="371" y2="186"/>
 </g>
-
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="364" y1="106" x2="371" y2="106"/>
 </g>
 </g>
-
-<g clip-path="url(#plot_window)">
-
-<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g clip-path="url(#plot_window)">
+	<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="424" y1="258" x2="432" y2="258"/>
 </g>
-
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="424" y1="106" x2="432" y2="106"/>
 </g>
 </g>
 </g>
-
-<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
-
-<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
-	<text x="368" y="259" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
+	<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
+	<text x="368" y="259" text-anchor="middle">&#x25CF;
 	</text>
-	<text x="368" y="250" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	<text x="368" y="249" text-anchor="middle">&#x25CF;
 	</text>
 </g>
 </g>
-
-<g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)">
+	<g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)">
 </g>
-
-<g id="Data Values" fill="rgb(0,0,0)">
-
-<g clip-path="url(#plot_window)">
+	<g id="Data Values" fill="rgb(0,0,0)">
+	<g clip-path="url(#plot_window)">
 	<text x="147" y="157" font-size="10" font-family="Lucida Sans Unicode">85
 	</text>
 </g>
-
-<g clip-path="url(#plot_window)">
+	<g clip-path="url(#plot_window)">
 	<text x="207" y="157" font-size="10" font-family="Lucida Sans Unicode">85
 	</text>
 </g>
-
-<g clip-path="url(#plot_window)">
+	<g clip-path="url(#plot_window)">
 	<text x="267" y="157" font-size="10" font-family="Lucida Sans Unicode">85
 	</text>
 </g>
-
-<g clip-path="url(#plot_window)">
+	<g clip-path="url(#plot_window)">
 	<text x="327" y="157" font-size="10" font-family="Lucida Sans Unicode">85
 	</text>
 </g>
-
-<g clip-path="url(#plot_window)">
+	<g clip-path="url(#plot_window)">
 	<text x="388" y="157" font-size="10" font-family="Lucida Sans Unicode">85
 	</text>
 </g>
-
-<g>
+	<g>
 	<text x="373" y="261" font-size="10" font-family="Lucida Sans Unicode">53
 	</text>
 </g>
-
-<g>
+	<g>
 	<text x="373" y="251" font-size="10" font-family="Lucida Sans Unicode">56
 	</text>
 </g>
-
-<g clip-path="url(#plot_window)">
+	<g clip-path="url(#plot_window)">
 	<text x="448" y="157" font-size="10" font-family="Lucida Sans Unicode">85
 	</text>
 </g>
 </g>
-
-<g id="title" fill="rgb(0,0,0)">
+	<g id="title" fill="rgb(0,0,0)">
 	<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode">Hoaglin Example Data
 	</text>
 </g>

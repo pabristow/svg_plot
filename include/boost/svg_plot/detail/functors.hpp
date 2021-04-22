@@ -1,4 +1,4 @@
-/*! \file functors.hpp
+/*! \file
   \brief Functors to convert data to doubles.
   \details SVG plot assumes all data are convertible to double or uncertain value type unc before being plotted.
     The functors are used to convert both 1D and 2D (pairs of data values) to be converted.

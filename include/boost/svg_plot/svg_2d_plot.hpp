@@ -2222,22 +2222,15 @@ my_plot.background_color(ghostwhite) // Whole image.
         for(unsigned int i = 0; i < serieses_.size(); ++i)
         {
           g_element& g_ptr_dps = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
-          //g_ptr_dps.style()
-          //  .fill_color(serieses_[i].point_style_.fill_color_)
-          //  .stroke_color(serieses_[i].point_style_.stroke_color_);
-          // // style has colors but no width, only size and shape.
-
-          g_element& g_ptr_dp = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
-          plot_point_style& dps = serieses_[i].point_style_;
+          //g_element& g_ptr_dp = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
+          //plot_point_style& dps = serieses_[i].point_style_;
           g_ptr_dps.svg_style_.stroke_color(serieses_[i].point_style_.stroke_color_);
           g_ptr_dps.svg_style_.fill_color(serieses_[i].point_style_.fill_color_);
           g_ptr_dps.text_style_.font_size(serieses_[i].point_style_.size_);
           g_ptr_dps.text_style_.font_family_ = serieses_[i].point_style_.symbols_style_.font_family_;
           g_ptr_dps.alignment_ = align_style::center_align;
-          //g_ptr_dps.
             
           //  y_values_style_.value_label_alignment_ = align_style::center_align;
-          // <g stroke="rgb(0,128,0)" fill="rgb(255,255,255)">
 
           size_t ignored = 0;
           size_t plotted = 0;

@@ -15,30 +15,24 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- File ./svg_test_boxplot.svg --> 
 <clipPath id="plot_window">	<rect x="61.6" y="52" width="426" height="232"/>
 </clipPath>
-
-<g id="imageBackground" stroke="rgb(0,0,0)" fill="rgb(255,255,255)" stroke-width="2">
+	<g id="imageBackground" stroke="rgb(0,0,0)" fill="rgb(255,255,255)" stroke-width="2">
 	<rect x="0" y="0" width="500" height="350"/>
 </g>
-
-<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
+	<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
 	<rect x="66.6" y="57" width="421" height="227"/>
 </g>
-
-<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="X-axis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="66.6" y1="284" x2="488" y2="284"/>
 </g>
-
-<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="Y-axis" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="66.6" y1="284" x2="66.6" y2="57"/>
 </g>
-
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M207,284 L207,289 
 M348,284 L348,289 
 " fill="none"/>
 </g>
-
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
 	<path d="M61.6,284 L66.6,284 
 M61.6,238 L66.6,238 
 M61.6,193 L66.6,193 
@@ -48,8 +42,7 @@ M61.6,57 L66.6,57
 M61.6,284 L66.6,284 
 " fill="none"/>
 </g>
-
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
 	<path d="M64.6,275 L66.6,275 
 M64.6,265 L66.6,265 
 M64.6,256 L66.6,256 
@@ -73,14 +66,11 @@ M64.6,66.1 L66.6,66.1
 M64.6,284 L66.6,284 
 " fill="none"/>
 </g>
-
-<g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1">
+	<g id="YGrid" stroke="rgb(200,220,255)" stroke-width="1">
 </g>
-
-<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+	<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
-
-<g id="valueLabels" fill="rgb(0,0,0)">
+	<g id="valueLabels" fill="rgb(0,0,0)">
 	<text x="207" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[50 / x]
 	</text>
 	<text x="348" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[40 + 25 * sin(50x)]
@@ -100,89 +90,68 @@ M64.6,284 L66.6,284
 	<text x="55.6" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0
 	</text>
 </g>
-
-<g id="yLabel" fill="rgb(0,0,0)">
+	<g id="yLabel" fill="rgb(0,0,0)">
 	<text x="30.2" y="170" text-anchor="middle" transform="rotate(-90 30.2 170)" font-size="14" font-family="Lucida Sans Unicode">
 	</text>
 </g>
-
-<g id="xLabel" fill="rgb(0,0,0)">
+	<g id="xLabel" fill="rgb(0,0,0)">
 	<text x="277" y="327" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">
 	</text>
 </g>
-
-<g id="boxAxis" stroke="rgb(0,0,0)">
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
+	<g id="boxAxis" stroke="rgb(0,0,0)">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="207" y1="281" x2="207" y2="266"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
 	<line x1="348" y1="277" x2="348" y2="254"/>
 </g>
 </g>
-
-<g id="Median" stroke="rgb(255,0,0)" stroke-width="2">
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
+	<g id="Median" stroke="rgb(255,0,0)" stroke-width="2">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
 	<rect x="192" y="275" width="30" height="5.92"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
 	<line x1="193" y1="279" x2="222" y2="279"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
 	<rect x="333" y="258" width="30" height="15.8"/>
 </g>
-
-<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
 	<line x1="333" y1="266" x2="362" y2="266"/>
 </g>
 </g>
-
-<g id="whisker" stroke="rgb(0,0,0)">
-
-<g clip-path="url(#plot_window)">
-
-<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g id="whisker" stroke="rgb(0,0,0)">
+	<g clip-path="url(#plot_window)">
+	<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="192" y1="281" x2="222" y2="281"/>
 </g>
-
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="192" y1="266" x2="222" y2="266"/>
 </g>
 </g>
-
-<g clip-path="url(#plot_window)">
-
-<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g clip-path="url(#plot_window)">
+	<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="333" y1="277" x2="363" y2="277"/>
 </g>
-
-<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
+	<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
 	<line x1="333" y1="254" x2="363" y2="254"/>
 </g>
 </g>
 </g>
-
-<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
-
-<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
-	<text x="207" y="260" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
+	<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
+	<text x="207" y="260" text-anchor="middle">&#x25CF;
 	</text>
-	<text x="207" y="262" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	<text x="207" y="262" text-anchor="middle">&#x25CF;
 	</text>
-	<text x="207" y="265" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	<text x="207" y="264" text-anchor="middle">&#x25CF;
 	</text>
-	<text x="207" y="266" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25CF;
+	<text x="207" y="266" text-anchor="middle">&#x25CF;
 	</text>
 </g>
 </g>
-
-<g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)">
-
-<g clip-path="url(#plot_window)" stroke="rgb(255,0,0)">
+	<g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)">
+	<g clip-path="url(#plot_window)" stroke="rgb(255,0,0)">
 	<text x="207" y="58.5" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
 	</text>
 	<text x="207" y="172" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
@@ -201,8 +170,7 @@ M64.6,284 L66.6,284
 	</text>
 </g>
 </g>
-
-<g id="title" fill="rgb(0,0,0)">
+	<g id="title" fill="rgb(0,0,0)">
 	<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode">Boxplots of Common Functions
 	</text>
 </g>
