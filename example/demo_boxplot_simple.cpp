@@ -1,12 +1,11 @@
 /*! \file demo_boxplot_simple.cpp
     \brief An example to demonstrate simplest use of boxplot. See also boxplot_full.cpp for a wider range of use.
-
-    \author Jacob Voytko and Paul A. Bristow
-    \date 2009
 */
 
+// demo_boxplot_simple.cpp
+// 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A. Bristow 2008, 2009
+// Copyright Paul A. Bristow 2008, 2009, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -23,7 +22,7 @@
 //[boxplot_simple_1
 
 /*`
-Boxplot is a  convenient way of graphically depicting groups of numerical data
+Boxplot is a convenient way of graphically depicting groups of numerical data
 through their five-number summaries.
 Show 1st quartile, median and 3rd quartile as a box,
 95% confidence interval as whiskers,
@@ -39,14 +38,15 @@ First we need a few includes to use Boost.Plot.
 */
 
 #include <vector>
-  using std::vector;
+ // using std::vector;
 #include <cmath>
-  using ::sin;
+//  using ::sin;
 #include <boost/svg_plot/svg_boxplot.hpp>
 
 #include <iostream>
-  using std::cout;
-  using std::endl;
+//  using std::cout;
+//  using std::endl;
+#include <exception>
 
 /*`Use two functions, 1/x and sin(x), to simulate distributions.
 */
@@ -58,7 +58,7 @@ double f(double x)
 
 double g(double x)
 { // Effectively sin(x).
-  return 40 + 25 * sin(x * 50);
+  return 60 + 25 * sin(x * 50);
 }
 //] [boxplot_simple_1]
 
@@ -68,17 +68,17 @@ int main()
   try
   {
 //[boxplot_simple_2]
-/*`10 values are computed and stored in two std:: vectors.
+/*`10 values are computed and stored in two `std::vector`s.
 */
   std::vector<double> data1;
   std::vector<double> data2;
 
-  cout.precision(2);
+  std::cout.precision(2);
   for(double i = 0.1; i < 10; i += 0.1)
   {   // Fill our vectors with 100 values:
     double fv = f(i);
     double gv = g(i);
-    // cout << i << ' ' << fv << ' ' << gv << endl;
+    // std::cout << i << ' ' << fv << ' ' << gv << std::endl; // Optionally display values?
     data1.push_back(fv);
     data2.push_back(gv);
   }
@@ -90,23 +90,22 @@ int main()
   my_boxplot  // Title and axes labels.
     .title("Boxplots of 1/x and sin(x) Functions")
     .x_label("Functions")
-    .y_label("Population Size");
+    .y_label("Population Size")
+    .background_border_color(magenta);
 
   my_boxplot.y_range(0, 100)  // Axis information.
     .y_major_interval(20);
 
 /*`Add the two data series containers, and their labels, to the plot.
 */
-
   my_boxplot.plot(data1, "[50 / x]");
-  my_boxplot.plot(data2, "[40 + 25 * sin(x * 50)]");
+  my_boxplot.plot(data2, "[60 + 25 * sin(x * 50)]");
 
 /*`Finally write the SVG plot to a file.
 */
   my_boxplot.write("boxplot_simple.svg");
 /*`You can view the plot at boxplot_simple.svg."
 */
-
 //] [boxplot_simple_2]
   }
   catch(const std::exception& e)

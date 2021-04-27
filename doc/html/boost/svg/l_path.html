@@ -27,10 +27,10 @@
 </span>
 <span class="keyword">struct</span> <a class="link" href="l_path.html" title="Struct l_path">l_path</a> <span class="special">:</span> <span class="keyword">public</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">path_point</span> <span class="special">{</span>
   <span class="comment">// <a class="link" href="l_path.html#boost.svg.l_pathconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="l_path.html#id560460-bb"><span class="identifier">l_path</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="l_path.html#id561057-bb"><span class="identifier">l_path</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="l_path.html#id560405-bb">public member functions</a></span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="l_path.html#id560407-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="l_path.html#id560995-bb">public member functions</a></span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="l_path.html#id561010-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="keyword">bool</span> <span class="identifier">relative</span><span class="special">;</span>  <span class="comment">// If true relative else absolute. </span>
@@ -38,22 +38,22 @@
   <span class="keyword">double</span> <span class="identifier">y</span><span class="special">;</span>  <span class="comment">// End of line SVG Y coordinate. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1227002"></a><h2>Description</h2>
+<a name="id1216440"></a><h2>Description</h2>
 <div class="refsect2">
-<a name="id1226975"></a><h3>
+<a name="id1216434"></a><h3>
 <a name="boost.svg.l_pathconstruct-copy-destruct"></a><code class="computeroutput">l_path</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><a name="id560460-bb"></a><span class="identifier">l_path</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">bool</span> relative <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id561057-bb"></a><span class="identifier">l_path</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">,</span> <span class="keyword">double</span> y<span class="special">,</span> <span class="keyword">bool</span> relative <span class="special">=</span> <span class="keyword">false</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Constructor defines all member variables.</p>
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1227046"></a><h3>
-<a name="id560405-bb"></a><code class="computeroutput">l_path</code> public member functions</h3>
+<a name="id1216536"></a><h3>
+<a name="id560995-bb"></a><code class="computeroutput">l_path</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id560407-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands like "M1.2, 3.4", <p>Write line to SVG command.</p>
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id561010-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>write functions output SVG commands like "M1.2, 3.4", <p>Write line to SVG command.</p>
 </li></ol></div>
 </div>
 </div>

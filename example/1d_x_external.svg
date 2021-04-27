@@ -115,17 +115,17 @@ M55.2,172 L55.2,177
 	</text>
 </g>
 	<g id="xLabel">
-	<text x="226" y="200" text-anchor="middle" font-size="10" font-family="Verdana">
+	<text x="226" y="201" text-anchor="middle" font-size="10" font-family="Verdana">
 	</text>
 </g>
 	<g id="plotPoints">
 	<g stroke="rgb(0,0,255)">
-	<line x1="161" y1="109" x2="161" y2="99.2"/>
-	<line x1="199" y1="109" x2="199" y2="99.2"/>
+	<line x1="161" y1="109" x2="161" y2="99.3"/>
+	<line x1="199" y1="109" x2="199" y2="99.3"/>
 </g>
 	<g stroke="rgb(255,165,0)">
-	<line x1="127" y1="109" x2="127" y2="99.2"/>
-	<line x1="322" y1="109" x2="322" y2="99.2"/>
+	<line x1="127" y1="109" x2="127" y2="99.3"/>
+	<line x1="322" y1="109" x2="322" y2="99.3"/>
 </g>
 </g>
 	<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">

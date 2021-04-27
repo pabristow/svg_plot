@@ -208,7 +208,7 @@ public:
       return std::pair<Meas, unc<correlated> >((Meas)(static_cast<Meas>(a.first)), (unc<correlated>)(static_cast<unc<correlated>>(a.second)));
     }
 
-    template <typename T>  //!< \tparam T Any type that can be converted to uncun.
+    template <typename T>  //!< \tparam T Any type that can be converted to uncun. 
     std::pair<Meas, unc<correlated> > operator()(T a)
     {  //!< Convert a pair of X and Y uncertain type values to a pair of Meas & unc.
         return std::pair<Meas, unc<correlated> >(i++, (unc<correlated>)(static_cast<double>(a)));
@@ -217,13 +217,14 @@ public:
 }; // class pair_Meas_2d_convert
 
  /*! This functor allows any 2D data that can be converted to type double to be plotted.
-   \tparam correlated @c true if the uncertainties are correlated (for example, adding to a constant value).
+   \tparam correlated @c true if the uncertainties are correlated (for example, adding up to a constant value).
    */
 template <bool correlated>
 class pair_Meas_2d_double_convert
 {
 public:
-  typedef std::pair<Meas, unc<correlated> > result_type;
+ //typedef std::pair<Meas, unc<correlated> > result_type;
+  typedef std::pair<double, double > result_type;
   //!< result type is pair of double values.
 
   Meas i; //!< Current Meas (uncun + datetime etc) value.
@@ -237,7 +238,7 @@ public:
   //! Cast to double so that can potentially use with float, long double.
   //!< \tparam T type that can be converted to double.
   //!< \tparam U type that can be converted to double.
-  //! \returns A @c std::pair of double precision data-point values.
+  //! \returns A @c std::pair of @c double precision data-point values.
   template <typename T, typename U>
   std::pair<Meas, unc<correlated> > operator()(const std::pair<T, U>& a) const
   {  

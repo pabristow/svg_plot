@@ -12,45 +12,201 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- (See accompanying file LICENSE_1_0.txt --> 
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
-<clipPath id="plot_window"><rect x="66" y="9" width="425" height="332"/></clipPath>
-<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="500" height="400"/></g>
-<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2"><rect x="65" y="8" width="427" height="334"/></g>
-<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
-<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
-<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="65" y1="8" x2="65" y2="347"/><line x1="65" y1="8" x2="65" y2="342"/></g>
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="60" y1="342" x2="492" y2="342"/><line x1="60" y1="342" x2="492" y2="342"/></g>
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M63,315 L65,315 M63,289 L65,289 M63,262 L65,262 M63,235 L65,235 M63,182 L65,182 M63,155 L65,155 M63,128 L65,128 M63,102 L65,102 M63,48.1 L65,48.1 M63,21.4 L65,21.4 M63,342 L65,342 " fill="none"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M73.5,342 L73.5,344 M82.1,342 L82.1,344 M90.6,342 L90.6,344 M99.2,342 L99.2,344 M116,342 L116,344 M125,342 L125,344 M133,342 L133,344 M142,342 L142,344 M159,342 L159,344 M167,342 L167,344 M176,342 L176,344 M185,342 L185,344 M202,342 L202,344 M210,342 L210,344 M219,342 L219,344 M227,342 L227,344 M244,342 L244,344 M253,342 L253,344 M261,342 L261,344 M270,342 L270,344 M287,342 L287,344 M296,342 L296,344 M304,342 L304,344 M313,342 L313,344 M330,342 L330,344 M338,342 L338,344 M347,342 L347,344 M355,342 L355,344 M372,342 L372,344 M381,342 L381,344 M390,342 L390,344 M398,342 L398,344 M415,342 L415,344 M424,342 L424,344 M432,342 L432,344 M441,342 L441,344 M458,342 L458,344 M466,342 L466,344 M475,342 L475,344 M483,342 L483,344 " fill="none"/></g>
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M60,342 L65,342 M60,209 L65,209 M60,74.8 L65,74.8 M60,342 L65,342 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M65,342 L65,347 M108,342 L108,347 M150,342 L150,347 M193,342 L193,347 M236,342 L236,347 M279,342 L279,347 M321,342 L321,347 M364,342 L364,347 M407,342 L407,347 M449,342 L449,347 M492,342 L492,347 M65,342 L65,347 " fill="none"/></g>
-<g id="xTicksValues">
-<text x="61.4" y="353" transform = "rotate(90 61.4 353 )" font-size="12" font-family="Verdana">0</text>
-<text x="104" y="353" transform = "rotate(90 104 353 )" font-size="12" font-family="Verdana">2</text>
-<text x="147" y="353" transform = "rotate(90 147 353 )" font-size="12" font-family="Verdana">4</text>
-<text x="190" y="353" transform = "rotate(90 190 353 )" font-size="12" font-family="Verdana">6</text>
-<text x="232" y="353" transform = "rotate(90 232 353 )" font-size="12" font-family="Verdana">8</text>
-<text x="275" y="353" transform = "rotate(90 275 353 )" font-size="12" font-family="Verdana">10</text>
-<text x="318" y="353" transform = "rotate(90 318 353 )" font-size="12" font-family="Verdana">12</text>
-<text x="360" y="353" transform = "rotate(90 360 353 )" font-size="12" font-family="Verdana">14</text>
-<text x="403" y="353" transform = "rotate(90 403 353 )" font-size="12" font-family="Verdana">16</text>
-<text x="446" y="353" transform = "rotate(90 446 353 )" font-size="12" font-family="Verdana">18</text>
-<text x="488" y="353" transform = "rotate(90 488 353 )" font-size="12" font-family="Verdana">20</text>
-<text x="61.4" y="353" transform = "rotate(90 61.4 353 )" font-size="12" font-family="Verdana">0</text></g>
-<g id="yTicksValues">
-<text x="51.6" y="341" text-anchor="middle" transform = "rotate(-90 51.6 341 )" font-size="12" font-family="Verdana">0</text>
-<text x="51.6" y="207" text-anchor="middle" transform = "rotate(-90 51.6 207 )" font-size="12" font-family="Verdana">2</text>
-<text x="51.6" y="73.6" text-anchor="middle" transform = "rotate(-90 51.6 73.6 )" font-size="12" font-family="Verdana">4</text>
-<text x="51.6" y="341" text-anchor="middle" transform = "rotate(-90 51.6 341 )" font-size="12" font-family="Verdana">0</text></g>
-<g id="yLabel">
-<text x="30.7" y="175" text-anchor="middle" transform = "rotate(-90 30.7 175 )" font-size="14" font-family="Verdana">Y axis label font default size 14</text></g>
-<g id="xLabel">
-<text x="279" y="388" text-anchor="middle" font-size="14" font-family="Verdana">X axis label font default size 14</text></g>
-<g id="plotPoints" clip-path="url(#plot_window)"><g stroke="rgb(255,0,0)" fill="rgb(255,255,255)"><circle cx="86.3" cy="275" r="5"/><circle cx="108" cy="248" r="5"/><circle cx="129" cy="226" r="5"/><circle cx="150" cy="209" r="5"/><circle cx="172" cy="193" r="5"/><circle cx="193" cy="178" r="5"/><circle cx="214" cy="165" r="5"/><circle cx="236" cy="153" r="5"/><circle cx="257" cy="142" r="5"/><circle cx="279" cy="131" r="5"/><circle cx="300" cy="121" r="5"/><circle cx="321" cy="111" r="5"/><circle cx="343" cy="101" r="5"/><circle cx="364" cy="92.1" r="5"/><circle cx="385" cy="83.3" r="5"/><circle cx="407" cy="74.8" r="5"/><circle cx="428" cy="66.6" r="5"/><circle cx="449" cy="58.6" r="5"/><circle cx="471" cy="50.9" r="5"/></g>
+<clipPath id="plot_window">	<rect x="55.5" y="27" width="436" height="312"/>
+</clipPath>
+	<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
+	<rect x="0" y="0" width="500" height="400"/>
 </g>
-<g id="title">
-<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana"></text></g>
-<g id="plotXValues"></g>
-<g id="plotYValues"></g>
+	<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2">
+	<rect x="54.5" y="26" width="438" height="314"/>
+</g>
+	<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+</g>
+	<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+</g>
+	<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+</g>
+	<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+</g>
+	<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1">
+	<line x1="54.5" y1="26" x2="54.5" y2="345"/>
+	<line x1="54.5" y1="26" x2="54.5" y2="340"/>
+</g>
+	<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
+	<line x1="49.5" y1="340" x2="492" y2="340"/>
+	<line x1="49.5" y1="340" x2="492" y2="340"/>
+</g>
+	<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<path d="M52.5,315 L54.5,315 
+M52.5,289 L54.5,289 
+M52.5,264 L54.5,264 
+M52.5,239 L54.5,239 
+M52.5,189 L54.5,189 
+M52.5,164 L54.5,164 
+M52.5,139 L54.5,139 
+M52.5,114 L54.5,114 
+M52.5,63.6 L54.5,63.6 
+M52.5,38.5 L54.5,38.5 
+M52.5,340 L54.5,340 
+" fill="none"/>
+</g>
+	<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<path d="M63.2,340 L63.2,342 
+M72,340 L72,342 
+M80.8,340 L80.8,342 
+M89.5,340 L89.5,342 
+M107,340 L107,342 
+M116,340 L116,342 
+M124,340 L124,342 
+M133,340 L133,342 
+M151,340 L151,342 
+M160,340 L160,342 
+M168,340 L168,342 
+M177,340 L177,342 
+M194,340 L194,342 
+M203,340 L203,342 
+M212,340 L212,342 
+M221,340 L221,342 
+M238,340 L238,342 
+M247,340 L247,342 
+M256,340 L256,342 
+M264,340 L264,342 
+M282,340 L282,342 
+M291,340 L291,342 
+M300,340 L300,342 
+M308,340 L308,342 
+M326,340 L326,342 
+M334,340 L334,342 
+M343,340 L343,342 
+M352,340 L352,342 
+M370,340 L370,342 
+M378,340 L378,342 
+M387,340 L387,342 
+M396,340 L396,342 
+M413,340 L413,342 
+M422,340 L422,342 
+M431,340 L431,342 
+M439,340 L439,342 
+M457,340 L457,342 
+M466,340 L466,342 
+M474,340 L474,342 
+M483,340 L483,342 
+" fill="none"/>
+</g>
+	<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<path d="M49.5,340 L54.5,340 
+M49.5,214 L54.5,214 
+M49.5,88.7 L54.5,88.7 
+M49.5,340 L54.5,340 
+" fill="none"/>
+</g>
+	<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<path d="M54.5,340 L54.5,345 
+M98.2,340 L98.2,345 
+M142,340 L142,345 
+M186,340 L186,345 
+M230,340 L230,345 
+M273,340 L273,345 
+M317,340 L317,345 
+M361,340 L361,345 
+M404,340 L404,345 
+M448,340 L448,345 
+M492,340 L492,345 
+M54.5,340 L54.5,345 
+" fill="none"/>
+</g>
+	<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<text x="50.9" y="351">0
+	</text>
+	<text x="94.7" y="351">2
+	</text>
+	<text x="138" y="351">4
+	</text>
+	<text x="182" y="351">6
+	</text>
+	<text x="226" y="351">8
+	</text>
+	<text x="270" y="351">10
+	</text>
+	<text x="313" y="351">12
+	</text>
+	<text x="357" y="351">14
+	</text>
+	<text x="401" y="351">16
+	</text>
+	<text x="445" y="351">18
+	</text>
+	<text x="488" y="351">20
+	</text>
+	<text x="50.9" y="351">0
+	</text>
+</g>
+	<g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="end">
+	<text x="41.1" y="338">0
+	</text>
+	<text x="41.1" y="213">2
+	</text>
+	<text x="41.1" y="87.5">4
+	</text>
+	<text x="41.1" y="338">0
+	</text>
+</g>
+	<g id="yLabel">
+	<text x="20.2" y="183" text-anchor="middle" transform="rotate(-90 20.2 183)" font-size="14" font-family="Lucida Sans Unicode">Y axis label font default size 14
+	</text>
+</g>
+	<g id="xLabel">
+	<text x="273" y="382" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">X axis label font default size 14
+	</text>
+</g>
+	<g id="plotPoints" clip-path="url(#plot_window)">
+	<g stroke="rgb(255,0,0)" fill="rgb(255,255,255)" font-size="10" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<text x="76.4" y="280" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="98.2" y="254" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="120" y="234" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="142" y="217" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="164" y="202" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="186" y="189" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="208" y="177" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="230" y="165" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="251" y="154" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="273" y="144" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="295" y="135" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="317" y="125" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="339" y="116" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="361" y="108" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="383" y="99.6" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="404" y="91.7" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="426" y="83.9" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="448" y="76.4" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="470" y="69.2" text-anchor="middle">&#x25CF;
+	</text>
+</g>
+</g>
+	<g id="title">
+	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Lucida Sans Unicode" font-weight="normal">
+	</text>
+</g>
+	<g id="plotXValues">
+</g>
+	<g id="plotYValues">
+</g>
 </svg>

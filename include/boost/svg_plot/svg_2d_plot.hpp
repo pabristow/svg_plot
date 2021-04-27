@@ -3846,8 +3846,8 @@ my_plot.plot(data1, "Sqrt(x)");
   {
     serieses_.push_back(
       svg_2d_plot_series(
-      boost::make_transform_iterator(container.begin(), boost::svg::detail::pair_Meas_2d_convert<false>()),
-      boost::make_transform_iterator(container.end(), boost::svg::detail::pair_Meas_2d_convert<false>()),
+      boost::make_transform_iterator(container.begin(), boost::svg::detail::pair_Meas_2d_double_convert<false>()),
+      boost::make_transform_iterator(container.end(), boost::svg::detail::pair_Meas_2d_double_convert<false>()),
       title)
     );
     return serieses_[serieses_.size()-1]; //! \return Reference to data-series just added to make chainable.

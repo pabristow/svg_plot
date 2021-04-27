@@ -17,7 +17,7 @@ xmlns ="http://www.w3.org/2000/svg"
 	<rect x="0" y="0" width="500" height="200"/>
 </g>
 	<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
-	<rect x="21" y="11" width="404" height="160"/>
+	<rect x="21" y="11" width="404" height="161"/>
 </g>
 	<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
 </g>
@@ -61,14 +61,14 @@ M21,93.8 L21,98.8
 	</text>
 </g>
 	<g id="xLabel" stroke="rgb(255,0,255)" fill="rgb(255,0,255)">
-	<text x="223" y="188" text-anchor="middle" font-size="10" font-family="Verdana">axis
+	<text x="223" y="189" text-anchor="middle" font-size="10" font-family="Verdana">axis
 	</text>
 </g>
 	<g id="plotPoints">
 	<g stroke="rgb(0,0,0)">
-	<line x1="78.7" y1="93.2" x2="78.7" y2="83.2"/>
-	<line x1="136" y1="93.2" x2="136" y2="83.2"/>
-	<line x1="194" y1="93.2" x2="194" y2="83.2"/>
+	<line x1="78.7" y1="93.3" x2="78.7" y2="83.3"/>
+	<line x1="136" y1="93.3" x2="136" y2="83.3"/>
+	<line x1="194" y1="93.3" x2="194" y2="83.3"/>
 </g>
 </g>
 	<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">

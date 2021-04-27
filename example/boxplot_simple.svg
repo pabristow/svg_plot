@@ -15,7 +15,7 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- File boxplot_simple.svg --> 
 <clipPath id="plot_window">	<rect x="61.6" y="52" width="426" height="232"/>
 </clipPath>
-	<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="2">
+	<g id="imageBackground" stroke="rgb(0,0,139)" fill="rgb(240,255,255)" stroke-width="2">
 	<rect x="0" y="0" width="500" height="350"/>
 </g>
 	<g id="plotBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">

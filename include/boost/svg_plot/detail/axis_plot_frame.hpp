@@ -5251,6 +5251,7 @@ namespace boost
           Derived& axis_plot_frame<Derived>::x_major_tick(double d)
           { //! Set interval (Cartesian units) between major ticks.
             derived().x_ticks_.major_interval_ = d;
+            return derived();
           }
 
           template <class Derived>
@@ -5601,7 +5602,7 @@ namespace boost
 
         template <class Derived>
         int axis_plot_frame<Derived>::plus_inf_limit_size()
-        { //! \return The font size for the NaN point(s) marker shape or symbol.
+        { //! \return The font size for the 'at-limit' point(s) marker shape or symbol.
           return derived().plus_inf_point_style_.size_;
         }
 

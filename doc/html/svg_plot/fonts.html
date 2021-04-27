@@ -35,13 +35,13 @@
       is a graphic designers nightmare!
     </p>
 <p>
-      A font family may or may not be available for a particular internet browser,
+      A font-family may or may not be available for a particular internet browser,
       so it is inevitable that the exact appearance of a SVG plot may vary when viewed
-      with different browsers. If a font family is not recognised, then a default
+      with different browsers. If a font-family is not recognised, then a default
       (for that browser) will be used instead.
     </p>
 <p>
-      The font families available for browsers do not seem to be listed, but those
+      The font-families available for browsers do not seem to be listed, but those
       used below are available on Mozilla Firefox 3.5. The example below looks very
       similar with the Adobe SVG Add-in with Microsoft Internet Explorer 8 (which
       does NOT render SVG natively at all), and with Inkscape and Opera.
@@ -51,16 +51,16 @@
       SVG is not so clear.
     </p>
 <p>
-      For most purposes the default Font family Verdana looks fine.
+      For most purposes the default Font-family Verdana looks fine.
     </p>
 <p>
-      The following font families work with Firefox 3.5:
+      The following font-families work with Firefox 3.5:
     </p>
 <pre class="programlisting"><span class="string">"arial"</span><span class="special">,</span> <span class="string">"impact"</span><span class="special">,</span> <span class="string">"courier"</span><span class="special">,</span> <span class="string">"lucida console"</span><span class="special">,</span>  <span class="string">"Lucida sans unicode"</span><span class="special">,</span>
 <span class="string">"verdana"</span><span class="special">,</span> <span class="string">"calibri"</span><span class="special">,</span> <span class="string">"century"</span><span class="special">,</span> <span class="string">"lucida calligraphy"</span><span class="special">,</span> <span class="string">"tahoma"</span><span class="special">,</span> <span class="string">"vivaldi"</span>
 <span class="string">"informal roman"</span><span class="special">,</span> <span class="string">"lucida handwriting"</span><span class="special">,</span> <span class="string">"lucida bright"</span><span class="special">,</span> <span class="string">"helvetica"</span>
 <span class="string">"arial narrow"</span> <span class="identifier">is</span> <span class="identifier">narrow</span><span class="special">,</span> <span class="identifier">so</span> <span class="identifier">may</span> <span class="identifier">be</span> <span class="identifier">useful</span> <span class="identifier">to</span> <span class="identifier">fit</span> <span class="identifier">a</span> <span class="keyword">long</span> <span class="identifier">title</span> <span class="keyword">or</span> <span class="identifier">label</span><span class="special">.</span>
-<span class="string">"arial black"</span> <span class="identifier">is</span> <span class="identifier">black</span><span class="special">!</span>
+<span class="string">"arial black"</span> <span class="identifier">is</span> <span class="special">*</span><span class="identifier">black</span><span class="special">*!</span>
 </pre>
 <p>
       These do NOT work and are substituted:
@@ -78,26 +78,53 @@
       But to get narrow characters "arial narrow" works well, squeezing
       in a longer title or label.
     </p>
+<div class="tip"><table border="0" summary="Tip">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="../images/tip.png"></td>
+<th align="left">Tip</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+        It is also possible to <span class="bold"><strong>force</strong></span> a line of text
+        into a specified width. Set <code class="computeroutput"><span class="identifier">text_style</span><span class="special">.</span><span class="identifier">text_length</span>
+        <span class="special">&gt;</span> <span class="number">0</span></code>.
+        But if used over-enthusiastically, this can cause glyphs to overlap or look
+        oddly spread out.
+      </p></td></tr>
+</table></div>
 <p>
       The font sizes are also changes from the defaults. This should change the positioning,
       but the calculations are complex and necessarily approximate. Collisions between
       labels, other value labels and axes are not impossible, especially when the
       tick value labels are not horizontal.
     </p>
+<div class="tip"><table border="0" summary="Tip">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="../images/tip.png"></td>
+<th align="left">Tip</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+        If data-point values or tick-value labels collide, rotating the tex can often
+        improve things. For example <code class="computeroutput"><span class="special">.</span><span class="identifier">x_major_label_rotation</span><span class="special">(</span><span class="identifier">uphill</span><span class="special">)</span></code>
+        will make the major-tick value-labels slope uphill. Using Visual Studio,
+        typing <code class="computeroutput"><span class="special">.</span><span class="identifier">y_major_label_rotation</span><span class="special">(</span> <span class="identifier">will</span> <span class="identifier">show</span> <span class="identifier">a</span> <span class="identifier">dropdown</span> <span class="identifier">of</span>
+        <span class="identifier">the</span> <span class="identifier">various</span>
+        </code>rotate_style` values.
+      </p></td></tr>
+</table></div>
 <p>
-      By default, the std::precision is reduced from the default 6 to 3, and unnecessary
-      zeros and signs are stripped.
+      By default, the <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">precision</span></code> is reduced from the default 6 to
+      3, and unnecessary zeros and signs are stripped.
     </p>
 <p>
-      But it will still often be necessary to change the std::iosflags and std::precision,
-      and/or the number of major ticks and/or font size and type to avoid tick value
-      label collisions.
+      But it will still often be necessary to change the <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">iosflags</span></code>
+      and <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">precision</span></code>, and/or the number of major ticks
+      and/or font size and type to avoid tick value label collisions.
     </p>
 <p>
       Unicode symbols can be found at <a href="http://en.wikipedia.org/wiki/Unicode_symbols" target="_top">Unicode
       symbols</a>. The 4 hex digit value needs to be wrapped with prefix &amp;#x
       and suffix ; like &amp;#xDDDD; Rendering of Unicode symbols is not entirely
-      predictable, but usually works well to provide a wide range of greek and math
+      predictable, but usually works well to provide a wide range of greek and mathy
       symbols.
     </p>
 <p>
@@ -111,15 +138,15 @@
            <span class="special">.</span><span class="identifier">title</span><span class="special">(</span><span class="string">"&amp;#x221A; Function "</span><span class="special">)</span> <span class="comment">// Unicode sqrt symbol.</span>
            <span class="special">.</span><span class="identifier">title_font_size</span><span class="special">(</span><span class="number">35</span><span class="special">)</span>
            <span class="special">.</span><span class="identifier">title_font_family</span><span class="special">(</span><span class="string">"arial black"</span><span class="special">)</span>
-
            <span class="special">.</span><span class="identifier">legend_title</span><span class="special">(</span><span class="string">"Legend title"</span><span class="special">)</span>
-           <span class="special">.</span><span class="identifier">legend_header_font_size</span><span class="special">(</span><span class="number">15</span><span class="special">)</span>
+           <span class="special">.</span><span class="identifier">legend_title_font_size</span><span class="special">(</span><span class="number">15</span><span class="special">)</span>
+       <span class="comment">//  was  .legend_header_font_size(15)</span>
            <span class="special">.</span><span class="identifier">legend_font_family</span><span class="special">(</span><span class="string">"lucida calligraphy"</span><span class="special">)</span>
            <span class="special">.</span><span class="identifier">legend_color</span><span class="special">(</span><span class="identifier">cyan</span><span class="special">)</span>
 
            <span class="special">.</span><span class="identifier">x_range</span><span class="special">(</span><span class="number">0</span><span class="special">,</span> <span class="special">+</span><span class="number">20.</span><span class="special">)</span>
            <span class="special">.</span><span class="identifier">x_major_interval</span><span class="special">(</span><span class="number">2.</span><span class="special">)</span>
-           <span class="special">.</span><span class="identifier">x_num_minor_ticks</span><span class="special">(</span><span class="number">4</span><span class="special">)</span> <span class="comment">// MAJOR, minor, minor, minor, minor, MAJOR</span>
+           <span class="special">.</span><span class="identifier">x_num_minor_ticks</span><span class="special">(</span><span class="number">4</span><span class="special">)</span> <span class="comment">// For MAJOR, minor, minor, minor, minor, MAJOR ticks.</span>
            <span class="special">.</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"x abcd1234"</span><span class="special">)</span>
            <span class="special">.</span><span class="identifier">x_axis_label_color</span><span class="special">(</span><span class="identifier">green</span><span class="special">)</span>
            <span class="special">.</span><span class="identifier">x_label_font_family</span><span class="special">(</span><span class="string">"helvetica"</span><span class="special">)</span>
@@ -313,10 +340,10 @@
              <span class="special">.</span><span class="identifier">y_range</span><span class="special">(</span><span class="number">0.</span><span class="special">,</span> <span class="number">5.</span><span class="special">)</span>
              <span class="special">.</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"x tick size 12, label 14"</span><span class="special">)</span>
              <span class="special">.</span><span class="identifier">y_label</span><span class="special">(</span><span class="string">"y tick size 12, label 14"</span><span class="special">)</span>
-            <span class="special">.</span><span class="identifier">x_label_font_size</span><span class="special">(</span><span class="number">14</span><span class="special">)</span>
-            <span class="special">.</span><span class="identifier">y_label_font_size</span><span class="special">(</span><span class="number">14</span><span class="special">)</span>
-            <span class="special">.</span><span class="identifier">x_ticks_values_font_size</span><span class="special">(</span><span class="number">12</span><span class="special">)</span>
-            <span class="special">.</span><span class="identifier">y_ticks_values_font_size</span><span class="special">(</span><span class="number">12</span><span class="special">)</span>
+             <span class="special">.</span><span class="identifier">x_label_font_size</span><span class="special">(</span><span class="number">14</span><span class="special">)</span>
+             <span class="special">.</span><span class="identifier">y_label_font_size</span><span class="special">(</span><span class="number">14</span><span class="special">)</span>
+             <span class="special">.</span><span class="identifier">x_ticks_values_font_size</span><span class="special">(</span><span class="number">12</span><span class="special">)</span>
+             <span class="special">.</span><span class="identifier">y_ticks_values_font_size</span><span class="special">(</span><span class="number">12</span><span class="special">)</span>
              <span class="special">.</span><span class="identifier">x_major_label_rotation</span><span class="special">(</span><span class="identifier">slopedownhill</span><span class="special">)</span>
              <span class="special">.</span><span class="identifier">y_major_label_rotation</span><span class="special">(</span><span class="identifier">slopeup</span><span class="special">)</span>
             <span class="special">;</span>
@@ -335,19 +362,18 @@
 <p>
       Output:
     </p>
-<pre class="programlisting"><span class="identifier">Autorun</span> <span class="string">"j:\Cpp\SVG\Debug\demo_2d_fonts.exe"</span>
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">x_ticks_values_color</span><span class="special">()</span> <span class="identifier">RGB</span><span class="special">(</span><span class="number">255</span><span class="special">,</span><span class="number">0</span><span class="special">,</span><span class="number">0</span><span class="special">)</span>
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">x_ticks_values_font_family</span><span class="special">()</span> <span class="identifier">Verdana</span>
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">x_ticks_values_font_size</span><span class="special">()</span> <span class="number">12</span>
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">x_ticks_values_precision</span><span class="special">()</span> <span class="number">0</span>
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">x_ticks_values_ioflags</span><span class="special">()</span> <span class="number">0x2000</span>
-</pre>
+<p>
+      Autorun "I:\Cpp\SVG_plot\svg_plot\x64\Release\demo_2d_fonts.exe"
+      my_plot.x_ticks_values_color() RGB(255,0,0) my_plot.x_ticks_values_font_family()
+      Lucida Sans Unicode my_plot.x_ticks_values_font_size() 14 my_plot.x_ticks_values_precision()
+      0 my_plot.x_ticks_values_ioflags() 0x2000
+    </p>
 <p>
       Producing this ugly plot, as an example from the files <code class="computeroutput"><span class="identifier">demo_2d_fonts_1</span><span class="special">.</span><span class="identifier">svg</span></code> to
       <code class="computeroutput"><span class="identifier">demo_2d_fonts_12</span><span class="special">.</span><span class="identifier">svg</span></code>:
     </p>
 <p>
-      <span class="inlinemediaobject"><object type="image/svg+xml" data="../images/demo_2d_fonts.svg" width="500" height="400"></object></span>.
+      <span class="inlinemediaobject"><object type="image/svg+xml" data="../images/demo_2d_fonts.svg"></object></span>.
     </p>
 <p>
       See <a href="../../../example/demo_2d_fonts.cpp" target="_top">demo_2d_fonts.cpp</a>

@@ -13,25 +13,101 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
 <!-- File demo_1d_tick_values.svg --> 
-<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1"><rect x="0" y="0" width="500" height="150"/></g>
-<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1"><rect x="11" y="56" width="478" height="50"/></g>
-<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
-<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="170" y1="56" x2="170" y2="106"/><line x1="11" y1="83.5" x2="489" y2="83.5"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M183,83.5 L183,85.5 M196,83.5 L196,85.5 M209,83.5 L209,85.5 M221,83.5 L221,85.5 M247,83.5 L247,85.5 M260,83.5 L260,85.5 M272,83.5 L272,85.5 M285,83.5 L285,85.5 M311,83.5 L311,85.5 M323,83.5 L323,85.5 M336,83.5 L336,85.5 M349,83.5 L349,85.5 M374,83.5 L374,85.5 M387,83.5 L387,85.5 M400,83.5 L400,85.5 M413,83.5 L413,85.5 M438,83.5 L438,85.5 M451,83.5 L451,85.5 M464,83.5 L464,85.5 M476,83.5 L476,85.5 M158,83.5 L158,85.5 M145,83.5 L145,85.5 M132,83.5 L132,85.5 M119,83.5 L119,85.5 M93.9,83.5 L93.9,85.5 M81.1,83.5 L81.1,85.5 M68.4,83.5 L68.4,85.5 M55.6,83.5 L55.6,85.5 M30.1,83.5 L30.1,85.5 M17.4,83.5 L17.4,85.5 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M170,83.5 L170,88.5 M234,83.5 L234,88.5 M298,83.5 L298,88.5 M362,83.5 L362,88.5 M425,83.5 L425,88.5 M489,83.5 L489,88.5 M170,83.5 L170,88.5 M107,83.5 L107,88.5 M42.9,83.5 L42.9,88.5 " fill="none"/></g>
-<g id="xTicksValues" fill="rgb(255,0,255)">
-<text x="234" y="104" text-anchor="middle" font-size="15" font-family="arial">+2.0</text>
-<text x="298" y="104" text-anchor="middle" font-size="15" font-family="arial">+4.0</text>
-<text x="362" y="104" text-anchor="middle" font-size="15" font-family="arial">+6.0</text>
-<text x="425" y="104" text-anchor="middle" font-size="15" font-family="arial">+8.0</text>
-<text x="489" y="104" text-anchor="middle" font-size="15" font-family="arial">+10.0</text>
-<text x="107" y="104" text-anchor="middle" font-size="15" font-family="arial">-2.0</text>
-<text x="42.9" y="104" text-anchor="middle" font-size="15" font-family="arial">-4.0</text></g>
-<g id="xLabel" fill="rgb(0,128,0)">
-<text x="250" y="137" text-anchor="middle" font-size="18" font-family="Arial">temp (&#x00B0;C)</text></g>
-<g id="plotPoints"><g stroke="rgb(0,0,0)"><circle cx="119" cy="81" r="3"/><circle cx="306" cy="81" r="3"/><circle cx="170" cy="81" r="3"/><circle cx="342" cy="81" r="3"/><circle cx="379" cy="81" r="3"/></g>
+	<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
+	<rect x="0" y="0" width="500" height="150"/>
 </g>
-<g id="title">
-<text x="250" y="36" text-anchor="middle" font-size="18" font-family="Verdana">Demo 1D Tick Values</text></g>
+	<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
+	<rect x="21" y="42.5" width="458" height="79"/>
+</g>
+	<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+</g>
+	<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+</g>
+	<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
+	<line x1="174" y1="42.5" x2="174" y2="122"/>
+	<line x1="21" y1="84.5" x2="479" y2="84.5"/>
+</g>
+	<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<path d="M186,84.5 L186,86.5 
+M198,84.5 L198,86.5 
+M210,84.5 L210,86.5 
+M223,84.5 L223,86.5 
+M247,84.5 L247,86.5 
+M259,84.5 L259,86.5 
+M271,84.5 L271,86.5 
+M284,84.5 L284,86.5 
+M308,84.5 L308,86.5 
+M320,84.5 L320,86.5 
+M332,84.5 L332,86.5 
+M345,84.5 L345,86.5 
+M369,84.5 L369,86.5 
+M381,84.5 L381,86.5 
+M394,84.5 L394,86.5 
+M406,84.5 L406,86.5 
+M430,84.5 L430,86.5 
+M442,84.5 L442,86.5 
+M455,84.5 L455,86.5 
+M467,84.5 L467,86.5 
+M161,84.5 L161,86.5 
+M149,84.5 L149,86.5 
+M137,84.5 L137,86.5 
+M125,84.5 L125,86.5 
+M100,84.5 L100,86.5 
+M88.2,84.5 L88.2,86.5 
+M76,84.5 L76,86.5 
+M63.7,84.5 L63.7,86.5 
+M39.3,84.5 L39.3,86.5 
+M27.1,84.5 L27.1,86.5 
+" fill="none"/>
+</g>
+	<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<path d="M174,84.5 L174,89.5 
+M235,84.5 L235,89.5 
+M296,84.5 L296,89.5 
+M357,84.5 L357,89.5 
+M418,84.5 L418,89.5 
+M479,84.5 L479,89.5 
+M174,84.5 L174,89.5 
+M113,84.5 L113,89.5 
+M51.5,84.5 L51.5,89.5 
+" fill="none"/>
+</g>
+	<g id="xTicksValues" fill="rgb(255,0,255)">
+	<text x="235" y="102" text-anchor="middle" font-size="15" font-family="arial">+2.0
+	</text>
+	<text x="296" y="102" text-anchor="middle" font-size="15" font-family="arial">+4.0
+	</text>
+	<text x="357" y="102" text-anchor="middle" font-size="15" font-family="arial">+6.0
+	</text>
+	<text x="418" y="102" text-anchor="middle" font-size="15" font-family="arial">+8.0
+	</text>
+	<text x="479" y="102" text-anchor="middle" font-size="15" font-family="arial">+10.0
+	</text>
+	<text x="113" y="102" text-anchor="middle" font-size="15" font-family="arial">-2.0
+	</text>
+	<text x="51.5" y="102" text-anchor="middle" font-size="15" font-family="arial">-4.0
+	</text>
+</g>
+	<g id="xLabel" fill="rgb(0,128,0)">
+	<text x="250" y="152" text-anchor="middle" font-size="18" font-family="Arial">temp (&#x00B0;C)
+	</text>
+</g>
+	<g id="plotPoints">
+	<g stroke="rgb(0,0,0)">
+	<text x="125" y="81.1" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="304" y="81.1" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="174" y="81.1" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="339" y="81.1" text-anchor="middle">&#x25CF;
+	</text>
+	<text x="374" y="81.1" text-anchor="middle">&#x25CF;
+	</text>
+</g>
+</g>
+	<g id="title">
+	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">Demo 1D Tick Values
+	</text>
+</g>
 </svg>

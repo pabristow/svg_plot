@@ -1,16 +1,16 @@
-/*! 
-\brief 
-Demonstrates plotting various types that can be converted to double.
+/*!
+\brief
+Demonstrates plotting various types (including user-defined like multiprecision that can be converted to double.
 */
 
 //  convertible_to_double.cpp
 
-// Copyright Paul A. Bristow 2018
+// Copyright Paul A. Bristow 2018, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
 // (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
+//   or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/svg_plot/svg_2d_plot.hpp>
 // using namespace boost::svg;
@@ -31,8 +31,8 @@ Demonstrates plotting various types that can be converted to double.
 // not is_convertible to double, but is_constructible to double.
 
 // Example of a User Defined Type - a fixed point type can also be plotted OK.
-#include <boost/fixed_point/fixed_point_negatable.hpp>
-#include <boost/fixed_point/fixed_point_negatable_cmath.hpp>
+//#include <boost/fixed_point/fixed_point_negatable.hpp>
+//#include <boost/fixed_point/fixed_point_negatable_cmath.hpp>
 // for typedef boost::fixed_point::negatable<15, -16> fixed_point_type;
 
 // Some functions to generate some trig functions.
@@ -64,7 +64,7 @@ void trig_plots()
 
   T step = boost::math::constants::pi<T>() / 8;  // Interval between function data points.
 
-   // Generate some trigonmetric data to plot.
+   // Generate some trigonometric data to plot.
   for (T i = static_cast<T>(0); i <= static_cast<T>(10); i += step)
   {
     sin_data[i] = f(i); // sin
@@ -77,15 +77,15 @@ void trig_plots()
 
                        // Size/scale settings.
   my_plot.size(700, 500) // SVG image size (pixel).
-    .x_range(-0.5, 10.5) // Range of x and y axes,  
-    .y_range(-1.1, 1.1); // chosen to ensure that the maxima and minimax 
+    .x_range(-0.5, 10.5) // Range of x and y axes,
+    .y_range(-1.1, 1.1); // chosen to ensure that the maxima and minimax
                          // are not just on the edge of the plot window.
 
                          // Text settings.
   my_plot.title("Plot of sin, cos, tan &#x26;  sincos functions")
   // Note: for ampersand must use Unicode &#x26; because it is a reserved symbol in SVG XML.
   // Search engines will provide Unicodes by querying "UNicode ampersand"
-  // at sites like https://unicode.org/, 
+  // at sites like https://unicode.org/,
   // http://www.fileformat.info/info/unicode/char/0026/index.htm and others.
     .title_font_size(28)
     .x_label("x Axis Units")
@@ -151,7 +151,7 @@ void trig_plots()
     .line_on(true)  // Just line joining points.
     .line_color(purple)
     .line_width(0.5)
-    .bezier_on(true) // Note smoother at the minima and maxima.
+    .bezier_on(true) // Note plot curve is smoother at the minima and maxima.
     .shape(none); // NO data point markers (and only shows a line in the legend).
 
   my_plot.write("./demo_convertible_to_double.svg"); // Final plot.
@@ -160,22 +160,22 @@ void trig_plots()
 
 int main()
 {
-  // Plot test trig data using several floating and fixed point types.
+  // Plot test trig data using several floating-point fundamental or builtin or user-defined (and perhaps fixed-point) types.
 
   trig_plots<float>(); // OK
   trig_plots<>(); // default double OK
   trig_plots<double>(); // OK
   trig_plots<long double>(); // OK
-  // OK, no warnings, but for higher-than-double precision types, the range from 
+  // OK, no warnings, but for higher-than-double precision types, the range from
   // (std::numeric_limits<long double>::max)() to min() is greater than for double.
   // so overflow or underflow on conversion to double is possible.
 
   using boost::multiprecision::cpp_bin_float_quad;
   trig_plots<cpp_bin_float_quad>();
 
-  // As an example of a User_defined Type a fixed-point is also possible:
-  typedef boost::fixed_point::negatable<15, -16> fixed_point_type;
-  trig_plots<fixed_point_type>(); // OK
+  // As an example of a User-defined Type a fixed-point is also possible:
+  ///typedef boost::fixed_point::negatable<15, -16> fixed_point_type;
+  //trig_plots<fixed_point_type>(); // OK
   // But some fixed_point types might fail this example because
   // the range from max to min might not be great enough for the data to plot chosen.
 

@@ -216,19 +216,19 @@ M101,354 L101,359
 	</text>
 </g>
 	<g id="plotUnc3" stroke="none" fill="rgb(230,240,255)" stroke-width="1">
-	<ellipse cx="93.9" cy="333" rx="28" ry="46.7"/>
-	<ellipse cx="195" cy="121" rx="52.2" ry="34.8"/>
-	<ellipse cx="284" cy="162" rx="0.932" ry="5.19"/>
+	<ellipse cx="93.9" cy="333" rx="3" ry="3"/>
+	<ellipse cx="195" cy="121" rx="3" ry="3"/>
+	<ellipse cx="284" cy="162" rx="3" ry="3"/>
 </g>
 	<g id="plotUnc2" stroke="none" fill="rgb(200,230,255)" stroke-width="1">
-	<ellipse cx="93.9" cy="333" rx="18.6" ry="31.1"/>
-	<ellipse cx="195" cy="121" rx="34.8" ry="23.2"/>
-	<ellipse cx="284" cy="162" rx="0.621" ry="3.46"/>
+	<ellipse cx="93.9" cy="333" rx="2" ry="2"/>
+	<ellipse cx="195" cy="121" rx="2" ry="2"/>
+	<ellipse cx="284" cy="162" rx="2" ry="2"/>
 </g>
 	<g id="plotUnc1" stroke="none" fill="rgb(173,216,230)" stroke-width="1">
-	<ellipse cx="93.9" cy="333" rx="9.32" ry="15.6"/>
-	<ellipse cx="195" cy="121" rx="17.4" ry="11.6"/>
-	<ellipse cx="284" cy="162" rx="0.311" ry="1.73"/>
+	<ellipse cx="93.9" cy="333" rx="1" ry="1"/>
+	<ellipse cx="195" cy="121" rx="1" ry="1"/>
+	<ellipse cx="284" cy="162" rx="1" ry="1"/>
 </g>
 	<g id="plotPoints" clip-path="url(#plot_window)">
 	<g stroke="rgb(255,0,255)" fill="rgb(0,0,255)" font-size="14" font-family="Lucida Sans Unicode" text-anchor="middle">
@@ -264,28 +264,22 @@ M101,354 L101,359
 	<g id="plotYValues">
 	<g>
 	<text x="96.9" y="335" transform="rotate(-45 96.9 335)" font-size="8" font-family="Arial">&#x00A0;&#x00A0;&#x00A0; d &#x00A0;-8.8
-		<tspan fill="rgb(255,0,0)" font-size="7" font-family="arial">&#x00A0;&#x00B1;</tspan>
-		<tspan fill="rgb(255,0,0)" font-size="7" font-family="Arial">&#x00A0;0.9</tspan>
-		<tspan fill="rgb(0,100,0)" font-size="7" font-family="Arial"> &lt;-9.3, -8.2&gt;</tspan>
-		<tspan fill="rgb(0,128,0)" font-size="7" font-family="Arial">&#x00A0;(9)</tspan>
+		<tspan fill="rgb(0,100,0)" font-size="7" font-family="Arial"> &lt;-8.76, -8.76&gt;</tspan>
+		<tspan fill="rgb(0,128,0)" font-size="7" font-family="Arial">&#x00A0;(0)</tspan>
 		<tspan fill="rgb(0,0,0)" font-size="8" font-family="Arial">&#x00A0;km</tspan>
 	</text>
 </g>
 	<g>
 	<text x="198" y="124" transform="rotate(-45 198 124)" font-size="8" font-family="Arial">&#x00A0;&#x00A0;&#x00A0; d &#x00A0;3.5
-		<tspan fill="rgb(255,0,0)" font-size="7" font-family="arial">&#x00A0;&#x00B1;</tspan>
-		<tspan fill="rgb(255,0,0)" font-size="7" font-family="Arial">&#x00A0;0.67</tspan>
-		<tspan fill="rgb(0,100,0)" font-size="7" font-family="Arial"> &lt;3, 3.9&gt;</tspan>
-		<tspan fill="rgb(0,128,0)" font-size="7" font-family="Arial">&#x00A0;(9)</tspan>
+		<tspan fill="rgb(0,100,0)" font-size="7" font-family="Arial"> &lt;3.45, 3.45&gt;</tspan>
+		<tspan fill="rgb(0,128,0)" font-size="7" font-family="Arial">&#x00A0;(0)</tspan>
 		<tspan fill="rgb(0,0,0)" font-size="8" font-family="Arial">&#x00A0;km</tspan>
 	</text>
 </g>
 	<g>
 	<text x="287" y="164" transform="rotate(-45 287 164)" font-size="8" font-family="Arial">&#x00A0;&#x00A0;&#x00A0; d &#x00A0;1.1
-		<tspan fill="rgb(255,0,0)" font-size="7" font-family="arial">&#x00A0;&#x00B1;</tspan>
-		<tspan fill="rgb(255,0,0)" font-size="7" font-family="Arial">&#x00A0;0.1</tspan>
-		<tspan fill="rgb(0,100,0)" font-size="7" font-family="Arial"> &lt;1.05, 1.15&gt;</tspan>
-		<tspan fill="rgb(0,128,0)" font-size="7" font-family="Arial">&#x00A0;(18)</tspan>
+		<tspan fill="rgb(0,100,0)" font-size="7" font-family="Arial"> &lt;1.1, 1.1&gt;</tspan>
+		<tspan fill="rgb(0,128,0)" font-size="7" font-family="Arial">&#x00A0;(0)</tspan>
 		<tspan fill="rgb(0,0,0)" font-size="8" font-family="Arial">&#x00A0;km</tspan>
 	</text>
 </g>

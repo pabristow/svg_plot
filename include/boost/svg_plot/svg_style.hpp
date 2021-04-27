@@ -425,8 +425,9 @@ public:
   // End of svg_style definitions. /////////////////////////////////////////////
 
  /*! \class boost::svg::text_style
-     \brief Font size, font family, font weight, font style, stretch & decoration, and text_length.
+     \brief Font size, font family, font weight, font style, font stretch & font decoration, and text_length.
      \details
+     Font size, font family, font weight, font style, font stretch & font decoration, and text_length.\n
      text font-family (for example: "Lucida Sans Unicode", "arial", Times New Roman" ...).
      Available fonts depend on the program rendering the SVG XML, usually a browser.
      The default font (usually "Lucida Sans Unicode") is used
@@ -443,6 +444,7 @@ public:
      http://www.fileformat.info/info/unicode/font/index.htm provdes a fuller listing of support by many fonts;
      those awarded 4 or 5 stars are probably most useful.
 
+     text_length Estimate of SVG length of text used to force compress or expand to fit exactly into this width.\n 
      https://www.w3.org/TR/css-fonts-3/#font-stretch-prop 
      */
 
@@ -460,22 +462,23 @@ class text_style
   std::string font_style_; //!< Font style, examples: normal | bold | italic | oblique.
   std::string stretch_; //!< Font stretch, examples: normal | wider | narrower. (Not supported by all browsers).
   std::string decoration_; //!< Font decoration, examples: "underline" | "overline" | "line-through".
-  double text_length_; //!< Estimate of SVG length of text used to force compress or expand into exactly this width.
-  // Only actually used if text_length_ > 0.
+  double text_length_; //!< Estimate of SVG length of text used to force compress or expand into exactly this width. \n
+  //!< Only actually used if text_length_ > 0.
 
-  //! Default Constructor.
+  //! Default Constructor initializes all class member data to default values.
   text_style( 
-    int font_size = 0, //!< Default font size (12 pixels).  NOT const because it might be changed during sizing.
-    const std::string& font = "", //!< Examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"...
-    const std::string& weight = "", //!< Font weight examples: "bold", "normal".
-    const std::string& style = "", //!< Font style examples: normal | bold | italic | oblique.
-    const std::string& stretch = "", //!< Font stretch examples: normal | wider | narrower ...
+    int font_size = 0, //!< Default font size (12 pixels).  NOT const because it might be changed during (re-)sizing.
+    const std::string& font = "", //!< Font (family) name. Examples: "Arial", "Times New Roman", "Verdana", "Lucida Sans Unicode"...
+    const std::string& weight = "", //!< Font weight. Examples: "bold", "normal".
+    const std::string& style = "", //!< Font style. Examples: normal | bold | italic | oblique.
+    const std::string& stretch = "", //!< Font stretch. Examples: normal | wider | narrower ...
     // ultra-condensed, extra-condensed, condensed, semi-condensed, normal, semi-expanded, expanded, extra-expanded, ultra-expanded
     const std::string& decoration = "", //!< Font decoration examples: "underline" | "overline" | "line-through".
     double text_length = 0); //!< Estimated length of text string. Default = 0 means do not attempt to compress or expand to fit to length.
 
-  text_style(const text_style & rhs); // Copy constructor.  NOT const because can be changed during sizing.
+  text_style(const text_style & rhs); // Copy constructor.  NOT const because can be changed during (re-)sizing.
 
+  // Set and get functions are being replaced by direct access to the now public class members data items, shown by ending with an underscore.
   // text_style Setters.
   text_style& font_size(int i);
   text_style& font_family(const std::string& s);
@@ -536,7 +539,7 @@ text_style::text_style( //!< Constructor to allow all text style font parameters
   { // text_style default constructor, defines defaults for all members.
   }
 
-//! text_style Copy constructor.
+//! text_style Copy constructor (copies all member data items).
 text_style::text_style(const text_style& rhs)
   :
   font_size_(rhs.font_size_),
@@ -550,7 +553,7 @@ text_style::text_style(const text_style& rhs)
 } //
 
 text_style& boost::svg::text_style::operator=(const text_style& rhs)
-{ //! Assignment operator=.
+{ //! Assignment @c operator= (copies all member data items).
   font_size_ = rhs.font_size_;
   font_family_ = rhs.font_family_;
   weight_ = rhs.weight_;
@@ -600,29 +603,24 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
   }
 
   text_style& text_style::font_style(const std::string& s)
-  { /*! Set font style.
-        Example: my_text_style.font_style("italic");\n
-       See also browser conformance tests:\n
-       http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
+  { /*! Set font style. Example: \code my_text_style.font_style("italic");\n \endcode
     */
     font_style_ = s;
     return *this; //! \return reference to text_style to make chainable.
   }
 
   const std::string& text_style::font_style() const
-  { //! \return  font style, default normal.
+  { //! \return  font style, default normal. 
     /*! font-style: normal | bold | italic | oblique.
-    Example: "normal" is default.
+    Example: "normal" is default font style.
     */
     return font_style_;
   }
 
    text_style& text_style::font_weight(const std::string& s)
-  { //! svg font-weight: "normal" | "bold" | "bolder" | "lighter" | "100" | "200" .. "900"
-    //! Examples:  @c .font_weight("bold");
-    //! http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
-    //! tests conformance.
-    //! Only two weights, "bold", "normal", are supported by Firefox, Opera, Inkscape.
+  { //! svg font-weight: "normal" | "bold" | "bolder" | "lighter" | "100" | "200" .. "900".\n
+    //! Examples:  \code .font_weight("bold");  \endcode
+    //! Only two weights, "bold", "normal", are supported by Firefox, Opera, Inkscape...
     weight_ = s;
     return *this;
     //! \return reference to text_style to make chainable.
@@ -630,17 +628,15 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
 
    const std::string& text_style::font_weight() const
    {  /*! Set font weight.
-      Example: my_text_style.font_style("bold");\n
-      See also browser conformance tests:\n
-      http://www.croczilla.com/~alex/conformance_suite/svg/text-fonts-02-t.svg
+      Example: \code  my_text_style.font_style("bold");\n \endcode
       */
      return weight_;
    }
 
   text_style& text_style::font_stretch(const std::string& s)
   {  //! font-stretch:"normal" | "wider" | "narrower"
-     //! Examples: @c .font_stretch("wider")
-     //! Note that implementation by browsers varies.
+     //! Examples: \code .font_stretch("wider") \endcode
+     //! \note Implementation by browsers varies.
 
     stretch_ = s;
     return *this; //! \return reference to text_style to make chainable.
@@ -674,10 +670,9 @@ text_style& boost::svg::text_style::operator=(const text_style& rhs)
   // baseline-shift   baseline | sub | super | <percentage> | <length> | inherit
   // https://www.w3.org/TR/SVG11/text.html#BaselineAlignmentProperties
 
-
   // Baseline shift not implemented yet.
   // http://www.croczilla.com/~alex/conformance_suite/svg/text-align-02-b.svg
-  // tests for baseline shifted text.  This is needed for subscript and superscript,
+  // tests for baseline-shifted text.  This is needed for subscript and superscript,
   // vital for nice display of units like m^2 and chemical formulae like H2O
   // IE (Adobe SVG viewer) and Opera conforms but not Firefox (yet).
   // Can also use Unicode symbols like sub and superscript 1,2,3 to get H2O and m2.

@@ -4,6 +4,7 @@
 /**/*.bat
 /**/*.bak
 /**/*.db
+/**/*.patch
 doc/doxywarnings.log
 doc/autodoc.xml
 # doc/html/
