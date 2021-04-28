@@ -1,4 +1,4 @@
-/*! \file demo_1d_values.cpp
+/*! \file 
     \brief Demonstration of showing the 1D values.
     \details  Showing the 1D values of items from the data set.
 
@@ -7,19 +7,19 @@
     and prefix and suffix also useful for giving units.
 
     Quickbook markup to include in documentation.
-    \date 19 Jul 2009
-    \author Paul A. Bristow
 */
 
+// demo_1d_values.cpp
+// 
 // Copyright Jacob Voytko 2007
-// Copyright Paul A Bristow 2008, 2009
+// Copyright Paul A Bristow 2008, 2009, 2021
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
 // (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
+//   or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-// An example to demonstrate labelling data values
+// An example to demonstrate labelling data-points with their values and other information.
 
 // This file is written to be included from a Quickbook .qbk document.
 // It can be compiled by the C++ compiler, and run. Any output can
@@ -30,7 +30,7 @@
 
 //[demo_1d_values_1
 
-/*` Showing the 1D values of items from the data set.
+/*` Showing the 1-D values of items from the data set.
     Some of the many possible formatting options are demonstrated.
 
     As ever, we need a few includes to use Boost.Plot
@@ -122,9 +122,9 @@ This can be controlled in steps of 45 degrees, using an 'enum rotate_style`.
 placing the values below the horizontal Y-axis line,
 but for 2-D plots all writing orientations can be useful).
 */
-   my_1d_plot.x_values_rotation(steepup); // Orientation for the X-axis value labels.
+   my_1d_plot.x_values_rotation(steepup); // Orientation for the X-axis value labels, nearly vertical.
 
-   my_1d_plot.x_decor("[ x = ", "", "&#x00A0;sec]"); // Note the need for a Unicode space A0.
+   my_1d_plot.x_decor(" [ x = ", "", "&#x00A0;sec]"); // Note the need for a Unicode space A0 as &#x00A0; .
 
 /*`To use all these settings, finally write the plot to file.
 */
@@ -160,15 +160,16 @@ but for 2-D plots all writing orientations can be useful).
 Output:
 
 demo_1d_values.cpp
-Linking...
-Embedding manifest...
-Autorun "j:\Cpp\SVG\debug\demo_1d_values.exe"
- my_1d_plot.x_values_font_size() 14
+Plot written to file demo_1d_values.svg.
+my_1d_plot.image_size() 500, 350
+my_1d_plot.image x_size() 500
+my_1d_plot.image y_size() 350
+my_1d_plot.x_values_font_size() 14
 my_1d_plot.x_values_font_family() Times New Roman
 my_1d_plot.x_values_color() RGB(255,0,0)
 my_1d_plot.x_values_precision() 2
- my_1d_plot.x_values_ioflags() 1020
-Build Time 0:03
+my_1d_plot.x_values_ioflags() 1020
+
 //] [demo_1d_values_output]
 */
 

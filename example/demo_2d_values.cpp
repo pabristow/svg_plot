@@ -1,11 +1,12 @@
 /*! \file demo_2d_values.cpp
     \brief Demonstration of marking data-point values and uncertainty information in 2D plots.
     \details Contains Quickbook Markup to be included in documentation.
-
-    \author Jacob Voytko and Paul A. Bristow
 */
+
 // Copyright Jacob Voytko 2007
 // Copyright Paul A Bristow 2008, 2021
+
+// demo_2d_values.cpp
 
 // Use, modification and distribution are subject to the
 // Boost Software License, Version 1.0.
@@ -23,7 +24,6 @@
 // This file is written to be included from a Quickbook .qbk document.
 // It can be compiled by the C++ compiler, and run. Any output can
 // also be added here as comment or included or pasted in elsewhere.
-
 // Caution: this file contains Quickbook markup as well as code
 // and comments: don't change any of the special comment markups!
 
@@ -53,7 +53,7 @@ int main()
   using namespace boost::svg;
 
 //[demo_2d_values_2
-/*`Some fictional data is pushed into an STL container, here map:*/
+/*`Some fictional data is pushed into an STL container, here std::map:*/
 
   try
   { // try'n'catch blocks are needed to ensure error messages from any exceptions are shown.
@@ -66,8 +66,8 @@ int main()
     The index value in [ ] is the x value.
     */
     my_data[1.1] = 3.2;  // X = 1.1 and Y = 3.2.
-    my_data[7.3] = 9.1; // 
-    my_data[2.12] = 2.4394;
+    my_data[7.3] = 8.1; // 
+    my_data[-2.12] = -2.4394;
     my_data[5.47] = 5.3861;
 
     using boost::svg::svg_2d_plot;  // This is needed to construct, setup and output the 2D plot in SVG format.
@@ -77,7 +77,6 @@ int main()
     my_2d_plot.title("Demo 2d Values") // Add a string title of the plot.
       .x_range(-5, 10) // Add a range for the X-axis.
       .x_label("length (m)"); // Add a label for the X-axis.
-
 
 /*`Add the one data-point series, `my_data` and a description, and how the data-points are to be marked,
 here a circle with a diameter of 5 pixels.
@@ -123,13 +122,17 @@ Stripping "e+000" may appear to mean that the normal effect of `scientific` is n
 the stripping can be switched off with:
   `my_2d_plot.x_labels_strip_e0s(false);` )
 
-In general, sticking to the default ioflags usually produces the neatest presentation of values.
-*/
-    my_2d_plot.x_plusminus_on(true); // unc label for the X-axis value-label.
-    my_2d_plot.x_df_on(true); // Degrees of freedom label for the X-axis value-label.
+In general, sticking to the default `ioflags` usually produces the neatest presentation of values.
 
-    my_2d_plot.y_plusminus_on(true); // unc label for the X-axis value-label.
-    my_2d_plot.y_df_on(true); // Degrees of freedom label for the X-axis value-label.  
+The uncertainty information about the values can also be shown, 
+but none is available for our demonstration values, so would show just implicit zero degrees of freedom.
+
+*/
+    //my_2d_plot.x_plusminus_on(true); // Uncertainty label for the X-axis value-label.
+    //my_2d_plot.x_df_on(true); // Degrees of freedom label for the X-axis value-label.
+
+    //my_2d_plot.y_plusminus_on(true); // Uncertainty label for the Y-axis value-label.
+    //my_2d_plot.y_df_on(true); // Degrees of freedom label for the Y-axis value-label.  
 
 /*`The default value-label is horizontal, centered above the data_point marker,
 but, depending on the type and density of data_points, and the length of the values
@@ -147,10 +150,10 @@ This can be controlled in steps using an 'enum rotate_style` for convenience (or
 placing the values below the horizontal Y-axis line,
 but for 2-D plots all writing orientations can be useful).
 */
-    my_2d_plot.x_values_rotation(rightward); // Orientation for the Y-axis value-labels.
+    //my_2d_plot.x_values_rotation(rightward); // Orientation for the Y-axis value-labels.
     //my_2d_plot.x_values_rotation(horizontal); // Orientation for the X-axis value-labels.
     //my_2d_plot.x_values_rotation(uphill); // Orientation for the X-axis value-labels.
-   // my_2d_plot.y_values_rotation(downhill); // Orientation for the Y-axis value-labels.
+    my_2d_plot.y_values_rotation(downhill); // Orientation for the Y-axis value-labels.
     //my_2d_plot.x_values_rotation(leftward); // Orientation for the X-axis value-labels.
     //my_2d_plot.y_values_rotation(rightward); // Orientation for the Y-axis value-labels.
 
@@ -210,10 +213,6 @@ my_2d_plot.y_values_precision() 5
 
 //] [demo_2d_values_output]
 
-    //my_2d_plot.x_values_rotation(uphill); // Orientation for the X-axis value-labels.
-    //my_2d_plot.x_values_rotation(horizontal); // Orientation for the X-axis value-labels.
-    //my_2d_plot.x_values_rotation(backup); // Orientation for the X-axis value-labels.
-    my_2d_plot.x_values_rotation(downhill); // Orientation for the X-axis value-labels.
 
 */
 

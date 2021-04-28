@@ -121,7 +121,7 @@ namespace boost
        and so is returned by all get functions.
        */
 
-      //! Max three item functions used to compare font sizes.
+      //! Max three item functions used to compare font-sizes.
       template <typename T>
       inline
         T max(T a, T b, T c)
@@ -129,7 +129,7 @@ namespace boost
         return ((a > b) ? a : (b > c) ? b : c);
       }
 
-      //! min three item functions used to compare font sizes.
+      //! min three item functions used to compare font-sizes.
       template <typename T>
       inline
         T min(T a, T b, T c)
@@ -299,8 +299,8 @@ namespace boost
           const std::string title(); //!<  \return Title for plot (whose string may include Unicode for greek letter and symbols).
           text_style& title_style(); //!<  \return All style info for the title, font, famil, size ... (SVG units, default pixels).
 
-          Derived& title_font_size(int i); //!<  Sets the font size for the title (SVG units, default pixels).
-          int title_font_size(); //!<  return Font size for the title (SVG units, default pixels). Example: \code std::cout << my_plot.title_font_size() ... \endcode
+          Derived& title_font_size(int i); //!<  Sets the font-size for the title (SVG units, default pixels).
+          int title_font_size(); //!<  return font-size for the title (SVG units, default pixels). Example: \code std::cout << my_plot.title_font_size() ... \endcode
           Derived& title_font_family(const std::string& family); //!<  Set the font family for the title (for example: .title_font_family("Lucida Sans Unicode");
           const std::string& title_font_family(); //!<  \return Font family for the title.
           Derived& title_font_style(const std::string& style);  //!<  Set the font style for the title (default normal).
@@ -328,13 +328,13 @@ namespace boost
           const std::string& legend_font_weight(); //!<  \return  Font weight for the legend text.
           Derived& legend_font_family(const std::string& family); //!<  Set the font family for the legend text.
           const std::string& legend_font_family(); //!<  \return  the font family for the legend title.
-          Derived& legend_title_font_size(int size); //!<  \return Font size for the legend title.
-          int legend_title_font_size(); //!<  \return Font size for the legend title (svg units, default pixels).
+          Derived& legend_title_font_size(int size); //!<  \return font-size for the legend title.
+          int legend_title_font_size(); //!<  \return font-size for the legend title (svg units, default pixels).
           Derived& legend_title_text_length(double length); //!<  Sets the text_length for the legend-title (SVG units, default pixels).
           double legend_title_text_length(); //!<  return text_length for the legend-title (SVG units, default pixels).
 
-          Derived& legend_text_font_size(int size); //!<  Set Font size for the legend text.
-          int legend_text_font_size(); //!<  \return Font size for the legend text (svg units, default pixels).
+          Derived& legend_text_font_size(int size); //!<  Set font-size for the legend text.
+          int legend_text_font_size(); //!<  \return font-size for the legend text (svg units, default pixels).
           //Derived& legend_text_color(const svg_color& col); //!<  Set color for the legend text.
           //svg_color legend_text_color(); //!<  \return Color for the legend text.
 
@@ -356,8 +356,8 @@ namespace boost
           Derived& legend_place(legend_places l); //!<  Set the position of the legend, \see boost::svg::legend_places
           legend_places legend_place(); //!<  \return  the position of the legend, \see  boost::svg::legend_places
           bool legend_outside(); //!<  \return @c true if the legend should be outside the plot area (default @c true).
-          //Derived& legend_title_font_size(int size); //!<  Set legend header font size (svg units, default pixels).
-          //int legend_title_font_size(); //!<\return  legend header font size (svg units, default pixels).
+          //Derived& legend_title_font_size(int size); //!<  Set legend header font-size (svg units, default pixels).
+          //int legend_title_font_size(); //!<\return  legend header font-size (svg units, default pixels).
 
           Derived& legend_top_left(const double, const double); //!< Set the top and left SVG coordinates of the legend box.
           double legend_top(); //!<\return  Top position SVG coordinate of the legend box.
@@ -399,10 +399,10 @@ namespace boost
             (on the assumption that if label text is set, display is also wanted,
             but can be switched off if  \b not required).
            */
-          Derived& x_label_font_size(int i); //!<Set X axis label font size (svg units, default pixels).
-          int x_label_font_size(); //!<\return  X axis label font size (svg units, default pixels).
-          Derived& x_value_font_size(int i); //!<Set X tick value-label font size (svg units, default pixels).
-           int x_value_font_size(); //!<\return  X tick value-label font size (svg units, default pixels).
+          Derived& x_label_font_size(int i); //!<Set X axis label font-size (svg units, default pixels).
+          int x_label_font_size(); //!<\return  X axis label font-size (svg units, default pixels).
+          Derived& x_value_font_size(int i); //!<Set X tick value-label font-size (svg units, default pixels).
+           int x_value_font_size(); //!<\return  X tick value-label font-size (svg units, default pixels).
           Derived& x_label_font_family(const std::string& family); /*!< Set X-tick value-label font-family.
            Available fonts depend on the program rendering the SVG XML, usually a browser.
           The default font (usually "default_font_family") is used if a render program does not provide the font specified.
@@ -433,8 +433,8 @@ namespace boost
              \endcode
            */
           const std::string& x_ticks_values_font_family(); //!<\return  X-ticks value-label font family.
-          Derived& x_ticks_values_font_size(int i); //!<Set X-ticks value-label font size (svg units, default pixels).
-          int x_ticks_values_font_size(); //!<Set X-ticks value-label font size (svg units, default pixels).
+          Derived& x_ticks_values_font_size(int i); //!<Set X-ticks value-label font-size (svg units, default pixels).
+          int x_ticks_values_font_size(); //!<Set X-ticks value-label font-size (svg units, default pixels).
 
           Derived& x_ticks_on_window_or_axis(int side);
             /*!<  Set position of X-ticks on window or axis.
@@ -524,8 +524,8 @@ namespace boost
           std::string y_label_units(); //!<\return  the text to add units to the X-axis label.
           Derived& x_values_on(bool b); //!<Set true to show data-point values near data-points markers.
           bool x_values_on(); //!<\return true if to show data-point values near data-points markers.
-          Derived& x_values_font_size(int i); //!<Set font size of data-point X values near data-points markers.
-          int x_values_font_size(); //!<\return  font size of data-point X values near data-points markers.
+          Derived& x_values_font_size(int i); //!<Set font-size of data-point X values near data-points markers.
+          int x_values_font_size(); //!<\return  font-size of data-point X values near data-points markers.
           Derived& x_values_font_family(const std::string& family); //!<Set font family of data-point X values near data-points markers.
           const std::string& x_values_font_family(); //!<\return font family of data-point X values near data-points markers.
           Derived& x_major_interval(double inter); //!<Set the interval between X-axis major ticks.
@@ -936,7 +936,7 @@ namespace boost
         { // Draw major grid vertical line.
           if (!derived().plot_window_on_)
           { // Allow a modest margin around text of title and X-axis labels, if in use.
-            // text_margin_(2.), // for axis label text, as a multiplier of the font size.
+            // text_margin_(2.), // for axis label text, as a multiplier of the font-size.
             // Should allow a 'half line space' above and below the label text.
             if (derived().title_on_)
             {
@@ -1436,7 +1436,7 @@ namespace boost
             else if (derived().x_ticks_.label_rotation_ == horizontal)
             { // horizontal X-ticks value-labels (default).
               if (derived().x_ticks_.major_value_labels_side_ < 0)
-              { //  Move down to allow space for font size of tick value-labels below X-axis.
+              { //  Move down to allow space for font-size of tick value-labels below X-axis.
                 y += derived().x_ticks_value_label_info_.textstyle().font_size();
               }
               y += derived().x_label_info_.textstyle().font_size() * 1.3; // Allow for the X-axis label font and space.
@@ -1536,7 +1536,7 @@ namespace boost
           std::cout << "Text \"" << text
             << "\"\n  with an estimated width " << title_svg_length << " (SVG units) may overflow plot space " << image_size
             << "\n  or over-compress text with compression ratio " << title_svg_length / image_size
-            << ".\n  Reduce font size from " << font_size
+            << ".\n  Reduce font-size from " << font_size
             << ", or number of characters from " << text.size()
             << ", or increase image size from " << image_size
             << "?" << std::endl;
@@ -1544,7 +1544,7 @@ namespace boost
           // For example:
           // Title "Plot showing short legend &#x26; sizes."
           //   width 378 (SVG units) may overflow plot image!
-          //  (Reduce font size from 30, or number of characters from 21, or increase image size from 300).
+          //  (Reduce font-size from 30, or number of characters from 21, or increase image size from 300).
 
           return false; // Warning given that may not fit or be legible.
         }
@@ -1565,10 +1565,10 @@ namespace boost
         //Image size
         //  <text x="700" y="0" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">Plot showing several data-point marker shapes &#x26; sizes.</text>
         //  title size 59
-        //  title font size 20
-        //  title font size * size 1180
+        //  title font-size 20
+        //  title font-size * size 1180
         //  Title "Plot showing several data-point marker shapes &#x26; sizes."
-        //   may overflow plot image! (Reduce font size or number of characters? Or increase image size?)
+        //   may overflow plot image! (Reduce font-size or number of characters? Or increase image size?)
 
        //  std::cout << "Image  = " << derived().title_info_.x(derived().image_.x_size()) << std::endl;
         //  <text x="700" y="0" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">Plot showing several data-point marker shapes &#x26; sizes.</text>
@@ -1581,7 +1581,7 @@ namespace boost
           << "\n  Title = \"" << derived().title() << "\n"
           << "  title has = " << derived().title().size() << " characters" // number of chars.
           << ", title text SVG width = " << title_svg_length
-          << ", title font size = " << derived().title_font_size()
+          << ", title font-size = " << derived().title_font_size()
           << ", title font family = " << derived().title_font_family()
           << ", title font weight = " << derived().title_font_weight()
           << ", title text_length = " << derived().title_text_length()
@@ -1610,13 +1610,13 @@ namespace boost
           std::cout << "Title text \"" << derived().title_info_.text()
             << "\"\n  with an estimated width " << title_svg_length << " (SVG units) may overflow plot space " << derived().image_.x_size()
             <<  "\n  or over-compress text with compression ratio " << title_svg_length / derived().image_.x_size()
-            << ".\n  Reduce font size from " << derived().title_font_size()
+            << ".\n  Reduce font-size from " << derived().title_font_size()
             << ", or number of characters from " << derived().title().size()
             << ", or increase image size from " << derived().image_.x_size()
             << "?." << std::endl;
           // Title "Plot showing short legend &#x26; sizes."
           //   width 378 (SVG units) may overflow plot image!
-          //  (Reduce font size from 30, or number of characters from 21, or increase image size from 300).
+          //  (Reduce font-size from 30, or number of characters from 21, or increase image size from 300).
         }
         */
         // But this makes is fit the image.x_size and that isn't really what we want for the plot title?
@@ -1627,7 +1627,7 @@ namespace boost
         //}
 
         derived().title_info_.x(derived().image_.x_size() / 2.); // Center of image.
-        // default text_margin_(1.25), // for title & axis label text, as a multiplier of the font size.
+        // default text_margin_(1.25), // for title & axis label text, as a multiplier of the font-size.
      //   double y = derived().title_info_.textstyle().font_size() * derived().text_margin_ ; // = 1.25 Not enough margin space above.
         double y = derived().title_info_.textstyle().font_size() * 1.5; // Leave bigger margin space above - looks just right.
         // Should allow a 'half line space' above and below the label text.
@@ -1650,7 +1650,7 @@ namespace boost
     { // So want a legend box, set with .legend_on(true).
       // Check if any legend title or title.
       derived().is_legend_title_ = (derived().legend_title_.text() != "");
-      derived().legend_title_font_size_ = derived().legend_title_style_.font_size_; // legend-title font size.
+      derived().legend_title_font_size_ = derived().legend_title_style_.font_size_; // legend-title font-size.
       derived().legend_text_font_size_  = derived().legend_text_style_.font_size_; // legend data-series description-text font-size.
       derived().is_a_data_series_line_ = false; // Assume no data-lines.
       derived().is_a_point_marker_ = false;  // Assume no data-point marker symbols.
@@ -1664,7 +1664,7 @@ namespace boost
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
       // Vertical spacing of the data-series lines needs to use the largest of
-      // all point marker Unicode symbol font sizes (may be different) and legend-text font-size.
+      // all point marker Unicode symbol font-sizes (may be different) and legend-text font-size.
       // (See https://www.w3.org/TR/SVG/text.html#GlyphsMetrics for height width ratio).
       // Line marker has small height compared to any font, so ignore any lines in max height calculation.
 
@@ -1866,7 +1866,7 @@ namespace boost
       // Or size of marker or line, whichever is the biggest, plus a small margin_ top and bottom.
 
        // Use height of whichever is the biggest of data-point marker shape and text-font, derived().biggest_point_marker_font_size_
-      // for vertical spacing, (assuming horizontal line markers have neglible height so fill use marker text font size).
+      // for vertical spacing, (assuming horizontal line markers have neglible height so fill use marker text font-size).
 
       //derived().legend_height_ = derived().legend_box_.margin_; // Always allow a tiny margin top and bottom.
       if (derived().legend_box_.border_on_ == true)
@@ -2047,10 +2047,10 @@ namespace boost
 
 #ifdef BOOST_SVG_LEGEND_DIAGNOSTICS
         std::cout <<  "Drawing Legend: legend_title_font_size " << derived().legend_title_font_size_
-          << ", legend text font size = "  << derived().legend_text_font_size_
-          << ", biggest marker symbol font size = "  << derived().biggest_point_marker_font_size_
+          << ", legend text font-size = "  << derived().legend_text_font_size_
+          << ", biggest marker symbol font-size = "  << derived().biggest_point_marker_font_size_
           << ", text_margin = " << derived().text_margin_ << std::endl;
-        // Drawing Legend: text_font_size 10, marker shape size = 10, marker symbol font size = 10, spacing = 10
+        // Drawing Legend: text_font_size 10, marker shape size = 10, marker symbol font-size = 10, spacing = 10
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
 
       // Assume legend box position has already been sized by function size_legend_box,
@@ -2313,7 +2313,7 @@ namespace boost
         << ", y offset half_height = " << half_height
         << ", y offset third_height = " << third_height
         << std::endl;
-      // Picks up font size shape(diamond).size(20) correctly here.
+      // Picks up font-size shape(diamond).size(20) correctly here.
       // point_style.size_ = 30, y offset half_height = 15, y offset third_height = 9.09091
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
       point_style.symbols_style_.font_size(point_style.size_); // Sets data-point-marker font-size.
@@ -2496,7 +2496,7 @@ namespace boost
       std::cout << "sty.symbols_style_ " << point_style.symbols_style_ << std::endl;
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
-        std::cout << "Diamond style font size " << point_style.symbols_style_.font_size() << std::endl;
+        std::cout << "Diamond style font-size " << point_style.symbols_style_.font_size() << std::endl;
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
         // diamond, spades, clubs & hearts fill with expected fill_color.
         break;
@@ -2568,7 +2568,7 @@ namespace boost
           g_ptr.text(x, y  + third_height, "&#x2605;", point_style.symbols_style_, align_style::center_align, horizontal);
           break;
 
-      case cross: // Not X. Size is full font size for other options see https://unicode-search.net/unicode-namesearch.pl?term=CROSS
+      case cross: // Not X. Size is full font-size for other options see https://unicode-search.net/unicode-namesearch.pl?term=CROSS
         //g_ptr.line(x, y + point_size, x , y - point_size); // line up & down from axis,
         //g_ptr.line(x, y - point_size, x + point_size, y ); // & line left & right from axis.
         // Cross is pretty useless for 1-D because the horizontal line is on the X-axis.
@@ -2646,7 +2646,7 @@ namespace boost
         int marker_size = point_style.size_; // point marker size
         int label_size = val_style.values_text_style_.font_size();
         // Offset of value-label from point must be related mainly to
-        // size of the data marker, less the value-label font size.
+        // size of the data marker, less the value-label font-size.
         // May need to combine these two?
 
         int rot = val_style.value_label_rotation_;
@@ -2658,36 +2658,36 @@ namespace boost
         {
         case horizontal: // OK
           al = align_style::center_align;
-          y -= marker_size * 2;  // Up marker font size;
+          y -= marker_size * 2;  // Up marker font-size;
           // center_align means no x correction.
           break;
         case leftward: // horizontal but to left of marker.
           al = align_style::right_align;
           x -= marker_size * 1.3;  // left
-          y += label_size * 0.3;  // down label font size;
+          y -= label_size * 0.1;  // down label font-size;
           rot = horizontal;
           break;
         case rightward: // horizontal but to right of marker.
           al = align_style::left_align;
-          x += marker_size * 1.1;  // right
-          y += label_size * 0.3;  // down label font size;
+          x += marker_size * 1.5;  // right
+          y -= label_size * 0.1;  // down label middle of font-size;
           rot = horizontal;
           break;
         case upsidedown: // OK but upsidedown so not very useful!
           al = align_style::center_align;
-          y += marker_size;  // Down marker font size;
+          y += marker_size;  // Down marker font-size;
           break;
         case slopeup: // -30 - OK
         case steepup: // -45 - OK
         case uphill: // -60 - OK
           al = align_style::left_align;
-          x += label_size /3;  // Right third label font size - centers on marker.
-          y -= marker_size * 0.6;  // UP marker font size;
+          x += label_size / 2.5;  // Right third label font-size - centers on marker.
+          y -= marker_size * 2;  // UP marker font-size;
           break;
         case upward: // -90 vertical writing up - OK.
           al = align_style::left_align;
-          x += label_size /3;  // Right third label font size - centers on marker.
-          y -= marker_size * 0.9;  // Up marker font size;
+          x += label_size / 2.5;  // Right third label font-size - centers on marker.
+          y -= marker_size * 2;  // Up marker font-size;
           break;
         case backup: // OK
           al = align_style::right_align;
@@ -2701,7 +2701,7 @@ namespace boost
         case steepdown: //  60 steeply down.
           al = align_style::left_align;
           x += marker_size * 0.4;  // Right;
-          y += marker_size * 0.9;  // Down
+          y += marker_size * 1.5;  // Down
           break;
         case downward: // OK
           al = align_style::left_align;
@@ -2730,7 +2730,7 @@ namespace boost
         // Spaces seem to get lost, so use 00A0 as an explicit space glyph.
         // Layout seems to vary with font - Times New Roman leaves no space after.
         //text_element& t = g_ptr.text(x, y, label_v, val_style.values_text_style_, al, rot);
-        // Optionally, show std_dev as 95% confidence plus minus:  2.1 +-0.012 (23)
+        // Optionally, show nominal std_dev as 95% confidence plus minus:  2.1 +-0.012 (23).
 
         // Extra info from Meas.
         using boost::posix_time::ptime;
@@ -2891,7 +2891,7 @@ namespace boost
             int marker_size = derived().serieses_[0].point_style_.size_; 
             int label_size = x_sty.values_text_style_.font_size();
             // Offset of value-labels from point must be related mainly to
-            // size of the data marker, less from the value-label font size.
+            // size of the data marker, less from the value-label font-size.
 
             int rot = x_sty.value_label_rotation_;
             align_style al; // = center_align;
@@ -2899,36 +2899,36 @@ namespace boost
             {
             case horizontal: // OK
               al = align_style::center_align;
-              y -= marker_size * 2;  // Up marker font size;
+              y -= marker_size * 2;  // Up marker font-size;
               // center_align means no x correction.
               break;
             case leftward: // horizontal but to left of marker. OK
               al = align_style::right_align;
               x -= marker_size * 1.3;  // left
-              y += label_size * 0.3;  // down label font size;
+              y += label_size * 0.3;  // down label font-size;
               rot = horizontal;
               break;
-            case rightward: // horizontal but to right of marker.OK
+            case rightward: // horizontal but to right of marker. OK
               al = align_style::left_align;
               x += marker_size * 1.1;  // right
-              y += label_size * 0.3;  // down label font size;
+              y += label_size * 0.3;  // down label font-size;
               rot = horizontal;
               break;
             case upsidedown: // OK but upsidedown so not very useful!
               al = align_style::center_align;
-              y += marker_size;  // Down marker font size;
+              y += marker_size;  // Down marker font-size;
              break;
             case slopeup: // -30 - OK
             case steepup: // -45 - OK
             case uphill: // -60 - OK
               al = align_style::left_align;
-              x += label_size /3;  // Right third label font size - centers on marker.
-              y -= marker_size * 0.6;  // UP marker font size;
+              x += label_size ;  // Right third label font-size - centers on marker.
+              y -= marker_size * 0.6;  // UP marker font-size;
               break;
-            case upward: // -90 vertical writing up - OK.
+            case upward: // -90 vertical writing upwards - OK.
               al = align_style::left_align;
-              x += label_size /3;  // Right third label font size - centers on marker.
-              y -= marker_size * 0.9;  // Up marker font size;
+              x += label_size /3.;  // Right third label font-size - centers on marker.
+              y -= marker_size * 2;  // Up marker font-size;
               break;
             case backup: // OK
               al = align_style::right_align;
@@ -2959,7 +2959,7 @@ namespace boost
             text_element& t = x_g_ptr.text(x, y, label_xv, x_sty.values_text_style_, al, rot); // X value label.
 
             // If would be simpler to prepare a single string like "1.23 +- -0.3, 3.45 +- -0.1(10)"
-            // but this would not allow change of font size, type and color
+            // but this would not allow change of font-size, type and color
             // something that proves to be very effective at visually separating
             // value and std_dev, and degrees of freedom estimate,
             // and other information like date_time, id or name, and order in sequence.
@@ -3094,7 +3094,7 @@ namespace boost
                 t.tspan(label_ydf).fill_color(y_sty.df_color_).font_size(fy);
               }
               if (y_sty.suffix_ != "")
-              { // Want a suffix like "]" - with the Y values font size, (not reduced for std_dev info), and same color as prefix.
+              { // Want a suffix like "]" - with the Y values font-size, (not reduced for std_dev info), and same color as prefix.
                 t.tspan(y_sty.suffix_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size());
               }
             } //
@@ -3108,7 +3108,7 @@ namespace boost
                 label_yv = y_sty.prefix_ + label_yv;
               }
               // Need to start a new text_element here because tspan rotation doesn't apply to whole string?
-              // Use the mean of x and Y font size to determine the size of the 'newline'.
+              // Use the mean of x and Y font-size to determine the size of the 'newline'.
               double dy = 0.5 * (y_sty.values_text_style_.font_size() + x_sty.values_text_style_.font_size()) * 1.2 ; // 
               text_element& ty = y_g_ptr.text(x, y + dy, label_yv, y_sty.values_text_style_, al, rot);
 
@@ -3570,23 +3570,23 @@ namespace boost
 
           template <class Derived>
           text_style& axis_plot_frame<Derived>::title_style()
-          { //! \return  Font size for the title (svg units, default pixels).
+          { //! \return  font-size for the title (svg units, default pixels).
             //! Example: std::cout << "title style " << my_2d_plot.title_style() << std::endl;
             //! Outputs: title style text_style(10, "Lucida Sans Unicode", "", "normal", "", "", 900)
             return derived().title_info_.textstyle(); // Gets expected title style.
- //           return derived().title_style_;  // Gets default title font size :-(
+ //           return derived().title_style_;  // Gets default title font-size :-(
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::title_font_size(int i)
-          { //! Sets the font size for the title (svg units, default pixels).
+          { //! Sets the font-size for the title (svg units, default pixels).
             derived().title_info_.textstyle().font_size(i);
             return derived();
           }
 
           template <class Derived>
           int axis_plot_frame<Derived>::title_font_size()
-          { //! \return  the font size for the title (svg units, default pixels).
+          { //! \return  the font-size for the title (svg units, default pixels).
             return derived().title_info_.textstyle().font_size();
           }
 
@@ -3759,14 +3759,14 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_title_font_size(int size)
-          { //! Set the font size for the legend title (svg units, default pixels).
+          { //! Set the font-size for the legend title (svg units, default pixels).
             derived().legend_title_style_.font_size_ = size;
             return derived();
           }
 
           template <class Derived>
           int axis_plot_frame<Derived>::legend_title_font_size()
-          { //! \return  the font size for the legend title (svg units, default pixels).
+          { //! \return  the font-size for the legend title (svg units, default pixels).
             return derived().legend_title_style_.font_size_;
           }
 
@@ -3783,10 +3783,10 @@ namespace boost
             return derived().legend_title_style_.weight_;
           }
 
-          // Separate title and text font sizes.
+          // Separate title and text font-sizes.
           template <class Derived>
           Derived& axis_plot_frame<Derived>::legend_text_font_size(int size)
-          { //! Set the font size for the legend title (svg units, default pixels).
+          { //! Set the font-size for the legend title (svg units, default pixels).
             derived().legend_text_style_.font_size_ = size;
             return derived(); // Make chainable.
           }
@@ -3794,14 +3794,14 @@ namespace boost
 
          //template <class Derived>
          // Derived& axis_plot_frame<Derived>::legend_text_font_size(int size)
-         // { //! Set Font size for legend text (svg units, default pixels).
+         // { //! Set font-size for legend text (svg units, default pixels).
          //   derived().legend_text_style_.font_size_ = size;
          //   return derived();
          // }
 
           template <class Derived>
           int axis_plot_frame<Derived>::legend_text_font_size()
-          { //! \return  Font size for the legend text used for marker descriptions (svg units, default pixels).
+          { //! \return  font-size for the legend text used for marker descriptions (svg units, default pixels).
             return derived().legend_text_style_.font_size_;
           }
 
@@ -3825,7 +3825,7 @@ namespace boost
             //! This expands or compresses the text to fill this width exactly,
             //! potentially making it so elongated with spaces between letters,
             //! or compresses so that the glyphs collide so it becomes unreadable.
-            //! Length is SVG unit (pixels) = EM font size * aspect_ratio * char count.
+            //! Length is SVG unit (pixels) = EM font-size * aspect_ratio * char count.
             //! Normally only used internally.
             //! Example: @c .legend_title_text_length(300) // Force text into an arbitrary chosen fixed width (about equal to 80 chars).
             if (length > 0)
@@ -4155,7 +4155,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_label_font_size(int i)
-          { //! Set X axis label font size (svg units, default pixels).
+          { //! Set X axis label font-size (svg units, default pixels).
             derived().x_label_info_.textstyle().font_size(i);
             // Also duplicated at
             // derived().x_axis_label_style_.font_size(i);
@@ -4164,20 +4164,20 @@ namespace boost
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_label_font_size()
-          { //! \return  X axis label font size (svg units, default pixels).
+          { //! \return  X axis label font-size (svg units, default pixels).
             return derived().x_label_info_.textstyle().font_size();
           }
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_value_font_size(int i)
-          { //! Set X tick value-label font size (svg units, default pixels).
+          { //! Set X tick value-label font-size (svg units, default pixels).
             derived().x_value_value.textstyle().font_size(i);
             return derived();
           }
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_value_font_size()
-          { //! \return  X tick value-label font size (svg units, default pixels).
+          { //! \return  X tick value-label font-size (svg units, default pixels).
             return derived().x_value_value_style_font_size();
           }
 
@@ -4262,7 +4262,7 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_ticks_values_font_size(int size)
-          { //! Set X-ticks value-label font size (svg units, default pixels).
+          { //! Set X-ticks value-label font-size (svg units, default pixels).
             //derived().x_ticks_.value_label_style_.font_size(i);
             derived().x_ticks_value_label_info_.textstyle().font_size_ = size;
             return derived();
@@ -4270,7 +4270,7 @@ namespace boost
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_ticks_values_font_size()
-          { //! \return  X-ticks value-label font size (svg units, default pixels).
+          { //! \return  X-ticks value-label font-size (svg units, default pixels).
             // return derived().x_ticks_.value_label_style_.font_size();
             //       return derived().x_value_label_info_style_.font_size();
 
@@ -4866,14 +4866,14 @@ namespace boost
 
           template <class Derived>
           Derived& axis_plot_frame<Derived>::x_values_font_size(int i)
-          { //! Set font size of data-point X values near data-points markers.
+          { //! Set font-size of data-point X values near data-points markers.
             derived().x_values_style_.values_text_style_.font_size(i);
             return derived();
           }
 
           template <class Derived>
           int axis_plot_frame<Derived>::x_values_font_size()
-          { //! \return  font size of data-point X values near data-points markers.
+          { //! \return  font-size of data-point X values near data-points markers.
             return derived().x_values_style_.values_text_style_.font_size();
           }
 
@@ -5569,7 +5569,7 @@ namespace boost
 
         template <class Derived>
         int axis_plot_frame<Derived>::nan_limit_size()
-        { //! \return The font size for the NaN point(s) marker shape or symbol.
+        { //! \return The font-size for the NaN point(s) marker shape or symbol.
           return derived().nan_point_style_.size_;
         }
 
@@ -5602,7 +5602,7 @@ namespace boost
 
         template <class Derived>
         int axis_plot_frame<Derived>::plus_inf_limit_size()
-        { //! \return The font size for the 'at-limit' point(s) marker shape or symbol.
+        { //! \return The font-size for the 'at-limit' point(s) marker shape or symbol.
           return derived().plus_inf_point_style_.size_;
         }
 
@@ -5640,7 +5640,7 @@ namespace boost
 
         template <class Derived>
         int axis_plot_frame<Derived>::minus_inf_limit_size()
-        { //! \return The font size for the -infinity point(s) marker shape or symbol.
+        { //! \return The font-size for the -infinity point(s) marker shape or symbol.
           return derived().minus_inf_point_style_.size_;
         }
 
