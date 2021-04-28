@@ -58,10 +58,19 @@ project
       <include>../../../ # boost-trunk
       #<include>../../../boost/quan/
     ;
+    
+if --dist_graphs in  [ modules.peek : ARGV ]
+{
+   ECHO "Building Boost.Math distribution graphs." ;
+   run ../../math/doc/graphs/dist_graphs.cpp ;
+}
+
 
 if --extras in  [ modules.peek : ARGV ]
 {
    ECHO "Building extra SVG_Plot examples." ;
+   run jacobi_zeta_plot.cpp ;
+   run arcsine_dist_graphs.cpp ;
    run convertible_to_double.cpp ;
    run demo_1d_meas.cpp ;
    run demo_1d_tick_values.cpp ;
@@ -77,12 +86,9 @@ if --extras in  [ modules.peek : ARGV ]
    run demo_point_markers.cpp ;
    run demo_rounds.cpp ;
    run svg_test_boxplot.cpp ;
+   run svg_test.cpp ;
+   run svg_colors.cpp ;
    
-   
-   
-   
-   #run ../../math/doc\graphs/dist_graphs.cpp
-
    #run test_legend_place.cpp ;
    #run test_quantiles.cpp ;
    #run test_axis_labels.cpp ;
@@ -149,7 +155,5 @@ else
    run demo_rounds.cpp ; # Demonstration of rounding algorithm used for binary, five, decimal autoscaling.
    run demo_svg.cpp ;
    run demo_svg_tspan.cpp ; # Demonstration of tspan commands.
-   run svg_colors.cpp ;
-   run svg_test.cpp ;
-   run svg_test_boxplot.cpp ;
 }
+

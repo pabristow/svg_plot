@@ -163,7 +163,7 @@ int main()
   std::cout << "The smallest element is " << *(result.first) << std::endl; // 0.2
   std::cout << "The largest element is  " << *(result.second) << std::endl; // 6.5
 
-/*`Autoscaling can also use two double min and max values provided by the user program.
+/*`Autoscaling can also use two `double` min and max values provided by the user program.
 Using `x_autoscale(my_set)` effectively uses the first and last items in the STL container.
 If the container is sorted, then these are the minimum and maximum values.*/
 
@@ -181,7 +181,7 @@ It accepts parameters controlling the scaling and updates 4 items. Its signature
     bool check_limits, // Whether to check all values for infinity, NaN etc.
     bool origin, // If true, ensures that zero is a tick value.
     double tight, // Allows user to avoid a small fraction over a tick using another tick.
-    nt min_ticks, // Minimum number of ticks.
+    int min_ticks, // Minimum number of ticks.
 */
   double axis_min_value; // Values to be updated by autoscale.
   double axis_max_value;
@@ -290,7 +290,6 @@ to produce more aesthetically pleasing ranges. One can:
 
 /*`Finally here are some examples of using autoscaling using all or part of containers.
 */
-
   my_1d_plot.x_autoscale(my_data);  // Use all my_data to autoscale.
   std::cout << "Autoscaled " // Show the results of autoscale:
     "min " << my_1d_plot.x_auto_min_value()
@@ -331,7 +330,7 @@ to produce more aesthetically pleasing ranges. One can:
 
   using boost::svg::detail::operator<<;
   std::cout << "x_range() " << my_1d_plot.x_range() << std::endl; // x_range() 1, 5.5
-  show_1d_plot_settings(my_1d_plot);
+//  show_1d_plot_settings(my_1d_plot); // Full diagnostics, if required.
   }
   catch(const std::exception& e)
   { // Error, warning and information messages are displayed by the catch block.

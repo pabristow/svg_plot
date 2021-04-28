@@ -12,55 +12,429 @@ xmlns ="http://www.w3.org/2000/svg"
 <!-- (See accompanying file LICENSE_1_0.txt --> 
 <!-- or copy at http://www.boost.org/LICENSE_1_0.txt) --> 
 
-<clipPath id="plot_window"><rect x="93.6" y="59" width="473" height="281"/></clipPath>
-<g id="imageBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2"><rect x="0" y="0" width="750" height="400"/></g>
-<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2"><rect x="92.6" y="58" width="475" height="283"/></g>
-<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
-<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5"></g>
-<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1"></g>
-<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="103.9" y1="58" x2="103.9" y2="346"/><line x1="92.6" y1="58" x2="92.6" y2="341"/></g>
-<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1"><line x1="87.6" y1="341" x2="567.6" y2="341"/><line x1="87.6" y1="341" x2="567.6" y2="341"/></g>
-<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"><path d="M90.6,332 L92.6,332 M90.6,323 L92.6,323 M90.6,313.9 L92.6,313.9 M90.6,304.9 L92.6,304.9 M90.6,286.9 L92.6,286.9 M90.6,277.9 L92.6,277.9 M90.6,268.8 L92.6,268.8 M90.6,259.8 L92.6,259.8 M90.6,241.8 L92.6,241.8 M90.6,232.7 L92.6,232.7 M90.6,223.7 L92.6,223.7 M90.6,214.7 L92.6,214.7 M90.6,196.7 L92.6,196.7 M90.6,187.6 L92.6,187.6 M90.6,178.6 L92.6,178.6 M90.6,169.6 L92.6,169.6 M90.6,151.6 L92.6,151.6 M90.6,142.5 L92.6,142.5 M90.6,133.5 L92.6,133.5 M90.6,124.5 L92.6,124.5 M90.6,106.4 L92.6,106.4 M90.6,97.42 L92.6,97.42 M90.6,88.4 L92.6,88.4 M90.6,79.38 L92.6,79.38 M90.6,61.34 L92.6,61.34 M90.6,341 L92.6,341 " fill="none"/></g>
-<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1"></g>
-<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M87.6,341 L92.6,341 M87.6,295.9 L92.6,295.9 M87.6,250.8 L92.6,250.8 M87.6,205.7 L92.6,205.7 M87.6,160.6 L92.6,160.6 M87.6,115.5 L92.6,115.5 M87.6,70.36 L92.6,70.36 M87.6,341 L92.6,341 " fill="none"/></g>
-<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2"><path d="M103.9,341 L103.9,346 M217,341 L217,346 M330.1,341 L330.1,346 M443.2,341 L443.2,346 M556.3,341 L556.3,346 M103.9,341 L103.9,346 " fill="none"/></g>
-<g id="xTicksValues">
-<text x="103.9" y="361.6" text-anchor="middle" font-size="12" font-family="Verdana">0</text>
-<text x="217" y="361.6" text-anchor="middle" font-size="12" font-family="Verdana">5</text>
-<text x="330.1" y="361.6" text-anchor="middle" font-size="12" font-family="Verdana">10</text>
-<text x="443.2" y="361.6" text-anchor="middle" font-size="12" font-family="Verdana">15</text>
-<text x="556.3" y="361.6" text-anchor="middle" font-size="12" font-family="Verdana">20</text>
-<text x="103.9" y="361.6" text-anchor="middle" font-size="12" font-family="Verdana">0</text></g>
-<g id="yTicksValues">
-<text x="81.6" y="343.4" text-anchor="end" font-size="12" font-family="Verdana">0</text>
-<text x="81.6" y="298.3" text-anchor="end" font-size="12" font-family="Verdana">0.05</text>
-<text x="81.6" y="253.2" text-anchor="end" font-size="12" font-family="Verdana">0.1</text>
-<text x="81.6" y="208.1" text-anchor="end" font-size="12" font-family="Verdana">0.15</text>
-<text x="81.6" y="163" text-anchor="end" font-size="12" font-family="Verdana">0.2</text>
-<text x="81.6" y="117.9" text-anchor="end" font-size="12" font-family="Verdana">0.25</text>
-<text x="81.6" y="72.76" text-anchor="end" font-size="12" font-family="Verdana">0.3</text>
-<text x="81.6" y="343.4" text-anchor="end" font-size="12" font-family="Verdana">0</text></g>
-<g id="yLabel">
-<text x="42.9" y="199.5" text-anchor="middle" transform = "rotate(-90 42.9 199.5 )" font-size="14" font-family="Verdana">Probability</text></g>
-<g id="xLabel">
-<text x="330.1" y="376.7" text-anchor="middle" font-size="14" font-family="Verdana">Random Variable</text></g>
-<g id="plotLines" stroke-width="2"><g clip-path="url(#plot_window)" stroke="rgb(0,0,139)" fill="rgb(0,0,139)" stroke-width="1"><path d="M95.43,341 L95.43,341 L95.43,231.3 L101.1,231.3 L101.1,341 L118,341 L118,97.27 L123.7,97.27 L123.7,341 L140.7,341 L140.7,83.73 L146.3,83.73 L146.3,341 L163.3,341 L163.3,169.5 L168.9,169.5 L168.9,341 L185.9,341 L185.9,260 L191.6,260 L191.6,341 L208.5,341 L208.5,312.2 L214.2,312.2 L214.2,341 L231.1,341 L231.1,333 L236.8,333 L236.8,341 L253.8,341 L253.8,339.2 L259.4,339.2 L259.4,341 L276.4,341 L276.4,340.7 L282,340.7 L282,341 L299,341 L299,341 L304.7,341 L304.7,341 L321.6,341 L321.6,341 L327.3,341 L327.3,341 L344.2,341 L344.2,341 L349.9,341 L349.9,341 L366.9,341 L366.9,341 L372.5,341 L372.5,341 L389.5,341 L389.5,341 L395.1,341 L395.1,341 L412.1,341 L412.1,341 L417.7,341 L417.7,341 L434.7,341 L434.7,341 L440.4,341 L440.4,341 L457.3,341 L457.3,341 L463,341 L463,341 L480,341 L480,341 L485.6,341 L485.6,341 L502.6,341 L502.6,341 L508.2,341 L508.2,341 L525.2,341 L525.2,341 L530.8,341 L530.8,341 L547.8,341 L547.8,341 L553.5,341 L553.5,341 L553.5,341 Z" fill="rgb(0,0,139)"/></g>
-<g clip-path="url(#plot_window)" stroke="rgb(139,0,0)" fill="rgb(139,0,0)" stroke-width="1"><path d="M101.1,341 L101.1,341 L101.1,341 L106.7,341 L106.7,341 L123.7,341 L123.7,341 L129.4,341 L129.4,341 L146.3,341 L146.3,340.8 L152,340.8 L152,341 L168.9,341 L168.9,340 L174.6,340 L174.6,341 L191.6,341 L191.6,336.8 L197.2,336.8 L197.2,341 L214.2,341 L214.2,327.7 L219.8,327.7 L219.8,341 L236.8,341 L236.8,307.7 L242.5,307.7 L242.5,341 L259.4,341 L259.4,274.3 L265.1,274.3 L265.1,341 L282,341 L282,232.6 L287.7,232.6 L287.7,341 L304.7,341 L304.7,196.5 L310.3,196.5 L310.3,341 L327.3,341 L327.3,182 L332.9,182 L332.9,341 L349.9,341 L349.9,196.5 L355.5,196.5 L355.5,341 L372.5,341 L372.5,232.6 L378.2,232.6 L378.2,341 L395.1,341 L395.1,274.3 L400.8,274.3 L400.8,341 L417.7,341 L417.7,307.7 L423.4,307.7 L423.4,341 L440.4,341 L440.4,327.7 L446,327.7 L446,341 L463,341 L463,336.8 L468.6,336.8 L468.6,341 L485.6,341 L485.6,340 L491.3,340 L491.3,341 L508.2,341 L508.2,340.8 L513.9,340.8 L513.9,341 L530.8,341 L530.8,341 L536.5,341 L536.5,341 L553.5,341 L553.5,341 L559.1,341 L559.1,341 L559.1,341 Z" fill="rgb(139,0,0)"/></g>
-<g clip-path="url(#plot_window)" stroke="rgb(0,100,0)" fill="rgb(0,100,0)" stroke-width="1"><path d="M106.7,341 L106.7,341 L106.7,341 L112.4,341 L112.4,341 L129.4,341 L129.4,341 L135,341 L135,341 L152,341 L152,341 L157.6,341 L157.6,341 L174.6,341 L174.6,341 L180.2,341 L180.2,341 L197.2,341 L197.2,341 L202.9,341 L202.9,341 L219.8,341 L219.8,341 L225.5,341 L225.5,341 L242.5,341 L242.5,341 L248.1,341 L248.1,341 L265.1,341 L265.1,341 L270.7,341 L270.7,341 L287.7,341 L287.7,341 L293.3,341 L293.3,341 L310.3,341 L310.3,341 L316,341 L316,341 L332.9,341 L332.9,341 L338.6,341 L338.6,341 L355.5,341 L355.5,341 L361.2,341 L361.2,341 L378.2,341 L378.2,340.7 L383.8,340.7 L383.8,341 L400.8,341 L400.8,339.2 L406.4,339.2 L406.4,341 L423.4,341 L423.4,333 L429.1,333 L429.1,341 L446,341 L446,312.2 L451.7,312.2 L451.7,341 L468.6,341 L468.6,260 L474.3,260 L474.3,341 L491.3,341 L491.3,169.5 L496.9,169.5 L496.9,341 L513.9,341 L513.9,83.73 L519.5,83.73 L519.5,341 L536.5,341 L536.5,97.27 L542.2,97.27 L542.2,341 L559.1,341 L559.1,231.3 L564.8,231.3 L564.8,341 L564.8,341 Z" fill="rgb(0,100,0)"/></g>
+<!-- SVG Plot Copyright John Maddock 2008 --> 
+<meta name="copyright" content="John Maddock" />
+<meta name="date" content="2008" />
+<!-- Use, modification and distribution of this Scalable Vector Graphic file -->
+<!-- are subject to the Boost Software License, Version 1.0. -->
+<!-- (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt) -->
+
+<clipPath id="plot_window">	<rect x="78.3" y="44" width="552.2" height="309"/>
+</clipPath>
+	<g id="imageBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2">
+	<rect x="0" y="0" width="750" height="400"/>
 </g>
-<g id="plotPoints" clip-path="url(#plot_window)"></g>
-<g id="legendBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="1"><rect x="581.6" y="58" width="142.4" height="105"/><rect x="581.6" y="58" width="142.4" height="105"/></g>
-<g id="legendPoints"><g stroke="rgb(0,0,139)" fill="rgb(255,255,255)" stroke-width="1"><line x1="596.6" y1="88" x2="611.6" y2="88"/></g>
-<g stroke="rgb(139,0,0)" fill="rgb(255,255,255)" stroke-width="1"><line x1="596.6" y1="118" x2="611.6" y2="118"/></g>
-<g stroke="rgb(0,100,0)" fill="rgb(255,255,255)" stroke-width="1"><line x1="596.6" y1="148" x2="611.6" y2="148"/></g>
+	<g id="plotBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="2">
+	<rect x="77.3" y="43" width="554.2" height="311"/>
 </g>
-<g id="legendText">
-<text x="619.1" y="88" font-size="15" font-family="Verdana">n=20 p=0.1</text>
-<text x="619.1" y="118" font-size="15" font-family="Verdana">n=20 p=0.5</text>
-<text x="619.1" y="148" font-size="15" font-family="Verdana">n=20 p=0.9</text></g>
-<g id="title">
-<text x="375" y="40" text-anchor="middle" font-size="20" font-family="Verdana">Binomial Distribution PDF</text></g>
-<g id="plotXValues"></g>
-<g id="plotYValues"></g>
+	<g id="yMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+</g>
+	<g id="yMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+</g>
+	<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
+</g>
+	<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
+</g>
+	<g id="yAxis" stroke="rgb(0,0,0)" stroke-width="1">
+	<line x1="90.5" y1="43" x2="90.5" y2="359"/>
+	<line x1="77.3" y1="43" x2="77.3" y2="354"/>
+</g>
+	<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
+	<line x1="72.3" y1="354" x2="631.5" y2="354"/>
+	<line x1="72.3" y1="354" x2="631.5" y2="354"/>
+</g>
+	<g id="yMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+	<path d="M75.3,344.1 L77.3,344.1 
+M75.3,334.2 L77.3,334.2 
+M75.3,324.3 L77.3,324.3 
+M75.3,314.3 L77.3,314.3 
+M75.3,294.5 L77.3,294.5 
+M75.3,284.6 L77.3,284.6 
+M75.3,274.7 L77.3,274.7 
+M75.3,264.8 L77.3,264.8 
+M75.3,244.9 L77.3,244.9 
+M75.3,235 L77.3,235 
+M75.3,225.1 L77.3,225.1 
+M75.3,215.2 L77.3,215.2 
+M75.3,195.4 L77.3,195.4 
+M75.3,185.5 L77.3,185.5 
+M75.3,175.5 L77.3,175.5 
+M75.3,165.6 L77.3,165.6 
+M75.3,145.8 L77.3,145.8 
+M75.3,135.9 L77.3,135.9 
+M75.3,126 L77.3,126 
+M75.3,116.1 L77.3,116.1 
+M75.3,96.24 L77.3,96.24 
+M75.3,86.32 L77.3,86.32 
+M75.3,76.41 L77.3,76.41 
+M75.3,66.49 L77.3,66.49 
+M75.3,46.67 L77.3,46.67 
+M75.3,354 L77.3,354 
+" fill="none"/>
+</g>
+	<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
+</g>
+	<g id="yMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<path d="M72.3,354 L77.3,354 
+M72.3,304.4 L77.3,304.4 
+M72.3,254.9 L77.3,254.9 
+M72.3,205.3 L77.3,205.3 
+M72.3,155.7 L77.3,155.7 
+M72.3,106.1 L77.3,106.1 
+M72.3,56.58 L77.3,56.58 
+M72.3,354 L77.3,354 
+" fill="none"/>
+</g>
+	<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
+	<path d="M90.5,354 L90.5,359 
+M222.4,354 L222.4,359 
+M354.4,354 L354.4,359 
+M486.4,354 L486.4,359 
+M618.3,354 L618.3,359 
+M90.5,354 L90.5,359 
+" fill="none"/>
+</g>
+	<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<text x="90.5" y="374.6">0
+	</text>
+	<text x="222.4" y="374.6">5
+	</text>
+	<text x="354.4" y="374.6">10
+	</text>
+	<text x="486.4" y="374.6">15
+	</text>
+	<text x="618.3" y="374.6">20
+	</text>
+	<text x="90.5" y="374.6">0
+	</text>
+</g>
+	<g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="end">
+	<text x="66.3" y="356.4">0
+	</text>
+	<text x="66.3" y="306.8">0.05
+	</text>
+	<text x="66.3" y="257.3">0.1
+	</text>
+	<text x="66.3" y="207.7">0.15
+	</text>
+	<text x="66.3" y="158.1">0.2
+	</text>
+	<text x="66.3" y="108.5">0.25
+	</text>
+	<text x="66.3" y="58.98">0.3
+	</text>
+	<text x="66.3" y="356.4">0
+	</text>
+</g>
+	<g id="yLabel">
+	<text x="32.4" y="198.5" text-anchor="middle" transform="rotate(-90 32.4 198.5)" font-size="14" font-family="Lucida Sans Unicode">Probability
+	</text>
+</g>
+	<g id="xLabel">
+	<text x="354.4" y="387.1" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">Random Variable
+	</text>
+</g>
+	<g id="plotLines" stroke-width="2">
+	<g clip-path="url(#plot_window)" stroke="rgb(0,0,139)" fill="rgb(0,0,139)" stroke-width="1">
+	<path d="M80.6,354 L80.6,354 
+L80.6,354 
+L80.6,233.5 
+L87.2,233.5 
+L87.2,354 
+L107,354 
+L107,86.15 
+L113.6,86.15 
+L113.6,354 
+L133.4,354 
+L133.4,71.27 
+L140,71.27 
+L140,354 
+L159.8,354 
+L159.8,165.5 
+L166.4,165.5 
+L166.4,354 
+L186.2,354 
+L186.2,265 
+L192.8,265 
+L192.8,354 
+L212.6,354 
+L212.6,322.4 
+L219.1,322.4 
+L219.1,354 
+L238.9,354 
+L238.9,345.2 
+L245.5,345.2 
+L245.5,354 
+L265.3,354 
+L265.3,352 
+L271.9,352 
+L271.9,354 
+L291.7,354 
+L291.7,353.6 
+L298.3,353.6 
+L298.3,354 
+L318.1,354 
+L318.1,353.9 
+L324.7,353.9 
+L324.7,354 
+L344.5,354 
+L344.5,354 
+L351.1,354 
+L351.1,354 
+L370.9,354 
+L370.9,354 
+L377.5,354 
+L377.5,354 
+L397.3,354 
+L397.3,354 
+L403.9,354 
+L403.9,354 
+L423.7,354 
+L423.7,354 
+L430.3,354 
+L430.3,354 
+L450.1,354 
+L450.1,354 
+L456.7,354 
+L456.7,354 
+L476.5,354 
+L476.5,354 
+L483.1,354 
+L483.1,354 
+L502.8,354 
+L502.8,354 
+L509.4,354 
+L509.4,354 
+L529.2,354 
+L529.2,354 
+L535.8,354 
+L535.8,354 
+L555.6,354 
+L555.6,354 
+L562.2,354 
+L562.2,354 
+L582,354 
+L582,354 
+L588.6,354 
+L588.6,354 
+L608.4,354 
+L608.4,354 
+L615,354 
+L615,354 
+L615,354 
+Z" fill="rgb(0,0,139)"/>
+</g>
+	<g clip-path="url(#plot_window)" stroke="rgb(139,0,0)" fill="rgb(139,0,0)" stroke-width="1">
+	<path d="M87.2,354 L87.2,354 
+L87.2,354 
+L87.2,354 
+L93.79,354 
+L93.79,354 
+L113.6,354 
+L113.6,354 
+L120.2,354 
+L120.2,354 
+L140,354 
+L140,353.8 
+L146.6,353.8 
+L146.6,354 
+L166.4,354 
+L166.4,352.9 
+L173,352.9 
+L173,354 
+L192.8,354 
+L192.8,349.4 
+L199.4,349.4 
+L199.4,354 
+L219.1,354 
+L219.1,339.3 
+L225.7,339.3 
+L225.7,354 
+L245.5,354 
+L245.5,317.4 
+L252.1,317.4 
+L252.1,354 
+L271.9,354 
+L271.9,280.7 
+L278.5,280.7 
+L278.5,354 
+L298.3,354 
+L298.3,234.9 
+L304.9,234.9 
+L304.9,354 
+L324.7,354 
+L324.7,195.2 
+L331.3,195.2 
+L331.3,354 
+L351.1,354 
+L351.1,179.3 
+L357.7,179.3 
+L357.7,354 
+L377.5,354 
+L377.5,195.2 
+L384.1,195.2 
+L384.1,354 
+L403.9,354 
+L403.9,234.9 
+L410.5,234.9 
+L410.5,354 
+L430.3,354 
+L430.3,280.7 
+L436.9,280.7 
+L436.9,354 
+L456.7,354 
+L456.7,317.4 
+L463.3,317.4 
+L463.3,354 
+L483.1,354 
+L483.1,339.3 
+L489.7,339.3 
+L489.7,354 
+L509.4,354 
+L509.4,349.4 
+L516,349.4 
+L516,354 
+L535.8,354 
+L535.8,352.9 
+L542.4,352.9 
+L542.4,354 
+L562.2,354 
+L562.2,353.8 
+L568.8,353.8 
+L568.8,354 
+L588.6,354 
+L588.6,354 
+L595.2,354 
+L595.2,354 
+L615,354 
+L615,354 
+L621.6,354 
+L621.6,354 
+L621.6,354 
+Z" fill="rgb(139,0,0)"/>
+</g>
+	<g clip-path="url(#plot_window)" stroke="rgb(0,100,0)" fill="rgb(0,100,0)" stroke-width="1">
+	<path d="M93.79,354 L93.79,354 
+L93.79,354 
+L93.79,354 
+L100.4,354 
+L100.4,354 
+L120.2,354 
+L120.2,354 
+L126.8,354 
+L126.8,354 
+L146.6,354 
+L146.6,354 
+L153.2,354 
+L153.2,354 
+L173,354 
+L173,354 
+L179.6,354 
+L179.6,354 
+L199.4,354 
+L199.4,354 
+L206,354 
+L206,354 
+L225.7,354 
+L225.7,354 
+L232.3,354 
+L232.3,354 
+L252.1,354 
+L252.1,354 
+L258.7,354 
+L258.7,354 
+L278.5,354 
+L278.5,354 
+L285.1,354 
+L285.1,354 
+L304.9,354 
+L304.9,354 
+L311.5,354 
+L311.5,354 
+L331.3,354 
+L331.3,354 
+L337.9,354 
+L337.9,354 
+L357.7,354 
+L357.7,354 
+L364.3,354 
+L364.3,354 
+L384.1,354 
+L384.1,353.9 
+L390.7,353.9 
+L390.7,354 
+L410.5,354 
+L410.5,353.6 
+L417.1,353.6 
+L417.1,354 
+L436.9,354 
+L436.9,352 
+L443.5,352 
+L443.5,354 
+L463.3,354 
+L463.3,345.2 
+L469.9,345.2 
+L469.9,354 
+L489.7,354 
+L489.7,322.4 
+L496.2,322.4 
+L496.2,354 
+L516,354 
+L516,265 
+L522.6,265 
+L522.6,354 
+L542.4,354 
+L542.4,165.5 
+L549,165.5 
+L549,354 
+L568.8,354 
+L568.8,71.27 
+L575.4,71.27 
+L575.4,354 
+L595.2,354 
+L595.2,86.15 
+L601.8,86.15 
+L601.8,354 
+L621.6,354 
+L621.6,233.5 
+L628.2,233.5 
+L628.2,354 
+L628.2,354 
+Z" fill="rgb(0,100,0)"/>
+</g>
+</g>
+	<g id="plotPoints" clip-path="url(#plot_window)">
+</g>
+	<g id="legendBackground" stroke="rgb(119,136,153)" fill="rgb(255,255,255)" stroke-width="1">
+	<rect x="637.5" y="43" width="98.5" height="64.5"/>
+</g>
+	<g id="legendPoints">
+</g>
+	<g id="legendLines">
+	<g stroke="rgb(0,0,139)" stroke-width="1">
+	<line x1="652.8" y1="62.75" x2="658.8" y2="62.75"/>
+</g>
+	<g stroke="rgb(139,0,0)" stroke-width="1">
+	<line x1="652.8" y1="75.25" x2="658.8" y2="75.25"/>
+</g>
+	<g stroke="rgb(0,100,0)" stroke-width="1">
+	<line x1="652.8" y1="87.75" x2="658.8" y2="87.75"/>
+</g>
+</g>
+	<g id="legendText">
+	<text x="667.8" y="62.75" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="60">n=20 p=0.1
+	</text>
+	<text x="667.8" y="75.25" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="60">n=20 p=0.5
+	</text>
+	<text x="667.8" y="87.75" font-size="10" font-family="Lucida Sans Unicode" font-weight="normal" textLength="60">n=20 p=0.9
+	</text>
+</g>
+	<g id="title">
+	<text x="375" y="30" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode" font-weight="normal">Binomial Distribution PDF
+	</text>
+</g>
+	<g id="plotXValues">
+</g>
+	<g id="plotYValues">
+</g>
 </svg>

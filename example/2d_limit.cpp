@@ -60,14 +60,15 @@ int main()
   // Legend-box settings.
   my_plot.legend_title_font_size(15);
 
-  //my_plot.minus_inf_limit_color(red).plus_inf_limit_color(green); // Limit value at x = 0 is +infinity.
+  // Limit value at x = 0 when 1/x == +infinity shown by a pointing-down cone a the top of the plot.
+  //my_plot.minus_inf_limit_color(red).plus_inf_limit_color(green); 
   // TODO - the 'at-limit' infinity point cone pointing-down shows as default color pink, not the changed color(s).
 
   my_plot.plot(data1, "1 / x").shape(square).size (5).line_on(false);
 
   my_plot.write("./2d_limit.svg");
 
-  // Sets colors correctly, but not used.
+  // Sets and gets colors correctly, but not used? A fix would be good, but does display.
   // std::cout << "" << my_plot.plus_inf_limit_color() << std::endl; // RGB(0,128,0)
    //std::cout << "" << my_plot.minus_inf_limit_color() << std::endl; // RGB(255,0,0)
 

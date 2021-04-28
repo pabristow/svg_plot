@@ -2383,6 +2383,7 @@ my_plot.background_color(ghostwhite) // Whole image.
 #ifdef BOOST_SVG_DIAGNOSTICS
           std::cout << limit_point_in_window_count << " limit points in window, " << limit_point_edge_window_count  << " limits points on edge of window." << std::endl;
           std::cout << "X: " << x_nan_count << " NaNs, " << x_inf_count << " infinities, Y: " << y_nan_count << " NaNs, " << y_inf_count << " infinities." << std::endl;
+          std::cout << "limit_point_style_ = " << serieses_[i].limit_point_style_ << std::endl;
 #endif
         } // for series
       } //  void draw_plot_points()
