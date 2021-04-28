@@ -73,7 +73,7 @@ M64.6,284 L66.6,284
 	<g id="valueLabels" fill="rgb(0,0,0)">
 	<text x="207" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[50 / x]
 	</text>
-	<text x="348" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[40 + 25 * sin(50x)]
+	<text x="348" y="308" text-anchor="middle" font-size="14" font-family="Lucida Sans Unicode">[60 + 25 * sin(50x)]
 	</text>
 	<text x="55.6" y="286" text-anchor="end" font-size="12" font-family="Lucida Sans Unicode">0
 	</text>
@@ -103,7 +103,7 @@ M64.6,284 L66.6,284
 	<line x1="207" y1="272" x2="207" y2="196"/>
 </g>
 	<g clip-path="url(#plot_window)" stroke="rgb(0,0,0)" stroke-width="1">
-	<line x1="348" y1="250" x2="348" y2="136"/>
+	<line x1="348" y1="204" x2="348" y2="91"/>
 </g>
 </g>
 	<g id="Median" stroke="rgb(255,0,0)" stroke-width="2">
@@ -114,10 +114,10 @@ M64.6,284 L66.6,284
 	<line x1="193" y1="261" x2="222" y2="261"/>
 </g>
 	<g clip-path="url(#plot_window)" stroke="rgb(0,128,0)" fill="rgb(240,255,255)" stroke-width="1">
-	<rect x="333" y="154" width="30" height="79.2"/>
+	<rect x="333" y="109" width="30" height="79.2"/>
 </g>
 	<g clip-path="url(#plot_window)" stroke="rgb(0,0,255)" stroke-width="1">
-	<line x1="333" y1="195" x2="362" y2="195"/>
+	<line x1="333" y1="150" x2="362" y2="150"/>
 </g>
 </g>
 	<g id="whisker" stroke="rgb(0,0,0)">
@@ -131,10 +131,10 @@ M64.6,284 L66.6,284
 </g>
 	<g clip-path="url(#plot_window)">
 	<g stroke="rgb(255,0,255)" fill="rgb(0,0,0)" stroke-width="1">
-	<line x1="333" y1="250" x2="363" y2="250"/>
+	<line x1="333" y1="204" x2="363" y2="204"/>
 </g>
 	<g stroke="rgb(0,255,255)" fill="rgb(0,0,0)" stroke-width="1">
-	<line x1="333" y1="136" x2="363" y2="136"/>
+	<line x1="333" y1="91" x2="363" y2="91"/>
 </g>
 </g>
 </g>
