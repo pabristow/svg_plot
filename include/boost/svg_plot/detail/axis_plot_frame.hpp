@@ -2644,12 +2644,12 @@ namespace boost
           stripped = val_style.prefix_ + stripped;
         }
         int marker_size = point_style.size_; // point marker size
-        int label_size = val_style.values_text_style_.font_size();
+        int label_size = val_style.values_text_style_.font_size_;
         // Offset of value-label from point must be related mainly to
         // size of the data marker, less the value-label font-size.
         // May need to combine these two?
 
-        int rot = val_style.value_label_rotation_;
+        int rot = val_style.value_label_rotation_; // Rotation of value-label around value marker.
         // http://www.w3.org/TR/SVG/coords.html#RotationDefined
         // Example: transform="rotate(-45)" == uphill
 
@@ -2663,61 +2663,78 @@ namespace boost
           break;
         case leftward: // horizontal but to left of marker.
           al = align_style::right_align;
-          x -= marker_size * 1.3;  // left
-          y -= label_size * 0.1;  // down label font-size;
+          x -= marker_size * 0.5;  // left
+          y += label_size * 0.3;  // down label font-size;
           rot = horizontal;
           break;
         case rightward: // horizontal but to right of marker.
           al = align_style::left_align;
-          x += marker_size * 1.5;  // right
-          y -= label_size * 0.1;  // down label middle of font-size;
+          x += marker_size * 0.5;  // right of marker.
+          y += label_size * 0.3;  // down label middle of font-size;
           rot = horizontal;
           break;
         case upsidedown: // OK but upsidedown so not very useful!
           al = align_style::center_align;
           y += marker_size;  // Down marker font-size;
           break;
-        case slopeup: // -30 - OK
-        case steepup: // -45 - OK
-        case uphill: // -60 - OK
+        case slopeup: // -30 slope up
           al = align_style::left_align;
-          x += label_size / 2.5;  // Right third label font-size - centers on marker.
-          y -= marker_size * 2;  // UP marker font-size;
+          x += label_size * 1.0;  // Right third label font-size - centers on marker.
+          y -= marker_size * 0.3;  //  marker font-size;
+          break;
+        case uphill: // -45 steep up.
+          al = align_style::left_align;
+          x += label_size * 1.0;  // Right third label font-size - centers on marker.
+          y -= marker_size * 0.5;  // UP marker font-size;
+          break;
+        case steepup: // -60 up near vertical.
+          al = align_style::left_align;
+          x += label_size * 1.0;  // Right third label font-size - centers on marker.
+          y -= marker_size * 0.5;  // UP marker font-size;
           break;
         case upward: // -90 vertical writing up - OK.
           al = align_style::left_align;
-          x += label_size / 2.5;  // Right third label font-size - centers on marker.
-          y -= marker_size * 2;  // Up marker font-size;
+          x += label_size * 0.3;  // Right third label font-size - centers on marker.
+          y -= marker_size * 0.5;  // Up marker font-size;
           break;
-        case backup: // OK
-          al = align_style::right_align;
-          x -= marker_size * 1.5;  // Left
-          y -= marker_size * 0.8;  // Up
-          rot = downhill;
+        case downward: // 0 Vertical writing downwards from marker.
+          al = align_style::left_align;
+          x -= label_size * 0.3;  // Left
+          y += marker_size * 0.5;  // 
           break;
 
         case slopedownhill: // 30 gentle slope down.
+          al = align_style::left_align;
+          x += marker_size * 0.4;  // Right;
+          y += marker_size * 0.5;  // Down
+          break;
         case downhill: // 45 down.
+          al = align_style::left_align;
+          x += marker_size * 0.4;  // Right;
+          y += marker_size * 0.5;  // Down
+          break;
         case steepdown: //  60 steeply down.
           al = align_style::left_align;
           x += marker_size * 0.4;  // Right;
-          y += marker_size * 1.5;  // Down
+          y += marker_size * 0.5;  // Down
           break;
-        case downward: // OK
-          al = align_style::left_align;
-          x -= marker_size;  // Left
-          y += marker_size;  // Up
-          break;
-        case backdown: // OK
+
+         case backup: // OK
           al = align_style::right_align;
-          x -= marker_size * 0.5;  // Left
-          y += marker_size * 1.5;  // down
+          x -= label_size * 1.0;  //
+          y -= marker_size * 0.5;  // Up
+          rot = downhill;
+          break;
+       case backdown: // OK
+          al = align_style::right_align;
+          x -= label_size * 1.0;  // Left
+          y += marker_size * 0.5;  // down
           rot = uphill;
           break;
         } // switch
         text_element& t = g_ptr.text(x, y, stripped, val_style.values_text_style_, al, rot);  // X or Y value "1.23".
         int udf_font = static_cast<int>(val_style.values_text_style_.font_size() * reducer);
-        // TODO what does this reducer do?
+        // Reduces font size a little (0.9 ish) for uncertainty and degrees of freedom emphasing value.
 
         std::string label_u; // std_dev or text_plusminus.
         // std::string label_df; // Degrees of freedom estimate.

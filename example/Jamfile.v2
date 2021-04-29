@@ -134,6 +134,7 @@ else
    run demo_1d_values.cpp ; # Demonstration of some simple 1D value formatting.
    run demo_1d_vector.cpp ; # Simple plot of vector of 1D data.
    run demo_1d_x_external.cpp ; #
+   run demo_2d_area_fill.cpp ;
    run demo_2d_autoscaling.cpp ;
    run demo_2d_autoscaling_vector.cpp ;
    run demo_2d_bars.cpp ; # Demonstrate the bars (& columns or sticks).
