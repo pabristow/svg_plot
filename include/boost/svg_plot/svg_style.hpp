@@ -1196,6 +1196,7 @@ return os;
 
 //! plot_point_style that uses all the defaults.
 plot_point_style default_plot_point_style();
+plot_point_style not_a_plot_point_style(blank, blank, -1, none);
 
 class plot_line_style
 { //! \class boost::svg::plot_line_style Style of line joining data-series values.
@@ -1519,7 +1520,7 @@ public:
     // < 0 means to left (for Y) or down (for X) (default),
     // 0 (false) means no ticks value-labels (just ticks),
     // > 0 means to right (for Y) or top(for X).
-    int label_rotation_; //!< Rotation direction axis tick-value labels written. Default 0 means horizontal.
+    int label_rotation_; //!< Rotation direction axis tick-value-labels written. Default 0 means horizontal.
     // assign by static_cast<int>(horizontal)
     //align_style label_alignment_; //< Alignment of tick-value-label using text_anchor. Default center_align for X-axis but right_align for Y-axis.
     //!< This ensures that value-labels center on the tick so that "1.1" aligns the decimal point with the tick.

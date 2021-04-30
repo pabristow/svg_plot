@@ -307,6 +307,7 @@ public:
   void draw_axes(); // Draw the X-axis (and, for 2-D, also the Y-axis) of the plot.
   void update_image(); /* Calls functions to add all plot information to the image, including
   plot window, axes, ticks, labels, grids, legend, and finally all the data-series.*/
+  void draw_plot_x_points();
 //! \endcond
 
   // ------------------------------------------------------------------------
@@ -523,16 +524,15 @@ size_t svg_1d_plot_series::series_limits_count()
  //! plot window, axes, ticks, labels, grids, legend, and finally all the data-series.
 void svg_1d_plot::update_image()
 {
-
   clear_all(); // Removes all elements that will show up in a subsequent draw.
 
   // Draw plot background.
-  image_.gs(detail::PLOT_BACKGROUND).push_back(
-    new rect_element(0, 0, image_.x_size(),  image_.y_size()));
+  image_.gs(detail::PLOT_BACKGROUND).push_back(new rect_element(0, 0, image_.x_size(),  image_.y_size()));
 
   calculate_plot_window();
   calculate_transform();
   draw_title(); // Call after above to the plot_x and y are defined.
+
   if(x_axis_.axis_line_on_)
   {
     draw_axes();
@@ -545,7 +545,12 @@ void svg_1d_plot::update_image()
   {
     draw_x_axis_label();
   }
-  double y(0.); // All 1-D points are plotted are on the horizontal X axis (y = 0) axis.
+  draw_plot_x_points();
+} // void update_image()
+
+void svg_1d_plot::draw_plot_x_points()
+{
+  double y(0.); // All 1-D points are plotted are on the horizontal X-axis (y = 0) axis.
   transform_y(y);
   if ((y < plot_top_) || (y > plot_bottom_))
   { // So Y position being wrong should never happen! (error in transform?)
@@ -553,27 +558,32 @@ void svg_1d_plot::update_image()
   }
   // Symbols are offset downwards because
   // the origin of the point is the top left of the glyph.
-  // Need to offset by the height and width of the font-size?
-
-  for(unsigned int i = 0; i < serieses_.size(); ++i)
+  // Need to offset by the height and width of the marker font-size?
+  for (unsigned int i = 0; i < serieses_.size(); ++i)
   { // Plot the normal data-points for each of the i data-series.
     g_element& g_ptr = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
     // Set the color for all the data-series markers.
     g_ptr.style().stroke_color(serieses_[i].point_style_.stroke_color_);
     g_ptr.style().fill_color(serieses_[i].point_style_.fill_color_);
 
-    y -= serieses_[i].point_style_.size_ * 0.5;  // Avoid a collision.
+    g_element& g_ptr_dps = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
+    g_ptr_dps.svg_style_.stroke_color(serieses_[i].point_style_.stroke_color_);
+    g_ptr_dps.svg_style_.fill_color(serieses_[i].point_style_.fill_color_);
+    g_ptr_dps.text_style_.font_size(serieses_[i].point_style_.size_);
+    g_ptr_dps.text_style_.font_family_ = serieses_[i].point_style_.symbols_style_.font_family_;
+    g_ptr_dps.alignment_ = align_style::center_align;
 
-    for(unsigned int j = 0; j < serieses_[i].series_.size(); ++j)
+    y -= serieses_[i].point_style_.size_ * 0.5;  // Avoid a collision of marker with the horizontal y=0 axis line.
+
+    for (unsigned int j = 0; j < serieses_[i].series_.size(); ++j)
     { // Draw jth point for ith serieses.
       Meas ux = serieses_[i].series_[j];
-      // unc<false> ux = serieses_[i].series_[j];
       double x = ux.value();
       transform_x(x);
-      if((x >= plot_left_) && (x <= plot_right_)) // Check point is inside plot_window.
-      // TODO May need a margin here to avoid points just over the window not being shown.
+      if ((x >= plot_left_) && (x <= plot_right_)) // Check point is inside plot_window.
+      // TODO May need a margin here to avoid points just over the window not being shown?
       {
-        draw_plot_point(x, y, g_ptr, serieses_[i].point_style_, ux, Meas()); // Marker.
+        draw_plot_point(x, y, g_ptr_dps, serieses_[i].point_style_, ux, Meas()); // Marker.
         // (Meas() default constructor sets Y-value and Y-uncertainty to zero for 1d X-values).
         if (x_values_on_)
         { // Show the X-value (& perhaps uncertainty and degrees of freedom) of the data-point too.
@@ -588,7 +598,7 @@ void svg_1d_plot::update_image()
   } // for i all normal
 
   // Draw all the not-normal +/-infinity, NaN, or at_limit points.
-  for(unsigned int i = 0; i < serieses_.size(); ++i)
+  for (unsigned int i = 0; i < serieses_.size(); ++i)
   {
     g_element& g_ptr = image_.gs(detail::PLOT_LIMIT_POINTS);  // Limit points layer.
 
@@ -640,7 +650,7 @@ void svg_1d_plot::update_image()
       }
     } // for j limits point
   } // for i data_series
-} //   void update_image()
+} // void draw_plot_x_points()
 
   /*! Default constructor.
       Many (but not all - see below) default values here.

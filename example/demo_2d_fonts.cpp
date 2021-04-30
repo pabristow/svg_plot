@@ -63,17 +63,17 @@ But if used over-enthusiastically, this can cause glyphs to overlap or look oddl
 
 The font sizes are also changes from the defaults.  This should change the positioning,
 but the calculations are complex and necessarily approximate.
-Collisions between labels, other value labels and axes are not impossible,
-especially when the tick value labels are not horizontal.
+Collisions between labels, other value-labels and axes are not impossible,
+especially when the tick value-labels are not horizontal.
 
-[tip If data-point values or tick-value labels collide, rotating the tex can often improve things.
+[tip If data-point values or tick-value-labels collide, rotating the tex can often improve things.
  For example `.x_major_label_rotation(uphill)` will make the major-tick value-labels slope uphill.
  Using Visual Studio, typing `.y_major_label_rotation( will show a dropdown of the various `rotate_style` values. ]
 
 By default, the `std::precision` is reduced from the default 6 to 3, and unnecessary zeros and signs are stripped.
 
 But it will still often be necessary to change the `std::iosflags` and `std::precision`,
-and/or the number of major ticks and/or font size and type to avoid tick value label collisions.
+and/or the number of major ticks and/or font size and type to avoid tick value-label collisions.
 
 Unicode symbols can be found at [@http://en.wikipedia.org/wiki/Unicode_symbols Unicode symbols].
 The 4 hex digit value needs to be wrapped with prefix &#x and suffix ; like &#xDDDD;

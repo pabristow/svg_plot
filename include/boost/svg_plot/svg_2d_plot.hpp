@@ -688,10 +688,10 @@ my_plot.background_color(ghostwhite) // Whole image.
         legend_title_style_(10, default_font_family, "normal", "", "", "", 0), // 6rd parameter decoration might be underline?
         legend_text_style_(10, default_font_family, "normal", "", "", "", 0), // Example "Series 1", "Series 2"
         x_axis_label_style_(12, default_font_family, "", "","", "", 0),  // X-axis label. Example: time(sec).
-        x_ticks_value_label_style_(12, default_font_family, "", "","", "", 0), // X-axis tick-value labels style. Example: "1", "1.5", "2" ...
+        x_ticks_value_label_style_(12, default_font_family, "", "","", "", 0), // X-axis tick-value-labels style. Example: "1", "1.5", "2" ...
         // Separate X and Y to allow axes to have different styles.
         y_axis_label_style_(14, default_font_family, "", "", "", "", 0), // Y-axis label. Example: length(m).
-        y_ticks_value_label_style_(12, default_font_family, "", "", "", "", 0), // Y-axis tick-value labels. Example: "1", "1.5", "2" ...
+        y_ticks_value_label_style_(12, default_font_family, "", "", "", "", 0), // Y-axis tick-value-labels. Example: "1", "1.5", "2" ...
         value_style_(8, default_font_family, "", "", "", "", 0), // All X and Y value-labels are initliased using this text_style.
         point_symbols_style_(12, default_font_family, "", "", "", "", 0), // Used for data-point marking.
         // Font is to try to ensure that all Unicode symbols are available (default_font_family might not be Unicode?).
@@ -2220,18 +2220,19 @@ my_plot.background_color(ghostwhite) // Whole image.
         for(unsigned int i = 0; i < serieses_.size(); ++i)
         {
           g_element& g_ptr_dps = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
-          //g_element& g_ptr_dp = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
-          //plot_point_style& dps = serieses_[i].point_style_;
           g_ptr_dps.svg_style_.stroke_color(serieses_[i].point_style_.stroke_color_);
           g_ptr_dps.svg_style_.fill_color(serieses_[i].point_style_.fill_color_);
+         // g_ptr_dps.    shape_(serieses_[i].point_style_.shape_);
           g_ptr_dps.text_style_.font_size(serieses_[i].point_style_.size_);
           g_ptr_dps.text_style_.font_family_ = serieses_[i].point_style_.symbols_style_.font_family_;
           g_ptr_dps.alignment_ = align_style::center_align;
-            
           //  y_values_style_.value_label_alignment_ = align_style::center_align;
 
-          size_t ignored = 0;
-          size_t plotted = 0;
+          //g_element& g_ptr_dp = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
+          //plot_point_style& dps = serieses_[i].point_style_;
+
+          size_t plotted = 0;// Keep a count of how many points were actually displayed and
+          size_t ignored = 0; // and how many were ignored because 'at limits'.
 
           for(std::multimap<Meas, unc<false> >::const_iterator j = serieses_[i].series_.begin();
         //  for(std::multimap<unc<false>, unc<false> >::const_iterator j = serieses_[i].series_.begin(); // unc, unc version.
@@ -2249,6 +2250,7 @@ my_plot.background_color(ghostwhite) // Whole image.
             if((x > plot_left_) && (x < plot_right_) && (y > plot_top_) && (y < plot_bottom_))
             { // data-point is inside plot-window, so draw a point marker.
               plotted++;
+             // draw_plot_point(x, y, g_ptr_dps, not_a_plot_point_style, ux, uy); // not_a_plot_point_style means no marker
               draw_plot_point(x, y, g_ptr_dps, serieses_[i].point_style_, ux, uy); // Add the unc ux and uy to allow access to uncertainty.
               g_element& g_ptr_vx = image_.gs(detail::PLOT_X_POINT_VALUES).add_g_element();
               if (x_values_on_)

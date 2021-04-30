@@ -212,7 +212,7 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     .y_values_font_size(8) // Smaller than default.
     .y_decor("&#x00A0;&#x00A0;&#x00A0; d &#x00A0;", "&#x00A0;", "&#x00A0;km")
 //    .y_decor("&#x00A0;&#x00A0; time = ", "&#x00A0;", "&#x00A0;sec")
-     // Note: a few padding spaces are used to get Y-value labels to lie more nearly under X-value labels.
+     // Note: a few padding spaces are used to get Y-value-labels to lie more nearly under X-value-labels.
      // This is only necessary when value-labels are not horizontal.
      // y_prefix "&#x00A0;&#x00A0;&#x00A0;"   3 spaces.
      // y_separator "&#x00A0;time ="  space before word time.

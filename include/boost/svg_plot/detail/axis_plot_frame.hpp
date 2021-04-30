@@ -2444,7 +2444,6 @@ namespace boost
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
         break;
 
-
       //case square: // Now using Unicode symbol, previously was:
       // But using Unicode square sumbols does not seem to allow control of fill color, only stroke color.
       //  g_ptr.rect(x - half_width, y - half_height, point_size, point_size);
@@ -2484,8 +2483,9 @@ namespace boost
 #endif // BOOST_SVG_POINT_DIAGNOSTICS
        // g_ptr.text(x, y + third_height, point_style.symbols_, point_style.style(), align_style::center_align, horizontal);
         // but if the font info is already in a g_element, the avoid repeating for each point by using no_text_style.
-        g_ptr.text(x, y + third_height, point_style.symbols_, no_text_style, align_style::center_align, horizontal);
+        //g_ptr.text(x, y + third_height, point_style.symbols_, no_text_style, align_style::center_align, horizontal);  OK but redundant anchor
 
+        g_ptr.text(x, y + third_height, point_style.symbols_, no_text_style, align_style::no_align, horizontal);
 
         // symbol(s), size and center.
         break;
@@ -2972,7 +2972,7 @@ namespace boost
              break;
             } // switch
 
-            text_element& t = x_g_ptr.text(x, y, label_xv, x_sty.values_text_style_, al, rot); // X value label.
+            text_element& t = x_g_ptr.text(x, y, label_xv, x_sty.values_text_style_, al, rot); // X value-label.
 
             // If would be simpler to prepare a single string like "1.23 +- -0.3, 3.45 +- -0.1(10)"
             // but this would not allow change of font-size, type and color
@@ -3047,7 +3047,7 @@ namespace boost
               t.tspan(x_sty.suffix_).fill_color(y_sty.fill_color_).font_size(x_sty.values_text_style_.font_size());
             }
 
-            // Y-value labelling.
+            // Y-value-labelling.
             int fy = static_cast<int>(y_sty.values_text_style_.font_size() * reducer);  // Make font about a tenth smaller to de-emphasize some items.
            // If a newline is 1st char in separator, put Y value-labels on the next line below the marker,
             // else all on one line.

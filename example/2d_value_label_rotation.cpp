@@ -86,7 +86,8 @@ here a circle with a diameter of 5 pixels.
 */
   //  my_2d_plot.plot(my_data_1, "2d Values").shape(circlet).size(5); // Small circle.
   //  my_2d_plot.plot(my_data_2, "2d Values").shape(cone_point_down).size(10); // Medium black downward cone.
-    my_2d_plot.plot(my_data_0, "2d Values").shape(square).size(20); // Larger square.
+   // my_2d_plot.plot(my_data_0, "2d Values").shape(square).size(20); // Larger square.
+    my_2d_plot.plot(my_data_0, "2d Values").shape(circlet).size(20); // Larger circle
  //   my_2d_plot.plot(my_data_4, "2d Values").shape(star).size(10); // Medium star.
 
     /*`To put a value-label against each data_point, switch on the option:
@@ -99,11 +100,11 @@ here a circle with a diameter of 5 pixels.
 */
     my_2d_plot.x_values_font_size(20) // Change font size for the X-axis value-labels.
       .x_values_font_family("Times New Roman") // Change font for the X-axis value-labels.
-      .x_values_color(red); // Change X value label color from default black to red.
+      .x_values_color(red); // Change X value-label color from default black to red.
 
     my_2d_plot.y_values_font_size(14) // Change font size for the Y-axis value-labels.
       .y_values_font_family("Arial") // Change font for the Y-axis value-labels.
-      .y_values_color(blue); // Change Y value label color from default black to blue.
+      .y_values_color(blue); // Change Y value-label color from default black to blue.
 
 /*`The format of the values may also not be ideal,
 so we can use the normal `iostream precision` and `ioflags` to change,

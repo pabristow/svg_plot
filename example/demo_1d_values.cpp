@@ -77,15 +77,15 @@ here a circle with a diameter of 5 pixels.
 */
     my_1d_plot.plot(my_data, "1D Values").shape(circlet).size(5);
 
-/*`To put a value label against each data point, switch on the option:
+/*`To put a value-label against each data point, switch on the option:
 */
     my_1d_plot.x_values_on(true); // Add a label for the X-axis.
 
 /*`If the default size and color are not to your taste, set more options, like:
 */
     my_1d_plot.size(500, 350) // Change from default size
-      .x_values_font_size(14) // Change font size for the X-axis value labels.
-      .x_values_font_family("Times New Roman") // Change font for the X-axis value labels.
+      .x_values_font_size(14) // Change font size for the X-axis value-labels.
+      .x_values_font_family("Times New Roman") // Change font for the X-axis value-labels.
       .x_values_color(red); // Change color from default black to red.
 
 /*`The format of the values may also not be ideal,
@@ -95,7 +95,7 @@ reducing the risk of collisions between adjacent values.
 (Obviously the most suitable precision depends on the range of the data points.
 If values are very close to each other, a higher precision wil be needed to differentiate them).
 */
-    my_1d_plot.x_values_precision(2); // precision label for the X-axis value label.
+    my_1d_plot.x_values_precision(2); // precision label for the X-axis value-label.
 
 /*`We can also prescribe the use of scientific format and force a positive sign:
 */
@@ -108,7 +108,7 @@ If values are very close to each other, a higher precision wil be needed to diff
 In general, sticking to the defaults usually produces the neatest presentation of the values.
 */
 
-/*`The default value label is horizontal, centered above the data point marker,
+/*`The default value-label is horizontal, centered above the data point marker,
 but, depending on the type and density of data points, and the length of the values
 (controlled in turn by the `precision` and `ioflags` in use),
 it is often clearer to use a different orientation.
@@ -122,7 +122,7 @@ This can be controlled in steps of 45 degrees, using an 'enum rotate_style`.
 placing the values below the horizontal Y-axis line,
 but for 2-D plots all writing orientations can be useful).
 */
-   my_1d_plot.x_values_rotation(steepup); // Orientation for the X-axis value labels, nearly vertical.
+   my_1d_plot.x_values_rotation(steepup); // Orientation for the X-axis value-labels, nearly vertical.
 
    my_1d_plot.x_decor(" [ x = ", "", "&#x00A0;sec]"); // Note the need for a Unicode space A0 as &#x00A0; .
 
