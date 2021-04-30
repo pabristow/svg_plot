@@ -2475,7 +2475,7 @@ namespace boost
         // https://www.alt-codes.net/circle-symbols for half black, half-circle, large circle, quadrants
 
         // g_ptr.text(x, y + third_height, "&#x25CF;", point_style.symbols_style_, center_align, horizontal);
-        point_style.symbols("&#x25CF;");
+        point_style.symbols_ = "&#x25CF;";
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "point_style.symbols_style_ = " << point_style.symbols_style_ << std::endl;
         // point_style.symbols_style_ = text_style(14, "Lucida Sans Unicode", "", "", "", "")

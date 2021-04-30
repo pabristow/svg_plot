@@ -126,7 +126,7 @@ If values are very close to each other, a higher precision wil be needed to diff
    ``
     enum rotate_style
     {
-      // Also need a no_rotate, = -1;
+      // Also need a no_rotate, = -1; ??
       horizontal = 0, //!< normal horizontal left to right, centered.
       slopeup = -30, //!< slope up.
       uphill = -45, //!< 45 steep up.
@@ -162,7 +162,7 @@ If values are very close to each other, a higher precision wil be needed to diff
     // my_1d_plot.x_values_rotation(steepdown); // For 1D, Clashes with the y = 0 axis line, so need a few leading spaces, for example
     // my_1d_plot.x_decor("&#x00A0; [x=", "", " s]"); 
     // Or put the X-axis tick value-labels above the y= 0 axis line, and the markers below the axis line.
-    // my_1d_plot.x_values_rotation(slopedownhill); //  Clashes with X axis line.
+    // my_1d_plot.x_values_rotation(slopedown); //  Clashes with X axis line.
     //  my_1d_plot.x_values_rotation(downhill); //  Clashes with X axis line.
     //   my_1d_plot.x_values_rotation(downward); // Straight down - Clashes with X axis line.
     // my_1d_plot.x_values_rotation(backdown); // Clashes with X axis line.
@@ -177,21 +177,38 @@ If values are very close to each other, a higher precision wil be needed to diff
   //  my_1d_plot.write("1d_value_label_rotation.svg");
     
     // Repeat for testing labelling rotation.
-
-    //my_1d_plot.x_values_rotation(rightward); // OK, but can clash with nearby points. 
-    //my_1d_plot.write("1d_value_label_rotation_all.svg");
-    //my_1d_plot.x_values_rotation(leftward); // 
-    //my_1d_plot.write("1d_value_label_rotation_all.svg");
     my_1d_plot.x_values_rotation(upward); // 
     my_1d_plot.write("1d_value_label_rotation_all.svg");
 
+    my_1d_plot.x_values_rotation(leftward); // 
+    my_1d_plot.write("1d_value_label_rotation_all.svg");
+    my_1d_plot.x_values_rotation(rightward); // OK, but can clash with nearby points. 
+    my_1d_plot.write("1d_value_label_rotation_all.svg");
 
-    //my_1d_plot.x_values_rotation(uphill); // 
-    //my_1d_plot.write("1d_value_label_rotation_all.svg");
-    //my_1d_plot.x_values_rotation(upward); // 
-    //my_1d_plot.write("1d_value_label_rotation_all.svg");
-    //my_1d_plot.x_values_rotation(backup); // 
-    //my_1d_plot.write("1d_value_label_rotation_all.svg");
+
+    my_1d_plot.x_values_rotation(uphill); // 
+    my_1d_plot.write("1d_value_label_rotation_all.svg");
+    my_1d_plot.x_values_rotation(backup); // 
+    my_1d_plot.write("1d_value_label_rotation_all.svg");
+    // Vertical below axis line, but collides.
+    my_1d_plot.x_values_rotation(upward); // 
+    my_1d_plot.write("1d_value_label_rotation_all.svg");
+    my_1d_plot.x_values_rotation(downward); // 
+    my_1d_plot.write("1d_value_label_rotation_all.svg");
+
+    my_1d_plot.x_values_rotation(backdown); // Below with X axis line.
+    my_1d_plot.write("1d_value_label_rotation_all.svg");
+
+    my_1d_plot.x_values_rotation(upsidedown); // Upside down - clashes a bitwith X axis line.
+    my_1d_plot.write("1d_value_label_rotation_all.svg");
+
+    my_1d_plot.x_values_rotation(downhill); // downhill - clashes a with X axis line.
+    my_1d_plot.write("1d_value_label_rotation_all.svg");
+    my_1d_plot.x_values_rotation(slopedownhill); // downsteep - clashes a with X axis line (and downhill).  
+    my_1d_plot.write("1d_value_label_rotation_all.svg");
+    my_1d_plot.x_values_rotation(steepdown); //steepdown - clashes a with X axis line (and downhill).  
+    my_1d_plot.write("1d_value_label_rotation_all.svg");
+
 
     /*`If chosen settings do not have the effect that you expect, it may be helpful to display some of them!
     (All the myriad settings can be displayed with `show_1d_plot_settings(my_1d_plot)`.)
