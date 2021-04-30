@@ -2646,8 +2646,7 @@ namespace boost
         int marker_size = point_style.size_; // point marker size
         int label_size = val_style.values_text_style_.font_size_;
         // Offset of value-label from point must be related mainly to
-        // size of the data marker, less the value-label font-size.
-        // May need to combine these two?
+        // size of the data marker font-size, less the value-label font-size.
 
         int rot = val_style.value_label_rotation_; // Rotation of value-label around value marker.
         // http://www.w3.org/TR/SVG/coords.html#RotationDefined
@@ -2656,7 +2655,7 @@ namespace boost
         align_style al; // = center_align;
         switch (rot)
         {
-        case horizontal: // OK
+        case horizontal: // horizontal - overwriting marker.
           al = align_style::center_align;
           y -= marker_size * 2;  // Up marker font-size;
           // center_align means no x correction.
@@ -2665,7 +2664,7 @@ namespace boost
           al = align_style::right_align;
           x -= marker_size * 0.5;  // left
           y += label_size * 0.3;  // down label font-size;
-          rot = horizontal;
+          rot = horizontal;  
           break;
         case rightward: // horizontal but to right of marker.
           al = align_style::left_align;

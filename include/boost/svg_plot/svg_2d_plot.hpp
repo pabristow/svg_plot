@@ -24,7 +24,6 @@
 // Diagnostics output if these are defined.
 // BOOST_SVG_DIAGNOSTICS
 // BOOST_SVG_DATA_POINT_DIAGNOSTICS
-
 // BOOST_SVG_VALUE_DIAGNOSTICS
 // BOOST_SVG_LEGEND_DIAGNOSTICS
 // BOOST_SVG_WINDOW_DIAGNOSTICS
@@ -61,7 +60,6 @@ namespace boost
 {
   namespace svg
   {
-
     // Forward declarations.
 //! \cond DETAIL
     //! Add/uncomment in jamfile.v2
@@ -140,7 +138,7 @@ namespace boost
       svg_2d_plot_series& point_font_stretch(const std::string stretch_);
       svg_2d_plot_series& point_font_style(const std::string text_style_);
 
-      svg_2d_plot_series& size(int size_);
+      svg_2d_plot_series& size(int size_); // of plot point.
       svg_2d_plot_series& line_color(const svg_color& col_);
       svg_2d_plot_series& area_fill(const svg_color& col_);
       svg_2d_plot_series& line_width(double wid_);

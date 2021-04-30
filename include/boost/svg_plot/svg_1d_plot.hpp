@@ -549,12 +549,11 @@ void svg_1d_plot::update_image()
   transform_y(y);
   if ((y < plot_top_) || (y > plot_bottom_))
   { // So Y position being wrong should never happen! (error in transform?)
-    throw std::runtime_error("transform_y(y=0) outside plot window!");
+    throw std::runtime_error("transform_y(0) outside plot window!");
   }
   // Symbols are offset downwards because
   // the origin of the point is the top left of the glyph.
-  // Need to offset by the height and width of the font size?
-  y -= 3.; 
+  // Need to offset by the height and width of the font-size?
 
   for(unsigned int i = 0; i < serieses_.size(); ++i)
   { // Plot the normal data-points for each of the i data-series.
@@ -563,22 +562,21 @@ void svg_1d_plot::update_image()
     g_ptr.style().stroke_color(serieses_[i].point_style_.stroke_color_);
     g_ptr.style().fill_color(serieses_[i].point_style_.fill_color_);
 
+    y -= serieses_[i].point_style_.size_ * 0.5;  // Avoid a collision.
+
     for(unsigned int j = 0; j < serieses_[i].series_.size(); ++j)
     { // Draw jth point for ith serieses.
       Meas ux = serieses_[i].series_[j];
       // unc<false> ux = serieses_[i].series_[j];
       double x = ux.value();
-
       transform_x(x);
       if((x >= plot_left_) && (x <= plot_right_)) // Check point is inside plot_window.
       // TODO May need a margin here to avoid points just over the window not being shown.
       {
         draw_plot_point(x, y, g_ptr, serieses_[i].point_style_, ux, Meas()); // Marker.
-        // (y uncertainty is zero for 1d X values).
-        // draw_plot_point(x, y, g_ptr, serieses_[i].point_style_, ux, unc<false>()); // Marker.
-        // (y uncertainty is zero).
+        // (Meas() default constructor sets Y-value and Y-uncertainty to zero for 1d X-values).
         if (x_values_on_)
-        { // Show the value (& perhaps uncertainty and degrees of freedom) of the data-point too.
+        { // Show the X-value (& perhaps uncertainty and degrees of freedom) of the data-point too.
           g_element& g_ptr_v = image_.gs(detail::PLOT_X_POINT_VALUES).add_g_element();
           draw_plot_point_value(x, y, g_ptr_v, x_values_style_, serieses_[i].point_style_, ux);
         }

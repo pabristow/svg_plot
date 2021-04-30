@@ -66,8 +66,10 @@ int main()
   { // try'n'catch blocks are needed to ensure error messages from any exceptions are shown.
     svg_1d_plot my_1d_plot; // Construct a plot with all the default constructor values.
 
-    my_1d_plot.title("Rotating 1D Value labelling") // Add a string title of the plot.
+    my_1d_plot.title("Rotating 1D value-labelling") // Add a string title of the plot.
       .x_range(-0, 4) // Add a range for the X-axis.
+      .x_major_interval(1.)
+      .x_num_minor_ticks(4)
       .x_label("length (m)"); // Add a label for the X-axis.
 
 /*`Add the one data series, `my_data` and a description, and how the data points are to marked,
@@ -75,16 +77,17 @@ here a circle with a diameter of 5 pixels.
 */
     my_1d_plot.plot(my_data, "1D Values").shape(circlet).size(5);
 
-    /*`To put a value label against each data point, switch on the option:
+    /*`To put a value-label against each data point, switch on the option:
     */
     my_1d_plot.x_values_on(true); // Add a label for the X-axis.
 
 /*`If the default size and color are not to your taste, set more options, like:
 */
     my_1d_plot.size(500, 250) // Change from default size.
-      .x_values_font_size(14) // Change font size for the X-axis value labels.
-      .x_values_font_family("Times New Roman") // Change font for the X-axis value labels.
+      .x_values_font_size(14) // Change font size for the X-axis value-labels.
+      .x_values_font_family("Times New Roman") // Change font for the X-axis value-labels.
       .x_values_color(red); // Change color of value-label text from default black to red.
+      
 
 /*`The format of the values may also not be ideal,
 so we can use the normal `iostream precision` and `ioflags` to change,
@@ -93,7 +96,7 @@ reducing the risk of collisions between adjacent values.
 (Obviously the most suitable precision depends on the range of the data points.
 If values are very close to each other, a higher precision wil be needed to differentiate them).
 */
-    my_1d_plot.x_values_precision(2); // precision label for the X-axis value label.
+    my_1d_plot.x_values_precision(2); // precision label for the X-axis value-label.
 
 /*`We can also prescribe the use of scientific format and force a positive sign:
 */
@@ -105,13 +108,21 @@ If values are very close to each other, a higher precision wil be needed to diff
 
     In general, sticking to the defaults usually produces the neatest presentation of the values.
     */
+     my_1d_plot.x_decor("[ x=", "", "&#x00A0;s]"); 
+   // my_1d_plot.x_decor("&#x00A0; [x=", "", " s]"); 
+    // Note Leading Normal spaces are ignored!  
+    // To get a real space you may need one or more of the several Unicode spaces, for example: A0 as &#x00A0; .
 
-    /*`The default value label is horizontal, centered above the data point marker,
+     /*`[note Code is shared between 1D and 2D variants, so arrangement is never perfect. [br]
+     1D data-point markers are usually above the X-axis line, so many will overwrite the line.
+     Prefix Unicode space(s) can avoid this, but the marker and value-label are then further apart.
+     */
+
+    /*`The default value-label is horizontal, centered above the data point marker,
     but, depending on the type and density of data points, and the length of the values
     (controlled in turn by the `precision` and `ioflags` in use),
     it is often clearer to use a different orientation.
-    This can be controlled in steps of 45 degrees, using an 'enum rotate_style`.
-
+    This can be controlled in steps of 45 degrees, using an 'enum rotate_style` whose possible values are:
    ``
     enum rotate_style
     {
@@ -141,16 +152,16 @@ If values are very close to each other, a higher precision wil be needed to diff
     but for 2-D plots all writing orientations can be useful).
     */
 
-    // Orientation for the X-axis value labels,
+    // Orientation for the X-axis value-labels,
    //  my_1d_plot.x_values_rotation(steepup);  //  Nearly vertically upwards. OK Best compromise?
     // my_1d_plot.x_values_rotation(slopeup); // OK but is a bit high.
     // my_1d_plot.x_values_rotation(uphill); // OK but is a bit high.
     // my_1d_plot.x_values_rotation(upward); //  Vertically upwards. OK, but may need height for long labels. 
-    // my_1d_plot.x_values_rotation(horizontal);  // Centered above, OK, but nearby values can collide, especially long labels. 
+    // my_1d_plot.x_values_rotation(horizontal);  // Default Centered above, OK, but nearby values can collide, especially long labels. 
     // my_1d_plot.x_values_rotation(backup); // OK 
     // my_1d_plot.x_values_rotation(steepdown); // For 1D, Clashes with the y = 0 axis line, so need a few leading spaces, for example
     // my_1d_plot.x_decor("&#x00A0; [x=", "", " s]"); 
-    // Or put the X-axis tick value labels above the y= 0 axis line, and the markers below the axis line.
+    // Or put the X-axis tick value-labels above the y= 0 axis line, and the markers below the axis line.
     // my_1d_plot.x_values_rotation(slopedownhill); //  Clashes with X axis line.
     //  my_1d_plot.x_values_rotation(downhill); //  Clashes with X axis line.
     //   my_1d_plot.x_values_rotation(downward); // Straight down - Clashes with X axis line.
@@ -158,21 +169,29 @@ If values are very close to each other, a higher precision wil be needed to diff
     // my_1d_plot.x_values_rotation(upsidedown); // Upside down and Clashes with X axis line.
 
   //  my_1d_plot.x_values_rotation(leftward); // OK, but can clash with nearby points. 
-    my_1d_plot.x_values_rotation(rightward); // OK, but can clash with nearby points. 
-
-     my_1d_plot.x_decor("[ x=", "", "&#x00A0;s]"); 
-   // my_1d_plot.x_decor("&#x00A0; [x=", "", " s]"); 
-    // Note Leading Normal spaces are ignored!  
-    // To get a real space you may need one or more of the several Unicode spaces, for example: A0 as &#x00A0; .
-
-     /*`[note Code is shared between 1D and 2D variants, so arrangement is never perfect. [br]
-     1D data-point markers are usually above the X-axis line, so many will overwrite the line.
-     Prefix Unicode space(s) can avoid this, but the marker and value label are then further apart.
-     */
+  //  my_1d_plot.x_values_rotation(rightward); // OK, but can clash with nearby points. 
+     // default orientation write value-labels horizontally above the markers.
 
  /*`To use all these settings, finally write the plot to file.
  */
-    my_1d_plot.write("1d_value_label_rotation.svg");
+  //  my_1d_plot.write("1d_value_label_rotation.svg");
+    
+    // Repeat for testing labelling rotation.
+
+    //my_1d_plot.x_values_rotation(rightward); // OK, but can clash with nearby points. 
+    //my_1d_plot.write("1d_value_label_rotation_all.svg");
+    //my_1d_plot.x_values_rotation(leftward); // 
+    //my_1d_plot.write("1d_value_label_rotation_all.svg");
+    my_1d_plot.x_values_rotation(upward); // 
+    my_1d_plot.write("1d_value_label_rotation_all.svg");
+
+
+    //my_1d_plot.x_values_rotation(uphill); // 
+    //my_1d_plot.write("1d_value_label_rotation_all.svg");
+    //my_1d_plot.x_values_rotation(upward); // 
+    //my_1d_plot.write("1d_value_label_rotation_all.svg");
+    //my_1d_plot.x_values_rotation(backup); // 
+    //my_1d_plot.write("1d_value_label_rotation_all.svg");
 
     /*`If chosen settings do not have the effect that you expect, it may be helpful to display some of them!
     (All the myriad settings can be displayed with `show_1d_plot_settings(my_1d_plot)`.)

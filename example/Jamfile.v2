@@ -88,6 +88,9 @@ if --extras in  [ modules.peek : ARGV ]
    run svg_test_boxplot.cpp ;
    run svg_test.cpp ;
    run svg_colors.cpp ;
+   run 1d_value_label_rotation.cpp ;
+   run 2d_value_label_rotation.cpp ;
+   
    
    #run test_legend_place.cpp ;
    #run test_quantiles.cpp ;
