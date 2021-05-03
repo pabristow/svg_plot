@@ -56,9 +56,9 @@ int main()
   //[demo_1d_values_2
   /*`Some fictional data is pushed into an STL container, here `vector<double>`:*/
   vector<double> my_data;
-  my_data.push_back(+1.1);
-  //my_data.push_back(2.2);
-  //my_data.push_back(3.3);
+  //my_data.push_back(+1.1);
+  my_data.push_back(2.2);
+//  my_data.push_back(3.3);
   //my_data.push_back(4.4);
  // my_data.push_back(5.5);
 
@@ -86,10 +86,9 @@ here a circle with a diameter of 5 pixels.
 /*`If the default size and color are not to your taste, set more options, like:
 */
     my_1d_plot.size(500, 250) // Change from default size.
-      .x_values_font_size(14) // Change font size for the X-axis value-labels.
+      .x_values_font_size(10) // Change font size for the X-axis value-labels.
       .x_values_font_family("Times New Roman") // Change font for the X-axis value-labels.
       .x_values_color(red); // Change color of value-label text from default black to red.
-      
 
 /*`The format of the values may also not be ideal,
 so we can use the normal `iostream precision` and `ioflags` to change,

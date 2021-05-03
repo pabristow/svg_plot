@@ -2651,14 +2651,19 @@ namespace boost
         int rot = val_style.value_label_rotation_; // Rotation of value-label around value marker.
         // http://www.w3.org/TR/SVG/coords.html#RotationDefined
         // Example: transform="rotate(-45)" == uphill
-
+        // Getting an aesthetically pleasing spacing probably needs a better algorithm using both marker and label font sizes, and trig factors.
+        // Current choices assume not too different sizes.
+        // TODO perhaps refine?
+        
         align_style al; // = center_align;
         switch (rot)
         {
         case horizontal: // horizontal - overwriting marker.
           al = align_style::center_align;
-          y -= marker_size * 2;  // Up marker font-size;
-          // center_align means no x correction.
+        //  y -= marker_size * 0.75;  // Up marker font-size; 
+          y -= (label_size + marker_size) * 0.3; // OK for big marker or big label-font-size.
+
+          // center_align means no x correction so centered on x.
           break;
         case leftward: // horizontal but to left of marker.
           al = align_style::right_align;
