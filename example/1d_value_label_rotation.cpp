@@ -57,16 +57,18 @@ int main()
   /*`Some fictional data is pushed into an STL container, here `vector<double>`:*/
   vector<double> my_data;
   my_data.push_back(+1.1);
-  my_data.push_back(2.2);
-  my_data.push_back(3.3);
-  my_data.push_back(4.4);
-  my_data.push_back(5.5);
+  //my_data.push_back(2.2);
+  //my_data.push_back(3.3);
+  //my_data.push_back(4.4);
+ // my_data.push_back(5.5);
 
   try
   { // try'n'catch blocks are needed to ensure error messages from any exceptions are shown.
     svg_1d_plot my_1d_plot; // Construct a plot with all the default constructor values.
 
-    my_1d_plot.title("Rotating 1D value-labelling") // Add a string title of the plot.
+    my_1d_plot
+      .title("Rotating 1D value-labelling") // Add a string title of the plot.
+      .title_on(false) // Avoid showing title for this test as an issue in handling of title causes second plot to not have a title.
       .x_range(-0, 4) // Add a range for the X-axis.
       .x_major_interval(1.)
       .x_num_minor_ticks(4)
@@ -174,18 +176,16 @@ If values are very close to each other, a higher precision wil be needed to diff
 
  /*`To use all these settings, finally write the plot to file.
  */
-  //  my_1d_plot.write("1d_value_label_rotation.svg");
+    my_1d_plot.write("1d_value_label_rotation.svg");
     
     // Repeat for testing labelling rotation.
-    my_1d_plot.x_values_rotation(upward); // 
-    my_1d_plot.write("1d_value_label_rotation_all.svg");
-
     my_1d_plot.x_values_rotation(leftward); // 
     my_1d_plot.write("1d_value_label_rotation_all.svg");
+    my_1d_plot.x_values_rotation(upward); // 
+    my_1d_plot.write("1d_value_label_rotation_all.svg");
+    // See note above about issue in title means that second (and subsequent?) plots have not title and so are offset down.
     my_1d_plot.x_values_rotation(rightward); // OK, but can clash with nearby points. 
     my_1d_plot.write("1d_value_label_rotation_all.svg");
-
-
     my_1d_plot.x_values_rotation(uphill); // 
     my_1d_plot.write("1d_value_label_rotation_all.svg");
     my_1d_plot.x_values_rotation(backup); // 
@@ -208,7 +208,8 @@ If values are very close to each other, a higher precision wil be needed to diff
     my_1d_plot.write("1d_value_label_rotation_all.svg");
     my_1d_plot.x_values_rotation(steepdown); //steepdown - clashes a with X axis line (and downhill).  
     my_1d_plot.write("1d_value_label_rotation_all.svg");
-
+    // Displays all layouts around the point above the line.
+    // Probably also will work OK if ticks and tick-value-labels are above the y=0 X-axis horizontal line and the marker is below.
 
     /*`If chosen settings do not have the effect that you expect, it may be helpful to display some of them!
     (All the myriad settings can be displayed with `show_1d_plot_settings(my_1d_plot)`.)

@@ -2215,8 +2215,6 @@ my_plot.background_color(ghostwhite) // Whole image.
 
       void draw_plot_points()
       { //! Draw normal 'good' non-limit points, and then any 'at limits' points.
-        double x(0.); // For conversion to SVG coordinates.
-        double y(0.);
         for(unsigned int i = 0; i < serieses_.size(); ++i)
         {
           g_element& g_ptr_dps = image_.gs(detail::PLOT_DATA_POINTS).add_g_element();
@@ -2240,10 +2238,12 @@ my_plot.background_color(ghostwhite) // Whole image.
           {
             Meas ux = j->first;
             //unc<false> ux = j->first;
+            double x(0.); // For conversion to SVG coordinates.
             x = ux.value(); // To compute SVG coordinate from just the X value.
             //double vx = x; // Note the true X value.
             unc<false> uy = j->first;
             uy = j->second;
+            double y(0.);
             y = uy.value(); // To compute SVG coordinate from just the Y value.
             //double vy = y; // Note the true Y value.
             transform_point(x, y); // Note x and y are now SVG coordinates.
@@ -2301,8 +2301,8 @@ my_plot.background_color(ghostwhite) // Whole image.
           for(std::multimap<double,double>::const_iterator j = serieses_[i].series_limits_.begin();
             j!=serieses_[i].series_limits_.end(); ++j)
           {
-            x = j->first;
-            y = j->second;
+            double x = j->first;
+            double y = j->second;
             if (limit_NaN(x))
             { // x is NaN (rather than too big or too small).
               x_nan_count++;

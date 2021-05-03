@@ -73,7 +73,9 @@ int main()
 
     svg_2d_plot my_2d_plot; // Construct a plot with all the default constructor values.
 
-    my_2d_plot.title("2d_value_label_rotation") // Add a string title of the plot.
+    my_2d_plot
+      .title("2d_value_label_rotation") // Add a string title of the plot.
+      .title_on(false)  // Avoid a title if repeating write("svg-files") as issue in title may mean title is ommitted causing a y offset.
       .x_range(-10, 10) // Add a range for the X-axis.
       .x_label("length (m)"); // Add a label for the X-axis.
 

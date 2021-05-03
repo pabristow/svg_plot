@@ -2823,7 +2823,7 @@ namespace boost
         }
       } // void draw_plot_point_value(double x, double y, g_element& g_ptr, value_style& val_style, plot_point_style& point_style, Meas uvalue)
 
-      //! Strip from double value if requested by style,
+      //! Reduce precision of uncertainty estimate from double value ( by style)
       //! removing any unnecessary e, +, & leading exponent zeros, reducing "1.200000" to "1.2" or "3.4e1"...
       //! using function @c strip_e0s_ .
       //! \param v Mean value.
@@ -3569,6 +3569,7 @@ namespace boost
             // So clear the existing string first but doesn't work,
             // so need to clear the whole g_element.
             //derived().image_.gs(PLOT_TITLE).clear();
+            // This causes trouble if try to recall write("svg_file")
             derived().title_info_.text(title);
             derived().title_on_ = true; // Assume display wanted, if bother to set title.
             return derived(); // Make chainable.

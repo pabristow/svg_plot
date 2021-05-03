@@ -78,7 +78,7 @@ public:
   std::vector<Meas> series_; //!< Normal 'OK to plot' @c Meas data, values including uncertainty and timestamp.
   //std::vector<unc<false> > series_; //!< Normal 'OK to plot' data values.
   std::vector<double> series_limits_; //!< 'limit' values: too big, too small or NaN.
-  // TODO should these be unc too?  Uncertainty info is meaningless, but timestamp etc are OK.
+  // TODO should these be unc too?  Uncertainty info is meaningless, but timestamp, order etc are OK.
 
   std::string title_; //!< title of data-series (to show on legend using legend_style).
   plot_point_style point_style_; //!< circle, square...
@@ -759,7 +759,7 @@ void svg_1d_plot::draw_plot_x_points()
   }
   set_ids();
 
-  // Set other SVG color, stroke & width defaults for various child PLOT nodes.
+  // Set other default SVG color, stroke & width defaults for various child PLOT nodes.
   image_.gs(PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);
   image_.gs(PLOT_BACKGROUND).style().stroke_width(image_border_.border_width_); //
   image_.gs(PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
