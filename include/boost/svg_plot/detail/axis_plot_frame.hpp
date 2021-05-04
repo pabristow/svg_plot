@@ -1169,6 +1169,7 @@ namespace boost
           // <g id="xTicksValues">  text-anchor = "middle" font-size = "12" font-family = "Lucida Sans Unicode"
           //  <text x = "74.5" y = "390" >0 </text >
           //  <text x = "133" y = "390" >2 </text >...
+
           if (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0)
           { // External to plot window style bottom or top.
             // Always want all values including "0", if labeling external to plot window.
@@ -1241,15 +1242,21 @@ namespace boost
           {
             if ((value != 0) && derived().x_axis_.axis_line_on_)
             { // Avoid a "0" below the X-axis if it would be cut through by any internal vertical Y-axis line.
+              g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES));
+              const text_style xticks_text_style = derived().x_ticks_value_label_info_.textstyle(); // font, size, family etc
+              g_ptr->text_style_ = xticks_text_style;
+              align_style a = derived().x_ticks_value_label_info_.align_; // align = center OK
+              int rot = derived().x_ticks_value_label_info_.rotate_; // rot = 0 OK
+              g_ptr->alignment_ = a;
+              g_ptr->rotation_ = rot;
               derived().image_.gs(detail::PLOT_X_TICKS_VALUES).text(
                 x,
                 y,
                 tick_value_label.str(),
-                derived().x_ticks_value_label_info_.textstyle(), // font, size etc,
-                // For example: text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode"
-                // But we don't really want to repeat this style info every value-label!
-                alignment,
-                derived().x_ticks_.label_rotation_);
+                not_a_text_style);  // Add not_a_text_style to avoid each x-tick value-label adding font-family, font-size etc.
+// Example: <text x="74.5" y="390">0 </text>
+
+
             }
           } // on plot window or 'on axis'.
         }
