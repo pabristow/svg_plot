@@ -1170,67 +1170,18 @@ namespace boost
           //  <text x = "74.5" y = "390" >0 </text >
           //  <text x = "133" y = "390" >2 </text >...
 
-          if (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0)
+          g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK
+          const text_style xticks_text_style = derived().x_ticks_value_label_info_.textstyle(); // font, size, family, weight etc
+          g_ptr->text_style_ = xticks_text_style;
+
+          g_ptr->alignment_ = derived().x_ticks_value_label_info_.align_;
+          g_ptr->rotation_ = derived().x_ticks_value_label_info_.rotate_;
+          // Outputs, for example:  <g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold" text-anchor="middle">
+
+          if (derived().x_ticks_.ticks_on_window_or_on_axis_ != 0) 
           { // External to plot window style bottom or top.
             // Always want all values including "0", if labeling external to plot window.
-            // x_ticks_.ticks_on_window_or_on_axis_ == true != 0
-         //  g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK
-       //     g_element& g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // NOT OK
-            // /! svg g \return reference g_element& to the ith (PLOT_X_TICKS_VALUES) group element.
-         //   g_element* g_inner_ptr = g_ptr;
-            //g_element* g_x_axis_values = &(g_ptr->add_g_element()); // OK
-      //      g_element* g_x_axis_values = &(g_ptr->add_g_element()); // cannot convert from 'boost::svg::g_element *' to 'boost::svg::g_element &'
- //           g_element& g_ticks = (derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK \nd gr.text works OK too.
-          //  g_element& g_x_axis_values = derived().image_.gs(detail::PLOT_X_TICKS_VALUES).add_g_element();
-          //  g_x_axis_values.style().stroke_color(red); // OK using  g_element& and has desired effect on x axis value-labels too!
-         //   g_x_axis_values.style().fill_color(blue); // OK using  g_element&
-         //   g_x_axis_values->style().stroke_color(derived().style().stroke_color_); //  wrong
-         //   g_x_axis_values->style().fill_color(derived().serieses_[i].point_style_.fill_color_); //
-
- //           derived().image_.gs(detail::PLOT_X_TICKS_VALUES).text(
-
-            // g_x_axis_values.text( fails error C2228: left of '.text' must have class/struct/union
-            // derived().image_.gs(detail::PLOT_X_TICKS_VALUES)
-            //   derived().image_.g_x_axis_values   error C2039: 'g_x_axis_values': is not a member of 'boost::svg::svg'
-           //  derived().image_.g_x_axis_values(0)   error C2039: 'g_x_axis_values': is not a member of 'boost::svg::svg'
-           //   derived().image_.gs(detail::PLOT_X_TICKS_VALUES) // is boost::svg::svg in svg image_; in svg_2d_plot or 1d or boxplot
-//              derived().image_.gs(detail::PLOT_X_TICKS_VALUES) // is boost::svg::svg in svg image_; in svg_2d_plot or 1d or boxplot
-   //          derived().image_.g_ptr  C2039: 'g_ptr': is not a member of 'boost::svg::svg'
-    //          g_ptr. // C2228: left of '.text' must have class/struct/union
-          //   g_element& gg = derived().image_.gs(detail::PLOT_X_TICKS_VALUES);  // OK
-
-             //g_x_axis_values.text( // fails for a g_element* pointer
-           //  g_ptr.text( // fails for pointer, OK for reference
-             //g_ptr->text( // OK and makes X-axis_ticks labels RED!
-             // x,
-             // y,
-             // tick_value_label.str(), // "1.0!, "1.5" ...
-             // derived().x_ticks_value_label_info_.textstyle(), // font, size etc
-             // alignment,
-             // derived().x_ticks_.label_rotation_);
-           g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES)); // OK
-           //std::cout << "text_style xticks_text_style is " << xticks_text_style << std::endl;
-           // text_style xticks_text_style is text_style(20, "lucida sans unicode", "", "bold", "", "")
-        //   g_ptr->text_style_.style(xticks_text_style);
-           //g_ptr->text_style_.font_size(20);
-           //g_ptr->text_style_.font_weight("bold");
-           //g_ptr->text_style_.font_family("arial");
-           const text_style xticks_text_style = derived().x_ticks_value_label_info_.textstyle(); // font, size, family etc
-          // std::cout << "text_style xticks_text_style is " << xticks_text_style << std::endl;
-           // text_style xticks_text_style is text_style(12, "Lucida Sans Unicode", "", "", "", "")
-           g_ptr->text_style_ = xticks_text_style;
-           // std::cout << " g_ptr->text_style_ is " << g_ptr->text_style_ << std::endl;
-           // g_ptr->text_style_ is text_style(20, "arial", "", "bold", "", "")
-           // and pick up alignment and rotation, if any.
-            // x_ticks_value_label_info_(0, 0, "", x_ticks_value_label_style_, align_style::center_align, horizontal),
-             align_style a = derived().x_ticks_value_label_info_.align_; // align = center OK
-             int rot = derived().x_ticks_value_label_info_.rotate_; // rot = 0 OK
-           //  rotate_style r = derived().x_ticks_.label_rotation_; // OK too
-          //   std::cout "X-ticks values rotation " <<  << r << std::endl;
-           //  std::cout << "X-ticks values alignment " << a << std::endl;
-           g_ptr->alignment_ = a;
-           g_ptr->rotation_ = rot;
-           // Example:  <g id="xTicksValues" font-size="14" font-family="arial" font-weight="bold" text-anchor="middle">
+            // x_ticks_.ticks_on_window_or_on_axis_ == true (!= 0)
              g_ptr->text(
                x,
                y,
@@ -1239,24 +1190,22 @@ namespace boost
              // Example: <text x="74.5" y="390">0 </text>
           }
           else
-          {
+          { // derived().x_ticks_.ticks_on_window_or_on_axis_ == 0
             if ((value != 0) && derived().x_axis_.axis_line_on_)
             { // Avoid a "0" below the X-axis if it would be cut through by any internal vertical Y-axis line.
-              g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES));
-              const text_style xticks_text_style = derived().x_ticks_value_label_info_.textstyle(); // font, size, family etc
-              g_ptr->text_style_ = xticks_text_style;
-              align_style a = derived().x_ticks_value_label_info_.align_; // align = center OK
-              int rot = derived().x_ticks_value_label_info_.rotate_; // rot = 0 OK
-              g_ptr->alignment_ = a;
-              g_ptr->rotation_ = rot;
+              //g_element* g_ptr = &(derived().image_.gs(detail::PLOT_X_TICKS_VALUES));
+              //const text_style xticks_text_style = derived().x_ticks_value_label_info_.textstyle(); // font, size, family etc
+              //g_ptr->text_style_ = xticks_text_style;
+              //align_style a = derived().x_ticks_value_label_info_.align_; // align = center OK
+              //int rot = derived().x_ticks_value_label_info_.rotate_; // rot = 0 OK
+              //g_ptr->alignment_ = a;
+              //g_ptr->rotation_ = rot;
               derived().image_.gs(detail::PLOT_X_TICKS_VALUES).text(
                 x,
                 y,
-                tick_value_label.str(),
+                tick_value_label.str(), // Example: "0.0"  1.0", "1.5", "2.0" ...
                 not_a_text_style);  // Add not_a_text_style to avoid each x-tick value-label adding font-family, font-size etc.
-// Example: <text x="74.5" y="390">0 </text>
-
-
+                 // Example: <text x="74.5" y="390">0 </text>
             }
           } // on plot window or 'on axis'.
         }
