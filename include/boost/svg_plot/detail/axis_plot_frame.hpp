@@ -2318,42 +2318,46 @@ namespace boost
         // or use Unicode symbol, perhaps 2B2D horixontal or 2B2F vertical ellipses.
         break;
 
-      case unc_ellipse:  // Showing uncertainty, if known.
+      case unc_ellipse:  // Showing three uncertainty ellipses, if known.
         { // std_dev horizontal (and, for 2D, vertical) ellipses for one, two and three 'standard-deviations'.
           double xu = ux.value(); //
           if (ux.std_dev() > 0)
-          { // std_dev is meaningful.
-            xu +=  ux.std_dev();
+          { // X std_dev uncertainty is meaningful.
+            xu += ux.std_dev();
           }
-          transform_x(xu); // To SVG coordinates.
+          transform_x(xu); // Uncertainty of X to SVG coordinates.
           double x_radius = std::abs<double>(xu - x);
           if (x_radius <= 0.)
           { // Make sure something is visible.
             x_radius = 1.; // Or size?
           }
-
+          double y_radius;
           double yu = uy.value();
           if (uy.std_dev() > 0)
-          { // std_dev is meaningful.
-              yu += uy.std_dev();
+          { // Y std_dev uncertainty is meaningful.
+            yu += uy.std_dev();
+            transform_y(yu); // Uncertainty of Y to SVG coordinates.
+            y_radius = std::abs<double>(yu - y);
+            if (y_radius <= 0.)
+            { // Make sure something is visible.
+              y_radius = 1.;
+            }
           }
-
-          transform_y(yu);
-          double y_radius = std::abs<double>(yu - y);
-          if (y_radius <= 0.)
-          { // Make sure something is visible.
-            y_radius = 1.;
+          else
+          { // uy.std_dev() <=0 so arbitrary y_radius.  3 pixels ensure gap between tiny circle showing value with ellipse line width.
+            y_radius = 2;
           }
           //image_.gs(PLOT_DATA_UNC).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
-          // color set in svg_1d_plot data at present.
-          // Also be set by user calling my_plot.one_sd_color(lightblue),  .two_sd_color(blue), .three_sd_color(violet)
+          // Default color set in svg_1d_plot data at present.
+          // Also can be set by user calling my_plot.one_sd_color(lightblue), .two_sd_color(blue), .three_sd_color(violet).
+          y += point_size; // to line up with other symbols.
           g_element* gu1_ptr = &(derived().image_.gs(PLOT_DATA_UNC1));
           gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard-deviation.
           g_element* gu2_ptr = &(derived().image_.gs(PLOT_DATA_UNC2));
           gu2_ptr->ellipse(x, y, x_radius * 2, y_radius * 2); //  Radii are two standard-deviation.
           g_element* gu3_ptr = &(derived().image_.gs(PLOT_DATA_UNC3));
           gu3_ptr->ellipse(x, y, x_radius * 3, y_radius * 3); //  Radii are three standard-deviation.
-          g_ptr.circle(x, y, 1); // Show x and y values at center using stroke and fill color of data-point marker.
+          g_ptr.circle(x, y, 0.5); // Show x and y values at center using very small circle with stroke and fill color of data-point marker.
         }
         break;
 

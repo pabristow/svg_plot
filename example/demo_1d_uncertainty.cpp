@@ -145,21 +145,23 @@ int main()
     All the data-points are also labeled with their value,
     and uncertainty (+/-) and degrees of freedom if known. 
     The A_times mark data-points with a red-border circle with a green fill,
-    The B_times use a blue vertical line,
-    while C_times use an ellipse whose width (x radius) is from the uncertainty,
-    1st standard deviation shows as ellipse in magenta, and 2nd as yellow.
-
-    Or one can explicitly set some (brighter) colors for the uncertainty ellipses, or none to omit.
+    The B_times use a blue vertical line.
     */
-
-    //my_plot
-    //  .one_sd_color(yellow) // Color of ellipse for one standard deviation (about 66% probability).
-    //  .two_sd_color(green) // Color of ellipse for two standard deviation (~95%).
-    //  .three_sd_color(red); // Color of ellipse for two standard deviation (~99%).
 
     my_plot.plot(A_times, "A").shape(circlet).size(10).stroke_color(red).fill_color(green);
     my_plot.plot(B_times, "B").shape(vertical_line).stroke_color(blue);
-    my_plot.plot(C_times, "C").shape(unc_ellipse).fill_color(lightyellow).stroke_color(magenta);
+
+    /*`C_times use ellipses whose width (x radius) is from the uncertainty,
+    1st standard deviation shows as ellipse in magenta, and 2nd as yellow, and 3rd as.
+
+    Or one can explicitly set some (brighter) colors for the uncertainty ellipses, or none to omit.
+    */
+    my_plot
+      .one_sd_color(pink) // Color of ellipse for one standard deviation (~66% probability).
+      .two_sd_color(magenta) // Color of ellipse for two standard deviation (~95%).
+      .three_sd_color(yellow); // Color of ellipse for two standard deviation (~99%).
+
+    my_plot.plot(C_times, "C").shape(unc_ellipse).fill_color(black).stroke_color(black);
 
     /*`
     Finally, we can write the SVG to a file of our choice.
