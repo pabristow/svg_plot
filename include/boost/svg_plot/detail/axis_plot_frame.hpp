@@ -2259,10 +2259,10 @@ namespace boost
         the vertical and horizontal ticks are deliberately offset above the axes.
         TODO Not sure this is fully resolved.
       */
-      double point_size = point_style.size_;
-      double half_height = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
+      const double point_size = point_style.size_;
+      const double half_height = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point coordinates.
       //double half_width = point_size / 2.; // Offset by half the symbol size to try to centre symbol on the point x-coordinates.
-      double third_height = point_size / 3.4; // Offset y vertical by third of the symbol size to try to centre symbol on the point y-coordinates.
+      const double third_height = point_size / 3.4; // Offset y vertical by third of the symbol size to try to centre symbol on the point y-coordinates.
 
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
       std::cout << "point_style.size_ = "<< point_style.size_
