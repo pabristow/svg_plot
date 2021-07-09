@@ -147,8 +147,8 @@
 <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"The largest element is  "</span> <span class="special">&lt;&lt;</span> <span class="special">*(</span><span class="identifier">result</span><span class="special">.</span><span class="identifier">second</span><span class="special">)</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// 6.5</span>
 </pre>
 <p>
-        Autoscaling can also use two double min and max values provided by the user
-        program. Using <code class="computeroutput"><span class="identifier">x_autoscale</span><span class="special">(</span><span class="identifier">my_set</span><span class="special">)</span></code> effectively uses the first and last items
+        Autoscaling can also use two <code class="computeroutput"><span class="keyword">double</span></code>
+        min and max values provided by the user program. Using <code class="computeroutput"><span class="identifier">x_autoscale</span><span class="special">(</span><span class="identifier">my_set</span><span class="special">)</span></code> effectively uses the first and last items
         in the STL container. If the container is sorted, then these are the minimum
         and maximum values.
       </p>
@@ -168,7 +168,7 @@
   <span class="keyword">bool</span> <span class="identifier">check_limits</span><span class="special">,</span> <span class="comment">// Whether to check all values for infinity, NaN etc.</span>
   <span class="keyword">bool</span> <span class="identifier">origin</span><span class="special">,</span> <span class="comment">// If true, ensures that zero is a tick value.</span>
   <span class="keyword">double</span> <span class="identifier">tight</span><span class="special">,</span> <span class="comment">// Allows user to avoid a small fraction over a tick using another tick.</span>
-  <span class="identifier">nt</span> <span class="identifier">min_ticks</span><span class="special">,</span> <span class="comment">// Minimum number of ticks.</span>
+  <span class="keyword">int</span> <span class="identifier">min_ticks</span><span class="special">,</span> <span class="comment">// Minimum number of ticks.</span>
 </pre>
 <pre class="programlisting"><span class="keyword">double</span> <span class="identifier">axis_min_value</span><span class="special">;</span> <span class="comment">// Values to be updated by autoscale.</span>
 <span class="keyword">double</span> <span class="identifier">axis_max_value</span><span class="special">;</span>
@@ -321,28 +321,28 @@
         The actual addition of data values to the plot is, of course, quite separate
         from any autoscaling.
       </p>
-<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">,</span> <span class="string">"Auto 1D"</span><span class="special">);</span> <span class="comment">// Add the one data-series.</span>
-<span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Autoscaled "</span> <span class="comment">// Show the results of autoscale:</span>
-  <span class="string">" min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_min_value</span><span class="special">()</span>
-  <span class="special">&lt;&lt;</span> <span class="string">", max "</span><span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_max_value</span><span class="special">()</span>
-  <span class="special">&lt;&lt;</span> <span class="string">", interval "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_tick_interval</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// Autoscaled min 1, max 5.5, interval 0.5</span>
+<pre class="programlisting">  <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">,</span> <span class="string">"Auto 1D"</span><span class="special">);</span> <span class="comment">// Add the one data-series.</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Autoscaled "</span> <span class="comment">// Show the results of autoscale:</span>
+    <span class="string">" min "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_min_value</span><span class="special">()</span>
+    <span class="special">&lt;&lt;</span> <span class="string">", max "</span><span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_max_value</span><span class="special">()</span>
+    <span class="special">&lt;&lt;</span> <span class="string">", interval "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_auto_tick_interval</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// Autoscaled min 1, max 5.5, interval 0.5</span>
 
-<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_set</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">my_set</span><span class="special">.</span><span class="identifier">end</span><span class="special">(),</span> <span class="string">"Auto 1D"</span><span class="special">);</span> <span class="comment">// Add another data-series from my_set.</span>
-<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_set</span><span class="special">,</span> <span class="string">"Auto 1D"</span><span class="special">);</span> <span class="comment">// Add another whole data-series from my_set.</span>
-<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(&amp;</span><span class="identifier">my_data</span><span class="special">[</span><span class="number">1</span><span class="special">],</span> <span class="special">&amp;</span><span class="identifier">my_data</span><span class="special">[</span><span class="number">4</span><span class="special">],</span> <span class="string">"Auto 1D"</span><span class="special">);</span> <span class="comment">// Add part (1,2 3 but *not* 4) of the one data-series.</span>
-<span class="comment">//my_1d_plot.plot(&amp;my_set[1], &amp;my_set[4], "Auto 1D"); // operator[] is not defined for set container!</span>
+  <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_set</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">my_set</span><span class="special">.</span><span class="identifier">end</span><span class="special">(),</span> <span class="string">"Auto 1D"</span><span class="special">);</span> <span class="comment">// Add another data-series from my_set.</span>
+  <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_set</span><span class="special">,</span> <span class="string">"Auto 1D"</span><span class="special">);</span> <span class="comment">// Add another whole data-series from my_set.</span>
+  <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(&amp;</span><span class="identifier">my_data</span><span class="special">[</span><span class="number">1</span><span class="special">],</span> <span class="special">&amp;</span><span class="identifier">my_data</span><span class="special">[</span><span class="number">4</span><span class="special">],</span> <span class="string">"Auto 1D"</span><span class="special">);</span> <span class="comment">// Add part (1,2 3 but *not* 4) of the one data-series.</span>
+  <span class="comment">//my_1d_plot.plot(&amp;my_set[1], &amp;my_set[4], "Auto 1D"); // operator[] is not defined for set container!</span>
 
-<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"auto_1d_plot_2.svg"</span><span class="special">);</span> <span class="comment">// Write the plot to file.</span>
+  <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"auto_1d_plot_2.svg"</span><span class="special">);</span> <span class="comment">// Write the plot to file.</span>
 
-<span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">detail</span><span class="special">::</span><span class="keyword">operator</span><span class="special">&lt;&lt;;</span>
-<span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"x_range() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_range</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// x_range() 1, 5.5</span>
-<span class="identifier">show_1d_plot_settings</span><span class="special">(</span><span class="identifier">my_1d_plot</span><span class="special">);</span>
-<span class="special">}</span>
-<span class="keyword">catch</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">exception</span><span class="special">&amp;</span> <span class="identifier">e</span><span class="special">)</span>
-<span class="special">{</span> <span class="comment">// Error, warning and information messages are displayed by the catch block.</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span>
-    <span class="string">"\n"</span><span class="string">"Message from thrown exception was:\n   "</span> <span class="special">&lt;&lt;</span> <span class="identifier">e</span><span class="special">.</span><span class="identifier">what</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
-<span class="special">}</span>
+  <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">detail</span><span class="special">::</span><span class="keyword">operator</span><span class="special">&lt;&lt;;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"x_range() "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_range</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// x_range() 1, 5.5</span>
+<span class="comment">//  show_1d_plot_settings(my_1d_plot); // Full diagnostics, if required.</span>
+  <span class="special">}</span>
+  <span class="keyword">catch</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">exception</span><span class="special">&amp;</span> <span class="identifier">e</span><span class="special">)</span>
+  <span class="special">{</span> <span class="comment">// Error, warning and information messages are displayed by the catch block.</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span>
+      <span class="string">"\n"</span><span class="string">"Message from thrown exception was:\n   "</span> <span class="special">&lt;&lt;</span> <span class="identifier">e</span><span class="special">.</span><span class="identifier">what</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+  <span class="special">}</span>
 </pre>
 <p>
         If necessary, one can obtain a complete listing of all the settings used.
@@ -487,7 +487,7 @@
 <span class="identifier">data</span> <span class="identifier">lines</span> <span class="identifier">width</span> <span class="number">0</span>
 </pre>
 <p>
-        <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/auto_1d_plot.svg"></object></span>
+        <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/auto_1d_plot.svg" width="500" height="200"></object></span>
       </p>
 <p>
         See <a href="../../../../example/auto_1d_plot.cpp" target="_top">auto_1d_plot.cpp</a>

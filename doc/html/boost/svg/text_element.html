@@ -28,43 +28,43 @@
 <span class="keyword">class</span> <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">:</span> <span class="keyword">public</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_element</span> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="text_element.html#boost.svg.text_elementconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="text_element.html#id569233-bb"><span class="identifier">text_element</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="text_element.html#id569216-bb"><span class="identifier">text_element</span></a><span class="special">(</span><span class="keyword">double</span> <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
+  <a class="link" href="text_element.html#id578685-bb"><span class="identifier">text_element</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="text_element.html#id578722-bb"><span class="identifier">text_element</span></a><span class="special">(</span><span class="keyword">double</span> <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
                <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">=</span> <span class="identifier">no_text_style</span><span class="special">,</span> 
                <span class="identifier">align_style</span> <span class="special">=</span> <span class="identifier">align_style</span> <span class="special">::</span><span class="identifier">left_align</span><span class="special">,</span> 
                <span class="keyword">int</span> <span class="special">=</span> <span class="keyword">static_cast</span><span class="special">&lt;</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">(</span><span class="identifier">horizontal</span><span class="special">)</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id569182-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id578695-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="text_element.html#id568533-bb">public member functions</a></span>
-  <span class="identifier">align_style</span> <a class="link" href="text_element.html#id568544-bb"><span class="identifier">alignment</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id568546-bb"><span class="identifier">alignment</span></a><span class="special">(</span><span class="identifier">align_style</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="text_element.html#id568581-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="text_element.html#id568600-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="text_element.html#id568621-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="text_element.html#id568663-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="text_element.html#id568674-bb"><span class="identifier">generate_text</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="text_element.html#id568651-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="text_element.html#id568700-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="text_element.html#id568706-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="text_element.html#id568723-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">int</span> <a class="link" href="text_element.html#id568718-bb"><span class="identifier">rotation</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id568778-bb"><span class="identifier">rotation</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id568764-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id568798-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="text_element.html#id568834-bb"><span class="identifier">text</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="text_element.html#id568862-bb"><span class="identifier">text</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <a class="link" href="text_element.html#id568872-bb"><span class="identifier">text_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id568880-bb"><span class="identifier">textstyle</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id568873-bb"><span class="identifier">textstyle</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id568923-bb"><span class="identifier">textstyle</span></a><span class="special">(</span><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id568982-bb"><span class="identifier">tspan</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id569018-bb"><span class="identifier">tspan</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="text_element.html#id569042-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="text_element.html#id569077-bb"><span class="identifier">write_attributes</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="text_element.html#id569104-bb"><span class="identifier">x</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id569114-bb"><span class="identifier">x</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">double</span> <a class="link" href="text_element.html#id569151-bb"><span class="identifier">y</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id569168-bb"><span class="identifier">y</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="text_element.html#id578010-bb">public member functions</a></span>
+  <span class="identifier">align_style</span> <a class="link" href="text_element.html#id578053-bb"><span class="identifier">alignment</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id578062-bb"><span class="identifier">alignment</span></a><span class="special">(</span><span class="identifier">align_style</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="text_element.html#id578088-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="text_element.html#id578103-bb"><span class="identifier">class_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="text_element.html#id578112-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="text_element.html#id578124-bb"><span class="identifier">clip_id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="text_element.html#id578150-bb"><span class="identifier">generate_text</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="text_element.html#id578175-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="text_element.html#id578163-bb"><span class="identifier">id</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="text_element.html#id578211-bb"><span class="keyword">operator</span><span class="special">!=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="text_element.html#id578200-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">int</span> <a class="link" href="text_element.html#id578253-bb"><span class="identifier">rotation</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id578250-bb"><span class="identifier">rotation</span></a><span class="special">(</span><span class="keyword">int</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id578292-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id578329-bb"><span class="identifier">style</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="text_element.html#id578310-bb"><span class="identifier">text</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="text_element.html#id578371-bb"><span class="identifier">text</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <a class="link" href="text_element.html#id578342-bb"><span class="identifier">text_style</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id578348-bb"><span class="identifier">textstyle</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id578379-bb"><span class="identifier">textstyle</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id578390-bb"><span class="identifier">textstyle</span></a><span class="special">(</span><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id578449-bb"><span class="identifier">tspan</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id578474-bb"><span class="identifier">tspan</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">virtual</span> <span class="keyword">void</span> <a class="link" href="text_element.html#id578520-bb"><span class="identifier">write</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="text_element.html#id578577-bb"><span class="identifier">write_attributes</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="text_element.html#id578574-bb"><span class="identifier">x</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id578606-bb"><span class="identifier">x</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">double</span> <a class="link" href="text_element.html#id578644-bb"><span class="identifier">y</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a class="link" href="text_element.html#id578659-bb"><span class="identifier">y</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="identifier">a_svg_style</span><span class="special">;</span>  <span class="comment">// svg style that uses black and stroke and fill off. </span>
@@ -80,7 +80,7 @@
   <span class="keyword">double</span> <span class="identifier">y_</span><span class="special">;</span>  <span class="comment">// Bottom of Roman capital character. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1252454"></a><h2>Description</h2>
+<a name="id1261568"></a><h2>Description</h2>
 <p>SVG Coordinates of 1st character EM box, see <a href="http://www.w3.org/TR/SVG/text.html#TextElement" target="_top">http://www.w3.org/TR/SVG/text.html#TextElement</a> 10.2.</p>
 <p>So any text with y coordinate == 0 shows only any roman lower case descenders!<br>
      (Text may contain embedded XML Unicode characters for Greek, math, emoji etc, for example: &amp;#x3A9;).</p>
@@ -95,24 +95,24 @@
 <p>
 </p>
 <div class="refsect2">
-<a name="id1252489"></a><h3>
+<a name="id1261621"></a><h3>
 <a name="boost.svg.text_elementconstruct-copy-destruct"></a><code class="computeroutput">text_element</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a name="id569233-bb"></a><span class="identifier">text_element</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a name="id578685-bb"></a><span class="identifier">text_element</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
 <p>Copy constructor.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="id569216-bb"></a><span class="identifier">text_element</span><span class="special">(</span><span class="keyword">double</span> x <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> y <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> text <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
+<pre class="literallayout"><a name="id578722-bb"></a><span class="identifier">text_element</span><span class="special">(</span><span class="keyword">double</span> x <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">double</span> y <span class="special">=</span> <span class="number">0</span><span class="special">.</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> text <span class="special">=</span> <span class="string">""</span><span class="special">,</span> 
              <a class="link" href="text_style.html" title="Class text_style">text_style</a> ts <span class="special">=</span> <span class="identifier">no_text_style</span><span class="special">,</span> 
              <span class="identifier">align_style</span> align <span class="special">=</span> <span class="identifier">align_style</span> <span class="special">::</span><span class="identifier">left_align</span><span class="special">,</span> 
              <span class="keyword">int</span> rotate <span class="special">=</span> <span class="keyword">static_cast</span><span class="special">&lt;</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">(</span><span class="identifier">horizontal</span><span class="special">)</span><span class="special">)</span><span class="special">;</span></pre>
 <p><code class="computeroutput"><a class="link" href="text_element.html" title="Class text_element">text_element</a></code> Default Constructor defines defaults for all class members.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a name="id569182-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a name="id578695-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre>
 <p>Assignment operator.</p>
 <p>
 </p>
@@ -130,15 +130,15 @@
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="id1252795"></a><h3>
-<a name="id568533-bb"></a><code class="computeroutput">text_element</code> public member functions</h3>
+<a name="id1261909"></a><h3>
+<a name="id578010-bb"></a><code class="computeroutput">text_element</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">align_style</span> <a name="id568544-bb"></a><span class="identifier">alignment</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">align_style</span> <a name="id578053-bb"></a><span class="identifier">alignment</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>left_align, right_align, center_align</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a name="id568546-bb"></a><span class="identifier">alignment</span><span class="special">(</span><span class="identifier">align_style</span> a<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a name="id578062-bb"></a><span class="identifier">alignment</span><span class="special">(</span><span class="identifier">align_style</span> a<span class="special">)</span><span class="special">;</span></pre>
 <p>Set alignment: <code class="computeroutput">left_align</code>, <code class="computeroutput">right_align</code>, <code class="computeroutput">center_align</code>.</p>
 <p>
 </p>
@@ -154,7 +154,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id568581-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id578088-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -169,12 +169,12 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id568600-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> class_id<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id578103-bb"></a><span class="identifier">class_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> class_id<span class="special">)</span><span class="special">;</span></pre>
 <p>Set <code class="computeroutput">class_id</code>, non-unique string identifier for a Class Attribute.</p>
 <p><a href="http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute" target="_top">http://www.w3.org/TR/2001/REC-SVG-20010904/styling.html#ClassAttribute</a> 6.12 Attributes common to all elements: id and xml:base Example: class_id == "info"</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id568621-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id578112-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -193,12 +193,12 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id568663-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id578124-bb"></a><span class="identifier">clip_id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
 <p>Set name of a clip path, for example: g_ptr.clip_id(plot_window_clip_);</p>
 </li>
-<li class="listitem"><pre class="literallayout"><span class="keyword">void</span> <a name="id568674-bb"></a><span class="identifier">generate_text</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><span class="keyword">void</span> <a name="id578150-bb"></a><span class="identifier">generate_text</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre></li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id568651-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id578175-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -213,20 +213,20 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id568700-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id578163-bb"></a><span class="identifier">id</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> id<span class="special">)</span><span class="special">;</span></pre>
 <p>Provide a unique name for an element. Example: &lt;g id="plotBackground"</p>
 <p>See <a href="http://www.w3.org/TR/SVG/struct.html#IDAttribute" target="_top">http://www.w3.org/TR/SVG/struct.html#IDAttribute</a> 5.10.1 Attributes common to all elements: id and xml:base The id and xml:base attributes are available on all SVG elements: Attribute definitions: id = "name" Standard XML attribute for assigning a unique name to an element. Refer to the "Extensible Markup Language (XML) 1.0" Recommendation [XML10]. xml:base = "&lt;uri&gt;" Specifies a base URI other than the base URI of the document or external entity. Refer to the "XML Base" specification [XML-BASE]. A group of elements, as well as individual objects can be given a name using the id attribute. Named groups are needed for several purposes such as animation and re-usable objects.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id568706-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id578211-bb"></a><span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
 <p>Compare svg_elements for inequality, useful for Boost.Test.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="id568723-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id578200-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="svg_element.html" title="Class svg_element">svg_element</a> <span class="special">&amp;</span> lhs<span class="special">)</span><span class="special">;</span></pre>
 <p>Compare svg_elements, useful for Boost.Test.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">int</span> <a name="id568718-bb"></a><span class="identifier">rotation</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">int</span> <a name="id578253-bb"></a><span class="identifier">rotation</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -241,7 +241,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a name="id568778-bb"></a><span class="identifier">rotation</span><span class="special">(</span><span class="keyword">int</span> rot<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a name="id578250-bb"></a><span class="identifier">rotation</span><span class="special">(</span><span class="keyword">int</span> rot<span class="special">)</span><span class="special">;</span></pre>
 <p>Degrees: horizontal = 0, upward = -90, downward, upsidedown etc. Generates: transform = "rotate(-45 100 100 )"</p>
 <p>
 </p>
@@ -257,7 +257,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id568764-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id578292-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -272,7 +272,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id568798-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="svg_style.html" title="Class svg_style">svg_style</a> <span class="special">&amp;</span> <a name="id578329-bb"></a><span class="identifier">style</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -287,7 +287,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id568834-bb"></a><span class="identifier">text</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id578310-bb"></a><span class="identifier">text</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">
@@ -302,20 +302,20 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id568862-bb"></a><span class="identifier">text</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> t<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id578371-bb"></a><span class="identifier">text</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> t<span class="special">)</span><span class="special">;</span></pre>
 <p>push_back tspan text-string to write.</p>
 </li>
-<li class="listitem"><pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <a name="id568872-bb"></a><span class="identifier">text_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <a name="id578342-bb"></a><span class="identifier">text_style</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id568880-bb"></a><span class="identifier">textstyle</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id578348-bb"></a><span class="identifier">textstyle</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>Get <code class="computeroutput"><code class="computeroutput"><a class="link" href="text_element.html" title="Class text_element">text_element</a></code></code> textstyle for font size, family, decoration ...</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id568873-bb"></a><span class="identifier">textstyle</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> <a name="id578379-bb"></a><span class="identifier">textstyle</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>Get <code class="computeroutput"><code class="computeroutput"><a class="link" href="text_element.html" title="Class text_element">text_element</a></code></code> textstyle for font size, family, decoration ...</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a name="id568923-bb"></a><span class="identifier">textstyle</span><span class="special">(</span><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> ts<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a name="id578390-bb"></a><span class="identifier">textstyle</span><span class="special">(</span><a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> ts<span class="special">)</span><span class="special">;</span></pre>
 <p>Set <code class="computeroutput"><code class="computeroutput"><a class="link" href="text_element.html" title="Class text_element">text_element</a></code></code> text textstyle for font size, family, decoration ...</p>
 <p>
 </p>
@@ -331,15 +331,15 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id568982-bb"></a><span class="identifier">tspan</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> t<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id578449-bb"></a><span class="identifier">tspan</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> t<span class="special">)</span><span class="special">;</span></pre>
 <p>Add text span element (using current <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code> text_style_). data_ in member of <code class="computeroutput"><a class="link" href="text_parent.html" title="Class text_parent">text_parent</a></code>.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id569018-bb"></a><span class="identifier">tspan</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> t<span class="special">,</span> <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> textstyle<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="tspan_element.html" title="Class tspan_element">tspan_element</a> <span class="special">&amp;</span> <a name="id578474-bb"></a><span class="identifier">tspan</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&amp;</span> t<span class="special">,</span> <span class="keyword">const</span> <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">&amp;</span> textstyle<span class="special">)</span><span class="special">;</span></pre>
 <p>Add text span element (with specified <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code> textstyle). data_ in member of <code class="computeroutput"><a class="link" href="text_parent.html" title="Class text_parent">text_parent</a></code>.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id569042-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>class <code class="computeroutput"><a class="link" href="text_element.html" title="Class text_element">text_element</a></code> write(std::ostream&amp;) Output SVG <code class="computeroutput"><code class="computeroutput"><a class="link" href="text_element.html" title="Class text_element">text_element</a></code></code>, <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code> &amp; attributes to a <code class="computeroutput">std::ostream</code>. <p>The text-anchor property is used to align (start-, middle- or end-alignment) a string of pre-formatted text or auto-wrapped text where the wrapping area is determined from the inline-size property relative to a given point. It is not applicable to other types of auto-wrapped text, see instead text-align. For multi-line text, the alignment takes place for each line. </p>
+<pre class="literallayout"><span class="keyword">virtual</span> <span class="keyword">void</span> <a name="id578520-bb"></a><span class="identifier">write</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>class <code class="computeroutput"><a class="link" href="text_element.html" title="Class text_element">text_element</a></code> write(std::ostream&amp;) Output SVG <code class="computeroutput"><code class="computeroutput"><a class="link" href="text_element.html" title="Class text_element">text_element</a></code></code>, <code class="computeroutput"><a class="link" href="text_style.html" title="Class text_style">text_style</a></code> &amp; attributes to a <code class="computeroutput">std::ostream</code>. <p>The text-anchor property is used to align (start-, middle- or end-alignment) a string of pre-formatted text or auto-wrapped text where the wrapping area is determined from the inline-size property relative to a given point. It is not applicable to other types of auto-wrapped text, see instead text-align. For multi-line text, the alignment takes place for each line. </p>
 <p><span class="bold"><strong>See Also:</strong></span></p>
 <p><a href="https://www.w3.org/TR/SVG/text.html#TextAnchoringProperties" target="_top">https://www.w3.org/TR/SVG/text.html#TextAnchoringProperties</a> Alignment and justification controls how inline content is distributed <span class="bold"><strong> within a line box. </strong></span> </p>
 <p>
@@ -354,18 +354,18 @@
 </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="id569077-bb"></a><span class="identifier">write_attributes</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">void</span> <a name="id578577-bb"></a><span class="identifier">write_attributes</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span> <span class="special">&amp;</span> os<span class="special">)</span><span class="special">;</span></pre>
 <p>Output group_element id and clip-path. Example: </p>
 <pre class="programlisting"><span class="special">&lt;</span><span class="identifier">clipPath</span> <span class="identifier">id</span><span class="special">=</span><span class="string">"plot_window"</span><span class="special">&gt;</span><span class="special">&lt;</span><span class="identifier">rect</span> <span class="identifier">x</span><span class="special">=</span><span class="string">"53.6"</span> <span class="identifier">y</span><span class="special">=</span><span class="string">"40.5"</span> <span class="identifier">width</span><span class="special">=</span><span class="string">"339"</span> <span class="identifier">height</span><span class="special">=</span><span class="string">"328"</span><span class="special">/</span><span class="special">&gt;</span><span class="special">&lt;</span><span class="special">/</span><span class="identifier">clipPath</span><span class="special">&gt;</span> 
 </pre>
 <p>Classes inherited from <code class="computeroutput"><a class="link" href="svg_element.html" title="Class svg_element">svg_element</a></code> add other references, see section 5.3.1, like color, fill, stroke, gradients...</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id569104-bb"></a><span class="identifier">x</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id578574-bb"></a><span class="identifier">x</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>X coordinate of text to write.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a name="id569114-bb"></a><span class="identifier">x</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a name="id578606-bb"></a><span class="identifier">x</span><span class="special">(</span><span class="keyword">double</span> x<span class="special">)</span><span class="special">;</span></pre>
 <p>X coordinate of text to write.</p>
 <p>
 </p>
@@ -381,11 +381,11 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">double</span> <a name="id569151-bb"></a><span class="identifier">y</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">double</span> <a name="id578644-bb"></a><span class="identifier">y</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>Y coordinate of text to write.</p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a name="id569168-bb"></a><span class="identifier">y</span><span class="special">(</span><span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><a class="link" href="text_element.html" title="Class text_element">text_element</a> <span class="special">&amp;</span> <a name="id578659-bb"></a><span class="identifier">y</span><span class="special">(</span><span class="keyword">double</span> y<span class="special">)</span><span class="special">;</span></pre>
 <p>Y coordinate of text to write.</p>
 <p>
 </p>

@@ -85,26 +85,26 @@ M66.8,116 L66.8,121
 M21,116 L21,121 
 " fill="none"/>
 </g>
-	<g id="xTicksValues">
-	<text x="296" y="134" text-anchor="middle" font-size="10" font-family="Verdana">2
+	<g id="xTicksValues" font-size="10" font-family="Verdana" text-anchor="middle">
+	<text x="296" y="134">2
 	</text>
-	<text x="342" y="134" text-anchor="middle" font-size="10" font-family="Verdana">4
+	<text x="342" y="134">4
 	</text>
-	<text x="387" y="134" text-anchor="middle" font-size="10" font-family="Verdana">6
+	<text x="387" y="134">6
 	</text>
-	<text x="433" y="134" text-anchor="middle" font-size="10" font-family="Verdana">8
+	<text x="433" y="134">8
 	</text>
-	<text x="479" y="134" text-anchor="middle" font-size="10" font-family="Verdana">10
+	<text x="479" y="134">10
 	</text>
-	<text x="204" y="134" text-anchor="middle" font-size="10" font-family="Verdana">-2
+	<text x="204" y="134">-2
 	</text>
-	<text x="158" y="134" text-anchor="middle" font-size="10" font-family="Verdana">-4
+	<text x="158" y="134">-4
 	</text>
-	<text x="113" y="134" text-anchor="middle" font-size="10" font-family="Verdana">-6
+	<text x="113" y="134">-6
 	</text>
-	<text x="66.8" y="134" text-anchor="middle" font-size="10" font-family="Verdana">-8
+	<text x="66.8" y="134">-8
 	</text>
-	<text x="21" y="134" text-anchor="middle" font-size="10" font-family="Verdana">-10
+	<text x="21" y="134">-10
 	</text>
 </g>
 	<g id="xLabel">
@@ -112,11 +112,11 @@ M21,116 L21,121
 	</text>
 </g>
 	<g id="plotPoints">
-	<g stroke="rgb(0,0,0)">
-	<line x1="321" y1="115" x2="321" y2="105"/>
-	<line x1="124" y1="115" x2="124" y2="105"/>
-	<line x1="449" y1="115" x2="449" y2="105"/>
-	<line x1="261" y1="115" x2="261" y2="105"/>
+	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<line x1="321" y1="116" x2="321" y2="106"/>
+	<line x1="124" y1="116" x2="124" y2="106"/>
+	<line x1="449" y1="116" x2="449" y2="106"/>
+	<line x1="261" y1="116" x2="261" y2="106"/>
 </g>
 </g>
 	<g id="title">

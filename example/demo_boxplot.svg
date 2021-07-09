@@ -160,23 +160,23 @@ M61.6,284 L71.6,284
 </g>
 	<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
 	<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
-	<text x="176" y="159" text-anchor="middle">&#x25CF;
+	<text x="176" y="159">&#x25CF;
 	</text>
-	<text x="176" y="172" text-anchor="middle">&#x25CF;
+	<text x="176" y="172">&#x25CF;
 	</text>
-	<text x="176" y="182" text-anchor="middle">&#x25CF;
+	<text x="176" y="182">&#x25CF;
 	</text>
-	<text x="176" y="191" text-anchor="middle">&#x25CF;
+	<text x="176" y="191">&#x25CF;
 	</text>
 </g>
 	<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
-	<text x="280" y="159" text-anchor="middle">&#x25CF;
+	<text x="280" y="159">&#x25CF;
 	</text>
-	<text x="280" y="172" text-anchor="middle">&#x25CF;
+	<text x="280" y="172">&#x25CF;
 	</text>
-	<text x="280" y="182" text-anchor="middle">&#x25CF;
+	<text x="280" y="182">&#x25CF;
 	</text>
-	<text x="280" y="191" text-anchor="middle">&#x25CF;
+	<text x="280" y="191">&#x25CF;
 	</text>
 </g>
 </g>

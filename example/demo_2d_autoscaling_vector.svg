@@ -171,15 +171,15 @@ M474,369 L474,374
 </g>
 	<g id="plotPoints" clip-path="url(#plot_window)">
 	<g stroke="rgb(0,0,0)" fill="rgb(255,255,255)" font-size="8" font-family="Lucida Sans Unicode" text-anchor="middle">
-	<text x="51.5" y="322" text-anchor="middle">&#x25CF;
+	<text x="51.5" y="322">&#x25CF;
 	</text>
-	<text x="51.5" y="322" text-anchor="middle">&#x25CF;
+	<text x="51.5" y="322">&#x25CF;
 	</text>
-	<text x="114" y="353" text-anchor="middle">&#x25CF;
+	<text x="114" y="353">&#x25CF;
 	</text>
-	<text x="319" y="232" text-anchor="middle">&#x25CF;
+	<text x="319" y="232">&#x25CF;
 	</text>
-	<text x="431" y="78.9" text-anchor="middle">&#x25CF;
+	<text x="431" y="78.9">&#x25CF;
 	</text>
 </g>
 </g>

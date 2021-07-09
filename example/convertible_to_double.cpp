@@ -170,8 +170,8 @@ int main()
   // (std::numeric_limits<long double>::max)() to min() is greater than for double.
   // so overflow or underflow on conversion to double is possible.
 
-  using boost::multiprecision::cpp_bin_float_quad;
-  trig_plots<cpp_bin_float_quad>(); 
+  //using boost::multiprecision::cpp_bin_float_quad;
+  //trig_plots<cpp_bin_float_quad>(); 
 
   // As an example of a User-defined Type a fixed-point is also possible:
   ///typedef boost::fixed_point::negatable<15, -16> fixed_point_type;

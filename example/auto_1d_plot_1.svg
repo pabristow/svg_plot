@@ -70,20 +70,20 @@ M479,100 L479,105
 M21,100 L21,105 
 " fill="none"/>
 </g>
-	<g id="xTicksValues">
-	<text x="86.4" y="118" text-anchor="middle" font-size="10" font-family="Verdana">1
+	<g id="xTicksValues" font-size="10" font-family="Verdana" text-anchor="middle">
+	<text x="86.4" y="118">1
 	</text>
-	<text x="152" y="118" text-anchor="middle" font-size="10" font-family="Verdana">2
+	<text x="152" y="118">2
 	</text>
-	<text x="217" y="118" text-anchor="middle" font-size="10" font-family="Verdana">3
+	<text x="217" y="118">3
 	</text>
-	<text x="283" y="118" text-anchor="middle" font-size="10" font-family="Verdana">4
+	<text x="283" y="118">4
 	</text>
-	<text x="348" y="118" text-anchor="middle" font-size="10" font-family="Verdana">5
+	<text x="348" y="118">5
 	</text>
-	<text x="414" y="118" text-anchor="middle" font-size="10" font-family="Verdana">6
+	<text x="414" y="118">6
 	</text>
-	<text x="479" y="118" text-anchor="middle" font-size="10" font-family="Verdana">7
+	<text x="479" y="118">7
 	</text>
 </g>
 	<g id="xLabel">
@@ -91,17 +91,17 @@ M21,100 L21,105
 	</text>
 </g>
 	<g id="plotPoints">
-	<g stroke="rgb(0,0,0)">
-	<line x1="34.1" y1="99.5" x2="34.1" y2="89.5"/>
-	<line x1="93" y1="99.5" x2="93" y2="89.5"/>
-	<line x1="296" y1="99.5" x2="296" y2="89.5"/>
-	<line x1="237" y1="99.5" x2="237" y2="89.5"/>
-	<line x1="374" y1="99.5" x2="374" y2="89.5"/>
-	<line x1="446" y1="99.5" x2="446" y2="89.5"/>
+	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<line x1="34.1" y1="100" x2="34.1" y2="90"/>
+	<line x1="93" y1="100" x2="93" y2="90"/>
+	<line x1="296" y1="100" x2="296" y2="90"/>
+	<line x1="237" y1="100" x2="237" y2="90"/>
+	<line x1="374" y1="100" x2="374" y2="90"/>
+	<line x1="446" y1="100" x2="446" y2="90"/>
 </g>
 </g>
 	<g id="limitPoints" stroke="rgb(255,0,0)" fill="rgb(255,255,255)">
-	<text x="484" y="103" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
+	<text x="484" y="104" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
 	</text>
 </g>
 	<g id="title">

@@ -28,7 +28,7 @@
 <span class="keyword">class</span> <a class="link" href="value_style.html" title="Class value_style">value_style</a> <span class="special">{</span>
 <span class="keyword">public</span><span class="special">:</span>
   <span class="comment">// <a class="link" href="value_style.html#boost.svg.value_styleconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="value_style.html#id630728-bb"><span class="identifier">value_style</span></a><span class="special">(</span><span class="keyword">int</span> <span class="special">=</span> <span class="keyword">static_cast</span><span class="special">&lt;</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">(</span><span class="identifier">horizontal</span><span class="special">)</span><span class="special">,</span> 
+  <a class="link" href="value_style.html#id638979-bb"><span class="identifier">value_style</span></a><span class="special">(</span><span class="keyword">int</span> <span class="special">=</span> <span class="keyword">static_cast</span><span class="special">&lt;</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">(</span><span class="identifier">horizontal</span><span class="special">)</span><span class="special">,</span> 
               <span class="identifier">align_style</span> <span class="special">=</span> <span class="identifier">align_style</span><span class="special">::</span><span class="identifier">left_align</span><span class="special">,</span> <span class="keyword">int</span> <span class="special">=</span> <span class="number">3</span><span class="special">,</span> 
               <span class="identifier">std</span><span class="special">::</span><span class="identifier">ios_base</span><span class="special">::</span><span class="identifier">fmtflags</span> <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ios</span><span class="special">::</span><span class="identifier">dec</span><span class="special">,</span> <span class="keyword">bool</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span> 
               <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="special">=</span> <span class="identifier">no_text_style</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> <span class="special">=</span> <span class="identifier">black</span><span class="special">,</span> 
@@ -69,18 +69,18 @@
   <a class="link" href="text_style.html" title="Class text_style">text_style</a> <span class="identifier">values_text_style_</span><span class="special">;</span>  <span class="comment">// Font etc used for data-point value marking. </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="id1515216"></a><h2>Description</h2>
+<a name="id1527537"></a><h2>Description</h2>
 <p>For example, to output: 5.123 +- 0.01 (19).<br>
  Uncertainty and degrees of freedom estimate. Prefix, separator and suffix allow X and Y values to be together on one line, for example<br>
  [1.23+- 0.01 (3), 4.56 +-0.2 (10)]<br>
  Used in draw_plot_point_values (note plural - not used in singular draw_plot_point_value) where X <a class="link" href="value_style.html" title="Class value_style">value_style</a> is used to provide the prefix and separator, and Y <a class="link" href="value_style.html" title="Class value_style">value_style</a> to provide the suffix. Prefix, separator and suffix are ignored when X or Y are shown separately using draw_plot_point_value. "4.5 +- 0.01 (3) Second #2, 2012-Mar-13 13:01:00" </p>
 <div class="refsect2">
-<a name="id1515190"></a><h3>
+<a name="id1527588"></a><h3>
 <a name="boost.svg.value_styleconstruct-copy-destruct"></a><code class="computeroutput">value_style</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><a name="id630728-bb"></a><span class="identifier">value_style</span><span class="special">(</span><span class="keyword">int</span> r <span class="special">=</span> <span class="keyword">static_cast</span><span class="special">&lt;</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">(</span><span class="identifier">horizontal</span><span class="special">)</span><span class="special">,</span> 
+<pre class="literallayout"><a name="id638979-bb"></a><span class="identifier">value_style</span><span class="special">(</span><span class="keyword">int</span> r <span class="special">=</span> <span class="keyword">static_cast</span><span class="special">&lt;</span> <span class="keyword">int</span> <span class="special">&gt;</span><span class="special">(</span><span class="identifier">horizontal</span><span class="special">)</span><span class="special">,</span> 
             <span class="identifier">align_style</span> a <span class="special">=</span> <span class="identifier">align_style</span><span class="special">::</span><span class="identifier">left_align</span><span class="special">,</span> <span class="keyword">int</span> p <span class="special">=</span> <span class="number">3</span><span class="special">,</span> 
             <span class="identifier">std</span><span class="special">::</span><span class="identifier">ios_base</span><span class="special">::</span><span class="identifier">fmtflags</span> f <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ios</span><span class="special">::</span><span class="identifier">dec</span><span class="special">,</span> <span class="keyword">bool</span> s <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span> 
             <a class="link" href="text_style.html" title="Class text_style">text_style</a> ts <span class="special">=</span> <span class="identifier">no_text_style</span><span class="special">,</span> <span class="keyword">const</span> <a class="link" href="svg_color.html" title="Class svg_color">svg_color</a> <span class="special">&amp;</span> scol <span class="special">=</span> <span class="identifier">black</span><span class="special">,</span> 
@@ -96,7 +96,7 @@
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="id1515863"></a><h3>
+<a name="id1528211"></a><h3>
 <a name="boost.svg.value_stylepublic-data-members"></a><code class="computeroutput">value_style</code> 
         public
        public data members</h3>

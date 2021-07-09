@@ -72,20 +72,20 @@ M113,185 L113,190
 M51.5,185 L51.5,190 
 " fill="none"/>
 </g>
-	<g id="xTicksValues">
-	<text x="235" y="203" text-anchor="middle" font-size="10" font-family="Verdana">2
+	<g id="xTicksValues" font-size="10" font-family="Verdana" text-anchor="middle">
+	<text x="235" y="203">2
 	</text>
-	<text x="296" y="203" text-anchor="middle" font-size="10" font-family="Verdana">4
+	<text x="296" y="203">4
 	</text>
-	<text x="357" y="203" text-anchor="middle" font-size="10" font-family="Verdana">6
+	<text x="357" y="203">6
 	</text>
-	<text x="418" y="203" text-anchor="middle" font-size="10" font-family="Verdana">8
+	<text x="418" y="203">8
 	</text>
-	<text x="479" y="203" text-anchor="middle" font-size="10" font-family="Verdana">10
+	<text x="479" y="203">10
 	</text>
-	<text x="113" y="203" text-anchor="middle" font-size="10" font-family="Verdana">-2
+	<text x="113" y="203">-2
 	</text>
-	<text x="51.5" y="203" text-anchor="middle" font-size="10" font-family="Verdana">-4
+	<text x="51.5" y="203">-4
 	</text>
 </g>
 	<g id="xLabel">
@@ -93,18 +93,18 @@ M51.5,185 L51.5,190
 	</text>
 </g>
 	<g id="plotPoints">
-	<g stroke="rgb(0,0,0)">
-	<text x="125" y="180" text-anchor="middle">&#x25CF;
+	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<text x="125" y="181">&#x25CF;
 	</text>
-	<text x="235" y="180" text-anchor="middle">&#x25CF;
+	<text x="235" y="181">&#x25CF;
 	</text>
-	<text x="304" y="180" text-anchor="middle">&#x25CF;
+	<text x="304" y="181">&#x25CF;
 	</text>
-	<text x="174" y="180" text-anchor="middle">&#x25CF;
+	<text x="174" y="181">&#x25CF;
 	</text>
-	<text x="339" y="180" text-anchor="middle">&#x25CF;
+	<text x="339" y="181">&#x25CF;
 	</text>
-	<text x="374" y="180" text-anchor="middle">&#x25CF;
+	<text x="374" y="181">&#x25CF;
 	</text>
 </g>
 </g>
@@ -114,32 +114,32 @@ M51.5,185 L51.5,190
 </g>
 	<g id="plotXValues" fill="rgb(255,0,0)">
 	<g>
-	<text x="129" y="176" transform="rotate(-60 129 176)" font-size="14" font-family="Times New Roman">[ x = -1.60
+	<text x="139" y="177" transform="rotate(-60 139 177)" font-size="14" font-family="Times New Roman"> [ x = -1.60
 		<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
 	</text>
 </g>
 	<g>
-	<text x="239" y="176" transform="rotate(-60 239 176)" font-size="14" font-family="Times New Roman">[ x = +2.00
+	<text x="249" y="177" transform="rotate(-60 249 177)" font-size="14" font-family="Times New Roman"> [ x = +2.00
 		<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
 	</text>
 </g>
 	<g>
-	<text x="308" y="176" transform="rotate(-60 308 176)" font-size="14" font-family="Times New Roman">[ x = +4.26
+	<text x="318" y="177" transform="rotate(-60 318 177)" font-size="14" font-family="Times New Roman"> [ x = +4.26
 		<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
 	</text>
 </g>
 	<g>
-	<text x="178" y="176" transform="rotate(-60 178 176)" font-size="14" font-family="Times New Roman">[ x = +3.34e-3
+	<text x="188" y="177" transform="rotate(-60 188 177)" font-size="14" font-family="Times New Roman"> [ x = +3.34e-3
 		<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
 	</text>
 </g>
 	<g>
-	<text x="343" y="176" transform="rotate(-60 343 176)" font-size="14" font-family="Times New Roman">[ x = +5.40
+	<text x="353" y="177" transform="rotate(-60 353 177)" font-size="14" font-family="Times New Roman"> [ x = +5.40
 		<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
 	</text>
 </g>
 	<g>
-	<text x="378" y="176" transform="rotate(-60 378 176)" font-size="14" font-family="Times New Roman">[ x = +6.56
+	<text x="388" y="177" transform="rotate(-60 388 177)" font-size="14" font-family="Times New Roman"> [ x = +6.56
 		<tspan font-size="14" font-family="Times New Roman">&#x00A0;sec]</tspan>
 	</text>
 </g>

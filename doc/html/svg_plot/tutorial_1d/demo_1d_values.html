@@ -26,7 +26,7 @@
         1D Data Values Examples</a>
       </h5>
 <p>
-        Showing the 1D values of items from the data set. Some of the many possible
+        Showing the 1-D values of items from the data set. Some of the many possible
         formatting options are demonstrated.
       </p>
 <pre class="programlisting"><span class="identifier">As</span> <span class="identifier">ever</span><span class="special">,</span> <span class="identifier">we</span> <span class="identifier">need</span> <span class="identifier">a</span> <span class="identifier">few</span> <span class="identifier">includes</span> <span class="identifier">to</span> <span class="identifier">use</span> <span class="identifier">Boost</span><span class="special">.</span><span class="identifier">Plot</span>
@@ -73,7 +73,7 @@
 <pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">my_data</span><span class="special">,</span> <span class="string">"1D Values"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">circlet</span><span class="special">).</span><span class="identifier">size</span><span class="special">(</span><span class="number">5</span><span class="special">);</span>
 </pre>
 <p>
-        To put a value label against each data point, switch on the option:
+        To put a value-label against each data point, switch on the option:
       </p>
 <pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// Add a label for the X-axis.</span>
 </pre>
@@ -81,8 +81,8 @@
         If the default size and color are not to your taste, set more options, like:
       </p>
 <pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">size</span><span class="special">(</span><span class="number">500</span><span class="special">,</span> <span class="number">350</span><span class="special">)</span> <span class="comment">// Change from default size</span>
-  <span class="special">.</span><span class="identifier">x_values_font_size</span><span class="special">(</span><span class="number">14</span><span class="special">)</span> <span class="comment">// Change font size for the X-axis value labels.</span>
-  <span class="special">.</span><span class="identifier">x_values_font_family</span><span class="special">(</span><span class="string">"Times New Roman"</span><span class="special">)</span> <span class="comment">// Change font for the X-axis value labels.</span>
+  <span class="special">.</span><span class="identifier">x_values_font_size</span><span class="special">(</span><span class="number">14</span><span class="special">)</span> <span class="comment">// Change font size for the X-axis value-labels.</span>
+  <span class="special">.</span><span class="identifier">x_values_font_family</span><span class="special">(</span><span class="string">"Times New Roman"</span><span class="special">)</span> <span class="comment">// Change font for the X-axis value-labels.</span>
   <span class="special">.</span><span class="identifier">x_values_color</span><span class="special">(</span><span class="identifier">red</span><span class="special">);</span> <span class="comment">// Change color from default black to red.</span>
 </pre>
 <p>
@@ -95,7 +95,7 @@
         are very close to each other, a higher precision wil be needed to differentiate
         them).
       </p>
-<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_precision</span><span class="special">(</span><span class="number">2</span><span class="special">);</span> <span class="comment">// precision label for the X-axis value label.</span>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_precision</span><span class="special">(</span><span class="number">2</span><span class="special">);</span> <span class="comment">// precision label for the X-axis value-label.</span>
 </pre>
 <p>
         We can also prescribe the use of scientific format and force a positive sign:
@@ -113,7 +113,7 @@
         of the values.
       </p>
 <p>
-        The default value label is horizontal, centered above the data point marker,
+        The default value-label is horizontal, centered above the data point marker,
         but, depending on the type and density of data points, and the length of
         the values (controlled in turn by the <code class="computeroutput"><span class="identifier">precision</span></code>
         and <code class="computeroutput"><span class="identifier">ioflags</span></code> in use), it is
@@ -138,9 +138,9 @@
         the horizontal Y-axis line, but for 2-D plots all writing orientations can
         be useful).
       </p>
-<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_rotation</span><span class="special">(</span><span class="identifier">steepup</span><span class="special">);</span> <span class="comment">// Orientation for the X-axis value labels.</span>
+<pre class="programlisting"><span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_rotation</span><span class="special">(</span><span class="identifier">steepup</span><span class="special">);</span> <span class="comment">// Orientation for the X-axis value-labels, nearly vertical.</span>
 
-<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_decor</span><span class="special">(</span><span class="string">"[ x = "</span><span class="special">,</span> <span class="string">""</span><span class="special">,</span> <span class="string">"&amp;#x00A0;sec]"</span><span class="special">);</span> <span class="comment">// Note the need for a Unicode space A0.</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_decor</span><span class="special">(</span><span class="string">" [ x = "</span><span class="special">,</span> <span class="string">""</span><span class="special">,</span> <span class="string">"&amp;#x00A0;sec]"</span><span class="special">);</span> <span class="comment">// Note the need for a Unicode space A0 as &amp;#x00A0; .</span>
 </pre>
 <p>
         To use all these settings, finally write the plot to file.
@@ -166,15 +166,15 @@
 <pre class="programlisting"><span class="identifier">Output</span><span class="special">:</span>
 
 <span class="identifier">demo_1d_values</span><span class="special">.</span><span class="identifier">cpp</span>
-<span class="identifier">Linking</span><span class="special">...</span>
-<span class="identifier">Embedding</span> <span class="identifier">manifest</span><span class="special">...</span>
-<span class="identifier">Autorun</span> <span class="string">"j:\Cpp\SVG\debug\demo_1d_values.exe"</span>
- <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_font_size</span><span class="special">()</span> <span class="number">14</span>
+<span class="identifier">Plot</span> <span class="identifier">written</span> <span class="identifier">to</span> <span class="identifier">file</span> <span class="identifier">demo_1d_values</span><span class="special">.</span><span class="identifier">svg</span><span class="special">.</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">image_size</span><span class="special">()</span> <span class="number">500</span><span class="special">,</span> <span class="number">350</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">image</span> <span class="identifier">x_size</span><span class="special">()</span> <span class="number">500</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">image</span> <span class="identifier">y_size</span><span class="special">()</span> <span class="number">350</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_font_size</span><span class="special">()</span> <span class="number">14</span>
 <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_font_family</span><span class="special">()</span> <span class="identifier">Times</span> <span class="identifier">New</span> <span class="identifier">Roman</span>
 <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_color</span><span class="special">()</span> <span class="identifier">RGB</span><span class="special">(</span><span class="number">255</span><span class="special">,</span><span class="number">0</span><span class="special">,</span><span class="number">0</span><span class="special">)</span>
 <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_precision</span><span class="special">()</span> <span class="number">2</span>
- <span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_ioflags</span><span class="special">()</span> <span class="number">1020</span>
-<span class="identifier">Build</span> <span class="identifier">Time</span> <span class="number">0</span><span class="special">:</span><span class="number">03</span>
+<span class="identifier">my_1d_plot</span><span class="special">.</span><span class="identifier">x_values_ioflags</span><span class="special">()</span> <span class="number">1020</span>
 </pre>
 <h5>
 <a name="svg_plot.tutorial_1d.demo_1d_values.h1"></a>
@@ -277,7 +277,8 @@
 <span class="identifier">Build</span> <span class="identifier">Time</span> <span class="number">0</span><span class="special">:</span><span class="number">04</span>
 </pre>
 <p>
-        <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/demo_1d_limits.svg"></object></span> See <a href="../../../../example/demo_1d_limits.cpp" target="_top">demo_1d_limits.cpp</a>
+        <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/demo_1d_limits.svg" width="500" height="200"></object></span>
+        See <a href="../../../../example/demo_1d_limits.cpp" target="_top">demo_1d_limits.cpp</a>
         for full source code and sample output.
       </p>
 </div>

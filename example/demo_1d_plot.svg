@@ -113,12 +113,12 @@ M334,126.3 L334,146.3
 M65.72,126.3 L65.72,146.3 
 " fill="none"/>
 </g>
-	<g id="xTicksValues">
-	<text x="155.2" y="159.3" text-anchor="middle" font-size="10" font-family="Verdana">2
+	<g id="xTicksValues" font-size="10" font-family="Verdana" text-anchor="middle">
+	<text x="155.2" y="159.3">2
 	</text>
-	<text x="244.6" y="159.3" text-anchor="middle" font-size="10" font-family="Verdana">4
+	<text x="244.6" y="159.3">4
 	</text>
-	<text x="334" y="159.3" text-anchor="middle" font-size="10" font-family="Verdana">6
+	<text x="334" y="159.3">6
 	</text>
 </g>
 	<g id="xLabel" stroke="rgb(0,0,255)" fill="rgb(0,0,255)">
@@ -126,43 +126,43 @@ M65.72,126.3 L65.72,146.3
 	</text>
 </g>
 	<g id="plotPoints">
-	<g stroke="rgb(255,0,0)" fill="rgb(0,0,255)">
-	<text x="97.02" y="131.2" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
+	<g stroke="rgb(255,0,0)" fill="rgb(0,0,255)" font-size="10" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<text x="97.02" y="129.2" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
 	</text>
-	<text x="177.5" y="131.2" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
+	<text x="177.5" y="129.2" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
 	</text>
-	<text x="325.1" y="131.2" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
-	</text>
-</g>
-	<g stroke="rgb(0,0,0)">
-	<text x="110.4" y="134.1">
-	</text>
-	<text x="155.2" y="134.1">
-	</text>
-	<text x="199.9" y="134.1">
-	</text>
-	<text x="334" y="134.1">
-	</text>
-	<text x="378.8" y="134.1">
+	<text x="325.1" y="129.2" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
 	</text>
 </g>
-	<g stroke="rgb(255,0,255)" fill="rgb(0,255,255)">
-	<text x="65.72" y="129.7" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
+	<g stroke="rgb(0,0,0)" font-size="20" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<text x="110.4" y="122.1">
 	</text>
-	<text x="21" y="129.7" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
+	<text x="155.2" y="122.1">
 	</text>
-	<text x="110.4" y="129.7" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
+	<text x="199.9" y="122.1">
 	</text>
-	<text x="65.72" y="129.7" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
+	<text x="334" y="122.1">
+	</text>
+	<text x="378.8" y="122.1">
+	</text>
+</g>
+	<g stroke="rgb(255,0,255)" fill="rgb(0,255,255)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<text x="65.72" y="115.2" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
+	</text>
+	<text x="21" y="115.2" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
+	</text>
+	<text x="110.4" y="115.2" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
+	</text>
+	<text x="65.72" y="115.2" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
 	</text>
 </g>
 </g>
 	<g id="limitPoints" stroke="rgb(255,0,0)" fill="rgb(255,255,255)">
-	<text x="383.8" y="149.2" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
+	<text x="383.8" y="134.7" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
 	</text>
-	<text x="65.72" y="152.1" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">&#x25BF;
+	<text x="65.72" y="137.6" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">&#x25BF;
 	</text>
-	<text x="383.8" y="149.2" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
+	<text x="383.8" y="134.7" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
 	</text>
 </g>
 	<g id="legendBackground" stroke="rgb(210,105,30)" fill="rgb(245,245,220)" stroke-width="1">

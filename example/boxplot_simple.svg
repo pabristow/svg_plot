@@ -140,13 +140,13 @@ M64.6,284 L66.6,284
 </g>
 	<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
 	<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
-	<text x="207" y="159" text-anchor="middle">&#x25CF;
+	<text x="207" y="159">&#x25CF;
 	</text>
-	<text x="207" y="172" text-anchor="middle">&#x25CF;
+	<text x="207" y="172">&#x25CF;
 	</text>
-	<text x="207" y="182" text-anchor="middle">&#x25CF;
+	<text x="207" y="182">&#x25CF;
 	</text>
-	<text x="207" y="191" text-anchor="middle">&#x25CF;
+	<text x="207" y="191">&#x25CF;
 	</text>
 </g>
 </g>

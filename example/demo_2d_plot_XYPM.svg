@@ -185,26 +185,26 @@ M103,255 L103,265
 M53.5,255 L53.5,265 
 " fill="none"/>
 </g>
-	<g id="xTicksValues">
-	<text x="350" y="281" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">2.00
+	<g id="xTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<text x="350" y="281">2.00
 	</text>
-	<text x="400" y="281" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">4.00
+	<text x="400" y="281">4.00
 	</text>
-	<text x="449" y="281" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">6.00
+	<text x="449" y="281">6.00
 	</text>
-	<text x="499" y="281" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">8.00
+	<text x="499" y="281">8.00
 	</text>
-	<text x="548" y="281" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">1.00e1
+	<text x="548" y="281">1.00e1
 	</text>
-	<text x="251" y="281" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-2.00
+	<text x="251" y="281">-2.00
 	</text>
-	<text x="202" y="281" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-4.00
+	<text x="202" y="281">-4.00
 	</text>
-	<text x="152" y="281" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-6.00
+	<text x="152" y="281">-6.00
 	</text>
-	<text x="103" y="281" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-8.00
+	<text x="103" y="281">-8.00
 	</text>
-	<text x="53.5" y="281" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">-1.00e1
+	<text x="53.5" y="281">-1.00e1
 	</text>
 </g>
 	<g id="yTicksValues" font-size="12" font-family="Lucida Sans Unicode" text-anchor="end">
@@ -244,41 +244,41 @@ M53.5,255 L53.5,265
 </g>
 	<g id="plotPoints" clip-path="url(#plot_window)">
 	<g stroke="rgb(0,0,0)" fill="rgb(255,0,0)" font-size="14" font-family="Lucida Sans Unicode" text-anchor="middle">
-	<text x="301" y="259" text-anchor="middle">&#x25CF;
+	<text x="301" y="259">&#x25CF;
 	</text>
-	<text x="326" y="238" text-anchor="middle">&#x25CF;
+	<text x="326" y="238">&#x25CF;
 	</text>
-	<text x="350" y="229" text-anchor="middle">&#x25CF;
+	<text x="350" y="229">&#x25CF;
 	</text>
-	<text x="375" y="222" text-anchor="middle">&#x25CF;
+	<text x="375" y="222">&#x25CF;
 	</text>
-	<text x="400" y="217" text-anchor="middle">&#x25CF;
+	<text x="400" y="217">&#x25CF;
 	</text>
-	<text x="425" y="212" text-anchor="middle">&#x25CF;
+	<text x="425" y="212">&#x25CF;
 	</text>
-	<text x="449" y="207" text-anchor="middle">&#x25CF;
+	<text x="449" y="207">&#x25CF;
 	</text>
-	<text x="474" y="203" text-anchor="middle">&#x25CF;
+	<text x="474" y="203">&#x25CF;
 	</text>
-	<text x="499" y="199" text-anchor="middle">&#x25CF;
+	<text x="499" y="199">&#x25CF;
 	</text>
-	<text x="524" y="196" text-anchor="middle">&#x25CF;
+	<text x="524" y="196">&#x25CF;
 	</text>
 </g>
 	<g stroke="rgb(0,0,0)" fill="rgb(255,165,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
-	<text x="227" y="108" text-anchor="middle">&#x25CF;
+	<text x="227" y="108">&#x25CF;
 	</text>
-	<text x="251" y="214" text-anchor="middle">&#x25CF;
+	<text x="251" y="214">&#x25CF;
 	</text>
-	<text x="276" y="278" text-anchor="middle">&#x25CF;
+	<text x="276" y="278">&#x25CF;
 	</text>
-	<text x="301" y="299" text-anchor="middle">&#x25CF;
+	<text x="301" y="299">&#x25CF;
 	</text>
-	<text x="326" y="278" text-anchor="middle">&#x25CF;
+	<text x="326" y="278">&#x25CF;
 	</text>
-	<text x="350" y="214" text-anchor="middle">&#x25CF;
+	<text x="350" y="214">&#x25CF;
 	</text>
-	<text x="375" y="108" text-anchor="middle">&#x25CF;
+	<text x="375" y="108">&#x25CF;
 	</text>
 </g>
 	<g stroke="rgb(0,0,0)" fill="rgb(255,255,0)" font-size="14" font-family="Lucida Sans Unicode" text-anchor="middle">
@@ -321,11 +321,11 @@ M53.5,255 L53.5,265
 </g>
 	<g id="legendPoints">
 	<g stroke="rgb(0,0,0)" fill="rgb(255,0,0)">
-	<text x="572" y="93.5" text-anchor="middle">&#x25CF;
+	<text x="572" y="93.5">&#x25CF;
 	</text>
 </g>
 	<g stroke="rgb(0,0,0)" fill="rgb(255,165,0)">
-	<text x="572" y="106" text-anchor="middle">&#x25CF;
+	<text x="572" y="106">&#x25CF;
 	</text>
 </g>
 	<g stroke="rgb(0,0,0)" fill="rgb(255,255,0)">

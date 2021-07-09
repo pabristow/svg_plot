@@ -85,26 +85,26 @@ M66.8,110 L66.8,115
 M21,110 L21,115 
 " fill="none"/>
 </g>
-	<g id="xTicksValues">
-	<text x="296" y="128" text-anchor="middle" font-size="10" font-family="Verdana">2
+	<g id="xTicksValues" font-size="10" font-family="Verdana" text-anchor="middle">
+	<text x="296" y="128">2
 	</text>
-	<text x="342" y="128" text-anchor="middle" font-size="10" font-family="Verdana">4
+	<text x="342" y="128">4
 	</text>
-	<text x="387" y="128" text-anchor="middle" font-size="10" font-family="Verdana">6
+	<text x="387" y="128">6
 	</text>
-	<text x="433" y="128" text-anchor="middle" font-size="10" font-family="Verdana">8
+	<text x="433" y="128">8
 	</text>
-	<text x="479" y="128" text-anchor="middle" font-size="10" font-family="Verdana">10
+	<text x="479" y="128">10
 	</text>
-	<text x="204" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-2
+	<text x="204" y="128">-2
 	</text>
-	<text x="158" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-4
+	<text x="158" y="128">-4
 	</text>
-	<text x="113" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-6
+	<text x="113" y="128">-6
 	</text>
-	<text x="66.8" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-8
+	<text x="66.8" y="128">-8
 	</text>
-	<text x="21" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-10
+	<text x="21" y="128">-10
 	</text>
 </g>
 	<g id="xLabel">
@@ -112,12 +112,12 @@ M21,110 L21,115
 	</text>
 </g>
 	<g id="plotPoints">
-	<g stroke="rgb(0,0,0)">
-	<line x1="429" y1="109" x2="429" y2="99"/>
-	<line x1="378" y1="109" x2="378" y2="99"/>
-	<line x1="252" y1="109" x2="252" y2="99"/>
-	<line x1="197" y1="109" x2="197" y2="99"/>
-	<line x1="57.6" y1="109" x2="57.6" y2="99"/>
+	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<line x1="429" y1="110" x2="429" y2="99.5"/>
+	<line x1="378" y1="110" x2="378" y2="99.5"/>
+	<line x1="252" y1="110" x2="252" y2="99.5"/>
+	<line x1="197" y1="110" x2="197" y2="99.5"/>
+	<line x1="57.6" y1="110" x2="57.6" y2="99.5"/>
 </g>
 </g>
 	<g id="title">

@@ -59,14 +59,14 @@ M158,110 L158,115
 M66.8,110 L66.8,115 
 " fill="none"/>
 </g>
-	<g id="xTicksValues">
-	<text x="342" y="128" text-anchor="middle" font-size="10" font-family="Verdana">2
+	<g id="xTicksValues" font-size="10" font-family="Verdana" text-anchor="middle">
+	<text x="342" y="128">2
 	</text>
-	<text x="433" y="128" text-anchor="middle" font-size="10" font-family="Verdana">4
+	<text x="433" y="128">4
 	</text>
-	<text x="158" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-2
+	<text x="158" y="128">-2
 	</text>
-	<text x="66.8" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-4
+	<text x="66.8" y="128">-4
 	</text>
 </g>
 	<g id="xLabel">
@@ -74,14 +74,14 @@ M66.8,110 L66.8,115
 	</text>
 </g>
 	<g id="plotPoints">
-	<g stroke="rgb(0,0,0)">
-	<text x="177" y="105" text-anchor="middle">&#x25CF;
+	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<text x="177" y="106">&#x25CF;
 	</text>
-	<text x="342" y="105" text-anchor="middle">&#x25CF;
+	<text x="342" y="106">&#x25CF;
 	</text>
-	<text x="445" y="105" text-anchor="middle">&#x25CF;
+	<text x="445" y="106">&#x25CF;
 	</text>
-	<text x="66.8" y="105" text-anchor="middle">&#x25CF;
+	<text x="66.8" y="106">&#x25CF;
 	</text>
 </g>
 </g>
@@ -99,19 +99,19 @@ M66.8,110 L66.8,115
 </g>
 	<g id="plotXValues">
 	<g>
-	<text x="177" y="94" text-anchor="middle" font-size="10" font-family="Verdana">-1.6
+	<text x="177" y="100" text-anchor="middle" font-size="10" font-family="Verdana">-1.6
 	</text>
 </g>
 	<g>
-	<text x="342" y="94" text-anchor="middle" font-size="10" font-family="Verdana">2
+	<text x="342" y="100" text-anchor="middle" font-size="10" font-family="Verdana">2
 	</text>
 </g>
 	<g>
-	<text x="445" y="94" text-anchor="middle" font-size="10" font-family="Verdana">4.26
+	<text x="445" y="100" text-anchor="middle" font-size="10" font-family="Verdana">4.26
 	</text>
 </g>
 	<g>
-	<text x="66.8" y="94" text-anchor="middle" font-size="10" font-family="Verdana">-4
+	<text x="66.8" y="100" text-anchor="middle" font-size="10" font-family="Verdana">-4
 	</text>
 </g>
 </g>

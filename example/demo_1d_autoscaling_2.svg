@@ -115,38 +115,38 @@ M479,100 L479,105
 M21,100 L21,105 
 " fill="none"/>
 </g>
-	<g id="xTicksValues">
-	<text x="49.6" y="118" text-anchor="middle" font-size="10" font-family="Verdana">0.5
+	<g id="xTicksValues" font-size="10" font-family="Verdana" text-anchor="middle">
+	<text x="49.6" y="118">0.5
 	</text>
-	<text x="78.3" y="118" text-anchor="middle" font-size="10" font-family="Verdana">1
+	<text x="78.3" y="118">1
 	</text>
-	<text x="107" y="118" text-anchor="middle" font-size="10" font-family="Verdana">1.5
+	<text x="107" y="118">1.5
 	</text>
-	<text x="136" y="118" text-anchor="middle" font-size="10" font-family="Verdana">2
+	<text x="136" y="118">2
 	</text>
-	<text x="164" y="118" text-anchor="middle" font-size="10" font-family="Verdana">2.5
+	<text x="164" y="118">2.5
 	</text>
-	<text x="193" y="118" text-anchor="middle" font-size="10" font-family="Verdana">3
+	<text x="193" y="118">3
 	</text>
-	<text x="221" y="118" text-anchor="middle" font-size="10" font-family="Verdana">3.5
+	<text x="221" y="118">3.5
 	</text>
-	<text x="250" y="118" text-anchor="middle" font-size="10" font-family="Verdana">4
+	<text x="250" y="118">4
 	</text>
-	<text x="279" y="118" text-anchor="middle" font-size="10" font-family="Verdana">4.5
+	<text x="279" y="118">4.5
 	</text>
-	<text x="307" y="118" text-anchor="middle" font-size="10" font-family="Verdana">5
+	<text x="307" y="118">5
 	</text>
-	<text x="336" y="118" text-anchor="middle" font-size="10" font-family="Verdana">5.5
+	<text x="336" y="118">5.5
 	</text>
-	<text x="365" y="118" text-anchor="middle" font-size="10" font-family="Verdana">6
+	<text x="365" y="118">6
 	</text>
-	<text x="393" y="118" text-anchor="middle" font-size="10" font-family="Verdana">6.5
+	<text x="393" y="118">6.5
 	</text>
-	<text x="422" y="118" text-anchor="middle" font-size="10" font-family="Verdana">7
+	<text x="422" y="118">7
 	</text>
-	<text x="450" y="118" text-anchor="middle" font-size="10" font-family="Verdana">7.5
+	<text x="450" y="118">7.5
 	</text>
-	<text x="479" y="118" text-anchor="middle" font-size="10" font-family="Verdana">8
+	<text x="479" y="118">8
 	</text>
 </g>
 	<g id="xLabel">
@@ -154,13 +154,13 @@ M21,100 L21,105
 	</text>
 </g>
 	<g id="plotPoints">
-	<g stroke="rgb(0,0,0)">
-	<line x1="153" y1="99.5" x2="153" y2="89.5"/>
-	<line x1="216" y1="99.5" x2="216" y2="89.5"/>
-	<line x1="279" y1="99.5" x2="279" y2="89.5"/>
-	<line x1="342" y1="99.5" x2="342" y2="89.5"/>
-	<line x1="405" y1="99.5" x2="405" y2="89.5"/>
-	<line x1="468" y1="99.5" x2="468" y2="89.5"/>
+	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<line x1="153" y1="100" x2="153" y2="90"/>
+	<line x1="216" y1="100" x2="216" y2="90"/>
+	<line x1="279" y1="100" x2="279" y2="90"/>
+	<line x1="342" y1="100" x2="342" y2="90"/>
+	<line x1="405" y1="100" x2="405" y2="90"/>
+	<line x1="468" y1="100" x2="468" y2="90"/>
 </g>
 </g>
 	<g id="title">

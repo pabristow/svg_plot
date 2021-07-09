@@ -127,11 +127,11 @@ M79,63.5 L81,63.5
 </g>
 	<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
 	<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
-	<text x="285" y="257" text-anchor="middle">&#x25CF;
+	<text x="285" y="257">&#x25CF;
 	</text>
-	<text x="285" y="87" text-anchor="middle">&#x25CF;
+	<text x="285" y="87">&#x25CF;
 	</text>
-	<text x="285" y="97.2" text-anchor="middle">&#x25CF;
+	<text x="285" y="97.2">&#x25CF;
 	</text>
 </g>
 </g>

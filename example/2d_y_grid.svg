@@ -251,17 +251,17 @@ M81.1,369 L81.1,374
 </g>
 	<g id="plotPoints" clip-path="url(#plot_window)">
 	<g stroke="rgb(0,0,255)" fill="rgb(255,0,0)" font-size="14" font-family="Lucida Sans Unicode" text-anchor="middle">
-	<text x="110" y="156" text-anchor="middle">&#x25CF;
+	<text x="110" y="156">&#x25CF;
 	</text>
-	<text x="138" y="119" text-anchor="middle">&#x25CF;
+	<text x="138" y="119">&#x25CF;
 	</text>
-	<text x="289" y="58.4" text-anchor="middle">&#x25CF;
+	<text x="289" y="58.4">&#x25CF;
 	</text>
 </g>
 	<g stroke="rgb(255,165,0)" fill="rgb(255,255,255)" font-size="14" font-family="Lucida Sans Unicode" text-anchor="middle">
-	<text x="170" y="108" text-anchor="middle">&#x25CF;
+	<text x="170" y="108">&#x25CF;
 	</text>
-	<text x="235" y="93" text-anchor="middle">&#x25CF;
+	<text x="235" y="93">&#x25CF;
 	</text>
 </g>
 </g>
@@ -270,11 +270,11 @@ M81.1,369 L81.1,374
 </g>
 	<g id="legendPoints">
 	<g stroke="rgb(0,0,255)" fill="rgb(255,0,0)">
-	<text x="415" y="60.8" text-anchor="middle">&#x25CF;
+	<text x="415" y="60.8">&#x25CF;
 	</text>
 </g>
 	<g stroke="rgb(255,165,0)" fill="rgb(255,255,255)">
-	<text x="415" y="74.8" text-anchor="middle">&#x25CF;
+	<text x="415" y="74.8">&#x25CF;
 	</text>
 </g>
 </g>

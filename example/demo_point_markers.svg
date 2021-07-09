@@ -85,26 +85,26 @@ M66.8,110 L66.8,115
 M21,110 L21,115 
 " fill="none"/>
 </g>
-	<g id="xTicksValues">
-	<text x="296" y="128" text-anchor="middle" font-size="10" font-family="Verdana">2
+	<g id="xTicksValues" font-size="10" font-family="Verdana" text-anchor="middle">
+	<text x="296" y="128">2
 	</text>
-	<text x="342" y="128" text-anchor="middle" font-size="10" font-family="Verdana">4
+	<text x="342" y="128">4
 	</text>
-	<text x="387" y="128" text-anchor="middle" font-size="10" font-family="Verdana">6
+	<text x="387" y="128">6
 	</text>
-	<text x="433" y="128" text-anchor="middle" font-size="10" font-family="Verdana">8
+	<text x="433" y="128">8
 	</text>
-	<text x="479" y="128" text-anchor="middle" font-size="10" font-family="Verdana">10
+	<text x="479" y="128">10
 	</text>
-	<text x="204" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-2
+	<text x="204" y="128">-2
 	</text>
-	<text x="158" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-4
+	<text x="158" y="128">-4
 	</text>
-	<text x="113" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-6
+	<text x="113" y="128">-6
 	</text>
-	<text x="66.8" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-8
+	<text x="66.8" y="128">-8
 	</text>
-	<text x="21" y="128" text-anchor="middle" font-size="10" font-family="Verdana">-10
+	<text x="21" y="128">-10
 	</text>
 </g>
 	<g id="xLabel">
@@ -112,37 +112,37 @@ M21,110 L21,115
 	</text>
 </g>
 	<g id="plotPoints">
-	<g stroke="rgb(255,0,0)" fill="rgb(0,0,255)">
-	<text x="21" y="107" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
+	<g stroke="rgb(255,0,0)" fill="rgb(0,0,255)" font-size="10" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<text x="21" y="105" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
 	</text>
-	<text x="43.9" y="107" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
+	<text x="43.9" y="105" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
 	</text>
-	<text x="227" y="107" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
+	<text x="227" y="105" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
 	</text>
-	<text x="278" y="107" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
+	<text x="278" y="105" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
 	</text>
-	<text x="296" y="107" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
+	<text x="296" y="105" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
 	</text>
-	<text x="435" y="107" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
+	<text x="435" y="105" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x2666;
 	</text>
 </g>
-	<g stroke="rgb(0,0,255)" fill="rgb(255,0,0)">
-	<text x="113" y="107" text-anchor="middle">&#x25CF;
+	<g stroke="rgb(0,0,255)" fill="rgb(255,0,0)" font-size="10" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<text x="113" y="99.9">&#x25CF;
 	</text>
-	<text x="158" y="107" text-anchor="middle">&#x25CF;
+	<text x="158" y="99.9">&#x25CF;
 	</text>
-	<text x="342" y="107" text-anchor="middle">&#x25CF;
+	<text x="342" y="99.9">&#x25CF;
 	</text>
-	<text x="387" y="107" text-anchor="middle">&#x25CF;
+	<text x="387" y="99.9">&#x25CF;
 	</text>
 </g>
 </g>
 	<g id="limitPoints" stroke="rgb(0,128,0)" fill="rgb(255,255,255)">
-	<text x="16" y="113" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25C3;
+	<text x="16" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25C3;
 	</text>
-	<text x="484" y="113" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
+	<text x="484" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
 	</text>
-	<text x="250" y="116" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">&#x25BF;
+	<text x="250" y="109" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">&#x25BF;
 	</text>
 </g>
 	<g id="title">
@@ -151,43 +151,43 @@ M21,110 L21,115
 </g>
 	<g id="plotXValues" fill="rgb(255,0,0)">
 	<g>
-	<text x="25" y="98" transform="rotate(-60 25 98)" font-size="14" font-family="Times New Roman">-10
+	<text x="35" y="97" transform="rotate(-60 35 97)" font-size="14" font-family="Times New Roman">-10
 	</text>
 </g>
 	<g>
-	<text x="47.9" y="98" transform="rotate(-60 47.9 98)" font-size="14" font-family="Times New Roman">-9
+	<text x="57.9" y="97" transform="rotate(-60 57.9 97)" font-size="14" font-family="Times New Roman">-9
 	</text>
 </g>
 	<g>
-	<text x="231" y="98" transform="rotate(-60 231 98)" font-size="14" font-family="Times New Roman">-1
+	<text x="241" y="97" transform="rotate(-60 241 97)" font-size="14" font-family="Times New Roman">-1
 	</text>
 </g>
 	<g>
-	<text x="282" y="98" transform="rotate(-60 282 98)" font-size="14" font-family="Times New Roman">1.23
+	<text x="292" y="97" transform="rotate(-60 292 97)" font-size="14" font-family="Times New Roman">1.23
 	</text>
 </g>
 	<g>
-	<text x="300" y="98" transform="rotate(-60 300 98)" font-size="14" font-family="Times New Roman">2
+	<text x="310" y="97" transform="rotate(-60 310 97)" font-size="14" font-family="Times New Roman">2
 	</text>
 </g>
 	<g>
-	<text x="439" y="98" transform="rotate(-60 439 98)" font-size="14" font-family="Times New Roman">8.1
+	<text x="449" y="97" transform="rotate(-60 449 97)" font-size="14" font-family="Times New Roman">8.1
 	</text>
 </g>
 	<g>
-	<text x="117" y="98" transform="rotate(-60 117 98)" font-size="14" font-family="Times New Roman">-6
+	<text x="127" y="92" transform="rotate(-60 127 92)" font-size="14" font-family="Times New Roman">-6
 	</text>
 </g>
 	<g>
-	<text x="162" y="98" transform="rotate(-60 162 98)" font-size="14" font-family="Times New Roman">-4
+	<text x="172" y="92" transform="rotate(-60 172 92)" font-size="14" font-family="Times New Roman">-4
 	</text>
 </g>
 	<g>
-	<text x="346" y="98" transform="rotate(-60 346 98)" font-size="14" font-family="Times New Roman">4
+	<text x="356" y="92" transform="rotate(-60 356 92)" font-size="14" font-family="Times New Roman">4
 	</text>
 </g>
 	<g>
-	<text x="391" y="98" transform="rotate(-60 391 98)" font-size="14" font-family="Times New Roman">6
+	<text x="401" y="92" transform="rotate(-60 401 92)" font-size="14" font-family="Times New Roman">6
 	</text>
 </g>
 </g>

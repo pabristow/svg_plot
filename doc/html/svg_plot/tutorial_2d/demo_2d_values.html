@@ -42,7 +42,7 @@
 <span class="comment">//  using std::map;</span>
 </pre>
 <p>
-        Some fictional data is pushed into an STL container, here map:
+        Some fictional data is pushed into an STL container, here std::map:
       </p>
 <pre class="programlisting"><span class="keyword">try</span>
 <span class="special">{</span> <span class="comment">// try'n'catch blocks are needed to ensure error messages from any exceptions are shown.</span>
@@ -58,8 +58,8 @@
         ] is the x value.
       </p>
 <pre class="programlisting"><span class="identifier">my_data</span><span class="special">[</span><span class="number">1.1</span><span class="special">]</span> <span class="special">=</span> <span class="number">3.2</span><span class="special">;</span>  <span class="comment">// X = 1.1 and Y = 3.2.</span>
-<span class="identifier">my_data</span><span class="special">[</span><span class="number">7.3</span><span class="special">]</span> <span class="special">=</span> <span class="number">9.1</span><span class="special">;</span> <span class="comment">// </span>
-<span class="identifier">my_data</span><span class="special">[</span><span class="number">2.12</span><span class="special">]</span> <span class="special">=</span> <span class="number">2.4394</span><span class="special">;</span>
+<span class="identifier">my_data</span><span class="special">[</span><span class="number">7.3</span><span class="special">]</span> <span class="special">=</span> <span class="number">8.1</span><span class="special">;</span> <span class="comment">// </span>
+<span class="identifier">my_data</span><span class="special">[-</span><span class="number">2.12</span><span class="special">]</span> <span class="special">=</span> <span class="special">-</span><span class="number">2.4394</span><span class="special">;</span>
 <span class="identifier">my_data</span><span class="special">[</span><span class="number">5.47</span><span class="special">]</span> <span class="special">=</span> <span class="number">5.3861</span><span class="special">;</span>
 
 <span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">svg_2d_plot</span><span class="special">;</span>  <span class="comment">// This is needed to construct, setup and output the 2D plot in SVG format.</span>
@@ -125,14 +125,19 @@
         )
       </p>
 <p>
-        In general, sticking to the default ioflags usually produces the neatest
-        presentation of values.
+        In general, sticking to the default <code class="computeroutput"><span class="identifier">ioflags</span></code>
+        usually produces the neatest presentation of values.
       </p>
-<pre class="programlisting"><span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_plusminus_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// unc label for the X-axis value-label.</span>
-<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_df_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// Degrees of freedom label for the X-axis value-label.</span>
+<p>
+        The uncertainty information about the values can also be shown, but none
+        is available for our demonstration values, so would show just implicit zero
+        degrees of freedom.
+      </p>
+<pre class="programlisting"><span class="comment">//my_2d_plot.x_plusminus_on(true); // Uncertainty label for the X-axis value-label.</span>
+<span class="comment">//my_2d_plot.x_df_on(true); // Degrees of freedom label for the X-axis value-label.</span>
 
-<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_plusminus_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// unc label for the X-axis value-label.</span>
-<span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_df_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span> <span class="comment">// Degrees of freedom label for the X-axis value-label.</span>
+<span class="comment">//my_2d_plot.y_plusminus_on(true); // Uncertainty label for the Y-axis value-label.</span>
+<span class="comment">//my_2d_plot.y_df_on(true); // Degrees of freedom label for the Y-axis value-label.</span>
 </pre>
 <p>
         The default value-label is horizontal, centered above the data_point marker,
@@ -169,10 +174,10 @@
         the horizontal Y-axis line, but for 2-D plots all writing orientations can
         be useful).
       </p>
-<pre class="programlisting"> <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">x_values_rotation</span><span class="special">(</span><span class="identifier">rightward</span><span class="special">);</span> <span class="comment">// Orientation for the Y-axis value-labels.</span>
+<pre class="programlisting"> <span class="comment">//my_2d_plot.x_values_rotation(rightward); // Orientation for the Y-axis value-labels.</span>
  <span class="comment">//my_2d_plot.x_values_rotation(horizontal); // Orientation for the X-axis value-labels.</span>
  <span class="comment">//my_2d_plot.x_values_rotation(uphill); // Orientation for the X-axis value-labels.</span>
-<span class="comment">// my_2d_plot.y_values_rotation(downhill); // Orientation for the Y-axis value-labels.</span>
+ <span class="identifier">my_2d_plot</span><span class="special">.</span><span class="identifier">y_values_rotation</span><span class="special">(</span><span class="identifier">downhill</span><span class="special">);</span> <span class="comment">// Orientation for the Y-axis value-labels.</span>
  <span class="comment">//my_2d_plot.x_values_rotation(leftward); // Orientation for the X-axis value-labels.</span>
  <span class="comment">//my_2d_plot.y_values_rotation(rightward); // Orientation for the Y-axis value-labels.</span>
 
@@ -225,7 +230,7 @@
         And the plot:
       </p>
 <p>
-        <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/demo_2d_values.svg"></object></span>
+        <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/demo_2d_values.svg" width="500" height="400"></object></span>
       </p>
 <h5>
 <a name="svg_plot.tutorial_2d.demo_2d_values.h1"></a>
@@ -352,7 +357,7 @@
         And the plot:
       </p>
 <p>
-        <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/demo_2d_limits.svg"></object></span>
+        <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/demo_2d_limits.svg" width="500" height="400"></object></span>
       </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>

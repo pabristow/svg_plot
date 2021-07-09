@@ -221,11 +221,11 @@ M52.6,269 L52.6,274
 </g>
 	<g id="plotPoints" clip-path="url(#plot_window)">
 	<g stroke="rgb(0,0,0)" fill="rgb(255,0,0)" font-size="14" font-family="Lucida Sans Unicode" text-anchor="middle">
-	<text x="217" y="124" text-anchor="middle">&#x25CF;
+	<text x="217" y="124">&#x25CF;
 	</text>
-	<text x="231" y="101" text-anchor="middle">&#x25CF;
+	<text x="231" y="101">&#x25CF;
 	</text>
-	<text x="282" y="102" text-anchor="middle">&#x25CF;
+	<text x="282" y="102">&#x25CF;
 	</text>
 </g>
 </g>

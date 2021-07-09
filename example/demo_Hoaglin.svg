@@ -227,9 +227,9 @@ M64.6,60.2 L66.6,60.2
 </g>
 	<g id="mild_outliers" stroke="rgb(255,192,203)" fill="rgb(0,0,0)">
 	<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
-	<text x="368" y="259" text-anchor="middle">&#x25CF;
+	<text x="368" y="259">&#x25CF;
 	</text>
-	<text x="368" y="249" text-anchor="middle">&#x25CF;
+	<text x="368" y="249">&#x25CF;
 	</text>
 </g>
 </g>
@@ -237,35 +237,35 @@ M64.6,60.2 L66.6,60.2
 </g>
 	<g id="Data Values" fill="rgb(0,0,0)">
 	<g clip-path="url(#plot_window)">
-	<text x="147" y="157" font-size="10" font-family="Lucida Sans Unicode">85
+	<text x="144" y="157" font-size="10" font-family="Lucida Sans Unicode">85
 	</text>
 </g>
 	<g clip-path="url(#plot_window)">
-	<text x="207" y="157" font-size="10" font-family="Lucida Sans Unicode">85
+	<text x="204" y="157" font-size="10" font-family="Lucida Sans Unicode">85
 	</text>
 </g>
 	<g clip-path="url(#plot_window)">
-	<text x="267" y="157" font-size="10" font-family="Lucida Sans Unicode">85
+	<text x="264" y="157" font-size="10" font-family="Lucida Sans Unicode">85
 	</text>
 </g>
 	<g clip-path="url(#plot_window)">
-	<text x="327" y="157" font-size="10" font-family="Lucida Sans Unicode">85
+	<text x="324" y="157" font-size="10" font-family="Lucida Sans Unicode">85
 	</text>
 </g>
 	<g clip-path="url(#plot_window)">
-	<text x="388" y="157" font-size="10" font-family="Lucida Sans Unicode">85
+	<text x="385" y="157" font-size="10" font-family="Lucida Sans Unicode">85
 	</text>
 </g>
 	<g>
-	<text x="373" y="261" font-size="10" font-family="Lucida Sans Unicode">53
+	<text x="370" y="261" font-size="10" font-family="Lucida Sans Unicode">53
 	</text>
 </g>
 	<g>
-	<text x="373" y="251" font-size="10" font-family="Lucida Sans Unicode">56
+	<text x="370" y="251" font-size="10" font-family="Lucida Sans Unicode">56
 	</text>
 </g>
 	<g clip-path="url(#plot_window)">
-	<text x="448" y="157" font-size="10" font-family="Lucida Sans Unicode">85
+	<text x="445" y="157" font-size="10" font-family="Lucida Sans Unicode">85
 	</text>
 </g>
 </g>

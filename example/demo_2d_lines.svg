@@ -221,31 +221,31 @@ M52.6,369 L52.6,374
 </g>
 	<g id="plotPoints" clip-path="url(#plot_window)">
 	<g stroke="rgb(0,0,0)" fill="rgb(255,0,0)" font-size="14" font-family="Lucida Sans Unicode" text-anchor="middle">
-	<text x="115" y="299" text-anchor="middle">&#x25CF;
+	<text x="115" y="299">&#x25CF;
 	</text>
-	<text x="133" y="288" text-anchor="middle">&#x25CF;
+	<text x="133" y="288">&#x25CF;
 	</text>
-	<text x="147" y="270" text-anchor="middle">&#x25CF;
+	<text x="147" y="270">&#x25CF;
 	</text>
-	<text x="167" y="252" text-anchor="middle">&#x25CF;
+	<text x="167" y="252">&#x25CF;
 	</text>
-	<text x="176" y="231" text-anchor="middle">&#x25CF;
+	<text x="176" y="231">&#x25CF;
 	</text>
-	<text x="196" y="214" text-anchor="middle">&#x25CF;
+	<text x="196" y="214">&#x25CF;
 	</text>
-	<text x="213" y="193" text-anchor="middle">&#x25CF;
+	<text x="213" y="193">&#x25CF;
 	</text>
-	<text x="231" y="171" text-anchor="middle">&#x25CF;
+	<text x="231" y="171">&#x25CF;
 	</text>
-	<text x="250" y="155" text-anchor="middle">&#x25CF;
+	<text x="250" y="155">&#x25CF;
 	</text>
-	<text x="260" y="133" text-anchor="middle">&#x25CF;
+	<text x="260" y="133">&#x25CF;
 	</text>
-	<text x="279" y="115" text-anchor="middle">&#x25CF;
+	<text x="279" y="115">&#x25CF;
 	</text>
-	<text x="294" y="97" text-anchor="middle">&#x25CF;
+	<text x="294" y="97">&#x25CF;
 	</text>
-	<text x="311" y="86.1" text-anchor="middle">&#x25CF;
+	<text x="311" y="86.1">&#x25CF;
 	</text>
 </g>
 </g>

@@ -182,13 +182,13 @@ M64.6,284 L66.6,284
 </g>
 	<g id="extreme_outliers" stroke="rgb(128,0,128)" fill="rgb(255,255,255)">
 	<g clip-path="url(#plot_window)" stroke="rgb(255,0,0)" fill="rgb(0,128,0)">
-	<text x="172" y="59.9" text-anchor="middle">&#x25CF;
+	<text x="172" y="59.9">&#x25CF;
 	</text>
-	<text x="172" y="97.7" text-anchor="middle">&#x25CF;
+	<text x="172" y="97.7">&#x25CF;
 	</text>
-	<text x="172" y="125" text-anchor="middle">&#x25CF;
+	<text x="172" y="125">&#x25CF;
 	</text>
-	<text x="172" y="145" text-anchor="middle">&#x25CF;
+	<text x="172" y="145">&#x25CF;
 	</text>
 </g>
 	<g clip-path="url(#plot_window)" stroke="rgb(165,42,42)">
@@ -204,79 +204,79 @@ M64.6,284 L66.6,284
 </g>
 	<g id="Data Values" fill="rgb(0,0,0)">
 	<g clip-path="url(#plot_window)">
-	<text x="182" y="264" font-size="10" font-family="Lucida Sans Unicode">9.9
+	<text x="179" y="264" font-size="10" font-family="Lucida Sans Unicode">9.9
 	</text>
 </g>
 	<g>
-	<text x="177" y="161" font-size="10" font-family="Lucida Sans Unicode">55.6
+	<text x="174" y="161" font-size="10" font-family="Lucida Sans Unicode">55.6
 	</text>
 </g>
 	<g>
-	<text x="177" y="173" font-size="10" font-family="Lucida Sans Unicode">50
+	<text x="174" y="173" font-size="10" font-family="Lucida Sans Unicode">50
 	</text>
 </g>
 	<g>
-	<text x="177" y="184" font-size="10" font-family="Lucida Sans Unicode">45.5
+	<text x="174" y="184" font-size="10" font-family="Lucida Sans Unicode">45.5
 	</text>
 </g>
 	<g>
-	<text x="177" y="192" font-size="10" font-family="Lucida Sans Unicode">41.7
+	<text x="174" y="192" font-size="10" font-family="Lucida Sans Unicode">41.7
 	</text>
 </g>
 	<g>
-	<text x="183" y="60" font-size="10" font-family="Lucida Sans Unicode">100
+	<text x="177" y="60" font-size="10" font-family="Lucida Sans Unicode">100
 	</text>
 </g>
 	<g>
-	<text x="183" y="97.8" font-size="10" font-family="Lucida Sans Unicode">83.3
+	<text x="177" y="97.8" font-size="10" font-family="Lucida Sans Unicode">83.3
 	</text>
 </g>
 	<g>
-	<text x="183" y="125" font-size="10" font-family="Lucida Sans Unicode">71.4
+	<text x="177" y="125" font-size="10" font-family="Lucida Sans Unicode">71.4
 	</text>
 </g>
 	<g>
-	<text x="183" y="145" font-size="10" font-family="Lucida Sans Unicode">62.5
+	<text x="177" y="145" font-size="10" font-family="Lucida Sans Unicode">62.5
 	</text>
 </g>
 	<g clip-path="url(#plot_window)">
-	<text x="287" y="264" font-size="10" font-family="Lucida Sans Unicode">9.9
+	<text x="284" y="264" font-size="10" font-family="Lucida Sans Unicode">9.9
 	</text>
 </g>
 	<g>
-	<text x="283" y="161" font-size="10" font-family="Lucida Sans Unicode">55.6
+	<text x="280" y="161" font-size="10" font-family="Lucida Sans Unicode">55.6
 	</text>
 </g>
 	<g>
-	<text x="283" y="173" font-size="10" font-family="Lucida Sans Unicode">50
+	<text x="280" y="173" font-size="10" font-family="Lucida Sans Unicode">50
 	</text>
 </g>
 	<g>
-	<text x="283" y="184" font-size="10" font-family="Lucida Sans Unicode">45.5
+	<text x="280" y="184" font-size="10" font-family="Lucida Sans Unicode">45.5
 	</text>
 </g>
 	<g>
-	<text x="283" y="192" font-size="10" font-family="Lucida Sans Unicode">41.7
+	<text x="280" y="192" font-size="10" font-family="Lucida Sans Unicode">41.7
 	</text>
 </g>
 	<g>
-	<text x="288" y="60" font-size="10" font-family="Lucida Sans Unicode">100
+	<text x="282" y="60" font-size="10" font-family="Lucida Sans Unicode">100
 	</text>
 </g>
 	<g>
-	<text x="288" y="97.8" font-size="10" font-family="Lucida Sans Unicode">83.3
+	<text x="282" y="97.8" font-size="10" font-family="Lucida Sans Unicode">83.3
 	</text>
 </g>
 	<g>
-	<text x="288" y="125" font-size="10" font-family="Lucida Sans Unicode">71.4
+	<text x="282" y="125" font-size="10" font-family="Lucida Sans Unicode">71.4
 	</text>
 </g>
 	<g>
-	<text x="288" y="145" font-size="10" font-family="Lucida Sans Unicode">62.5
+	<text x="282" y="145" font-size="10" font-family="Lucida Sans Unicode">62.5
 	</text>
 </g>
 	<g clip-path="url(#plot_window)">
-	<text x="393" y="198" font-size="10" font-family="Lucida Sans Unicode">38.9
+	<text x="390" y="198" font-size="10" font-family="Lucida Sans Unicode">38.9
 	</text>
 </g>
 </g>

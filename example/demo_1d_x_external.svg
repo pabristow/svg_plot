@@ -115,13 +115,13 @@ M58.3,42.5 L58.3,47.5
 	</text>
 </g>
 	<g id="plotPoints">
-	<g stroke="rgb(0,0,255)">
-	<line x1="174" y1="115" x2="174" y2="105"/>
-	<line x1="215" y1="115" x2="215" y2="105"/>
+	<g stroke="rgb(0,0,255)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<line x1="174" y1="116" x2="174" y2="106"/>
+	<line x1="215" y1="116" x2="215" y2="106"/>
 </g>
-	<g stroke="rgb(255,165,0)">
-	<line x1="137" y1="115" x2="137" y2="105"/>
-	<line x1="350" y1="115" x2="350" y2="105"/>
+	<g stroke="rgb(255,165,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<line x1="137" y1="113" x2="137" y2="103"/>
+	<line x1="350" y1="113" x2="350" y2="103"/>
 </g>
 </g>
 	<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">

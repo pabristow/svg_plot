@@ -52,12 +52,12 @@ M367,110 L367,115
 M21,110 L21,115 
 " fill="none"/>
 </g>
-	<g id="xTicksValues">
-	<text x="136" y="128" text-anchor="middle" font-size="10" font-family="Verdana">2
+	<g id="xTicksValues" font-size="10" font-family="Verdana" text-anchor="middle">
+	<text x="136" y="128">2
 	</text>
-	<text x="252" y="128" text-anchor="middle" font-size="10" font-family="Verdana">4
+	<text x="252" y="128">4
 	</text>
-	<text x="367" y="128" text-anchor="middle" font-size="10" font-family="Verdana">6
+	<text x="367" y="128">6
 	</text>
 </g>
 	<g id="xLabel" stroke="rgb(255,0,255)" fill="rgb(255,0,255)">
@@ -65,10 +65,10 @@ M21,110 L21,115
 	</text>
 </g>
 	<g id="plotPoints">
-	<g stroke="rgb(0,0,0)">
-	<line x1="78.7" y1="109" x2="78.7" y2="99"/>
-	<line x1="136" y1="109" x2="136" y2="99"/>
-	<line x1="194" y1="109" x2="194" y2="99"/>
+	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<line x1="78.7" y1="110" x2="78.7" y2="99.5"/>
+	<line x1="136" y1="110" x2="136" y2="99.5"/>
+	<line x1="194" y1="110" x2="194" y2="99.5"/>
 </g>
 </g>
 	<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">

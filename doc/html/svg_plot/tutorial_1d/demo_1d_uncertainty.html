@@ -142,22 +142,24 @@
 <p>
         All the data-points are also labeled with their value, and uncertainty (+/-)
         and degrees of freedom if known. The A_times mark data-points with a red-border
-        circle with a green fill, The B_times use a blue vertical line, while C_times
-        use an ellipse whose width (x radius) is from the uncertainty, 1st standard
-        deviation shows as ellipse in magenta, and 2nd as yellow.
+        circle with a green fill, The B_times use a blue vertical line.
       </p>
-<p>
-        Or one can explicitly set some (brighter) colors for the uncertainty ellipses,
-        or none to omit.
-      </p>
-<pre class="programlisting"><span class="comment">//my_plot</span>
-<span class="comment">//  .one_sd_color(yellow) // Color of ellipse for one standard deviation (about 66% probability).</span>
-<span class="comment">//  .two_sd_color(green) // Color of ellipse for two standard deviation (~95%).</span>
-<span class="comment">//  .three_sd_color(red); // Color of ellipse for two standard deviation (~99%).</span>
-
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">A_times</span><span class="special">,</span> <span class="string">"A"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">circlet</span><span class="special">).</span><span class="identifier">size</span><span class="special">(</span><span class="number">10</span><span class="special">).</span><span class="identifier">stroke_color</span><span class="special">(</span><span class="identifier">red</span><span class="special">).</span><span class="identifier">fill_color</span><span class="special">(</span><span class="identifier">green</span><span class="special">);</span>
+<pre class="programlisting"><span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">A_times</span><span class="special">,</span> <span class="string">"A"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">circlet</span><span class="special">).</span><span class="identifier">size</span><span class="special">(</span><span class="number">10</span><span class="special">).</span><span class="identifier">stroke_color</span><span class="special">(</span><span class="identifier">red</span><span class="special">).</span><span class="identifier">fill_color</span><span class="special">(</span><span class="identifier">green</span><span class="special">);</span>
 <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">B_times</span><span class="special">,</span> <span class="string">"B"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">vertical_line</span><span class="special">).</span><span class="identifier">stroke_color</span><span class="special">(</span><span class="identifier">blue</span><span class="special">);</span>
-<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">C_times</span><span class="special">,</span> <span class="string">"C"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">unc_ellipse</span><span class="special">).</span><span class="identifier">fill_color</span><span class="special">(</span><span class="identifier">lightyellow</span><span class="special">).</span><span class="identifier">stroke_color</span><span class="special">(</span><span class="identifier">magenta</span><span class="special">);</span>
+</pre>
+<p>
+        C_times use ellipses whose width (x radius) is from the uncertainty, 1st
+        standard deviation shows as ellipse in magenta, and 2nd as yellow, and 3rd
+        as.
+      </p>
+<pre class="programlisting"><span class="identifier">Or</span> <span class="identifier">one</span> <span class="identifier">can</span> <span class="identifier">explicitly</span> <span class="identifier">set</span> <span class="identifier">some</span> <span class="special">(</span><span class="identifier">brighter</span><span class="special">)</span> <span class="identifier">colors</span> <span class="keyword">for</span> <span class="identifier">the</span> <span class="identifier">uncertainty</span> <span class="identifier">ellipses</span><span class="special">,</span> <span class="keyword">or</span> <span class="identifier">none</span> <span class="identifier">to</span> <span class="identifier">omit</span><span class="special">.</span>
+</pre>
+<pre class="programlisting"><span class="identifier">my_plot</span>
+  <span class="special">.</span><span class="identifier">one_sd_color</span><span class="special">(</span><span class="identifier">pink</span><span class="special">)</span> <span class="comment">// Color of ellipse for one standard deviation (~66% probability).</span>
+  <span class="special">.</span><span class="identifier">two_sd_color</span><span class="special">(</span><span class="identifier">magenta</span><span class="special">)</span> <span class="comment">// Color of ellipse for two standard deviation (~95%).</span>
+  <span class="special">.</span><span class="identifier">three_sd_color</span><span class="special">(</span><span class="identifier">yellow</span><span class="special">);</span> <span class="comment">// Color of ellipse for two standard deviation (~99%).</span>
+
+<span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">C_times</span><span class="special">,</span> <span class="string">"C"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">unc_ellipse</span><span class="special">).</span><span class="identifier">fill_color</span><span class="special">(</span><span class="identifier">black</span><span class="special">).</span><span class="identifier">stroke_color</span><span class="special">(</span><span class="identifier">black</span><span class="special">);</span>
 </pre>
 <p>
         Finally, we can write the SVG to a file of our choice.
@@ -176,7 +178,7 @@
 <span class="comment">//show_1d_plot_settings(my_plot);</span>
 </pre>
 <p>
-        The resulting plot is <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/demo_1d_uncertainty.svg"></object></span>
+        The resulting plot is <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/demo_1d_uncertainty.svg" width="500" height="200"></object></span>
       </p>
 <p>
         See <a href="../../../../example/demo_1d_uncertainty.cpp" target="_top">demo_1d_uncertainty.cpp</a>

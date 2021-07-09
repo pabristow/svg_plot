@@ -78,26 +78,26 @@ M428,100 L428,105
 M479,100 L479,105 
 " fill="none"/>
 </g>
-	<g id="xTicksValues">
-	<text x="21" y="118" text-anchor="middle" font-size="10" font-family="Verdana">1
+	<g id="xTicksValues" font-size="10" font-family="Verdana" text-anchor="middle">
+	<text x="21" y="118">1
 	</text>
-	<text x="71.9" y="118" text-anchor="middle" font-size="10" font-family="Verdana">1.5
+	<text x="71.9" y="118">1.5
 	</text>
-	<text x="123" y="118" text-anchor="middle" font-size="10" font-family="Verdana">2
+	<text x="123" y="118">2
 	</text>
-	<text x="174" y="118" text-anchor="middle" font-size="10" font-family="Verdana">2.5
+	<text x="174" y="118">2.5
 	</text>
-	<text x="225" y="118" text-anchor="middle" font-size="10" font-family="Verdana">3
+	<text x="225" y="118">3
 	</text>
-	<text x="275" y="118" text-anchor="middle" font-size="10" font-family="Verdana">3.5
+	<text x="275" y="118">3.5
 	</text>
-	<text x="326" y="118" text-anchor="middle" font-size="10" font-family="Verdana">4
+	<text x="326" y="118">4
 	</text>
-	<text x="377" y="118" text-anchor="middle" font-size="10" font-family="Verdana">4.5
+	<text x="377" y="118">4.5
 	</text>
-	<text x="428" y="118" text-anchor="middle" font-size="10" font-family="Verdana">5
+	<text x="428" y="118">5
 	</text>
-	<text x="479" y="118" text-anchor="middle" font-size="10" font-family="Verdana">5.5
+	<text x="479" y="118">5.5
 	</text>
 </g>
 	<g id="xLabel">
@@ -105,28 +105,28 @@ M479,100 L479,105
 	</text>
 </g>
 	<g id="plotPoints">
-	<g stroke="rgb(0,0,0)">
-	<line x1="31.2" y1="99.5" x2="31.2" y2="89.5"/>
-	<line x1="347" y1="99.5" x2="347" y2="89.5"/>
-	<line x1="255" y1="99.5" x2="255" y2="89.5"/>
-	<line x1="469" y1="99.5" x2="469" y2="89.5"/>
+	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<line x1="31.2" y1="100" x2="31.2" y2="90"/>
+	<line x1="347" y1="100" x2="347" y2="90"/>
+	<line x1="255" y1="100" x2="255" y2="90"/>
+	<line x1="469" y1="100" x2="469" y2="90"/>
 </g>
-	<g stroke="rgb(0,0,0)">
-	<line x1="41.4" y1="99.5" x2="41.4" y2="89.5"/>
-	<line x1="153" y1="99.5" x2="153" y2="89.5"/>
-	<line x1="265" y1="99.5" x2="265" y2="89.5"/>
-	<line x1="377" y1="99.5" x2="377" y2="89.5"/>
+	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<line x1="41.4" y1="97.5" x2="41.4" y2="87.5"/>
+	<line x1="153" y1="97.5" x2="153" y2="87.5"/>
+	<line x1="265" y1="97.5" x2="265" y2="87.5"/>
+	<line x1="377" y1="97.5" x2="377" y2="87.5"/>
 </g>
-	<g stroke="rgb(0,0,0)">
-	<line x1="41.4" y1="99.5" x2="41.4" y2="89.5"/>
-	<line x1="153" y1="99.5" x2="153" y2="89.5"/>
-	<line x1="265" y1="99.5" x2="265" y2="89.5"/>
-	<line x1="377" y1="99.5" x2="377" y2="89.5"/>
+	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<line x1="41.4" y1="95" x2="41.4" y2="85"/>
+	<line x1="153" y1="95" x2="153" y2="85"/>
+	<line x1="265" y1="95" x2="265" y2="85"/>
+	<line x1="377" y1="95" x2="377" y2="85"/>
 </g>
-	<g stroke="rgb(0,0,0)">
-	<line x1="31.2" y1="99.5" x2="31.2" y2="89.5"/>
-	<line x1="347" y1="99.5" x2="347" y2="89.5"/>
-	<line x1="255" y1="99.5" x2="255" y2="89.5"/>
+	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
+	<line x1="31.2" y1="92.5" x2="31.2" y2="82.5"/>
+	<line x1="347" y1="92.5" x2="347" y2="82.5"/>
+	<line x1="255" y1="92.5" x2="255" y2="82.5"/>
 </g>
 </g>
 	<g id="title">
