@@ -94,8 +94,6 @@ namespace boost
 
   class svg_2d_plot_series
   {
-
-
     void draw_straight_lines(const svg_2d_plot_series& series);
     friend void draw_straight_lines(const svg_2d_plot_series&);
     public:

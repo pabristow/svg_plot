@@ -2056,7 +2056,6 @@ namespace boost
         << ", horizontal_marker_spacing = " << derived().horizontal_marker_spacing_
         << std::endl;
 #endif // BOOST_SVG_LEGEND_DIAGNOSTICS
-
       double legend_y_pos = legend_y_start;
       if (derived().legend_box_.border_on_ == true)
       {
@@ -2131,6 +2130,9 @@ namespace boost
         // Use point stroke-color instead.
         g_legends_points->style().stroke_color(derived().serieses_[i].point_style_.stroke_color_); //
         g_legends_points->style().fill_color(derived().serieses_[i].point_style_.fill_color_); //
+        g_legends_points->text_style_.font_size(derived().serieses_[i].point_style_.size_);
+        g_legends_points->text_style_.font_family_ = derived().serieses_[i].point_style_.symbols_style_.font_family_;
+        g_legends_points->alignment_ = align_style::center_align;
 #ifdef BOOST_SVG_POINT_DIAGNOSTICS
         std::cout << "point_style set to = " << derived().serieses_[i].point_style_.stroke_color_
           << "and " << derived().serieses_[i].point_style_.fill_color_ << std::endl; //

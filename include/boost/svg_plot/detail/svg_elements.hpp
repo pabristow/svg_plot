@@ -264,7 +264,7 @@ namespace svg
        writing XML SVG command to draw a straight line.
        */
       /* \verbatim Example: <line x1="5" y1="185" x2="340" y2="185"/> \endverbatim */
-      rhs << "\t"  "<line x1=\"" << x1_ << "\" y1=\"" << y1_
+      rhs << "\t\t" "<line x1=\"" << x1_ << "\" y1=\"" << y1_
           << "\" x2=\"" << x2_ << "\" y2=\"" << y2_ << "\"/>" "\n";
     }
   }; // class line_element
@@ -318,7 +318,7 @@ namespace svg
           \verbatim Example:
           \endverbatim
       */
-      os << "<path d=\"M" << x1_ << "," << y1_
+      os << "\t<path d=\"M" << x1_ << "," << y1_
           << " Q" << x2_ << "," << y2_ << " " // Control point - will not pass thru this point.
           //<< x1_ << "," << y1_ << " "
           //<< x2_ << "," << y2_ << " "
@@ -403,7 +403,7 @@ namespace svg
       \endverbatim
       Example: \code <rect x="0" y="0" width="500" height="600"/> \endcode
       */
-      os << "\t<rect";
+      os << "\t\t<rect";
       write_attributes(os); // id (& clip_path)
       os << " x=\"" << x_ << "\""
         << " y=\"" << y_ << "\""
@@ -472,7 +472,7 @@ namespace svg
        Example: <circle cx="9.78571" cy="185" r="5"/>
     \endverbatim
     */
-      os << "\t<circle";
+      os << "\t\t<circle";
       write_attributes(os);
       os << " cx=\"" << x_ << "\" cy=\"" << y_ << "\" r=\"" << radius_ << "\"/>" "\n";
     }
@@ -543,7 +543,7 @@ namespace svg
         Output SVG XML commands to draw an ellipse.
         Example: \<ellipse rx="250" ry="100" fill="red"  /\>
      */
-      os << "\t<ellipse";
+      os << "\t\t<ellipse";
       write_attributes(os);
       if(rotate_ != 0)
       { // Should this be in atttributes?
@@ -1202,7 +1202,7 @@ public:
    // Example: \verbatim os << " <text x=\"" << x_ << "\" y=\"" << y_ << "\""; \endverbatim
   void write(std::ostream& os)
   {
-    os << "\t<text x=\"" << x_ << "\" y=\"" << y_ << "\"";
+    os << "\t\t<text x=\"" << x_ << "\" y=\"" << y_ << "\"";
 
     //! The text-anchor property is used to align (start-, middle- or end-alignment) a string of pre-formatted text or auto-wrapped text
     //! where the wrapping area is determined from the inline-size property relative to a given point.
@@ -1281,7 +1281,7 @@ public:
     os << ">" ;
     generate_text(os); 
     // Was os << " </text>" "\n"; 
-    os << "\n\t</text>" "\n";  // Add newline tab to line up better under <text ...  but makes layout longer.
+    os << "\n\t\t</text>" "\n";  // Add newline tab to line up better under <text ...  but makes layout longer.
     // Example: <text x="67.5" y="462" text-anchor="middle" font-size="12" font-family="Lucida Sans Unicode">my_text!
     //          </text>
     // But still doesn't newline before any tspan.
@@ -1325,9 +1325,9 @@ public:
 
       void write(std::ostream& os)
       { //!< Write clip path to ostream.
-        os << "<clipPath id=\"" << element_id << "\">";
+        os << "\t<clipPath id=\"" << element_id << "\">";
         rect.write(os);
-        os  << "</clipPath>" << std::endl;
+        os  << "\t</clipPath>" << std::endl;
       }
   }; // class clip_path_element
 
@@ -1366,7 +1366,7 @@ public:
       }
       else
       { // absolute
-        os << "M";
+        os << "\t\t\tM";
       }
       os << x << "," << y << " "; // separator changed to comma for clarity when reading XML source.
 
@@ -1802,12 +1802,12 @@ public:
       if (path.begin() != path.end() )
       { // Is some path info (trying to avoid useless <path d=""/>"
         // TODO or would this omit useful style & attributes?
-        os << "\t" "<path d=\"";
+        os << "\t\t" "<path d=\"\n";
         for(ptr_vector<path_point>::iterator i = path.begin(); i != path.end(); ++i)
         {
           (*i).write(os); // M1,2
         }
-        os << "\"";
+        os << "\t\t\t\"";
 
         write_attributes(os); // id & clip_path.
         svg_style_.write(os); // fill, stroke, width...
@@ -1998,7 +1998,7 @@ public:
             points="850,75  958,137.5 958,262.5 850,325 742,262.6 742,137.5" />
          \endverbatim
        */
-      os << "\t" "<polygon points=\"";
+      os << "\t\t" "<polygon points=\"";
       for(ptr_vector<poly_path_point>::iterator i = poly_points.begin(); i != poly_points.end(); ++i)
       {
         (*i).write(os); //  x, y coordinates as " 1,2"
@@ -2115,7 +2115,7 @@ public:
           Example: <polyline points=" 100,100 200,100 300,200 400,400"/>
           \endverbatim
       */
-      os << "\t" "<polyline points=\"";
+      os << "\t\t" "<polyline points=\"";
       for(ptr_vector<poly_path_point>::iterator i = poly_points.begin(); i!= poly_points.end(); ++i)
       {
         (*i).write(os); //  x, y coordinates as " 1,2"
@@ -2259,7 +2259,7 @@ public:
           children_[i].write(os);  // Using each element's version of write function.
           // Using tab to indent also makes easy to read.
         }
-        os << "</g>" "\n"  ; // 
+        os << "\t</g>" "\n"  ; // 
       }
     } // void write(std::ostream& rhs)
 
