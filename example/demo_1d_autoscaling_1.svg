@@ -14,94 +14,96 @@ xmlns ="http://www.w3.org/2000/svg"
 
 <!-- File demo_1d_autoscaling_1.svg --> 
 	<g id="imageBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">
-	<rect x="0" y="0" width="500" height="200"/>
-</g>
+		<rect x="0" y="0" width="500" height="200"/>
+	</g>
 	<g id="plotBackground" stroke="rgb(250,250,210)" fill="rgb(255,255,255)" stroke-width="1">
-	<rect x="21" y="42.5" width="458" height="129"/>
-</g>
+		<rect x="21" y="42.5" width="458" height="129"/>
+	</g>
 	<g id="xMinorGrid" stroke="rgb(200,220,255)" stroke-width="0.5">
-</g>
+	</g>
 	<g id="xMajorGrid" stroke="rgb(200,220,255)" stroke-width="1">
-</g>
+	</g>
 	<g id="xAxis" stroke="rgb(0,0,0)" stroke-width="1">
-	<line x1="21" y1="42.5" x2="21" y2="172"/>
-	<line x1="21" y1="110" x2="479" y2="110"/>
-</g>
+		<line x1="21" y1="42.5" x2="21" y2="172"/>
+		<line x1="21" y1="110" x2="479" y2="110"/>
+	</g>
 	<g id="xMinorTicks" stroke="rgb(0,0,0)" stroke-width="1">
-	<path d="M34.1,110 L34.1,112 
-M47.2,110 L47.2,112 
-M60.3,110 L60.3,112 
-M73.3,110 L73.3,112 
-M99.5,110 L99.5,112 
-M113,110 L113,112 
-M126,110 L126,112 
-M139,110 L139,112 
-M165,110 L165,112 
-M178,110 L178,112 
-M191,110 L191,112 
-M204,110 L204,112 
-M230,110 L230,112 
-M243,110 L243,112 
-M257,110 L257,112 
-M270,110 L270,112 
-M296,110 L296,112 
-M309,110 L309,112 
-M322,110 L322,112 
-M335,110 L335,112 
-M361,110 L361,112 
-M374,110 L374,112 
-M387,110 L387,112 
-M400,110 L400,112 
-M427,110 L427,112 
-M440,110 L440,112 
-M453,110 L453,112 
-M466,110 L466,112 
-" fill="none"/>
-</g>
+		<path d="
+			M34.1,110 L34.1,112 
+			M47.2,110 L47.2,112 
+			M60.3,110 L60.3,112 
+			M73.3,110 L73.3,112 
+			M99.5,110 L99.5,112 
+			M113,110 L113,112 
+			M126,110 L126,112 
+			M139,110 L139,112 
+			M165,110 L165,112 
+			M178,110 L178,112 
+			M191,110 L191,112 
+			M204,110 L204,112 
+			M230,110 L230,112 
+			M243,110 L243,112 
+			M257,110 L257,112 
+			M270,110 L270,112 
+			M296,110 L296,112 
+			M309,110 L309,112 
+			M322,110 L322,112 
+			M335,110 L335,112 
+			M361,110 L361,112 
+			M374,110 L374,112 
+			M387,110 L387,112 
+			M400,110 L400,112 
+			M427,110 L427,112 
+			M440,110 L440,112 
+			M453,110 L453,112 
+			M466,110 L466,112 
+			" fill="none"/>
+	</g>
 	<g id="xMajorTicks" stroke="rgb(0,0,0)" stroke-width="2">
-	<path d="M21,110 L21,115 
-M86.4,110 L86.4,115 
-M152,110 L152,115 
-M217,110 L217,115 
-M283,110 L283,115 
-M348,110 L348,115 
-M414,110 L414,115 
-M479,110 L479,115 
-M21,110 L21,115 
-" fill="none"/>
-</g>
+		<path d="
+			M21,110 L21,115 
+			M86.4,110 L86.4,115 
+			M152,110 L152,115 
+			M217,110 L217,115 
+			M283,110 L283,115 
+			M348,110 L348,115 
+			M414,110 L414,115 
+			M479,110 L479,115 
+			M21,110 L21,115 
+			" fill="none"/>
+	</g>
 	<g id="xTicksValues" font-size="10" font-family="Verdana" text-anchor="middle">
-	<text x="86.4" y="128">1
-	</text>
-	<text x="152" y="128">2
-	</text>
-	<text x="217" y="128">3
-	</text>
-	<text x="283" y="128">4
-	</text>
-	<text x="348" y="128">5
-	</text>
-	<text x="414" y="128">6
-	</text>
-	<text x="479" y="128">7
-	</text>
-</g>
+		<text x="86.4" y="128">1
+		</text>
+		<text x="152" y="128">2
+		</text>
+		<text x="217" y="128">3
+		</text>
+		<text x="283" y="128">4
+		</text>
+		<text x="348" y="128">5
+		</text>
+		<text x="414" y="128">6
+		</text>
+		<text x="479" y="128">7
+		</text>
+	</g>
 	<g id="xLabel">
-	<text x="250" y="189" text-anchor="middle" font-size="10" font-family="Verdana">X values
-	</text>
-</g>
+		<text x="250" y="189" text-anchor="middle" font-size="10" font-family="Verdana">X values
+		</text>
+	</g>
 	<g id="plotPoints">
 	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
-	<line x1="34.1" y1="110" x2="34.1" y2="99.5"/>
-	<line x1="93" y1="110" x2="93" y2="99.5"/>
-	<line x1="296" y1="110" x2="296" y2="99.5"/>
-	<line x1="237" y1="110" x2="237" y2="99.5"/>
-	<line x1="374" y1="110" x2="374" y2="99.5"/>
-	<line x1="446" y1="110" x2="446" y2="99.5"/>
-</g>
-</g>
+		<line x1="34.1" y1="110" x2="34.1" y2="99.5"/>
+		<line x1="93" y1="110" x2="93" y2="99.5"/>
+		<line x1="296" y1="110" x2="296" y2="99.5"/>
+		<line x1="237" y1="110" x2="237" y2="99.5"/>
+		<line x1="374" y1="110" x2="374" y2="99.5"/>
+		<line x1="446" y1="110" x2="446" y2="99.5"/>
+	</g>
+	</g>
 	<g id="title">
-	<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">Demo 1D autoscaling
-	</text>
-</g>
+		<text x="250" y="27" text-anchor="middle" font-size="18" font-family="Verdana">Demo 1D autoscaling
+		</text>
+	</g>
 </svg>

@@ -244,9 +244,11 @@ public:
   {  
     BOOST_STATIC_ASSERT_MSG(std::is_constructible<T, double>::value, "Uncertain types must be convertible to double!");
     BOOST_STATIC_ASSERT_MSG(std::is_constructible<U, double>::value, "Uncertain types must be convertible to double!");
-    return std::pair<Meas, unc<correlated> >((Meas)(static_cast<double>(a.first)), (unc<correlated>)(static_cast<double>(a.second)));
-    // return std::pair<Meas, unc<correlated> >((Meas)(static_cast<Meas>(a.first)), (unc<correlated>)(static_cast<uncun>(a.second))); // OK uncertain values.
-  }
+     return std::pair<Meas, unc<correlated> >((Meas)(static_cast<Meas>(a.first)), (unc<correlated>)(static_cast<uncun>(a.second))); // OK uncertain values.
+     // but fails for \boost\libs\svg_plot\example\convertible_to_double.cpp and this compiles
+     //return std::pair<Meas, unc<correlated> >((Meas)(static_cast<double>(a.first)), (unc<correlated>)(static_cast<double>(a.second)));
+     // but does not work for uncertainty displays.  Not fully understood.
+ }
 
   //! Convert a pair of X and Y uncertain type values to a pair of @c Meas & @c unc.
   //! \tparam T Any type that can be converted to @c double.

@@ -165,13 +165,13 @@ int main()
   trig_plots<float>(); // OK
   trig_plots<>(); // default double OK
   trig_plots<double>(); // OK
-  trig_plots<long double>(); // OK
-  // OK, no warnings, but for higher-than-double precision types, the range from
+ // trig_plots<long double>(); // not OK error C2440: 'static_cast': cannot convert from 'const _Ty2' to 'boost::quan::uncun'
+  // and for higher-than-double precision types, the range from
   // (std::numeric_limits<long double>::max)() to min() is greater than for double.
   // so overflow or underflow on conversion to double is possible.
 
   //using boost::multiprecision::cpp_bin_float_quad;
-  //trig_plots<cpp_bin_float_quad>(); 
+  //trig_plots<cpp_bin_float_quad>();  // Not OK error C2440: 'static_cast': cannot convert from 'const _Ty2' to 'boost::quan::uncun'
 
   // As an example of a User-defined Type a fixed-point is also possible:
   ///typedef boost::fixed_point::negatable<15, -16> fixed_point_type;

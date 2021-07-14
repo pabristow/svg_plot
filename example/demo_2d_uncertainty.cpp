@@ -25,7 +25,7 @@
 #include <boost/svg_plot/svg_2d_plot.hpp>
 // using namespace boost::svg;
 
-#include <boost/svg_plot/show_2d_settings.hpp> // Only needed for showing ALL the many settings used.
+//#include <boost/svg_plot/show_2d_settings.hpp> // Only needed for showing ALL the many settings used.
 //using boost::svg::show_2d_plot_settings;
 //void boost::svg::show_2d_plot_settings(svg_2d_plot&);
 
@@ -195,8 +195,10 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     .x_values_on(true) // Show X-values next to each point.
 
      //! \note Essential use of Unicode space &\#x00A0; in all strings - ANSI space has no effect!
-  //  .x_decor("t ", ", ", "sec") // Keep all on one line using a separator NOT starting with a newline.
-    .x_decor("t ", "\n_", "sec") // Split X and Y onto two lines because X separator *does* start with newline.
+  //  .x_decor("t ", ", ", "sec") // Keep all on one line using X-separator does NOT start with a newline.
+  //  .x_decor("t ", "\n ", "sec") //Split X and Y onto two lines because X-separator *does* start with newline.
+    .x_decor("after t ", "\ntravels", "sec") // Split X and Y onto two lines because X-separator *does* start with newline,
+    // and add some descriptive text too.
     .x_values_rotation(uphill)
     .x_values_font_size(10) // Bigger than default.
     .x_values_font_family("Times New Roman") // Serif font to show difference from sans serif ued for Y value-labels.
@@ -227,7 +229,8 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     .y_df_on(true) // Show degrees of freedom (usually observations -1) for data-points.
     .y_df_color(green) // Show degrees of freedom in green, for examples: "11").
 
-     .xy_values_on(true) // Show both X-values and Y-values next to each point.
+     // .xy_values_on(true) // Show both X-values and Y-values next to each point.
+     // Not needed if both .x_values_on(true) and .y_values_on(true) specified (warning, but has no effect).
      // .xy_autoscale(data1) // may result in value-labels running off the plot and image.
 
   /*`The default uncertainty ellipse colors (that apply to both X and Y axes)
@@ -244,7 +247,7 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
 
   my_plot.write("./demo_2d_uncertainty");
 
-  show_2d_plot_settings(my_plot);
+  // show_2d_plot_settings(my_plot); // Needs #include <boost/svg_plot/show_2d_settings.hpp>
 
  //] [/demo_2d_uncertainty_2]
 
