@@ -536,12 +536,12 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       plot_point_style plus_limit_point_style_; //!< Default is cone pointing up for 2D, or NaN or point left or right for 1D.
       plot_point_style minus_limit_point_style_; //!< Default is cone pointing down for 2D, or NaN or point left or right for 1D.
 
-      value_style x_values_style_; //!< data-point X value marking, font, size etc.
-      value_style y_values_style_; //!< data-point Y value marking, font, size etc.
+      value_style x_values_style_; //!< data-point X-value marking, font, size etc.
+      value_style y_values_style_; //!< data-point Y-value marking, font, size etc.
       bool x_plusminus_on_; //!<  http://en.wikipedia.org/wiki/Plus-minus_sign Unicode \&\#0xB1; HTML \&plusmn;
 
-      rotate_style y_value_label_rotation_; //!< Direction point Y value-labels written (default horizontal).
-      int y_value_precision_; //!< std::ios precision used for Y value-labels (default 3).
+      rotate_style y_value_label_rotation_; //!< Direction point Y-value-labels written (default horizontal).
+      int y_value_precision_; //!< std::ios precision used for Y-value-labels (default 3).
       std::ios_base::fmtflags y_value_ioflags_; //!< std::iosflags used for Y value-labels (default std::ios::dec).
 
       box_style image_border_; //!< rectangular border box style of all image width, color...

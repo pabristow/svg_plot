@@ -142,8 +142,8 @@ the order of data values is important.
 
   std::map<uncun, uncun > data1; // Container for X & Y pairs of data-point values.
   data1.insert(mp1); // Insert 1st pair of X & Y.
- // data1.insert(make_pair(uncun(3.9, 0.01F, 8), uncun(1.1, 0.1F, 18))); // and add another X&Y-pair
-//  data1.insert(make_pair(uncun(-2.234, 0.3F, 7), uncun(-8.76, 0.9F, 9))); // and a third pair.
+  data1.insert(make_pair(uncun(3.9, 0.01F, 8), uncun(1.1, 0.1F, 18))); // and add another X&Y-pair
+  data1.insert(make_pair(uncun(-2.234, 0.3F, 7), uncun(-8.76, 0.9F, 9))); // and a third pair.
 
  /*
 `Make very sure you don't forget either uncun(...) like this
@@ -196,14 +196,14 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     // SVG_plot warning : x_values_on has overwritten xy_values_on!
 
      //! \note Essential use of Unicode space &\#x00A0; in all strings - ANSI space has no effect!
-  //  .x_decor("t ", ", ", "sec") // Keep all on one line using X-separator does NOT start with a newline.
-   .x_decor("g ", "\n", "sec") // Split X and Y onto two lines because X-separator *does* start with newline.
+   .x_decor("t ", ", ", "sec") // Keep all on one line using X-separator does NOT start with a newline.
+   //.x_decor("g ", "\n", "sec") // Split X and Y onto two lines because X-separator *does* start with newline.
   // .x_decor("after t ", "\ntravels", "sec") // Split X and Y onto two lines because X-separator *does* start with newline,
     // and add some descriptive text too.
    // .x_values_rotation(backdown) // Not good.
    // .x_values_rotation(downward) // 
    //.x_values_rotation(steepup) // 
-    .x_values_rotation(horizontal) // Lines up vertically, but shifted too high.
+    .x_values_rotation(horizontal) // Lines up vertically, but shifted too high???
    // .x_values_rotation(upward) // 
     .x_values_font_size(10) // Bigger than default.
     .x_values_font_family("Times New Roman") // Serif font just to show difference from sans-serif used for Y value-labels.
@@ -219,7 +219,7 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
    // .y_values_rotation(downhill) // is ignored if both X and Y-values are shown on line below.
     .y_values_font_family("Arial") // Sans serif different from X-values font just to show effect.
     .y_values_font_size(8) // Smaller than default.
-    .y_decor("d &#x00A0;", "&#x00A0;", "&#x00A0;km")
+    .y_decor("d", "", "&#x00A0;km")
  //   .y_decor("&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;   d &#x00A0;", "&#x00A0;", "&#x00A0;km")
 //    .y_decor("&#x00A0;&#x00A0; time = ", "&#x00A0;", "&#x00A0;sec")
      // Note: a few padding spaces are used to get Y-value-labels to lie more nearly under X-value-labels.
@@ -240,7 +240,7 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     .xy_values_on(true) // Show both X-values and Y-values next to each point.
      // IS needed if both .x_values_on(true) and .y_values_on(true) specified.
      // .xy_autoscale(data1) // may result in value-labels running off the plot and image.
-    .y_values_alignment(align_style::left_align)
+   // .y_values_alignment(align_style::left_align)
     //.x_values_alignment(align_style::right_align) // By default, set by code #L2881 switch statement depending on rotation.
 
   /*`The default uncertainty ellipse colors (that apply to both X and Y axes)

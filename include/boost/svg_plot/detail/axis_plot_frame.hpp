@@ -2878,14 +2878,13 @@ namespace boost
 
             int rot = x_sty.value_label_rotation_;
             align_style al; // = center_align;  Decide the alignment from the rotation,
-            // rather than from a user-specified .x_values_alignment(align_style::right_align) 
-            // Or better, inspect to see if .x_values_alignment_ == align_style::no_align;
+            // rather than implicitly from a user-specified, for example, .x_values_alignment(align_style::right_align) 
             switch (rot)
             {
-            case horizontal: // OK
+            case horizontal: // 
               al = align_style::center_align;
-              y -= marker_size * 2;  // Up marker font-size;
-              // center_align means no x correction.
+               // center_align means no x correction.
+             y -= marker_size * 1;  // Up marker font-size;
               break;
             case leftward: // horizontal but to left of marker. OK
               al = align_style::right_align;
