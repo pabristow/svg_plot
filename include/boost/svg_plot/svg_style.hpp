@@ -854,7 +854,8 @@ class value_style
   */
 public:
   int value_label_rotation_; //!< Direction point value-labels written.
-  align_style value_label_alignment_; //!< Alignment of label with respect to value, left, centered, or right.\n Example: \code text-anchor="middle" \endcode
+  align_style value_label_alignment_; //!< Alignment of label with respect to value, left, centered, or right.\n
+// Example: \code text-anchor="middle" \endcode
   // These are a duplicate of info elsewhere?
   int value_precision_; //!< Decimal digits of precision of value, default 3, for example "1.23".
   std::ios_base::fmtflags value_ioflags_; //!< Control of scientific, fixed, hex etc.

@@ -200,12 +200,13 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
    .x_decor("g ", "\n", "sec") // Split X and Y onto two lines because X-separator *does* start with newline.
   // .x_decor("after t ", "\ntravels", "sec") // Split X and Y onto two lines because X-separator *does* start with newline,
     // and add some descriptive text too.
-    .x_values_rotation(downward) // 
+   // .x_values_rotation(backdown) // Not good.
+   // .x_values_rotation(downward) // 
    //.x_values_rotation(steepup) // 
-   // .x_values_rotation(horizontal) // 
+    .x_values_rotation(horizontal) // Lines up vertically, but shifted too high.
    // .x_values_rotation(upward) // 
     .x_values_font_size(10) // Bigger than default.
-    .x_values_font_family("Times New Roman") // Serif font to show difference from sans serif ued for Y value-labels.
+    .x_values_font_family("Times New Roman") // Serif font just to show difference from sans-serif used for Y value-labels.
     .x_major_grid_on(true)
     .y_major_grid_on(true)
 
@@ -239,6 +240,8 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     .xy_values_on(true) // Show both X-values and Y-values next to each point.
      // IS needed if both .x_values_on(true) and .y_values_on(true) specified.
      // .xy_autoscale(data1) // may result in value-labels running off the plot and image.
+    .y_values_alignment(align_style::left_align)
+    //.x_values_alignment(align_style::right_align) // By default, set by code #L2881 switch statement depending on rotation.
 
   /*`The default uncertainty ellipse colors (that apply to both X and Y axes)
   can be changed thus:

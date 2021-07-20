@@ -59,7 +59,7 @@ namespace boost
     static const double text_plusminus = 2.;
 
     static const double sin45 = 0.707; //!< Used to calculate 'length' if axis value-labels are sloping.
-    static const double reducer = 0.9; //!< To make uncertainty and degrees of freedom estimates a bit smaller font to help distinguish from value.
+    static const double reducer = 0.8; //!< To make uncertainty and degrees of freedom estimates a bit smaller font to help distinguish from value.
    // static const double aspect_ratio = 0.6;  //!< Guess at average height to width of font. Now in svg_style.hpp
 
     
@@ -2877,7 +2877,9 @@ namespace boost
             // size of the data marker, less from the value-label font-size.
 
             int rot = x_sty.value_label_rotation_;
-            align_style al; // = center_align;
+            align_style al; // = center_align;  Decide the alignment from the rotation,
+            // rather than from a user-specified .x_values_alignment(align_style::right_align) 
+            // Or better, inspect to see if .x_values_alignment_ == align_style::no_align;
             switch (rot)
             {
             case horizontal: // OK
@@ -2939,14 +2941,18 @@ namespace boost
              break;
             } // switch
 
+            if (x_sty.value_label_alignment_ != align_style::no_align)
+            { // User-specified alignment like my_plot .x_values_alignment(align_style::right_align) wanted.
+              al = x_sty.value_label_alignment_;
+            }
             text_element& t = x_g_ptr.text(x, y, label_xv, x_sty.values_text_style_, al, rot); // X value-label.
 
             // If would be simpler to prepare a single string like "1.23 +- -0.3, 3.45 +- -0.1(10)"
             // but this would not allow change of font-size, type and color
             // something that proves to be very effective at visually separating
-            // value and std_dev, and degrees of freedom estimate,
+            // value and std_dev, and degrees of freedom estimate, confidence interval
             // and other information like date_time, id or name, and order in sequence.
-            // So the coding complexity is judged with it
+            // So the coding complexity is judged worth it
             // (even if it may not always work right yet ;-)
             // Tasteless colors and font changes are purely proof of concept!
 
@@ -2956,8 +2962,8 @@ namespace boost
             std::string label_xdf; // X degrees of freedom as string, for example "(42)".
             // Optionally, show std_dev as 95% confidence plus minus:  2.1 +-0.012
             // and also optionally show degrees of freedom (23).
-            string pm_symbol = "&#x00A0;&#x00B1;"; //! Unicode space text_plusminus glyph.
-            // Spaces seem to get lost, so use \&x00A0 as an explicit space glyph.
+            string pm_symbol = "&#x00B1;"; //! Unicode thin non-breaking space and Unicode text_plusminus glyph.
+            // Spaces seem to get lost, so can use \&x00A0 or &#x202F; as an explicit space glyph.
             // Layout seems to vary with font - Times New Roman leaves no space after.
             if ((x_sty.plusminus_on_ == true) && (ux > 0.) )
             {  // std_dev estimate usually 67% confidence interval + or - standard-deviation.
@@ -2966,7 +2972,7 @@ namespace boost
               label_xu = strip_if(ux, x_sty, true);
               //t.tspan(pm_symbol).fill_color(darkcyan);
               // Should this be stroke_color? No it makes the font go fuzzy!
-              std::cout << x_sty.plusminus_color_.is_blank() << std::endl;
+              // std::cout << x_sty.plusminus_color_.is_blank() << std::endl;
               t.tspan(pm_symbol).fill_color(x_sty.plusminus_color_).font_size(fx);
                 // NOT .stroke_color(x_sty.plusminus_color_);  - makes it go fuzzy.
               t.tspan(label_xu).fill_color(x_sty.plusminus_color_).font_size(fx);
@@ -3004,7 +3010,7 @@ namespace boost
               label.precision(4); // Might need 5 to show 65535?
               //label.flags(sty.value_ioflags_); // Leave at default.
               label << "&#x00A0;(" << dfx << ")"; // "123.5"
-              // Explicit space "\&#x00A0;" seems necessary.
+              // Explicit space "\&#x00A0;" is necessary.
               label_xdf = label.str();
               t.tspan(label_xdf).fill_color(x_sty.df_color_).font_size(fx);
             }
@@ -3082,12 +3088,11 @@ namespace boost
               }
             } //
             else
-            { // Splitting X and Y info onto two lines, so move ready to put Y value-label on 'newline' below point marker.
-              // Problem here if orientation is changed? - Yes - doesn't line up :-(
-              // x_sty.separator_.substr(1); to ignore the leading \n newline indicator to split onto two lines.
+            { // Splitting X and Y value labels onto two lines, so move ready to put Y value-label on 'newline' below point marker.
+              // x_sty.separator_.substr(1); to ignore the leading \n newline indicator at separator_[0] to split onto two lines.
               t.tspan(x_sty.separator_.substr(1)).fill_color(x_sty.fill_color_).font_size(x_sty.values_text_style_.font_size());
               if (y_sty.prefix_ != "")
-              { //
+              { 
                 label_yv = y_sty.prefix_ + label_yv;
               }
               // Need to start a new text_element here because tspan rotation doesn't apply to whole string?
@@ -3095,8 +3100,8 @@ namespace boost
               double newline_spacing = 0.5 * (y_sty.values_text_style_.font_size() + x_sty.values_text_style_.font_size()) * 1.3 ; // 
               double dy = newline_spacing * cos(x_sty.value_label_rotation_ * 6.2918);
               double dx = newline_spacing * sin(x_sty.value_label_rotation_ * 6.2918); // 
-              std::cout << "rot " << x_sty.value_label_rotation_ << ", newline " << newline_spacing << ", dx = " << dx << ", x - dx = " << x - dx << ", dy = " << dy << ", y - dy = " << y - dy << std::endl;
-              text_element& ty = y_g_ptr.text(x - dx, y + dy, label_yv, y_sty.values_text_style_, al, rot);
+              align_style yal = y_sty.value_label_alignment_;
+              text_element& ty = y_g_ptr.text(x - dx, y + dy, label_yv, y_sty.values_text_style_, yal, rot);
 
               if ((y_sty.plusminus_on_ == true) // Is wanted.
                   && (uy > 0.) // And is a valid std_dev estimate.

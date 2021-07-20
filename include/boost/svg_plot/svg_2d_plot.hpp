@@ -2764,8 +2764,9 @@ my_plot.background_color(ghostwhite) // Whole image.
       const std::string& y_values_font_family();
       svg_2d_plot& y_values_color(const svg_color& col);
       svg_color y_values_color();
-       svg_2d_plot& y_values_rotation(rotate_style rotate);
+      svg_2d_plot& y_values_rotation(rotate_style rotate);
       int y_values_rotation();
+      svg_2d_plot& y_values_alignment(align_style align);
       align_style y_values_alignment();
       svg_2d_plot& y_values_precision(int p);
       int y_values_precision();
@@ -3788,12 +3789,17 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
         return y_values_style_.value_label_rotation_;
       }
 
+      svg_2d_plot& svg_2d_plot::y_values_alignment(align_style align)
+      { //! Set alignment (text anchor) for value-labels on Y-value labels.
+        //! \see align_style
+        y_values_style_.value_label_alignment_ = align;
+        return *this; //! \return Reference to svg_2d_plot to make chainable.
+      }
+
       align_style svg_2d_plot::y_values_alignment()
       { //! \return rotation for value-labels on Y-axis.
         return y_values_style_.value_label_alignment_;
        }
-
-
 
       svg_2d_plot& svg_2d_plot::y_values_precision(int p)
       { //! Set @c iostream precision for data-points Y values.
