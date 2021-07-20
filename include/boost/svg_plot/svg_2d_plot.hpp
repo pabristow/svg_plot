@@ -764,6 +764,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         x_values_on_(false), // If X values of data-points are shown.
         y_values_on_(false), // If Y values of data-points are shown.
         xy_values_on_(false), // If X & Y values of data are shown as a pair.
+        // Warning if both xy_values_on and x_value_on and/or y_values_on specified.
         x_values_style_(horizontal, align_style::left_align, 3, std::ios::dec, true, value_style_, black, black),
         //  false, blue, false, yellow, false, green, false, cyan, false, magenta, false, red, used for testing.
         //  "?", "!", "|"), // Separators, prefix, separator, and suffix.
@@ -3145,7 +3146,7 @@ my_plot.x_value_ioflags(ios::dec | ios::scientific).x_value_precision(2);
       { /*! Set @c true if values of X and Y data-points are to be shown (as 1.23).
         (Will override x_values_on and/or y_values_on that would otherwise cause overwriting).
           */
-        if(x_values_on())
+        if(x_values_on_)
         { // Would be overwritten by XY pair of values labels.
           x_values_on(false);
           std::cout << "SVG_plot warning: xy_values_on has overwritten x_values_on!" << std::endl;

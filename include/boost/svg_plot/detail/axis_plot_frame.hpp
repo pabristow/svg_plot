@@ -3024,7 +3024,7 @@ namespace boost
               t.tspan(x_sty.separator_).fill_color(x_sty.fill_color_).font_size(x_sty.values_text_style_.font_size());  // X
               t.tspan(y_sty.separator_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size());  // Y
               if (y_sty.prefix_ != "")
-              { // Want a prefix, for example: "length ="
+              { // Want a prefix, for example: "length = "
                 t.tspan(y_sty.prefix_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size());
               }
              svg_color ycol = derived().image_.gs(detail::PLOT_Y_POINT_VALUES).style().fill_color();  // Y label color.
@@ -3091,9 +3091,12 @@ namespace boost
                 label_yv = y_sty.prefix_ + label_yv;
               }
               // Need to start a new text_element here because tspan rotation doesn't apply to whole string?
-              // Use the mean of x and Y font-size to determine the size of the 'newline'.
-              double dy = 0.5 * (y_sty.values_text_style_.font_size() + x_sty.values_text_style_.font_size()) * 1.2 ; // 
-              text_element& ty = y_g_ptr.text(x, y + dy, label_yv, y_sty.values_text_style_, al, rot);
+              // Use the mean of X and Y font-size to determine the size of the spacing of 'newline'.
+              double newline_spacing = 0.5 * (y_sty.values_text_style_.font_size() + x_sty.values_text_style_.font_size()) * 1.3 ; // 
+              double dy = newline_spacing * cos(x_sty.value_label_rotation_ * 6.2918);
+              double dx = newline_spacing * sin(x_sty.value_label_rotation_ * 6.2918); // 
+              std::cout << "rot " << x_sty.value_label_rotation_ << ", newline " << newline_spacing << ", dx = " << dx << ", x - dx = " << x - dx << ", dy = " << dy << ", y - dy = " << y - dy << std::endl;
+              text_element& ty = y_g_ptr.text(x - dx, y + dy, label_yv, y_sty.values_text_style_, al, rot);
 
               if ((y_sty.plusminus_on_ == true) // Is wanted.
                   && (uy > 0.) // And is a valid std_dev estimate.
@@ -4839,6 +4842,7 @@ namespace boost
             //  derived().xy_values_on(false);
             //}
             derived().x_values_on_ = b;
+            std::cout << "SVG_plot warning: x_values_on has overwritten xy_values_on!" << std::endl;
             return derived();
           }
 

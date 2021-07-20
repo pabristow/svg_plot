@@ -142,8 +142,8 @@ the order of data values is important.
 
   std::map<uncun, uncun > data1; // Container for X & Y pairs of data-point values.
   data1.insert(mp1); // Insert 1st pair of X & Y.
-  data1.insert(make_pair(uncun(3.9, 0.01F, 8), uncun(1.1, 0.1F, 18))); // and add another X&Y-pair
-  data1.insert(make_pair(uncun(-2.234, 0.3F, 7), uncun(-8.76, 0.9F, 9))); // and a third pair.
+ // data1.insert(make_pair(uncun(3.9, 0.01F, 8), uncun(1.1, 0.1F, 18))); // and add another X&Y-pair
+//  data1.insert(make_pair(uncun(-2.234, 0.3F, 7), uncun(-8.76, 0.9F, 9))); // and a third pair.
 
  /*
 `Make very sure you don't forget either uncun(...) like this
@@ -192,14 +192,18 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     // X values settings:
     .x_label("times (sec)")
     .x_range(-3, +10)
-    .x_values_on(true) // Show X-values next to each point.
+    //.x_values_on(true) // Show X-values next to each point.
+    // SVG_plot warning : x_values_on has overwritten xy_values_on!
 
      //! \note Essential use of Unicode space &\#x00A0; in all strings - ANSI space has no effect!
   //  .x_decor("t ", ", ", "sec") // Keep all on one line using X-separator does NOT start with a newline.
-  //  .x_decor("t ", "\n ", "sec") //Split X and Y onto two lines because X-separator *does* start with newline.
-    .x_decor("after t ", "\ntravels", "sec") // Split X and Y onto two lines because X-separator *does* start with newline,
+   .x_decor("g ", "\n", "sec") // Split X and Y onto two lines because X-separator *does* start with newline.
+  // .x_decor("after t ", "\ntravels", "sec") // Split X and Y onto two lines because X-separator *does* start with newline,
     // and add some descriptive text too.
-    .x_values_rotation(uphill)
+    .x_values_rotation(downward) // 
+   //.x_values_rotation(steepup) // 
+   // .x_values_rotation(horizontal) // 
+   // .x_values_rotation(upward) // 
     .x_values_font_size(10) // Bigger than default.
     .x_values_font_family("Times New Roman") // Serif font to show difference from sans serif ued for Y value-labels.
     .x_major_grid_on(true)
@@ -208,11 +212,14 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     // Y values settings:
     .y_label("distance (km)")
     .y_range(-10., +10.) // But may be over-written by x and or  y-autoscale below.
-    .y_values_on(true) // Show Y values next to each point.
-    .y_values_rotation(uphill)
+    //.y_values_on(true) // Show Y values next to each point.
+    // SVG_plot warning : xy_values_on has overwritten y_values_on!
+
+   // .y_values_rotation(downhill) // is ignored if both X and Y-values are shown on line below.
     .y_values_font_family("Arial") // Sans serif different from X-values font just to show effect.
     .y_values_font_size(8) // Smaller than default.
-    .y_decor("&#x00A0;&#x00A0;&#x00A0; d &#x00A0;", "&#x00A0;", "&#x00A0;km")
+    .y_decor("d &#x00A0;", "&#x00A0;", "&#x00A0;km")
+ //   .y_decor("&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;   d &#x00A0;", "&#x00A0;", "&#x00A0;km")
 //    .y_decor("&#x00A0;&#x00A0; time = ", "&#x00A0;", "&#x00A0;sec")
      // Note: a few padding spaces are used to get Y-value-labels to lie more nearly under X-value-labels.
      // This is only necessary when value-labels are not horizontal.
@@ -229,8 +236,8 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     .y_df_on(true) // Show degrees of freedom (usually observations -1) for data-points.
     .y_df_color(green) // Show degrees of freedom in green, for examples: "11").
 
-     // .xy_values_on(true) // Show both X-values and Y-values next to each point.
-     // Not needed if both .x_values_on(true) and .y_values_on(true) specified (warning, but has no effect).
+    .xy_values_on(true) // Show both X-values and Y-values next to each point.
+     // IS needed if both .x_values_on(true) and .y_values_on(true) specified.
      // .xy_autoscale(data1) // may result in value-labels running off the plot and image.
 
   /*`The default uncertainty ellipse colors (that apply to both X and Y axes)
