@@ -3029,7 +3029,8 @@ namespace boost
               t.tspan(y_sty.separator_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size());  // Y
               if (y_sty.prefix_ != "")
               { // Want a prefix, for example: "length = "
-                t.tspan(y_sty.prefix_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size());
+                t.tspan(y_sty.prefix_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size_)
+                  .font_family(y_sty.values_text_style_.font_family_);
               }
              t.tspan(label_yv, y_sty.values_text_style_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size()); // Color.
               if (
@@ -3040,9 +3041,9 @@ namespace boost
                 // Precision of std_dev is usually less than value,
                 uy *= derived().text_plusminus_; // Typically + or - standard-deviation.
                 std::string label_yu;
-                label_yu = "&#x00A0;" + strip_if(uy, y_sty, true);
-                t.tspan(pm_symbol).font_family("arial").font_size(fy).fill_color(green);
-                t.tspan(label_yu).fill_color(y_sty.plusminus_color_).font_size(fy);
+                label_yu = "&#x2009;" + strip_if(uy, y_sty, true);
+                t.tspan(pm_symbol).font_family(y_sty.values_text_style_.font_family_).font_size(fy).fill_color(green);
+                t.tspan(label_yu).fill_color(y_sty.plusminus_color_).font_size(fy).font_family(y_sty.values_text_style_.font_family_);
               }
  //             value_style val_style = y_sty;
               if (y_sty.addlimits_on_ == true)
@@ -3064,7 +3065,8 @@ namespace boost
                     << lexical_cast<double>(round_ms(ci.second, m))
                     << "&gt;"; // '>' 003e is an XML predefined entity, so use name.
                 std::string label_limits = label.str(); // For example: "<1.23, 1.45>"
-                t.tspan(label_limits).fill_color(y_sty.addlimits_color_).font_size(fy);
+                t.tspan(label_limits).fill_color(y_sty.addlimits_color_)
+                  .font_size(fy).font_family(y_sty.values_text_style_.font_family_);
               }
               if ((y_sty.df_on_ == true)
                 && (dfy != (std::numeric_limits<unsigned short int>::max)()) // Is valid df.
@@ -3076,11 +3078,13 @@ namespace boost
                 label <<"&#x00A0;(" << dfy << ")"; // "123.5"
                 std::string label_ydf;
                 label_ydf = label.str();
-                t.tspan(label_ydf).fill_color(y_sty.df_color_).font_size(fy);
+                t.tspan(label_ydf).fill_color(y_sty.df_color_).font_size(fy).font_family(y_sty.values_text_style_.font_family_);
               }
               if (y_sty.suffix_ != "")
               { // Want a suffix like "]" - with the Y values font-size, (not reduced for std_dev info), and same color as prefix.
-                t.tspan(y_sty.suffix_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size());
+                t.tspan(y_sty.suffix_).fill_color(y_sty.fill_color_).
+                  font_size(y_sty.values_text_style_.font_size_).
+                  font_family(y_sty.values_text_style_.font_family_);
               }
             } //
             else

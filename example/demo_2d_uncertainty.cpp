@@ -145,7 +145,7 @@ the order of data values is important.
   std::map<uncun, uncun > data1; // Container for X & Y pairs of data-point values.
   data1.insert(mp1); // Insert 1st pair of X & Y.
   //data1.insert(make_pair(uncun(3.9, 0.01F, 8), uncun(1.1, 0.1F, 18))); // and add another X&Y-pair
-  data1.insert(make_pair(uncun(3.9, 0.01F, 8), uncun(1.1, 0.1F, 18))); // and add another X&Y-pair
+  data1.insert(make_pair(uncun(3.9, 0.01F, 8), uncun(1.1, 0.2F, 18))); // and add another X&Y-pair
   data1.insert(make_pair(uncun(-2.234, 0.3F, 7), uncun(-8.76, 0.9F, 9))); // and a third pair.
 
  /*
@@ -215,11 +215,9 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     .y_major_grid_on(true)
     .x_major_interval(1)
     .y_major_interval(1)
-    
-
 
     .x_plusminus_on(true) // Show plus/minus +/- uncertainty with data-point value-labels, for example "2.1 +/- 0.001"
-    .x_plusminus_color(red) // Show plus/minus +/- uncertainty in red.
+    .x_plusminus_color(red) // Show plus/minus +/- uncertainty data-point value-label in red.
 
     // Y values settings:
     .y_label("distance (km)")
