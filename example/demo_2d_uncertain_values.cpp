@@ -152,7 +152,7 @@ This can be controlled in steps using an 'enum rotate_style` for convenience (or
 placing the values below the horizontal Y-axis line,
 but for 2-D plots all writing orientations can be useful).
 */
-   // my_2d_plot.x_values_rotation(rightward); // Orientation for the Y-axis value-labels, placing information to the right of the data-point marker.
+    my_2d_plot.x_values_rotation(rightward); // Orientation for the Y-axis value-labels, placing information to the right of the data-point marker.
    // my_2d_plot.x_values_rotation(horizontal); // Orientation for the Y-axis value-labels, placing information above the data-point marker.
    // my_2d_plot.x_values_rotation(uphill); // Orientation for the Y-axis value-labels, placing information to the right of the data-point marker.
    // my_2d_plot.x_values_rotation(upward); // Orientation for the Y-axis value-labels, placing information to the right of the data-point marker.

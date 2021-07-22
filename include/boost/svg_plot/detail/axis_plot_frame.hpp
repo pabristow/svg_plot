@@ -2874,7 +2874,7 @@ namespace boost
             int marker_size = derived().serieses_[0].point_style_.size_; 
             int label_size = x_sty.values_text_style_.font_size();
             // Offset of value-labels from point must be related mainly to
-            // size of the data marker, less from the value-label font-size.
+            // size of the data-point-marker, less from the value-label font-size.
 
             int rot = x_sty.value_label_rotation_;
             align_style al; // = center_align;  Decide the alignment from the rotation,
@@ -2961,7 +2961,7 @@ namespace boost
             std::string label_xdf; // X degrees of freedom as string, for example "(42)".
             // Optionally, show std_dev as 95% confidence plus minus:  2.1 +-0.012
             // and also optionally show degrees of freedom (23).
-            string pm_symbol = "&#x00B1;"; //! Unicode thin non-breaking space and Unicode text_plusminus glyph.
+            string pm_symbol = "&#x00B1;"; //! Unicode thin non-breaking space ? and Unicode text_plusminus glyph.
             // Spaces seem to get lost, so can use \&x00A0 or &#x202F; as an explicit space glyph.
             // Layout seems to vary with font - Times New Roman leaves no space after.
             if ((x_sty.plusminus_on_ == true) && (ux > 0.) )
@@ -3032,9 +3032,7 @@ namespace boost
               { // Want a prefix, for example: "length = "
                 t.tspan(y_sty.prefix_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size());
               }
-             svg_color ycol = derived().image_.gs(detail::PLOT_Y_POINT_VALUES).style().fill_color();  // Y label color.
-             // Must be a better way to get this Y value-label color?
-             t.tspan(label_yv, y_sty.values_text_style_).fill_color(ycol).font_size(y_sty.values_text_style_.font_size()); // Color.
+             t.tspan(label_yv, y_sty.values_text_style_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size()); // Color.
               if (
                    (y_sty.plusminus_on_) // +/- is wanted.
                    && (uy > 0.) // Is valid std_dev estimate.

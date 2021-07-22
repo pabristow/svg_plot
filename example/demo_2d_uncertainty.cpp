@@ -204,7 +204,8 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
    // .x_values_rotation(downward) // 
    //.x_values_rotation(steepup) // 
     .x_values_rotation(horizontal) // Lines up vertically, but shifted too high???
-   // .x_values_rotation(upward) // 
+    .x_values_rotation(upward) // 
+    .x_values_rotation(rightward) // 
     .x_values_font_size(10) // Bigger than default.
     .x_values_font_family("Times New Roman") // Serif font just to show difference from sans-serif used for Y value-labels.
     .x_major_grid_on(true)
