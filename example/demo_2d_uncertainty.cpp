@@ -146,7 +146,7 @@ the order of data values is important.
   data1.insert(mp1); // Insert 1st pair of X & Y.
   //data1.insert(make_pair(uncun(3.9, 0.01F, 8), uncun(1.1, 0.1F, 18))); // and add another X&Y-pair
   data1.insert(make_pair(uncun(3.9, 0.01F, 8), uncun(1.1, 0.2F, 18))); // and add another X&Y-pair
-  data1.insert(make_pair(uncun(-2.234, 0.3F, 7), uncun(-8.76, 0.9F, 9))); // and a third pair.
+  data1.insert(make_pair(uncun(-2.234, 0.1F, 7), uncun(-5.76, 0.4F, 9))); // and a third pair.
 
  /*
 `Make very sure you don't forget either uncun(...) like this
@@ -199,16 +199,17 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     // SVG_plot warning : x_values_on has overwritten xy_values_on!
 
      //! \note Essential use of Unicode space &\#x00A0; in all strings - ANSI space has no effect!
-   .x_decor("t ", ", ", "sec") // Keep all on one line using X-separator does NOT start with a newline.
-   //.x_decor("g ", "\n", "sec") // Split X and Y onto two lines because X-separator *does* start with newline.
+  //.x_decor("t ", ", ", "sec") // Keep all on one line using X-separator does NOT start with a newline.
+   .x_decor("g ", "\n", "sec") // Split X and Y onto two lines because X-separator *does* start with newline.
   // .x_decor("after t ", "\ntravels", "sec") // Split X and Y onto two lines because X-separator *does* start with newline,
     // and add some descriptive text too.
    // .x_values_rotation(backdown) // Not good.
    // .x_values_rotation(downward) // 
+   .x_values_rotation(uphill)
    //.x_values_rotation(steepup) // 
-    .x_values_rotation(horizontal) // Lines up vertically, but shifted too high???
-    .x_values_rotation(upward) // 
-    .x_values_rotation(rightward) // 
+   // .x_values_rotation(horizontal) // Lines up vertically, but shifted too high???
+   // .x_values_rotation(upward) // 
+   // .x_values_rotation(rightward) // 
     .x_values_font_size(10) // Bigger than default.
     .x_values_font_family("Times New Roman") // Serif font just to show difference from sans-serif used for Y value-labels.
     .x_major_grid_on(true)

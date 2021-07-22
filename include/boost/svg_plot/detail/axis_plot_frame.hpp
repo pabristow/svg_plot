@@ -56,13 +56,12 @@ namespace boost
     /*! Number of standard-deviations used for text_plusminus text display.\n
       Nominal factor of 2 (strictly 1.96) corresponds to 95% confidence limit.
     */
-    static const double text_plusminus = 2.;
+    static const double text_plusminus = 1.96;
 
     static const double sin45 = 0.707; //!< Used to calculate 'length' if axis value-labels are sloping.
     static const double reducer = 0.8; //!< To make uncertainty and degrees of freedom estimates a bit smaller font to help distinguish from value.
    // static const double aspect_ratio = 0.6;  //!< Guess at average height to width of font. Now in svg_style.hpp
 
-    
     //! \enum x_axis_intersect If and how the X axes intersects Y-axis.
     //! \note x_axis_position_ and y_axis_position_ use x_axis_intersect & y_axis_intersect
     enum x_axis_intersect
@@ -2321,7 +2320,7 @@ namespace boost
         break;
 
       case unc_ellipse:  // Showing three uncertainty ellipses, if known.
-        { // std_dev horizontal (and, for 2D, vertical) ellipses for one, two and three 'standard-deviations'.
+        { // std_dev horizontal (and/or, for 2D, vertical) ellipses for one, two and three 'standard-deviations'.
           double xu = ux.value(); //
           if (ux.std_dev() > 0)
           { // X std_dev uncertainty is meaningful.
@@ -2944,7 +2943,8 @@ namespace boost
               al = x_sty.value_label_alignment_;
             }
             text_element& t = x_g_ptr.text(x, y, label_xv, x_sty.values_text_style_, al, rot); // X value-label.
-
+            // <text x="101" y="284" font-size="10" font-family="Times New Roman">g -2.2 and several tspan follow.
+            // 
             // If would be simpler to prepare a single string like "1.23 +- -0.3, 3.45 +- -0.1(10)"
             // but this would not allow change of font-size, type and color
             // something that proves to be very effective at visually separating
@@ -2965,7 +2965,7 @@ namespace boost
             // Layout seems to vary with font - Times New Roman leaves no space after.
             if ((x_sty.plusminus_on_ == true) && (ux > 0.) )
             {  // std_dev estimate usually 67% confidence interval + or - standard-deviation.
-              ux *= derived().text_plusminus_; // typically  + or - standard-deviation.
+              ux *= derived().text_plusminus_; // 1.96 + or - standard-deviation.
               std::string label_xu; // X plusminus (std_dev) as string.
               label_xu = strip_if(ux, x_sty, true);
               //t.tspan(pm_symbol).fill_color(darkcyan);
@@ -3033,13 +3033,13 @@ namespace boost
                   .font_family(y_sty.values_text_style_.font_family_);
               }
              t.tspan(label_yv, y_sty.values_text_style_).fill_color(y_sty.fill_color_).font_size(y_sty.values_text_style_.font_size()); // Color.
-              if (
-                   (y_sty.plusminus_on_) // +/- is wanted.
+             if (
+                   (y_sty.plusminus_on_) // +/- estimate of twice standard deviation or uncertainty is wanted.
                    && (uy > 0.) // Is valid std_dev estimate.
                  )
               { // std_dev estimate (usually 95% confidence interval + or - standard-deviation).
                 // Precision of std_dev is usually less than value,
-                uy *= derived().text_plusminus_; // Typically + or - standard-deviation.
+                uy *= derived().text_plusminus_; //  + or - 1.96 standard-deviation.
                 std::string label_yu;
                 label_yu = "&#x2009;" + strip_if(uy, y_sty, true);
                 t.tspan(pm_symbol).font_family(y_sty.values_text_style_.font_family_).font_size(fy).fill_color(green);
@@ -3091,6 +3091,7 @@ namespace boost
             { // Splitting X and Y value labels onto two lines, so move ready to put Y value-label on 'newline' below point marker.
               // x_sty.separator_.substr(1); to ignore the leading \n newline indicator at separator_[0] to split onto two lines.
               t.tspan(x_sty.separator_.substr(1)).fill_color(x_sty.fill_color_).font_size(x_sty.values_text_style_.font_size());
+              // 
               if (y_sty.prefix_ != "")
               { 
                 label_yv = y_sty.prefix_ + label_yv;
@@ -3098,18 +3099,23 @@ namespace boost
               // Need to start a new text_element here because tspan rotation doesn't apply to whole string?
               // Use the mean of X and Y font-size to determine the size of the spacing of 'newline'.
               double newline_spacing = 0.5 * (y_sty.values_text_style_.font_size() + x_sty.values_text_style_.font_size()) * 1.3 ; // 
-              double dy = newline_spacing * cos(x_sty.value_label_rotation_ * 6.2918);
-              double dx = newline_spacing * sin(x_sty.value_label_rotation_ * 6.2918); // 
+              double rx = x_sty.value_label_rotation_;
+              if (rx == 360)
+              {
+                rx = 0;
+              }
+              rx *=  2 * 3.14159265358979323846264338327950288;  //  * 2 pi
+              double dx = newline_spacing * sin(rx); 
+              double dy = newline_spacing * cos(rx);
               align_style yal = y_sty.value_label_alignment_;
-              text_element& ty = y_g_ptr.text(x - dx, y + dy, label_yv, y_sty.values_text_style_, yal, rot);
-
+              text_element& ty = y_g_ptr.text(x - dx, y + dy, label_yv, y_sty.values_text_style_, yal, rot);  
+              // <text x="100" y="272" font-size="8" font-family="Arial">y=-5.8
               if ((y_sty.plusminus_on_ == true) // Is wanted.
                   && (uy > 0.) // And is a valid std_dev estimate.
                   )
-              {  // std_dev estimate usually 95% confidence interval + or - 2 standard-deviation.
-                 // Precision of std_dev is usually less than value,
-                std::string label_yu = "&#x00A0;" + strip_if(uy, y_sty, true);
-                ty.tspan(pm_symbol).font_family("arial").font_size(fy).fill_color(y_sty.plusminus_color_); // +/- sumbol.
+              {  // plusminus estimate 95% confidence interval + or - 2 standard-deviation. derived().text_plusminus_
+                std::string label_yu = "&#x2009;" + strip_if(uy, y_sty, true); // For example: " 0.2"
+                ty.tspan(pm_symbol).font_family("arial").font_size(fy).fill_color(y_sty.plusminus_color_); // +/- symbol.
                 ty.tspan(label_yu).fill_color(y_sty.plusminus_color_).font_size(fy);
               }
 
