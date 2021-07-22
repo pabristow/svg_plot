@@ -2883,18 +2883,18 @@ namespace boost
             {
             case horizontal: // 
               al = align_style::center_align;
-               // center_align means no x correction.
-             y -= marker_size * 1;  // Up marker font-size;
+               // center_align means no X correction.
+             y -= marker_size * 0.5;  // Up marker font-size;
               break;
             case leftward: // horizontal but to left of marker. OK
-              al = align_style::right_align;
-              x -= marker_size * 1.3;  // left
+              al = align_style::right_align;  // But this is only length of label_xv of prefix and value.
+              x -= marker_size * 1;  // left
               y += label_size * 0.3;  // down label font-size;
               rot = horizontal;
               break;
             case rightward: // horizontal but to right of marker. OK
               al = align_style::left_align;
-              x += marker_size * 1.1;  // right
+              x += marker_size * 0.5;  // right
               y += label_size * 0.3;  // down label font-size;
               rot = horizontal;
               break;
@@ -2907,12 +2907,12 @@ namespace boost
             case uphill: // -60 - OK
               al = align_style::left_align;
               x += label_size ;  // Right third label font-size - centers on marker.
-              y -= marker_size * 0.6;  // UP marker font-size;
+              y -= marker_size * 0.5;  // UP marker font-size;
               break;
             case upward: // -90 vertical writing upwards - OK.
               al = align_style::left_align;
               x += label_size /3.;  // Right third label font-size - centers on marker.
-              y -= marker_size * 2;  // Up marker font-size;
+              y -= marker_size * 0.5;  // Up marker font-size;
               break;
             case backup: // OK
               al = align_style::right_align;

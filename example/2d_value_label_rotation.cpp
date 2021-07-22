@@ -75,13 +75,14 @@ int main()
 
     my_2d_plot
      // .title("2d_value_label_rotation") // Add a string title of the plot.
-      .title_on(false)  // Avoid a title if repeating write("svg-files") as issue in title may mean title is ommitted causing a y offset.
+      .title_on(false)  // Avoid a title if repeating write("svg_files") as issue in title may mean title is ommitted causing a y offset.
       .x_range(-10, 10) // Add a range for the X-axis.
       .x_label("length (m)"); // Add a label for the X-axis.
 
     /*`
     Add a prefix, separator and suffix for the data-point value-labels.*/
-    my_2d_plot.x_decor("[ x=", "", "&#x00A0;s]");
+    my_2d_plot.x_decor("[ x=", "", "&#x2009;s]");
+    my_2d_plot.y_decor("{ y=", "", "&#x2009;g}");
 
 /*`Add the one data-point series, `my_data` and a description, and how the data-points are to be marked,
 here a circle with a diameter of 5 pixels.
@@ -94,8 +95,8 @@ here a circle with a diameter of 5 pixels.
 
     /*`To put a value-label against each data_point, switch on the option:
     */
-    my_2d_plot.x_values_on(true); // Add a label for the X-axis.
-    //my_2d_plot.y_values_on(true); // Add a label for the Y-axis.
+  //  my_2d_plot.x_values_on(true); // Add a label for the X-axis.
+    my_2d_plot.y_values_on(true); // Add a label for the Y-axis.
    // my_2d_plot.xy_values_on(true); // Add a label for both the X and Y-axis on same line.
 
 /*`If the default size and color are not to your taste, set more options, like font family:
@@ -198,38 +199,76 @@ but for 2-D plots all writing orientations can be useful).
 
 /*`To use all these settings, finally write the SVG plot to file.
 */
-    my_2d_plot.write("2d_value_label_rotation.svg");
+    const char* svg_filename = "2d_value_label_rotation.svg";
+    my_2d_plot.write(svg_filename);
     //] [2d_value_label_rotation_2]
 
+    const char* svg_x_allways_filename = "2d_value_label_rotation_allways_x.svg";
+
     my_2d_plot.x_values_rotation(rightward); // Orientation for the X-axis value-labels. Right of marker.
-    my_2d_plot.write("2d_value_label_rotation_allways.svg");
+    my_2d_plot.write(svg_x_allways_filename);
     my_2d_plot.x_values_rotation(leftward); // Orientation for the X-axis value-labels. Right of marker.
-    my_2d_plot.write("2d_value_label_rotation_allways.svg");
+    my_2d_plot.write(svg_x_allways_filename);
     my_2d_plot.x_values_rotation(upward); // Orientation for the X-axis value-labels. Right of marker.
-    my_2d_plot.write("2d_value_label_rotation_allways.svg");
+    my_2d_plot.write(svg_x_allways_filename);
     my_2d_plot.x_values_rotation(downward); // Orientation for the X-axis value-labels. Right of marker.
-    my_2d_plot.write("2d_value_label_rotation_allways.svg");
+    my_2d_plot.write(svg_x_allways_filename);
 
     my_2d_plot.x_values_rotation(slopeup); // 30 degrees Orientation for the X-axis value-labels. Right of marker.
-    my_2d_plot.write("2d_value_label_rotation_allways.svg");
+    my_2d_plot.write(svg_x_allways_filename);
     my_2d_plot.x_values_rotation(uphill); // Orientation for the X-axis value-labels. Right of marker.
-    my_2d_plot.write("2d_value_label_rotation_allways.svg");
+    my_2d_plot.write(svg_x_allways_filename);
     my_2d_plot.x_values_rotation(steepup); // Orientation for the X-axis value-labels. Right of marker.
-    my_2d_plot.write("2d_value_label_rotation_allways.svg");
+    my_2d_plot.write(svg_x_allways_filename);
 
     my_2d_plot.x_values_rotation(slopedownhill); // Orientation for the X-axis value-labels. Right of marker.
-    my_2d_plot.write("2d_value_label_rotation_allways.svg");
+    my_2d_plot.write(svg_x_allways_filename);
     my_2d_plot.x_values_rotation(downhill); // Orientation for the X-axis value-labels. Right of marker.
-    my_2d_plot.write("2d_value_label_rotation_allways.svg");
+    my_2d_plot.write(svg_x_allways_filename);
     my_2d_plot.x_values_rotation(steepdown); // Orientation for the X-axis value-labels. Right of marker.
-    my_2d_plot.write("2d_value_label_rotation_allways.svg");
+    my_2d_plot.write(svg_x_allways_filename);
 
     my_2d_plot.x_values_rotation(backup); // Orientation for the X-axis value-labels. left of marker.
-    my_2d_plot.write("2d_value_label_rotation_allways.svg");
+    my_2d_plot.write(svg_x_allways_filename);
     my_2d_plot.x_values_rotation(backdown); // Orientation for the X-axis value-labels. Left of marker.
-    my_2d_plot.write("2d_value_label_rotation_allways.svg");
+    my_2d_plot.write(svg_x_allways_filename);
 
-    std::cout << "Wrote plot to file " << "\"2d_value_label_rotation_allways.svg\"" << std::endl;
+
+    const char* svg_y_allways_filename = "2d_value_label_rotation_allways_y.svg";
+
+    my_2d_plot.y_values_rotation(rightward); // Orientation for the X-axis value-labels. Right of marker.
+    my_2d_plot.write(svg_y_allways_filename);
+    my_2d_plot.y_values_rotation(leftward); // Orientation for the X-axis value-labels. Right of marker.
+    my_2d_plot.write(svg_y_allways_filename);
+    my_2d_plot.y_values_rotation(upward); // Orientation for the X-axis value-labels. Right of marker.
+    my_2d_plot.write(svg_y_allways_filename);
+    my_2d_plot.y_values_rotation(downward); // Orientation for the X-axis value-labels. Right of marker.
+    my_2d_plot.write(svg_y_allways_filename);
+
+    my_2d_plot.y_values_rotation(slopeup); // 30 degrees Orientation for the X-axis value-labels. Right of marker.
+    my_2d_plot.write(svg_y_allways_filename);
+    my_2d_plot.y_values_rotation(uphill); // Orientation for the X-axis value-labels. Right of marker.
+    my_2d_plot.write(svg_y_allways_filename);
+    my_2d_plot.y_values_rotation(steepup); // Orientation for the X-axis value-labels. Right of marker.
+    my_2d_plot.write(svg_y_allways_filename);
+
+    my_2d_plot.y_values_rotation(slopedownhill); // Orientation for the X-axis value-labels. Right of marker.
+    my_2d_plot.write(svg_y_allways_filename);
+    my_2d_plot.y_values_rotation(downhill); // Orientation for the X-axis value-labels. Right of marker.
+    my_2d_plot.write(svg_y_allways_filename);
+    my_2d_plot.y_values_rotation(steepdown); // Orientation for the X-axis value-labels. Right of marker.
+    my_2d_plot.write(svg_y_allways_filename);
+
+    my_2d_plot.y_values_rotation(backup); // Orientation for the X-axis value-labels. left of marker.
+    my_2d_plot.write(svg_y_allways_filename);
+    my_2d_plot.y_values_rotation(backdown); // Orientation for the X-axis value-labels. Left of marker.
+    my_2d_plot.write(svg_y_allways_filename);
+
+
+
+
+
+    std::cout << "Wrote plot to file " << "\"" << svg_filename << "\"" << std::endl;
   }
   catch (const std::exception& e)
   {

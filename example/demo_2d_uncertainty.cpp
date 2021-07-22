@@ -219,7 +219,7 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
    // .y_values_rotation(downhill) // is ignored if both X and Y-values are shown on line below.
     .y_values_font_family("Arial") // Sans serif different from X-values font just to show effect.
     .y_values_font_size(8) // Smaller than default.
-    .y_decor("d", "", "&#x00A0;km")
+    .y_decor("d", "", "&#x2009;km")
  //   .y_decor("&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;   d &#x00A0;", "&#x00A0;", "&#x00A0;km")
 //    .y_decor("&#x00A0;&#x00A0; time = ", "&#x00A0;", "&#x00A0;sec")
      // Note: a few padding spaces are used to get Y-value-labels to lie more nearly under X-value-labels.

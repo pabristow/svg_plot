@@ -152,8 +152,12 @@ This can be controlled in steps using an 'enum rotate_style` for convenience (or
 placing the values below the horizontal Y-axis line,
 but for 2-D plots all writing orientations can be useful).
 */
-    //my_2d_plot.x_values_rotation(rightward); // Orientation for the Y-axis value-labels, placing information to the right of the data-point marker.
-    my_2d_plot.x_values_rotation(horizontal); // Orientation for the Y-axis value-labels, placing information above the data-point marker.
+   // my_2d_plot.x_values_rotation(rightward); // Orientation for the Y-axis value-labels, placing information to the right of the data-point marker.
+   // my_2d_plot.x_values_rotation(horizontal); // Orientation for the Y-axis value-labels, placing information above the data-point marker.
+   // my_2d_plot.x_values_rotation(uphill); // Orientation for the Y-axis value-labels, placing information to the right of the data-point marker.
+   // my_2d_plot.x_values_rotation(upward); // Orientation for the Y-axis value-labels, placing information to the right of the data-point marker.
+  //  my_2d_plot.x_values_rotation(leftward); // Orientation for the Y-axis value-labels, placing information to the right of the data-point marker.
+    // This is only useful for x prefix and value, like "X = 1.23" not any following information.
 
   /*`Add some information about uncertainty to both the X and Y-values:*/
     my_2d_plot.x_plusminus_on(true); // Uncertainty (standard deviation) +/- value-label for the X-axis value.
@@ -162,11 +166,13 @@ but for 2-D plots all writing orientations can be useful).
     my_2d_plot.x_addlimits_on(true); // Confidence limit value-label for the X-axis value.
     my_2d_plot.x_datetime_on(true);
     my_2d_plot.x_order_on(true);
-    my_2d_plot.x_decor("X=&#x200A;", "",", Y="); // Suffix value-label for the X-axis value.
+    my_2d_plot.x_decor("X=&#x200A;", "",""); // Suffix value-label for the X-axis value.
     // https://jkorpela.fi/chars/spaces.html describes Unicode spaces that must be explicit, not just spaces in the string.
     // Normal space is  "&#x00A0;", but hair space "&#x200A;" is most useful between digits and characters,
     // for example: "X=&#x200A;" and "X=&#x2001;" is em quad, 1 em (nominally, the height of the font).
     // and about Y-values:
+    my_2d_plot.y_decor(", Y=", ""," g"); // Suffix value-label for the Y-axis value.
+
     my_2d_plot.y_plusminus_on(true); // Uncertainty (standard deviation) value-label for the X-axis value.
     my_2d_plot.y_plusminus_color(green);
     // Degrees of freedom for the Y-axis value is rather redundant if already shown for X-axis values.
