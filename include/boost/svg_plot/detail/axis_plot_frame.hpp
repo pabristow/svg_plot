@@ -2150,7 +2150,7 @@ namespace boost
           if (point_style.shape_ == unc_ellipse)
           {  // Problem here with unc_ellipse with calculation of a suitable size
              // and also, more fundamentally, the legend box overwrites the PLOT_DATA_UNC layers,
-            point_style.shape_ =  egg; // so as a hack, use a Unicode egg instead. 2B2C to 2B2F
+            point_style.shape_ = egg; // so as a hack, use a Unicode egg instead. Unicode 2B2C to 2B2F
             was_unc_ellipse = true; // Note so can restore after showing circle.
           }
 
@@ -2333,26 +2333,25 @@ namespace boost
           { // Make sure something is visible.
             x_radius = 1.; // Or size?
           }
-          double y_radius;
           double yu = uy.value();
           if (uy.std_dev() > 0)
           { // Y std_dev uncertainty is meaningful.
             yu += uy.std_dev();
-            transform_y(yu); // Uncertainty of Y to SVG coordinates.
-            y_radius = std::abs<double>(yu - y);
-            if (y_radius <= 0.)
-            { // Make sure something is visible.
-              y_radius = 1.;
-            }
           }
-          else
-          { // uy.std_dev() <=0 so arbitrary y_radius.  3 pixels ensure gap between tiny circle showing value with ellipse line width.
-            y_radius = 2;
+          transform_y(yu); // Uncertainty of Y to SVG coordinates.
+          double y_radius = std::abs<double>(yu - y);
+          if (y_radius <= 0.)
+          { // Make sure something is visible.
+            y_radius = 1.;
           }
+          //else
+          //{ // uy.std_dev() <=0 so arbitrary y_radius.  3 pixels ensure gap between tiny circle showing value with ellipse line width.
+          //  y_radius = 2;
+          //}
           //image_.gs(PLOT_DATA_UNC).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
           // Default color set in svg_1d_plot data at present.
           // Also can be set by user calling my_plot.one_sd_color(lightblue), .two_sd_color(blue), .three_sd_color(violet).
-          y += point_size; // to line up with other symbols.
+         // y += point_size; // to line up with other symbols.  This caused the point to be displaced.
           g_element* gu1_ptr = &(derived().image_.gs(PLOT_DATA_UNC1));
           gu1_ptr->ellipse(x, y, x_radius, y_radius); //  Radii are one standard-deviation.
           g_element* gu2_ptr = &(derived().image_.gs(PLOT_DATA_UNC2));

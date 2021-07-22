@@ -127,12 +127,14 @@ the order of data values is important.
   // Or, more informatively, use an uncertain type `uncun` that holds explicit uncertainty information
   // (standard-deviation, degrees of freedom and so can compute confidence internals).
 
-  uncun ux(1.03, 0.56F, 7); // For an X-value.
+  uncun ux(2.0, 0.5F, 7); // For an X-value.
+  //uncun ux(1.03, 0.56F, 7); // For an X-value.
   // Using the  `uncun operator<<` provided we can output all the details of the uncertain value.
   std::cout << scientific << plusminus << addlimits << adddegfree << std::setw(20)  << std::left
     << "ux = " << ux << std::endl; // 1.2 +/-0.56 <0.82, 1.64> (7)
 
-  uncun uy(3.45, 0.67F, 9); // For a Y-value.
+  uncun uy(4.0, 0.5F, 9); // For a Y-value.
+//  uncun uy(3.45, 0.67F, 9); // For a Y-value.
   std::cout << "uy = " << uy << std::endl; // 3.5 +/-0.67 <3.01, 3.89> (9)
 
   // Now we make a pair of X and Y uncertain values:
@@ -142,6 +144,7 @@ the order of data values is important.
 
   std::map<uncun, uncun > data1; // Container for X & Y pairs of data-point values.
   data1.insert(mp1); // Insert 1st pair of X & Y.
+  //data1.insert(make_pair(uncun(3.9, 0.01F, 8), uncun(1.1, 0.1F, 18))); // and add another X&Y-pair
   data1.insert(make_pair(uncun(3.9, 0.01F, 8), uncun(1.1, 0.1F, 18))); // and add another X&Y-pair
   data1.insert(make_pair(uncun(-2.234, 0.3F, 7), uncun(-8.76, 0.9F, 9))); // and a third pair.
 
@@ -210,6 +213,13 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     .x_values_font_family("Times New Roman") // Serif font just to show difference from sans-serif used for Y value-labels.
     .x_major_grid_on(true)
     .y_major_grid_on(true)
+    .x_major_interval(1)
+    .y_major_interval(1)
+    
+
+
+    .x_plusminus_on(true) // Show plus/minus +/- uncertainty with data-point value-labels, for example "2.1 +/- 0.001"
+    .x_plusminus_color(red) // Show plus/minus +/- uncertainty in red.
 
     // Y values settings:
     .y_label("distance (km)")
@@ -220,7 +230,7 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
    // .y_values_rotation(downhill) // is ignored if both X and Y-values are shown on line below.
     .y_values_font_family("Arial") // Sans serif different from X-values font just to show effect.
     .y_values_font_size(8) // Smaller than default.
-    .y_decor("d", "", "&#x2009;km")
+    .y_decor("y=", "", "&#x2009;km")
  //   .y_decor("&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;   d &#x00A0;", "&#x00A0;", "&#x00A0;km")
 //    .y_decor("&#x00A0;&#x00A0; time = ", "&#x00A0;", "&#x00A0;sec")
      // Note: a few padding spaces are used to get Y-value-labels to lie more nearly under X-value-labels.
