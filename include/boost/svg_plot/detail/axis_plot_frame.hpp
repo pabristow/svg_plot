@@ -56,7 +56,7 @@ namespace boost
     /*! Number of standard-deviations used for text_plusminus text display.\n
       Nominal factor of 2 (strictly 1.96) corresponds to 95% confidence limit.
     */
-    static const double text_plusminus = 1.96;
+    //static const double text_plusminus = 1.96; // see plusminus_sds.
 
     static const double sin45 = 0.707; //!< Used to calculate 'length' if axis value-labels are sloping.
     static const double reducer = 0.8; //!< To make uncertainty and degrees of freedom estimates a bit smaller font to help distinguish from value.
@@ -615,6 +615,8 @@ namespace boost
 
           Derived& confidence(double); //!<Set confidence alpha for display of confidence intervals (default 0.05 for 95%).
           double confidence(); //!<\return Confidence alpha for display of confidence intervals (default 0.05 for 95%).
+          Derived& plusminus_sds(double); //!<Set multiplier for display of uncertainty (standard Deviation) as plusminus (default 1 for ~68%).
+          double plusminus_sds(); //!<\return multiplier for display of uncertainty (standard Deviation) as plusminus (default 1 for ~68%).
 
           /*! Set @c true to check that values used for autoscale are within limits.
             Default is @c true, but can switch off checks for speed if user can be sure all values are 'inside limits'.
@@ -2720,7 +2722,7 @@ namespace boost
             && (sd > 0.) // and std_dev is a valid std_dev estimate.
           )
         {  // std_dev estimate usually expressed 67% confidence interval + or - standard-deviation.
-          sd *= derived().text_plusminus_; // typically + or - standard-deviation.
+          sd *= derived().plusminus_sds_; // typically + or - standard-deviation.
           label_u = strip_if(sd, val_style, true); // stripped.
           t.tspan(pm_symbol).fill_color(val_style.plusminus_color_);
           t.tspan(label_u).fill_color(val_style.plusminus_color_).font_size(udf_font);
@@ -2965,7 +2967,7 @@ namespace boost
             // Layout seems to vary with font - Times New Roman leaves no space after.
             if ((x_sty.plusminus_on_ == true) && (ux > 0.) )
             {  // std_dev estimate usually 67% confidence interval + or - standard-deviation.
-              ux *= derived().text_plusminus_; // 1.96 + or - standard-deviation.
+              ux *= derived().plusminus_sds_; // * 1 or two or three times uncertainty (standard-deviation).
               std::string label_xu; // X plusminus (std_dev) as string.
               label_xu = strip_if(ux, x_sty, true);
               //t.tspan(pm_symbol).fill_color(darkcyan);
@@ -3039,7 +3041,7 @@ namespace boost
                  )
               { // std_dev estimate (usually 95% confidence interval + or - standard-deviation).
                 // Precision of std_dev is usually less than value,
-                uy *= derived().text_plusminus_; //  + or - 1.96 standard-deviation.
+                uy *= derived().plusminus_sds_; //  + or - 1.96 standard-deviation.
                 std::string label_yu;
                 label_yu = "&#x2009;" + strip_if(uy, y_sty, true);
                 t.tspan(pm_symbol).font_family(y_sty.values_text_style_.font_family_).font_size(fy).fill_color(green);
@@ -3111,10 +3113,13 @@ namespace boost
               text_element& ty = y_g_ptr.text(x - dx, y + dy, label_yv, y_sty.values_text_style_, yal, rot);  
               // <text x="100" y="272" font-size="8" font-family="Arial">y=-5.8
               if ((y_sty.plusminus_on_ == true) // Is wanted.
-                  && (uy > 0.) // And is a valid std_dev estimate.
+                  && (uy > 0.) // And is a valid uncertainty (std_dev) estimate.
                   )
-              {  // plusminus estimate 95% confidence interval + or - 2 standard-deviation. derived().text_plusminus_
-                std::string label_yu = "&#x2009;" + strip_if(uy, y_sty, true); // For example: " 0.2"
+              {  // plusminus estimate 95% confidence interval + or - 2 standard-deviation. 
+               //   long& pm_sds = os.iword(plusminusSdsIndex); but this applies to an os and this display doesn't use an ostream.
+               // std::string s = round_f<float>(uncertainty * pm_sds, uncSigDigits);
+               double pmsds = derived().plusminus_sds_;
+                std::string label_yu = "&#x2009;" + strip_if(uy * pmsds, y_sty, true); // For example: " 0.2"
                 ty.tspan(pm_symbol).font_family("arial").font_size(fy).fill_color(y_sty.plusminus_color_); // +/- symbol.
                 ty.tspan(label_yu).fill_color(y_sty.plusminus_color_).font_size(fy);
               }
@@ -5444,9 +5449,35 @@ namespace boost
 
           template <class Derived>
           double axis_plot_frame<Derived>::confidence()
-          { //! \return  alpha used for displaying confidence intervals.
+          { //! \return alpha used for displaying confidence intervals.
             //! Default is 0.05.
-            return derived().alpha_;
+            return derived().alpha_; // Make chainable.
+          }
+
+          template <class Derived>
+          Derived& axis_plot_frame<Derived>::plusminus_sds(double pm_sds)
+          { //! Set multiplier for displaying plusminus_sds using plusminus.
+            //! Default is 1 for ~68% confidence.
+            if (pm_sds <= 0.)
+            { // Warn and leave plus_minus_sds_ unchanged.
+              std::cout << "pm_sds multiplier must be > 0 (and usually 1, 2 or 3) !" << std::endl;
+            }
+            else if (pm_sds > 6.)
+            { // Warn and leave plus_minus_sds_ unchanged.
+              std::cout << "pm_sds must be one, two or three!" << std::endl;
+            }
+            else
+            {
+              derived().plusminus_sds_ = pm_sds;
+            }
+            return derived(); // Make chainable.
+          }
+
+          template <class Derived>
+          double axis_plot_frame<Derived>::plusminus_sds()
+          { //! \return p[lusminus_sds used for displaying plusminus_sds multiplier.
+            //! Default is 1. (may also be two or three)
+            return derived().plusminus_sds_;
           }
 
           template <class Derived>

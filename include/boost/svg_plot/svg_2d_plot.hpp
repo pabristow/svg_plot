@@ -621,7 +621,9 @@ svg_2d_plot_series& svg_2d_plot_series::line_color(const svg_color& col_)
       //!< For example, if a max value is 1.2 +or- 0.02, then 1.4 will be used for autoscaling the maximum.\n
       //!< Similarly, if a min value is 1.2 +or- 0.02, then 1.0 will be used for autoscaling the minimum.
 
-      double text_plusminus_; // Nominal factor of 1. standard deviation uncertainty (default) corresponds to 67% confidence limit.
+      double plusminus_sds_; //!< Nominal factor of 1. standard deviation uncertainty (default) corresponds to 67% confidence limit.
+      //!< Optionally can two two or three (for 95% or 99.7%).
+      //!< Must apply to both 1D and both axes of 2D plots.
 
       bool x_include_zero_; //!< true if autoscaled, to include zero.
       int  x_min_ticks_;  //!< If autoscaled, set a minimum number of X ticks.
@@ -777,7 +779,7 @@ my_plot.background_color(ghostwhite) // Whole image.
         plus_limit_point_style_(red, white, 20, cone_point_up, ""), // Colors and size for outside window markers.
         minus_limit_point_style_(blue, white, 20, cone_point_down, ""), // Colors and size for outside window markers.
 
-        text_plusminus_(1.), // This should be 1.96????
+        plusminus_sds_(1.), // Default 1 uncertainty or standard deviation, but optionally two or three.
         // Confidence interval parameters.
         // (Could provide functions for the user to control these).
         alpha_(0.05), //!<  alpha for calculating confidence interval, default 0.05 for 95%.

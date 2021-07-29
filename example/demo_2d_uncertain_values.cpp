@@ -96,6 +96,7 @@ int main()
       .y_range(0, 10)
       .x_major_grid_on(true)
       .y_major_grid_on(true)
+     // .plusminus_sds(2.) // Optionally display uncertainty (standard deviation) multplied by a factor of two.
       ;
 
     /*`To put a value-label against each data-point, switch on or other, or both the options:

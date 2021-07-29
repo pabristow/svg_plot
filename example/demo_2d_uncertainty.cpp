@@ -116,6 +116,8 @@ the order of data values is important.
 
   setUncDefaults(std::cout);  // Initialize for uncertain types.
 
+  //setPlusminusSds(2); // cout.iword(plusminusSdsIndex);
+
   // Create pair for fundamental type double that is implicitly exact with no uncertainty information.
   pair<double, double> double_pair; // double X and Y pair.
   double_pair = make_pair(double(-2.234), double(-8.76)); // Construct and then echo the data values thus:
@@ -189,7 +191,12 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
 
   /*`Use data set `data` to autoscale. (You can use a different data set to scale from the one you chose to plot).
   */
-  //my_plot.xy_autoscale(data1);
+  //my_plot.xy_autoscale(data1); // But may display data point value labels illegibly outside the plot frame or image.
+  // Specifying the X- and Y-axes explicitly is usually best.
+
+  //my_plot.confidence(0.01);  // Optionally use an alpha of 0.01 (99%) rather than default of 0.05 (95%) for culculation of confidence interval.
+
+  //my_plot.plusminus_sds(2.); // Optionally display uncertainty multiplied by a factor of two instead of default one.
 
   my_plot
     // X values settings:
@@ -217,8 +224,8 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     .x_major_interval(1)
     .y_major_interval(1)
 
-    .x_plusminus_on(true) // Show plus/minus +/- uncertainty with data-point value-labels, for example "2.1 +/- 0.001"
     .x_plusminus_color(red) // Show plus/minus +/- uncertainty data-point value-label in red.
+    .x_plusminus_on(true) // Show plus/minus +/- uncertainty with data-point value-labels, for example "2.1 +/- 0.001"
 
     // Y values settings:
     .y_label("distance (km)")
@@ -239,7 +246,7 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
      // y_suffix "&#x00A0;sec" space before word sec.
 
     .y_plusminus_on(true) // Show plus/minus +/- uncertainty with data-point value-labels, for example "2.1 +/- 0.001"
-    .y_plusminus_color(red) // Show plus/minus +/- uncertainty in red.
+    .y_plusminus_color(magenta) // Show plus/minus +/- uncertainty in magenta.
 
     .y_addlimits_on(true)  // Show plus/minus +/- confidence limits for data-point value-labels.
     .y_addlimits_color(darkgreen) // Show +/- in darkgreen, for example: "+/- 0.03".
@@ -266,6 +273,8 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
   // TODO the uncertainty ellipses are now not showing anything useful for 2D but OK for 1D??? :-(
 
   my_plot.write("./demo_2d_uncertainty");
+
+  std::cout << "confidence alpha " << my_plot.confidence() <<", plusminus sd multiplier = " << my_plot.plusminus_sds() << std::endl;
 
   // show_2d_plot_settings(my_plot); // Needs #include <boost/svg_plot/show_2d_settings.hpp>
 
