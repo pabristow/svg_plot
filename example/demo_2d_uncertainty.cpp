@@ -202,7 +202,7 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     // X values settings:
     .x_label("times (sec)")
     .x_range(-3, +10)
-    //.x_values_on(true) // Show X-values next to each point.
+    //.x_values_on(true) // Show X-values next to each point. Triggers a warning if also write .xy_values_on(true)
     // SVG_plot warning : x_values_on has overwritten xy_values_on!
 
      //! \note Essential use of Unicode space &\#x00A0; in all strings - ANSI space has no effect!

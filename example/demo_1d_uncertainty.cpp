@@ -108,9 +108,12 @@ int main()
     Also some autoscaling settings:
     */
     my_plot.autoscale_check_limits(false); // Default is true.
-    my_plot.autoscale_plusminus(2); // default is 3 standard deviations.
-    my_plot.confidence(0.01);  // Change alpha from default 0.05 == 95% to 0.01 == 99%.
-   // my_plot.plusminus_sds(2.);
+    my_plot.autoscale_plusminus(1); //
+    //  //! Set how many std_dev or standard-deviation to allow for ellipse when autoscaling.
+    //! Default is 3 for 99% confidence.
+    // my_plot.confidence(0.01);  // Change alpha from default 0.05 == 95% to 0.01 == 99%.
+    //  my_plot.plusminus_sds(2.); // Show uncertainty as plusminus as two times standard deviation.
+    // my_plot.xy_values(false);
 
     my_plot
     .image_x_size(600)
@@ -152,13 +155,13 @@ int main()
     my_plot.plot(A_times, "A").shape(circlet).size(10).stroke_color(red).fill_color(green);
     my_plot.plot(B_times, "B").shape(vertical_line).stroke_color(blue);
 
-    /*`C_times use ellipses whose width (x radius) is from the uncertainty,
+    /*`C_times use ellipses whose width (X radius) is from the uncertainty,
     1st standard deviation shows as ellipse in magenta, and 2nd as yellow, and 3rd as.
 
     Or one can explicitly set some (brighter) colors for the uncertainty ellipses, or none to omit.
     */
     my_plot
-      .one_sd_color(pink) // Color of ellipse for one standard deviation (~66% probability).
+      .one_sd_color(pink) // Color of ellipse for one standard deviation (~68% probability).
       .two_sd_color(magenta) // Color of ellipse for two standard deviation (~95%).
       .three_sd_color(yellow); // Color of ellipse for two standard deviation (~99%).
 
@@ -176,7 +179,7 @@ int main()
 
     /*`Optionally we can list all the very many setting in use:*/
     using boost::svg::show_1d_plot_settings;
-    //show_1d_plot_settings(my_plot);
+    show_1d_plot_settings(my_plot);
 
 //] [/demo_1d_uncertainty_2]
 

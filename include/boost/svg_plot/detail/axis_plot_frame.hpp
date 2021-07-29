@@ -4856,9 +4856,10 @@ namespace boost
             //if(derived().xy_values_on())
             //{ // Would be overwritten by XY pair.
             //  derived().xy_values_on(false);
+            // Warning not useful for 1d
+           // std::cout << "SVG_plot warning: x_values_on has overwritten xy_values_on!" << std::endl;
             //}
             derived().x_values_on_ = b;
-            std::cout << "SVG_plot warning: x_values_on has overwritten xy_values_on!" << std::endl;
             return derived();
           }
 
