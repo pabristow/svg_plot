@@ -110,6 +110,7 @@ int main()
     my_plot.autoscale_check_limits(false); // Default is true.
     my_plot.autoscale_plusminus(2); // default is 3 standard deviations.
     my_plot.confidence(0.01);  // Change alpha from default 0.05 == 95% to 0.01 == 99%.
+   // my_plot.plusminus_sds(2.);
 
     my_plot
     .image_x_size(600)

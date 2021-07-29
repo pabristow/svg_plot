@@ -273,7 +273,7 @@ public:
   double autoscale_plusminus_; //!< For uncertain values, allow for text_plusminus ellipses showing 67%, 95% and 99% confidence limits.\n
   //!< For example, if a max value is 1.2 +or- 0.02, then 1.4 will be used for autoscaling the maximum.\n
   //!< Similarly, if a min value is 1.2 +or- 0.02, then 1.0 will be used for autoscaling the minimum.
-  double text_plusminus_; // Nominal factor of 1. (default) corresponds to 67% confidence limit.
+  double plusminus_sds_; // Nominal factor of 1. (default) corresponds to 68% confidence limit (or two (95%)or three(99%) ).
   bool x_include_zero_; //!< If autoscaled, include zero.
   int  x_min_ticks_;  //!< If autoscaled, set a minimum number of ticks.
   double x_tight_; //!< How much a value can go beyond the tick value before another tick is required.
@@ -732,7 +732,7 @@ void svg_1d_plot::draw_plot_x_points()
     // Autoscaling.
     autoscale_check_limits_(true), // Do check all value for limits, infinity, max, min, NaN.
     autoscale_plusminus_(3.), // Allow 3 uncertainty (standard deviation) for 99% confidence ellipse.
-    text_plusminus_(1.), // Nominal factor of 1. (default) corresponds to 67% confidence limit.
+    plusminus_sds_(1.), // Nominal factor of 1. (default) corresponds to 67% confidence limit.
     x_autoscale_(false),
     x_include_zero_(false), // If autoscaled, include zero.
     x_min_ticks_(6),  // If autoscaled, set a minimum number of ticks, default 6.
