@@ -104,8 +104,12 @@
         Also some autoscaling settings:
       </p>
 <pre class="programlisting">    <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">autoscale_check_limits</span><span class="special">(</span><span class="keyword">false</span><span class="special">);</span> <span class="comment">// Default is true.</span>
-    <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">autoscale_plusminus</span><span class="special">(</span><span class="number">2</span><span class="special">);</span> <span class="comment">// default is 3 standard deviations.</span>
-    <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">confidence</span><span class="special">(</span><span class="number">0.01</span><span class="special">);</span>  <span class="comment">// Change alpha from default 0.05 == 95% to 0.01 == 99%.</span>
+    <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">autoscale_plusminus</span><span class="special">(</span><span class="number">1</span><span class="special">);</span> <span class="comment">//</span>
+    <span class="comment">//  //! Set how many std_dev or standard-deviation to allow for ellipse when autoscaling.</span>
+    <span class="comment">//! Default is 3 for 99% confidence.</span>
+    <span class="comment">// my_plot.confidence(0.01);  // Change alpha from default 0.05 == 95% to 0.01 == 99%.</span>
+    <span class="comment">//  my_plot.plusminus_sds(2.); // Show uncertainty as plusminus as two times standard deviation.</span>
+    <span class="comment">// my_plot.xy_values(false);</span>
 
     <span class="identifier">my_plot</span>
     <span class="special">.</span><span class="identifier">image_x_size</span><span class="special">(</span><span class="number">600</span><span class="special">)</span>
@@ -148,14 +152,14 @@
 <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plot</span><span class="special">(</span><span class="identifier">B_times</span><span class="special">,</span> <span class="string">"B"</span><span class="special">).</span><span class="identifier">shape</span><span class="special">(</span><span class="identifier">vertical_line</span><span class="special">).</span><span class="identifier">stroke_color</span><span class="special">(</span><span class="identifier">blue</span><span class="special">);</span>
 </pre>
 <p>
-        C_times use ellipses whose width (x radius) is from the uncertainty, 1st
+        C_times use ellipses whose width (X radius) is from the uncertainty, 1st
         standard deviation shows as ellipse in magenta, and 2nd as yellow, and 3rd
         as.
       </p>
 <pre class="programlisting"><span class="identifier">Or</span> <span class="identifier">one</span> <span class="identifier">can</span> <span class="identifier">explicitly</span> <span class="identifier">set</span> <span class="identifier">some</span> <span class="special">(</span><span class="identifier">brighter</span><span class="special">)</span> <span class="identifier">colors</span> <span class="keyword">for</span> <span class="identifier">the</span> <span class="identifier">uncertainty</span> <span class="identifier">ellipses</span><span class="special">,</span> <span class="keyword">or</span> <span class="identifier">none</span> <span class="identifier">to</span> <span class="identifier">omit</span><span class="special">.</span>
 </pre>
 <pre class="programlisting"><span class="identifier">my_plot</span>
-  <span class="special">.</span><span class="identifier">one_sd_color</span><span class="special">(</span><span class="identifier">pink</span><span class="special">)</span> <span class="comment">// Color of ellipse for one standard deviation (~66% probability).</span>
+  <span class="special">.</span><span class="identifier">one_sd_color</span><span class="special">(</span><span class="identifier">pink</span><span class="special">)</span> <span class="comment">// Color of ellipse for one standard deviation (~68% probability).</span>
   <span class="special">.</span><span class="identifier">two_sd_color</span><span class="special">(</span><span class="identifier">magenta</span><span class="special">)</span> <span class="comment">// Color of ellipse for two standard deviation (~95%).</span>
   <span class="special">.</span><span class="identifier">three_sd_color</span><span class="special">(</span><span class="identifier">yellow</span><span class="special">);</span> <span class="comment">// Color of ellipse for two standard deviation (~99%).</span>
 
@@ -175,7 +179,7 @@
         Optionally we can list all the very many setting in use:
       </p>
 <pre class="programlisting"><span class="keyword">using</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">svg</span><span class="special">::</span><span class="identifier">show_1d_plot_settings</span><span class="special">;</span>
-<span class="comment">//show_1d_plot_settings(my_plot);</span>
+<span class="identifier">show_1d_plot_settings</span><span class="special">(</span><span class="identifier">my_plot</span><span class="special">);</span>
 </pre>
 <p>
         The resulting plot is <span class="inlinemediaobject"><object type="image/svg+xml" data="../../images/demo_1d_uncertainty.svg" width="500" height="200"></object></span>

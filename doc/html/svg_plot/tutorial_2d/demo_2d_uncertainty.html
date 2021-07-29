@@ -83,6 +83,8 @@
 
   <span class="identifier">setUncDefaults</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">);</span>  <span class="comment">// Initialize for uncertain types.</span>
 
+  <span class="comment">//setPlusminusSds(2); // cout.iword(plusminusSdsIndex);</span>
+
   <span class="comment">// Create pair for fundamental type double that is implicitly exact with no uncertainty information.</span>
   <span class="identifier">pair</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">,</span> <span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">double_pair</span><span class="special">;</span> <span class="comment">// double X and Y pair.</span>
   <span class="identifier">double_pair</span> <span class="special">=</span> <span class="identifier">make_pair</span><span class="special">(</span><span class="keyword">double</span><span class="special">(-</span><span class="number">2.234</span><span class="special">),</span> <span class="keyword">double</span><span class="special">(-</span><span class="number">8.76</span><span class="special">));</span> <span class="comment">// Construct and then echo the data values thus:</span>
@@ -94,12 +96,14 @@
   <span class="comment">// Or, more informatively, use an uncertain type `uncun` that holds explicit uncertainty information</span>
   <span class="comment">// (standard-deviation, degrees of freedom and so can compute confidence internals).</span>
 
-  <span class="identifier">uncun</span> <span class="identifier">ux</span><span class="special">(</span><span class="number">1.03</span><span class="special">,</span> <span class="number">0.56F</span><span class="special">,</span> <span class="number">7</span><span class="special">);</span> <span class="comment">// For an X-value.</span>
+  <span class="identifier">uncun</span> <span class="identifier">ux</span><span class="special">(</span><span class="number">2.0</span><span class="special">,</span> <span class="number">0.5F</span><span class="special">,</span> <span class="number">7</span><span class="special">);</span> <span class="comment">// For an X-value.</span>
+  <span class="comment">//uncun ux(1.03, 0.56F, 7); // For an X-value.</span>
   <span class="comment">// Using the  `uncun operator&lt;&lt;` provided we can output all the details of the uncertain value.</span>
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">scientific</span> <span class="special">&lt;&lt;</span> <span class="identifier">plusminus</span> <span class="special">&lt;&lt;</span> <span class="identifier">addlimits</span> <span class="special">&lt;&lt;</span> <span class="identifier">adddegfree</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">setw</span><span class="special">(</span><span class="number">20</span><span class="special">)</span>  <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">left</span>
     <span class="special">&lt;&lt;</span> <span class="string">"ux = "</span> <span class="special">&lt;&lt;</span> <span class="identifier">ux</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// 1.2 +/-0.56 &lt;0.82, 1.64&gt; (7)</span>
 
-  <span class="identifier">uncun</span> <span class="identifier">uy</span><span class="special">(</span><span class="number">3.45</span><span class="special">,</span> <span class="number">0.67F</span><span class="special">,</span> <span class="number">9</span><span class="special">);</span> <span class="comment">// For a Y-value.</span>
+  <span class="identifier">uncun</span> <span class="identifier">uy</span><span class="special">(</span><span class="number">4.0</span><span class="special">,</span> <span class="number">0.5F</span><span class="special">,</span> <span class="number">9</span><span class="special">);</span> <span class="comment">// For a Y-value.</span>
+<span class="comment">//  uncun uy(3.45, 0.67F, 9); // For a Y-value.</span>
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"uy = "</span> <span class="special">&lt;&lt;</span> <span class="identifier">uy</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// 3.5 +/-0.67 &lt;3.01, 3.89&gt; (9)</span>
 
   <span class="comment">// Now we make a pair of X and Y uncertain values:</span>
@@ -109,8 +113,9 @@
 
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">map</span><span class="special">&lt;</span><span class="identifier">uncun</span><span class="special">,</span> <span class="identifier">uncun</span> <span class="special">&gt;</span> <span class="identifier">data1</span><span class="special">;</span> <span class="comment">// Container for X &amp; Y pairs of data-point values.</span>
   <span class="identifier">data1</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="identifier">mp1</span><span class="special">);</span> <span class="comment">// Insert 1st pair of X &amp; Y.</span>
-  <span class="identifier">data1</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="identifier">make_pair</span><span class="special">(</span><span class="identifier">uncun</span><span class="special">(</span><span class="number">3.9</span><span class="special">,</span> <span class="number">0.01F</span><span class="special">,</span> <span class="number">8</span><span class="special">),</span> <span class="identifier">uncun</span><span class="special">(</span><span class="number">1.1</span><span class="special">,</span> <span class="number">0.1F</span><span class="special">,</span> <span class="number">18</span><span class="special">)));</span> <span class="comment">// and add another X&amp;Y-pair</span>
-  <span class="identifier">data1</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="identifier">make_pair</span><span class="special">(</span><span class="identifier">uncun</span><span class="special">(-</span><span class="number">2.234</span><span class="special">,</span> <span class="number">0.3F</span><span class="special">,</span> <span class="number">7</span><span class="special">),</span> <span class="identifier">uncun</span><span class="special">(-</span><span class="number">8.76</span><span class="special">,</span> <span class="number">0.9F</span><span class="special">,</span> <span class="number">9</span><span class="special">)));</span> <span class="comment">// and a third pair.</span>
+  <span class="comment">//data1.insert(make_pair(uncun(3.9, 0.01F, 8), uncun(1.1, 0.1F, 18))); // and add another X&amp;Y-pair</span>
+  <span class="identifier">data1</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="identifier">make_pair</span><span class="special">(</span><span class="identifier">uncun</span><span class="special">(</span><span class="number">3.9</span><span class="special">,</span> <span class="number">0.01F</span><span class="special">,</span> <span class="number">8</span><span class="special">),</span> <span class="identifier">uncun</span><span class="special">(</span><span class="number">1.1</span><span class="special">,</span> <span class="number">0.2F</span><span class="special">,</span> <span class="number">18</span><span class="special">)));</span> <span class="comment">// and add another X&amp;Y-pair</span>
+  <span class="identifier">data1</span><span class="special">.</span><span class="identifier">insert</span><span class="special">(</span><span class="identifier">make_pair</span><span class="special">(</span><span class="identifier">uncun</span><span class="special">(-</span><span class="number">2.234</span><span class="special">,</span> <span class="number">0.1F</span><span class="special">,</span> <span class="number">7</span><span class="special">),</span> <span class="identifier">uncun</span><span class="special">(-</span><span class="number">5.76</span><span class="special">,</span> <span class="number">0.4F</span><span class="special">,</span> <span class="number">9</span><span class="special">)));</span> <span class="comment">// and a third pair.</span>
 
  <span class="comment">/*
 `Make very sure you don't forget either uncun(...) like this
@@ -157,33 +162,53 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
         Use data set <code class="computeroutput"><span class="identifier">data</span></code> to autoscale.
         (You can use a different data set to scale from the one you chose to plot).
       </p>
-<pre class="programlisting">  <span class="comment">//my_plot.xy_autoscale(data1);</span>
+<pre class="programlisting">  <span class="comment">//my_plot.xy_autoscale(data1); // But may display data point value labels illegibly outside the plot frame or image.</span>
+  <span class="comment">// Specifying the X- and Y-axes explicitly is usually best.</span>
+
+  <span class="comment">//my_plot.confidence(0.01);  // Optionally use an alpha of 0.01 (99%) rather than default of 0.05 (95%) for culculation of confidence interval.</span>
+
+  <span class="comment">//my_plot.plusminus_sds(2.); // Optionally display uncertainty multiplied by a factor of two instead of default one.</span>
 
   <span class="identifier">my_plot</span>
     <span class="comment">// X values settings:</span>
     <span class="special">.</span><span class="identifier">x_label</span><span class="special">(</span><span class="string">"times (sec)"</span><span class="special">)</span>
     <span class="special">.</span><span class="identifier">x_range</span><span class="special">(-</span><span class="number">3</span><span class="special">,</span> <span class="special">+</span><span class="number">10</span><span class="special">)</span>
-    <span class="special">.</span><span class="identifier">x_values_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span> <span class="comment">// Show X-values next to each point.</span>
+    <span class="comment">//.x_values_on(true) // Show X-values next to each point. Triggers a warning if also write .xy_values_on(true)</span>
+    <span class="comment">// SVG_plot warning : x_values_on has overwritten xy_values_on!</span>
 
      <span class="comment">//! \note Essential use of Unicode space &amp;\#x00A0; in all strings - ANSI space has no effect!</span>
-  <span class="comment">//  .x_decor("t ", ", ", "sec") // Keep all on one line using X-separator does NOT start with a newline.</span>
-  <span class="comment">//  .x_decor("t ", "\n ", "sec") //Split X and Y onto two lines because X-separator *does* start with newline.</span>
-    <span class="special">.</span><span class="identifier">x_decor</span><span class="special">(</span><span class="string">"after t "</span><span class="special">,</span> <span class="string">"\ntravels"</span><span class="special">,</span> <span class="string">"sec"</span><span class="special">)</span> <span class="comment">// Split X and Y onto two lines because X-separator *does* start with newline,</span>
+  <span class="comment">//.x_decor("t ", ", ", "sec") // Keep all on one line using X-separator does NOT start with a newline.</span>
+   <span class="special">.</span><span class="identifier">x_decor</span><span class="special">(</span><span class="string">"g "</span><span class="special">,</span> <span class="string">"\n"</span><span class="special">,</span> <span class="string">"sec"</span><span class="special">)</span> <span class="comment">// Split X and Y onto two lines because X-separator *does* start with newline.</span>
+  <span class="comment">// .x_decor("after t ", "\ntravels", "sec") // Split X and Y onto two lines because X-separator *does* start with newline,</span>
     <span class="comment">// and add some descriptive text too.</span>
-    <span class="special">.</span><span class="identifier">x_values_rotation</span><span class="special">(</span><span class="identifier">uphill</span><span class="special">)</span>
+   <span class="comment">// .x_values_rotation(backdown) // Not good.</span>
+   <span class="comment">// .x_values_rotation(downward) // </span>
+   <span class="special">.</span><span class="identifier">x_values_rotation</span><span class="special">(</span><span class="identifier">uphill</span><span class="special">)</span>
+   <span class="comment">//.x_values_rotation(steepup) // </span>
+   <span class="comment">// .x_values_rotation(horizontal) // Lines up vertically, but shifted too high???</span>
+   <span class="comment">// .x_values_rotation(upward) // </span>
+   <span class="comment">// .x_values_rotation(rightward) // </span>
     <span class="special">.</span><span class="identifier">x_values_font_size</span><span class="special">(</span><span class="number">10</span><span class="special">)</span> <span class="comment">// Bigger than default.</span>
-    <span class="special">.</span><span class="identifier">x_values_font_family</span><span class="special">(</span><span class="string">"Times New Roman"</span><span class="special">)</span> <span class="comment">// Serif font to show difference from sans serif ued for Y value-labels.</span>
+    <span class="special">.</span><span class="identifier">x_values_font_family</span><span class="special">(</span><span class="string">"Times New Roman"</span><span class="special">)</span> <span class="comment">// Serif font just to show difference from sans-serif used for Y value-labels.</span>
     <span class="special">.</span><span class="identifier">x_major_grid_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>
     <span class="special">.</span><span class="identifier">y_major_grid_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>
+    <span class="special">.</span><span class="identifier">x_major_interval</span><span class="special">(</span><span class="number">1</span><span class="special">)</span>
+    <span class="special">.</span><span class="identifier">y_major_interval</span><span class="special">(</span><span class="number">1</span><span class="special">)</span>
+
+    <span class="special">.</span><span class="identifier">x_plusminus_color</span><span class="special">(</span><span class="identifier">red</span><span class="special">)</span> <span class="comment">// Show plus/minus +/- uncertainty data-point value-label in red.</span>
+    <span class="special">.</span><span class="identifier">x_plusminus_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span> <span class="comment">// Show plus/minus +/- uncertainty with data-point value-labels, for example "2.1 +/- 0.001"</span>
 
     <span class="comment">// Y values settings:</span>
     <span class="special">.</span><span class="identifier">y_label</span><span class="special">(</span><span class="string">"distance (km)"</span><span class="special">)</span>
     <span class="special">.</span><span class="identifier">y_range</span><span class="special">(-</span><span class="number">10.</span><span class="special">,</span> <span class="special">+</span><span class="number">10.</span><span class="special">)</span> <span class="comment">// But may be over-written by x and or  y-autoscale below.</span>
-    <span class="special">.</span><span class="identifier">y_values_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span> <span class="comment">// Show Y values next to each point.</span>
-    <span class="special">.</span><span class="identifier">y_values_rotation</span><span class="special">(</span><span class="identifier">uphill</span><span class="special">)</span>
+    <span class="comment">//.y_values_on(true) // Show Y values next to each point.</span>
+    <span class="comment">// SVG_plot warning : xy_values_on has overwritten y_values_on!</span>
+
+   <span class="comment">// .y_values_rotation(downhill) // is ignored if both X and Y-values are shown on line below.</span>
     <span class="special">.</span><span class="identifier">y_values_font_family</span><span class="special">(</span><span class="string">"Arial"</span><span class="special">)</span> <span class="comment">// Sans serif different from X-values font just to show effect.</span>
     <span class="special">.</span><span class="identifier">y_values_font_size</span><span class="special">(</span><span class="number">8</span><span class="special">)</span> <span class="comment">// Smaller than default.</span>
-    <span class="special">.</span><span class="identifier">y_decor</span><span class="special">(</span><span class="string">"&amp;#x00A0;&amp;#x00A0;&amp;#x00A0; d &amp;#x00A0;"</span><span class="special">,</span> <span class="string">"&amp;#x00A0;"</span><span class="special">,</span> <span class="string">"&amp;#x00A0;km"</span><span class="special">)</span>
+    <span class="special">.</span><span class="identifier">y_decor</span><span class="special">(</span><span class="string">"y="</span><span class="special">,</span> <span class="string">""</span><span class="special">,</span> <span class="string">"&amp;#x2009;km"</span><span class="special">)</span>
+ <span class="comment">//   .y_decor("&amp;#x00A0;&amp;#x00A0;&amp;#x00A0;&amp;#x00A0;&amp;#x00A0;&amp;#x00A0;&amp;#x00A0;&amp;#x00A0;   d &amp;#x00A0;", "&amp;#x00A0;", "&amp;#x00A0;km")</span>
 <span class="comment">//    .y_decor("&amp;#x00A0;&amp;#x00A0; time = ", "&amp;#x00A0;", "&amp;#x00A0;sec")</span>
      <span class="comment">// Note: a few padding spaces are used to get Y-value-labels to lie more nearly under X-value-labels.</span>
      <span class="comment">// This is only necessary when value-labels are not horizontal.</span>
@@ -192,7 +217,7 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
      <span class="comment">// y_suffix "&amp;#x00A0;sec" space before word sec.</span>
 
     <span class="special">.</span><span class="identifier">y_plusminus_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span> <span class="comment">// Show plus/minus +/- uncertainty with data-point value-labels, for example "2.1 +/- 0.001"</span>
-    <span class="special">.</span><span class="identifier">y_plusminus_color</span><span class="special">(</span><span class="identifier">red</span><span class="special">)</span> <span class="comment">// Show plus/minus +/- uncertainty in red.</span>
+    <span class="special">.</span><span class="identifier">y_plusminus_color</span><span class="special">(</span><span class="identifier">magenta</span><span class="special">)</span> <span class="comment">// Show plus/minus +/- uncertainty in magenta.</span>
 
     <span class="special">.</span><span class="identifier">y_addlimits_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span>  <span class="comment">// Show plus/minus +/- confidence limits for data-point value-labels.</span>
     <span class="special">.</span><span class="identifier">y_addlimits_color</span><span class="special">(</span><span class="identifier">darkgreen</span><span class="special">)</span> <span class="comment">// Show +/- in darkgreen, for example: "+/- 0.03".</span>
@@ -200,9 +225,11 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
     <span class="special">.</span><span class="identifier">y_df_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span> <span class="comment">// Show degrees of freedom (usually observations -1) for data-points.</span>
     <span class="special">.</span><span class="identifier">y_df_color</span><span class="special">(</span><span class="identifier">green</span><span class="special">)</span> <span class="comment">// Show degrees of freedom in green, for examples: "11").</span>
 
-     <span class="comment">// .xy_values_on(true) // Show both X-values and Y-values next to each point.</span>
-     <span class="comment">// Not needed if both .x_values_on(true) and .y_values_on(true) specified (warning, but has no effect).</span>
+    <span class="special">.</span><span class="identifier">xy_values_on</span><span class="special">(</span><span class="keyword">true</span><span class="special">)</span> <span class="comment">// Show both X-values and Y-values next to each point.</span>
+     <span class="comment">// IS needed if both .x_values_on(true) and .y_values_on(true) specified.</span>
      <span class="comment">// .xy_autoscale(data1) // may result in value-labels running off the plot and image.</span>
+   <span class="comment">// .y_values_alignment(align_style::left_align)</span>
+    <span class="comment">//.x_values_alignment(align_style::right_align) // By default, set by code #L2881 switch statement depending on rotation.</span>
 </pre>
 <p>
         The default uncertainty ellipse colors (that apply to both X and Y axes)
@@ -218,6 +245,8 @@ Echo the values input, correctly rounded using the uncertainy and degrees of fre
   <span class="comment">// TODO the uncertainty ellipses are now not showing anything useful for 2D but OK for 1D??? :-(</span>
 
   <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span><span class="string">"./demo_2d_uncertainty"</span><span class="special">);</span>
+
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"confidence alpha "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">confidence</span><span class="special">()</span> <span class="special">&lt;&lt;</span><span class="string">", plusminus sd multiplier = "</span> <span class="special">&lt;&lt;</span> <span class="identifier">my_plot</span><span class="special">.</span><span class="identifier">plusminus_sds</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
 
   <span class="comment">// show_2d_plot_settings(my_plot); // Needs #include &lt;boost/svg_plot/show_2d_settings.hpp&gt;</span>
 </pre>

@@ -724,7 +724,7 @@ void svg_1d_plot::draw_plot_x_points()
     x_values_on_(false), // By default, don't label point values.
     x_values_style_(static_cast<int>(horizontal), align_style::left_align, 3, std::ios::dec, true, value_style_, black, black, false, false),
     // Confidence interval parameters.
-    // (Could provide functions for the user to control these).
+    // (Functions for the user to control these available).
     alpha_(0.05), // oss.iword(confidenceIndex) / 1.e6; 95% confidence.
     epsilon_(0.05), // = oss.iword(roundingLossIndex) / 1.e3; // = allow 5% rounding loss.
     uncSigDigits_(2), // = oss.iword(setUncSigDigitsIndex); // ISO standard =2 by default.
