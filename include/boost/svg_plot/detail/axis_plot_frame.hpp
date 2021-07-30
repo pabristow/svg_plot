@@ -2251,7 +2251,7 @@ namespace boost
         whose size and stroke and fill colors are specified in plot_point_style style,
         possibly including uncertainty ellipses showing multiples of standard-deviation.
       */
-      /*
+      /*!
         For 1-D plots, the points do not *need* to be centered on the X-axis,
         and putting them just above, or sitting on, the X-axis is much clearer.
         For 2-D plots, the symbol center should, of course, be centered exactly on x, y.
@@ -2322,7 +2322,7 @@ namespace boost
         break;
 
       case unc_ellipse:  // Showing three uncertainty ellipses, if known.
-        { // std_dev horizontal (and/or, for 2D, vertical) ellipses for one, two and three 'standard-deviations'.
+        { // std_dev or uncertainty horizontal (and/or, for 2D, vertical) ellipses for one, two and three 'standard-deviations'.
           double xu = ux.value(); //
           if (ux.std_dev() > 0)
           { // X std_dev uncertainty is meaningful.
@@ -2557,7 +2557,7 @@ namespace boost
           For example: "3.45 +-0.1 <3.40, 3.50> (10)"\n
           The precision (decimal digits) and format (scientific, fixed), and color and font type and size can be controlled too.
           */
-        double value = uvalue.value(); // Most likely value or mean.
+        double value = uvalue.value_; // Most likely value or mean.
         double sd = uvalue.std_dev(); // standard-deviation for value.
         double df = uvalue.deg_free(); // Degrees of freedom estimate for value.
         unsigned short int types = uvalue.types();  //  unctypes_

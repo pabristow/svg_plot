@@ -551,11 +551,15 @@ void svg_1d_plot::update_image()
 void svg_1d_plot::draw_plot_x_points()
 {
   double y(0.); // All 1-D points are plotted are on the horizontal X-axis (y = 0) axis.
+  y -= serieses_[0].point_style_.size_ * 0.5;
+
   transform_y(y);
   if ((y < plot_top_) || (y > plot_bottom_))
   { // So Y position being wrong should never happen! (error in transform?)
     throw std::runtime_error("transform_y(0) outside plot window!");
   }
+
+
   // Symbols are offset downwards because
   // the origin of the point is the top left of the glyph.
   // Need to offset by the height and width of the marker font-size?
@@ -573,7 +577,7 @@ void svg_1d_plot::draw_plot_x_points()
     g_ptr_dps.text_style_.font_family_ = serieses_[i].point_style_.symbols_style_.font_family_;
     g_ptr_dps.alignment_ = align_style::center_align;
 
-    y -= serieses_[i].point_style_.size_ * 0.5;  // Avoid a collision of marker with the horizontal y=0 axis line.
+   // y -= serieses_[i].point_style_.size_ * 0.5;  // Avoid a collision of marker with the horizontal y=0 axis line.
 
     for (unsigned int j = 0; j < serieses_[i].series_.size(); ++j)
     { // Draw jth point for ith serieses.

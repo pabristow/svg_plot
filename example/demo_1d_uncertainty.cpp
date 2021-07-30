@@ -179,7 +179,7 @@ int main()
 
     /*`Optionally we can list all the very many setting in use:*/
     using boost::svg::show_1d_plot_settings;
-    show_1d_plot_settings(my_plot);
+   // show_1d_plot_settings(my_plot);
 
 //] [/demo_1d_uncertainty_2]
 
