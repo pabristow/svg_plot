@@ -550,15 +550,6 @@ void svg_1d_plot::update_image()
 
 void svg_1d_plot::draw_plot_x_points()
 {
-  double y(0.); // All 1-D points are plotted are on the horizontal X-axis (y = 0) axis.
-  y -= serieses_[0].point_style_.size_ * 0.5;
-
-  transform_y(y);
-  if ((y < plot_top_) || (y > plot_bottom_))
-  { // So Y position being wrong should never happen! (error in transform?)
-    throw std::runtime_error("transform_y(0) outside plot window!");
-  }
-
 
   // Symbols are offset downwards because
   // the origin of the point is the top left of the glyph.
@@ -577,17 +568,27 @@ void svg_1d_plot::draw_plot_x_points()
     g_ptr_dps.text_style_.font_family_ = serieses_[i].point_style_.symbols_style_.font_family_;
     g_ptr_dps.alignment_ = align_style::center_align;
 
-   // y -= serieses_[i].point_style_.size_ * 0.5;  // Avoid a collision of marker with the horizontal y=0 axis line.
-
     for (unsigned int j = 0; j < serieses_[i].series_.size(); ++j)
     { // Draw jth point for ith serieses.
       Meas ux = serieses_[i].series_[j];
       double x = ux.value();
       transform_x(x);
+      float y_lift = static_cast<float>(serieses_[0].point_style_.size_ * 0.5);
+      // Assume 1st data point marker size is representative of all marker, and line up on zeroth series.
+      // If point marker size is 10 pixels, this lifts points by 5 pixels.
+      // This might not be ideal for all plots, so could also fix the Y lift like this:
+      //double y_lift = 5.;
+      uncun uy(-y_lift);
+      double y = uy.value_ ; // Move marker above the horizontal y=0 axis line.
+      transform_y(y);
+      if ((y < plot_top_) || (y > plot_bottom_))
+      { // Data-point Y position being wrong should never happen! (error in transform?)
+        throw std::runtime_error("transform_y(0) outside plot window!");
+      }
       if ((x >= plot_left_) && (x <= plot_right_)) // Check point is inside plot_window.
       // TODO May need a margin here to avoid points just over the window not being shown?
       {
-        draw_plot_point(x, y, g_ptr_dps, serieses_[i].point_style_, ux, Meas()); // Marker.
+        draw_plot_point(x, y, g_ptr_dps, serieses_[i].point_style_, ux, uy); // Marker.
         // (Meas() default constructor sets Y-value and Y-uncertainty to zero for 1d X-values).
         if (x_values_on_)
         { // Show the X-value (& perhaps uncertainty and degrees of freedom) of the data-point too.
@@ -606,10 +607,18 @@ void svg_1d_plot::draw_plot_x_points()
   {
     g_element& g_ptr = image_.gs(detail::PLOT_LIMIT_POINTS);  // Limit points layer.
 
-    y += 6; // Put the limit markers on the level of the X-axis line to avoid possible collision 
     // with any marker right at either end of the X-axis line.
     // This puts the NaN marker over the origin, but that's OK?
+    double y(0.); // All 1-D points are plotted are just above the horizontal X-axis (y = 0) axis.
+    //y -= serieses_[0].point_style_.size_ * 0.5;
+    y += 6; // Put the limit markers on the level of the X-axis line to avoid possible collision with other points.
+    transform_y(y);
+    if ((y < plot_top_) || (y > plot_bottom_))
+    { // So Y position being wrong should never happen! (error in transform?)
+      throw std::runtime_error("transform_y(0) outside plot window!");
+    }
 
+    // Mark any 'at limit' values.
     for (unsigned int j = 0; j != serieses_[i].series_limits_.size(); ++j)
     {
       double x = serieses_[i].series_limits_[j];

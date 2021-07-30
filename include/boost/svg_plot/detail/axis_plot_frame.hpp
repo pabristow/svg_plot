@@ -2346,8 +2346,8 @@ namespace boost
             y_radius = 1.;
           }
           //else
-          //{ // uy.std_dev() <=0 so arbitrary y_radius.  3 pixels ensure gap between tiny circle showing value with ellipse line width.
-          //  y_radius = 2;
+          //{ // uy.std_dev() <=0 so arbitrary y_radius.
+          //  y_radius = 2; // pixels ensure gap between tiny circle showing value with ellipse line width.
           //}
           //image_.gs(PLOT_DATA_UNC).style().stroke_color(magenta).fill_color(pink).stroke_width(1);
           // Default color set in svg_1d_plot data at present.
