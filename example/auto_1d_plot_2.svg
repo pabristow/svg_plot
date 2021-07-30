@@ -114,25 +114,25 @@ xmlns ="http://www.w3.org/2000/svg"
 		<line x1="469" y1="100" x2="469" y2="90"/>
 	</g>
 	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
-		<line x1="41.4" y1="97.5" x2="41.4" y2="87.5"/>
-		<line x1="153" y1="97.5" x2="153" y2="87.5"/>
-		<line x1="265" y1="97.5" x2="265" y2="87.5"/>
-		<line x1="377" y1="97.5" x2="377" y2="87.5"/>
+		<line x1="41.4" y1="100" x2="41.4" y2="90"/>
+		<line x1="153" y1="100" x2="153" y2="90"/>
+		<line x1="265" y1="100" x2="265" y2="90"/>
+		<line x1="377" y1="100" x2="377" y2="90"/>
 	</g>
 	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
-		<line x1="41.4" y1="95" x2="41.4" y2="85"/>
-		<line x1="153" y1="95" x2="153" y2="85"/>
-		<line x1="265" y1="95" x2="265" y2="85"/>
-		<line x1="377" y1="95" x2="377" y2="85"/>
+		<line x1="41.4" y1="100" x2="41.4" y2="90"/>
+		<line x1="153" y1="100" x2="153" y2="90"/>
+		<line x1="265" y1="100" x2="265" y2="90"/>
+		<line x1="377" y1="100" x2="377" y2="90"/>
 	</g>
 	<g stroke="rgb(0,0,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
-		<line x1="31.2" y1="92.5" x2="31.2" y2="82.5"/>
-		<line x1="347" y1="92.5" x2="347" y2="82.5"/>
-		<line x1="255" y1="92.5" x2="255" y2="82.5"/>
+		<line x1="31.2" y1="100" x2="31.2" y2="90"/>
+		<line x1="347" y1="100" x2="347" y2="90"/>
+		<line x1="255" y1="100" x2="255" y2="90"/>
 	</g>
 	</g>
 	<g id="limitPoints" stroke="rgb(255,0,0)" fill="rgb(255,255,255)">
-		<text x="484" y="96.4" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
+		<text x="484" y="106" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
 		</text>
 	</g>
 	<g id="title">

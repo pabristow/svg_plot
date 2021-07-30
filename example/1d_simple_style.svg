@@ -88,8 +88,8 @@ xmlns ="http://www.w3.org/2000/svg"
 		<line x1="202" y1="116" x2="202" y2="106"/>
 	</g>
 	<g stroke="rgb(0,0,255)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
-		<line x1="129" y1="113" x2="129" y2="103"/>
-		<line x1="327" y1="113" x2="327" y2="103"/>
+		<line x1="129" y1="116" x2="129" y2="106"/>
+		<line x1="327" y1="116" x2="327" y2="106"/>
 	</g>
 	</g>
 	<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">

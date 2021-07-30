@@ -88,11 +88,11 @@ xmlns ="http://www.w3.org/2000/svg"
 	</g>
 	</g>
 	<g id="limitPoints" stroke="rgb(0,128,0)" fill="rgb(255,255,255)">
-		<text x="484" y="113" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
+		<text x="484" y="116" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
 		</text>
-		<text x="16" y="113" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25C3;
+		<text x="16" y="116" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25C3;
 		</text>
-		<text x="250" y="116" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">&#x25BF;
+		<text x="250" y="119" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">&#x25BF;
 		</text>
 	</g>
 	<g id="title">

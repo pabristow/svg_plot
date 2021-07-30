@@ -139,34 +139,34 @@ xmlns ="http://www.w3.org/2000/svg"
 		</text>
 	</g>
 	<g stroke="rgb(0,0,0)" font-size="20" font-family="Lucida Sans Unicode" text-anchor="middle">
-		<text x="110.4" y="122.1">
+		<text x="110.4" y="132.1">
 		</text>
-		<text x="155.2" y="122.1">
+		<text x="155.2" y="132.1">
 		</text>
-		<text x="199.9" y="122.1">
+		<text x="199.9" y="132.1">
 		</text>
-		<text x="334" y="122.1">
+		<text x="334" y="132.1">
 		</text>
-		<text x="378.8" y="122.1">
+		<text x="378.8" y="132.1">
 		</text>
 	</g>
 	<g stroke="rgb(255,0,255)" fill="rgb(0,255,255)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
-		<text x="65.72" y="115.2" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
+		<text x="65.72" y="127.7" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
 		</text>
-		<text x="21" y="115.2" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
+		<text x="21" y="127.7" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
 		</text>
-		<text x="110.4" y="115.2" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
+		<text x="110.4" y="127.7" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
 		</text>
-		<text x="65.72" y="115.2" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
+		<text x="65.72" y="127.7" text-anchor="middle" font-size="5" font-family="Lucida Sans Unicode">&#x25BD;
 		</text>
 	</g>
 	</g>
 	<g id="limitPoints" stroke="rgb(255,0,0)" fill="rgb(255,255,255)">
-		<text x="383.8" y="134.7" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
+		<text x="383.8" y="140.2" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
 		</text>
-		<text x="65.72" y="137.6" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">&#x25BF;
+		<text x="65.72" y="143.1" text-anchor="middle" font-size="20" font-family="Lucida Sans Unicode">&#x25BF;
 		</text>
-		<text x="383.8" y="134.7" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
+		<text x="383.8" y="140.2" text-anchor="middle" font-size="10" font-family="Lucida Sans Unicode">&#x25B9;
 		</text>
 	</g>
 	<g id="legendBackground" stroke="rgb(210,105,30)" fill="rgb(245,245,220)" stroke-width="1">

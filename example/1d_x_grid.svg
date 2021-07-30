@@ -123,8 +123,8 @@ xmlns ="http://www.w3.org/2000/svg"
 		<line x1="199" y1="116" x2="199" y2="106"/>
 	</g>
 	<g stroke="rgb(255,165,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
-		<line x1="127" y1="113" x2="127" y2="103"/>
-		<line x1="322" y1="113" x2="322" y2="103"/>
+		<line x1="127" y1="116" x2="127" y2="106"/>
+		<line x1="322" y1="116" x2="322" y2="106"/>
 	</g>
 	</g>
 	<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">

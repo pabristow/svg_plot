@@ -124,8 +124,8 @@ xmlns ="http://www.w3.org/2000/svg"
 		<line x1="215" y1="116" x2="215" y2="106"/>
 	</g>
 	<g stroke="rgb(255,165,0)" font-size="5" font-family="Lucida Sans Unicode" text-anchor="middle">
-		<line x1="137" y1="113" x2="137" y2="103"/>
-		<line x1="350" y1="113" x2="350" y2="103"/>
+		<line x1="137" y1="116" x2="137" y2="106"/>
+		<line x1="350" y1="116" x2="350" y2="106"/>
 	</g>
 	</g>
 	<g id="legendBackground" stroke="rgb(255,255,0)" fill="rgb(255,255,255)" stroke-width="1">

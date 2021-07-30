@@ -700,6 +700,10 @@ class svg_boxplot : public detail::axis_plot_frame<svg_boxplot>
   double autoscale_plusminus_; //!< For uncertain values, allow for text_plusminus ellipses showing 67%, 95% and 99% confidence limits.\n
   //!< For example, if a max value is 1.2 +or- 0.02, then 1.4 will be used for autoscaling the maximum.\n
   //!< Similarly, if a min value is 1.2 +or- 0.02, then 1.0 will be used for autoscaling the minimum.
+  
+  double plusminus_sds_; //!< Nominal factor of 1. standard deviation uncertainty (default) corresponds to 67% confidence limit.
+//!< Optionally can two two or three (for 95% or 99.7%).
+//!< Must apply to both 1D and both axes of 2D plots.
 
   double text_plusminus_; /*!< Number of standard deviations used for text_plusminus text display.\n
     Nominal factor of 1. (default) corresponds to 67% confidence limit,
@@ -792,6 +796,8 @@ public:
   autoscale_check_limits_(true), // Do check all value for limits, infinity, max, min, NaN.
   x_autoscale_(false),
   autoscale_plusminus_(3.), // Allow 3 uncertainty (standard deviation) for 99% confidence ellipse.
+  plusminus_sds_(1.), // Default 1 uncertainty or standard deviation, but optionally two or three.
+
 
   x_include_zero_(false), // If autoscaled, include zero.
   x_min_ticks_(6),  // If autoscaled, set a minimum number of ticks, default 6.
@@ -857,8 +863,7 @@ public:
     // Set boxplot color defaults.
     image_.gs(boxplot::PLOT_BACKGROUND).style().fill_color(image_border_.fill_);
     image_.gs(boxplot::PLOT_BACKGROUND).style().stroke_color(image_border_.stroke_);
-    image_.gs(boxplot::PLOT_BACKGROUND).style().stroke_width(image_border_.border_width_); //
-
+    image_.gs(boxplot::PLOT_BACKGROUND).style().stroke_width(image_border_.border_width_);
     image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().fill_color(plot_window_border_.fill_);
     image_.gs(boxplot::PLOT_WINDOW_BACKGROUND).style().stroke_width(plot_window_border_.border_width_).stroke_color(plot_window_border_.stroke_);
     image_.gs(boxplot::X_AXIS).style().stroke_color(black).stroke_width(x_axis_.width());

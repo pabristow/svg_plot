@@ -781,7 +781,7 @@ my_plot.background_color(ghostwhite) // Whole image.
 
         plusminus_sds_(1.), // Default 1 uncertainty or standard deviation, but optionally two or three.
         // Confidence interval parameters.
-        // (Could provide functions for the user to control these).
+        // (Functions for the user to control these).
         alpha_(0.05), //!<  alpha for calculating confidence interval, default 0.05 for 95%.
         // oss.iword(confidenceIndex) / 1.e6; 95% confidence.
         epsilon_(0.05), // = oss.iword(roundingLossIndex) / 1.e3; // = allow 5% rounding loss.

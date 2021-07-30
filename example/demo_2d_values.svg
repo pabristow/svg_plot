@@ -222,31 +222,31 @@ xmlns ="http://www.w3.org/2000/svg"
 	</g>
 	<g id="plotXValues" fill="rgb(255,0,0)">
 	<g>
-		<text x="134" y="225" text-anchor="middle" font-size="16" font-family="Times New Roman">-2.1
+		<text x="134" y="233" font-size="16" font-family="Times New Roman">-2.1
 		<tspan fill="rgb(0,0,0)" font-size="16" font-family="Times New Roman"></tspan>
 		<tspan fill="rgb(0,0,0)" font-size="14" font-family="Times New Roman"></tspan>
-		<tspan fill="rgb(0,0,255)" font-size="14" font-family="Arial">-2.4</tspan>
+		<tspan fill="rgb(0,0,0)" font-size="14" font-family="Arial">-2.4</tspan>
 		</text>
 	</g>
 	<g>
-		<text x="224" y="136" text-anchor="middle" font-size="16" font-family="Times New Roman">1.1
+		<text x="224" y="144" font-size="16" font-family="Times New Roman">1.1
 		<tspan fill="rgb(0,0,0)" font-size="16" font-family="Times New Roman"></tspan>
 		<tspan fill="rgb(0,0,0)" font-size="14" font-family="Times New Roman"></tspan>
-		<tspan fill="rgb(0,0,255)" font-size="14" font-family="Arial">3.2</tspan>
+		<tspan fill="rgb(0,0,0)" font-size="14" font-family="Arial">3.2</tspan>
 		</text>
 	</g>
 	<g>
-		<text x="347" y="102" text-anchor="middle" font-size="16" font-family="Times New Roman">5.5
+		<text x="347" y="110" font-size="16" font-family="Times New Roman">5.5
 		<tspan fill="rgb(0,0,0)" font-size="16" font-family="Times New Roman"></tspan>
 		<tspan fill="rgb(0,0,0)" font-size="14" font-family="Times New Roman"></tspan>
-		<tspan fill="rgb(0,0,255)" font-size="14" font-family="Arial">5.4</tspan>
+		<tspan fill="rgb(0,0,0)" font-size="14" font-family="Arial">5.4</tspan>
 		</text>
 	</g>
 	<g>
-		<text x="398" y="59.4" text-anchor="middle" font-size="16" font-family="Times New Roman">7.3
+		<text x="398" y="66.9" font-size="16" font-family="Times New Roman">7.3
 		<tspan fill="rgb(0,0,0)" font-size="16" font-family="Times New Roman"></tspan>
 		<tspan fill="rgb(0,0,0)" font-size="14" font-family="Times New Roman"></tspan>
-		<tspan fill="rgb(0,0,255)" font-size="14" font-family="Arial">8.1</tspan>
+		<tspan fill="rgb(0,0,0)" font-size="14" font-family="Arial">8.1</tspan>
 		</text>
 	</g>
 	</g>

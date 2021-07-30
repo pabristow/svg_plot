@@ -47,6 +47,7 @@
  //using std::cerr;
  //using std::cout;
  //using std::endl;
+#include <cmath> // sin and cos
 
 namespace boost
 {
@@ -3107,8 +3108,8 @@ namespace boost
                 rx = 0;
               }
               rx *=  2 * 3.14159265358979323846264338327950288;  //  * 2 pi
-              double dx = newline_spacing * sin(rx); 
-              double dy = newline_spacing * cos(rx);
+              double dx = newline_spacing * std::sin(rx); 
+              double dy = newline_spacing * std::cos(rx);
               align_style yal = y_sty.value_label_alignment_;
               text_element& ty = y_g_ptr.text(x - dx, y + dy, label_yv, y_sty.values_text_style_, yal, rot);  
               // <text x="100" y="272" font-size="8" font-family="Arial">y=-5.8
